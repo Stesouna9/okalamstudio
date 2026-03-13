@@ -6,6 +6,8 @@
 <meta charset="UTF-8">
 <title>OKALAM Studio</title>
 
+<link rel="stylesheet" href="style.css">
+
 <style>
 
 body{
@@ -13,55 +15,241 @@ margin:0;
 font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto;
 color:white;
 text-align:center;
-
-/* BACKGROUND CINEMATIC */
-
 background-image:url("okalam.png");
 background-size:cover;
 background-position:center;
 background-attachment:fixed;
 }
 
-/* OVERLAY pour lisibilité */
-
 .overlay{
 background:rgba(0,0,0,0.65);
 min-height:100vh;
-}
-
-/* HEADER */
-
-.hero{
 padding-top:120px;
 padding-bottom:80px;
 }
 
 h1{
-font-size:60px;
-margin:0;
+font-size:64px;
+margin-bottom:10px;
 }
 
 .subtitle{
-color:#ccc;
+color:#bbb;
 font-size:22px;
-margin-top:10px;
+margin-bottom:60px;
 }
 
-/* LANGUAGES */
+/* PROJECTS */
 
-.language{
+.projects{
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+gap:40px;
+}
+
+.card{
+background:#141414;
+border-radius:20px;
+width:320px;
+padding:20px;
+box-shadow:0 10px 40px rgba(0,0,0,0.7);
+transition:0.3s;
+}
+
+.card:hover{
+transform:scale(1.05);
+}
+
+.card img{
+width:100%;
+border-radius:12px;
+margin-bottom:15px;
+}
+
+.card h2{
+margin-bottom:10px;
+}
+
+.card p{
+color:#aaa;
+font-size:16px;
+}
+
+.button{
+display:inline-block;
+margin-top:15px;
+padding:10px 20px;
+background:#0071e3;
+border-radius:10px;
+color:white;
+text-decoration:none;
+}
+
+/* MUSIC BUTTON */
+
+.music-btn{
 position:fixed;
 top:20px;
-left:20px;
-}
-
-.lang-btn{
-background:#1f1f1f;
+right:20px;
+background:#111;
 border:none;
 color:white;
-padding:8px 12px;
-margin-right:5px;
+padding:10px 14px;
 border-radius:8px;
+cursor:pointer;
+}
+
+/* FOOTER */
+
+footer{
+margin-top:100px;
+color:#aaa;
+}
+
+/* PARTICLES */
+
+canvas{
+position:fixed;
+top:0;
+left:0;
+z-index:-1;
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+<canvas id="particles"></canvas>
+
+<button class="music-btn" onclick="toggleMusic()">🔊</button>
+
+<div class="overlay">
+
+<h1>OKALAM Studio</h1>
+
+<p class="subtitle">
+
+Independent Game Studio
+
+</p>
+
+
+<div class="projects">
+
+<!-- VoteDay -->
+
+<div class="card">
+
+<img src="vd.png">
+
+<h2>VoteDay</h2>
+
+<p>
+
+A social daily voting app where the world answers
+the same question each day.
+
+</p>
+
+<p>
+
+Release planned 2026 • iOS development
+
+</p>
+
+<a href="voteday.html" class="button">
+
+Discover
+
+</a>
+
+</div>
+
+
+<!-- Little ToT -->
+
+<div class="card">
+
+<img src="itot.png">
+
+<h2>Little ToT</h2>
+
+<p>
+
+A calm narrative adventure where choices
+shape the journey.
+
+</p>
+
+<p>
+
+Release planned 2026
+
+</p>
+
+<a href="littleTot.html" class="button">
+
+Discover
+
+</a>
+
+</div>
+
+</div>
+
+
+<footer>
+
+Support :
+
+<a href="mailto:support@okalam.com">
+
+support@okalam.com
+
+</a>
+
+</footer>
+
+</div>
+
+
+<audio id="music" loop autoplay>
+<source src="music.mp3" type="audio/mpeg">
+</audio>
+
+
+<script>
+
+/* MUSIC */
+
+var music = document.getElementById("music");
+
+function toggleMusic(){
+
+if(music.paused){
+
+music.play();
+
+}else{
+
+music.pause();
+
+}
+
+}
+
+</script>
+
+
+<script src="particles.js"></script>
+
+</body>
+
+</html>border-radius:8px;
 cursor:pointer;
 }
 
