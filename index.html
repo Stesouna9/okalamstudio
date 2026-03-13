@@ -6,8 +6,6 @@
 <meta charset="UTF-8">
 <title>OKALAM Studio</title>
 
-<link rel="stylesheet" href="style.css">
-
 <style>
 
 body{
@@ -15,26 +13,399 @@ margin:0;
 font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto;
 color:white;
 text-align:center;
+
 background-image:url("okalam.png");
 background-size:cover;
 background-position:center;
 background-attachment:fixed;
 }
 
+/* OVERLAY */
+
 .overlay{
-background:rgba(0,0,0,0.65);
+background:rgba(0,0,0,0.70);
 min-height:100vh;
 padding-top:120px;
 padding-bottom:80px;
 }
 
+/* TITLE */
+
 h1{
-font-size:64px;
-margin-bottom:10px;
+font-size:60px;
+margin-bottom:5px;
+letter-spacing:2px;
 }
 
 .subtitle{
+color:#ddd;
+font-size:22px;
+margin-bottom:5px;
+}
+
+.subtitle2{
+color:#aaa;
+font-size:18px;
+margin-bottom:60px;
+}
+
+/* LANGUAGE SWITCH */
+
+.lang{
+position:fixed;
+top:20px;
+left:20px;
+}
+
+.lang button{
+background:#111;
+color:white;
+border:none;
+padding:8px 12px;
+margin-right:5px;
+border-radius:8px;
+cursor:pointer;
+font-size:14px;
+}
+
+/* MUSIC */
+
+.music-btn{
+position:fixed;
+top:20px;
+right:20px;
+background:#111;
+border:none;
+color:white;
+padding:10px 14px;
+border-radius:8px;
+cursor:pointer;
+}
+
+/* PROJECTS */
+
+.projects{
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+gap:30px;
+}
+
+/* CARD */
+
+.card{
+
+background:rgba(15,15,15,0.95);
+border-radius:18px;
+width:260px;
+padding:18px;
+
+box-shadow:0 15px 40px rgba(0,0,0,0.8);
+
+transition:0.3s;
+
+}
+
+.card:hover{
+transform:scale(1.05);
+}
+
+/* IMAGE */
+
+.card img{
+width:100%;
+height:150px;
+object-fit:cover;
+border-radius:10px;
+margin-bottom:12px;
+}
+
+.card h2{
+margin-bottom:8px;
+}
+
+.card p{
 color:#bbb;
+font-size:15px;
+line-height:1.4;
+}
+
+.button{
+
+display:inline-block;
+margin-top:12px;
+padding:8px 16px;
+
+background:#0071e3;
+border-radius:10px;
+
+color:white;
+text-decoration:none;
+
+}
+
+/* CONTACT */
+
+.contact{
+
+margin-top:120px;
+
+display:flex;
+justify-content:center;
+
+}
+
+.contact-box{
+
+background:rgba(0,0,0,0.75);
+border-radius:14px;
+
+padding:25px 40px;
+
+border:1px solid rgba(255,255,255,0.08);
+
+box-shadow:0 0 30px rgba(0,0,0,0.7);
+
+font-family:monospace;
+
+}
+
+.contact-title{
+
+color:#aaa;
+font-size:14px;
+letter-spacing:2px;
+
+margin-bottom:8px;
+
+}
+
+.contact-mail{
+
+font-size:18px;
+color:#4da3ff;
+
+}
+
+.contact-mail a{
+
+color:#4da3ff;
+text-decoration:none;
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+<!-- LANGUAGE -->
+
+<div class="lang">
+
+<button onclick="setLang('fr')">🇫🇷 FR</button>
+<button onclick="setLang('en')">🇬🇧 ENG</button>
+
+</div>
+
+<!-- MUSIC -->
+
+<button class="music-btn" onclick="toggleMusic()">🔊</button>
+
+
+<div class="overlay">
+
+<h1>OKALAM Studio</h1>
+
+<p class="subtitle" id="s1">
+
+Créateur rêveur
+
+</p>
+
+<p class="subtitle2" id="s2">
+
+Créateur indépendant d'applications
+
+</p>
+
+
+<!-- PROJECTS -->
+
+<div class="projects">
+
+<div class="card">
+
+<img src="vd.png">
+
+<h2>VoteDay</h2>
+
+<p id="vd_desc">
+
+Une application sociale où le monde répond
+à la même question chaque jour.
+
+</p>
+
+<p id="vd_release">
+
+Sortie prévue 2026 • Développement iOS
+
+</p>
+
+<a href="voteday.html" class="button" id="vd_btn">
+
+Découvrir
+
+</a>
+
+</div>
+
+
+<div class="card">
+
+<img src="ltot.png">
+
+<h2>Little ToT</h2>
+
+<p id="tot_desc">
+
+Une aventure narrative calme où
+les choix changent l'histoire.
+
+</p>
+
+<p id="tot_release">
+
+Sortie prévue 2026
+
+</p>
+
+<a href="littleTot.html" class="button" id="tot_btn">
+
+Découvrir
+
+</a>
+
+</div>
+
+</div>
+
+
+<!-- CONTACT -->
+
+<div class="contact">
+
+<div class="contact-box">
+
+<div class="contact-title" id="contact_label">
+
+CONTACT SUPPORT
+
+</div>
+
+<div class="contact-mail">
+
+<a href="mailto:support@okalam.com">
+
+support@okalam.com
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<audio id="music" loop autoplay>
+<source src="menu.mp3">
+</audio>
+
+
+<script>
+
+/* MUSIC */
+
+var music=document.getElementById("music");
+
+function toggleMusic(){
+
+if(music.paused){
+music.play();
+}else{
+music.pause();
+}
+
+}
+
+/* LANGUAGE */
+
+function setLang(lang){
+
+if(lang==="en"){
+
+document.getElementById("s1").innerText="Dreamer Creator";
+
+document.getElementById("s2").innerText="Independent App Creator";
+
+document.getElementById("vd_desc").innerText=
+"A social app where the world answers the same question every day.";
+
+document.getElementById("vd_release").innerText=
+"Release planned 2026 • iOS development";
+
+document.getElementById("vd_btn").innerText="Discover";
+
+document.getElementById("tot_desc").innerText=
+"A calm narrative adventure where choices shape the story.";
+
+document.getElementById("tot_release").innerText=
+"Release planned 2026";
+
+document.getElementById("tot_btn").innerText="Discover";
+
+document.getElementById("contact_label").innerText="SUPPORT CONTACT";
+
+}
+
+if(lang==="fr"){
+
+document.getElementById("s1").innerText="Créateur rêveur";
+
+document.getElementById("s2").innerText="Créateur indépendant d'applications";
+
+document.getElementById("vd_desc").innerText=
+"Une application sociale où le monde répond à la même question chaque jour.";
+
+document.getElementById("vd_release").innerText=
+"Sortie prévue 2026 • Développement iOS";
+
+document.getElementById("vd_btn").innerText="Découvrir";
+
+document.getElementById("tot_desc").innerText=
+"Une aventure narrative calme où les choix changent l'histoire.";
+
+document.getElementById("tot_release").innerText=
+"Sortie prévue 2026";
+
+document.getElementById("tot_btn").innerText="Découvrir";
+
+document.getElementById("contact_label").innerText="CONTACT SUPPORT";
+
+}
+
+}
+
+</script>
+
+</body>
+</html>color:#bbb;
 font-size:22px;
 margin-bottom:10px;
 }
