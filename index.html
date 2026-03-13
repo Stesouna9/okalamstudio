@@ -362,41 +362,56 @@ support@okalam.com
 
 /* MUSIC */
 
-const music=document.getElementById("music");
-const btn=document.getElementById("soundBtn");
+<audio id="music" autoplay loop muted>
+<source src="menu.mp3" type="audio/mpeg">
+</audio>
 
-let soundOn=false;
+<script>
 
-document.addEventListener("click",()=>{
+const music = document.getElementById("music");
+const btn = document.getElementById("soundBtn");
+
+let soundOn = false;
+
+/* premier clic sur la page */
+
+document.addEventListener("click", () => {
 
 if(!soundOn){
 
-music.muted=false;
+music.muted = false;
 music.play();
 
-btn.innerText="🔊";
+btn.innerText = "🔊";
 
-soundOn=true;
+soundOn = true;
 
 }
 
 },{once:true});
 
-btn.onclick=()=>{
+/* bouton son */
+
+btn.onclick = () => {
 
 if(music.muted){
 
-music.muted=false;
-btn.innerText="🔊";
+music.muted = false;
+music.play();   // 🔴 c'est ça qui manquait
+
+btn.innerText = "🔊";
 
 }else{
 
-music.muted=true;
-btn.innerText="🔇";
+music.muted = true;
+
+btn.innerText = "🔇";
 
 }
 
 };
+
+</script>
 
 /* LANGUAGE */
 
