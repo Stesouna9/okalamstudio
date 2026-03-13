@@ -43,9 +43,9 @@ transform:translate(-50%,-50%);
 width:700px;
 height:700px;
 
-background:radial-gradient(circle, rgba(255,255,255,0.15), transparent 70%);
+background:radial-gradient(circle, rgba(255,255,255,0.18), transparent 70%);
 
-animation:glow 8s ease-in-out infinite;
+animation:glow 7s ease-in-out infinite;
 
 pointer-events:none;
 
@@ -53,9 +53,9 @@ pointer-events:none;
 
 @keyframes glow{
 
-0%{opacity:0.15;}
+0%{opacity:0.2;}
 50%{opacity:0.45;}
-100%{opacity:0.15;}
+100%{opacity:0.2;}
 
 }
 
@@ -272,7 +272,7 @@ z-index:-1;
 
 </div>
 
-<button class="music-btn" onclick="toggleMusic()">🔊</button>
+<button id="soundBtn" class="music-btn">🔇</button>
 
 <div class="overlay">
 
@@ -354,27 +354,49 @@ support@okalam.com
 
 </div>
 
-<audio id="music" loop>
+<audio id="music" autoplay loop muted>
 <source src="menu.mp3">
 </audio>
 
 <script>
 
-var music=document.getElementById("music");
+/* MUSIC */
 
-document.addEventListener("click",function(){
+const music=document.getElementById("music");
+const btn=document.getElementById("soundBtn");
+
+let soundOn=false;
+
+document.addEventListener("click",()=>{
+
+if(!soundOn){
+
+music.muted=false;
 music.play();
+
+btn.innerText="🔊";
+
+soundOn=true;
+
+}
+
 },{once:true});
 
-function toggleMusic(){
+btn.onclick=()=>{
 
-if(music.paused){
-music.play();
+if(music.muted){
+
+music.muted=false;
+btn.innerText="🔊";
+
 }else{
-music.pause();
-}
+
+music.muted=true;
+btn.innerText="🔇";
 
 }
+
+};
 
 /* LANGUAGE */
 
