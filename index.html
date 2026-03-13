@@ -1,67 +1,666 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
-  />
-  <title>VoteDay - OKALAM Studio</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OKALAM Studio</title>
 
   <style>
-    :root {
-      --bg-1: #12061f;
-      --bg-2: #25083b;
-      --bg-3: #40105d;
-      --gold: #ffd86b;
-      --gold-soft: #fff2b3;
-      --pink: #ff5fd2;
-      --violet: #a96bff;
-      --white: #ffffff;
-      --glass: rgba(255, 255, 255, 0.09);
-      --glass-strong: rgba(255, 255, 255, 0.14);
-      --border: rgba(255, 255, 255, 0.18);
-      --shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
-      --text-soft: rgba(255, 255, 255, 0.8);
-    }
-
     * {
       box-sizing: border-box;
-      -webkit-tap-highlight-color: transparent;
     }
 
     html,
     body {
       margin: 0;
       padding: 0;
-      width: 100%;
       min-height: 100%;
-      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI",
-        Roboto, Helvetica, Arial, sans-serif;
-      color: var(--white);
-      background:
-        radial-gradient(circle at 20% 20%, rgba(255, 95, 210, 0.18), transparent 26%),
-        radial-gradient(circle at 80% 15%, rgba(255, 216, 107, 0.18), transparent 22%),
-        radial-gradient(circle at 50% 100%, rgba(169, 107, 255, 0.22), transparent 30%),
-        linear-gradient(160deg, var(--bg-1), var(--bg-2) 45%, var(--bg-3));
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      color: white;
+      text-align: center;
       overflow-x: hidden;
+      background-color: #000;
     }
 
     body {
       position: relative;
-      min-height: 100vh;
+      background-image: url("okalam.png");
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
     }
 
-    .background-glow {
+    /* PARTICLES */
+    canvas {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* DARK OVERLAY */
+    .overlay {
+      position: relative;
+      z-index: 2;
+      min-height: 100vh;
+      padding-top: 120px;
+      padding-bottom: 120px;
+      padding-left: 20px;
+      padding-right: 20px;
+      background:
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.72), rgba(0, 0, 0, 0.82)),
+        rgba(0, 0, 0, 0.75);
+    }
+
+    /* EXTRA ATMOSPHERE */
+    .overlay::before {
+      content: "";
       position: fixed;
       inset: 0;
       pointer-events: none;
-      z-index: 0;
+      z-index: 1;
+      background:
+        radial-gradient(circle at 50% 20%, rgba(255, 255, 255, 0.06), transparent 30%),
+        radial-gradient(circle at 50% 35%, rgba(120, 180, 255, 0.08), transparent 28%),
+        radial-gradient(circle at 50% 50%, rgba(255, 230, 150, 0.06), transparent 35%);
+      mix-blend-mode: screen;
+    }
+
+    /* TRIANGLE LIGHT */
+    .triangle-glow {
+      position: fixed;
+      top: 35%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 760px;
+      height: 760px;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.18), rgba(150, 200, 255, 0.08), transparent 72%);
+      animation: glow 7s ease-in-out infinite;
+      pointer-events: none;
+      z-index: 1;
+      filter: blur(2px);
+    }
+
+    @keyframes glow {
+      0% {
+        opacity: 0.18;
+        transform: translate(-50%, -50%) scale(0.98);
+      }
+
+      50% {
+        opacity: 0.42;
+        transform: translate(-50%, -50%) scale(1.03);
+      }
+
+      100% {
+        opacity: 0.18;
+        transform: translate(-50%, -50%) scale(0.98);
+      }
+    }
+
+    /* LANGUAGE */
+    .lang {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 5;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .lang button {
+      background: rgba(10, 10, 10, 0.9);
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 9px 13px;
+      border-radius: 10px;
+      cursor: pointer;
+      backdrop-filter: blur(6px);
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .lang button:hover {
+      transform: translateY(-1px);
+      background: rgba(25, 25, 25, 0.95);
+    }
+
+    /* MUSIC */
+    .music-btn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 5;
+      background: rgba(10, 10, 10, 0.9);
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 10px 14px;
+      border-radius: 10px;
+      cursor: pointer;
+      backdrop-filter: blur(6px);
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .music-btn:hover {
+      transform: translateY(-1px);
+      background: rgba(25, 25, 25, 0.95);
+    }
+
+    /* TITLE */
+    h1 {
+      margin-top: 0;
+      margin-bottom: 10px;
+      font-size: 60px;
+      letter-spacing: 2px;
+      text-shadow:
+        0 0 20px rgba(255, 255, 255, 0.10),
+        0 0 40px rgba(255, 255, 255, 0.04);
+    }
+
+    .subtitle {
+      font-size: 22px;
+      color: #e0e0e0;
+      margin-bottom: 10px;
+    }
+
+    .subtitle2 {
+      font-size: 18px;
+      color: #aeb4be;
+      margin-bottom: 40px;
+    }
+
+    /* PROJECT TITLE */
+    .projects-title {
+      font-size: 18px;
+      color: #a8adb7;
+      margin-bottom: 40px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    /* PROJECTS */
+    .projects {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 40px;
+      align-items: stretch;
+    }
+
+    /* CARD */
+    .card {
+      background:
+        linear-gradient(180deg, rgba(30, 30, 30, 0.96), rgba(12, 12, 12, 0.96));
+      border-radius: 18px;
+      width: 260px;
+      padding: 20px;
+      box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.8),
+        0 0 25px rgba(255, 255, 255, 0.03);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      position: relative;
       overflow: hidden;
     }
 
-    .background-glow::before,
-    .background-glow::after {
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), transparent 25%, transparent 75%, rgba(255, 255, 255, 0.02));
+    }
+
+    .card:hover {
+      transform: scale(1.03) translateY(-2px);
+      box-shadow:
+        0 18px 50px rgba(0, 0, 0, 0.85),
+        0 0 30px rgba(255, 255, 255, 0.05);
+    }
+
+    /* IMAGE */
+    .card img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .card h2 {
+      margin-top: 8px;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      color: #d6d6d6;
+      line-height: 1.45;
+    }
+
+    /* BUTTON */
+    .button {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 9px 16px;
+      background: linear-gradient(180deg, #1b86ff, #0071e3);
+      border-radius: 10px;
+      color: white;
+      text-decoration: none;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-1px);
+      opacity: 0.95;
+    }
+
+    /* CONTACT */
+    .contact {
+      margin-top: 180px;
+      display: flex;
+      justify-content: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .contact-box {
+      background: rgba(0, 0, 0, 0.85);
+      border-radius: 14px;
+      padding: 30px 50px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      box-shadow:
+        0 0 30px rgba(0, 0, 0, 0.8),
+        0 0 60px rgba(255, 255, 255, 0.05);
+      font-family: monospace;
+      max-width: 100%;
+    }
+
+    .contact-title {
+      color: #888;
+      letter-spacing: 3px;
+      font-size: 13px;
+      margin-bottom: 10px;
+    }
+
+    .contact-mail {
+      font-size: 20px;
+      color: #4da3ff;
+      word-break: break-word;
+    }
+
+    .contact-mail a {
+      color: #4da3ff;
+      text-decoration: none;
+    }
+
+    .status-line {
+      margin-top: 14px;
+      font-size: 13px;
+      color: #a0a8b3;
+      opacity: 0.9;
+    }
+
+    @media (max-width: 900px) {
+      h1 {
+        font-size: 48px;
+      }
+
+      .triangle-glow {
+        width: 560px;
+        height: 560px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .overlay {
+        padding-top: 110px;
+        padding-bottom: 90px;
+      }
+
+      h1 {
+        font-size: 38px;
+      }
+
+      .subtitle {
+        font-size: 19px;
+      }
+
+      .subtitle2 {
+        font-size: 16px;
+      }
+
+      .projects {
+        gap: 24px;
+      }
+
+      .card {
+        width: min(100%, 320px);
+      }
+
+      .contact {
+        margin-top: 110px;
+      }
+
+      .contact-box {
+        padding: 24px 20px;
+      }
+
+      .triangle-glow {
+        width: 420px;
+        height: 420px;
+        top: 30%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <canvas id="particles"></canvas>
+
+  <div class="triangle-glow"></div>
+
+  <div class="lang">
+    <button type="button" onclick="setLang('fr')">🇫🇷 FR</button>
+    <button type="button" onclick="setLang('en')">🇬🇧 ENG</button>
+  </div>
+
+  <button id="soundBtn" class="music-btn" type="button" aria-label="Toggle sound">🔇</button>
+
+  <div class="overlay">
+    <h1>OKALAM Studio</h1>
+
+    <p class="subtitle" id="s1">Dreamer Creator</p>
+
+    <p class="subtitle2" id="s2">Independent App Creator</p>
+
+    <p class="projects-title" id="projects_title">Applications in development</p>
+
+    <div class="projects">
+      <div class="card">
+        <img src="vd.png" alt="VoteDay preview">
+
+        <h2>VoteDay</h2>
+
+        <p id="vd_desc">
+          A social app where the world answers the same question every day.
+        </p>
+
+        <p id="vd_release">
+          Release planned 2026 • iOS development
+        </p>
+
+        <a href="voteday.html" class="button" id="vd_btn">
+          Discover
+        </a>
+      </div>
+
+      <div class="card">
+        <img src="ltot.png" alt="Little ToT preview">
+
+        <h2>Little ToT</h2>
+
+        <p id="tot_desc">
+          A calm narrative adventure where choices shape the story.
+        </p>
+
+        <p id="tot_release">
+          Release planned 2026
+        </p>
+
+        <a href="littleTot.html" class="button" id="tot_btn">
+          Discover
+        </a>
+      </div>
+    </div>
+
+    <div class="contact">
+      <div class="contact-box">
+        <div class="contact-title" id="contact_label">
+          OKALAM LAB SUPPORT
+        </div>
+
+        <div class="contact-mail">
+          <a href="mailto:support@okalam.com">
+            support@okalam.com
+          </a>
+        </div>
+
+        <div class="status-line" id="music_status">
+          Music: waiting for autoplay...
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <audio id="music" autoplay loop playsinline preload="auto">
+    <source src="menu.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    /* ELEMENTS */
+    const music = document.getElementById("music");
+    const btn = document.getElementById("soundBtn");
+    const musicStatus = document.getElementById("music_status");
+
+    /* STATE */
+    let soundOn = false;
+    let firstUnlockDone = false;
+
+    /* DEFAULT LANGUAGE = EN */
+    setLang("en");
+
+    /* MUSIC */
+    function updateSoundButton() {
+      if (!music.paused && !music.muted) {
+        btn.innerText = "🔊";
+        musicStatus.innerText = "Music: playing.";
+      } else if (music.muted) {
+        btn.innerText = "🔇";
+        musicStatus.innerText = "Music: muted.";
+      } else {
+        btn.innerText = "🔇";
+        musicStatus.innerText = "Music: paused or blocked by the browser.";
+      }
+    }
+
+    async function tryAutoplay() {
+      try {
+        music.muted = false;
+        music.volume = 0.7;
+        await music.play();
+        soundOn = true;
+        updateSoundButton();
+      } catch (error) {
+        music.muted = true;
+        try {
+          await music.play();
+          musicStatus.innerText = "Music: autoplay allowed only in muted mode. First interaction will enable sound.";
+        } catch (err) {
+          musicStatus.innerText = "Music: autoplay blocked. First interaction will try to start it.";
+        }
+        updateSoundButton();
+      }
+    }
+
+    async function unlockAudioOnce() {
+      if (firstUnlockDone) return;
+      firstUnlockDone = true;
+
+      try {
+        music.muted = false;
+        music.volume = 0.7;
+        await music.play();
+        soundOn = true;
+      } catch (error) {
+        soundOn = false;
+      }
+
+      updateSoundButton();
+    }
+
+    document.addEventListener("click", unlockAudioOnce, { once: true });
+    document.addEventListener("touchstart", unlockAudioOnce, { once: true });
+    document.addEventListener("keydown", unlockAudioOnce, { once: true });
+
+    btn.onclick = async () => {
+      try {
+        if (music.paused) {
+          music.muted = false;
+          music.volume = 0.7;
+          await music.play();
+          soundOn = true;
+        } else if (music.muted) {
+          music.muted = false;
+          soundOn = true;
+        } else {
+          music.muted = true;
+          soundOn = false;
+        }
+      } catch (error) {
+        console.warn("Audio toggle error:", error);
+      }
+
+      updateSoundButton();
+    };
+
+    music.addEventListener("play", updateSoundButton);
+    music.addEventListener("pause", updateSoundButton);
+    music.addEventListener("volumechange", updateSoundButton);
+
+    tryAutoplay();
+
+    /* LANGUAGE */
+    function setLang(lang) {
+      if (lang === "fr") {
+        document.documentElement.lang = "fr";
+
+        document.getElementById("s1").innerText = "Créateur rêveur";
+        document.getElementById("s2").innerText = "Créateur indépendant d'applications";
+        document.getElementById("projects_title").innerText = "Applications en développement";
+
+        document.getElementById("vd_desc").innerText =
+          "Une application sociale où le monde répond à la même question chaque jour.";
+
+        document.getElementById("vd_release").innerText =
+          "Sortie prévue 2026 • Développement iOS";
+
+        document.getElementById("vd_btn").innerText = "Découvrir";
+
+        document.getElementById("tot_desc").innerText =
+          "Une aventure narrative calme où les choix changent l'histoire.";
+
+        document.getElementById("tot_release").innerText =
+          "Sortie prévue 2026";
+
+        document.getElementById("tot_btn").innerText = "Découvrir";
+
+        document.getElementById("contact_label").innerText = "SUPPORT OKALAM LAB";
+
+        if (music.paused && !music.muted) {
+          musicStatus.innerText = "Musique : en pause ou bloquée par le navigateur.";
+        } else if (music.muted) {
+          musicStatus.innerText = "Musique : coupée.";
+        } else {
+          musicStatus.innerText = "Musique : en lecture.";
+        }
+      }
+
+      if (lang === "en") {
+        document.documentElement.lang = "en";
+
+        document.getElementById("s1").innerText = "Dreamer Creator";
+        document.getElementById("s2").innerText = "Independent App Creator";
+        document.getElementById("projects_title").innerText = "Applications in development";
+
+        document.getElementById("vd_desc").innerText =
+          "A social app where the world answers the same question every day.";
+
+        document.getElementById("vd_release").innerText =
+          "Release planned 2026 • iOS development";
+
+        document.getElementById("vd_btn").innerText = "Discover";
+
+        document.getElementById("tot_desc").innerText =
+          "A calm narrative adventure where choices shape the story.";
+
+        document.getElementById("tot_release").innerText =
+          "Release planned 2026";
+
+        document.getElementById("tot_btn").innerText = "Discover";
+
+        document.getElementById("contact_label").innerText = "OKALAM LAB SUPPORT";
+
+        if (music.paused && !music.muted) {
+          musicStatus.innerText = "Music: paused or blocked by the browser.";
+        } else if (music.muted) {
+          musicStatus.innerText = "Music: muted.";
+        } else {
+          musicStatus.innerText = "Music: playing.";
+        }
+      }
+    }
+
+    /* PARTICLES */
+    const canvas = document.getElementById("particles");
+    const ctx = canvas.getContext("2d");
+
+    let particles = [];
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+
+    function createParticles() {
+      particles = [];
+      const count = window.innerWidth < 700 ? 45 : 80;
+
+      for (let i = 0; i < count; i++) {
+        particles.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          r: Math.random() * 2 + 0.4,
+          d: Math.random() * 0.55 + 0.08,
+          a: Math.random() * 0.35 + 0.08
+        });
+      }
+    }
+
+    function drawParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      particles.forEach((p) => {
+        ctx.beginPath();
+        ctx.fillStyle = `rgba(255,255,255,${p.a})`;
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fill();
+
+        p.y += p.d;
+
+        if (p.y > canvas.height) {
+          p.y = -5;
+          p.x = Math.random() * canvas.width;
+        }
+      });
+
+      requestAnimationFrame(drawParticles);
+    }
+
+    resizeCanvas();
+    createParticles();
+    drawParticles();
+
+    window.addEventListener("resize", () => {
+      resizeCanvas();
+      createParticles();
+    });
+  </script>
+</body>
+
+</html>    .background-glow::after {
       content: "";
       position: absolute;
       border-radius: 50%;
