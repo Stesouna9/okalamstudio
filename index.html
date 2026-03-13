@@ -1,61 +1,790 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+  />
+  <title>VoteDay - OKALAM Studio</title>
 
-<meta charset="UTF-8">
-<title>OKALAM Studio</title>
+  <style>
+    :root {
+      --bg-1: #12061f;
+      --bg-2: #25083b;
+      --bg-3: #40105d;
+      --gold: #ffd86b;
+      --gold-soft: #fff2b3;
+      --pink: #ff5fd2;
+      --violet: #a96bff;
+      --white: #ffffff;
+      --glass: rgba(255, 255, 255, 0.09);
+      --glass-strong: rgba(255, 255, 255, 0.14);
+      --border: rgba(255, 255, 255, 0.18);
+      --shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+      --text-soft: rgba(255, 255, 255, 0.8);
+    }
 
-<style>
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
 
-body{
-margin:0;
-font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto;
-color:white;
-text-align:center;
-overflow-x:hidden;
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      min-height: 100%;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI",
+        Roboto, Helvetica, Arial, sans-serif;
+      color: var(--white);
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255, 95, 210, 0.18), transparent 26%),
+        radial-gradient(circle at 80% 15%, rgba(255, 216, 107, 0.18), transparent 22%),
+        radial-gradient(circle at 50% 100%, rgba(169, 107, 255, 0.22), transparent 30%),
+        linear-gradient(160deg, var(--bg-1), var(--bg-2) 45%, var(--bg-3));
+      overflow-x: hidden;
+    }
 
-background-image:url("okalam.png");
-background-size:cover;
-background-position:center;
-background-attachment:fixed;
-}
+    body {
+      position: relative;
+      min-height: 100vh;
+    }
 
-/* DARK OVERLAY */
+    .background-glow {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
 
-.overlay{
-background:rgba(0,0,0,0.75);
-min-height:100vh;
-padding-top:120px;
-padding-bottom:120px;
-}
+    .background-glow::before,
+    .background-glow::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.45;
+      animation: floatGlow 9s ease-in-out infinite alternate;
+    }
 
-/* TRIANGLE LIGHT */
+    .background-glow::before {
+      width: 420px;
+      height: 420px;
+      background: rgba(255, 216, 107, 0.18);
+      top: -80px;
+      left: -80px;
+    }
 
-.triangle-glow{
+    .background-glow::after {
+      width: 380px;
+      height: 380px;
+      background: rgba(255, 95, 210, 0.15);
+      right: -60px;
+      bottom: -50px;
+      animation-duration: 11s;
+    }
 
-position:absolute;
-top:35%;
-left:50%;
+    @keyframes floatGlow {
+      0% {
+        transform: translateY(0) translateX(0) scale(1);
+      }
+      100% {
+        transform: translateY(18px) translateX(14px) scale(1.08);
+      }
+    }
 
-transform:translate(-50%,-50%);
+    .sparkles {
+      position: fixed;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 1;
+    }
 
-width:700px;
-height:700px;
+    .sparkle {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #fff 0%, #ffe89c 60%, transparent 100%);
+      box-shadow:
+        0 0 10px rgba(255, 255, 255, 0.9),
+        0 0 18px rgba(255, 216, 107, 0.6);
+      opacity: 0.7;
+      animation: sparkleMove linear infinite;
+    }
 
-background:radial-gradient(circle, rgba(255,255,255,0.18), transparent 70%);
+    @keyframes sparkleMove {
+      0% {
+        transform: translateY(0) scale(0.6);
+        opacity: 0;
+      }
+      12% {
+        opacity: 0.9;
+      }
+      85% {
+        opacity: 0.7;
+      }
+      100% {
+        transform: translateY(-120vh) scale(1.2);
+        opacity: 0;
+      }
+    }
 
-animation:glow 7s ease-in-out infinite;
+    .app {
+      position: relative;
+      z-index: 2;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      padding: 18px;
+    }
 
-pointer-events:none;
+    .topbar {
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      margin-bottom: 18px;
+    }
 
-}
+    .sound-btn {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-width: 52px;
+      height: 52px;
+      padding: 0 16px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.14),
+        rgba(255, 255, 255, 0.06)
+      );
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: var(--shadow);
+      color: var(--white);
+      cursor: pointer;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, opacity 0.18s ease;
+    }
 
-@keyframes glow{
+    .sound-btn:hover {
+      transform: translateY(-1px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.38);
+    }
 
-0%{opacity:0.2;}
-50%{opacity:0.45;}
-100%{opacity:0.2;}
+    .sound-btn:active {
+      transform: scale(0.98);
+    }
 
-}
+    .sound-icon {
+      font-size: 1.15rem;
+      line-height: 1;
+    }
 
+    .container {
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 24px;
+      align-items: center;
+      flex: 1;
+    }
+
+    .hero-card,
+    .side-card {
+      position: relative;
+      border-radius: 28px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.12), rgba(255,255,255,0.07)),
+        rgba(255,255,255,0.05);
+      border: 1px solid var(--border);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .hero-card {
+      padding: 38px 34px;
+      min-height: 520px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .hero-card::before,
+    .side-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(130deg, rgba(255,216,107,0.1), transparent 25%),
+        linear-gradient(320deg, rgba(255,95,210,0.08), transparent 32%);
+      pointer-events: none;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      align-self: flex-start;
+      padding: 10px 16px;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      color: #1d1029;
+      background: linear-gradient(135deg, var(--gold-soft), var(--gold));
+      box-shadow: 0 8px 25px rgba(255, 216, 107, 0.28);
+      margin-bottom: 20px;
+    }
+
+    .badge span {
+      display: inline-block;
+      animation: pulseStar 1.8s ease-in-out infinite;
+    }
+
+    @keyframes pulseStar {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.18); }
+    }
+
+    h1 {
+      margin: 0 0 14px;
+      font-size: clamp(2.2rem, 5vw, 4.4rem);
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+      font-weight: 900;
+      text-wrap: balance;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #ffffff 0%, #ffe89c 38%, #ff91e3 72%, #ffffff 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 0 30px rgba(255, 216, 107, 0.12);
+    }
+
+    .subtitle {
+      margin: 0 0 26px;
+      max-width: 640px;
+      font-size: 1.07rem;
+      line-height: 1.65;
+      color: var(--text-soft);
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+
+    .btn {
+      border: none;
+      border-radius: 18px;
+      padding: 15px 20px;
+      font-size: 1rem;
+      font-weight: 800;
+      cursor: pointer;
+      transition: transform 0.18s ease, opacity 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .btn:active {
+      transform: scale(0.985);
+    }
+
+    .btn-primary {
+      color: #210e31;
+      background: linear-gradient(135deg, var(--gold-soft), var(--gold), #ffca4d);
+      box-shadow: 0 16px 34px rgba(255, 216, 107, 0.22);
+    }
+
+    .btn-secondary {
+      color: var(--white);
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--border);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .stat {
+      padding: 16px 14px;
+      border-radius: 20px;
+      background: var(--glass);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.4rem;
+      margin-bottom: 5px;
+    }
+
+    .stat span {
+      color: var(--text-soft);
+      font-size: 0.94rem;
+    }
+
+    .side-card {
+      min-height: 520px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .mockup {
+      position: relative;
+      width: 100%;
+      max-width: 360px;
+      aspect-ratio: 9 / 18.5;
+      margin: 0 auto;
+      padding: 12px;
+      border-radius: 34px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.16), rgba(255,255,255,0.05)),
+        rgba(10, 5, 18, 0.55);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      box-shadow:
+        0 30px 60px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255,255,255,0.15);
+    }
+
+    .screen {
+      width: 100%;
+      height: 100%;
+      border-radius: 24px;
+      padding: 18px;
+      background:
+        radial-gradient(circle at 70% 20%, rgba(255,216,107,0.14), transparent 25%),
+        radial-gradient(circle at 20% 80%, rgba(255,95,210,0.12), transparent 28%),
+        linear-gradient(180deg, #1a0c2a, #2d1144 55%, #190826);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .screen::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(transparent 0%, rgba(255,255,255,0.03) 50%, transparent 100%);
+      pointer-events: none;
+    }
+
+    .screen-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 18px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .screen-pill {
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 8px 11px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.09);
+      border: 1px solid rgba(255,255,255,0.11);
+    }
+
+    .question-card {
+      position: relative;
+      z-index: 1;
+      padding: 18px;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.18);
+      margin-bottom: 16px;
+    }
+
+    .question-card h3 {
+      margin: 0 0 8px;
+      font-size: 1.15rem;
+      line-height: 1.25;
+    }
+
+    .question-card p {
+      margin: 0;
+      color: var(--text-soft);
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    .choice {
+      display: block;
+      width: 100%;
+      text-align: left;
+      padding: 15px 16px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.07);
+      color: var(--white);
+      font-size: 0.97rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      cursor: pointer;
+      transition: transform 0.18s ease, background 0.18s ease, border-color 0.18s ease;
+      position: relative;
+      z-index: 1;
+    }
+
+    .choice:hover {
+      transform: translateY(-1px);
+      background: rgba(255,255,255,0.1);
+      border-color: rgba(255, 216, 107, 0.34);
+    }
+
+    .mini-footer {
+      margin-top: 16px;
+      position: relative;
+      z-index: 1;
+      font-size: 0.88rem;
+      color: var(--text-soft);
+      text-align: center;
+    }
+
+    .music-status {
+      margin-top: 14px;
+      padding: 12px 14px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.11);
+      color: var(--text-soft);
+      font-size: 0.92rem;
+      line-height: 1.45;
+    }
+
+    .footer-note {
+      width: 100%;
+      max-width: 1120px;
+      margin: 18px auto 0;
+      padding: 0 4px 8px;
+      text-align: center;
+      color: rgba(255,255,255,0.62);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 920px) {
+      .container {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-card,
+      .side-card {
+        min-height: auto;
+      }
+
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      .mockup {
+        max-width: 320px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .app {
+        padding: 14px;
+      }
+
+      .hero-card,
+      .side-card {
+        padding: 20px;
+        border-radius: 24px;
+      }
+
+      .sound-btn {
+        height: 48px;
+        min-width: 48px;
+        padding: 0 14px;
+      }
+
+      .subtitle {
+        font-size: 1rem;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .cta-row {
+        flex-direction: column;
+      }
+
+      .mockup {
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="background-glow"></div>
+  <div class="sparkles" id="sparkles"></div>
+
+  <audio id="bgMusic" autoplay loop playsinline preload="auto">
+    <source src="music.mp3" type="audio/mpeg" />
+    Your browser does not support audio.
+  </audio>
+
+  <main class="app">
+    <div class="topbar">
+      <button class="sound-btn" id="soundBtn" aria-label="Toggle sound">
+        <span class="sound-icon" id="soundIcon">🔊</span>
+      </button>
+    </div>
+
+    <section class="container">
+      <article class="hero-card">
+        <div class="badge"><span>✦</span> OKALAM Studio</div>
+
+        <h1>
+          <span class="gradient-text">VoteDay</span><br />
+          The sparkle of opinion.
+        </h1>
+
+        <p class="subtitle">
+          A playful voting experience with a triumphant glow, a clean premium style,
+          and simple questions that still say something. Bright, elegant, a little dramatic —
+          exactly how a good vote should feel.
+        </p>
+
+        <div class="cta-row">
+          <button class="btn btn-primary" id="startBtn">Start voting</button>
+          <button class="btn btn-secondary" id="musicBtn">Play music</button>
+        </div>
+
+        <div class="stats">
+          <div class="stat">
+            <strong>ENG</strong>
+            <span>Default language</span>
+          </div>
+          <div class="stat">
+            <strong>Live</strong>
+            <span>Instant sound fallback on first interaction</span>
+          </div>
+          <div class="stat">
+            <strong>Shiny</strong>
+            <span>Triumphant glitter atmosphere</span>
+          </div>
+        </div>
+      </article>
+
+      <aside class="side-card">
+        <div class="mockup">
+          <div class="screen">
+            <div class="screen-top">
+              <div class="screen-pill">Today’s Vote</div>
+              <div class="screen-pill">ENG</div>
+            </div>
+
+            <div class="question-card">
+              <h3>Which matters more in daily life?</h3>
+              <p>
+                A simple choice — but not that simple, obviously. That’s the fun part.
+              </p>
+            </div>
+
+            <button class="choice">Stability</button>
+            <button class="choice">Freedom</button>
+
+            <div class="music-status" id="musicStatus">
+              Music status: trying autoplay...
+            </div>
+
+            <div class="mini-footer">
+              Glitter, glass, and just enough drama.
+            </div>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <div class="footer-note">
+      © OKALAM Studio — VoteDay concept page
+    </div>
+  </main>
+
+  <script>
+    const sparklesContainer = document.getElementById("sparkles");
+    const bgMusic = document.getElementById("bgMusic");
+    const soundBtn = document.getElementById("soundBtn");
+    const musicBtn = document.getElementById("musicBtn");
+    const soundIcon = document.getElementById("soundIcon");
+    const musicStatus = document.getElementById("musicStatus");
+    const startBtn = document.getElementById("startBtn");
+
+    let hasUserInteracted = false;
+    let audioStarted = false;
+
+    function createSparkles(count = 40) {
+      sparklesContainer.innerHTML = "";
+
+      for (let i = 0; i < count; i++) {
+        const s = document.createElement("div");
+        s.className = "sparkle";
+
+        const size = Math.random() * 4 + 3;
+        const left = Math.random() * 100;
+        const delay = Math.random() * 8;
+        const duration = Math.random() * 8 + 8;
+
+        s.style.left = left + "%";
+        s.style.bottom = "-" + (Math.random() * 20 + 5) + "px";
+        s.style.width = size + "px";
+        s.style.height = size + "px";
+        s.style.animationDelay = delay + "s";
+        s.style.animationDuration = duration + "s";
+
+        sparklesContainer.appendChild(s);
+      }
+    }
+
+    function updateSoundUI() {
+      if (bgMusic.paused || bgMusic.muted) {
+        soundIcon.textContent = "🔇";
+        musicStatus.textContent = bgMusic.paused
+          ? "Music status: paused."
+          : "Music status: muted.";
+      } else {
+        soundIcon.textContent = "🔊";
+        musicStatus.textContent = "Music status: playing.";
+      }
+    }
+
+    async function tryStartMusic() {
+      try {
+        bgMusic.muted = false;
+        bgMusic.volume = 0.65;
+        await bgMusic.play();
+        audioStarted = true;
+        updateSoundUI();
+      } catch (error) {
+        musicStatus.textContent =
+          "Music status: autoplay blocked by the browser. It will start on your first interaction.";
+      }
+    }
+
+    async function firstInteractionStart() {
+      if (hasUserInteracted) return;
+      hasUserInteracted = true;
+
+      if (bgMusic.paused) {
+        try {
+          bgMusic.muted = false;
+          bgMusic.volume = 0.65;
+          await bgMusic.play();
+          audioStarted = true;
+        } catch (error) {
+          console.warn("Audio start failed after interaction:", error);
+        }
+      }
+
+      updateSoundUI();
+    }
+
+    async function toggleSound() {
+      try {
+        if (bgMusic.paused) {
+          bgMusic.muted = false;
+          bgMusic.volume = 0.65;
+          await bgMusic.play();
+          audioStarted = true;
+        } else if (bgMusic.muted) {
+          bgMusic.muted = false;
+        } else {
+          bgMusic.muted = true;
+        }
+      } catch (error) {
+        console.warn("Toggle sound failed:", error);
+      }
+
+      updateSoundUI();
+    }
+
+    function setupInteractionUnlock() {
+      const events = ["click", "touchstart", "keydown"];
+      events.forEach((eventName) => {
+        window.addEventListener(eventName, firstInteractionStart, { once: true });
+      });
+    }
+
+    function setupButtons() {
+      soundBtn.addEventListener("click", toggleSound);
+
+      musicBtn.addEventListener("click", async () => {
+        try {
+          bgMusic.muted = false;
+          bgMusic.volume = 0.65;
+          await bgMusic.play();
+          audioStarted = true;
+        } catch (error) {
+          console.warn("Manual play failed:", error);
+        }
+        updateSoundUI();
+      });
+
+      startBtn.addEventListener("click", () => {
+        document.querySelector(".side-card").scrollIntoView({
+          behavior: "smooth",
+          block: "center"
+        });
+      });
+    }
+
+    function setupAudioEvents() {
+      bgMusic.addEventListener("play", updateSoundUI);
+      bgMusic.addEventListener("pause", updateSoundUI);
+      bgMusic.addEventListener("volumechange", updateSoundUI);
+      bgMusic.addEventListener("ended", () => {
+        // Just in case loop is ignored somewhere weird
+        bgMusic.play().catch(() => {});
+      });
+    }
+
+    function init() {
+      createSparkles(window.innerWidth < 768 ? 24 : 40);
+      setupButtons();
+      setupAudioEvents();
+      setupInteractionUnlock();
+      updateSoundUI();
+
+      // Attempt autoplay immediately
+      tryStartMusic();
+    }
+
+    window.addEventListener("resize", () => {
+      createSparkles(window.innerWidth < 768 ? 24 : 40);
+    });
+
+    document.addEventListener("DOMContentLoaded", init);
+  </script>
+</body>
+</html>
