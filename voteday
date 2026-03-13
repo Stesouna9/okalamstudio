@@ -1,1 +1,39 @@
+<!DOCTYPE html>
+<html>
 
+<head>
+<meta charset="UTF-8">
+<title>VoteDay</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="overlay">
+
+<h1>VoteDay</h1>
+
+<img src="vd.png" style="width:400px">
+
+<p>
+
+VoteDay is a social daily voting experience.
+Each day the world answers the same question
+and discovers the global majority.
+
+</p>
+
+<p>
+
+Release planned for 2026 • iOS development
+
+</p>
+
+<a href="index.html" class="button">
+Back
+</a>
+
+</div>
+
+</body>
+</html>
