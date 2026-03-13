@@ -2,35 +2,112 @@
 <html>
 
 <head>
+<meta charset="UTF-8">
 <title>OKALAM Studio</title>
 
 <style>
 
 body{
-background:#0f0f0f;
+background:#0b0b0b;
 color:white;
-font-family:-apple-system,BlinkMacSystemFont;
+font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto;
 text-align:center;
-margin-top:120px;
+margin:0;
+}
+
+/* HERO */
+
+.hero{
+padding-top:120px;
+padding-bottom:120px;
+background:linear-gradient(180deg,#0b0b0b,#141414);
 }
 
 .logo{
-width:350px;
-margin-bottom:40px;
+width:300px;
+margin-bottom:30px;
 }
 
 h1{
-font-size:40px;
+font-size:48px;
+margin:0;
 }
 
-p{
+.subtitle{
+color:#999;
+font-size:20px;
+margin-top:10px;
+}
+
+/* PROJECTS */
+
+.projects{
+padding:80px 20px;
+}
+
+.project-card{
+
+background:#161616;
+border-radius:20px;
+padding:40px;
+max-width:500px;
+margin:auto;
+transition:0.3s;
+box-shadow:0 10px 30px rgba(0,0,0,0.6);
+
+}
+
+.project-card:hover{
+transform:scale(1.03);
+box-shadow:0 20px 60px rgba(0,0,0,0.8);
+}
+
+.project-title{
+font-size:32px;
+margin-bottom:10px;
+}
+
+.project-desc{
 color:#aaa;
 font-size:18px;
 }
 
-.project{
-margin-top:40px;
-font-size:22px;
+/* BUTTON */
+
+.button{
+
+margin-top:25px;
+display:inline-block;
+padding:15px 30px;
+background:#0071e3;
+color:white;
+border-radius:12px;
+text-decoration:none;
+font-weight:bold;
+transition:0.2s;
+
+}
+
+.button:hover{
+background:#1a8cff;
+transform:scale(1.05);
+}
+
+/* FOOTER */
+
+.footer{
+padding:50px;
+color:#777;
+font-size:15px;
+}
+
+.footer a{
+color:#4da3ff;
+text-decoration:none;
+}
+
+.footer a:hover{
+text-decoration:underline;
 }
 
 </style>
@@ -39,20 +116,56 @@ font-size:22px;
 
 <body>
 
+
+<div class="hero">
+
 <img src="okalam_logo.png" class="logo">
 
 <h1>OKALAM Studio</h1>
 
-<p>Independent Game Studio</p>
-
-<div class="project">
-
-<h2>Projects</h2>
-
-<p>VoteDay — Coming soon on iOS</p>
+<div class="subtitle">
+Indie Game Studio
+</div>
 
 </div>
 
-</body>
 
+<div class="projects">
+
+<h2>Projects</h2>
+
+<div class="project-card">
+
+<div class="project-title">
+VoteDay
+</div>
+
+<div class="project-desc">
+A daily social voting game where the world answers the same question.
+</div>
+
+<a class="button">
+Coming Soon on iOS
+</a>
+
+</div>
+
+</div>
+
+
+<div class="footer">
+
+© OKALAM Studio
+
+<br><br>
+
+Support :  
+<a href="mailto:support@okalam.com">
+support@okalam.com
+</a>
+
+</div>
+
+
+</body>
 </html>
