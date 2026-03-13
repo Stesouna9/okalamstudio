@@ -13,6 +13,7 @@ margin:0;
 font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto;
 color:white;
 text-align:center;
+overflow-x:hidden;
 
 background-image:url("okalam.png");
 background-size:cover;
@@ -20,38 +21,31 @@ background-position:center;
 background-attachment:fixed;
 }
 
-/* overlay */
+/* DARK OVERLAY */
 
 .overlay{
-
 background:rgba(0,0,0,0.75);
-
 min-height:100vh;
-
 padding-top:120px;
 padding-bottom:120px;
-
 }
 
-/* triangle glow */
+/* TRIANGLE LIGHT */
 
 .triangle-glow{
 
 position:absolute;
-
 top:35%;
-
 left:50%;
 
 transform:translate(-50%,-50%);
 
-width:600px;
+width:700px;
+height:700px;
 
-height:600px;
+background:radial-gradient(circle, rgba(255,255,255,0.15), transparent 70%);
 
-background:radial-gradient(circle, rgba(255,255,255,0.12), transparent 70%);
-
-animation:glow 6s ease-in-out infinite;
+animation:glow 8s ease-in-out infinite;
 
 pointer-events:none;
 
@@ -59,42 +53,29 @@ pointer-events:none;
 
 @keyframes glow{
 
-0%{opacity:0.2;}
-
+0%{opacity:0.15;}
 50%{opacity:0.45;}
-
-100%{opacity:0.2;}
+100%{opacity:0.15;}
 
 }
 
-/* title */
+/* TITLE */
 
 h1{
-
 font-size:60px;
-
 margin-bottom:10px;
-
 letter-spacing:2px;
-
 }
 
 .subtitle{
-
 font-size:22px;
-
 color:#ddd;
-
 }
 
 .subtitle2{
-
 font-size:18px;
-
 color:#aaa;
-
 margin-bottom:40px;
-
 }
 
 /* PROJECT TITLE */
@@ -102,23 +83,18 @@ margin-bottom:40px;
 .projects-title{
 
 font-size:18px;
-
 color:#aaa;
-
 margin-bottom:40px;
-
 letter-spacing:2px;
 
 }
 
-/* language */
+/* LANGUAGE */
 
 .lang{
 
 position:fixed;
-
 top:20px;
-
 left:20px;
 
 }
@@ -126,60 +102,45 @@ left:20px;
 .lang button{
 
 background:#111;
-
 color:white;
-
 border:none;
-
 padding:8px 12px;
-
 margin-right:5px;
-
 border-radius:8px;
-
 cursor:pointer;
 
 }
 
-/* music */
+/* MUSIC */
 
 .music-btn{
 
 position:fixed;
-
 top:20px;
-
 right:20px;
 
 background:#111;
-
 color:white;
 
 border:none;
-
 padding:10px 14px;
-
 border-radius:8px;
-
 cursor:pointer;
 
 }
 
-/* projects */
+/* PROJECTS */
 
 .projects{
 
 display:flex;
-
 justify-content:center;
-
 flex-wrap:wrap;
-
 gap:40px;
 
 }
 
-/* card */
+/* CARD */
 
 .card{
 
@@ -203,28 +164,23 @@ transform:scale(1.03);
 
 }
 
-/* image */
+/* IMAGE */
 
 .card img{
 
 width:100%;
-
 height:auto;
-
 border-radius:10px;
-
 margin-bottom:12px;
 
 }
 
-/* button */
+/* BUTTON */
 
 .button{
 
 display:inline-block;
-
 margin-top:12px;
-
 padding:8px 16px;
 
 background:#0071e3;
@@ -237,14 +193,12 @@ text-decoration:none;
 
 }
 
-/* contact */
+/* CONTACT */
 
 .contact{
 
 margin-top:180px;
-
 display:flex;
-
 justify-content:center;
 
 }
@@ -270,11 +224,8 @@ font-family:monospace;
 .contact-title{
 
 color:#888;
-
 letter-spacing:3px;
-
 font-size:13px;
-
 margin-bottom:10px;
 
 }
@@ -282,7 +233,6 @@ margin-bottom:10px;
 .contact-mail{
 
 font-size:20px;
-
 color:#4da3ff;
 
 }
@@ -290,14 +240,18 @@ color:#4da3ff;
 .contact-mail a{
 
 color:#4da3ff;
-
 text-decoration:none;
 
 }
 
-.contact-mail a:hover{
+/* PARTICLES */
 
-text-decoration:underline;
+canvas{
+
+position:fixed;
+top:0;
+left:0;
+z-index:-1;
 
 }
 
@@ -306,6 +260,8 @@ text-decoration:underline;
 </head>
 
 <body>
+
+<canvas id="particles"></canvas>
 
 <div class="triangle-glow"></div>
 
@@ -323,15 +279,15 @@ text-decoration:underline;
 <h1>OKALAM Studio</h1>
 
 <p class="subtitle" id="s1">
-Créateur rêveur
+Dreamer Creator
 </p>
 
 <p class="subtitle2" id="s2">
-Créateur indépendant d'applications
+Independent App Creator
 </p>
 
 <p class="projects-title" id="projects_title">
-Applications en développement
+Applications in development
 </p>
 
 <div class="projects">
@@ -343,15 +299,15 @@ Applications en développement
 <h2>VoteDay</h2>
 
 <p id="vd_desc">
-Une application sociale où le monde répond à la même question chaque jour.
+A social app where the world answers the same question every day.
 </p>
 
 <p id="vd_release">
-Sortie prévue 2026 • Développement iOS
+Release planned 2026 • iOS development
 </p>
 
 <a href="voteday.html" class="button" id="vd_btn">
-Découvrir
+Discover
 </a>
 
 </div>
@@ -363,15 +319,15 @@ Découvrir
 <h2>Little ToT</h2>
 
 <p id="tot_desc">
-Une aventure narrative calme où les choix changent l'histoire.
+A calm narrative adventure where choices shape the story.
 </p>
 
 <p id="tot_release">
-Sortie prévue 2026
+Release planned 2026
 </p>
 
 <a href="littleTot.html" class="button" id="tot_btn">
-Découvrir
+Discover
 </a>
 
 </div>
@@ -387,11 +343,9 @@ OKALAM LAB SUPPORT
 </div>
 
 <div class="contact-mail">
-
 <a href="mailto:support@okalam.com">
 support@okalam.com
 </a>
-
 </div>
 
 </div>
@@ -400,13 +354,17 @@ support@okalam.com
 
 </div>
 
-<audio id="music" autoplay loop>
+<audio id="music" loop>
 <source src="menu.mp3">
 </audio>
 
 <script>
 
 var music=document.getElementById("music");
+
+document.addEventListener("click",function(){
+music.play();
+},{once:true});
 
 function toggleMusic(){
 
@@ -418,42 +376,14 @@ music.pause();
 
 }
 
+/* LANGUAGE */
+
 function setLang(lang){
-
-if(lang==="en"){
-
-document.getElementById("s1").innerText="Dreamer Creator";
-
-document.getElementById("s2").innerText="Independent App Creator";
-
-document.getElementById("projects_title").innerText="Applications in development";
-
-document.getElementById("vd_desc").innerText=
-"A social app where the world answers the same question every day.";
-
-document.getElementById("vd_release").innerText=
-"Release planned 2026 • iOS development";
-
-document.getElementById("vd_btn").innerText="Discover";
-
-document.getElementById("tot_desc").innerText=
-"A calm narrative adventure where choices shape the story.";
-
-document.getElementById("tot_release").innerText=
-"Release planned 2026";
-
-document.getElementById("tot_btn").innerText="Discover";
-
-document.getElementById("contact_label").innerText="OKALAM LAB SUPPORT";
-
-}
 
 if(lang==="fr"){
 
 document.getElementById("s1").innerText="Créateur rêveur";
-
 document.getElementById("s2").innerText="Créateur indépendant d'applications";
-
 document.getElementById("projects_title").innerText="Applications en développement";
 
 document.getElementById("vd_desc").innerText=
@@ -476,7 +406,83 @@ document.getElementById("contact_label").innerText="SUPPORT OKALAM LAB";
 
 }
 
+if(lang==="en"){
+
+document.getElementById("s1").innerText="Dreamer Creator";
+document.getElementById("s2").innerText="Independent App Creator";
+document.getElementById("projects_title").innerText="Applications in development";
+
+document.getElementById("vd_desc").innerText=
+"A social app where the world answers the same question every day.";
+
+document.getElementById("vd_release").innerText=
+"Release planned 2026 • iOS development";
+
+document.getElementById("vd_btn").innerText="Discover";
+
+document.getElementById("tot_desc").innerText=
+"A calm narrative adventure where choices shape the story.";
+
+document.getElementById("tot_release").innerText=
+"Release planned 2026";
+
+document.getElementById("tot_btn").innerText="Discover";
+
+document.getElementById("contact_label").innerText="OKALAM LAB SUPPORT";
+
 }
+
+}
+
+/* PARTICLES */
+
+const canvas=document.getElementById("particles");
+const ctx=canvas.getContext("2d");
+
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+
+let particles=[];
+
+for(let i=0;i<80;i++){
+
+particles.push({
+
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+r:Math.random()*2,
+d:Math.random()*0.5
+
+});
+
+}
+
+function draw(){
+
+ctx.clearRect(0,0,canvas.width,canvas.height);
+
+ctx.fillStyle="rgba(255,255,255,0.3)";
+
+particles.forEach(p=>{
+
+ctx.beginPath();
+ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+ctx.fill();
+
+p.y+=p.d;
+
+if(p.y>canvas.height){
+p.y=0;
+p.x=Math.random()*canvas.width;
+}
+
+});
+
+requestAnimationFrame(draw);
+
+}
+
+draw();
 
 </script>
 
