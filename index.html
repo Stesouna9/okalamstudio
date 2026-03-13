@@ -2,94 +2,70 @@
 <html>
 
 <head>
+
 <meta charset="UTF-8">
 <title>OKALAM Studio</title>
 
 <style>
 
 body{
-background:#0b0b0b;
-color:white;
-font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto;
-text-align:center;
 margin:0;
+font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto;
+color:white;
+text-align:center;
+
+/* BACKGROUND CINEMATIC */
+
+background-image:url("okalam.png");
+background-size:cover;
+background-position:center;
+background-attachment:fixed;
 }
 
-/* HERO */
+/* OVERLAY pour lisibilité */
+
+.overlay{
+background:rgba(0,0,0,0.65);
+min-height:100vh;
+}
+
+/* HEADER */
 
 .hero{
 padding-top:120px;
-padding-bottom:120px;
-background:linear-gradient(180deg,#0b0b0b,#141414);
-}
-
-.logo{
-width:320px;
-margin-bottom:30px;
+padding-bottom:80px;
 }
 
 h1{
-font-size:50px;
+font-size:60px;
 margin:0;
 }
 
 .subtitle{
-color:#999;
-font-size:20px;
+color:#ccc;
+font-size:22px;
 margin-top:10px;
 }
 
-/* PROJECTS */
+/* LANGUAGES */
 
-.projects{
-padding:80px 20px;
+.language{
+position:fixed;
+top:20px;
+left:20px;
 }
 
-.project-card{
-background:#161616;
-border-radius:20px;
-padding:40px;
-max-width:500px;
-margin:auto;
-transition:0.3s;
-box-shadow:0 10px 30px rgba(0,0,0,0.6);
-}
-
-.project-card:hover{
-transform:scale(1.03);
-box-shadow:0 20px 60px rgba(0,0,0,0.8);
-}
-
-.project-title{
-font-size:32px;
-margin-bottom:10px;
-}
-
-.project-desc{
-color:#aaa;
-font-size:18px;
-}
-
-/* BUTTON */
-
-.button{
-margin-top:25px;
-display:inline-block;
-padding:15px 30px;
-background:#0071e3;
+.lang-btn{
+background:#1f1f1f;
+border:none;
 color:white;
-border-radius:12px;
-text-decoration:none;
-font-weight:bold;
-transition:0.2s;
+padding:8px 12px;
+margin-right:5px;
+border-radius:8px;
+cursor:pointer;
 }
 
-.button:hover{
-background:#1a8cff;
-transform:scale(1.05);
-}
-
-/* MUSIC BUTTON */
+/* MUSIC */
 
 .music-btn{
 position:fixed;
@@ -103,21 +79,73 @@ border-radius:10px;
 cursor:pointer;
 }
 
+/* PROJECTS */
+
+.projects{
+padding:80px 20px;
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+gap:40px;
+}
+
+.card{
+
+background:#141414;
+border-radius:18px;
+width:320px;
+overflow:hidden;
+box-shadow:0 10px 40px rgba(0,0,0,0.7);
+transition:0.3s;
+
+}
+
+.card:hover{
+transform:scale(1.05);
+}
+
+.card img{
+width:100%;
+height:180px;
+object-fit:cover;
+}
+
+.card-body{
+padding:25px;
+}
+
+.project-title{
+font-size:26px;
+margin-bottom:10px;
+}
+
+.project-desc{
+color:#aaa;
+font-size:16px;
+line-height:1.5;
+}
+
+.badge{
+
+display:inline-block;
+margin-top:12px;
+padding:6px 12px;
+background:#0071e3;
+border-radius:10px;
+font-size:14px;
+
+}
+
 /* FOOTER */
 
 .footer{
-padding:50px;
-color:#777;
-font-size:15px;
+padding:60px;
+color:#888;
 }
 
 .footer a{
 color:#4da3ff;
 text-decoration:none;
-}
-
-.footer a:hover{
-text-decoration:underline;
 }
 
 </style>
@@ -126,43 +154,95 @@ text-decoration:underline;
 
 <body>
 
-<button class="music-btn" onclick="toggleMusic()">🔊 Music</button>
+<div class="overlay">
+
+<!-- LANG -->
+
+<div class="language">
+
+<button class="lang-btn" onclick="setLang('fr')">🇫🇷 FR</button>
+<button class="lang-btn" onclick="setLang('en')">🇬🇧 ENG</button>
+
+</div>
+
+<button class="music-btn" onclick="toggleMusic()">🔊</button>
+
+
+<!-- HERO -->
 
 <div class="hero">
 
-<img src="okalam_logo.png" class="logo">
+<h1 id="title">OKALAM Studio</h1>
 
-<h1>OKALAM Studio</h1>
-
-<div class="subtitle">
-Independent Game Studio
+<div class="subtitle" id="subtitle">
+Studio indépendant de jeux vidéo
 </div>
 
 </div>
 
+
+<!-- PROJECTS -->
 
 <div class="projects">
 
-<h2>Projects</h2>
 
-<div class="project-card">
+<!-- VoteDay -->
 
-<div class="project-title">
-VoteDay
-</div>
+<div class="card">
 
-<div class="project-desc">
-A daily social voting game where the world answers the same question.
-</div>
+<img src="vd.png">
 
-<a class="button">
-Coming Soon on iOS
-</a>
+<div class="card-body">
 
-</div>
+<div class="project-title">VoteDay</div>
+
+<div class="project-desc" id="vd_desc">
+
+Une application sociale où le monde entier répond à la même question chaque jour.
 
 </div>
 
+<div class="badge" id="vd_status">
+
+Sortie prévue 2026 • Développement iOS 26
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- Little ToT -->
+
+<div class="card">
+
+<img src="itot.png">
+
+<div class="card-body">
+
+<div class="project-title">Little ToT</div>
+
+<div class="project-desc" id="tot_desc">
+
+Un RPG narratif calme inspiré des jeux Nintendo où les choix changent l'aventure.
+
+</div>
+
+<div class="badge" id="tot_status">
+
+Sortie prévue 2026 • En développement
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- FOOTER -->
 
 <div class="footer">
 
@@ -170,28 +250,80 @@ Coming Soon on iOS
 
 <br><br>
 
-Support :  
+Support :
+
 <a href="mailto:support@okalam.com">
 support@okalam.com
 </a>
 
 </div>
 
+</div>
+
+
+<!-- MUSIC -->
 
 <audio id="bgmusic" loop autoplay>
 <source src="music.mp3" type="audio/mpeg">
 </audio>
 
+
 <script>
+
+/* MUSIC */
 
 var music = document.getElementById("bgmusic");
 
-function toggleMusic() {
+function toggleMusic(){
 
 if(music.paused){
 music.play();
 }else{
 music.pause();
+}
+
+}
+
+
+/* LANGUAGES */
+
+function setLang(lang){
+
+if(lang=="en"){
+
+document.getElementById("subtitle").innerText="Independent Game Studio";
+
+document.getElementById("vd_desc").innerText=
+"A social voting app where the entire world answers the same question every day.";
+
+document.getElementById("vd_status").innerText=
+"Release 2026 • Development iOS 26";
+
+document.getElementById("tot_desc").innerText=
+"A calm narrative RPG inspired by old games where choices shape the adventure.";
+
+document.getElementById("tot_status").innerText=
+"Release 2026 • In development";
+
+}
+
+if(lang=="fr"){
+
+document.getElementById("subtitle").innerText=
+"Studio indépendant de jeux vidéo";
+
+document.getElementById("vd_desc").innerText=
+"Une application sociale où le monde entier répond à la même question chaque jour.";
+
+document.getElementById("vd_status").innerText=
+"Sortie prévue 2026 • Développement iOS 26";
+
+document.getElementById("tot_desc").innerText=
+"Un RPG narratif calme inspiré des jeux de l'époque où les choix changent l'aventure.";
+
+document.getElementById("tot_status").innerText=
+"Sortie prévue 2026 • En développement";
+
 }
 
 }
