@@ -20,7 +20,7 @@ background-position:center;
 background-attachment:fixed;
 }
 
-/* OVERLAY LAB */
+/* overlay */
 
 .overlay{
 
@@ -33,8 +33,455 @@ padding-bottom:120px;
 
 }
 
-/* TRIANGLE GLOW */
+/* triangle glow */
 
+.triangle-glow{
+
+position:absolute;
+
+top:35%;
+
+left:50%;
+
+transform:translate(-50%,-50%);
+
+width:600px;
+
+height:600px;
+
+background:radial-gradient(circle, rgba(255,255,255,0.12), transparent 70%);
+
+animation:glow 6s ease-in-out infinite;
+
+pointer-events:none;
+
+}
+
+@keyframes glow{
+
+0%{opacity:0.2;}
+
+50%{opacity:0.45;}
+
+100%{opacity:0.2;}
+
+}
+
+/* title */
+
+h1{
+
+font-size:60px;
+
+margin-bottom:10px;
+
+letter-spacing:2px;
+
+}
+
+.subtitle{
+
+font-size:22px;
+
+color:#ddd;
+
+}
+
+.subtitle2{
+
+font-size:18px;
+
+color:#aaa;
+
+margin-bottom:40px;
+
+}
+
+/* PROJECT TITLE */
+
+.projects-title{
+
+font-size:18px;
+
+color:#aaa;
+
+margin-bottom:40px;
+
+letter-spacing:2px;
+
+}
+
+/* language */
+
+.lang{
+
+position:fixed;
+
+top:20px;
+
+left:20px;
+
+}
+
+.lang button{
+
+background:#111;
+
+color:white;
+
+border:none;
+
+padding:8px 12px;
+
+margin-right:5px;
+
+border-radius:8px;
+
+cursor:pointer;
+
+}
+
+/* music */
+
+.music-btn{
+
+position:fixed;
+
+top:20px;
+
+right:20px;
+
+background:#111;
+
+color:white;
+
+border:none;
+
+padding:10px 14px;
+
+border-radius:8px;
+
+cursor:pointer;
+
+}
+
+/* projects */
+
+.projects{
+
+display:flex;
+
+justify-content:center;
+
+flex-wrap:wrap;
+
+gap:40px;
+
+}
+
+/* card */
+
+.card{
+
+background:rgba(20,20,20,0.95);
+
+border-radius:16px;
+
+width:260px;
+
+padding:20px;
+
+box-shadow:0 15px 40px rgba(0,0,0,0.8);
+
+transition:0.3s;
+
+}
+
+.card:hover{
+
+transform:scale(1.03);
+
+}
+
+/* image */
+
+.card img{
+
+width:100%;
+
+height:auto;
+
+border-radius:10px;
+
+margin-bottom:12px;
+
+}
+
+/* button */
+
+.button{
+
+display:inline-block;
+
+margin-top:12px;
+
+padding:8px 16px;
+
+background:#0071e3;
+
+border-radius:10px;
+
+color:white;
+
+text-decoration:none;
+
+}
+
+/* contact */
+
+.contact{
+
+margin-top:180px;
+
+display:flex;
+
+justify-content:center;
+
+}
+
+.contact-box{
+
+background:rgba(0,0,0,0.85);
+
+border-radius:14px;
+
+padding:30px 50px;
+
+border:1px solid rgba(255,255,255,0.05);
+
+box-shadow:
+0 0 30px rgba(0,0,0,0.8),
+0 0 60px rgba(255,255,255,0.05);
+
+font-family:monospace;
+
+}
+
+.contact-title{
+
+color:#888;
+
+letter-spacing:3px;
+
+font-size:13px;
+
+margin-bottom:10px;
+
+}
+
+.contact-mail{
+
+font-size:20px;
+
+color:#4da3ff;
+
+}
+
+.contact-mail a{
+
+color:#4da3ff;
+
+text-decoration:none;
+
+}
+
+.contact-mail a:hover{
+
+text-decoration:underline;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="triangle-glow"></div>
+
+<div class="lang">
+
+<button onclick="setLang('fr')">🇫🇷 FR</button>
+<button onclick="setLang('en')">🇬🇧 ENG</button>
+
+</div>
+
+<button class="music-btn" onclick="toggleMusic()">🔊</button>
+
+<div class="overlay">
+
+<h1>OKALAM Studio</h1>
+
+<p class="subtitle" id="s1">
+Créateur rêveur
+</p>
+
+<p class="subtitle2" id="s2">
+Créateur indépendant d'applications
+</p>
+
+<p class="projects-title" id="projects_title">
+Applications en développement
+</p>
+
+<div class="projects">
+
+<div class="card">
+
+<img src="vd.png">
+
+<h2>VoteDay</h2>
+
+<p id="vd_desc">
+Une application sociale où le monde répond à la même question chaque jour.
+</p>
+
+<p id="vd_release">
+Sortie prévue 2026 • Développement iOS
+</p>
+
+<a href="voteday.html" class="button" id="vd_btn">
+Découvrir
+</a>
+
+</div>
+
+<div class="card">
+
+<img src="ltot.png">
+
+<h2>Little ToT</h2>
+
+<p id="tot_desc">
+Une aventure narrative calme où les choix changent l'histoire.
+</p>
+
+<p id="tot_release">
+Sortie prévue 2026
+</p>
+
+<a href="littleTot.html" class="button" id="tot_btn">
+Découvrir
+</a>
+
+</div>
+
+</div>
+
+<div class="contact">
+
+<div class="contact-box">
+
+<div class="contact-title" id="contact_label">
+OKALAM LAB SUPPORT
+</div>
+
+<div class="contact-mail">
+
+<a href="mailto:support@okalam.com">
+support@okalam.com
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<audio id="music" autoplay loop>
+<source src="menu.mp3">
+</audio>
+
+<script>
+
+var music=document.getElementById("music");
+
+function toggleMusic(){
+
+if(music.paused){
+music.play();
+}else{
+music.pause();
+}
+
+}
+
+function setLang(lang){
+
+if(lang==="en"){
+
+document.getElementById("s1").innerText="Dreamer Creator";
+
+document.getElementById("s2").innerText="Independent App Creator";
+
+document.getElementById("projects_title").innerText="Applications in development";
+
+document.getElementById("vd_desc").innerText=
+"A social app where the world answers the same question every day.";
+
+document.getElementById("vd_release").innerText=
+"Release planned 2026 • iOS development";
+
+document.getElementById("vd_btn").innerText="Discover";
+
+document.getElementById("tot_desc").innerText=
+"A calm narrative adventure where choices shape the story.";
+
+document.getElementById("tot_release").innerText=
+"Release planned 2026";
+
+document.getElementById("tot_btn").innerText="Discover";
+
+document.getElementById("contact_label").innerText="OKALAM LAB SUPPORT";
+
+}
+
+if(lang==="fr"){
+
+document.getElementById("s1").innerText="Créateur rêveur";
+
+document.getElementById("s2").innerText="Créateur indépendant d'applications";
+
+document.getElementById("projects_title").innerText="Applications en développement";
+
+document.getElementById("vd_desc").innerText=
+"Une application sociale où le monde répond à la même question chaque jour.";
+
+document.getElementById("vd_release").innerText=
+"Sortie prévue 2026 • Développement iOS";
+
+document.getElementById("vd_btn").innerText="Découvrir";
+
+document.getElementById("tot_desc").innerText=
+"Une aventure narrative calme où les choix changent l'histoire.";
+
+document.getElementById("tot_release").innerText=
+"Sortie prévue 2026";
+
+document.getElementById("tot_btn").innerText="Découvrir";
+
+document.getElementById("contact_label").innerText="SUPPORT OKALAM LAB";
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
 .triangle-glow{
 
 position:absolute;
