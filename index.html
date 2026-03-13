@@ -24,12 +24,12 @@ background:linear-gradient(180deg,#0b0b0b,#141414);
 }
 
 .logo{
-width:300px;
+width:320px;
 margin-bottom:30px;
 }
 
 h1{
-font-size:48px;
+font-size:50px;
 margin:0;
 }
 
@@ -46,7 +46,6 @@ padding:80px 20px;
 }
 
 .project-card{
-
 background:#161616;
 border-radius:20px;
 padding:40px;
@@ -54,7 +53,6 @@ max-width:500px;
 margin:auto;
 transition:0.3s;
 box-shadow:0 10px 30px rgba(0,0,0,0.6);
-
 }
 
 .project-card:hover{
@@ -75,7 +73,6 @@ font-size:18px;
 /* BUTTON */
 
 .button{
-
 margin-top:25px;
 display:inline-block;
 padding:15px 30px;
@@ -85,12 +82,25 @@ border-radius:12px;
 text-decoration:none;
 font-weight:bold;
 transition:0.2s;
-
 }
 
 .button:hover{
 background:#1a8cff;
 transform:scale(1.05);
+}
+
+/* MUSIC BUTTON */
+
+.music-btn{
+position:fixed;
+top:20px;
+right:20px;
+background:#1f1f1f;
+border:none;
+color:white;
+padding:10px 15px;
+border-radius:10px;
+cursor:pointer;
 }
 
 /* FOOTER */
@@ -116,6 +126,7 @@ text-decoration:underline;
 
 <body>
 
+<button class="music-btn" onclick="toggleMusic()">🔊 Music</button>
 
 <div class="hero">
 
@@ -124,7 +135,7 @@ text-decoration:underline;
 <h1>OKALAM Studio</h1>
 
 <div class="subtitle">
-Indie Game Studio
+Independent Game Studio
 </div>
 
 </div>
@@ -166,6 +177,26 @@ support@okalam.com
 
 </div>
 
+
+<audio id="bgmusic" loop autoplay>
+<source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+
+var music = document.getElementById("bgmusic");
+
+function toggleMusic() {
+
+if(music.paused){
+music.play();
+}else{
+music.pause();
+}
+
+}
+
+</script>
 
 </body>
 </html>
