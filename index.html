@@ -1,67 +1,493 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-  <meta charset="UTF-8" />
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
-  />
-  <title>OKALAM Studio</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+<meta charset="UTF-8">
+<title>OKALAM Studio</title>
 
-    html,
-    body {
-      margin: 0;
-      padding: 0;
-      min-height: 100%;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-      color: white;
-      text-align: center;
-      overflow-x: hidden;
-      background: #000;
-    }
+<style>
 
-    body {
-      position: relative;
-      background-image: url("okalam.png");
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
-    }
+body{
+margin:0;
+font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto;
+color:white;
+text-align:center;
+overflow-x:hidden;
 
-    canvas {
-      position: fixed;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
-      pointer-events: none;
-    }
+background-image:url("okalam.png");
+background-size:cover;
+background-position:center;
+background-attachment:fixed;
+}
 
-    .triangle-glow {
-      position: fixed;
-      top: 34%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 720px;
-      height: 720px;
-      background: radial-gradient(
-        circle,
-        rgba(255, 255, 255, 0.16),
-        rgba(180, 220, 255, 0.08),
-        transparent 72%
-      );
-      animation: glow 7s ease-in-out infinite;
-      pointer-events: none;
-      z-index: 1;
-      filter: blur(2px);
-    }
+/* DARK OVERLAY */
 
-    @keyframes glow {
+.overlay{
+background:rgba(0,0,0,0.75);
+min-height:100vh;
+padding-top:120px;
+padding-bottom:120px;
+}
+
+/* TRIANGLE LIGHT */
+
+.triangle-glow{
+
+position:absolute;
+top:35%;
+left:50%;
+
+transform:translate(-50%,-50%);
+
+width:700px;
+height:700px;
+
+background:radial-gradient(circle, rgba(255,255,255,0.15), transparent 70%);
+
+animation:glow 8s ease-in-out infinite;
+
+pointer-events:none;
+
+}
+
+@keyframes glow{
+
+0%{opacity:0.15;}
+50%{opacity:0.45;}
+100%{opacity:0.15;}
+
+}
+
+/* TITLE */
+
+h1{
+font-size:60px;
+margin-bottom:10px;
+letter-spacing:2px;
+}
+
+.subtitle{
+font-size:22px;
+color:#ddd;
+}
+
+.subtitle2{
+font-size:18px;
+color:#aaa;
+margin-bottom:40px;
+}
+
+/* PROJECT TITLE */
+
+.projects-title{
+
+font-size:18px;
+color:#aaa;
+margin-bottom:40px;
+letter-spacing:2px;
+
+}
+
+/* LANGUAGE */
+
+.lang{
+
+position:fixed;
+top:20px;
+left:20px;
+
+}
+
+.lang button{
+
+background:#111;
+color:white;
+border:none;
+padding:8px 12px;
+margin-right:5px;
+border-radius:8px;
+cursor:pointer;
+
+}
+
+/* MUSIC */
+
+.music-btn{
+
+position:fixed;
+top:20px;
+right:20px;
+
+background:#111;
+color:white;
+
+border:none;
+padding:10px 14px;
+border-radius:8px;
+cursor:pointer;
+
+}
+
+/* PROJECTS */
+
+.projects{
+
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+gap:40px;
+
+}
+
+/* CARD */
+
+.card{
+
+background:rgba(20,20,20,0.95);
+
+border-radius:16px;
+
+width:260px;
+
+padding:20px;
+
+box-shadow:0 15px 40px rgba(0,0,0,0.8);
+
+transition:0.3s;
+
+}
+
+.card:hover{
+
+transform:scale(1.03);
+
+}
+
+/* IMAGE */
+
+.card img{
+
+width:100%;
+height:auto;
+border-radius:10px;
+margin-bottom:12px;
+
+}
+
+/* BUTTON */
+
+.button{
+
+display:inline-block;
+margin-top:12px;
+padding:8px 16px;
+
+background:#0071e3;
+
+border-radius:10px;
+
+color:white;
+
+text-decoration:none;
+
+}
+
+/* CONTACT */
+
+.contact{
+
+margin-top:180px;
+display:flex;
+justify-content:center;
+
+}
+
+.contact-box{
+
+background:rgba(0,0,0,0.85);
+
+border-radius:14px;
+
+padding:30px 50px;
+
+border:1px solid rgba(255,255,255,0.05);
+
+box-shadow:
+0 0 30px rgba(0,0,0,0.8),
+0 0 60px rgba(255,255,255,0.05);
+
+font-family:monospace;
+
+}
+
+.contact-title{
+
+color:#888;
+letter-spacing:3px;
+font-size:13px;
+margin-bottom:10px;
+
+}
+
+.contact-mail{
+
+font-size:20px;
+color:#4da3ff;
+
+}
+
+.contact-mail a{
+
+color:#4da3ff;
+text-decoration:none;
+
+}
+
+/* PARTICLES */
+
+canvas{
+
+position:fixed;
+top:0;
+left:0;
+z-index:-1;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<canvas id="particles"></canvas>
+
+<div class="triangle-glow"></div>
+
+<div class="lang">
+
+<button onclick="setLang('fr')">🇫🇷 FR</button>
+<button onclick="setLang('en')">🇬🇧 ENG</button>
+
+</div>
+
+<button class="music-btn" onclick="toggleMusic()">🔊</button>
+
+<div class="overlay">
+
+<h1>OKALAM Studio</h1>
+
+<p class="subtitle" id="s1">
+Dreamer Creator
+</p>
+
+<p class="subtitle2" id="s2">
+Independent App Creator
+</p>
+
+<p class="projects-title" id="projects_title">
+Applications in development
+</p>
+
+<div class="projects">
+
+<div class="card">
+
+<img src="vd.png">
+
+<h2>VoteDay</h2>
+
+<p id="vd_desc">
+A social app where the world answers the same question every day.
+</p>
+
+<p id="vd_release">
+Release planned 2026 • iOS development
+</p>
+
+<a href="voteday.html" class="button" id="vd_btn">
+Discover
+</a>
+
+</div>
+
+<div class="card">
+
+<img src="ltot.png">
+
+<h2>Little ToT</h2>
+
+<p id="tot_desc">
+A calm narrative adventure where choices shape the story.
+</p>
+
+<p id="tot_release">
+Release planned 2026
+</p>
+
+<a href="littleTot.html" class="button" id="tot_btn">
+Discover
+</a>
+
+</div>
+
+</div>
+
+<div class="contact">
+
+<div class="contact-box">
+
+<div class="contact-title" id="contact_label">
+OKALAM LAB SUPPORT
+</div>
+
+<div class="contact-mail">
+<a href="mailto:support@okalam.com">
+support@okalam.com
+</a>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<audio id="music" loop>
+<source src="menu.mp3">
+</audio>
+
+<script>
+
+var music=document.getElementById("music");
+
+document.addEventListener("click",function(){
+music.play();
+},{once:true});
+
+function toggleMusic(){
+
+if(music.paused){
+music.play();
+}else{
+music.pause();
+}
+
+}
+
+/* LANGUAGE */
+
+function setLang(lang){
+
+if(lang==="fr"){
+
+document.getElementById("s1").innerText="Créateur rêveur";
+document.getElementById("s2").innerText="Créateur indépendant d'applications";
+document.getElementById("projects_title").innerText="Applications en développement";
+
+document.getElementById("vd_desc").innerText=
+"Une application sociale où le monde répond à la même question chaque jour.";
+
+document.getElementById("vd_release").innerText=
+"Sortie prévue 2026 • Développement iOS";
+
+document.getElementById("vd_btn").innerText="Découvrir";
+
+document.getElementById("tot_desc").innerText=
+"Une aventure narrative calme où les choix changent l'histoire.";
+
+document.getElementById("tot_release").innerText=
+"Sortie prévue 2026";
+
+document.getElementById("tot_btn").innerText="Découvrir";
+
+document.getElementById("contact_label").innerText="SUPPORT OKALAM LAB";
+
+}
+
+if(lang==="en"){
+
+document.getElementById("s1").innerText="Dreamer Creator";
+document.getElementById("s2").innerText="Independent App Creator";
+document.getElementById("projects_title").innerText="Applications in development";
+
+document.getElementById("vd_desc").innerText=
+"A social app where the world answers the same question every day.";
+
+document.getElementById("vd_release").innerText=
+"Release planned 2026 • iOS development";
+
+document.getElementById("vd_btn").innerText="Discover";
+
+document.getElementById("tot_desc").innerText=
+"A calm narrative adventure where choices shape the story.";
+
+document.getElementById("tot_release").innerText=
+"Release planned 2026";
+
+document.getElementById("tot_btn").innerText="Discover";
+
+document.getElementById("contact_label").innerText="OKALAM LAB SUPPORT";
+
+}
+
+}
+
+/* PARTICLES */
+
+const canvas=document.getElementById("particles");
+const ctx=canvas.getContext("2d");
+
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+
+let particles=[];
+
+for(let i=0;i<80;i++){
+
+particles.push({
+
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+r:Math.random()*2,
+d:Math.random()*0.5
+
+});
+
+}
+
+function draw(){
+
+ctx.clearRect(0,0,canvas.width,canvas.height);
+
+ctx.fillStyle="rgba(255,255,255,0.3)";
+
+particles.forEach(p=>{
+
+ctx.beginPath();
+ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+ctx.fill();
+
+p.y+=p.d;
+
+if(p.y>canvas.height){
+p.y=0;
+p.x=Math.random()*canvas.width;
+}
+
+});
+
+requestAnimationFrame(draw);
+
+}
+
+draw();
+
+</script>
+
+</body>
+</html>    @keyframes glow {
       0% {
         opacity: 0.18;
         transform: translate(-50%, -50%) scale(0.98);
