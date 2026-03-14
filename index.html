@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+  />
   <title>OKALAM Studio</title>
 
   <style>
@@ -20,7 +22,7 @@
       color: white;
       text-align: center;
       overflow-x: hidden;
-      background-color: #000;
+      background: #000;
     }
 
     body {
@@ -31,7 +33,6 @@
       background-attachment: fixed;
     }
 
-    /* PARTICLES */
     canvas {
       position: fixed;
       inset: 0;
@@ -41,25 +42,635 @@
       pointer-events: none;
     }
 
-    /* DARK OVERLAY */
+    .triangle-glow {
+      position: fixed;
+      top: 34%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 720px;
+      height: 720px;
+      background: radial-gradient(
+        circle,
+        rgba(255, 255, 255, 0.16),
+        rgba(180, 220, 255, 0.08),
+        transparent 72%
+      );
+      animation: glow 7s ease-in-out infinite;
+      pointer-events: none;
+      z-index: 1;
+      filter: blur(2px);
+    }
+
+    @keyframes glow {
+      0% {
+        opacity: 0.18;
+        transform: translate(-50%, -50%) scale(0.98);
+      }
+      50% {
+        opacity: 0.38;
+        transform: translate(-50%, -50%) scale(1.03);
+      }
+      100% {
+        opacity: 0.18;
+        transform: translate(-50%, -50%) scale(0.98);
+      }
+    }
+
     .overlay {
       position: relative;
       z-index: 2;
       min-height: 100vh;
-      padding-top: 120px;
-      padding-bottom: 120px;
-      padding-left: 20px;
-      padding-right: 20px;
+      padding: 120px 20px 120px;
       background:
-        linear-gradient(to bottom, rgba(0, 0, 0, 0.72), rgba(0, 0, 0, 0.82)),
-        rgba(0, 0, 0, 0.75);
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.58), rgba(0, 0, 0, 0.82)),
+        rgba(0, 0, 0, 0.70);
     }
 
-    /* EXTRA ATMOSPHERE */
     .overlay::before {
       content: "";
       position: fixed;
       inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 50% 18%, rgba(255,255,255,0.06), transparent 26%),
+        radial-gradient(circle at 50% 30%, rgba(170,210,255,0.06), transparent 30%);
+      mix-blend-mode: screen;
+    }
+
+    .lang {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 5;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .lang button,
+    .music-btn {
+      background: rgba(15, 15, 15, 0.88);
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 9px 13px;
+      border-radius: 10px;
+      cursor: pointer;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+    }
+
+    .lang button:hover,
+    .music-btn:hover {
+      transform: translateY(-1px);
+      background: rgba(28, 28, 28, 0.95);
+      border-color: rgba(255,255,255,0.16);
+    }
+
+    .lang button.active {
+      background: rgba(255,255,255,0.12);
+      border-color: rgba(255,255,255,0.22);
+    }
+
+    .music-btn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 5;
+      min-width: 52px;
+    }
+
+    .brand {
+      display: inline-block;
+      margin-bottom: 18px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: #d9d9d9;
+      font-size: 13px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      font-size: 60px;
+      letter-spacing: 2px;
+      text-shadow:
+        0 0 20px rgba(255,255,255,0.12),
+        0 0 35px rgba(255,255,255,0.05);
+    }
+
+    .subtitle {
+      font-size: 22px;
+      color: #e2e2e2;
+      margin: 0 0 10px;
+    }
+
+    .subtitle2 {
+      font-size: 18px;
+      color: #b2b2b2;
+      margin: 0 0 40px;
+    }
+
+    .projects-title {
+      font-size: 16px;
+      color: #9f9f9f;
+      margin: 0 0 40px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    .projects {
+      display: flex;
+      justify-content: center;
+      align-items: stretch;
+      flex-wrap: wrap;
+      gap: 40px;
+    }
+
+    .card {
+      position: relative;
+      width: 270px;
+      padding: 20px;
+      border-radius: 18px;
+      overflow: hidden;
+      background:
+        linear-gradient(180deg, rgba(22,22,22,0.96), rgba(8,8,8,0.96));
+      border: 1px solid rgba(255,255,255,0.05);
+      box-shadow:
+        0 18px 50px rgba(0,0,0,0.78),
+        0 0 24px rgba(255,255,255,0.03);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: linear-gradient(
+        135deg,
+        rgba(255,255,255,0.05),
+        transparent 28%,
+        transparent 72%,
+        rgba(255,255,255,0.02)
+      );
+    }
+
+    .card:hover {
+      transform: scale(1.03) translateY(-2px);
+      box-shadow:
+        0 22px 58px rgba(0,0,0,0.84),
+        0 0 28px rgba(255,255,255,0.05);
+    }
+
+    .card img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 10px;
+      margin-bottom: 14px;
+    }
+
+    .card h2 {
+      margin: 6px 0 10px;
+      font-size: 28px;
+    }
+
+    .card p {
+      margin: 0 0 10px;
+      color: #d8d8d8;
+      line-height: 1.5;
+      font-size: 15px;
+    }
+
+    .button {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 9px 16px;
+      border-radius: 10px;
+      background: linear-gradient(180deg, #1b86ff, #0071e3);
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-1px);
+      opacity: 0.96;
+    }
+
+    .contact {
+      margin-top: 180px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .contact-box {
+      background: rgba(0, 0, 0, 0.84);
+      border-radius: 14px;
+      padding: 30px 50px;
+      border: 1px solid rgba(255,255,255,0.05);
+      box-shadow:
+        0 0 30px rgba(0,0,0,0.8),
+        0 0 60px rgba(255,255,255,0.05);
+      font-family: monospace;
+      max-width: 100%;
+    }
+
+    .contact-title {
+      color: #888;
+      letter-spacing: 3px;
+      font-size: 13px;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+
+    .contact-mail {
+      font-size: 20px;
+      color: #4da3ff;
+      word-break: break-word;
+    }
+
+    .contact-mail a {
+      color: #4da3ff;
+      text-decoration: none;
+    }
+
+    @media (max-width: 900px) {
+      h1 {
+        font-size: 48px;
+      }
+
+      .triangle-glow {
+        width: 560px;
+        height: 560px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .overlay {
+        padding-top: 110px;
+        padding-bottom: 90px;
+      }
+
+      h1 {
+        font-size: 38px;
+      }
+
+      .subtitle {
+        font-size: 19px;
+      }
+
+      .subtitle2 {
+        font-size: 16px;
+      }
+
+      .projects {
+        gap: 24px;
+      }
+
+      .card {
+        width: min(100%, 320px);
+      }
+
+      .contact {
+        margin-top: 110px;
+      }
+
+      .contact-box {
+        padding: 24px 20px;
+      }
+
+      .triangle-glow {
+        width: 420px;
+        height: 420px;
+        top: 30%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="particles"></canvas>
+  <div class="triangle-glow"></div>
+
+  <div class="lang">
+    <button id="lang-fr" type="button" onclick="setLang('fr')">🇫🇷 FR</button>
+    <button id="lang-en" type="button" onclick="setLang('en')">🇬🇧 ENG</button>
+  </div>
+
+  <button id="soundBtn" class="music-btn" type="button" aria-label="Toggle music">🔇</button>
+
+  <div class="overlay">
+    <div class="brand">OKALAM Studio</div>
+
+    <h1>OKALAM Studio</h1>
+
+    <p class="subtitle" id="s1">Dreamer Creator</p>
+    <p class="subtitle2" id="s2">Independent App Creator</p>
+
+    <p class="projects-title" id="projects_title">Applications in development</p>
+
+    <div class="projects">
+      <div class="card">
+        <img src="vd.png" alt="VoteDay preview">
+
+        <h2>VoteDay</h2>
+
+        <p id="vd_desc">
+          A social app where the world answers the same question every day.
+        </p>
+
+        <p id="vd_release">
+          Release planned 2026 • iOS development
+        </p>
+
+        <a href="voteday.html" class="button nav-link" id="vd_btn">Discover</a>
+      </div>
+
+      <div class="card">
+        <img src="ltot.png" alt="Little ToT preview">
+
+        <h2>Little ToT</h2>
+
+        <p id="tot_desc">
+          A calm narrative adventure where choices shape the story.
+        </p>
+
+        <p id="tot_release">
+          Release planned 2026
+        </p>
+
+        <a href="littleTot.html" class="button nav-link" id="tot_btn">Discover</a>
+      </div>
+    </div>
+
+    <div class="contact">
+      <div class="contact-box">
+        <div class="contact-title" id="contact_label">OKALAM LAB SUPPORT</div>
+        <div class="contact-mail">
+          <a href="mailto:support@okalam.com">support@okalam.com</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <audio id="music" loop playsinline preload="auto">
+    <source src="menu.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    const music = document.getElementById("music");
+    const soundBtn = document.getElementById("soundBtn");
+
+    const STORAGE_KEYS = {
+      lang: "okalam_lang",
+      muted: "okalam_music_muted",
+      volume: "okalam_music_volume",
+      currentTime: "okalam_music_time",
+      wasPlaying: "okalam_music_was_playing"
+    };
+
+    function saveMusicState() {
+      try {
+        localStorage.setItem(STORAGE_KEYS.muted, music.muted ? "1" : "0");
+        localStorage.setItem(STORAGE_KEYS.volume, String(music.volume));
+        localStorage.setItem(STORAGE_KEYS.currentTime, String(music.currentTime || 0));
+        localStorage.setItem(
+          STORAGE_KEYS.wasPlaying,
+          (!music.paused && !music.muted) ? "1" : "0"
+        );
+      } catch (e) {}
+    }
+
+    function loadMusicState() {
+      try {
+        const savedMuted = localStorage.getItem(STORAGE_KEYS.muted);
+        const savedVolume = localStorage.getItem(STORAGE_KEYS.volume);
+        const savedTime = localStorage.getItem(STORAGE_KEYS.currentTime);
+
+        music.muted = savedMuted === "1";
+        music.volume = savedVolume ? Math.min(Math.max(parseFloat(savedVolume), 0), 1) : 0.7;
+
+        if (savedTime) {
+          const t = parseFloat(savedTime);
+          if (!Number.isNaN(t) && t >= 0) {
+            music.currentTime = t;
+          }
+        }
+      } catch (e) {
+        music.muted = true;
+        music.volume = 0.7;
+      }
+    }
+
+    function updateSoundButton() {
+      soundBtn.textContent = music.muted ? "🔇" : "🔊";
+    }
+
+    async function tryStartMusicFromState() {
+      const shouldPlay = localStorage.getItem(STORAGE_KEYS.wasPlaying) === "1";
+
+      if (!shouldPlay) {
+        updateSoundButton();
+        return;
+      }
+
+      try {
+        music.muted = false;
+        await music.play();
+      } catch (e) {
+        try {
+          music.muted = true;
+          await music.play();
+        } catch (err) {}
+      }
+
+      updateSoundButton();
+    }
+
+    async function unlockAudioOnce() {
+      try {
+        const shouldPlay = localStorage.getItem(STORAGE_KEYS.wasPlaying) === "1";
+
+        if (shouldPlay) {
+          music.muted = false;
+          await music.play();
+        }
+      } catch (e) {}
+
+      updateSoundButton();
+      saveMusicState();
+    }
+
+    soundBtn.addEventListener("click", async () => {
+      try {
+        if (music.paused) {
+          music.muted = false;
+          await music.play();
+        } else {
+          music.muted = !music.muted;
+          if (!music.muted) {
+            await music.play();
+          }
+        }
+      } catch (e) {}
+
+      updateSoundButton();
+      saveMusicState();
+    });
+
+    document.addEventListener("click", unlockAudioOnce, { once: true });
+    document.addEventListener("touchstart", unlockAudioOnce, { once: true });
+    document.addEventListener("keydown", unlockAudioOnce, { once: true });
+
+    music.addEventListener("timeupdate", saveMusicState);
+    music.addEventListener("play", saveMusicState);
+    music.addEventListener("pause", saveMusicState);
+    music.addEventListener("volumechange", () => {
+      updateSoundButton();
+      saveMusicState();
+    });
+
+    window.addEventListener("beforeunload", saveMusicState);
+
+    document.querySelectorAll(".nav-link").forEach((link) => {
+      link.addEventListener("click", saveMusicState);
+    });
+
+    function setLang(lang) {
+      const frBtn = document.getElementById("lang-fr");
+      const enBtn = document.getElementById("lang-en");
+
+      frBtn.classList.remove("active");
+      enBtn.classList.remove("active");
+
+      if (lang === "fr") {
+        document.documentElement.lang = "fr";
+        frBtn.classList.add("active");
+
+        document.getElementById("s1").innerText = "Créateur rêveur";
+        document.getElementById("s2").innerText = "Créateur indépendant d'applications";
+        document.getElementById("projects_title").innerText = "Applications en développement";
+
+        document.getElementById("vd_desc").innerText =
+          "Une application sociale où le monde répond à la même question chaque jour.";
+
+        document.getElementById("vd_release").innerText =
+          "Sortie prévue 2026 • Développement iOS";
+
+        document.getElementById("vd_btn").innerText = "Découvrir";
+
+        document.getElementById("tot_desc").innerText =
+          "Une aventure narrative calme où les choix changent l'histoire.";
+
+        document.getElementById("tot_release").innerText =
+          "Sortie prévue 2026";
+
+        document.getElementById("tot_btn").innerText = "Découvrir";
+
+        document.getElementById("contact_label").innerText = "SUPPORT OKALAM LAB";
+      }
+
+      if (lang === "en") {
+        document.documentElement.lang = "en";
+        enBtn.classList.add("active");
+
+        document.getElementById("s1").innerText = "Dreamer Creator";
+        document.getElementById("s2").innerText = "Independent App Creator";
+        document.getElementById("projects_title").innerText = "Applications in development";
+
+        document.getElementById("vd_desc").innerText =
+          "A social app where the world answers the same question every day.";
+
+        document.getElementById("vd_release").innerText =
+          "Release planned 2026 • iOS development";
+
+        document.getElementById("vd_btn").innerText = "Discover";
+
+        document.getElementById("tot_desc").innerText =
+          "A calm narrative adventure where choices shape the story.";
+
+        document.getElementById("tot_release").innerText =
+          "Release planned 2026";
+
+        document.getElementById("tot_btn").innerText = "Discover";
+
+        document.getElementById("contact_label").innerText = "OKALAM LAB SUPPORT";
+      }
+
+      try {
+        localStorage.setItem(STORAGE_KEYS.lang, lang);
+      } catch (e) {}
+    }
+
+    const canvas = document.getElementById("particles");
+    const ctx = canvas.getContext("2d");
+    let particles = [];
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+
+    function createParticles() {
+      particles = [];
+      const count = window.innerWidth < 700 ? 45 : 80;
+
+      for (let i = 0; i < count; i++) {
+        particles.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          r: Math.random() * 2 + 0.4,
+          d: Math.random() * 0.55 + 0.08,
+          a: Math.random() * 0.30 + 0.07
+        });
+      }
+    }
+
+    function drawParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      for (const p of particles) {
+        ctx.beginPath();
+        ctx.fillStyle = `rgba(255,255,255,${p.a})`;
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fill();
+
+        p.y += p.d;
+
+        if (p.y > canvas.height) {
+          p.y = -5;
+          p.x = Math.random() * canvas.width;
+        }
+      }
+
+      requestAnimationFrame(drawParticles);
+    }
+
+    resizeCanvas();
+    createParticles();
+    drawParticles();
+
+    window.addEventListener("resize", () => {
+      resizeCanvas();
+      createParticles();
+    });
+
+    loadMusicState();
+    updateSoundButton();
+
+    const savedLang = localStorage.getItem(STORAGE_KEYS.lang) || "en";
+    setLang(savedLang);
+
+    tryStartMusicFromState();
+  </script>
+</body>
+</html>      inset: 0;
       pointer-events: none;
       z-index: 1;
       background:
