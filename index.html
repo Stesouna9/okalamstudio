@@ -1,990 +1,131 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>OKALAM Studio</title>
-
-<style>
-
-body{
-margin:0;
-font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto;
-color:white;
-text-align:center;
-overflow-x:hidden;
-
-background-image:url("okalam.png");
-background-size:cover;
-background-position:center;
-background-attachment:fixed;
-}
-
-/* DARK OVERLAY */
-
-.overlay{
-background:rgba(0,0,0,0.75);
-min-height:100vh;
-padding-top:120px;
-padding-bottom:80px;
-}
-
-/* TRIANGLE LIGHT */
-
-.triangle-glow{
-
-position:absolute;
-top:35%;
-left:50%;
-
-transform:translate(-50%,-50%);
-
-width:700px;
-height:700px;
-
-background:radial-gradient(circle, rgba(255,255,255,0.15), transparent 70%);
-
-animation:glow 8s ease-in-out infinite;
-
-pointer-events:none;
-
-}
-
-@keyframes glow{
-
-0%{opacity:0.15;}
-50%{opacity:0.45;}
-100%{opacity:0.15;}
-
-}
-
-/* TITLE */
-
-h1{
-font-size:60px;
-margin-bottom:10px;
-letter-spacing:2px;
-}
-
-.subtitle{
-font-size:22px;
-color:#ddd;
-}
-
-.subtitle2{
-font-size:18px;
-color:#aaa;
-margin-bottom:40px;
-}
-
-/* PROJECT TITLE */
-
-.projects-title{
-
-font-size:18px;
-color:#aaa;
-margin-bottom:40px;
-letter-spacing:2px;
-
-}
-
-/* LANGUAGE */
-
-.lang{
-
-position:fixed;
-top:20px;
-left:20px;
-z-index:10;
-
-}
-
-.lang button{
-
-background:#111;
-color:white;
-border:none;
-padding:8px 12px;
-margin-right:5px;
-border-radius:8px;
-cursor:pointer;
-
-}
-
-.lang button:hover{
-background:#222;
-}
-
-/* MUSIC */
-
-.music-btn{
-
-position:fixed;
-top:20px;
-right:20px;
-z-index:10;
-
-background:#111;
-color:white;
-
-border:none;
-padding:10px 14px;
-border-radius:8px;
-cursor:pointer;
-
-}
-
-.music-btn:hover{
-background:#222;
-}
-
-/* PROJECTS */
-
-.projects{
-
-display:flex;
-justify-content:center;
-flex-wrap:wrap;
-gap:40px;
-
-}
-
-/* CARD */
-
-.card{
-
-background:rgba(20,20,20,0.95);
-
-border-radius:16px;
-
-width:260px;
-
-padding:20px;
-
-box-shadow:0 15px 40px rgba(0,0,0,0.8);
-
-transition:0.3s;
-
-}
-
-.card:hover{
-
-transform:scale(1.03);
-
-}
-
-/* IMAGE */
-
-.card img{
-
-width:100%;
-height:auto;
-border-radius:10px;
-margin-bottom:12px;
-
-}
-
-/* BUTTON */
-
-.button{
-
-display:inline-block;
-margin-top:12px;
-padding:8px 16px;
-
-background:#0071e3;
-
-border-radius:10px;
-
-color:white;
-
-text-decoration:none;
-
-transition:0.3s;
-
-}
-
-.button:hover{
-background:#0077ed;
-transform:scale(1.05);
-}
-
-/* CONTACT */
-
-.contact{
-
-margin-top:180px;
-display:flex;
-justify-content:center;
-
-}
-
-.contact-box{
-
-background:rgba(0,0,0,0.85);
-
-border-radius:14px;
-
-padding:30px 50px;
-
-border:1px solid rgba(255,255,255,0.05);
-
-box-shadow:
-0 0 30px rgba(0,0,0,0.8),
-0 0 60px rgba(255,255,255,0.05);
-
-font-family:monospace;
-
-}
-
-.contact-title{
-
-color:#888;
-letter-spacing:3px;
-font-size:13px;
-margin-bottom:10px;
-
-}
-
-.contact-mail{
-
-font-size:20px;
-color:#4da3ff;
-
-}
-
-.contact-mail a{
-
-color:#4da3ff;
-text-decoration:none;
-
-}
-
-/* FOOTER */
-
-.footer{
-margin-top:60px;
-padding-top:30px;
-border-top:1px solid rgba(255,255,255,0.06);
-}
-
-.footer-links{
-display:flex;
-justify-content:center;
-gap:24px;
-margin-bottom:16px;
-}
-
-.footer-links a{
-color:#666;
-text-decoration:none;
-font-size:13px;
-letter-spacing:1px;
-transition:0.3s;
-}
-
-.footer-links a:hover{
-color:#8deaff;
-}
-
-.footer-copy{
-font-size:12px;
-color:#444;
-letter-spacing:1px;
-}
-
-/* PARTICLES */
-
-canvas{
-
-position:fixed;
-top:0;
-left:0;
-z-index:-1;
-
-}
-
-</style>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OKALAM Studio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root{--accent:#8deaff;--accent2:#4da3ff;--bg:#080a0f;--card-bg:rgba(15,18,28,0.95);--text:#e8eaf0;--muted:#666c80;--border:rgba(255,255,255,0.06)}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
+    canvas{position:fixed;top:0;left:0;z-index:0;pointer-events:none}
+    .glow{position:fixed;border-radius:50%;filter:blur(120px);pointer-events:none;z-index:0}
+    .glow.t{width:600px;height:600px;top:-200px;left:50%;transform:translateX(-50%);background:radial-gradient(circle,rgba(141,234,255,0.07),transparent 70%);animation:pulse 8s ease-in-out infinite}
+    @keyframes pulse{0%,100%{opacity:.4}50%{opacity:1}}
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:16px 28px;background:rgba(8,10,15,0.75);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+    .nav-logo{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;letter-spacing:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    .nav-right{display:flex;align-items:center;gap:8px}
+    .lang-wrap{position:relative}
+    .lang-wrap select{appearance:none;background:rgba(255,255,255,0.06);color:var(--text);border:1px solid var(--border);padding:6px 28px 6px 12px;border-radius:20px;cursor:pointer;font-size:13px;outline:none;transition:.2s}
+    .lang-wrap::after{content:'▾';position:absolute;right:10px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none;font-size:11px}
+    .music-btn{background:rgba(255,255,255,0.06);color:var(--muted);border:1px solid var(--border);width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:15px;display:flex;align-items:center;justify-content:center;transition:.2s}
+    .wrapper{position:relative;z-index:1}
+    .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:120px 24px 80px}
+    .hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(141,234,255,0.08);border:1px solid rgba(141,234,255,0.2);border-radius:20px;padding:6px 16px;font-size:12px;letter-spacing:2px;color:var(--accent);text-transform:uppercase;margin-bottom:32px;animation:fadeUp .6s ease both}
+    .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:blink 1.5s ease infinite}
+    @keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
+    h1.hero-title{font-family:'Syne',sans-serif;font-size:clamp(52px,9vw,96px);font-weight:800;line-height:1;letter-spacing:-2px;margin-bottom:24px;background:linear-gradient(160deg,#fff 30%,rgba(141,234,255,0.7));-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:fadeUp .6s .1s ease both}
+    .hero-sub{font-size:18px;color:var(--muted);line-height:1.7;margin-bottom:12px;animation:fadeUp .6s .2s ease both}
+    .hero-sub2{font-size:13px;color:rgba(102,108,128,0.6);letter-spacing:2px;text-transform:uppercase;margin-bottom:60px;animation:fadeUp .6s .3s ease both}
+    .scroll-hint{display:flex;flex-direction:column;align-items:center;animation:fadeUp .6s .5s ease both}
+    .scroll-line{width:1px;height:48px;background:linear-gradient(to bottom,var(--accent),transparent);animation:scrollLine 2s ease infinite}
+    @keyframes scrollLine{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+    .projects-section{padding:80px 24px 120px}
+    .section-label{text-align:center;font-size:12px;letter-spacing:3px;color:var(--muted);text-transform:uppercase;margin-bottom:60px}
+    .projects-grid{display:flex;justify-content:center;flex-wrap:wrap;gap:28px;max-width:700px;margin:0 auto}
+    .card{background:var(--card-bg);border:1px solid var(--border);border-radius:24px;width:300px;overflow:hidden;transition:transform .3s,border-color .3s,box-shadow .3s;position:relative;cursor:pointer}
+    .card:hover{transform:translateY(-6px);border-color:rgba(141,234,255,0.2);box-shadow:0 24px 60px rgba(0,0,0,.6)}
+    .card-img{width:100%;height:220px;overflow:hidden;background:#000}
+    .card-img img{width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .5s}
+    .card:hover .card-img img{transform:scale(1.05)}
+    .card-body{padding:22px}
+    .card-tag{display:inline-block;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);background:rgba(141,234,255,0.1);border:1px solid rgba(141,234,255,0.2);border-radius:20px;padding:3px 10px;margin-bottom:12px}
+    .card h2{font-family:'Syne',sans-serif;font-size:22px;font-weight:700;margin-bottom:8px}
+    .card p{font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:6px}
+    .card-meta{font-size:12px;color:rgba(102,108,128,0.6);margin-bottom:18px;display:flex;align-items:center;gap:6px}
+    .card-meta::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--accent)}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;background:rgba(141,234,255,0.1);border:1px solid rgba(141,234,255,0.25);border-radius:12px;color:var(--accent);font-size:13px;font-weight:500;transition:.2s}
+    footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:48px 32px}
+    .footer-inner{max-width:800px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:18px}
+    .footer-logo{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;letter-spacing:4px;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    .footer-lab{font-size:11px;letter-spacing:3px;color:rgba(102,108,128,0.5);text-transform:uppercase}
+    .footer-contact a{color:var(--accent2);text-decoration:none;font-size:15px}
+    .footer-links{display:flex;gap:24px}
+    .footer-links a{font-size:13px;color:var(--muted);text-decoration:none}
+    .footer-copy{font-size:12px;color:rgba(102,108,128,0.4)}
+  </style>
 </head>
-
 <body>
-
 <canvas id="particles"></canvas>
-
-<div class="triangle-glow"></div>
-
-<div class="lang">
-
-<button onclick="setLang('fr')">FR</button>
-<button onclick="setLang('en')">EN</button>
-
+<div class="glow t"></div>
+<nav>
+  <div class="nav-logo">OKALAM</div>
+  <div class="nav-right">
+    <div class="lang-wrap">
+      <select id="langSel" onchange="setLang(this.value)">
+        <option value="en">🇬🇧 EN</option><option value="fr">🇫🇷 FR</option>
+        <option value="ja">🇯🇵 JA</option><option value="zh">🇨🇳 ZH</option>
+        <option value="es">🇪🇸 ES</option><option value="pt">🇵🇹 PT</option>
+      </select>
+    </div>
+    <button class="music-btn" id="musicBtn" onclick="toggleMusic()">♪</button>
+  </div>
+</nav>
+<div class="wrapper">
+  <section class="hero">
+    <div class="hero-badge"><span class="dot"></span><span id="badge_text">Independent App Creator</span></div>
+    <h1 class="hero-title">OKALAM<br>Studio</h1>
+    <p class="hero-sub" id="hero_sub">Dreamer. Creator.</p>
+    <p class="hero-sub2" id="hero_sub2">Applications in development</p>
+    <div class="scroll-hint"><div class="scroll-line"></div></div>
+  </section>
+  <section class="projects-section">
+    <p class="section-label" id="section_label">Projects</p>
+    <div class="projects-grid">
+      <div class="card" onclick="location.href='voteday.html'">
+        <div class="card-img"><img src="vd_screen.png" alt="VoteDay"></div>
+        <div class="card-body">
+          <div class="card-tag">iOS</div><h2>VoteDay</h2>
+          <p id="vd_desc">A social app where the world answers the same question every day.</p>
+          <div class="card-meta" id="vd_meta">Release planned 2026</div>
+          <span class="btn">Discover →</span>
+        </div>
+      </div>
+      <div class="card" onclick="location.href='littleTot.html'">
+        <div class="card-img"><img src="ltot_screen.png" alt="Little ToT"></div>
+        <div class="card-body">
+          <div class="card-tag" id="ltot_tag">Narrative</div><h2>Little ToT</h2>
+          <p id="ltot_desc">A calm narrative adventure where choices shape the story.</p>
+          <div class="card-meta" id="ltot_meta">Release planned 2026</div>
+          <span class="btn">Discover →</span>
+        </div>
+      </div>
+    </div>
+  </section>
 </div>
-
-<button class="music-btn" onclick="toggleMusic()">🔊</button>
-
-<div class="overlay">
-
-<h1>OKALAM Studio</h1>
-
-<p class="subtitle" id="s1">
-Dreamer Creator
-</p>
-
-<p class="subtitle2" id="s2">
-Independent App Creator
-</p>
-
-<p class="projects-title" id="projects_title">
-Applications in development
-</p>
-
-<div class="projects">
-
-<div class="card">
-
-<img src="vd.png">
-
-<h2>VoteDay</h2>
-
-<p id="vd_desc">
-A social app where the world answers the same question every day.
-</p>
-
-<p id="vd_release">
-Release planned 2026 • iOS development
-</p>
-
-<a href="voteday.html" class="button" id="vd_btn">
-Discover
-</a>
-
-</div>
-
-<div class="card">
-
-<img src="ltot.png">
-
-<h2>Little ToT</h2>
-
-<p id="tot_desc">
-A calm narrative adventure where choices shape the story.
-</p>
-
-<p id="tot_release">
-Release planned 2026
-</p>
-
-<a href="littleTot.html" class="button" id="tot_btn">
-Discover
-</a>
-
-</div>
-
-</div>
-
-<div class="contact">
-
-<div class="contact-box">
-
-<div class="contact-title" id="contact_label">
-OKALAM LAB SUPPORT
-</div>
-
-<div class="contact-mail">
-<a href="mailto:support@okalam.com">
-support@okalam.com
-</a>
-</div>
-
-</div>
-
-</div>
-
-<!-- FOOTER -->
-<div class="footer">
-<div class="footer-links">
-<a href="privacy.html" id="footer_privacy">Privacy Policy</a>
-<a href="mailto:support@okalam.com" id="footer_contact">Contact</a>
-</div>
-<div class="footer-copy">© 2026 OKALAM Studio</div>
-</div>
-
-</div>
-
-<audio id="music" loop>
-<source src="menu.mp3">
-</audio>
-
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">OKALAM STUDIO</div>
+    <div class="footer-lab" id="footer_lab">OKALAM LAB SUPPORT</div>
+    <div class="footer-contact"><a href="mailto:support@okalam.com">support@okalam.com</a></div>
+    <div class="footer-links">
+      <a href="privacy.html" id="footer_privacy">Privacy Policy</a>
+      <a href="mailto:support@okalam.com" id="footer_contact">Contact</a>
+    </div>
+    <div class="footer-copy" id="footer_copy">© 2026 OKALAM Studio. All rights reserved.</div>
+  </div>
+</footer>
+<audio id="bgMusic" loop><source src="music.mp3" type="audio/mpeg"></audio>
 <script>
-
-var music=document.getElementById("music");
-
-document.addEventListener("click",function(){
-music.play();
-},{once:true});
-
-function toggleMusic(){
-
-if(music.paused){
-music.play();
-}else{
-music.pause();
-}
-
-}
-
-/* LANGUAGE */
-
-function setLang(lang){
-
-if(lang==="fr"){
-
-document.getElementById("s1").innerText="Créateur rêveur";
-document.getElementById("s2").innerText="Créateur indépendant d'applications";
-document.getElementById("projects_title").innerText="Applications en développement";
-
-document.getElementById("vd_desc").innerText=
-"Une application sociale où le monde répond à la même question chaque jour.";
-
-document.getElementById("vd_release").innerText=
-"Sortie prévue 2026 • Développement iOS";
-
-document.getElementById("vd_btn").innerText="Découvrir";
-
-document.getElementById("tot_desc").innerText=
-"Une aventure narrative calme où les choix changent l'histoire.";
-
-document.getElementById("tot_release").innerText=
-"Sortie prévue 2026";
-
-document.getElementById("tot_btn").innerText="Découvrir";
-
-document.getElementById("contact_label").innerText="SUPPORT OKALAM LAB";
-
-document.getElementById("footer_privacy").innerText="Politique de confidentialité";
-document.getElementById("footer_contact").innerText="Contact";
-
-}
-
-if(lang==="en"){
-
-document.getElementById("s1").innerText="Dreamer Creator";
-document.getElementById("s2").innerText="Independent App Creator";
-document.getElementById("projects_title").innerText="Applications in development";
-
-document.getElementById("vd_desc").innerText=
-"A social app where the world answers the same question every day.";
-
-document.getElementById("vd_release").innerText=
-"Release planned 2026 • iOS development";
-
-document.getElementById("vd_btn").innerText="Discover";
-
-document.getElementById("tot_desc").innerText=
-"A calm narrative adventure where choices shape the story.";
-
-document.getElementById("tot_release").innerText=
-"Release planned 2026";
-
-document.getElementById("tot_btn").innerText="Discover";
-
-document.getElementById("contact_label").innerText="OKALAM LAB SUPPORT";
-
-document.getElementById("footer_privacy").innerText="Privacy Policy";
-document.getElementById("footer_contact").innerText="Contact";
-
-}
-
-}
-
-/* PARTICLES */
-
-const canvas=document.getElementById("particles");
-const ctx=canvas.getContext("2d");
-
-canvas.width=window.innerWidth;
-canvas.height=window.innerHeight;
-
-window.addEventListener("resize",function(){
-canvas.width=window.innerWidth;
-canvas.height=window.innerHeight;
-});
-
-let particles=[];
-
-for(let i=0;i<80;i++){
-
-particles.push({
-
-x:Math.random()*canvas.width,
-y:Math.random()*canvas.height,
-r:Math.random()*2,
-d:Math.random()*0.5
-
-});
-
-}
-
-function draw(){
-
-ctx.clearRect(0,0,canvas.width,canvas.height);
-
-ctx.fillStyle="rgba(255,255,255,0.3)";
-
-particles.forEach(p=>{
-
-ctx.beginPath();
-ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-ctx.fill();
-
-p.y+=p.d;
-
-if(p.y>canvas.height){
-p.y=0;
-p.x=Math.random()*canvas.width;
-}
-
-});
-
-requestAnimationFrame(draw);
-
-}
-
-draw();
-
+const T={en:{badge_text:"Independent App Creator",hero_sub:"Dreamer. Creator.",hero_sub2:"Applications in development",section_label:"Projects",vd_desc:"A social app where the world answers the same question every day.",vd_meta:"Release planned 2026",ltot_tag:"Narrative",ltot_desc:"A calm narrative adventure where choices shape the story.",ltot_meta:"Release planned 2026",footer_lab:"OKALAM LAB SUPPORT",footer_privacy:"Privacy Policy",footer_contact:"Contact",footer_copy:"© 2026 OKALAM Studio. All rights reserved."},fr:{badge_text:"Créateur d'applications indépendant",hero_sub:"Rêveur. Créateur.",hero_sub2:"Applications en développement",section_label:"Projets",vd_desc:"Une appli sociale où le monde répond à la même question chaque jour.",vd_meta:"Sortie prévue 2026",ltot_tag:"Narratif",ltot_desc:"Une aventure narrative calme où vos choix façonnent l'histoire.",ltot_meta:"Sortie prévue 2026",footer_lab:"SUPPORT OKALAM LAB",footer_privacy:"Politique de confidentialité",footer_contact:"Contact",footer_copy:"© 2026 OKALAM Studio. Tous droits réservés."},ja:{badge_text:"インディーアプリクリエイター",hero_sub:"夢想家。創造者。",hero_sub2:"開発中のアプリ",section_label:"プロジェクト",vd_desc:"世界中が毎日同じ質問に答えるソーシャルアプリ。",vd_meta:"2026年リリース予定",ltot_tag:"ナラティブ",ltot_desc:"選択が物語を形作る、静かなナラティブアドベンチャー。",ltot_meta:"2026年リリース予定",footer_lab:"OKALAMサポート",footer_privacy:"プライバシーポリシー",footer_contact:"お問い合わせ",footer_copy:"© 2026 OKALAM Studio. 全著作権所有。"},zh:{badge_text:"独立应用创作者",hero_sub:"梦想家。创造者。",hero_sub2:"开发中的应用",section_label:"项目",vd_desc:"全球用户每天回答同一个问题的社交应用。",vd_meta:"预计2026年发布",ltot_tag:"叙事",ltot_desc:"一个平静的叙事冒险，您的选择塑造故事走向。",ltot_meta:"预计2026年发布",footer_lab:"OKALAM实验室支持",footer_privacy:"隐私政策",footer_contact:"联系我们",footer_copy:"© 2026 OKALAM Studio. 保留所有权利。"},es:{badge_text:"Creador independiente de apps",hero_sub:"Soñador. Creador.",hero_sub2:"Aplicaciones en desarrollo",section_label:"Proyectos",vd_desc:"Una app social donde el mundo responde la misma pregunta cada día.",vd_meta:"Lanzamiento previsto 2026",ltot_tag:"Narrativa",ltot_desc:"Una aventura narrativa tranquila donde las elecciones dan forma a la historia.",ltot_meta:"Lanzamiento previsto 2026",footer_lab:"SOPORTE OKALAM LAB",footer_privacy:"Política de privacidad",footer_contact:"Contacto",footer_copy:"© 2026 OKALAM Studio. Todos los derechos reservados."},pt:{badge_text:"Criador independente de apps",hero_sub:"Sonhador. Criador.",hero_sub2:"Aplicações em desenvolvimento",section_label:"Projetos",vd_desc:"Um app social onde o mundo responde à mesma pergunta todos os dias.",vd_meta:"Lançamento previsto 2026",ltot_tag:"Narrativa",ltot_desc:"Uma aventura narrativa calma onde as escolhas moldam a história.",ltot_meta:"Lançamento previsto 2026",footer_lab:"SUPORTE OKALAM LAB",footer_privacy:"Política de privacidade",footer_contact:"Contato",footer_copy:"© 2026 OKALAM Studio. Todos os direitos reservados."}};
+function setLang(l){localStorage.setItem('okalam_lang',l);document.getElementById('langSel').value=l;const t=T[l];['badge_text','hero_sub','hero_sub2','section_label','vd_desc','vd_meta','ltot_tag','ltot_desc','ltot_meta','footer_lab','footer_privacy','footer_contact','footer_copy'].forEach(id=>{const el=document.getElementById(id);if(el)el.textContent=t[id];});}
+const sv=localStorage.getItem('okalam_lang'),bl=navigator.language.slice(0,2);setLang(sv||(['en','fr','ja','zh','es','pt'].includes(bl)?bl:'en'));
+let playing=false;function toggleMusic(){const a=document.getElementById('bgMusic'),b=document.getElementById('musicBtn');if(playing){a.pause();b.textContent='♪';playing=false;}else{a.play().catch(()=>{});b.textContent='■';playing=true;}}
+const cv=document.getElementById('particles'),cx=cv.getContext('2d');function rsz(){cv.width=innerWidth;cv.height=innerHeight;}rsz();window.addEventListener('resize',rsz);
+const pts=Array.from({length:100},()=>({x:Math.random()*innerWidth,y:Math.random()*innerHeight,r:Math.random()*1.5+.3,vx:(Math.random()-.5)*.15,vy:-Math.random()*.3-.1,o:Math.random()*.4+.1}));
+(function a(){cx.clearRect(0,0,cv.width,cv.height);pts.forEach(p=>{cx.beginPath();cx.arc(p.x,p.y,p.r,0,Math.PI*2);cx.fillStyle='rgba(141,234,255,'+p.o+')';cx.fill();p.x+=p.vx;p.y+=p.vy;if(p.y<-10){p.y=cv.height+10;p.x=Math.random()*cv.width;}if(p.x<-10)p.x=cv.width+10;if(p.x>cv.width+10)p.x=-10;});requestAnimationFrame(a);})();
 </script>
-
-</body>
-</html>
-/* TITLE */
-
-h1{
-font-size:60px;
-margin-bottom:10px;
-letter-spacing:2px;
-}
-
-.subtitle{
-font-size:22px;
-color:#ddd;
-}
-
-.subtitle2{
-font-size:18px;
-color:#aaa;
-margin-bottom:40px;
-}
-
-/* PROJECT TITLE */
-
-.projects-title{
-
-font-size:18px;
-color:#aaa;
-margin-bottom:40px;
-letter-spacing:2px;
-
-}
-
-/* LANGUAGE */
-
-.lang{
-
-position:fixed;
-top:20px;
-left:20px;
-
-}
-
-.lang button{
-
-background:#111;
-color:white;
-border:none;
-padding:8px 12px;
-margin-right:5px;
-border-radius:8px;
-cursor:pointer;
-
-}
-
-/* MUSIC */
-
-.music-btn{
-
-position:fixed;
-top:20px;
-right:20px;
-
-background:#111;
-color:white;
-
-border:none;
-padding:10px 14px;
-border-radius:8px;
-cursor:pointer;
-
-}
-
-/* PROJECTS */
-
-.projects{
-
-display:flex;
-justify-content:center;
-flex-wrap:wrap;
-gap:40px;
-
-}
-
-/* CARD */
-
-.card{
-
-background:rgba(20,20,20,0.95);
-
-border-radius:16px;
-
-width:260px;
-
-padding:20px;
-
-box-shadow:0 15px 40px rgba(0,0,0,0.8);
-
-transition:0.3s;
-
-}
-
-.card:hover{
-
-transform:scale(1.03);
-
-}
-
-/* IMAGE */
-
-.card img{
-
-width:100%;
-height:auto;
-border-radius:10px;
-margin-bottom:12px;
-
-}
-
-/* BUTTON */
-
-.button{
-
-display:inline-block;
-margin-top:12px;
-padding:8px 16px;
-
-background:#0071e3;
-
-border-radius:10px;
-
-color:white;
-
-text-decoration:none;
-
-}
-
-/* CONTACT */
-
-.contact{
-
-margin-top:180px;
-display:flex;
-justify-content:center;
-
-}
-
-.contact-box{
-
-background:rgba(0,0,0,0.85);
-
-border-radius:14px;
-
-padding:30px 50px;
-
-border:1px solid rgba(255,255,255,0.05);
-
-box-shadow:
-0 0 30px rgba(0,0,0,0.8),
-0 0 60px rgba(255,255,255,0.05);
-
-font-family:monospace;
-
-}
-
-.contact-title{
-
-color:#888;
-letter-spacing:3px;
-font-size:13px;
-margin-bottom:10px;
-
-}
-
-.contact-mail{
-
-font-size:20px;
-color:#4da3ff;
-
-}
-
-.contact-mail a{
-
-color:#4da3ff;
-text-decoration:none;
-
-}
-
-/* PARTICLES */
-
-canvas{
-
-position:fixed;
-top:0;
-left:0;
-z-index:-1;
-
-}
-
-</style>
-
-</head>
-
-<body>
-
-<canvas id="particles"></canvas>
-
-<div class="triangle-glow"></div>
-
-<div class="lang">
-
-<button onclick="setLang('fr')">🇫🇷 FR</button>
-<button onclick="setLang('en')">🇬🇧 ENG</button>
-
-</div>
-
-<button class="music-btn" onclick="toggleMusic()">🔊</button>
-
-<div class="overlay">
-
-<h1>OKALAM Studio</h1>
-
-<p class="subtitle" id="s1">
-Dreamer Creator
-</p>
-
-<p class="subtitle2" id="s2">
-Independent App Creator
-</p>
-
-<p class="projects-title" id="projects_title">
-Applications in development
-</p>
-
-<div class="projects">
-
-<div class="card">
-
-<img src="vd.png">
-
-<h2>VoteDay</h2>
-
-<p id="vd_desc">
-A social app where the world answers the same question every day.
-</p>
-
-<p id="vd_release">
-Release planned 2026 • iOS development
-</p>
-
-<a href="voteday.html" class="button" id="vd_btn">
-Discover
-</a>
-
-</div>
-
-<div class="card">
-
-<img src="ltot.png">
-
-<h2>Little ToT</h2>
-
-<p id="tot_desc">
-A calm narrative adventure where choices shape the story.
-</p>
-
-<p id="tot_release">
-Release planned 2026
-</p>
-
-<a href="littleTot.html" class="button" id="tot_btn">
-Discover
-</a>
-
-</div>
-
-</div>
-
-<div class="contact">
-
-<div class="contact-box">
-
-<div class="contact-title" id="contact_label">
-OKALAM LAB SUPPORT
-</div>
-
-<div class="contact-mail">
-<a href="mailto:support@okalam.com">
-support@okalam.com
-</a>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-<audio id="music" loop>
-<source src="menu.mp3">
-</audio>
-
-<script>
-
-var music=document.getElementById("music");
-
-document.addEventListener("click",function(){
-music.play();
-},{once:true});
-
-function toggleMusic(){
-
-if(music.paused){
-music.play();
-}else{
-music.pause();
-}
-
-}
-
-/* LANGUAGE */
-
-function setLang(lang){
-
-if(lang==="fr"){
-
-document.getElementById("s1").innerText="Créateur rêveur";
-document.getElementById("s2").innerText="Créateur indépendant d'applications";
-document.getElementById("projects_title").innerText="Applications en développement";
-
-document.getElementById("vd_desc").innerText=
-"Une application sociale où le monde répond à la même question chaque jour.";
-
-document.getElementById("vd_release").innerText=
-"Sortie prévue 2026 • Développement iOS";
-
-document.getElementById("vd_btn").innerText="Découvrir";
-
-document.getElementById("tot_desc").innerText=
-"Une aventure narrative calme où les choix changent l'histoire.";
-
-document.getElementById("tot_release").innerText=
-"Sortie prévue 2026";
-
-document.getElementById("tot_btn").innerText="Découvrir";
-
-document.getElementById("contact_label").innerText="SUPPORT OKALAM LAB";
-
-}
-
-if(lang==="en"){
-
-document.getElementById("s1").innerText="Dreamer Creator";
-document.getElementById("s2").innerText="Independent App Creator";
-document.getElementById("projects_title").innerText="Applications in development";
-
-document.getElementById("vd_desc").innerText=
-"A social app where the world answers the same question every day.";
-
-document.getElementById("vd_release").innerText=
-"Release planned 2026 • iOS development";
-
-document.getElementById("vd_btn").innerText="Discover";
-
-document.getElementById("tot_desc").innerText=
-"A calm narrative adventure where choices shape the story.";
-
-document.getElementById("tot_release").innerText=
-"Release planned 2026";
-
-document.getElementById("tot_btn").innerText="Discover";
-
-document.getElementById("contact_label").innerText="OKALAM LAB SUPPORT";
-
-}
-
-}
-
-/* PARTICLES */
-
-const canvas=document.getElementById("particles");
-const ctx=canvas.getContext("2d");
-
-canvas.width=window.innerWidth;
-canvas.height=window.innerHeight;
-
-let particles=[];
-
-for(let i=0;i<80;i++){
-
-particles.push({
-
-x:Math.random()*canvas.width,
-y:Math.random()*canvas.height,
-r:Math.random()*2,
-d:Math.random()*0.5
-
-});
-
-}
-
-function draw(){
-
-ctx.clearRect(0,0,canvas.width,canvas.height);
-
-ctx.fillStyle="rgba(255,255,255,0.3)";
-
-particles.forEach(p=>{
-
-ctx.beginPath();
-ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-ctx.fill();
-
-p.y+=p.d;
-
-if(p.y>canvas.height){
-p.y=0;
-p.x=Math.random()*canvas.width;
-}
-
-});
-
-requestAnimationFrame(draw);
-
-}
-
-draw();
-
-</script>
-
 </body>
 </html>
