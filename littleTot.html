@@ -1,149 +1,146 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-
-<meta charset="UTF-8">
-<title>Little ToT</title>
-
-<style>
-
-body{
-margin:0;
-font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto;
-color:white;
-text-align:center;
-
-background-image:url("okalam.png");
-background-size:cover;
-background-position:center;
-background-attachment:fixed;
-}
-
-.overlay{
-background:rgba(0,0,0,0.7);
-min-height:100vh;
-padding-top:100px;
-padding-bottom:60px;
-}
-
-h1{
-font-size:56px;
-margin-bottom:30px;
-}
-
-.game-img{
-width:400px;
-border-radius:12px;
-box-shadow:0 10px 40px rgba(0,0,0,0.8);
-margin-bottom:40px;
-}
-
-.desc{
-font-size:20px;
-color:#ddd;
-margin-bottom:20px;
-}
-
-.release{
-color:#aaa;
-font-size:18px;
-margin-bottom:40px;
-}
-
-.button{
-display:inline-block;
-padding:10px 20px;
-background:#0071e3;
-border-radius:10px;
-color:white;
-text-decoration:none;
-}
-
-.lang{
-position:fixed;
-top:20px;
-left:20px;
-}
-
-.lang button{
-margin-right:5px;
-padding:6px 10px;
-border:none;
-border-radius:6px;
-cursor:pointer;
-}
-
-</style>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Little ToT – OKALAM Studio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root{--accent:#f59e0b;--accent2:#d97706;--bg:#0c0800;--card-bg:rgba(22,16,6,0.95);--text:#f5f0e8;--muted:#8a7a5a;--border:rgba(245,158,11,0.08)}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
+    canvas{position:fixed;top:0;left:0;z-index:0;pointer-events:none}
+    .glow{position:fixed;border-radius:50%;filter:blur(140px);pointer-events:none;z-index:0}
+    .glow.t{width:700px;height:500px;top:-200px;left:50%;transform:translateX(-50%);background:radial-gradient(circle,rgba(245,158,11,0.07),transparent 70%);animation:pulse 10s ease-in-out infinite}
+    @keyframes pulse{0%,100%{opacity:.4}50%{opacity:1}}
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:16px 28px;background:rgba(12,8,0,0.8);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+    .nav-logo{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;letter-spacing:3px;background:linear-gradient(90deg,#fcd34d,var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+    .nav-right{display:flex;align-items:center;gap:8px}
+    .lang-wrap{position:relative}
+    .lang-wrap select{appearance:none;background:rgba(255,255,255,0.05);color:var(--text);border:1px solid var(--border);padding:6px 28px 6px 12px;border-radius:20px;cursor:pointer;font-size:13px;outline:none;transition:.2s}
+    .lang-wrap::after{content:'▾';position:absolute;right:10px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none;font-size:11px}
+    .back-btn{display:inline-flex;align-items:center;gap:6px;padding:6px 16px;background:rgba(255,255,255,0.05);border:1px solid var(--border);border-radius:20px;color:var(--muted);text-decoration:none;font-size:13px}
+    .wrapper{position:relative;z-index:1}
+    .hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:60px;padding:120px 80px 80px;max-width:1100px;margin:0 auto}
+    .hero-left{display:flex;flex-direction:column;gap:24px}
+    .app-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.2);border-radius:20px;padding:6px 16px;font-size:11px;letter-spacing:2px;color:var(--accent);text-transform:uppercase;width:fit-content}
+    .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:blink 1.5s ease infinite}
+    @keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
+    h1{font-family:'Syne',sans-serif;font-size:clamp(40px,5vw,68px);font-weight:800;line-height:1.05;letter-spacing:-2px;background:linear-gradient(160deg,#fff 20%,rgba(245,158,11,0.85));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    .hero-desc{font-size:17px;color:var(--muted);line-height:1.8;max-width:420px}
+    .hero-meta{display:flex;flex-wrap:wrap;gap:10px}
+    .meta-pill{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:12px;padding:6px 14px;font-size:13px;color:var(--muted)}
+    .cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:8px}
+    .cta-primary{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;background:linear-gradient(135deg,var(--accent2),#92400e);border-radius:14px;color:#fff;font-size:15px;font-weight:600;transition:.2s;border:none;cursor:pointer}
+    .cta-primary:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(217,119,6,0.35)}
+    .cta-secondary{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:14px;color:var(--text);text-decoration:none;font-size:15px}
+    .hero-right{display:flex;justify-content:center;align-items:center}
+    .phone-wrap{position:relative;animation:float 5s ease-in-out infinite}
+    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+    .phone-frame{width:240px;border-radius:40px;border:2px solid rgba(245,158,11,0.15);box-shadow:0 40px 80px rgba(0,0,0,.9),0 0 60px rgba(245,158,11,0.08);overflow:hidden;background:#0c0800}
+    .phone-frame img{width:100%;display:block}
+    .phone-glow{position:absolute;inset:-30px;background:radial-gradient(circle,rgba(245,158,11,0.1),transparent 70%);border-radius:50%;z-index:-1}
+    .features-section{padding:80px 40px;max-width:900px;margin:0 auto}
+    .section-header{text-align:center;margin-bottom:56px}
+    .section-eyebrow{font-size:12px;letter-spacing:3px;color:var(--accent);text-transform:uppercase;margin-bottom:16px}
+    .section-title{font-family:'Syne',sans-serif;font-size:clamp(28px,4vw,42px);font-weight:800;letter-spacing:-1px;background:linear-gradient(160deg,#fff,rgba(245,158,11,0.8));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    .features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+    .feature-card{background:var(--card-bg);border:1px solid var(--border);border-radius:20px;padding:28px;transition:.3s}
+    .feature-card:hover{border-color:rgba(245,158,11,0.2);transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,.6)}
+    .feature-icon{font-size:32px;margin-bottom:16px;display:block}
+    .feature-title{font-family:'Syne',sans-serif;font-size:17px;font-weight:700;margin-bottom:10px}
+    .feature-desc{font-size:14px;color:var(--muted);line-height:1.7}
+    .atmo-section{padding:0 40px 100px;max-width:900px;margin:0 auto}
+    .atmo-card{background:linear-gradient(135deg,rgba(245,158,11,0.07),rgba(217,119,6,0.04));border:1px solid rgba(245,158,11,0.15);border-radius:20px;padding:40px;text-align:center}
+    .atmo-card .quote{font-family:'Syne',sans-serif;font-size:clamp(18px,3vw,26px);font-weight:700;line-height:1.5;color:var(--text);margin-bottom:16px;font-style:italic}
+    .atmo-card .quote-sub{font-size:14px;color:var(--muted)}
+    footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:40px 32px;text-align:center}
+    .footer-inner{display:flex;flex-direction:column;align-items:center;gap:14px}
+    .footer-logo{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;letter-spacing:4px;background:linear-gradient(90deg,#fcd34d,var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    .footer-links{display:flex;gap:20px;flex-wrap:wrap;justify-content:center}
+    .footer-links a{font-size:13px;color:var(--muted);text-decoration:none}
+    .footer-copy{font-size:12px;color:rgba(138,122,90,0.4)}
+    @media(max-width:768px){.hero{grid-template-columns:1fr;padding:100px 24px 60px;gap:40px;text-align:center}.hero-left{align-items:center}.cta-row{justify-content:center}.features-section,.atmo-section{padding-left:24px;padding-right:24px}}
+  </style>
 </head>
-
-
 <body>
-
-<div class="lang">
-
-<button onclick="setLang('fr')">🇫🇷 FR</button>
-<button onclick="setLang('en')">🇬🇧 ENG</button>
-
+<canvas id="particles"></canvas>
+<div class="glow t"></div>
+<nav>
+  <a href="index.html" class="nav-logo">OKALAM</a>
+  <div class="nav-right">
+    <div class="lang-wrap">
+      <select id="langSel" onchange="setLang(this.value)">
+        <option value="en">🇬🇧 EN</option><option value="fr">🇫🇷 FR</option>
+        <option value="ja">🇯🇵 JA</option><option value="zh">🇨🇳 ZH</option>
+        <option value="es">🇪🇸 ES</option><option value="pt">🇵🇹 PT</option>
+      </select>
+    </div>
+    <a href="index.html" class="back-btn">← <span id="nav_back">Home</span></a>
+  </div>
+</nav>
+<div class="wrapper">
+  <section class="hero">
+    <div class="hero-left">
+      <div class="app-badge"><span class="dot"></span><span id="badge">Narrative Adventure</span></div>
+      <h1>Little ToT</h1>
+      <p class="hero-desc" id="hero_desc">A calm narrative adventure where every choice shapes a unique story. Take your time. Breathe. Let the journey unfold.</p>
+      <div class="hero-meta">
+        <span class="meta-pill">📅 <span id="meta_release">Release 2026</span></span>
+        <span class="meta-pill">📖 <span id="meta_genre">Narrative RPG</span></span>
+        <span class="meta-pill">🕊️ <span id="meta_mood">Calm</span></span>
+      </div>
+      <div class="cta-row">
+        <span class="cta-primary" onclick="alert('Coming soon!')">🔔 <span id="cta_notify_text">Notify me</span></span>
+        <a href="index.html" class="cta-secondary">← <span id="cta_back_text">All games</span></a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="phone-wrap">
+        <div class="phone-glow"></div>
+        <div class="phone-frame"><img src="ltot_screen.png" alt="Little ToT screenshot"></div>
+      </div>
+    </div>
+  </section>
+  <section class="features-section">
+    <div class="section-header">
+      <p class="section-eyebrow" id="feat_eyebrow">Features</p>
+      <h2 class="section-title" id="feat_title">Every choice tells your story.</h2>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card"><span class="feature-icon">📜</span><div class="feature-title" id="f1_title">Rich Narrative</div><div class="feature-desc" id="f1_desc">A deep handcrafted story. Every dialogue and moment carefully written.</div></div>
+      <div class="feature-card"><span class="feature-icon">🌿</span><div class="feature-title" id="f2_title">Calm Atmosphere</div><div class="feature-desc" id="f2_desc">No timers. No pressure. Play at your own rhythm.</div></div>
+      <div class="feature-card"><span class="feature-icon">🔀</span><div class="feature-title" id="f3_title">Meaningful Choices</div><div class="feature-desc" id="f3_desc">Your decisions matter. Explore all branches of the story.</div></div>
+      <div class="feature-card"><span class="feature-icon">🌍</span><div class="feature-title" id="f4_title">Exploration</div><div class="feature-desc" id="f4_desc">A handcrafted world with hidden secrets and surprises.</div></div>
+      <div class="feature-card"><span class="feature-icon">🎶</span><div class="feature-title" id="f5_title">Original Soundtrack</div><div class="feature-desc" id="f5_desc">A gentle original score that breathes with the story.</div></div>
+      <div class="feature-card"><span class="feature-icon">💾</span><div class="feature-title" id="f6_title">Multiple Saves</div><div class="feature-desc" id="f6_desc">Save at any point. Go back and explore a different path.</div></div>
+    </div>
+  </section>
+  <section class="atmo-section">
+    <div class="atmo-card">
+      <div class="quote" id="atmo_quote">"A journey is not about the destination — it's about every small choice along the way."</div>
+      <div class="quote-sub" id="atmo_sub">— Little ToT, OKALAM Studio, 2026</div>
+    </div>
+  </section>
 </div>
-
-
-<div class="overlay">
-
-<h1>Little ToT</h1>
-
-<img src="ltot.png" class="game-img">
-
-<p class="desc" id="desc">
-
-Une aventure narrative calme où les choix changent l'histoire.
-
-</p>
-
-<p class="release" id="release">
-
-Sortie prévue en 2026
-
-</p>
-
-<a href="index.html" class="button">
-
-Back
-
-</a>
-
-</div>
-
-
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">OKALAM STUDIO</div>
+    <div class="footer-links">
+      <a href="index.html" id="f_home">Home</a>
+      <a href="privacy.html" id="f_privacy">Privacy Policy</a>
+      <a href="mailto:support@okalam.com" id="f_contact">Contact</a>
+    </div>
+    <div class="footer-copy" id="f_copy">© 2026 OKALAM Studio. All rights reserved.</div>
+  </div>
+</footer>
 <script>
-
-function setLang(lang){
-
-if(lang==="en"){
-
-document.getElementById("desc").innerText =
-"Little ToT is a calm narrative adventure where choices shape the journey.";
-
-document.getElementById("release").innerText =
-"Release planned for 2026";
-
-}
-
-if(lang==="fr"){
-
-document.getElementById("desc").innerText =
-"Une aventure narrative calme où les choix changent l'histoire.";
-
-document.getElementById("release").innerText =
-"Sortie prévue en 2026";
-
-}
-
-}
-
+const T={en:{nav_back:"Home",badge:"Narrative Adventure",hero_desc:"A calm narrative adventure where every choice shapes a unique story.",meta_release:"Release 2026",meta_genre:"Narrative RPG",meta_mood:"Calm",cta_notify_text:"Notify me",cta_back_text:"All games",feat_eyebrow:"Features",feat_title:"Every choice tells your story.",f1_title:"Rich Narrative",f1_desc:"A deep handcrafted story. Every dialogue and moment carefully written.",f2_title:"Calm Atmosphere",f2_desc:"No timers. No pressure. Play at your own rhythm.",f3_title:"Meaningful Choices",f3_desc:"Your decisions matter. Explore all branches of the story.",f4_title:"Exploration",f4_desc:"A handcrafted world with hidden secrets and surprises.",f5_title:"Original Soundtrack",f5_desc:"A gentle original score that breathes with the story.",f6_title:"Multiple Saves",f6_desc:"Save at any point. Go back and explore a different path.",atmo_quote:'"A journey is not about the destination — it's about every small choice along the way."',atmo_sub:"— Little ToT, OKALAM Studio, 2026",f_home:"Home",f_privacy:"Privacy Policy",f_contact:"Contact",f_copy:"© 2026 OKALAM Studio. All rights reserved."},fr:{nav_back:"Accueil",badge:"Aventure Narrative",hero_desc:"Une aventure narrative calme où chaque choix façonne une histoire unique.",meta_release:"Sortie 2026",meta_genre:"RPG Narratif",meta_mood:"Calme",cta_notify_text:"Me notifier",cta_back_text:"Tous les jeux",feat_eyebrow:"Fonctionnalités",feat_title:"Chaque choix raconte votre histoire.",f1_title:"Narration riche",f1_desc:"Une histoire profonde et artisanale. Chaque dialogue soigneusement écrit.",f2_title:"Atmosphère calme",f2_desc:"Pas de minuterie. Pas de pression. Jouez à votre rythme.",f3_title:"Choix significatifs",f3_desc:"Vos décisions comptent. Explorez toutes les branches de l'histoire.",f4_title:"Exploration",f4_desc:"Un monde artisanal avec secrets cachés et surprises.",f5_title:"Bande-son originale",f5_desc:"Une musique douce qui respire avec l'histoire.",f6_title:"Sauvegardes multiples",f6_desc:"Sauvegardez à tout moment. Explorez un autre chemin.",atmo_quote:"« Un voyage ne concerne pas la destination — mais chaque petit choix qui le compose. »",atmo_sub:"— Little ToT, OKALAM Studio, 2026",f_home:"Accueil",f_privacy:"Politique de confidentialité",f_contact:"Contact",f_copy:"© 2026 OKALAM Studio. Tous droits réservés."},ja:{nav_back:"ホーム",badge:"ナラティブアドベンチャー",hero_desc:"すべての選択がユニークな物語を形作る、静かなナラティブアドベンチャー。",meta_release:"2026年リリース",meta_genre:"ナラティブRPG",meta_mood:"穏やか",cta_notify_text:"通知を受け取る",cta_back_text:"全ゲーム",feat_eyebrow:"機能",feat_title:"あなたの選択が物語を語る。",f1_title:"豊かな物語",f1_desc:"深く手作りの物語。すべての台詞が丁寧に書かれています。",f2_title:"穏やかな雰囲気",f2_desc:"タイマーなし。プレッシャーなし。自分のペースで。",f3_title:"意味のある選択",f3_desc:"あなたの決断が重要。物語のすべての分岐を探索。",f4_title:"探索",f4_desc:"隠された秘密と驚きに満ちた手作りの世界。",f5_title:"オリジナルサウンドトラック",f5_desc:"物語とともに息づく優しい音楽。",f6_title:"複数セーブ",f6_desc:"いつでも保存。別の道を探索しよう。",atmo_quote:"「旅は目的地についてではない — 途中のすべての小さな選択についてだ。」",atmo_sub:"— Little ToT, OKALAM Studio, 2026",f_home:"ホーム",f_privacy:"プライバシーポリシー",f_contact:"お問い合わせ",f_copy:"© 2026 OKALAM Studio. 全著作権所有。"},zh:{nav_back:"首页",badge:"叙事冒险",hero_desc:"一个平静的叙事冒险，每一个选择都塑造独特的故事。",meta_release:"2026年发布",meta_genre:"叙事RPG",meta_mood:"平静",cta_notify_text:"提醒我",cta_back_text:"所有游戏",feat_eyebrow:"功能",feat_title:"每一个选择都讲述你的故事。",f1_title:"丰富叙事",f1_desc:"深刻的手工故事。每一段对话都经过精心编写。",f2_title:"平静氛围",f2_desc:"没有计时器。没有压力。按自己的节奏玩。",f3_title:"有意义的选择",f3_desc:"您的决定很重要。探索故事的所有分支。",f4_title:"探索",f4_desc:"充满隐藏秘密和惊喜的手工世界。",f5_title:"原创音乐",f5_desc:"与故事共同呼吸的柔和配乐。",f6_title:"多重存档",f6_desc:"随时保存。返回探索不同路径。",atmo_quote:"「旅行不在于目的地——而在于沿途的每一个小选择。」",atmo_sub:"— Little ToT, OKALAM Studio, 2026",f_home:"首页",f_privacy:"隐私政策",f_contact:"联系我们",f_copy:"© 2026 OKALAM Studio. 保留所有权利。"},es:{nav_back:"Inicio",badge:"Aventura Narrativa",hero_desc:"Una aventura narrativa tranquila donde cada elección da forma a una historia única.",meta_release:"Lanzamiento 2026",meta_genre:"RPG Narrativo",meta_mood:"Tranquilo",cta_notify_text:"Notificarme",cta_back_text:"Todos los juegos",feat_eyebrow:"Funcionalidades",feat_title:"Cada elección cuenta tu historia.",f1_title:"Narrativa rica",f1_desc:"Historia profunda y artesanal. Cada diálogo cuidadosamente escrito.",f2_title:"Atmósfera tranquila",f2_desc:"Sin temporizadores. Sin presión. Juega a tu ritmo.",f3_title:"Elecciones significativas",f3_desc:"Tus decisiones importan. Explora todas las ramas de la historia.",f4_title:"Exploración",f4_desc:"Un mundo artesanal lleno de secretos y sorpresas.",f5_title:"Banda sonora original",f5_desc:"Una partitura suave que respira con la historia.",f6_title:"Múltiples guardados",f6_desc:"Guarda en cualquier momento. Explora otro camino.",atmo_quote:"«Un viaje no se trata del destino — sino de cada pequeña elección en el camino.»",atmo_sub:"— Little ToT, OKALAM Studio, 2026",f_home:"Inicio",f_privacy:"Política de privacidad",f_contact:"Contacto",f_copy:"© 2026 OKALAM Studio. Todos los derechos reservados."},pt:{nav_back:"Início",badge:"Aventura Narrativa",hero_desc:"Uma aventura narrativa calma onde cada escolha molda uma história única.",meta_release:"Lançamento 2026",meta_genre:"RPG Narrativo",meta_mood:"Calmo",cta_notify_text:"Me notificar",cta_back_text:"Todos os jogos",feat_eyebrow:"Funcionalidades",feat_title:"Cada escolha conta a sua história.",f1_title:"Narrativa rica",f1_desc:"História profunda e artesanal. Cada diálogo cuidadosamente escrito.",f2_title:"Atmosfera calma",f2_desc:"Sem cronômetros. Sem pressão. Jogue no seu ritmo.",f3_title:"Escolhas significativas",f3_desc:"As suas decisões importam. Explore todos os ramos da história.",f4_title:"Exploração",f4_desc:"Um mundo artesanal repleto de segredos e surpresas.",f5_title:"Trilha sonora original",f5_desc:"Uma partitura suave que respira com a história.",f6_title:"Múltiplos salvamentos",f6_desc:"Salve a qualquer momento. Explore outro caminho.",atmo_quote:"«Uma jornada não é sobre o destino — é sobre cada pequena escolha ao longo do caminho.»",atmo_sub:"— Little ToT, OKALAM Studio, 2026",f_home:"Início",f_privacy:"Política de privacidade",f_contact:"Contato",f_copy:"© 2026 OKALAM Studio. Todos os direitos reservados."}};
+function setLang(l){localStorage.setItem('okalam_lang',l);document.getElementById('langSel').value=l;const t=T[l];Object.keys(t).forEach(id=>{const el=document.getElementById(id);if(el)el.textContent=t[id];});}
+const sv=localStorage.getItem('okalam_lang'),bl=navigator.language.slice(0,2);setLang(sv||(['en','fr','ja','zh','es','pt'].includes(bl)?bl:'en'));
+const cv=document.getElementById('particles'),cx=cv.getContext('2d');function rsz(){cv.width=innerWidth;cv.height=innerHeight;}rsz();window.addEventListener('resize',rsz);
+const pts=Array.from({length:60},()=>({x:Math.random()*innerWidth,y:Math.random()*innerHeight,r:Math.random()*2+.4,vx:(Math.random()-.5)*.08,vy:-Math.random()*.2-.04,o:Math.random()*.25+.06}));
+(function a(){cx.clearRect(0,0,cv.width,cv.height);pts.forEach(p=>{cx.beginPath();cx.arc(p.x,p.y,p.r,0,Math.PI*2);cx.fillStyle='rgba(245,158,11,'+p.o+')';cx.fill();p.x+=p.vx;p.y+=p.vy;if(p.y<-10){p.y=cv.height+10;p.x=Math.random()*cv.width;}if(p.x<-10)p.x=cv.width+10;if(p.x>cv.width+10)p.x=-10;});requestAnimationFrame(a);})();
 </script>
-
-
 </body>
 </html>
