@@ -1,39 +1,151 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>VoteDay</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VoteDay – OKALAM Studio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root{--accent:#a78bff;--accent2:#7c3aed;--bg:#08060f;--card-bg:rgba(18,14,30,0.95);--text:#e8e4f0;--muted:#776c8a;--border:rgba(255,255,255,0.07)}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
+    canvas{position:fixed;top:0;left:0;z-index:0;pointer-events:none}
+    .glow{position:fixed;border-radius:50%;filter:blur(130px);pointer-events:none;z-index:0}
+    .glow.t{width:700px;height:700px;top:-250px;left:50%;transform:translateX(-50%);background:radial-gradient(circle,rgba(167,139,255,0.08),transparent 70%);animation:pulse 9s ease-in-out infinite}
+    @keyframes pulse{0%,100%{opacity:.5}50%{opacity:1}}
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:16px 28px;background:rgba(8,6,15,0.8);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+    .nav-logo{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;letter-spacing:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+    .nav-right{display:flex;align-items:center;gap:8px}
+    .lang-wrap{position:relative}
+    .lang-wrap select{appearance:none;background:rgba(255,255,255,0.06);color:var(--text);border:1px solid var(--border);padding:6px 28px 6px 12px;border-radius:20px;cursor:pointer;font-size:13px;outline:none;transition:.2s}
+    .lang-wrap::after{content:'▾';position:absolute;right:10px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none;font-size:11px}
+    .back-btn{display:inline-flex;align-items:center;gap:6px;padding:6px 16px;background:rgba(255,255,255,0.06);border:1px solid var(--border);border-radius:20px;color:var(--muted);text-decoration:none;font-size:13px;transition:.2s}
+    .wrapper{position:relative;z-index:1}
+    .hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:60px;padding:120px 80px 80px;max-width:1100px;margin:0 auto}
+    .hero-left{display:flex;flex-direction:column;gap:24px}
+    .app-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(167,139,255,0.1);border:1px solid rgba(167,139,255,0.25);border-radius:20px;padding:6px 16px;font-size:11px;letter-spacing:2px;color:var(--accent);text-transform:uppercase;width:fit-content}
+    .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:blink 1.5s ease infinite}
+    @keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
+    h1{font-family:'Syne',sans-serif;font-size:clamp(40px,5vw,68px);font-weight:800;line-height:1.05;letter-spacing:-2px;background:linear-gradient(160deg,#fff 20%,rgba(167,139,255,0.8));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    .hero-desc{font-size:17px;color:var(--muted);line-height:1.8;max-width:420px}
+    .hero-meta{display:flex;flex-wrap:wrap;gap:10px}
+    .meta-pill{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.05);border:1px solid var(--border);border-radius:12px;padding:6px 14px;font-size:13px;color:var(--muted)}
+    .cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:8px}
+    .cta-primary{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;background:linear-gradient(135deg,var(--accent2),#5b21b6);border-radius:14px;color:#fff;font-size:15px;font-weight:600;transition:.2s;border:none;cursor:pointer;text-decoration:none}
+    .cta-primary:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(124,58,237,0.4)}
+    .cta-secondary{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;background:rgba(255,255,255,0.05);border:1px solid var(--border);border-radius:14px;color:var(--text);text-decoration:none;font-size:15px;transition:.2s}
+    .hero-right{display:flex;justify-content:center;align-items:center}
+    .phone-wrap{position:relative;animation:float 4s ease-in-out infinite}
+    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+    .phone-frame{width:240px;border-radius:40px;border:2px solid rgba(167,139,255,0.2);box-shadow:0 40px 80px rgba(0,0,0,.8),0 0 60px rgba(167,139,255,0.1);overflow:hidden;background:#000}
+    .phone-frame img{width:100%;display:block}
+    .phone-glow{position:absolute;inset:-30px;background:radial-gradient(circle,rgba(167,139,255,0.12),transparent 70%);border-radius:50%;z-index:-1}
+    .features-section{padding:80px 40px 100px;max-width:900px;margin:0 auto}
+    .section-header{text-align:center;margin-bottom:56px}
+    .section-eyebrow{font-size:12px;letter-spacing:3px;color:var(--accent);text-transform:uppercase;margin-bottom:16px}
+    .section-title{font-family:'Syne',sans-serif;font-size:clamp(28px,4vw,42px);font-weight:800;letter-spacing:-1px;background:linear-gradient(160deg,#fff,rgba(167,139,255,0.7));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    .features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+    .feature-card{background:var(--card-bg);border:1px solid var(--border);border-radius:20px;padding:28px;transition:.3s}
+    .feature-card:hover{border-color:rgba(167,139,255,0.2);transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,.5)}
+    .feature-icon{font-size:32px;margin-bottom:16px;display:block}
+    .feature-title{font-family:'Syne',sans-serif;font-size:17px;font-weight:700;margin-bottom:10px}
+    .feature-desc{font-size:14px;color:var(--muted);line-height:1.7}
+    .privacy-section{padding:0 40px 100px;max-width:900px;margin:0 auto}
+    .privacy-card{background:linear-gradient(135deg,rgba(167,139,255,0.07),rgba(124,58,237,0.04));border:1px solid rgba(167,139,255,0.15);border-radius:20px;padding:32px;display:flex;align-items:center;gap:24px}
+    .privacy-icon{font-size:40px;flex-shrink:0}
+    .privacy-text h3{font-family:'Syne',sans-serif;font-size:18px;font-weight:700;margin-bottom:8px}
+    .privacy-text p{font-size:14px;color:var(--muted);line-height:1.7}
+    .privacy-text a{color:var(--accent);text-decoration:none}
+    footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:40px 32px;text-align:center}
+    .footer-inner{display:flex;flex-direction:column;align-items:center;gap:14px}
+    .footer-logo{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;letter-spacing:4px;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    .footer-links{display:flex;gap:20px;flex-wrap:wrap;justify-content:center}
+    .footer-links a{font-size:13px;color:var(--muted);text-decoration:none}
+    .footer-copy{font-size:12px;color:rgba(102,108,128,0.4)}
+    @media(max-width:768px){.hero{grid-template-columns:1fr;padding:100px 24px 60px;gap:40px;text-align:center}.hero-left{align-items:center}.cta-row{justify-content:center}.features-section,.privacy-section{padding-left:24px;padding-right:24px}.privacy-card{flex-direction:column;text-align:center}}
+  </style>
 </head>
-
 <body>
-
-<div class="overlay">
-
-<h1>VoteDay</h1>
-
-<img src="vd.png" style="width:400px">
-
-<p>
-
-VoteDay is a social daily voting experience.
-Each day the world answers the same question
-and discovers the global majority.
-
-</p>
-
-<p>
-
-Release planned for 2026 • iOS development
-
-</p>
-
-<a href="index.html" class="button">
-Back
-</a>
-
+<canvas id="particles"></canvas>
+<div class="glow t"></div>
+<nav>
+  <a href="index.html" class="nav-logo">OKALAM</a>
+  <div class="nav-right">
+    <div class="lang-wrap">
+      <select id="langSel" onchange="setLang(this.value)">
+        <option value="en">🇬🇧 EN</option><option value="fr">🇫🇷 FR</option>
+        <option value="ja">🇯🇵 JA</option><option value="zh">🇨🇳 ZH</option>
+        <option value="es">🇪🇸 ES</option><option value="pt">🇵🇹 PT</option>
+      </select>
+    </div>
+    <a href="index.html" class="back-btn">← <span id="nav_back">Home</span></a>
+  </div>
+</nav>
+<div class="wrapper">
+  <section class="hero">
+    <div class="hero-left">
+      <div class="app-badge"><span class="dot"></span><span id="badge">Social App • iOS</span></div>
+      <h1>VoteDay</h1>
+      <p class="hero-desc" id="hero_desc">A social app where the world answers the same question every day. Discover how the world thinks — one vote at a time.</p>
+      <div class="hero-meta">
+        <span class="meta-pill">📅 <span id="meta_release">Release 2026</span></span>
+        <span class="meta-pill">🍎 iOS</span>
+        <span class="meta-pill">🌍 <span id="meta_global">Global</span></span>
+      </div>
+      <div class="cta-row">
+        <span class="cta-primary" onclick="alert('Coming soon!')">🔔 <span id="cta_notify_text">Notify me</span></span>
+        <a href="privacy.html" class="cta-secondary">🔒 <span id="cta_privacy">Privacy</span></a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="phone-wrap">
+        <div class="phone-glow"></div>
+        <div class="phone-frame"><img src="vd_screen.png" alt="VoteDay screenshot"></div>
+      </div>
+    </div>
+  </section>
+  <section class="features-section">
+    <div class="section-header">
+      <p class="section-eyebrow" id="feat_eyebrow">Features</p>
+      <h2 class="section-title" id="feat_title">One question. Every day. Everyone.</h2>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card"><span class="feature-icon">🗳️</span><div class="feature-title" id="f1_title">Daily Vote</div><div class="feature-desc" id="f1_desc">One unique question every day. Simple, binary, powerful.</div></div>
+      <div class="feature-card"><span class="feature-icon">🌍</span><div class="feature-title" id="f2_title">Global Results</div><div class="feature-desc" id="f2_desc">Instantly see live results from around the world.</div></div>
+      <div class="feature-card"><span class="feature-icon">👥</span><div class="feature-title" id="f3_title">Friends</div><div class="feature-desc" id="f3_desc">Add friends with a unique code and compare votes.</div></div>
+      <div class="feature-card"><span class="feature-icon">💬</span><div class="feature-title" id="f4_title">Friend Chat</div><div class="feature-desc" id="f4_desc">Chat directly with your friends inside the app.</div></div>
+      <div class="feature-card"><span class="feature-icon">📖</span><div class="feature-title" id="f5_title">Vote History</div><div class="feature-desc" id="f5_desc">Revisit all past questions and your answers.</div></div>
+      <div class="feature-card"><span class="feature-icon">☁️</span><div class="feature-title" id="f6_title">iCloud Sync</div><div class="feature-desc" id="f6_desc">Securely synced across all your Apple devices.</div></div>
+    </div>
+  </section>
+  <section class="privacy-section">
+    <div class="privacy-card">
+      <div class="privacy-icon">🔒</div>
+      <div class="privacy-text">
+        <h3 id="priv_title">Your data, your control</h3>
+        <p id="priv_desc">No advertising. No tracking. No third-party data sharing. <a href="privacy.html" id="priv_link">Read the full privacy policy →</a></p>
+      </div>
+    </div>
+  </section>
 </div>
-
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">OKALAM STUDIO</div>
+    <div class="footer-links">
+      <a href="index.html" id="f_home">Home</a>
+      <a href="privacy.html" id="f_privacy">Privacy Policy</a>
+      <a href="mailto:support@okalam.com" id="f_contact">Contact</a>
+    </div>
+    <div class="footer-copy" id="f_copy">© 2026 OKALAM Studio. All rights reserved.</div>
+  </div>
+</footer>
+<script>
+const T={en:{nav_back:"Home",badge:"Social App • iOS",hero_desc:"A social app where the world answers the same question every day.",meta_release:"Release 2026",meta_global:"Global",cta_notify_text:"Notify me",cta_privacy:"Privacy",feat_eyebrow:"Features",feat_title:"One question. Every day. Everyone.",f1_title:"Daily Vote",f1_desc:"One unique question every day. Simple, binary, powerful.",f2_title:"Global Results",f2_desc:"Instantly see live results from around the world.",f3_title:"Friends",f3_desc:"Add friends with a unique code and compare votes.",f4_title:"Friend Chat",f4_desc:"Chat directly with your friends inside the app.",f5_title:"Vote History",f5_desc:"Revisit all past questions and your answers.",f6_title:"iCloud Sync",f6_desc:"Securely synced across all your Apple devices.",priv_title:"Your data, your control",priv_desc:"No advertising. No tracking. No third-party data sharing.",priv_link:"Read the full privacy policy →",f_home:"Home",f_privacy:"Privacy Policy",f_contact:"Contact",f_copy:"© 2026 OKALAM Studio. All rights reserved."},fr:{nav_back:"Accueil",badge:"App Sociale • iOS",hero_desc:"Une appli sociale où le monde répond à la même question chaque jour.",meta_release:"Sortie 2026",meta_global:"Mondial",cta_notify_text:"Me notifier",cta_privacy:"Confidentialité",feat_eyebrow:"Fonctionnalités",feat_title:"Une question. Chaque jour. Pour tous.",f1_title:"Vote quotidien",f1_desc:"Une question unique chaque jour. Simple, binaire, percutante.",f2_title:"Résultats mondiaux",f2_desc:"Résultats en direct du monde entier instantanément.",f3_title:"Amis",f3_desc:"Ajoutez des amis avec un code unique et comparez vos votes.",f4_title:"Chat entre amis",f4_desc:"Discutez directement avec vos amis dans l'application.",f5_title:"Historique",f5_desc:"Retrouvez toutes les questions passées et vos réponses.",f6_title:"Sync iCloud",f6_desc:"Synchronisé en sécurité sur tous vos appareils Apple.",priv_title:"Vos données, votre contrôle",priv_desc:"Aucune publicité. Aucun suivi. Aucun partage tiers.",priv_link:"Lire la politique de confidentialité →",f_home:"Accueil",f_privacy:"Politique de confidentialité",f_contact:"Contact",f_copy:"© 2026 OKALAM Studio. Tous droits réservés."},ja:{nav_back:"ホーム",badge:"ソーシャルアプリ • iOS",hero_desc:"世界中が毎日同じ質問に答えるソーシャルアプリ。",meta_release:"2026年リリース",meta_global:"グローバル",cta_notify_text:"通知を受け取る",cta_privacy:"プライバシー",feat_eyebrow:"機能",feat_title:"一つの質問。毎日。みんなで。",f1_title:"デイリー投票",f1_desc:"毎日ユニークな質問が一つ。シンプルで力強い。",f2_title:"グローバル結果",f2_desc:"世界中からのライブ結果を即座に確認。",f3_title:"フレンド",f3_desc:"ユニークなコードで友達を追加。",f4_title:"フレンドチャット",f4_desc:"アプリ内で友達と直接チャット。",f5_title:"投票履歴",f5_desc:"過去のすべての質問と回答を振り返る。",f6_title:"iCloud同期",f6_desc:"すべてのAppleデバイスで安全に同期。",priv_title:"あなたのデータ、あなたのコントロール",priv_desc:"広告なし。トラッキングなし。第三者への共有なし。",priv_link:"プライバシーポリシーを読む →",f_home:"ホーム",f_privacy:"プライバシーポリシー",f_contact:"お問い合わせ",f_copy:"© 2026 OKALAM Studio. 全著作権所有。"},zh:{nav_back:"首页",badge:"社交应用 • iOS",hero_desc:"全球用户每天回答同一个问题的社交应用。",meta_release:"2026年发布",meta_global:"全球",cta_notify_text:"提醒我",cta_privacy:"隐私",feat_eyebrow:"功能",feat_title:"一个问题。每天。所有人。",f1_title:"每日投票",f1_desc:"每天一个独特问题。简单、二选一、有力量。",f2_title:"全球结果",f2_desc:"即时查看全球实时结果。",f3_title:"好友",f3_desc:"用唯一代码添加好友并比较投票。",f4_title:"好友聊天",f4_desc:"在应用内直接与好友聊天。",f5_title:"投票历史",f5_desc:"回顾所有过去的问题和您的答案。",f6_title:"iCloud同步",f6_desc:"在所有Apple设备上安全同步。",priv_title:"您的数据，您的控制",priv_desc:"无广告。无追踪。不与第三方共享。",priv_link:"阅读完整隐私政策 →",f_home:"首页",f_privacy:"隐私政策",f_contact:"联系我们",f_copy:"© 2026 OKALAM Studio. 保留所有权利。"},es:{nav_back:"Inicio",badge:"App Social • iOS",hero_desc:"Una app social donde el mundo responde la misma pregunta cada día.",meta_release:"Lanzamiento 2026",meta_global:"Global",cta_notify_text:"Notificarme",cta_privacy:"Privacidad",feat_eyebrow:"Funcionalidades",feat_title:"Una pregunta. Cada día. Para todos.",f1_title:"Voto diario",f1_desc:"Una pregunta única cada día. Simple, binaria, poderosa.",f2_title:"Resultados globales",f2_desc:"Resultados en vivo de todo el mundo al instante.",f3_title:"Amigos",f3_desc:"Añade amigos con un código único y compara votos.",f4_title:"Chat con amigos",f4_desc:"Chatea directamente con tus amigos en la app.",f5_title:"Historial",f5_desc:"Revisa todas las preguntas pasadas y tus respuestas.",f6_title:"Sincronización iCloud",f6_desc:"Sincronizado de forma segura en todos tus dispositivos.",priv_title:"Tus datos, tu control",priv_desc:"Sin publicidad. Sin rastreo. Sin compartir con terceros.",priv_link:"Leer la política de privacidad →",f_home:"Inicio",f_privacy:"Política de privacidad",f_contact:"Contacto",f_copy:"© 2026 OKALAM Studio. Todos los derechos reservados."},pt:{nav_back:"Início",badge:"App Social • iOS",hero_desc:"Um app social onde o mundo responde à mesma pergunta todos os dias.",meta_release:"Lançamento 2026",meta_global:"Global",cta_notify_text:"Me notificar",cta_privacy:"Privacidade",feat_eyebrow:"Funcionalidades",feat_title:"Uma pergunta. Todo dia. Para todos.",f1_title:"Voto diário",f1_desc:"Uma pergunta única todos os dias. Simples, binária, poderosa.",f2_title:"Resultados globais",f2_desc:"Veja resultados ao vivo do mundo inteiro instantaneamente.",f3_title:"Amigos",f3_desc:"Adicione amigos com um código único e compare votos.",f4_title:"Chat com amigos",f4_desc:"Converse diretamente com seus amigos no app.",f5_title:"Histórico",f5_desc:"Reveja todas as perguntas passadas e suas respostas.",f6_title:"Sincronização iCloud",f6_desc:"Sincronizado com segurança em todos os seus dispositivos.",priv_title:"Seus dados, seu controle",priv_desc:"Sem publicidade. Sem rastreamento. Sem compartilhamento.",priv_link:"Ler a política de privacidade →",f_home:"Início",f_privacy:"Política de privacidade",f_contact:"Contato",f_copy:"© 2026 OKALAM Studio. Todos os direitos reservados."}};
+function setLang(l){localStorage.setItem('okalam_lang',l);document.getElementById('langSel').value=l;const t=T[l];Object.keys(t).forEach(id=>{const el=document.getElementById(id);if(el)el.textContent=t[id];});}
+const sv=localStorage.getItem('okalam_lang'),bl=navigator.language.slice(0,2);setLang(sv||(['en','fr','ja','zh','es','pt'].includes(bl)?bl:'en'));
+const cv=document.getElementById('particles'),cx=cv.getContext('2d');function rsz(){cv.width=innerWidth;cv.height=innerHeight;}rsz();window.addEventListener('resize',rsz);
+const pts=Array.from({length:80},()=>({x:Math.random()*innerWidth,y:Math.random()*innerHeight,r:Math.random()*1.4+.3,vx:(Math.random()-.5)*.1,vy:-Math.random()*.25-.05,o:Math.random()*.3+.08}));
+(function a(){cx.clearRect(0,0,cv.width,cv.height);pts.forEach(p=>{cx.beginPath();cx.arc(p.x,p.y,p.r,0,Math.PI*2);cx.fillStyle='rgba(167,139,255,'+p.o+')';cx.fill();p.x+=p.vx;p.y+=p.vy;if(p.y<-10){p.y=cv.height+10;p.x=Math.random()*cv.width;}if(p.x<-10)p.x=cv.width+10;if(p.x>cv.width+10)p.x=-10;});requestAnimationFrame(a);})();
+</script>
 </body>
 </html>
