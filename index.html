@@ -18,7 +18,7 @@
     .nav-right{display:flex;align-items:center;gap:8px}
     .lang-wrap{position:relative}
     .lang-wrap select{appearance:none;background:rgba(255,255,255,0.06);color:var(--text);border:1px solid var(--border);padding:6px 28px 6px 12px;border-radius:20px;cursor:pointer;font-size:13px;outline:none;transition:.2s}
-    .lang-wrap::after{content:'▾';position:absolute;right:10px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none;font-size:11px}
+    .lang-wrap::after{content:'â¾';position:absolute;right:10px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none;font-size:11px}
     .music-btn{background:rgba(255,255,255,0.06);color:var(--muted);border:1px solid var(--border);width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:15px;display:flex;align-items:center;justify-content:center;transition:.2s}
     .wrapper{position:relative;z-index:1}
     .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:120px 24px 80px}
@@ -65,12 +65,12 @@
   <div class="nav-right">
     <div class="lang-wrap">
       <select id="langSel" onchange="setLang(this.value)">
-        <option value="en">🇬🇧 EN</option><option value="fr">🇫🇷 FR</option>
-        <option value="ja">🇯🇵 JA</option><option value="zh">🇨🇳 ZH</option>
-        <option value="es">🇪🇸 ES</option><option value="pt">🇵🇹 PT</option>
+        <option value="en">ð¬ð§ EN</option><option value="fr">ð«ð· FR</option>
+        <option value="ja">ð¯ðµ JA</option><option value="zh">ð¨ð³ ZH</option>
+        <option value="es">ðªð¸ ES</option><option value="pt">ðµð¹ PT</option>
       </select>
     </div>
-    <button class="music-btn" id="musicBtn" onclick="toggleMusic()">♪</button>
+    <button class="music-btn" id="musicBtn" onclick="toggleMusic()">âª</button>
   </div>
 </nav>
 <div class="wrapper">
@@ -85,21 +85,21 @@
     <p class="section-label" id="section_label">Projects</p>
     <div class="projects-grid">
       <div class="card" onclick="location.href='voteday.html'">
-        <div class="card-img"><img src="vd_screen.png" alt="VoteDay"></div>
+        <div class="card-img"><img src="vd.png" alt="VoteDay"></div>
         <div class="card-body">
           <div class="card-tag">iOS</div><h2>VoteDay</h2>
           <p id="vd_desc">A social app where the world answers the same question every day.</p>
           <div class="card-meta" id="vd_meta">Release planned 2026</div>
-          <span class="btn">Discover →</span>
+          <span class="btn">Discover â</span>
         </div>
       </div>
       <div class="card" onclick="location.href='littleTot.html'">
-        <div class="card-img"><img src="ltot_screen.png" alt="Little ToT"></div>
+        <div class="card-img"><img src="ltot.png" alt="Little ToT"></div>
         <div class="card-body">
           <div class="card-tag" id="ltot_tag">Narrative</div><h2>Little ToT</h2>
           <p id="ltot_desc">A calm narrative adventure where choices shape the story.</p>
           <div class="card-meta" id="ltot_meta">Release planned 2026</div>
-          <span class="btn">Discover →</span>
+          <span class="btn">Discover â</span>
         </div>
       </div>
     </div>
@@ -114,15 +114,15 @@
       <a href="privacy.html" id="footer_privacy">Privacy Policy</a>
       <a href="mailto:support@okalam.com" id="footer_contact">Contact</a>
     </div>
-    <div class="footer-copy" id="footer_copy">© 2026 OKALAM Studio. All rights reserved.</div>
+    <div class="footer-copy" id="footer_copy">Â© 2026 OKALAM Studio. All rights reserved.</div>
   </div>
 </footer>
 <audio id="bgMusic" loop><source src="music.mp3" type="audio/mpeg"></audio>
 <script>
-const T={en:{badge_text:"Independent App Creator",hero_sub:"Dreamer. Creator.",hero_sub2:"Applications in development",section_label:"Projects",vd_desc:"A social app where the world answers the same question every day.",vd_meta:"Release planned 2026",ltot_tag:"Narrative",ltot_desc:"A calm narrative adventure where choices shape the story.",ltot_meta:"Release planned 2026",footer_lab:"OKALAM LAB SUPPORT",footer_privacy:"Privacy Policy",footer_contact:"Contact",footer_copy:"© 2026 OKALAM Studio. All rights reserved."},fr:{badge_text:"Créateur d'applications indépendant",hero_sub:"Rêveur. Créateur.",hero_sub2:"Applications en développement",section_label:"Projets",vd_desc:"Une appli sociale où le monde répond à la même question chaque jour.",vd_meta:"Sortie prévue 2026",ltot_tag:"Narratif",ltot_desc:"Une aventure narrative calme où vos choix façonnent l'histoire.",ltot_meta:"Sortie prévue 2026",footer_lab:"SUPPORT OKALAM LAB",footer_privacy:"Politique de confidentialité",footer_contact:"Contact",footer_copy:"© 2026 OKALAM Studio. Tous droits réservés."},ja:{badge_text:"インディーアプリクリエイター",hero_sub:"夢想家。創造者。",hero_sub2:"開発中のアプリ",section_label:"プロジェクト",vd_desc:"世界中が毎日同じ質問に答えるソーシャルアプリ。",vd_meta:"2026年リリース予定",ltot_tag:"ナラティブ",ltot_desc:"選択が物語を形作る、静かなナラティブアドベンチャー。",ltot_meta:"2026年リリース予定",footer_lab:"OKALAMサポート",footer_privacy:"プライバシーポリシー",footer_contact:"お問い合わせ",footer_copy:"© 2026 OKALAM Studio. 全著作権所有。"},zh:{badge_text:"独立应用创作者",hero_sub:"梦想家。创造者。",hero_sub2:"开发中的应用",section_label:"项目",vd_desc:"全球用户每天回答同一个问题的社交应用。",vd_meta:"预计2026年发布",ltot_tag:"叙事",ltot_desc:"一个平静的叙事冒险，您的选择塑造故事走向。",ltot_meta:"预计2026年发布",footer_lab:"OKALAM实验室支持",footer_privacy:"隐私政策",footer_contact:"联系我们",footer_copy:"© 2026 OKALAM Studio. 保留所有权利。"},es:{badge_text:"Creador independiente de apps",hero_sub:"Soñador. Creador.",hero_sub2:"Aplicaciones en desarrollo",section_label:"Proyectos",vd_desc:"Una app social donde el mundo responde la misma pregunta cada día.",vd_meta:"Lanzamiento previsto 2026",ltot_tag:"Narrativa",ltot_desc:"Una aventura narrativa tranquila donde las elecciones dan forma a la historia.",ltot_meta:"Lanzamiento previsto 2026",footer_lab:"SOPORTE OKALAM LAB",footer_privacy:"Política de privacidad",footer_contact:"Contacto",footer_copy:"© 2026 OKALAM Studio. Todos los derechos reservados."},pt:{badge_text:"Criador independente de apps",hero_sub:"Sonhador. Criador.",hero_sub2:"Aplicações em desenvolvimento",section_label:"Projetos",vd_desc:"Um app social onde o mundo responde à mesma pergunta todos os dias.",vd_meta:"Lançamento previsto 2026",ltot_tag:"Narrativa",ltot_desc:"Uma aventura narrativa calma onde as escolhas moldam a história.",ltot_meta:"Lançamento previsto 2026",footer_lab:"SUPORTE OKALAM LAB",footer_privacy:"Política de privacidade",footer_contact:"Contato",footer_copy:"© 2026 OKALAM Studio. Todos os direitos reservados."}};
+const T={en:{badge_text:"Independent App Creator",hero_sub:"Dreamer. Creator.",hero_sub2:"Applications in development",section_label:"Projects",vd_desc:"A social app where the world answers the same question every day.",vd_meta:"Release planned 2026",ltot_tag:"Narrative",ltot_desc:"A calm narrative adventure where choices shape the story.",ltot_meta:"Release planned 2026",footer_lab:"OKALAM LAB SUPPORT",footer_privacy:"Privacy Policy",footer_contact:"Contact",footer_copy:"Â© 2026 OKALAM Studio. All rights reserved."},fr:{badge_text:"CrÃ©ateur d'applications indÃ©pendant",hero_sub:"RÃªveur. CrÃ©ateur.",hero_sub2:"Applications en dÃ©veloppement",section_label:"Projets",vd_desc:"Une appli sociale oÃ¹ le monde rÃ©pond Ã  la mÃªme question chaque jour.",vd_meta:"Sortie prÃ©vue 2026",ltot_tag:"Narratif",ltot_desc:"Une aventure narrative calme oÃ¹ vos choix faÃ§onnent l'histoire.",ltot_meta:"Sortie prÃ©vue 2026",footer_lab:"SUPPORT OKALAM LAB",footer_privacy:"Politique de confidentialitÃ©",footer_contact:"Contact",footer_copy:"Â© 2026 OKALAM Studio. Tous droits rÃ©servÃ©s."},ja:{badge_text:"ã¤ã³ãã£ã¼ã¢ããªã¯ãªã¨ã¤ã¿ã¼",hero_sub:"å¤¢æ³å®¶ãåµé èã",hero_sub2:"éçºä¸­ã®ã¢ããª",section_label:"ãã­ã¸ã§ã¯ã",vd_desc:"ä¸çä¸­ãæ¯æ¥åãè³ªåã«ç­ããã½ã¼ã·ã£ã«ã¢ããªã",vd_meta:"2026å¹´ãªãªã¼ã¹äºå®",ltot_tag:"ãã©ãã£ã",ltot_desc:"é¸æãç©èªãå½¢ä½ããéããªãã©ãã£ãã¢ããã³ãã£ã¼ã",ltot_meta:"2026å¹´ãªãªã¼ã¹äºå®",footer_lab:"OKALAMãµãã¼ã",footer_privacy:"ãã©ã¤ãã·ã¼ããªã·ã¼",footer_contact:"ãåãåãã",footer_copy:"Â© 2026 OKALAM Studio. å¨èä½æ¨©ææã"},zh:{badge_text:"ç¬ç«åºç¨åä½è",hero_sub:"æ¢¦æ³å®¶ãåé èã",hero_sub2:"å¼åä¸­çåºç¨",section_label:"é¡¹ç®",vd_desc:"å¨çç¨æ·æ¯å¤©åç­åä¸ä¸ªé®é¢çç¤¾äº¤åºç¨ã",vd_meta:"é¢è®¡2026å¹´åå¸",ltot_tag:"åäº",ltot_desc:"ä¸ä¸ªå¹³éçåäºåé©ï¼æ¨çéæ©å¡é æäºèµ°åã",ltot_meta:"é¢è®¡2026å¹´åå¸",footer_lab:"OKALAMå®éªå®¤æ¯æ",footer_privacy:"éç§æ¿ç­",footer_contact:"èç³»æä»¬",footer_copy:"Â© 2026 OKALAM Studio. ä¿çæææå©ã"},es:{badge_text:"Creador independiente de apps",hero_sub:"SoÃ±ador. Creador.",hero_sub2:"Aplicaciones en desarrollo",section_label:"Proyectos",vd_desc:"Una app social donde el mundo responde la misma pregunta cada dÃ­a.",vd_meta:"Lanzamiento previsto 2026",ltot_tag:"Narrativa",ltot_desc:"Una aventura narrativa tranquila donde las elecciones dan forma a la historia.",ltot_meta:"Lanzamiento previsto 2026",footer_lab:"SOPORTE OKALAM LAB",footer_privacy:"PolÃ­tica de privacidad",footer_contact:"Contacto",footer_copy:"Â© 2026 OKALAM Studio. Todos los derechos reservados."},pt:{badge_text:"Criador independente de apps",hero_sub:"Sonhador. Criador.",hero_sub2:"AplicaÃ§Ãµes em desenvolvimento",section_label:"Projetos",vd_desc:"Um app social onde o mundo responde Ã  mesma pergunta todos os dias.",vd_meta:"LanÃ§amento previsto 2026",ltot_tag:"Narrativa",ltot_desc:"Uma aventura narrativa calma onde as escolhas moldam a histÃ³ria.",ltot_meta:"LanÃ§amento previsto 2026",footer_lab:"SUPORTE OKALAM LAB",footer_privacy:"PolÃ­tica de privacidade",footer_contact:"Contato",footer_copy:"Â© 2026 OKALAM Studio. Todos os direitos reservados."}};
 function setLang(l){localStorage.setItem('okalam_lang',l);document.getElementById('langSel').value=l;const t=T[l];['badge_text','hero_sub','hero_sub2','section_label','vd_desc','vd_meta','ltot_tag','ltot_desc','ltot_meta','footer_lab','footer_privacy','footer_contact','footer_copy'].forEach(id=>{const el=document.getElementById(id);if(el)el.textContent=t[id];});}
 const sv=localStorage.getItem('okalam_lang'),bl=navigator.language.slice(0,2);setLang(sv||(['en','fr','ja','zh','es','pt'].includes(bl)?bl:'en'));
-let playing=false;function toggleMusic(){const a=document.getElementById('bgMusic'),b=document.getElementById('musicBtn');if(playing){a.pause();b.textContent='♪';playing=false;}else{a.play().catch(()=>{});b.textContent='■';playing=true;}}
+let playing=false;function toggleMusic(){const a=document.getElementById('bgMusic'),b=document.getElementById('musicBtn');if(playing){a.pause();b.textContent='âª';playing=false;}else{a.play().catch(()=>{});b.textContent='â ';playing=true;}}
 const cv=document.getElementById('particles'),cx=cv.getContext('2d');function rsz(){cv.width=innerWidth;cv.height=innerHeight;}rsz();window.addEventListener('resize',rsz);
 const pts=Array.from({length:100},()=>({x:Math.random()*innerWidth,y:Math.random()*innerHeight,r:Math.random()*1.5+.3,vx:(Math.random()-.5)*.15,vy:-Math.random()*.3-.1,o:Math.random()*.4+.1}));
 (function a(){cx.clearRect(0,0,cv.width,cv.height);pts.forEach(p=>{cx.beginPath();cx.arc(p.x,p.y,p.r,0,Math.PI*2);cx.fillStyle='rgba(141,234,255,'+p.o+')';cx.fill();p.x+=p.vx;p.y+=p.vy;if(p.y<-10){p.y=cv.height+10;p.x=Math.random()*cv.width;}if(p.x<-10)p.x=cv.width+10;if(p.x>cv.width+10)p.x=-10;});requestAnimationFrame(a);})();
