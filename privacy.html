@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy – VoteDay | OKALAM Studio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root{--accent:#8deaff;--accent2:#4da3ff;--bg:#080a0f;--card-bg:rgba(15,18,28,0.95);--text:#e8eaf0;--muted:#666c80;--border:rgba(255,255,255,0.06)}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;min-height:100vh}
+    canvas{position:fixed;top:0;left:0;z-index:0;pointer-events:none}
+    .glow{position:fixed;border-radius:50%;filter:blur(120px);pointer-events:none;z-index:0}
+    .glow.t{width:500px;height:500px;top:-150px;left:50%;transform:translateX(-50%);background:radial-gradient(circle,rgba(141,234,255,0.06),transparent 70%);animation:pulse 8s ease-in-out infinite}
+    @keyframes pulse{0%,100%{opacity:.4}50%{opacity:1}}
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:16px 28px;background:rgba(8,10,15,0.75);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+    .nav-logo{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;letter-spacing:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+    .nav-right{display:flex;align-items:center;gap:8px}
+    .lang-wrap{position:relative}
+    .lang-wrap select{appearance:none;background:rgba(255,255,255,0.06);color:var(--text);border:1px solid var(--border);padding:6px 28px 6px 12px;border-radius:20px;cursor:pointer;font-size:13px;outline:none;transition:.2s}
+    .lang-wrap::after{content:'▾';position:absolute;right:10px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none;font-size:11px}
+    .back-btn{display:inline-flex;align-items:center;gap:6px;padding:6px 16px;background:rgba(255,255,255,0.06);border:1px solid var(--border);border-radius:20px;color:var(--muted);text-decoration:none;font-size:13px;transition:.2s}
+    .wrapper{position:relative;z-index:1;padding:110px 24px 80px;max-width:760px;margin:0 auto}
+    .page-header{text-align:center;margin-bottom:52px}
+    .lock-icon{font-size:44px;display:block;margin-bottom:18px}
+    .page-header h1{font-family:'Syne',sans-serif;font-size:clamp(30px,6vw,50px);font-weight:800;letter-spacing:-1px;margin-bottom:10px;background:linear-gradient(160deg,#fff 30%,rgba(141,234,255,0.7));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    .app-name{font-size:12px;letter-spacing:4px;color:var(--accent);text-transform:uppercase;margin-bottom:10px}
+    .update-date{font-size:13px;color:var(--muted);letter-spacing:1px}
+    .card{background:var(--card-bg);border:1px solid var(--border);border-radius:20px;padding:26px 30px;margin-bottom:14px;transition:.3s}
+    .card:hover{border-color:rgba(141,234,255,0.12);box-shadow:0 12px 40px rgba(0,0,0,.5)}
+    .card.hl{background:linear-gradient(135deg,rgba(141,234,255,0.06),rgba(77,163,255,0.03));border-color:rgba(141,234,255,0.15)}
+    .card.hl .card-title{color:var(--accent)}
+    .card-title{font-family:'Syne',sans-serif;font-size:16px;font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:10px}
+    .ci{font-size:20px}
+    .card p{font-size:15px;line-height:1.8;color:var(--muted);margin-bottom:6px}
+    .card p:last-child{margin-bottom:0}
+    .card p strong{color:var(--text)}
+    .card p a{color:var(--accent);text-decoration:none}
+    .card ul{list-style:none;margin-top:8px}
+    .card li{font-size:15px;line-height:1.8;color:var(--muted);padding:6px 0 6px 26px;position:relative}
+    .card li::before{content:'';position:absolute;left:0;top:16px;width:7px;height:7px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2))}
+    .card li strong{color:var(--text)}
+    .contact-card{text-align:center}
+    .contact-email{font-size:18px;font-family:monospace;letter-spacing:1px;margin-top:10px}
+    .contact-email a{color:var(--accent2);text-decoration:none;border-bottom:1px solid rgba(77,163,255,0.3);padding-bottom:2px;transition:.2s}
+    .back-wrap{text-align:center;margin-top:44px;margin-bottom:14px}
+    .back-link{display:inline-flex;align-items:center;gap:10px;padding:13px 26px;background:rgba(255,255,255,0.05);border:1px solid var(--border);border-radius:14px;color:var(--text);text-decoration:none;font-size:14px;transition:.2s}
+    .back-link:hover{background:rgba(141,234,255,0.08);border-color:rgba(141,234,255,0.2);color:var(--accent)}
+    .footer-copy{text-align:center;margin-top:28px;font-size:12px;color:rgba(102,108,128,0.4);padding-bottom:40px}
+    @media(max-width:600px){nav{padding:14px 18px}.card{padding:20px 18px}}
+  </style>
+</head>
+<body>
+<canvas id="particles"></canvas>
+<div class="glow t"></div>
+<nav>
+  <a href="index.html" class="nav-logo">OKALAM</a>
+  <div class="nav-right">
+    <div class="lang-wrap">
+      <select id="langSel" onchange="setLang(this.value)">
+        <option value="en">🇬🇧 EN</option><option value="fr">🇫🇷 FR</option>
+        <option value="ja">🇯🇵 JA</option><option value="zh">🇨🇳 ZH</option>
+        <option value="es">🇪🇸 ES</option><option value="pt">🇵🇹 PT</option>
+      </select>
+    </div>
+    <a href="index.html" class="back-btn">← <span id="nav_back">Home</span></a>
+  </div>
+</nav>
+<div class="wrapper">
+  <div class="page-header">
+    <span class="lock-icon">🔒</span>
+    <h1 id="title">Privacy Policy</h1>
+    <div class="app-name">VoteDay</div>
+    <div class="update-date" id="date">Last updated: March 23, 2026</div>
+  </div>
+  <div class="card hl">
+    <div class="card-title"><span class="ci">🛡️</span><span id="intro_title">Your data, your control</span></div>
+    <p id="intro_text">OKALAM Studio develops and publishes VoteDay. We believe in full transparency about data collection. This policy explains what we collect, why, and how your information stays protected.</p>
+  </div>
+  <div class="card">
+    <div class="card-title"><span class="ci">📋</span><span id="data_title">Data collected</span></div>
+    <p id="data_text">VoteDay collects the following data, solely for the app to function:</p>
+    <ul>
+      <li id="data_1"><strong>User identifier</strong> — A unique ID generated locally to identify your account.</li>
+      <li id="data_2"><strong>Display name &amp; avatar</strong> — The nickname and emoji or photo you choose for your profile.</li>
+      <li id="data_3"><strong>Votes</strong> — Your answers to daily questions.</li>
+      <li id="data_4"><strong>Chat messages</strong> — Messages exchanged with your friends in the app.</li>
+      <li id="data_5"><strong>Friend code</strong> — A numeric identifier that lets other users add you.</li>
+    </ul>
+  </div>
+  <div class="card">
+    <div class="card-title"><span class="ci">⚙️</span><span id="use_title">How we use your data</span></div>
+    <ul>
+      <li id="use_1">App functionality: votes, results, friends, chat</li>
+      <li id="use_2">Cross-device sync via iCloud</li>
+      <li id="use_3">Displaying aggregated and anonymous results</li>
+    </ul>
+  </div>
+  <div class="card">
+    <div class="card-title"><span class="ci">☁️</span><span id="storage_title">Storage &amp; security</span></div>
+    <p id="storage_text">All data is stored via <strong>Apple iCloud (CloudKit)</strong> and is subject to <a href="https://www.apple.com/legal/privacy/" target="_blank">Apple's privacy policy</a>. Data is protected by Apple's standard encryption (TLS/HTTPS).</p>
+  </div>
+  <div class="card hl">
+    <div class="card-title"><span class="ci">🚫</span><span id="share_title">No data sharing</span></div>
+    <p id="share_text">We do <strong>not share, sell, or transmit any data to third parties</strong>. No data is used for advertising or tracking purposes.</p>
+  </div>
+  <div class="card">
+    <div class="card-title"><span class="ci">👁️</span><span id="track_title">Tracking &amp; advertising</span></div>
+    <p id="track_text">VoteDay contains <strong>no trackers</strong>, no advertising SDKs, and does not track your activity outside the app.</p>
+  </div>
+  <div class="card">
+    <div class="card-title"><span class="ci">✅</span><span id="rights_title">Your rights</span></div>
+    <ul>
+      <li id="rights_1">Delete your account and data by uninstalling the app</li>
+      <li id="rights_2">Request data deletion by contacting us</li>
+    </ul>
+  </div>
+  <div class="card contact-card">
+    <div class="card-title" style="justify-content:center"><span class="ci">💬</span><span id="contact_title">Contact</span></div>
+    <p id="contact_text">For any questions about this privacy policy:</p>
+    <div class="contact-email"><a href="mailto:contact@okalamstudio.com">contact@okalamstudio.com</a></div>
+  </div>
+  <div class="back-wrap"><a href="index.html" class="back-link">← <span id="back_label">Back to home</span></a></div>
+  <div class="footer-copy" id="footer_copy">© 2026 OKALAM Studio. All rights reserved.</div>
+</div>
+<script>
+const T={en:{nav_back:"Home",title:"Privacy Policy",date:"Last updated: March 23, 2026",intro_title:"Your data, your control",intro_text:"OKALAM Studio develops and publishes VoteDay. We believe in full transparency about data collection. This policy explains what we collect, why, and how your information stays protected.",data_title:"Data collected",data_text:"VoteDay collects the following data, solely for the app to function:",use_title:"How we use your data",use_1:"App functionality: votes, results, friends, chat",use_2:"Cross-device sync via iCloud",use_3:"Displaying aggregated and anonymous results",storage_title:"Storage & security",share_title:"No data sharing",track_title:"Tracking & advertising",rights_title:"Your rights",rights_1:"Delete your account and data by uninstalling the app",rights_2:"Request data deletion by contacting us",contact_title:"Contact",contact_text:"For any questions about this privacy policy:",back_label:"Back to home",footer_copy:"© 2026 OKALAM Studio. All rights reserved."},fr:{nav_back:"Accueil",title:"Politique de confidentialité",date:"Dernière mise à jour : 23 mars 2026",intro_title:"Vos données, votre contrôle",intro_text:"OKALAM Studio développe et publie VoteDay. Nous croyons en la transparence totale sur la collecte de données. Cette politique explique ce que nous collectons, pourquoi, et comment vos informations restent protégées.",data_title:"Données collectées",data_text:"VoteDay collecte les données suivantes, uniquement pour le fonctionnement de l'application :",use_title:"Utilisation des données",use_1:"Fonctionnement de l'application : votes, résultats, amis, chat",use_2:"Synchronisation entre vos appareils via iCloud",use_3:"Affichage des résultats agrégés et anonymes",storage_title:"Stockage et sécurité",share_title:"Aucun partage de données",track_title:"Suivi et publicité",rights_title:"Vos droits",rights_1:"Supprimer votre compte et vos données en désinstallant l'application",rights_2:"Demander la suppression de vos données en nous contactant",contact_title:"Contact",contact_text:"Pour toute question concernant cette politique de confidentialité :",back_label:"Retour à l'accueil",footer_copy:"© 2026 OKALAM Studio. Tous droits réservés."},ja:{nav_back:"ホーム",title:"プライバシーポリシー",date:"最終更新：2026年3月23日",intro_title:"あなたのデータ、あなたのコントロール",intro_text:"OKALAM StudioはVoteDayを開発・公開しています。データ収集に関する完全な透明性を信条としています。",data_title:"収集するデータ",data_text:"VoteDayはアプリの機能に必要なデータのみを収集します：",use_title:"データの使用方法",use_1:"アプリ機能：投票、結果、友達、チャット",use_2:"iCloud経由でデバイス間同期",use_3:"集計された匿名の結果の表示",storage_title:"保存とセキュリティ",share_title:"データの共有なし",track_title:"トラッキングと広告",rights_title:"あなたの権利",rights_1:"アプリをアンインストールしてアカウントとデータを削除",rights_2:"お問い合わせよりデータ削除を依頼",contact_title:"お問い合わせ",contact_text:"このプライバシーポリシーに関するご質問：",back_label:"ホームに戻る",footer_copy:"© 2026 OKALAM Studio. 全著作権所有。"},zh:{nav_back:"首页",title:"隐私政策",date:"最后更新：2026年3月23日",intro_title:"您的数据，您的控制",intro_text:"OKALAM Studio开发并发布VoteDay。我们相信数据收集的完全透明度。",data_title:"收集的数据",data_text:"VoteDay仅收集应用运行所需的数据：",use_title:"数据使用方式",use_1:"应用功能：投票、结果、好友、聊天",use_2:"通过iCloud跨设备同步",use_3:"显示汇总的匿名结果",storage_title:"存储和安全",share_title:"不共享数据",track_title:"追踪和广告",rights_title:"您的权利",rights_1:"通过卸载应用删除您的账户和数据",rights_2:"联系我们请求删除数据",contact_title:"联系我们",contact_text:"关于本隐私政策的任何问题：",back_label:"返回首页",footer_copy:"© 2026 OKALAM Studio. 保留所有权利。"},es:{nav_back:"Inicio",title:"Política de privacidad",date:"Última actualización: 23 de marzo de 2026",intro_title:"Tus datos, tu control",intro_text:"OKALAM Studio desarrolla y publica VoteDay. Creemos en la transparencia total sobre la recopilación de datos.",data_title:"Datos recopilados",data_text:"VoteDay recopila los siguientes datos, únicamente para el funcionamiento de la app:",use_title:"Uso de los datos",use_1:"Funcionalidad de la app: votos, resultados, amigos, chat",use_2:"Sincronización entre dispositivos via iCloud",use_3:"Visualización de resultados agregados y anónimos",storage_title:"Almacenamiento y seguridad",share_title:"Sin compartir datos",track_title:"Rastreo y publicidad",rights_title:"Tus derechos",rights_1:"Eliminar tu cuenta y datos desinstalando la app",rights_2:"Solicitar la eliminación de datos contactándonos",contact_title:"Contacto",contact_text:"Para cualquier pregunta sobre esta política de privacidad:",back_label:"Volver al inicio",footer_copy:"© 2026 OKALAM Studio. Todos los derechos reservados."},pt:{nav_back:"Início",title:"Política de privacidade",date:"Última atualização: 23 de março de 2026",intro_title:"Seus dados, seu controle",intro_text:"OKALAM Studio desenvolve e publica o VoteDay. Acreditamos na transparência total sobre a coleta de dados.",data_title:"Dados coletados",data_text:"O VoteDay coleta os seguintes dados, apenas para o funcionamento do app:",use_title:"Como usamos seus dados",use_1:"Funcionalidade do app: votos, resultados, amigos, chat",use_2:"Sincronização entre dispositivos via iCloud",use_3:"Exibição de resultados agregados e anônimos",storage_title:"Armazenamento e segurança",share_title:"Sem compartilhamento de dados",track_title:"Rastreamento e publicidade",rights_title:"Seus direitos",rights_1:"Excluir sua conta e dados desinstalando o app",rights_2:"Solicitar exclusão de dados nos contatando",contact_title:"Contato",contact_text:"Para qualquer dúvida sobre esta política de privacidade:",back_label:"Voltar ao início",footer_copy:"© 2026 OKALAM Studio. Todos os direitos reservados."}};
+function setLang(l){localStorage.setItem('okalam_lang',l);document.getElementById('langSel').value=l;const t=T[l];Object.keys(t).forEach(id=>{const el=document.getElementById(id);if(el)el.textContent=t[id];});}
+const sv=localStorage.getItem('okalam_lang'),bl=navigator.language.slice(0,2);setLang(sv||(['en','fr','ja','zh','es','pt'].includes(bl)?bl:'en'));
+const cv=document.getElementById('particles'),cx=cv.getContext('2d');function rsz(){cv.width=innerWidth;cv.height=innerHeight;}rsz();window.addEventListener('resize',rsz);
+const pts=Array.from({length:80},()=>({x:Math.random()*innerWidth,y:Math.random()*innerHeight,r:Math.random()*1.4+.2,vx:(Math.random()-.5)*.1,vy:-Math.random()*.25-.05,o:Math.random()*.3+.08}));
+(function a(){cx.clearRect(0,0,cv.width,cv.height);pts.forEach(p=>{cx.beginPath();cx.arc(p.x,p.y,p.r,0,Math.PI*2);cx.fillStyle='rgba(141,234,255,'+p.o+')';cx.fill();p.x+=p.vx;p.y+=p.vy;if(p.y<-10){p.y=cv.height+10;p.x=Math.random()*cv.width;}if(p.x<-10)p.x=cv.width+10;if(p.x>cv.width+10)p.x=-10;});requestAnimationFrame(a);})();
+</script>
+</body>
+</html>
