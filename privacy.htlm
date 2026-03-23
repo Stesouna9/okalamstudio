@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy - VoteDay | OKALAM Studio</title>
+
+<style>
+
+body{
+margin:0;
+font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto;
+color:white;
+text-align:center;
+overflow-x:hidden;
+
+background-image:url("okalam.png");
+background-size:cover;
+background-position:center;
+background-attachment:fixed;
+}
+
+.overlay{
+background:rgba(0,0,0,0.80);
+min-height:100vh;
+padding-top:60px;
+padding-bottom:80px;
+}
+
+.triangle-glow{
+position:absolute;
+top:25%;
+left:50%;
+transform:translate(-50%,-50%);
+width:600px;
+height:600px;
+background:radial-gradient(circle, rgba(141,234,255,0.08), transparent 70%);
+animation:glow 8s ease-in-out infinite;
+pointer-events:none;
+}
+
+@keyframes glow{
+0%{opacity:0.15;}
+50%{opacity:0.4;}
+100%{opacity:0.15;}
+}
+
+/* LANG */
+
+.lang{
+position:fixed;
+top:20px;
+left:20px;
+z-index:10;
+}
+
+.lang button{
+background:#111;
+color:white;
+border:none;
+padding:8px 12px;
+margin-right:5px;
+border-radius:8px;
+cursor:pointer;
+font-size:13px;
+}
+
+.lang button:hover{
+background:#222;
+}
+
+/* HEADER */
+
+.privacy-header{
+margin-bottom:50px;
+}
+
+.privacy-header .icon{
+font-size:48px;
+margin-bottom:16px;
+display:block;
+}
+
+.privacy-header h1{
+font-size:42px;
+margin:0 0 8px;
+letter-spacing:1px;
+}
+
+.privacy-header .app-name{
+font-size:18px;
+color:#8deaff;
+letter-spacing:3px;
+text-transform:uppercase;
+}
+
+.privacy-header .update-date{
+font-size:13px;
+color:#666;
+margin-top:14px;
+letter-spacing:1px;
+}
+
+/* CONTAINER */
+
+.privacy-container{
+max-width:720px;
+margin:0 auto;
+padding:0 24px;
+text-align:left;
+}
+
+/* SECTION CARD */
+
+.section-card{
+background:rgba(20,20,20,0.9);
+border-radius:20px;
+padding:28px 32px;
+margin-bottom:20px;
+border:1px solid rgba(255,255,255,0.06);
+box-shadow:0 12px 40px rgba(0,0,0,0.5);
+transition:0.3s;
+}
+
+.section-card:hover{
+border-color:rgba(141,234,255,0.15);
+box-shadow:0 16px 50px rgba(0,0,0,0.6), 0 0 30px rgba(141,234,255,0.03);
+}
+
+.section-card .section-icon{
+font-size:24px;
+margin-right:10px;
+}
+
+.section-card h2{
+font-size:18px;
+margin:0 0 14px;
+letter-spacing:0.5px;
+display:flex;
+align-items:center;
+}
+
+.section-card p{
+font-size:15px;
+line-height:1.8;
+color:#bbb;
+margin:0 0 8px;
+}
+
+.section-card ul{
+padding-left:0;
+list-style:none;
+margin:10px 0 0;
+}
+
+.section-card li{
+font-size:15px;
+line-height:1.8;
+color:#bbb;
+padding:6px 0 6px 28px;
+position:relative;
+}
+
+.section-card li::before{
+content:"";
+position:absolute;
+left:0;
+top:14px;
+width:8px;
+height:8px;
+border-radius:50%;
+background:linear-gradient(135deg, #8deaff, #4da3ff);
+}
+
+.section-card strong{
+color:white;
+}
+
+.section-card a{
+color:#8deaff;
+text-decoration:none;
+}
+
+.section-card a:hover{
+text-decoration:underline;
+}
+
+/* HIGHLIGHT CARD */
+
+.highlight-card{
+background:linear-gradient(135deg, rgba(141,234,255,0.08), rgba(77,163,255,0.05));
+border-color:rgba(141,234,255,0.2);
+}
+
+.highlight-card h2{
+color:#8deaff;
+}
+
+/* CONTACT CARD */
+
+.contact-card{
+text-align:center;
+}
+
+.contact-card .email{
+font-size:20px;
+font-family:monospace;
+color:#4da3ff;
+letter-spacing:1px;
+}
+
+/* BACK BUTTON */
+
+.back-btn{
+display:inline-block;
+margin-top:40px;
+padding:14px 32px;
+background:rgba(255,255,255,0.06);
+border:1px solid rgba(255,255,255,0.1);
+border-radius:14px;
+color:white;
+text-decoration:none;
+font-size:15px;
+letter-spacing:1px;
+transition:0.3s;
+}
+
+.back-btn:hover{
+background:rgba(255,255,255,0.12);
+transform:scale(1.03);
+}
+
+/* FOOTER */
+
+.footer{
+margin-top:50px;
+font-size:12px;
+color:#444;
+letter-spacing:1px;
+}
+
+/* PARTICLES */
+
+canvas{
+position:fixed;
+top:0;
+left:0;
+z-index:-1;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<canvas id="particles"></canvas>
+
+<div class="triangle-glow"></div>
+
+<div class="lang">
+<button onclick="setLang('fr')">FR</button>
+<button onclick="setLang('en')">EN</button>
+</div>
+
+<div class="overlay">
+
+<div class="privacy-header">
+<span class="icon">🔒</span>
+<h1 id="title">Privacy Policy</h1>
+<div class="app-name">VoteDay</div>
+<div class="update-date" id="date">Last updated: March 23, 2026</div>
+</div>
+
+<div class="privacy-container">
+
+<!-- INTRO -->
+<div class="section-card highlight-card">
+<h2><span class="section-icon">🛡pan id="intro_title">Your data, your control</span></h2>
+<p id="intro_text">OKALAM Studio develops and publishes VoteDay. We believe in full transparency about data collection. This policy explains what we collect, why, and how your information stays protected.</p>
+</div>
+
+<!-- DATA COLLECTED -->
+<div class="section-card">
+<h2><span class="section-icon">📋</span> <span id="data_title">Data collected</span></h2>
+<p id="data_text">VoteDay collects the following data, solely for the app to function:</p>
+<ul>
+<li id="data_1"><strong>User identifier</strong> — A unique ID generated locally to identify your account.</li>
+<li id="data_2"><strong>Display name & avatar</strong> — The nickname and emoji or photo you choose for your profile.</li>
+<li id="data_3"><strong>Votes</strong> — Your answers to daily questions.</li>
+<li id="data_4"><strong>Chat messages</strong> — Messages exchanged with your friends in the app.</li>
+<li id="data_5"><strong>Friend code</strong> — A numeric identifier that lets other users add you.</li>
+</ul>
+</div>
+
+<!-- HOW WE USE -->
+<div class="section-card">
+<h2><span class="section-icon">⚙span> <span id="use_title">How we use your data</span></h2>
+<ul>
+<li id="use_1">App functionality: votes, results, friends, chat</li>
+<li id="use_2">Cross-device sync via iCloud</li>
+<li id="use_3">Displaying aggregated and anonymous results</li>
+</ul>
+</div>
+
+<!-- STORAGE -->
+<div class="section-card">
+<h2><span class="section-icon">☁n> <span id="storage_title">Storage & security</span></h2>
+<p id="storage_text">All data is stored via <strong>Apple iCloud (CloudKit)</strong> and is subject to <a href="https://www.apple.com/legal/privacy/" target="_blank">Apple's privacy policy</a>. Data is protected by Apple's standard encryption (TLS/HTTPS).</p>
+</div>
+
+<!-- NO SHARING -->
+<div class="section-card highlight-card">
+<h2><span class="section-icon">🚫</span> <span id="share_title">No data sharing</span></h2>
+<p id="share_text">We do <strong>not share, sell, or transmit any data to third parties</strong>. No data is used for advertising or tracking purposes.</p>
+</div>
+
+<!-- TRACKING -->
+<div class="section-card">
+<h2><span class="section-icon">👁️</span> <span id="track_title">Tracking & advertising</span></h2>
+<p id="track_text">VoteDay contains <strong>no trackers</strong>, no advertising SDKs, and does not track your activity outside the app.</p>
+</div>
+
+<!-- YOUR RIGHTS -->
+<div class="section-card">
+<h2><span class="section-icon">✅</span> <span id="rights_title">Your rights</span></h2>
+<ul>
+<li id="rights_1">Delete your account and data by uninstalling the app</li>
+<li id="rights_2">Request data deletion by contacting us</li>
+</ul>
+</div>
+
+<!-- CONTACT -->
+<div class="section-card contact-card">
+<h2><span class="section-icon">💬</span> <span id="contact_title">Contact</span></h2>
+<p id="contact_text">For any questions about this privacy policy:</p>
+<div class="email"><a href="mailto:contact@okalamstudio.com">contact@okalamstudio.com</a></div>
+</div>
+
+<div style="text-align:center">
+<a href="index.html" class="back-btn" id="back_btn">← Back to home</a>
+</div>
+
+<div class="footer">© 2026 OKALAM Studio. All rights reserved.</div>
+
+</div>
+
+</div>
+
+<script>
+
+function setLang(lang){
+
+if(lang==="fr"){
+
+document.getElementById("title").innerText="Politique de confidentialité";
+document.getElementById("date").innerText="Dernière mise à jour : 23 mars 2026";
+document.getElementById("intro_title").innerText="Vos données, votre contrôle";
+document.getElementById("intro_text").innerText="OKALAM Studio développe et publie VoteDay. Nous croyons en la transparence totale sur la collecte de données. Cette politique explique ce que nous collectons, pourquoi, et comment vos informations restent protégées.";
+document.getElementById("data_title").innerText="Données collectées";
+document.getElementById("data_text").innerText="VoteDay collecte les données suivantes, uniquement pour le fonctionnement de l'application :";
+document.getElementById("data_1").innerHTML="<strong>Identifiant utilisateur</strong> — Un identifiant unique généré localement pour identifier votre compte.";
+document.getElementById("data_2").innerHTML="<strong>Nom d'affichage et avatar</strong> — Le pseudo et l'emoji ou photo que vous choisissez pour votre profil.";
+document.getElementById("data_3").innerHTML="<strong>Votes</strong> — Vos réponses aux questions quotidiennes.";
+document.getElementById("data_4").innerHTML="<strong>Messages de chat</strong> — Les messages échangés avec vos amis dans l'application.";
+document.getElementById("data_5").innerHTML="<strong>Code ami</strong> — Un identifiant numérique permettant à d'autres utilisateurs de vous ajouter.";
+document.getElementById("use_title").innerText="Utilisation des données";
+document.getElementById("use_1").innerText="Fonctionnement de l'application : votes, résultats, amis, chat";
+document.getElementById("use_2").innerText="Synchronisation entre vos appareils via iCloud";
+document.getElementById("use_3").innerText="Affichage des résultats agrégés et anonymes";
+document.getElementById("storage_title").innerText="Stockage et sécurité";
+document.getElementById("storage_text").innerHTML="Toutes les données sont stockées via <strong>Apple iCloud (CloudKit)</strong> et sont soumises à la <a href='https://www.apple.com/legal/privacy/' target='_blank'>politique de confidentialité d'Apple</a>. Les données sont protégées par le chiffrement standard d'Apple (TLS/HTTPS).";
+document.getElementById("share_title").innerText="Aucun partage de données";
+document.getElementById("share_text").innerHTML="Nous ne partageons, ne vendons et ne transmettons <strong>aucune donnée à des tiers</strong>. Aucune donnée n'est utilisée à des fins publicitaires ou de suivi.";
+document.getElementById("track_title").innerText="Suivi et publicité";
+document.getElementById("track_text").innerHTML="VoteDay <strong>ne contient aucun traceur</strong>, aucun SDK publicitaire et ne suit pas vos activités en dehors de l'application.";
+document.getElementById("rights_title").innerText="Vos droits";
+document.getElementById("rights_1").innerText="Supprimer votre compte et vos données en désinstallant l'application";
+document.getElementById("rights_2").innerText="Demander la suppression de vos données en nous contactant";
+document.getElementById("contact_title").innerText="Contact";
+document.getElementById("contact_text").innerText="Pour toute question concernant cette politique de confidentialité :";
+document.getElementById("back_btn").innerText="← Retour à l'accueil";
+
+}
+
+if(lang==="en"){
+
+document.getElementById("title").innerText="Privacy Policy";
+document.getElementById("date").innerText="Last updated: March 23, 2026";
+document.getElementById("intro_title").innerText="Your data, your control";
+document.getElementById("intro_text").innerText="OKALAM Studio develops and publishes VoteDay. We believe in full transparency about data collection. This policy explains what we collect, why, and how your information stays protected.";
+document.getElementById("data_title").innerText="Data collected";
+document.getElementById("data_text").innerText="VoteDay collects the following data, solely for the app to function:";
+document.getElementById("data_1").innerHTML="<strong>User identifier</strong> — A unique ID generated locally to identify your account.";
+document.getElementById("data_2").innerHTML="<strong>Display name & avatar</strong> — The nickname and emoji or photo you choose for your profile.";
+document.getElementById("data_3").innerHTML="<strong>Votes</strong> — Your answers to daily questions.";
+document.getElementById("data_4").innerHTML="<strong>Chat messages</strong> — Messages exchanged with your friends in the app.";
+document.getElementById("data_5").innerHTML="<strong>Friend code</strong> — A numeric identifier that lets other users add you.";
+document.getElementById("use_title").innerText="How we use your data";
+document.getElementById("use_1").innerText="App functionality: votes, results, friends, chat";
+document.getElementById("use_2").innerText="Cross-device sync via iCloud";
+document.getElementById("use_3").innerText="Displaying aggregated and anonymous results";
+document.getElementById("storage_title").innerText="Storage & security";
+document.getElementById("storage_text").innerHTML="All data is stored via <strong>Apple iCloud (CloudKit)</strong> and is subject to <a href='https://www.apple.com/legal/privacy/' target='_blank'>Apple's privacy policy</a>. Data is protected by Apple's standard encryption (TLS/HTTPS).";
+document.getElementById("share_title").innerText="No data sharing";
+document.getElementById("share_text").innerHTML="We do <strong>not share, sell, or transmit any data to third parties</strong>. No data is used for advertising or tracking purposes.";
+document.getElementById("track_title").innerText="Tracking & advertising";
+document.getElementById("track_text").innerHTML="VoteDay contains <strong>no trackers</strong>, no advertising SDKs, and does not track your activity outside the app.";
+document.getElementById("rights_title").innerText="Your rights";
+document.getElementById("rights_1").innerText="Delete your account and data by uninstalling the app";
+document.getElementById("rights_2").innerText="Request data deletion by contacting us";
+document.getElementById("contact_title").innerText="Contact";
+document.getElementById("contact_text").innerText="For any questions about this privacy policy:";
+document.getElementById("back_btn").innerText="← Back to home";
+
+}
+
+}
+
+/* PARTICLES */
+
+const canvas=document.getElementById("particles");
+const ctx=canvas.getContext("2d");
+
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+
+window.addEventListener("resize",function(){
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+});
+
+let particles=[];
+
+for(let i=0;i<80;i++){
+particles.push({
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+r:Math.random()*2,
+d:Math.random()*0.5
+});
+}
+
+function draw(){
+ctx.clearRect(0,0,canvas.width,canvas.height);
+ctx.fillStyle="rgba(255,255,255,0.25)";
+
+particles.forEach(p=>{
+ctx.beginPath();
+ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+ctx.fill();
+p.y+=p.d;
+if(p.y>canvas.height){
+p.y=0;
+p.x=Math.random()*canvas.width;
+}
+});
+
+requestAnimationFrame(draw);
+}
+
+draw();
+
+</script>
+
+</body>
+</html>
