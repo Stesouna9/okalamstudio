@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VoteDay – OKALAM Studio</title>
+  <title>VoteDay â OKALAM Studio</title>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
     :root{--accent:#a78bff;--accent2:#7c3aed;--bg:#08060f;--card-bg:rgba(18,14,30,0.95);--text:#e8e4f0;--muted:#776c8a;--border:rgba(255,255,255,0.07)}
@@ -18,7 +18,7 @@
     .nav-right{display:flex;align-items:center;gap:8px}
     .lang-wrap{position:relative}
     .lang-wrap select{appearance:none;background:rgba(255,255,255,0.06);color:var(--text);border:1px solid var(--border);padding:6px 28px 6px 12px;border-radius:20px;cursor:pointer;font-size:13px;outline:none;transition:.2s}
-    .lang-wrap::after{content:'▾';position:absolute;right:10px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none;font-size:11px}
+    .lang-wrap::after{content:'â¾';position:absolute;right:10px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none;font-size:11px}
     .back-btn{display:inline-flex;align-items:center;gap:6px;padding:6px 16px;background:rgba(255,255,255,0.06);border:1px solid var(--border);border-radius:20px;color:var(--muted);text-decoration:none;font-size:13px;transition:.2s}
     .wrapper{position:relative;z-index:1}
     .hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:60px;padding:120px 80px 80px;max-width:1100px;margin:0 auto}
@@ -73,34 +73,34 @@
   <div class="nav-right">
     <div class="lang-wrap">
       <select id="langSel" onchange="setLang(this.value)">
-        <option value="en">🇬🇧 EN</option><option value="fr">🇫🇷 FR</option>
-        <option value="ja">🇯🇵 JA</option><option value="zh">🇨🇳 ZH</option>
-        <option value="es">🇪🇸 ES</option><option value="pt">🇵🇹 PT</option>
+        <option value="en">ð¬ð§ EN</option><option value="fr">ð«ð· FR</option>
+        <option value="ja">ð¯ðµ JA</option><option value="zh">ð¨ð³ ZH</option>
+        <option value="es">ðªð¸ ES</option><option value="pt">ðµð¹ PT</option>
       </select>
     </div>
-    <a href="index.html" class="back-btn">← <span id="nav_back">Home</span></a>
+    <a href="index.html" class="back-btn">â <span id="nav_back">Home</span></a>
   </div>
 </nav>
 <div class="wrapper">
   <section class="hero">
     <div class="hero-left">
-      <div class="app-badge"><span class="dot"></span><span id="badge">Social App • iOS</span></div>
+      <div class="app-badge"><span class="dot"></span><span id="badge">Social App â¢ iOS</span></div>
       <h1>VoteDay</h1>
-      <p class="hero-desc" id="hero_desc">A social app where the world answers the same question every day. Discover how the world thinks — one vote at a time.</p>
+      <p class="hero-desc" id="hero_desc">A social app where the world answers the same question every day. Discover how the world thinks â one vote at a time.</p>
       <div class="hero-meta">
-        <span class="meta-pill">📅 <span id="meta_release">Release 2026</span></span>
-        <span class="meta-pill">🍎 iOS</span>
-        <span class="meta-pill">🌍 <span id="meta_global">Global</span></span>
+        <span class="meta-pill">ð <span id="meta_release">Release 2026</span></span>
+        <span class="meta-pill">ð iOS</span>
+        <span class="meta-pill">ð <span id="meta_global">Global</span></span>
       </div>
       <div class="cta-row">
-        <span class="cta-primary" onclick="alert('Coming soon!')">🔔 <span id="cta_notify_text">Notify me</span></span>
-        <a href="privacy.html" class="cta-secondary">🔒 <span id="cta_privacy">Privacy</span></a>
+        <span class="cta-primary" onclick="alert('Coming soon!')">ð <span id="cta_notify_text">Notify me</span></span>
+        <a href="privacy.html" class="cta-secondary">ð <span id="cta_privacy">Privacy</span></a>
       </div>
     </div>
     <div class="hero-right">
       <div class="phone-wrap">
         <div class="phone-glow"></div>
-        <div class="phone-frame"><img src="vd_screen.png" alt="VoteDay screenshot"></div>
+        <div class="phone-frame"><img src="vd.png" alt="VoteDay screenshot"></div>
       </div>
     </div>
   </section>
@@ -110,20 +110,20 @@
       <h2 class="section-title" id="feat_title">One question. Every day. Everyone.</h2>
     </div>
     <div class="features-grid">
-      <div class="feature-card"><span class="feature-icon">🗳️</span><div class="feature-title" id="f1_title">Daily Vote</div><div class="feature-desc" id="f1_desc">One unique question every day. Simple, binary, powerful.</div></div>
-      <div class="feature-card"><span class="feature-icon">🌍</span><div class="feature-title" id="f2_title">Global Results</div><div class="feature-desc" id="f2_desc">Instantly see live results from around the world.</div></div>
-      <div class="feature-card"><span class="feature-icon">👥</span><div class="feature-title" id="f3_title">Friends</div><div class="feature-desc" id="f3_desc">Add friends with a unique code and compare votes.</div></div>
-      <div class="feature-card"><span class="feature-icon">💬</span><div class="feature-title" id="f4_title">Friend Chat</div><div class="feature-desc" id="f4_desc">Chat directly with your friends inside the app.</div></div>
-      <div class="feature-card"><span class="feature-icon">📖</span><div class="feature-title" id="f5_title">Vote History</div><div class="feature-desc" id="f5_desc">Revisit all past questions and your answers.</div></div>
-      <div class="feature-card"><span class="feature-icon">☁️</span><div class="feature-title" id="f6_title">iCloud Sync</div><div class="feature-desc" id="f6_desc">Securely synced across all your Apple devices.</div></div>
+      <div class="feature-card"><span class="feature-icon">ð³ï¸</span><div class="feature-title" id="f1_title">Daily Vote</div><div class="feature-desc" id="f1_desc">One unique question every day. Simple, binary, powerful.</div></div>
+      <div class="feature-card"><span class="feature-icon">ð</span><div class="feature-title" id="f2_title">Global Results</div><div class="feature-desc" id="f2_desc">Instantly see live results from around the world.</div></div>
+      <div class="feature-card"><span class="feature-icon">ð¥</span><div class="feature-title" id="f3_title">Friends</div><div class="feature-desc" id="f3_desc">Add friends with a unique code and compare votes.</div></div>
+      <div class="feature-card"><span class="feature-icon">ð¬</span><div class="feature-title" id="f4_title">Friend Chat</div><div class="feature-desc" id="f4_desc">Chat directly with your friends inside the app.</div></div>
+      <div class="feature-card"><span class="feature-icon">ð</span><div class="feature-title" id="f5_title">Vote History</div><div class="feature-desc" id="f5_desc">Revisit all past questions and your answers.</div></div>
+      <div class="feature-card"><span class="feature-icon">âï¸</span><div class="feature-title" id="f6_title">iCloud Sync</div><div class="feature-desc" id="f6_desc">Securely synced across all your Apple devices.</div></div>
     </div>
   </section>
   <section class="privacy-section">
     <div class="privacy-card">
-      <div class="privacy-icon">🔒</div>
+      <div class="privacy-icon">ð</div>
       <div class="privacy-text">
         <h3 id="priv_title">Your data, your control</h3>
-        <p id="priv_desc">No advertising. No tracking. No third-party data sharing. <a href="privacy.html" id="priv_link">Read the full privacy policy →</a></p>
+        <p id="priv_desc">No advertising. No tracking. No third-party data sharing. <a href="privacy.html" id="priv_link">Read the full privacy policy â</a></p>
       </div>
     </div>
   </section>
@@ -136,11 +136,11 @@
       <a href="privacy.html" id="f_privacy">Privacy Policy</a>
       <a href="mailto:support@okalam.com" id="f_contact">Contact</a>
     </div>
-    <div class="footer-copy" id="f_copy">© 2026 OKALAM Studio. All rights reserved.</div>
+    <div class="footer-copy" id="f_copy">Â© 2026 OKALAM Studio. All rights reserved.</div>
   </div>
 </footer>
 <script>
-const T={en:{nav_back:"Home",badge:"Social App • iOS",hero_desc:"A social app where the world answers the same question every day.",meta_release:"Release 2026",meta_global:"Global",cta_notify_text:"Notify me",cta_privacy:"Privacy",feat_eyebrow:"Features",feat_title:"One question. Every day. Everyone.",f1_title:"Daily Vote",f1_desc:"One unique question every day. Simple, binary, powerful.",f2_title:"Global Results",f2_desc:"Instantly see live results from around the world.",f3_title:"Friends",f3_desc:"Add friends with a unique code and compare votes.",f4_title:"Friend Chat",f4_desc:"Chat directly with your friends inside the app.",f5_title:"Vote History",f5_desc:"Revisit all past questions and your answers.",f6_title:"iCloud Sync",f6_desc:"Securely synced across all your Apple devices.",priv_title:"Your data, your control",priv_desc:"No advertising. No tracking. No third-party data sharing.",priv_link:"Read the full privacy policy →",f_home:"Home",f_privacy:"Privacy Policy",f_contact:"Contact",f_copy:"© 2026 OKALAM Studio. All rights reserved."},fr:{nav_back:"Accueil",badge:"App Sociale • iOS",hero_desc:"Une appli sociale où le monde répond à la même question chaque jour.",meta_release:"Sortie 2026",meta_global:"Mondial",cta_notify_text:"Me notifier",cta_privacy:"Confidentialité",feat_eyebrow:"Fonctionnalités",feat_title:"Une question. Chaque jour. Pour tous.",f1_title:"Vote quotidien",f1_desc:"Une question unique chaque jour. Simple, binaire, percutante.",f2_title:"Résultats mondiaux",f2_desc:"Résultats en direct du monde entier instantanément.",f3_title:"Amis",f3_desc:"Ajoutez des amis avec un code unique et comparez vos votes.",f4_title:"Chat entre amis",f4_desc:"Discutez directement avec vos amis dans l'application.",f5_title:"Historique",f5_desc:"Retrouvez toutes les questions passées et vos réponses.",f6_title:"Sync iCloud",f6_desc:"Synchronisé en sécurité sur tous vos appareils Apple.",priv_title:"Vos données, votre contrôle",priv_desc:"Aucune publicité. Aucun suivi. Aucun partage tiers.",priv_link:"Lire la politique de confidentialité →",f_home:"Accueil",f_privacy:"Politique de confidentialité",f_contact:"Contact",f_copy:"© 2026 OKALAM Studio. Tous droits réservés."},ja:{nav_back:"ホーム",badge:"ソーシャルアプリ • iOS",hero_desc:"世界中が毎日同じ質問に答えるソーシャルアプリ。",meta_release:"2026年リリース",meta_global:"グローバル",cta_notify_text:"通知を受け取る",cta_privacy:"プライバシー",feat_eyebrow:"機能",feat_title:"一つの質問。毎日。みんなで。",f1_title:"デイリー投票",f1_desc:"毎日ユニークな質問が一つ。シンプルで力強い。",f2_title:"グローバル結果",f2_desc:"世界中からのライブ結果を即座に確認。",f3_title:"フレンド",f3_desc:"ユニークなコードで友達を追加。",f4_title:"フレンドチャット",f4_desc:"アプリ内で友達と直接チャット。",f5_title:"投票履歴",f5_desc:"過去のすべての質問と回答を振り返る。",f6_title:"iCloud同期",f6_desc:"すべてのAppleデバイスで安全に同期。",priv_title:"あなたのデータ、あなたのコントロール",priv_desc:"広告なし。トラッキングなし。第三者への共有なし。",priv_link:"プライバシーポリシーを読む →",f_home:"ホーム",f_privacy:"プライバシーポリシー",f_contact:"お問い合わせ",f_copy:"© 2026 OKALAM Studio. 全著作権所有。"},zh:{nav_back:"首页",badge:"社交应用 • iOS",hero_desc:"全球用户每天回答同一个问题的社交应用。",meta_release:"2026年发布",meta_global:"全球",cta_notify_text:"提醒我",cta_privacy:"隐私",feat_eyebrow:"功能",feat_title:"一个问题。每天。所有人。",f1_title:"每日投票",f1_desc:"每天一个独特问题。简单、二选一、有力量。",f2_title:"全球结果",f2_desc:"即时查看全球实时结果。",f3_title:"好友",f3_desc:"用唯一代码添加好友并比较投票。",f4_title:"好友聊天",f4_desc:"在应用内直接与好友聊天。",f5_title:"投票历史",f5_desc:"回顾所有过去的问题和您的答案。",f6_title:"iCloud同步",f6_desc:"在所有Apple设备上安全同步。",priv_title:"您的数据，您的控制",priv_desc:"无广告。无追踪。不与第三方共享。",priv_link:"阅读完整隐私政策 →",f_home:"首页",f_privacy:"隐私政策",f_contact:"联系我们",f_copy:"© 2026 OKALAM Studio. 保留所有权利。"},es:{nav_back:"Inicio",badge:"App Social • iOS",hero_desc:"Una app social donde el mundo responde la misma pregunta cada día.",meta_release:"Lanzamiento 2026",meta_global:"Global",cta_notify_text:"Notificarme",cta_privacy:"Privacidad",feat_eyebrow:"Funcionalidades",feat_title:"Una pregunta. Cada día. Para todos.",f1_title:"Voto diario",f1_desc:"Una pregunta única cada día. Simple, binaria, poderosa.",f2_title:"Resultados globales",f2_desc:"Resultados en vivo de todo el mundo al instante.",f3_title:"Amigos",f3_desc:"Añade amigos con un código único y compara votos.",f4_title:"Chat con amigos",f4_desc:"Chatea directamente con tus amigos en la app.",f5_title:"Historial",f5_desc:"Revisa todas las preguntas pasadas y tus respuestas.",f6_title:"Sincronización iCloud",f6_desc:"Sincronizado de forma segura en todos tus dispositivos.",priv_title:"Tus datos, tu control",priv_desc:"Sin publicidad. Sin rastreo. Sin compartir con terceros.",priv_link:"Leer la política de privacidad →",f_home:"Inicio",f_privacy:"Política de privacidad",f_contact:"Contacto",f_copy:"© 2026 OKALAM Studio. Todos los derechos reservados."},pt:{nav_back:"Início",badge:"App Social • iOS",hero_desc:"Um app social onde o mundo responde à mesma pergunta todos os dias.",meta_release:"Lançamento 2026",meta_global:"Global",cta_notify_text:"Me notificar",cta_privacy:"Privacidade",feat_eyebrow:"Funcionalidades",feat_title:"Uma pergunta. Todo dia. Para todos.",f1_title:"Voto diário",f1_desc:"Uma pergunta única todos os dias. Simples, binária, poderosa.",f2_title:"Resultados globais",f2_desc:"Veja resultados ao vivo do mundo inteiro instantaneamente.",f3_title:"Amigos",f3_desc:"Adicione amigos com um código único e compare votos.",f4_title:"Chat com amigos",f4_desc:"Converse diretamente com seus amigos no app.",f5_title:"Histórico",f5_desc:"Reveja todas as perguntas passadas e suas respostas.",f6_title:"Sincronização iCloud",f6_desc:"Sincronizado com segurança em todos os seus dispositivos.",priv_title:"Seus dados, seu controle",priv_desc:"Sem publicidade. Sem rastreamento. Sem compartilhamento.",priv_link:"Ler a política de privacidade →",f_home:"Início",f_privacy:"Política de privacidade",f_contact:"Contato",f_copy:"© 2026 OKALAM Studio. Todos os direitos reservados."}};
+const T={en:{nav_back:"Home",badge:"Social App â¢ iOS",hero_desc:"A social app where the world answers the same question every day.",meta_release:"Release 2026",meta_global:"Global",cta_notify_text:"Notify me",cta_privacy:"Privacy",feat_eyebrow:"Features",feat_title:"One question. Every day. Everyone.",f1_title:"Daily Vote",f1_desc:"One unique question every day. Simple, binary, powerful.",f2_title:"Global Results",f2_desc:"Instantly see live results from around the world.",f3_title:"Friends",f3_desc:"Add friends with a unique code and compare votes.",f4_title:"Friend Chat",f4_desc:"Chat directly with your friends inside the app.",f5_title:"Vote History",f5_desc:"Revisit all past questions and your answers.",f6_title:"iCloud Sync",f6_desc:"Securely synced across all your Apple devices.",priv_title:"Your data, your control",priv_desc:"No advertising. No tracking. No third-party data sharing.",priv_link:"Read the full privacy policy â",f_home:"Home",f_privacy:"Privacy Policy",f_contact:"Contact",f_copy:"Â© 2026 OKALAM Studio. All rights reserved."},fr:{nav_back:"Accueil",badge:"App Sociale â¢ iOS",hero_desc:"Une appli sociale oÃ¹ le monde rÃ©pond Ã  la mÃªme question chaque jour.",meta_release:"Sortie 2026",meta_global:"Mondial",cta_notify_text:"Me notifier",cta_privacy:"ConfidentialitÃ©",feat_eyebrow:"FonctionnalitÃ©s",feat_title:"Une question. Chaque jour. Pour tous.",f1_title:"Vote quotidien",f1_desc:"Une question unique chaque jour. Simple, binaire, percutante.",f2_title:"RÃ©sultats mondiaux",f2_desc:"RÃ©sultats en direct du monde entier instantanÃ©ment.",f3_title:"Amis",f3_desc:"Ajoutez des amis avec un code unique et comparez vos votes.",f4_title:"Chat entre amis",f4_desc:"Discutez directement avec vos amis dans l'application.",f5_title:"Historique",f5_desc:"Retrouvez toutes les questions passÃ©es et vos rÃ©ponses.",f6_title:"Sync iCloud",f6_desc:"SynchronisÃ© en sÃ©curitÃ© sur tous vos appareils Apple.",priv_title:"Vos donnÃ©es, votre contrÃ´le",priv_desc:"Aucune publicitÃ©. Aucun suivi. Aucun partage tiers.",priv_link:"Lire la politique de confidentialitÃ© â",f_home:"Accueil",f_privacy:"Politique de confidentialitÃ©",f_contact:"Contact",f_copy:"Â© 2026 OKALAM Studio. Tous droits rÃ©servÃ©s."},ja:{nav_back:"ãã¼ã ",badge:"ã½ã¼ã·ã£ã«ã¢ããª â¢ iOS",hero_desc:"ä¸çä¸­ãæ¯æ¥åãè³ªåã«ç­ããã½ã¼ã·ã£ã«ã¢ããªã",meta_release:"2026å¹´ãªãªã¼ã¹",meta_global:"ã°ã­ã¼ãã«",cta_notify_text:"éç¥ãåãåã",cta_privacy:"ãã©ã¤ãã·ã¼",feat_eyebrow:"æ©è½",feat_title:"ä¸ã¤ã®è³ªåãæ¯æ¥ãã¿ããªã§ã",f1_title:"ãã¤ãªã¼æç¥¨",f1_desc:"æ¯æ¥ã¦ãã¼ã¯ãªè³ªåãä¸ã¤ãã·ã³ãã«ã§åå¼·ãã",f2_title:"ã°ã­ã¼ãã«çµæ",f2_desc:"ä¸çä¸­ããã®ã©ã¤ãçµæãå³åº§ã«ç¢ºèªã",f3_title:"ãã¬ã³ã",f3_desc:"ã¦ãã¼ã¯ãªã³ã¼ãã§åéãè¿½å ã",f4_title:"ãã¬ã³ããã£ãã",f4_desc:"ã¢ããªåã§åéã¨ç´æ¥ãã£ããã",f5_title:"æç¥¨å±¥æ­´",f5_desc:"éå»ã®ãã¹ã¦ã®è³ªåã¨åç­ãæ¯ãè¿ãã",f6_title:"iCloudåæ",f6_desc:"ãã¹ã¦ã®Appleããã¤ã¹ã§å®å¨ã«åæã",priv_title:"ããªãã®ãã¼ã¿ãããªãã®ã³ã³ãã­ã¼ã«",priv_desc:"åºåãªãããã©ãã­ã³ã°ãªããç¬¬ä¸èã¸ã®å±æãªãã",priv_link:"ãã©ã¤ãã·ã¼ããªã·ã¼ãèª­ã â",f_home:"ãã¼ã ",f_privacy:"ãã©ã¤ãã·ã¼ããªã·ã¼",f_contact:"ãåãåãã",f_copy:"Â© 2026 OKALAM Studio. å¨èä½æ¨©ææã"},zh:{nav_back:"é¦é¡µ",badge:"ç¤¾äº¤åºç¨ â¢ iOS",hero_desc:"å¨çç¨æ·æ¯å¤©åç­åä¸ä¸ªé®é¢çç¤¾äº¤åºç¨ã",meta_release:"2026å¹´åå¸",meta_global:"å¨ç",cta_notify_text:"æéæ",cta_privacy:"éç§",feat_eyebrow:"åè½",feat_title:"ä¸ä¸ªé®é¢ãæ¯å¤©ãææäººã",f1_title:"æ¯æ¥æç¥¨",f1_desc:"æ¯å¤©ä¸ä¸ªç¬ç¹é®é¢ãç®åãäºéä¸ãæåéã",f2_title:"å¨çç»æ",f2_desc:"å³æ¶æ¥çå¨çå®æ¶ç»æã",f3_title:"å¥½å",f3_desc:"ç¨å¯ä¸ä»£ç æ·»å å¥½åå¹¶æ¯è¾æç¥¨ã",f4_title:"å¥½åèå¤©",f4_desc:"å¨åºç¨åç´æ¥ä¸å¥½åèå¤©ã",f5_title:"æç¥¨åå²",f5_desc:"åé¡¾ææè¿å»çé®é¢åæ¨çç­æ¡ã",f6_title:"iCloudåæ­¥",f6_desc:"å¨ææAppleè®¾å¤ä¸å®å¨åæ­¥ã",priv_title:"æ¨çæ°æ®ï¼æ¨çæ§å¶",priv_desc:"æ å¹¿åãæ è¿½è¸ªãä¸ä¸ç¬¬ä¸æ¹å±äº«ã",priv_link:"éè¯»å®æ´éç§æ¿ç­ â",f_home:"é¦é¡µ",f_privacy:"éç§æ¿ç­",f_contact:"èç³»æä»¬",f_copy:"Â© 2026 OKALAM Studio. ä¿çæææå©ã"},es:{nav_back:"Inicio",badge:"App Social â¢ iOS",hero_desc:"Una app social donde el mundo responde la misma pregunta cada dÃ­a.",meta_release:"Lanzamiento 2026",meta_global:"Global",cta_notify_text:"Notificarme",cta_privacy:"Privacidad",feat_eyebrow:"Funcionalidades",feat_title:"Una pregunta. Cada dÃ­a. Para todos.",f1_title:"Voto diario",f1_desc:"Una pregunta Ãºnica cada dÃ­a. Simple, binaria, poderosa.",f2_title:"Resultados globales",f2_desc:"Resultados en vivo de todo el mundo al instante.",f3_title:"Amigos",f3_desc:"AÃ±ade amigos con un cÃ³digo Ãºnico y compara votos.",f4_title:"Chat con amigos",f4_desc:"Chatea directamente con tus amigos en la app.",f5_title:"Historial",f5_desc:"Revisa todas las preguntas pasadas y tus respuestas.",f6_title:"SincronizaciÃ³n iCloud",f6_desc:"Sincronizado de forma segura en todos tus dispositivos.",priv_title:"Tus datos, tu control",priv_desc:"Sin publicidad. Sin rastreo. Sin compartir con terceros.",priv_link:"Leer la polÃ­tica de privacidad â",f_home:"Inicio",f_privacy:"PolÃ­tica de privacidad",f_contact:"Contacto",f_copy:"Â© 2026 OKALAM Studio. Todos los derechos reservados."},pt:{nav_back:"InÃ­cio",badge:"App Social â¢ iOS",hero_desc:"Um app social onde o mundo responde Ã  mesma pergunta todos os dias.",meta_release:"LanÃ§amento 2026",meta_global:"Global",cta_notify_text:"Me notificar",cta_privacy:"Privacidade",feat_eyebrow:"Funcionalidades",feat_title:"Uma pergunta. Todo dia. Para todos.",f1_title:"Voto diÃ¡rio",f1_desc:"Uma pergunta Ãºnica todos os dias. Simples, binÃ¡ria, poderosa.",f2_title:"Resultados globais",f2_desc:"Veja resultados ao vivo do mundo inteiro instantaneamente.",f3_title:"Amigos",f3_desc:"Adicione amigos com um cÃ³digo Ãºnico e compare votos.",f4_title:"Chat com amigos",f4_desc:"Converse diretamente com seus amigos no app.",f5_title:"HistÃ³rico",f5_desc:"Reveja todas as perguntas passadas e suas respostas.",f6_title:"SincronizaÃ§Ã£o iCloud",f6_desc:"Sincronizado com seguranÃ§a em todos os seus dispositivos.",priv_title:"Seus dados, seu controle",priv_desc:"Sem publicidade. Sem rastreamento. Sem compartilhamento.",priv_link:"Ler a polÃ­tica de privacidade â",f_home:"InÃ­cio",f_privacy:"PolÃ­tica de privacidade",f_contact:"Contato",f_copy:"Â© 2026 OKALAM Studio. Todos os direitos reservados."}};
 function setLang(l){localStorage.setItem('okalam_lang',l);document.getElementById('langSel').value=l;const t=T[l];Object.keys(t).forEach(id=>{const el=document.getElementById(id);if(el)el.textContent=t[id];});}
 const sv=localStorage.getItem('okalam_lang'),bl=navigator.language.slice(0,2);setLang(sv||(['en','fr','ja','zh','es','pt'].includes(bl)?bl:'en'));
 const cv=document.getElementById('particles'),cx=cv.getContext('2d');function rsz(){cv.width=innerWidth;cv.height=innerHeight;}rsz();window.addEventListener('resize',rsz);
