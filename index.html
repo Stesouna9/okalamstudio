@@ -50,6 +50,50 @@
     .footer-links a{font-size:13px;color:var(--muted);text-decoration:none}
     .footer-copy{font-size:12px;color:rgba(102,108,128,0.4);width:100%}
     @media(max-width:600px){nav{padding:14px 18px}.footer-links{flex-wrap:wrap}}
+  
+    /* ═══ MOTUS ═══ */
+    .motus-section{position:relative;z-index:1;padding:80px 24px 40px;border-top:1px solid var(--border);}
+    .motus-wrap{max-width:560px;margin:0 auto;display:flex;flex-direction:column;align-items:center;}
+    .motus-header{text-align:center;margin-bottom:20px;}
+    .motus-eyebrow{font-size:10px;letter-spacing:5px;color:var(--muted);text-transform:uppercase;margin-bottom:10px;}
+    .motus-title{font-family:'Syne',sans-serif;font-size:36px;font-weight:800;letter-spacing:-1px;background:linear-gradient(135deg,#fff 30%,var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:6px;}
+    .motus-sub{font-size:13px;color:var(--muted);}
+    .motus-lang-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(141,234,255,0.07);border:0.5px solid rgba(141,234,255,0.2);border-radius:20px;padding:5px 14px;font-size:11px;letter-spacing:2px;color:var(--accent);text-transform:uppercase;margin-bottom:20px;}
+    .motus-legend{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-bottom:18px;font-size:11px;color:var(--muted);}
+    .ml-item{display:flex;align-items:center;gap:7px;}
+    .ml-cell{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:10px;font-weight:800;}
+    .mlc{background:#e84040;color:#fff;}.mlp{border:2.5px solid #f5c842;color:#f5c842;}.mla{background:rgba(255,255,255,0.06);color:var(--muted);border:1px solid var(--border);}
+    .motus-msg{height:24px;text-align:center;font-size:12px;color:var(--accent);letter-spacing:1px;margin-bottom:14px;width:100%;}
+    .motus-msg.err{color:#e84040;}.motus-msg.win{color:#4cd97b;}
+    .motus-grid{display:flex;flex-direction:column;gap:7px;margin-bottom:20px;}
+    .mrow{display:flex;gap:7px;}
+    .mcell{width:52px;height:52px;border-radius:50%;border:2px solid rgba(255,255,255,0.07);background:rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:19px;font-weight:800;color:var(--text);transition:border-color .15s,background .15s;user-select:none;}
+    .mcell.mar{border-color:rgba(141,234,255,0.2);background:rgba(141,234,255,0.04);}
+    .mcell.mfil{border-color:rgba(255,255,255,0.2);background:rgba(255,255,255,0.06);}
+    .mcell.mfix{background:#e84040;border-color:#e84040;color:#fff;}
+    .mcell.mcor{background:#e84040;border-color:#e84040;color:#fff;animation:mpop .2s ease;}
+    .mcell.mpre{background:transparent;border:3px solid #f5c842;color:#f5c842;animation:mpop .2s ease;}
+    .mcell.mabs{background:rgba(255,255,255,0.04);border-color:rgba(255,255,255,0.07);color:var(--muted);animation:mpop .2s ease;}
+    .mcell.minv{border-color:rgba(255,140,0,0.5);background:rgba(255,140,0,0.08);color:rgba(232,234,240,0.4);}
+    @keyframes mpop{0%{transform:scale(.85)}60%{transform:scale(1.08)}100%{transform:scale(1)}}
+    @keyframes mshake{0%,100%{transform:translateX(0)}10%{transform:translateX(-7px)}20%{transform:translateX(7px)}30%{transform:translateX(-6px)}40%{transform:translateX(6px)}50%{transform:translateX(-4px)}60%{transform:translateX(4px)}70%{transform:translateX(-2px)}80%{transform:translateX(2px)}}
+    .mshake{animation:mshake .6s ease;}
+    .motus-reveal{text-align:center;padding:12px 20px;background:rgba(232,64,64,0.1);border:1px solid rgba(232,64,64,0.2);border-radius:14px;margin-bottom:16px;display:none;width:100%;}
+    .motus-reveal.show{display:block;}
+    .motus-reveal p{font-size:11px;color:var(--muted);margin-bottom:4px;letter-spacing:1px;}
+    .motus-reveal strong{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;color:#e84040;letter-spacing:2px;}
+    .motus-keyboard{display:flex;flex-direction:column;gap:6px;align-items:center;margin-bottom:24px;width:100%;}
+    .mku-row{display:flex;gap:5px;}
+    .mkey{height:42px;min-width:30px;padding:0 7px;border-radius:8px;background:rgba(255,255,255,0.07);border:0.5px solid var(--border);color:var(--text);font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .15s;text-transform:uppercase;user-select:none;}
+    .mkey:hover{background:rgba(255,255,255,0.12);}.mkey:active{transform:scale(.95);}
+    .mkey.wide{min-width:48px;font-size:10px;letter-spacing:1px;}
+    .mkey.mkc{background:#e84040;border-color:#e84040;color:#fff;}
+    .mkey.mkp{background:rgba(245,200,66,0.2);border-color:#f5c842;color:#f5c842;}
+    .mkey.mka{background:rgba(255,255,255,0.02);border-color:rgba(255,255,255,0.03);color:var(--muted);}
+    .motus-actions{display:flex;gap:10px;}
+    .motus-btn{font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;padding:9px 22px;border-radius:20px;cursor:pointer;border:1px solid var(--border);background:rgba(141,234,255,0.08);color:var(--accent);transition:all .2s;}
+    .motus-btn:hover{background:rgba(141,234,255,0.15);}
+    @media(max-width:480px){.mcell{width:44px;height:44px;font-size:16px;}.mkey{height:38px;min-width:26px;font-size:11px;}}
   </style>
 </head>
 <body>
@@ -105,6 +149,37 @@
     </div>
   </section>
 </div>
+
+  <!-- ═══ MOTUS GAME SECTION ═══ -->
+  <section class="motus-section" id="motus">
+    <div class="motus-wrap">
+      <div class="motus-header">
+        <div class="motus-eyebrow" id="mu-eyebrow">OKALAM Studio — Mini-jeu</div>
+        <h2 class="motus-title">MOTUS</h2>
+        <p class="motus-sub" id="mu-sub">Trouvez le mot en 6 essais</p>
+      </div>
+      <div class="motus-lang-badge" id="mu-badge">🇫🇷 Français — 6 lettres</div>
+      <div class="motus-legend">
+        <div class="ml-item"><div class="ml-cell mlc">A</div><span id="mu-l1">Bonne lettre, bonne place</span></div>
+        <div class="ml-item"><div class="ml-cell mlp">A</div><span id="mu-l2">Mauvaise place</span></div>
+        <div class="ml-item"><div class="ml-cell mla">A</div><span id="mu-l3">Absente</span></div>
+      </div>
+      <div class="motus-msg" id="mu-msg">&nbsp;</div>
+      <div class="motus-grid" id="mu-grid"></div>
+      <div class="motus-reveal" id="mu-reveal">
+        <p id="mu-reveal-label">Le mot était</p>
+        <strong id="mu-revealed"></strong>
+      </div>
+      <div class="motus-keyboard">
+        <div class="mku-row" id="mku-1"></div>
+        <div class="mku-row" id="mku-2"></div>
+        <div class="mku-row" id="mku-3"></div>
+      </div>
+      <div class="motus-actions">
+        <button class="motus-btn" onclick="motusNewGame()" id="mu-newbtn">Nouveau mot</button>
+      </div>
+    </div>
+  </section>
 <footer>
   <div class="footer-logo">OKALAM STUDIO</div>
   <div class="footer-links">
@@ -128,6 +203,188 @@ function toggleMusic(){const a=document.getElementById('bgMusic'),b=document.get
 const cv=document.getElementById('particles'),cx=cv.getContext('2d');function rsz(){cv.width=innerWidth;cv.height=innerHeight;}rsz();window.addEventListener('resize',rsz);
 const pts=Array.from({length:80},()=>({x:Math.random()*innerWidth,y:Math.random()*innerHeight,r:Math.random()*1.4+.3,vx:(Math.random()-.5)*.1,vy:-Math.random()*.25-.05,o:Math.random()*.3+.08}));
 (function a(){cx.clearRect(0,0,cv.width,cv.height);pts.forEach(p=>{cx.beginPath();cx.arc(p.x,p.y,p.r,0,Math.PI*2);cx.fillStyle='rgba(141,234,255,'+p.o+')';cx.fill();p.x+=p.vx;p.y+=p.vy;if(p.y<-10){p.y=cv.height+10;p.x=Math.random()*cv.width;}if(p.x<-10)p.x=cv.width+10;if(p.x>cv.width+10)p.x=-10;});requestAnimationFrame(a);})();
+
+
+// ════════════════════════════════════════
+//  MOTUS — OKALAM STUDIO
+// ════════════════════════════════════════
+
+const MOTUS_WORDS = {
+  fr:{cols:6,words:["BOUCHE","VISAGE","ENFANT","COPINE","GARCON","FRAISE","CERISE","GATEAU","BEURRE","VIANDE","ORANGE","MAISON","BUREAU","JARDIN","RIDEAU","MIROIR","CHAISE","PROJET","METIER","PATRON","EQUIPE","TRAINS","MARCHE","CINEMA","MUSEES","HOTELS","PLAGES","SOLEIL","ARBRES","FLEURS","NUAGES","ESPOIR","RISQUE","CHANCE","BASKET","TENNIS","COURSE","VOYAGE","LIVRES","PHOTOS","DESSIN","REVEIL","SOIREE","PARTIR","RETOUR","ACHATS","PARLER","DORMIR","DANSER","RESTER","PENSER","SAVOIR","BRILLE","TRISTE","RAPIDE","SIMPLE","FACILE","NORMAL","ANCIEN","PROPRE","UNIQUE","OUVRIR","FERMER","MONTER","TOMBER","PORTER","GARDER","DONNER","ENTREE","SORTIE","MILIEU","CENTRE","GAUCHE","DROITE","DEVANT","JAMAIS","ENCORE","TOMATE","SALADE","POULET","JAMBON","LAMPES","CANAPE","CAHIER","CLASSE","AVIONS","ROUTES","AMOURS","BEAUTE","SEREIN","COUPLE","PARENT","FRERES","SOEURS","COUSIN","FEMMES","HOMMES","JEUNES","AGENDA","STAGES","BUDGET","EXAMEN","LECONS","ECOLES","GARAGE","TIROIR","BALCON","BUFFET","CITRON","FRITES","TARTES","GLACES","YAOURT","SUCRES","POMMES","GRATIN","POTAGE","SOUPES","RAGOUT","PAELLA","PIZZAS","QUICHE","FORETS","CHAMPS","NEIGES","VALLEE","DESERT","JUNGLE","MARAIS","CORAIL","JOYEUX","TIMIDE","COLERE","SAMEDI","DEMAIN","SAVANT","BRUITS","ODEURS","IMAGES","VIDEOS","JOUETS","BALADE","BALLON","SPORTS","HEURES","ANNEES","PARDON","LANCER","COURIR","CHANTE","NOMMER","VISITE","VILLES","CHALET","TENDRE","GENTIL","AMICAL","BONBON","FORCES","TEXTES","STYLOS"
+  ]},
+  en:{cols:5,words:["BREAD","WATER","HOUSE","CHAIR","TABLE","SMILE","LIGHT","MUSIC","DANCE","BEACH","CLOUD","DREAM","HEART","PEACE","SLEEP","TRAIN","APPLE","BRAVE","CANDY","CLEAN","CLOCK","COAST","CORAL","CREAM","CROSS","CURVE","DAILY","EARLY","EIGHT","ENJOY","ENTRY","EVERY","EXACT","EXTRA","FAITH","FANCY","FEAST","FIELD","FIGHT","FINAL","FIRST","FLAME","FLASH","FLOOR","FLOUR","FOCUS","FORCE","FRAME","FRESH","FRONT","FRUIT","GAMES","GHOST","GIANT","GLASS","GLOBE","GRACE","GRADE","GRAIN","GRAND","GRAPE","GRASS","GRAVE","GREAT","GREEN","HAPPY","HONEY","HONOR","HORSE","HOTEL","HUMAN","HUMOR","IMAGE","JUMPS","LARGE","LAUGH","LAYER","LEARN","LEVEL","LOCAL","LUCKY","LUNCH","MAGIC","MAJOR","MANGO","MATCH","MONEY","MONTH","MOUSE","MOUTH","NIGHT","NOBLE","NORTH","NOVEL","NURSE","OCEAN","OLIVE","ORDER","OUTER","PAINT","PAPER","PARTY","PASTA","PEACE","PEACH","PIZZA","PLACE","PLAIN","PLANE","PLANT","PLATE","POWER","PRIDE","PRIZE","PROUD","QUEEN","QUICK","QUIET","RAISE","RANGE","REACH","READY","RIDER","RIVER","ROCKY","ROUND","ROYAL","SALAD","SAUCE","SCALE","SCENE","SHADE","SHAKE","SHARP","SHEEP","SHINE","SHIRT","SHORT","SIGHT","SKILL","SLIDE","SMALL","SMART","SMELL","SMOKE","SOLID","SORRY","SOUTH","SPARE","SPEAK","SPEED","SPICE","STILL","STORM","STORY","SUGAR","SUPER","SWEEP","SWIFT","TASTE","TEACH","TEETH","THEME","THICK","THINK","THREE","THROW","TIGER","TIGHT","TODAY","TOWER","TRUST","TRUTH","TWICE","UNITE","UPPER","VALID","VALUE","VISIT","VITAL","VOICE","WASTE","WATCH","WEIRD","WHEAT","WHEEL","WHERE","WHICH","WHITE","WHOLE","WITCH","WOMEN","WOODS","WORTH","WOULD","WRITE","WRONG","YACHT","YIELD"
+  ]},
+  es:{cols:6,words:["CIUDAD","TIEMPO","QUESOS","FRESAS","PASTEL","HELADO","JARDIN","ESPEJO","MUSICA","BAILAR","CANTAR","DORMIR","CORRER","VIAJAR","COCINA","PLAYA","FLORES","AMIGOS","NINOS","MADRE","COLEGIO","TRABAJO","DINERO","LIBROS","FUTBOL","TENIS","CARROS","TRENES","AVIONES","PARQUE","TEATRO","GRANDE","BONITA","RAPIDO","FUERTE","ALEGRE","CAMISA","CUERPO","TIERRA","BOSQUE","CAMPO","ESTRELLAS","MARTES","VIERNES","SABADO","DOMINGO","VERANO","INVIERNO","COLORES"
+  ].filter(w=>/^[A-Z]{6}$/.test(w))},
+  pt:{cols:6,words:["CIDADE","PREDIO","ESCOLA","AMIGOS","SONHOS","BELEZA","CANTAR","DANCAR","CORRER","VIAGEM","MUSICA","LIVROS","FLORES","QUEIJO","PASTEL","GELADO","JARDIM","CADEIRA","COZINHA","FAMILIA","FILHOS","IRMAOS","COLEGA","PROJETO","TRECHO","PRAIA","CAMPO","NUVENS","CHUVA","VENTO","CALOR","VERAO","OUTONO","MANHA","FELIZ","TRISTE","FORTE","RAPIDO","SIMPLES","BONITO","ANTIGO"
+  ].filter(w=>/^[A-Z]{6}$/.test(w))},
+  ja:{cols:5,words:["SUSHI","RAMEN","SAKUR","NIHON","TOKYO","OSAKA","KYOTO","ANIME","MANGA","HAIKU","BENTO","KANJI","MATSU","FUTON","SENSU","TATAM","KABUK","MOCHI","UDON","TEMPU","GYOZA","KAWAI","SUGOI","NATSUK","TANOSH","URESH","WABIS","YUGEN","AWARE","IKIGA"
+  ].filter(w=>/^[A-Z]{5}$/.test(w))},
+  zh:{cols:5,words:["NIHAO","PENGY","JIATI","GONGU","XUEX","YINYU","JINGJ","WENHU","JIANK","LVXIN","RENSH","ZHIHU","KAIXIN","BEISH","DONGH","LIJET","CHUNJ","ZAOFU","WANFA","XIUXI","GONGZ","LINJI","HAIZI","FUQIN","MUQIN","LAOSH","TUANJ","DIANS","JIAOZ","BAOZI"
+  ].filter(w=>/^[A-Z]{5}$/.test(w))}
+};
+
+const MOTUS_UI={fr:{badge:n=>"🇫🇷 Français — "+n+" lettres",l1:"Bonne lettre, bonne place",l2:"Mauvaise place",l3:"Absente",reveal:"Le mot était",newbtn:"Nouveau mot",invalid:"Mot inconnu !",short:"Mot trop court !",checking:"…",win:"🎉 Bravo !",lose:"Dommage !",sub:"Trouvez le mot en 6 essais"},en:{badge:n=>"🇬🇧 English — "+n+" letters",l1:"Right letter, right place",l2:"Wrong place",l3:"Not in word",reveal:"The word was",newbtn:"New word",invalid:"Unknown word!",short:"Too short!",checking:"…",win:"🎉 Well done!",lose:"Bad luck!",sub:"Find the word in 6 tries"},es:{badge:n=>"🇪🇸 Español — "+n+" letras",l1:"Letra correcta",l2:"Posición incorrecta",l3:"Letra ausente",reveal:"La palabra era",newbtn:"Nueva palabra",invalid:"¡Palabra desconocida!",short:"¡Muy corta!",checking:"…",win:"🎉 ¡Bravo!",lose:"¡Mala suerte!",sub:"Adivina la palabra"},pt:{badge:n=>"🇵🇹 Português — "+n+" letras",l1:"Letra certa",l2:"Posição errada",l3:"Ausente",reveal:"A palavra era",newbtn:"Nova palavra",invalid:"Palavra desconhecida!",short:"Muito curta!",checking:"…",win:"🎉 Parabéns!",lose:"Que pena!",sub:"Descubra a palavra"},ja:{badge:n=>"🇯🇵 日本語 — "+n+"文字",l1:"正しい位置",l2:"位置が違う",l3:"含まれない",reveal:"答えは",newbtn:"新しい言葉",invalid:"不明！",short:"短すぎ！",checking:"…",win:"🎉 正解！",lose:"残念！",sub:"6回以内に当てよう"},zh:{badge:n=>"🇨🇳 中文 — "+n+"个字符",l1:"位置正确",l2:"位置错误",l3:"不在单词中",reveal:"答案是",newbtn:"新单词",invalid:"未知单词！",short:"太短！",checking:"…",win:"🎉 太棒了！",lose:"很遗憾！",sub:"6次内猜出单词"}};
+
+const MOTUS_ROWS=6;
+let mLang='fr',mCols=6,mTarget='',mRow=0,mGuess=[],mOver=false,mKeyStates={},mCache={};
+
+function motusNewGame(){
+  mLang=localStorage.getItem('okalam_lang')||navigator.language.slice(0,2)||'fr';
+  if(!MOTUS_WORDS[mLang])mLang='fr';
+  const cfg=MOTUS_WORDS[mLang];
+  mCols=cfg.cols;
+  const list=cfg.words.filter(w=>w.length===mCols);
+  mTarget=list[Math.floor(Math.random()*list.length)];
+  mRow=0;mGuess=[];mOver=false;mKeyStates={};
+  motusApplyUI();motusBuildGrid();motusBuildKB();
+  motusSetMsg(' ');
+  document.getElementById('mu-reveal').classList.remove('show');
+  document.querySelectorAll('.mkey').forEach(k=>{k.className='mkey'+(['⌫','✓'].includes(k.textContent)?' wide':'');});
+  motusShowFirst();motusActivateRow();
+}
+
+function motusApplyUI(){
+  const u=MOTUS_UI[mLang]||MOTUS_UI.fr;
+  document.getElementById('mu-badge').textContent=u.badge(mCols);
+  document.getElementById('mu-l1').textContent=u.l1;
+  document.getElementById('mu-l2').textContent=u.l2;
+  document.getElementById('mu-l3').textContent=u.l3;
+  document.getElementById('mu-reveal-label').textContent=u.reveal;
+  document.getElementById('mu-newbtn').textContent=u.newbtn;
+  document.getElementById('mu-sub').textContent=u.sub;
+}
+
+function motusBuildGrid(){
+  const g=document.getElementById('mu-grid');g.innerHTML='';
+  const sz=mCols<=5?54:50;
+  document.querySelectorAll('.mcell').forEach(c=>c.style.width=sz+'px');
+  for(let r=0;r<MOTUS_ROWS;r++){
+    const row=document.createElement('div');row.className='mrow';row.id='mr-'+r;
+    for(let c=0;c<mCols;c++){const cell=document.createElement('div');cell.className='mcell';cell.id='mc-'+r+'-'+c;cell.style.width=sz+'px';cell.style.height=sz+'px';row.appendChild(cell);}
+    g.appendChild(row);
+  }
+}
+
+function motusBuildKB(){
+  const rows=[['A','Z','E','R','T','Y','U','I','O','P'],['Q','S','D','F','G','H','J','K','L','M'],['⌫','W','X','C','V','B','N','✓']];
+  rows.forEach((keys,ri)=>{
+    const row=document.getElementById('mku-'+(ri+1));row.innerHTML='';
+    keys.forEach(k=>{const btn=document.createElement('button');btn.className='mkey'+(['⌫','✓'].includes(k)?' wide':'');btn.textContent=k;btn.addEventListener('click',()=>motusKey(k));row.appendChild(btn);});
+  });
+}
+
+function motusShowFirst(){
+  const c=document.getElementById('mc-'+mRow+'-0');if(c){c.className='mcell mfix';c.textContent=mTarget[0];}
+  motusUpdateKey(mTarget[0],'correct');
+}
+
+function motusActivateRow(){
+  for(let c=1;c<mCols;c++){const cell=document.getElementById('mc-'+mRow+'-'+c);if(cell)cell.classList.add('mar');}
+}
+
+function motusRender(){
+  for(let c=0;c<mCols;c++){
+    const cell=document.getElementById('mc-'+mRow+'-'+c);
+    if(c===0){cell.className='mcell mfix';cell.textContent=mTarget[0];continue;}
+    cell.className='mcell mar';
+    if(c<mGuess.length){cell.textContent=mGuess[c];cell.classList.add('mfil');}else cell.textContent='';
+  }
+}
+
+function motusKey(key){
+  if(mOver)return;
+  if(key==='⌫'||key==='Backspace'){if(mGuess.length>0){mGuess.pop();motusRender();}}
+  else if(key==='✓'||key==='Enter'){motusSubmit();}
+  else if(/^[A-Z]$/.test(key)&&mGuess.length<mCols){
+    if(mGuess.length===0)mGuess.push(mTarget[0]);
+    if(mGuess.length<mCols){mGuess.push(key);motusRender();if(mGuess.length===mCols)setTimeout(motusSubmit,130);}
+  }
+}
+
+async function motusSubmit(){
+  if(mOver)return;
+  if(mGuess.length===0)mGuess=[mTarget[0]];
+  const u=MOTUS_UI[mLang]||MOTUS_UI.fr;
+  if(mGuess.length<mCols){motusShowMsg(u.short,'err');motusShake();return;}
+  const word=mGuess.join('');
+  motusSetMsg(u.checking);
+  const valid=await motusCheck(word);
+  if(!valid){motusShowMsg(u.invalid,'err');motusShakeInvalid();return;}
+  motusSetMsg(' ');
+  const res=motusResult(word,mTarget);
+  for(let c=0;c<mCols;c++){
+    setTimeout(()=>{const cell=document.getElementById('mc-'+mRow+'-'+c);cell.textContent=word[c];cell.className='mcell m'+res[c].substring(0,3);},c*80);
+  }
+  for(let i=0;i<mCols;i++)motusUpdateKey(word[i],res[i]);
+  const won=res.every(r=>r==='correct');
+  setTimeout(()=>{
+    if(won){motusSetMsg(u.win,'win');mOver=true;}
+    else{mRow++;mGuess=[mTarget[0]];
+      if(mRow>=MOTUS_ROWS){mOver=true;motusSetMsg(u.lose,'err');document.getElementById('mu-revealed').textContent=mTarget;document.getElementById('mu-reveal').classList.add('show');}
+      else{motusShowFirst();motusActivateRow();motusSetMsg(' ');}
+    }
+  },mCols*80+100);
+}
+
+async function motusCheck(word){
+  const k=mLang+':'+word;
+  if(k in mCache)return mCache[k];
+  const cfg=MOTUS_WORDS[mLang];
+  if(cfg.words.includes(word)){mCache[k]=true;return true;}
+  const wl={fr:'fr',en:'en',es:'es',pt:'pt'};
+  if(!wl[mLang]){mCache[k]=true;return true;}
+  try{
+    const r=await fetch('https://'+wl[mLang]+'.wiktionary.org/w/api.php?action=query&titles='+encodeURIComponent(word.toLowerCase())+'&format=json&origin=*',{signal:AbortSignal.timeout(4000)});
+    const d=await r.json();const pages=d?.query?.pages??{};
+    const ok=!Object.values(pages).some(p=>'missing'in p);
+    mCache[k]=ok;return ok;
+  }catch{mCache[k]=true;return true;}
+}
+
+function motusResult(guess,target){
+  const res=Array(mCols).fill('absent');const ok=Array(mCols).fill(false);const rem={};
+  for(let i=0;i<mCols;i++)if(guess[i]===target[i]){res[i]='correct';ok[i]=true;}
+  for(let i=0;i<mCols;i++)if(!ok[i])rem[target[i]]=(rem[target[i]]||0)+1;
+  for(let i=0;i<mCols;i++){if(res[i]==='correct')continue;if(rem[guess[i]]>0){res[i]='present';rem[guess[i]]--;}}
+  return res;
+}
+
+function motusShake(){const row=document.getElementById('mr-'+mRow);row.classList.add('mshake');setTimeout(()=>row.classList.remove('mshake'),600);}
+
+function motusShakeInvalid(){
+  const row=document.getElementById('mr-'+mRow);
+  for(let c=1;c<mCols;c++){const cell=document.getElementById('mc-'+mRow+'-'+c);if(cell?.textContent)cell.classList.add('minv');}
+  row.classList.add('mshake');
+  setTimeout(()=>{row.classList.remove('mshake');row.classList.add('mshake');
+    setTimeout(()=>{row.classList.remove('mshake');
+      for(let c=1;c<mCols;c++){const cell=document.getElementById('mc-'+mRow+'-'+c);if(cell){cell.classList.remove('minv');cell.classList.add('mar');if(mGuess[c])cell.classList.add('mfil');}}
+      motusSetMsg(' ');
+    },600);
+  },650);
+}
+
+function motusUpdateKey(letter,state){
+  const p={correct:3,present:2,absent:1};
+  if(!mKeyStates[letter]||p[state]>p[mKeyStates[letter]])mKeyStates[letter]=state;
+  document.querySelectorAll('.mkey').forEach(k=>{if(k.textContent===letter){k.classList.remove('mkc','mkp','mka');k.classList.add('mk'+mKeyStates[letter].substring(0,1));}});
+}
+
+function motusSetMsg(t,type=''){const el=document.getElementById('mu-msg');el.textContent=t;el.className='motus-msg'+(type?' '+type:'');}
+function motusShowMsg(t,type=''){motusSetMsg(t,type);setTimeout(()=>motusSetMsg(' '),2200);}
+
+document.addEventListener('keydown',e=>{
+  if(!document.getElementById('motus'))return;
+  const rect=document.getElementById('motus').getBoundingClientRect();
+  if(rect.top>window.innerHeight||rect.bottom<0)return;
+  if(e.ctrlKey||e.metaKey||e.altKey)return;
+  if(e.key==='Backspace'){motusKey('Backspace');return;}
+  const l=e.key.toUpperCase();if(/^[A-Z]$/.test(l))motusKey(l);
+});
+
+window.addEventListener('storage',e=>{if(e.key==='okalam_lang')motusNewGame();});
+motusNewGame();
+
 </script>
 </body>
 </html>
