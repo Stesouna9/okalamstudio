@@ -94,6 +94,13 @@
     .motus-btn{font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;padding:9px 22px;border-radius:20px;cursor:pointer;border:1px solid var(--border);background:rgba(141,234,255,0.08);color:var(--accent);transition:all .2s;}
     .motus-btn:hover{background:rgba(141,234,255,0.15);}
     @media(max-width:480px){.mcell{width:44px;height:44px;font-size:16px;}.mkey{height:38px;min-width:26px;font-size:11px;}}
+  
+    /* ═══ CONFETTI WIN ═══ */
+    #sutom-confetti{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999;overflow:hidden;}
+    .conf-piece{position:absolute;width:10px;height:10px;top:-10px;opacity:0;animation:conf-fall linear forwards;}
+    @keyframes conf-fall{0%{opacity:1;transform:translateY(0) rotate(0deg) scale(1);}100%{opacity:0;transform:translateY(110vh) rotate(720deg) scale(0.5);}}
+    .sutom-win-flash{animation:sutom-flash .4s ease;}
+    @keyframes sutom-flash{0%{filter:brightness(1);}50%{filter:brightness(1.4);}100%{filter:brightness(1);}}
   </style>
 </head>
 <body>
@@ -155,7 +162,7 @@
     <div class="motus-wrap">
       <div class="motus-header">
         <div class="motus-eyebrow" id="mu-eyebrow">OKALAM Studio — Mini-jeu</div>
-        <h2 class="motus-title">MOTUS</h2>
+        <h2 class="motus-title">SUTOM</h2>
         <p class="motus-sub" id="mu-sub">Trouvez le mot en 6 essais</p>
       </div>
       <div class="motus-lang-badge" id="mu-badge">🇫🇷 Français — 6 lettres</div>
@@ -206,7 +213,7 @@ const pts=Array.from({length:80},()=>({x:Math.random()*innerWidth,y:Math.random(
 
 
 // ════════════════════════════════════════
-//  MOTUS — OKALAM STUDIO
+//  SUTOM — OKALAM STUDIO
 // ════════════════════════════════════════
 
 const MOTUS_WORDS = {
@@ -319,7 +326,7 @@ async function motusSubmit(){
   for(let i=0;i<mCols;i++)motusUpdateKey(word[i],res[i]);
   const won=res.every(r=>r==='correct');
   setTimeout(()=>{
-    if(won){motusSetMsg(u.win,'win');mOver=true;}
+    if(won){motusSetMsg(u.win,'win');mOver=true;sutomConfetti();sutomWinFlash();}
     else{mRow++;mGuess=[mTarget[0]];
       if(mRow>=MOTUS_ROWS){mOver=true;motusSetMsg(u.lose,'err');document.getElementById('mu-revealed').textContent=mTarget;document.getElementById('mu-reveal').classList.add('show');}
       else{motusShowFirst();motusActivateRow();motusSetMsg(' ');}
@@ -385,6 +392,47 @@ document.addEventListener('keydown',e=>{
 window.addEventListener('storage',e=>{if(e.key==='okalam_lang')motusNewGame();});
 motusNewGame();
 
+
+function sutomConfetti(){
+  const el=document.getElementById('sutom-confetti');
+  if(!el)return;
+  el.innerHTML='';
+  const colors=['#e84040','#f5c842','#8deaff','#4cd97b','#ff6b9d','#a78bff','#ff9f43','#ffffff'];
+  const shapes=['circle','square','triangle'];
+  for(let i=0;i<120;i++){
+    const piece=document.createElement('div');
+    piece.className='conf-piece';
+    const color=colors[Math.floor(Math.random()*colors.length)];
+    const shape=shapes[Math.floor(Math.random()*shapes.length)];
+    const size=6+Math.random()*8;
+    const left=Math.random()*100;
+    const delay=Math.random()*0.8;
+    const dur=1.2+Math.random()*1.2;
+    piece.style.cssText=`left:${left}%;width:${size}px;height:${size}px;background:${color};animation-duration:${dur}s;animation-delay:${delay}s;`;
+    if(shape==='circle')piece.style.borderRadius='50%';
+    else if(shape==='triangle'){piece.style.background='transparent';piece.style.borderLeft=`${size/2}px solid transparent`;piece.style.borderRight=`${size/2}px solid transparent`;piece.style.borderBottom=`${size}px solid ${color}`;piece.style.width='0';piece.style.height='0';}
+    el.appendChild(piece);
+  }
+  setTimeout(()=>{el.innerHTML='';},3500);
+}
+
+function sutomWinFlash(){
+  const grid=document.getElementById('mu-grid');
+  if(!grid)return;
+  grid.classList.add('sutom-win-flash');
+  setTimeout(()=>grid.classList.remove('sutom-win-flash'),400);
+  // Faire pulser les cellules gagnantes
+  const row=document.getElementById('mr-'+mRow);
+  if(!row)return;
+  const cells=row.querySelectorAll('.mcell');
+  cells.forEach((cell,i)=>{
+    setTimeout(()=>{
+      cell.style.transform='scale(1.15)';
+      cell.style.transition='transform 0.15s ease';
+      setTimeout(()=>{ cell.style.transform='scale(1)'; },150);
+    },i*60);
+  });
+}
 </script>
 </body>
 </html>
