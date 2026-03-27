@@ -1,0 +1,37 @@
+name: Update Creator Stats
+
+on:
+  schedule:
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+
+jobs:
+  update-stats:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Fetch YouTube stats
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+        run: python scripts/fetch_stats.py
+
+      - name: Commit and push if data changed
+        run: |
+          git config --global user.name "OKALAM Stats Bot"
+          git config --global user.email "bot@okalamstudio.com"
+          git add data/creators.json
+          git diff --staged --quiet || git commit -m "📊 Auto-update creator stats [$(date '+%Y-%m-%d')]"
+          git push

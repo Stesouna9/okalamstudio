@@ -1,0 +1,78 @@
+{
+  "tesla-burger": {
+    "name": "Tesla Burger",
+    "tagline": "Tech, test & énergie — l'univers des véhicules électriques et du solaire",
+    "handle_youtube": "@TeslaBurger",
+    "handle_instagram": "@tesla_burger",
+    "handle_tiktok": "@teslaburger1",
+    "url_youtube": "https://youtube.com/@TeslaBurger",
+    "url_instagram": "https://www.instagram.com/tesla_burger",
+    "url_tiktok": "https://www.tiktok.com/@teslaburger1",
+    "country": "FR",
+    "niche": ["Tech", "Véhicules électriques", "Énergie solaire", "Unboxing", "Tests"],
+    "youtube": {
+      "channel_id": "UCrbI9_VkZ2ndzvgmKN3SfIw",
+      "handle": "@TeslaBurger",
+      "url": "https://youtube.com/@TeslaBurger",
+      "subscribers_raw": 11800,
+      "subscribers": "11,8k",
+      "total_views_raw": 500000,
+      "total_views": "500k",
+      "video_count": 120,
+      "title": "Tesla Burger"
+    },
+    "instagram": {
+      "handle": "@tesla_burger",
+      "url": "https://www.instagram.com/tesla_burger",
+      "followers": "7k+",
+      "followers_raw": 7000,
+      "engagement_rate": "—"
+    },
+    "tiktok": {
+      "handle": "@teslaburger1",
+      "url": "https://www.tiktok.com/@teslaburger1",
+      "followers": "—",
+      "avg_views": "—"
+    },
+    "last_updated_youtube": "2026-03",
+    "last_updated_manual": "2026-03"
+  },
+  "elisa-running": {
+    "name": "Elisa is running",
+    "tagline": "Course à pied & partage — inspirer chacun à chausser ses baskets",
+    "handle_youtube": "@elisaisrunning",
+    "handle_instagram": "@elisa_is_running",
+    "handle_tiktok": "@elisa.is.running",
+    "url_youtube": "https://youtube.com/@elisaisrunning",
+    "url_instagram": "https://www.instagram.com/elisa_is_running",
+    "url_tiktok": "https://www.tiktok.com/@elisa.is.running",
+    "country": "FR",
+    "niche": ["Running", "Course à pied", "Sport", "Lifestyle", "Motivation"],
+    "youtube": {
+      "channel_id": null,
+      "handle": "@elisaisrunning",
+      "url": "https://youtube.com/@elisaisrunning",
+      "subscribers_raw": 13800,
+      "subscribers": "13,8k",
+      "total_views_raw": 4127846,
+      "total_views": "4,1M",
+      "video_count": 546,
+      "title": "Elisa is running"
+    },
+    "instagram": {
+      "handle": "@elisa_is_running",
+      "url": "https://www.instagram.com/elisa_is_running",
+      "followers": "—",
+      "followers_raw": 0,
+      "engagement_rate": "—"
+    },
+    "tiktok": {
+      "handle": "@elisa.is.running",
+      "url": "https://www.tiktok.com/@elisa.is.running",
+      "followers": "—",
+      "avg_views": "—"
+    },
+    "last_updated_youtube": "2026-03",
+    "last_updated_manual": "2026-03"
+  }
+}
