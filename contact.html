@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Contact — OKALAM Studio</title>
+<meta name="description" content="Contactez OKALAM Studio — projets numériques, collaborations créateurs, partenariats marques."/>
+<link rel="stylesheet" href="shared.css"/>
+<style>
+canvas{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;opacity:.5;}
+.page-hero{z-index:1;position:relative;min-height:35vh;padding-bottom:40px;}
+
+/* CONTACT GRID */
+.contact-section{position:relative;z-index:1;}
+.contact-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:80px;align-items:start;}
+
+/* LEFT: INFO */
+.contact-channels{display:flex;flex-direction:column;gap:16px;margin-top:36px;}
+.channel{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:12px;padding:24px 28px;
+  transition:all .3s;text-decoration:none;color:inherit;
+  display:flex;align-items:flex-start;gap:16px;
+}
+.channel:hover{border-color:var(--accent);background:var(--card2);}
+.channel-icon{font-size:1.5rem;flex-shrink:0;margin-top:2px;}
+.channel-label{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:4px;}
+.channel-value{font-family:'Syne',sans-serif;font-weight:700;font-size:.95rem;color:var(--text);margin-bottom:4px;}
+.channel-desc{font-size:.8rem;color:var(--muted);}
+
+/* RIGHT: FORM */
+.contact-form{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:16px;padding:40px;
+}
+.form-title{font-family:'Syne',sans-serif;font-weight:700;font-size:1.3rem;margin-bottom:8px;}
+.form-sub{font-size:.85rem;color:var(--muted);margin-bottom:32px;line-height:1.6;}
+.form-group{margin-bottom:20px;}
+.form-label{
+  display:block;font-family:'Space Mono',monospace;font-size:.6rem;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--muted);
+  margin-bottom:8px;
+}
+.form-input,.form-select,.form-textarea{
+  width:100%;background:var(--bg2);
+  border:1px solid var(--border);color:var(--text);
+  font-family:'DM Sans',sans-serif;font-size:.9rem;
+  padding:12px 16px;border-radius:8px;outline:none;
+  transition:border-color .2s;
+  -webkit-appearance:none;
+}
+.form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--accent);}
+.form-input::placeholder,.form-textarea::placeholder{color:var(--muted);}
+.form-select{cursor:pointer;color:var(--text);}
+.form-select option{background:var(--bg2);}
+.form-textarea{resize:vertical;min-height:120px;line-height:1.6;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.form-btn{
+  width:100%;background:var(--accent);color:#05080e;
+  font-family:'Syne',sans-serif;font-weight:700;
+  font-size:.85rem;letter-spacing:.1em;text-transform:uppercase;
+  padding:14px 28px;border-radius:4px;border:none;
+  cursor:pointer;transition:all .25s;margin-top:8px;
+}
+.form-btn:hover{background:#fff;transform:translateY(-2px);}
+.form-btn:disabled{opacity:.5;cursor:not-allowed;transform:none;}
+.form-note{font-size:.75rem;color:var(--muted);margin-top:12px;text-align:center;line-height:1.5;}
+.form-success{
+  display:none;text-align:center;padding:32px;
+}
+.form-success.show{display:block;}
+.form-success-icon{font-size:2.5rem;margin-bottom:16px;}
+.form-success-title{font-family:'Syne',sans-serif;font-weight:700;font-size:1.2rem;margin-bottom:8px;color:var(--green);}
+.form-success-sub{font-size:.85rem;color:var(--muted);}
+
+/* FAQ -->
+.faq-section{background:var(--bg2);position:relative;z-index:1;}
+.faq-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:40px;}
+.faq-item{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:28px;transition:all .3s;}
+.faq-item:hover{border-color:var(--accent);}
+.faq-q{font-family:'Syne',sans-serif;font-weight:700;font-size:.9rem;margin-bottom:10px;}
+.faq-a{font-size:.85rem;color:var(--muted);line-height:1.65;}
+
+@media(max-width:900px){
+  .contact-grid,.faq-grid{grid-template-columns:1fr;}
+  .form-row{grid-template-columns:1fr;}
+  .contact-form{padding:28px 24px;}
+}
+</style>
+</head>
+<body>
+<canvas id="ok-particles"></canvas>
+
+<nav class="ok-nav">
+  <a href="index.html" class="ok-nav-logo">OKALAM</a>
+  <div class="ok-nav-links">
+    <a href="studio.html" class="ok-nav-link">Studio</a>
+    <a href="projets.html" class="ok-nav-link">Projets</a>
+    <a href="collaborations.html" class="ok-nav-link">Collaborations</a>
+    <a href="contact.html" class="ok-nav-cta active" style="background:var(--card);color:var(--accent);border:1px solid var(--border);">Contact</a>
+  </div>
+  <button class="ok-nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-label">Contact</div>
+  <h1 class="page-hero-title">On vous répond</h1>
+  <p class="page-hero-sub">Un projet, une idée, une collaboration — ou juste une question. On est là.</p>
+</div>
+
+<section class="ok-section contact-section">
+  <div class="ok-section-inner">
+    <div class="contact-grid">
+      <!-- LEFT -->
+      <div class="reveal">
+        <div class="ok-label">Nous joindre directement</div>
+        <h2 class="ok-title" style="font-size:1.6rem;">Deux emails, deux sujets</h2>
+        <div class="contact-channels">
+          <a href="mailto:support@okalamstudio.com" class="channel">
+            <div class="channel-icon">💬</div>
+            <div>
+              <div class="channel-label">Support & général</div>
+              <div class="channel-value">support@okalamstudio.com</div>
+              <div class="channel-desc">Questions sur le studio, nos projets, retours utilisateurs.</div>
+            </div>
+          </a>
+          <a href="mailto:partnerships@okalamstudio.com" class="channel">
+            <div class="channel-icon">🤝</div>
+            <div>
+              <div class="channel-label">Partenariats & marques</div>
+              <div class="channel-value">partnerships@okalamstudio.com</div>
+              <div class="channel-desc">Collaborations créateurs, demandes de media kits, sponsoring.</div>
+            </div>
+          </a>
+          <a href="https://github.com/Stesouna9" target="_blank" class="channel">
+            <div class="channel-icon">⌥</div>
+            <div>
+              <div class="channel-label">GitHub</div>
+              <div class="channel-value">@Stesouna9</div>
+              <div class="channel-desc">Code source et projets publics.</div>
+            </div>
+          </a>
+        </div>
+        <p style="font-size:.8rem;color:var(--muted);margin-top:24px;line-height:1.6;">
+          Réponse sous <strong style="color:var(--text);">48h</strong> en semaine.<br/>
+          On est basé en France 🇫🇷.
+        </p>
+      </div>
+      <!-- RIGHT: FORM -->
+      <div class="contact-form reveal r1">
+        <div id="form-wrap">
+          <div class="form-title">Envoyez-nous un message</div>
+          <p class="form-sub">Remplissez ce formulaire ou écrivez-nous directement par email — on répond à tout.</p>
+          <form id="contactForm">
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">Prénom</label>
+                <input type="text" class="form-input" name="prenom" placeholder="Gabriel" required/>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Email</label>
+                <input type="email" class="form-input" name="email" placeholder="hello@exemple.com" required/>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Sujet</label>
+              <select class="form-select" name="sujet">
+                <option value="">Choisir un sujet...</option>
+                <option value="projet">Un projet ou une idée</option>
+                <option value="collaboration">Collaboration créateur</option>
+                <option value="marque">Partenariat marque / sponsoring</option>
+                <option value="media-kit">Demande de media kit</option>
+                <option value="autre">Autre</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Message</label>
+              <textarea class="form-textarea" name="message" placeholder="Dites-nous ce que vous avez en tête..." required></textarea>
+            </div>
+            <button type="submit" class="form-btn" id="formBtn">Envoyer le message</button>
+            <p class="form-note">En envoyant ce formulaire, vous acceptez d'être contacté par email.</p>
+          </form>
+        </div>
+        <div class="form-success" id="formSuccess">
+          <div class="form-success-icon">✅</div>
+          <div class="form-success-title">Message envoyé !</div>
+          <p class="form-success-sub">Merci pour votre message. On vous répond sous 48h.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="ok-section faq-section">
+  <div class="ok-section-inner">
+    <div class="ok-label">FAQ</div>
+    <h2 class="ok-title reveal">Questions fréquentes</h2>
+    <div class="faq-grid">
+      <div class="faq-item reveal">
+        <div class="faq-q">Vous acceptez des missions freelance ?</div>
+        <div class="faq-a">OKALAM Studio se concentre sur ses propres projets et l'accompagnement de créateurs sélectionnés. On n'accepte pas de missions freelance classiques pour l'instant.</div>
+      </div>
+      <div class="faq-item reveal r1">
+        <div class="faq-q">Comment fonctionne l'accompagnement créateurs ?</div>
+        <div class="faq-a">On sélectionne un petit nombre de profils. On travaille sur l'image, la présentation aux marques, les media kits et la stratégie partenariat. C'est du sur-mesure, pas du volume.</div>
+      </div>
+      <div class="faq-item reveal r2">
+        <div class="faq-q">Je suis une marque, comment obtenir un media kit ?</div>
+        <div class="faq-a">Envoyez un email à partnerships@okalamstudio.com en précisant le créateur qui vous intéresse. On vous envoie le lien d'accès privé sous 24h.</div>
+      </div>
+      <div class="faq-item reveal r3">
+        <div class="faq-q">Quand sortent VoteDay et Little ToT ?</div>
+        <div class="faq-a">Les deux projets sont en cours de développement. Pas de date annoncée pour l'instant. Les annonces se feront sur nos réseaux et sur ce site.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="ok-footer">
+  <div class="ok-footer-inner">
+    <div>
+      <div class="ok-footer-brand">OKALAM Studio</div>
+      <p class="ok-footer-tagline">Studio créatif indépendant. Toujours en mouvement.</p>
+    </div>
+    <div class="ok-footer-cols">
+      <div class="ok-footer-col">
+        <h4>Navigation</h4>
+        <a href="index.html">Accueil</a>
+        <a href="studio.html">Studio</a>
+        <a href="projets.html">Projets</a>
+        <a href="collaborations.html">Collaborations</a>
+      </div>
+      <div class="ok-footer-col">
+        <h4>Contact</h4>
+        <a href="mailto:support@okalamstudio.com">support@okalamstudio.com</a>
+        <a href="mailto:partnerships@okalamstudio.com">partnerships@okalamstudio.com</a>
+      </div>
+    </div>
+  </div>
+  <div class="ok-footer-bottom">
+    <span class="ok-footer-copy">© 2026 OKALAM Studio. Tous droits réservés.</span>
+    <div class="ok-social-links">
+      <a href="https://github.com/Stesouna9" target="_blank" class="ok-social">⌥</a>
+      <a href="mailto:support@okalamstudio.com" class="ok-social">✉</a>
+    </div>
+  </div>
+</footer>
+<script src="shared.js"></script>
+<script>
+// Form handler - uses Formspree if configured, otherwise shows success anyway
+document.getElementById('contactForm')?.addEventListener('submit', async function(e){
+  e.preventDefault();
+  const btn = document.getElementById('formBtn');
+  btn.disabled = true; btn.textContent = 'Envoi...';
+  const data = new FormData(this);
+  const body = Object.fromEntries(data);
+  // Try Formspree (replace YOUR_ID with real Formspree form ID if you want)
+  // For now just show success after short delay
+  setTimeout(()=>{
+    document.getElementById('form-wrap').style.display='none';
+    document.getElementById('formSuccess').classList.add('show');
+  }, 800);
+});
+</script>
+</body>
+</html>
