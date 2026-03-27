@@ -9,16 +9,22 @@
     "url_instagram": "https://www.instagram.com/tesla_burger",
     "url_tiktok": "https://www.tiktok.com/@teslaburger1",
     "country": "FR",
-    "niche": ["Tech", "Véhicules électriques", "Énergie solaire", "Unboxing", "Tests"],
+    "niche": [
+      "Tech",
+      "Véhicules électriques",
+      "Énergie solaire",
+      "Unboxing",
+      "Tests"
+    ],
     "youtube": {
       "channel_id": "UCrbI9_VkZ2ndzvgmKN3SfIw",
       "handle": "@TeslaBurger",
       "url": "https://youtube.com/@TeslaBurger",
-      "subscribers_raw": 11800,
-      "subscribers": "11,8k",
-      "total_views_raw": 500000,
-      "total_views": "500k",
-      "video_count": 120,
+      "subscribers_raw": 11900,
+      "subscribers": "11.9k",
+      "total_views_raw": 17796884,
+      "total_views": "17.8M",
+      "video_count": 450,
       "title": "Tesla Burger"
     },
     "instagram": {
@@ -47,15 +53,21 @@
     "url_instagram": "https://www.instagram.com/elisa_is_running",
     "url_tiktok": "https://www.tiktok.com/@elisa.is.running",
     "country": "FR",
-    "niche": ["Running", "Course à pied", "Sport", "Lifestyle", "Motivation"],
+    "niche": [
+      "Running",
+      "Course à pied",
+      "Sport",
+      "Lifestyle",
+      "Motivation"
+    ],
     "youtube": {
-      "channel_id": null,
+      "channel_id": "UChxg0VY4KoLmvsMqvuE4Xfw",
       "handle": "@elisaisrunning",
       "url": "https://youtube.com/@elisaisrunning",
       "subscribers_raw": 13800,
-      "subscribers": "13,8k",
-      "total_views_raw": 4127846,
-      "total_views": "4,1M",
+      "subscribers": "13.8k",
+      "total_views_raw": 4128191,
+      "total_views": "4.1M",
       "video_count": 546,
       "title": "Elisa is running"
     },
