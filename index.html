@@ -72,9 +72,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .card{background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;text-decoration:none;color:inherit;display:block;transition:all .35s;}
 .card:hover{border-color:var(--accent);transform:translateY(-6px);box-shadow:0 20px 60px rgba(141,234,255,.07);}
 .card-visual{height:260px;overflow:hidden;position:relative;display:flex;align-items:center;justify-content:center;font-size:5rem;}
+.card-visual img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;z-index:0;}
 .card-visual.vd{background:linear-gradient(135deg,#1a0f2e,#0d0a2a);}
 .card-visual.lt{background:linear-gradient(135deg,#0d0a2e,#0a0820);}
-.card-visual::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 80%,rgba(141,234,255,.07),transparent 70%);}
+.card-visual::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,transparent 50%,rgba(0,0,0,.45));z-index:1;}
+.card-status{position:relative;z-index:2;}
 .card-status{position:absolute;top:14px;right:14px;font-family:'Space Mono',monospace;font-size:.55rem;letter-spacing:.08em;text-transform:uppercase;background:rgba(251,191,36,.1);color:#fbbf24;border:1px solid rgba(251,191,36,.25);padding:3px 10px;border-radius:20px;z-index:1;}
 .card-body{padding:24px;}
 .card-tags{display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap;}
@@ -216,7 +218,10 @@ footer{border-top:1px solid var(--border2);padding:56px 48px;position:relative;z
     <div class="cards-grid">
       <!-- VoteDay -->
       <a href="projets.html" class="card reveal">
-        <div class="card-visual vd">🗳️<div class="card-status" id="vd_status">In development</div></div>
+        <div class="card-visual vd" style="padding:0;">
+          <img src="imgs/voteday_home.png" alt="VoteDay" style="width:100%;height:100%;object-fit:cover;object-position:top;" onerror="this.parentElement.innerHTML='🗳️<div class=card-status id=vd_status>In development</div>'"/>
+          <div class="card-status" id="vd_status">In development</div>
+        </div>
         <div class="card-body">
           <div class="card-tags"><span class="ctag">Social</span><span class="ctag">iOS</span><span class="ctag">Community</span></div>
           <div class="card-name">VoteDay</div>
@@ -226,7 +231,10 @@ footer{border-top:1px solid var(--border2);padding:56px 48px;position:relative;z
       </a>
       <!-- Little ToT -->
       <a href="projets.html" class="card reveal r1">
-        <div class="card-visual lt">⚔️<div class="card-status" id="lt_status">In development</div></div>
+        <div class="card-visual lt" style="padding:0;">
+          <img src="imgs/ltot_menu.png" alt="Little ToT" style="width:100%;height:100%;object-fit:cover;object-position:top;" onerror="this.parentElement.innerHTML='⚔️<div class=card-status id=lt_status>In development</div>'"/>
+          <div class="card-status" id="lt_status">In development</div>
+        </div>
         <div class="card-body">
           <div class="card-tags"><span class="ctag">RPG</span><span class="ctag">iOS</span><span class="ctag">Real-time</span></div>
           <div class="card-name">Little ToT</div>
