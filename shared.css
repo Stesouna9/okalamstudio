@@ -49,34 +49,63 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;fon
 
 /* ── PAGE HEADER ── */
 .page-hero{
-  min-height:45vh;display:flex;flex-direction:column;
-  align-items:center;justify-content:flex-end;
-  text-align:center;padding:120px 40px 64px;
+  min-height:40vh;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  text-align:center;padding:130px 40px 72px;
   position:relative;overflow:hidden;
 }
 .page-hero::before{
   content:'';position:absolute;inset:0;
-  background:radial-gradient(ellipse at 50% 0%,rgba(141,234,255,.08) 0%,transparent 60%);
+  background:radial-gradient(ellipse at 50% 30%,rgba(141,234,255,.07) 0%,transparent 65%);
+}
+/* Trait décoratif centré sous le titre */
+.page-hero::after{
+  content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);
+  width:1px;height:64px;
+  background:linear-gradient(to bottom,rgba(141,234,255,.4),transparent);
 }
 .page-hero-label{
-  font-family:'Space Mono',monospace;font-size:.6rem;
-  letter-spacing:.25em;text-transform:uppercase;
-  color:var(--accent);margin-bottom:16px;
+  font-family:'Space Mono',monospace;font-size:.58rem;
+  letter-spacing:.28em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:20px;
   position:relative;z-index:1;
-  display:flex;align-items:center;gap:10px;
+  display:flex;align-items:center;gap:12px;opacity:.8;
 }
-.page-hero-label::before{content:'';width:20px;height:1px;background:var(--accent);}
+.page-hero-label::before,.page-hero-label::after{
+  content:'';flex:0 0 24px;height:1px;background:var(--accent);opacity:.6;
+}
 .page-hero-title{
   font-family:'Syne',sans-serif;font-weight:800;
-  font-size:clamp(2.5rem,7vw,5.5rem);
-  line-height:.95;letter-spacing:-.03em;
-  color:#fff;margin-bottom:20px;
+  font-size:clamp(2rem,5vw,3.6rem);
+  line-height:1;letter-spacing:-.02em;
+  color:#fff;margin-bottom:0;
   position:relative;z-index:1;
 }
+/* Mot accentué en gradient cyan */
+.page-hero-title .accent-word{
+  background:linear-gradient(120deg,#8deaff 0%,#a5f3fc 40%,#7dd3fc 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  font-style:italic;
+}
+/* Mot en outline (contour seulement) */
+.page-hero-title .outline-word{
+  -webkit-text-stroke:1.5px rgba(141,234,255,.5);
+  -webkit-text-fill-color:transparent;
+  font-style:normal;
+}
+/* Séparateur décoratif entre label et titre */
+.page-hero-divider{
+  width:40px;height:1px;
+  background:linear-gradient(to right,transparent,rgba(141,234,255,.35),transparent);
+  margin:18px auto 22px;position:relative;z-index:1;
+}
 .page-hero-sub{
-  font-size:1.05rem;font-weight:300;
-  color:var(--muted);max-width:560px;line-height:1.7;
+  font-size:.95rem;font-weight:300;
+  color:var(--muted);max-width:480px;line-height:1.75;
   position:relative;z-index:1;
+  margin-top:20px;
+  border-top:1px solid rgba(141,234,255,.08);
+  padding-top:20px;
 }
 
 /* ── SECTIONS ── */
