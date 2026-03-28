@@ -68,11 +68,27 @@ canvas{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-
 .mcell.mfil{border-color:rgba(141,234,255,.6);color:var(--accent);}
 .mcell.mfix{background:#dc2626;border-color:#dc2626;}
 .mcell.mcorrect{background:#dc2626;border-color:#dc2626;animation:popIn .2s ease;}
-.mcell.mpresent{background:#d97706;border-color:#d97706;animation:popIn .2s ease;}
-.mcell.mabsent{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.1);color:rgba(255,255,255,.4);}
+.mcell.mpresent{background:#eab308;border-color:#eab308;border-radius:50%;animation:popIn .2s ease;}
+.mcell.mabsent{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.07);color:rgba(255,255,255,.3);}
 @keyframes popIn{0%{transform:scale(.85);}60%{transform:scale(1.08);}100%{transform:scale(1);}}
 .mrow.mshake{animation:shake .45s ease;}
 @keyframes shake{0%,100%{transform:translateX(0);}20%{transform:translateX(-7px);}40%{transform:translateX(7px);}60%{transform:translateX(-5px);}80%{transform:translateX(5px);}}
+/* Animation victoire ligne rouge style Motus */
+.mrow.mwin .mcell{animation:winCell .35s ease forwards;}
+.mrow.mwin .mcell:nth-child(1){animation-delay:0s;}
+.mrow.mwin .mcell:nth-child(2){animation-delay:.07s;}
+.mrow.mwin .mcell:nth-child(3){animation-delay:.14s;}
+.mrow.mwin .mcell:nth-child(4){animation-delay:.21s;}
+.mrow.mwin .mcell:nth-child(5){animation-delay:.28s;}
+.mrow.mwin .mcell:nth-child(6){animation-delay:.35s;}
+.mrow.mwin .mcell:nth-child(7){animation-delay:.42s;}
+.mrow.mwin .mcell:nth-child(8){animation-delay:.49s;}
+@keyframes winCell{
+  0%{transform:scale(1);background:#dc2626;box-shadow:none;}
+  40%{transform:scale(1.2);background:#ff2222;box-shadow:0 0 18px 4px rgba(220,38,38,.7);}
+  70%{transform:scale(1.08);background:#ff4444;box-shadow:0 0 10px 2px rgba(220,38,38,.4);}
+  100%{transform:scale(1);background:#dc2626;box-shadow:0 0 8px 2px rgba(220,38,38,.3);}
+}
 
 .motus-msg{min-height:22px;font-size:.85rem;margin:8px 0;color:var(--muted);transition:all .2s;}
 .motus-msg.win{color:var(--green);font-weight:700;}
@@ -335,6 +351,8 @@ function motusKey(key){
   else if(/^[A-Z]$/.test(key)&&mGuess.length<mCols){
     if(mGuess.length===0)mGuess.push(mTarget[0]);
     if(mGuess.length<mCols){mGuess.push(key);motusRender();}
+    // Auto-submit quand la ligne est complète
+    if(mGuess.length===mCols) setTimeout(()=>motusSubmit(),120);
   }
 }
 async function motusSubmit(){
@@ -352,8 +370,12 @@ async function motusSubmit(){
   for(let i=0;i<mCols;i++)motusUpdateKey(word[i],res[i]);
   const won=res.every(r=>r==='correct');
   setTimeout(()=>{
-    if(won){motusSetMsg(u.win,'win');mOver=true;sutomConfetti();}
-    else{
+    if(won){
+      // Animation ligne rouge style Motus
+      const winRow=document.getElementById('mr-'+mRow);
+      if(winRow) winRow.classList.add('mwin');
+      setTimeout(()=>{motusSetMsg(u.win,'win');mOver=true;sutomConfetti();},mCols*70+200);
+    }else{
       mRow++;mGuess=[mTarget[0]];
       if(mRow>=ROWS){
         mOver=true;motusSetMsg(u.lose,'err');
