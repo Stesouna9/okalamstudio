@@ -112,6 +112,10 @@ canvas{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-
 .mkey.mkc{background:#dc2626;color:#fff;}
 .mkey.mkp{background:#eab308;color:#fff;}
 .mkey.mka{background:rgba(255,255,255,.05);color:rgba(255,255,255,.25);}
+.mkey.mkey-del{background:rgba(220,38,38,.25);color:#f87171;border:1px solid rgba(220,38,38,.3);font-size:.75rem;}
+.mkey.mkey-del:hover{background:#dc2626;color:#fff;}
+.mkey.mkey-ok{background:rgba(141,234,255,.15);color:var(--accent);border:1px solid rgba(141,234,255,.25);font-size:.75rem;}
+.mkey.mkey-ok:hover{background:var(--accent);color:#05080e;}
 
 #mu-newbtn{
   margin-top:20px;background:transparent;border:1px solid var(--border);
@@ -146,11 +150,19 @@ canvas{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-
   .mcell{width:40px;height:40px;font-size:1rem;}
   #mu-grid{gap:4px;margin:16px auto;}
   .mrow{gap:4px;}
-  /* Clavier adapté */
-  .mkey{width:28px;height:44px;font-size:.72rem;border-radius:5px;}
-  .mkey.wide{width:44px;}
-  #mu-keyboard{margin:10px 0;}
+  /* Clavier — fixe en bas sur mobile */
+  #mu-keyboard{
+    position:fixed;bottom:0;left:0;right:0;
+    background:rgba(8,12,18,.97);
+    border-top:1px solid rgba(141,234,255,.12);
+    padding:10px 4px 14px;
+    z-index:200;margin:0;
+  }
+  .mkey{width:28px;height:46px;font-size:.68rem;border-radius:5px;}
+  .mkey.wide{width:54px;font-size:.62rem;}
   .mkrow{gap:3px;margin-bottom:4px;}
+  /* Espace pour que le contenu ne soit pas masqué par le clavier fixe */
+  .sutom-section{padding-bottom:180px;}
   /* Légende compacte */
   .sutom-legend{gap:8px;flex-wrap:wrap;justify-content:center;}
   .sl-item{font-size:.65rem;}
@@ -384,7 +396,16 @@ function motusBuildKB(){
   const rows=[['A','Z','E','R','T','Y','U','I','O','P'],['Q','S','D','F','G','H','J','K','L','M'],['⌫','W','X','C','V','B','N','✓']];
   rows.forEach((keys,ri)=>{
     const row=document.getElementById('mku-'+(ri+1));if(!row)return;row.innerHTML='';
-    keys.forEach(k=>{const btn=document.createElement('button');btn.className='mkey'+(['⌫','✓'].includes(k)?' wide':'');btn.textContent=k;btn.addEventListener('click',()=>motusKey(k));row.appendChild(btn);});
+    keys.forEach(k=>{
+      const btn=document.createElement('button');
+      let cls='mkey';
+      if(k==='⌫'){cls+=' wide mkey-del';btn.title='Supprimer';}
+      else if(k==='✓'){cls+=' wide mkey-ok';btn.title='Valider';}
+      btn.className=cls;
+      btn.textContent=k==='⌫'?'⌫ DEL':k==='✓'?'✓ OK':k;
+      btn.addEventListener('click',()=>motusKey(k));
+      row.appendChild(btn);
+    });
   });
 }
 function motusShowFirst(){const c=document.getElementById('mc-'+mRow+'-0');if(c){c.className='mcell mfix';c.textContent=mTarget[0];}motusUpdateKey(mTarget[0],'correct');}
