@@ -67,9 +67,9 @@ canvas{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-
 .mcell.mar{border-color:rgba(141,234,255,.35);}
 .mcell.mfil{border-color:rgba(141,234,255,.6);color:var(--accent);}
 .mcell.mfix{background:#dc2626;border-color:#dc2626;}
-.mcell.mcorrect{background:#dc2626;border-color:#dc2626;animation:popIn .2s ease;}
-.mcell.mpresent{background:#eab308;border-color:#eab308;border-radius:50%;animation:popIn .2s ease;}
-.mcell.mabsent{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.07);color:rgba(255,255,255,.3);}
+.mcell.mcorrect{background:#dc2626;border-color:#dc2626;color:#fff;animation:popIn .25s ease;}
+.mcell.mpresent{background:#eab308;border-color:#eab308;border-radius:50%;color:#fff;animation:popIn .25s ease;}
+.mcell.mabsent{background:transparent;border-color:rgba(255,255,255,.15);color:rgba(255,255,255,.35);}
 @keyframes popIn{0%{transform:scale(.85);}60%{transform:scale(1.08);}100%{transform:scale(1);}}
 .mrow.mshake{animation:shake .45s ease;}
 @keyframes shake{0%,100%{transform:translateX(0);}20%{transform:translateX(-7px);}40%{transform:translateX(7px);}60%{transform:translateX(-5px);}80%{transform:translateX(5px);}}
@@ -365,7 +365,7 @@ async function motusSubmit(){
   if(!valid){motusFlashMsg(u.invalid,'err');motusShake();return;}
   const res=motusResult(word,mTarget);
   for(let c=0;c<mCols;c++){
-    setTimeout(()=>{const cell=document.getElementById('mc-'+mRow+'-'+c);if(cell){cell.textContent=word[c];cell.className='mcell m'+res[c].substring(0,3);}},c*80);
+    setTimeout(()=>{const cell=document.getElementById('mc-'+mRow+'-'+c);if(cell){cell.textContent=word[c];cell.className='mcell m'+res[c];}},c*80);
   }
   for(let i=0;i<mCols;i++)motusUpdateKey(word[i],res[i]);
   const won=res.every(r=>r==='correct');
