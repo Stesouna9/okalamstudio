@@ -163,13 +163,6 @@ footer{border-top:1px solid var(--border2);padding:56px 48px;position:relative;z
 <!-- NAV -->
 <nav>
   <a href="index.html" class="nav-logo">OKALAM</a>
-  <div class="nav-center">
-    <a href="studio.html" class="nav-link" data-i18n="nav_studio">Studio</a>
-    <a href="projets.html" class="nav-link" data-i18n="nav_projects">Projects</a>
-    <a href="collaborations.html" class="nav-link" data-i18n="nav_collabs">Collaborations</a>
-    <a href="games.html" class="nav-link" data-i18n="nav_games">Games</a>
-    <a href="contact.html" class="nav-cta" data-i18n="nav_contact">Contact</a>
-  </div>
   <div class="nav-right">
     <div class="flag-picker">
       <button class="flag-btn" onclick="setLang('en')" id="fl-en" title="English">🇬🇧</button>
@@ -179,9 +172,32 @@ footer{border-top:1px solid var(--border2);padding:56px 48px;position:relative;z
       <button class="flag-btn" onclick="setLang('es')" id="fl-es" title="Español">🇪🇸</button>
       <button class="flag-btn" onclick="setLang('pt')" id="fl-pt" title="Português">🇵🇹</button>
     </div>
-    <div class="flag-sep"></div>
     <button style="background:rgba(255,255,255,.06);color:var(--muted);border:1px solid var(--border2);width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:.9rem;display:flex;align-items:center;justify-content:center;transition:.2s;" onclick="toggleMusic()" id="musicBtn" title="Music">♪</button>
     <audio id="bgMusic" loop><source src="menu.mp3" type="audio/mpeg"/></audio>
+    <button class="ok-nav-menu-btn" aria-label="Menu" style="margin-left:4px;">
+      <div class="ok-nav-menu-icon"><span></span><span></span><span></span></div>
+      <span>Menu</span>
+    </button>
+  </div>
+</nav>
+<div class="ok-nav-overlay"></div>
+<nav class="ok-nav-dropdown">
+  <div class="ok-nav-items">
+    <a href="studio.html" class="ok-nav-link" data-i18n="nav_studio">Studio</a>
+    <a href="projets.html" class="ok-nav-link" data-i18n="nav_projects">Projets</a>
+    <a href="collaborations.html" class="ok-nav-link" data-i18n="nav_collabs">Collaborations</a>
+    <a href="games.html" class="ok-nav-link" data-i18n="nav_games">Jeux</a>
+  </div>
+  <div class="ok-nav-cta-wrap">
+    <a href="contact.html" class="ok-nav-cta" data-i18n="nav_contact">Contact</a>
+  </div>
+  <div class="flag-picker" style="padding:24px 40px 0;flex-wrap:wrap;gap:6px;display:flex;">
+    <button class="flag-btn" onclick="setLang('en')" title="English">🇬🇧</button>
+    <button class="flag-btn" onclick="setLang('fr')" title="Français">🇫🇷</button>
+    <button class="flag-btn" onclick="setLang('ja')" title="日本語">🇯🇵</button>
+    <button class="flag-btn" onclick="setLang('zh')" title="中文">🇨🇳</button>
+    <button class="flag-btn" onclick="setLang('es')" title="Español">🇪🇸</button>
+    <button class="flag-btn" onclick="setLang('pt')" title="Português">🇵🇹</button>
   </div>
 </nav>
 
@@ -499,6 +515,18 @@ setLang(initL);
 
 // Music
 function toggleMusic(){
+  const a=document.getElementById('bgMusic'),b=document.getElementById('musicBtn');
+  if(a.paused){a.play();b.style.color='var(--accent)';}else{a.pause();b.style.color='';}
+}
+
+// ── Dropdown menu (index) ──
+const _menuBtn=document.querySelector('.ok-nav-menu-btn');
+const _dropdown=document.querySelector('.ok-nav-dropdown');
+const _overlay=document.querySelector('.ok-nav-overlay');
+function _closeMenu(){if(!_menuBtn)return;_menuBtn.classList.remove('open');if(_dropdown)_dropdown.classList.remove('open');if(_overlay)_overlay.classList.remove('open');document.body.style.overflow='';}
+if(_menuBtn){_menuBtn.addEventListener('click',()=>{_menuBtn.classList.contains('open')?_closeMenu():(_menuBtn.classList.add('open'),_dropdown&&_dropdown.classList.add('open'),_overlay&&_overlay.classList.add('open'),document.body.style.overflow='hidden');});}
+if(_overlay)_overlay.addEventListener('click',_closeMenu);
+document.querySelectorAll('.ok-nav-dropdown a').forEach(l=>l.addEventListener('click',_closeMenu));
   const a=document.getElementById('bgMusic'),b=document.getElementById('musicBtn');
   if(a.paused){a.play();b.style.color='var(--accent)';}else{a.pause();b.style.color='';}
 }

@@ -6,18 +6,37 @@ if(nav) window.addEventListener('scroll', () => {
   nav.classList.toggle('scrolled', window.scrollY > 40);
 });
 
-// Mobile menu
-const hamburger = document.querySelector('.ok-nav-hamburger');
-const links = document.querySelector('.ok-nav-links');
-if(hamburger && links){
-  hamburger.addEventListener('click', () => {
-    links.classList.toggle('open');
-    hamburger.classList.toggle('open');
-  });
-  links.querySelectorAll('.ok-nav-link, .ok-nav-cta').forEach(l =>
-    l.addEventListener('click', () => links.classList.remove('open'))
-  );
+// ── Dropdown menu ──
+const menuBtn = document.querySelector('.ok-nav-menu-btn');
+const dropdown = document.querySelector('.ok-nav-dropdown');
+const overlay = document.querySelector('.ok-nav-overlay');
+
+function closeMenu(){
+  if(!menuBtn||!dropdown) return;
+  menuBtn.classList.remove('open');
+  dropdown.classList.remove('open');
+  if(overlay) overlay.classList.remove('open');
+  document.body.style.overflow = '';
 }
+function openMenu(){
+  if(!menuBtn||!dropdown) return;
+  menuBtn.classList.add('open');
+  dropdown.classList.add('open');
+  if(overlay) overlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+if(menuBtn){
+  menuBtn.addEventListener('click', () => {
+    menuBtn.classList.contains('open') ? closeMenu() : openMenu();
+  });
+}
+if(overlay) overlay.addEventListener('click', closeMenu);
+
+// Close on nav link click
+document.querySelectorAll('.ok-nav-dropdown .ok-nav-link, .ok-nav-dropdown .ok-nav-cta').forEach(l =>
+  l.addEventListener('click', closeMenu)
+);
 
 // Set active nav link
 const path = location.pathname;

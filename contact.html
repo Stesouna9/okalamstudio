@@ -92,22 +92,20 @@ canvas{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-
 
 <nav class="ok-nav">
   <a href="index.html" class="ok-nav-logo">OKALAM</a>
-  <div class="ok-nav-links">
-    <a href="studio.html" class="ok-nav-link">Studio</a>
-    <a href="projets.html" class="ok-nav-link">Projets</a>
-    <a href="collaborations.html" class="ok-nav-link">Collaborations</a>
-    <a href="contact.html" class="ok-nav-cta active" style="background:var(--card);color:var(--accent);border:1px solid var(--border);">Contact</a>
+  <div class="ok-nav-right">
+    <div class="flag-picker">
+      <button class="flag-btn" data-lang="en" onclick="sharedSetLang('en')" title="English">🇬🇧</button>
+      <button class="flag-btn" data-lang="fr" onclick="sharedSetLang('fr')" title="Français">🇫🇷</button>
+      <button class="flag-btn" data-lang="ja" onclick="sharedSetLang('ja')" title="日本語">🇯🇵</button>
+      <button class="flag-btn" data-lang="zh" onclick="sharedSetLang('zh')" title="中文">🇨🇳</button>
+      <button class="flag-btn" data-lang="es" onclick="sharedSetLang('es')" title="Español">🇪🇸</button>
+      <button class="flag-btn" data-lang="pt" onclick="sharedSetLang('pt')" title="Português">🇵🇹</button>
+    </div>
+    <button class="ok-nav-menu-btn" aria-label="Menu">
+      <div class="ok-nav-menu-icon"><span></span><span></span><span></span></div>
+      <span>Menu</span>
+    </button>
   </div>
-  <div class="flag-picker">
-    <button class="flag-btn" data-lang="en" onclick="sharedSetLang('en')" title="English">🇬🇧</button>
-    <button class="flag-btn" data-lang="fr" onclick="sharedSetLang('fr')" title="Français">🇫🇷</button>
-    <button class="flag-btn" data-lang="ja" onclick="sharedSetLang('ja')" title="日本語">🇯🇵</button>
-    <button class="flag-btn" data-lang="zh" onclick="sharedSetLang('zh')" title="中文">🇨🇳</button>
-    <button class="flag-btn" data-lang="es" onclick="sharedSetLang('es')" title="Español">🇪🇸</button>
-    <button class="flag-btn" data-lang="pt" onclick="sharedSetLang('pt')" title="Português">🇵🇹</button>
-  </div>
-  <div class="flag-sep"></div>
-  <button class="ok-nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
 </nav>
 
 <div class="page-hero">

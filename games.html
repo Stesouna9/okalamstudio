@@ -156,14 +156,20 @@ canvas{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-
 
 <nav class="ok-nav">
   <a href="index.html" class="ok-nav-logo">OKALAM</a>
-  <div class="ok-nav-links">
-    <a href="studio.html" class="ok-nav-link" data-i18n="nav_studio">Studio</a>
-    <a href="projets.html" class="ok-nav-link" data-i18n="nav_projects">Projects</a>
-    <a href="collaborations.html" class="ok-nav-link" data-i18n="nav_collabs">Collaborations</a>
-    <a href="games.html" class="ok-nav-link active" data-i18n="nav_games">Games</a>
-    <a href="contact.html" class="ok-nav-cta" data-i18n="nav_contact">Contact</a>
+  <div class="ok-nav-right">
+    <div class="flag-picker">
+      <button class="flag-btn" data-lang="en" onclick="sharedSetLang('en')" title="English">🇬🇧</button>
+      <button class="flag-btn" data-lang="fr" onclick="sharedSetLang('fr')" title="Français">🇫🇷</button>
+      <button class="flag-btn" data-lang="ja" onclick="sharedSetLang('ja')" title="日本語">🇯🇵</button>
+      <button class="flag-btn" data-lang="zh" onclick="sharedSetLang('zh')" title="中文">🇨🇳</button>
+      <button class="flag-btn" data-lang="es" onclick="sharedSetLang('es')" title="Español">🇪🇸</button>
+      <button class="flag-btn" data-lang="pt" onclick="sharedSetLang('pt')" title="Português">🇵🇹</button>
+    </div>
+    <button class="ok-nav-menu-btn" aria-label="Menu">
+      <div class="ok-nav-menu-icon"><span></span><span></span><span></span></div>
+      <span>Menu</span>
+    </button>
   </div>
-  <button class="ok-nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
 </nav>
 
 <div class="page-hero">
@@ -267,6 +273,7 @@ canvas{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-
     </div>
   </div>
 </footer>
+<script src="shared-i18n.js"></script>
 <script src="shared.js"></script>
 
 <script>
@@ -346,12 +353,11 @@ function motusRender(){
 }
 function motusKey(key){
   if(mOver)return;
-  if(key==='⌫'||key==='Backspace'){if(mGuess.length>0){mGuess.pop();motusRender();}}
+  if(key==='⌫'||key==='Backspace'){if(mGuess.length>0){sndBackspace();mGuess.pop();motusRender();}}
   else if(key==='✓'||key==='Enter'){motusSubmit();}
   else if(/^[A-Z]$/.test(key)&&mGuess.length<mCols){
     if(mGuess.length===0)mGuess.push(mTarget[0]);
-    if(mGuess.length<mCols){mGuess.push(key);motusRender();}
-    // Auto-submit quand la ligne est complète
+    if(mGuess.length<mCols){sndKey();mGuess.push(key);motusRender();}
     if(mGuess.length===mCols) setTimeout(()=>motusSubmit(),120);
   }
 }
@@ -359,13 +365,22 @@ async function motusSubmit(){
   if(mOver)return;
   const u=MOTUS_UI[mLang]||MOTUS_UI.en;
   if(mGuess.length===0)mGuess=[mTarget[0]];
-  if(mGuess.length<mCols){motusFlashMsg(u.short,'err');motusShake();return;}
+  if(mGuess.length<mCols){motusFlashMsg(u.short,'err');sndError();motusShake();return;}
   const word=mGuess.join('');
   const valid=await motusCheck(word);
-  if(!valid){motusFlashMsg(u.invalid,'err');motusShake();return;}
+  if(!valid){motusFlashMsg(u.invalid,'err');sndError();motusShake();return;}
   const res=motusResult(word,mTarget);
   for(let c=0;c<mCols;c++){
-    setTimeout(()=>{const cell=document.getElementById('mc-'+mRow+'-'+c);if(cell){cell.textContent=word[c];cell.className='mcell m'+res[c];}},c*80);
+    setTimeout(()=>{
+      const cell=document.getElementById('mc-'+mRow+'-'+c);
+      if(cell){
+        cell.textContent=word[c];
+        cell.className='mcell m'+res[c];
+        if(res[c]==='correct') sndCorrect();
+        else if(res[c]==='present') sndPresent();
+        else sndAbsent();
+      }
+    },c*80);
   }
   for(let i=0;i<mCols;i++)motusUpdateKey(word[i],res[i]);
   const won=res.every(r=>r==='correct');
@@ -374,11 +389,11 @@ async function motusSubmit(){
       // Animation ligne rouge style Motus
       const winRow=document.getElementById('mr-'+mRow);
       if(winRow) winRow.classList.add('mwin');
-      setTimeout(()=>{motusSetMsg(u.win,'win');mOver=true;sutomConfetti();},mCols*70+200);
+      setTimeout(()=>{sndWin();motusSetMsg(u.win,'win');mOver=true;sutomConfetti();},mCols*70+200);
     }else{
       mRow++;mGuess=[mTarget[0]];
       if(mRow>=ROWS){
-        mOver=true;motusSetMsg(u.lose,'err');
+        mOver=true;sndLose();motusSetMsg(u.lose,'err');
         const rev=document.getElementById('mu-reveal');const mr=document.getElementById('mu-revealed');
         if(mr)mr.textContent=mTarget;if(rev)rev.classList.add('show');
       }else{motusShowFirst();motusActivateRow();motusSetMsg(' ');}
@@ -421,6 +436,102 @@ function sutomConfetti(){
   }
   setTimeout(()=>el.innerHTML='',3000);
 }
+// ── SONS SUTOM (Web Audio API) ──────────────────────────────────
+const _AC = window.AudioContext || window.webkitAudioContext;
+let _ctx = null;
+function _ac(){ if(!_ctx) _ctx = new _AC(); return _ctx; }
+
+function sndKey(){
+  try{
+    const c=_ac(), o=c.createOscillator(), g=c.createGain();
+    o.connect(g); g.connect(c.destination);
+    o.type='sine'; o.frequency.setValueAtTime(880,c.currentTime);
+    g.gain.setValueAtTime(0.08,c.currentTime);
+    g.gain.exponentialRampToValueAtTime(0.001,c.currentTime+0.05);
+    o.start(); o.stop(c.currentTime+0.05);
+  }catch(e){}
+}
+function sndBackspace(){
+  try{
+    const c=_ac(), o=c.createOscillator(), g=c.createGain();
+    o.connect(g); g.connect(c.destination);
+    o.type='sine'; o.frequency.setValueAtTime(440,c.currentTime);
+    g.gain.setValueAtTime(0.05,c.currentTime);
+    g.gain.exponentialRampToValueAtTime(0.001,c.currentTime+0.04);
+    o.start(); o.stop(c.currentTime+0.04);
+  }catch(e){}
+}
+function sndCorrect(){
+  try{
+    const c=_ac(), g=c.createGain(); g.connect(c.destination);
+    [660,880].forEach((f,i)=>{
+      const o=c.createOscillator(); o.connect(g);
+      o.type='triangle'; o.frequency.setValueAtTime(f,c.currentTime+i*0.07);
+      g.gain.setValueAtTime(0.15,c.currentTime+i*0.07);
+      g.gain.exponentialRampToValueAtTime(0.001,c.currentTime+i*0.07+0.12);
+      o.start(c.currentTime+i*0.07); o.stop(c.currentTime+i*0.07+0.12);
+    });
+  }catch(e){}
+}
+function sndPresent(){
+  try{
+    const c=_ac(), o=c.createOscillator(), g=c.createGain();
+    o.connect(g); g.connect(c.destination);
+    o.type='triangle'; o.frequency.setValueAtTime(550,c.currentTime);
+    o.frequency.linearRampToValueAtTime(660,c.currentTime+0.08);
+    g.gain.setValueAtTime(0.12,c.currentTime);
+    g.gain.exponentialRampToValueAtTime(0.001,c.currentTime+0.15);
+    o.start(); o.stop(c.currentTime+0.15);
+  }catch(e){}
+}
+function sndAbsent(){
+  try{
+    const c=_ac(), o=c.createOscillator(), g=c.createGain();
+    o.connect(g); g.connect(c.destination);
+    o.type='square'; o.frequency.setValueAtTime(180,c.currentTime);
+    g.gain.setValueAtTime(0.07,c.currentTime);
+    g.gain.exponentialRampToValueAtTime(0.001,c.currentTime+0.08);
+    o.start(); o.stop(c.currentTime+0.08);
+  }catch(e){}
+}
+function sndError(){
+  try{
+    const c=_ac(), o=c.createOscillator(), g=c.createGain();
+    o.connect(g); g.connect(c.destination);
+    o.type='sawtooth'; o.frequency.setValueAtTime(220,c.currentTime);
+    o.frequency.linearRampToValueAtTime(160,c.currentTime+0.15);
+    g.gain.setValueAtTime(0.1,c.currentTime);
+    g.gain.exponentialRampToValueAtTime(0.001,c.currentTime+0.2);
+    o.start(); o.stop(c.currentTime+0.2);
+  }catch(e){}
+}
+function sndWin(){
+  try{
+    const c=_ac(), g=c.createGain(); g.connect(c.destination);
+    const notes=[523,659,784,1047];
+    notes.forEach((f,i)=>{
+      const o=c.createOscillator(); o.connect(g);
+      o.type='triangle'; o.frequency.setValueAtTime(f,c.currentTime+i*0.12);
+      g.gain.setValueAtTime(0.18,c.currentTime+i*0.12);
+      g.gain.exponentialRampToValueAtTime(0.001,c.currentTime+i*0.12+0.2);
+      o.start(c.currentTime+i*0.12); o.stop(c.currentTime+i*0.12+0.2);
+    });
+  }catch(e){}
+}
+function sndLose(){
+  try{
+    const c=_ac(), g=c.createGain(); g.connect(c.destination);
+    const notes=[330,294,262,220];
+    notes.forEach((f,i)=>{
+      const o=c.createOscillator(); o.connect(g);
+      o.type='triangle'; o.frequency.setValueAtTime(f,c.currentTime+i*0.15);
+      g.gain.setValueAtTime(0.12,c.currentTime+i*0.15);
+      g.gain.exponentialRampToValueAtTime(0.001,c.currentTime+i*0.15+0.18);
+      o.start(c.currentTime+i*0.15); o.stop(c.currentTime+i*0.15+0.18);
+    });
+  }catch(e){}
+}
+
 document.addEventListener('keydown',e=>{
   if(e.ctrlKey||e.metaKey||e.altKey)return;
   if(e.key==='Backspace'){motusKey('Backspace');return;}
@@ -428,9 +539,9 @@ document.addEventListener('keydown',e=>{
   const l=e.key.toUpperCase();if(/^[A-Z]$/.test(l))motusKey(l);
 });
 
-// Init with saved lang or page lang
-const savedMotusLang=localStorage.getItem('motus_lang')||localStorage.getItem('okalam_lang')||'en';
-motusSetLang(['en','fr','ja','zh','es','pt'].includes(savedMotusLang)?savedMotusLang:'en');
+// Init with saved lang or page lang — sync avec la langue du site
+const savedMotusLang=localStorage.getItem('okalam_lang')||localStorage.getItem('motus_lang')||'fr';
+motusSetLang(['en','fr','ja','zh','es','pt'].includes(savedMotusLang)?savedMotusLang:'fr');
 </script>
 </body>
 </html>
