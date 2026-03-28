@@ -20,8 +20,7 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;lin
 canvas{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;opacity:.6;}
 
 /* ── NAV (index — override shared) ── */
-.nav-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:.9rem;letter-spacing:.3em;text-transform:uppercase;color:var(--text);text-decoration:none;position:relative;z-index:102;}
-.nav-right{display:flex;align-items:center;gap:12px;}
+.ok-nav-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:.9rem;letter-spacing:.3em;text-transform:uppercase;color:var(--text);text-decoration:none;}
 
 /* FLAG PICKER */
 .flag-picker{display:flex;gap:5px;align-items:center;}
@@ -35,7 +34,7 @@ canvas{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-
 .hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--accent-dim);border:1px solid var(--border);border-radius:30px;padding:6px 18px;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:36px;animation:fadeUp .8s ease both;}
 .hero-badge::before{content:'';width:6px;height:6px;background:var(--accent);border-radius:50%;animation:pulse 2s infinite;}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.3;transform:scale(.7);}}
-.hero-title{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(4.5rem,16vw,13rem);line-height:.92;letter-spacing:-.02em;animation:fadeUp .8s .1s ease both;}
+.hero-title{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(3.5rem,9vw,7.5rem);line-height:.92;letter-spacing:-.02em;animation:fadeUp .8s .1s ease both;}
 .hero-title .l1{display:block;color:#fff;}
 .hero-title .l2{display:block;font-size:.78em;margin-top:.08em;color:transparent;-webkit-text-stroke:2px rgba(141,234,255,.45);}
 .hero-sub{font-size:clamp(.95rem,2vw,1.2rem);font-weight:300;color:rgba(232,237,245,.55);margin-top:24px;letter-spacing:.04em;animation:fadeUp .8s .2s ease both;}
@@ -155,9 +154,9 @@ footer{border-top:1px solid var(--border2);padding:56px 48px;position:relative;z
 <canvas id="ok-particles-home"></canvas>
 
 <!-- NAV -->
-<nav>
-  <a href="index.html" class="nav-logo">OKALAM</a>
-  <div class="nav-right">
+<nav class="ok-nav">
+  <a href="index.html" class="ok-nav-logo">OKALAM</a>
+  <div class="ok-nav-right">
     <div class="flag-picker">
       <button class="flag-btn" onclick="setLang('en')" id="fl-en" title="English">🇬🇧</button>
       <button class="flag-btn" onclick="setLang('fr')" id="fl-fr" title="Français">🇫🇷</button>
