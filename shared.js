@@ -62,3 +62,23 @@ function initParticles(canvasId){
   })();
 }
 initParticles('ok-particles');
+
+// ── Language persistence (shared) ──
+function sharedSetLang(l){
+  localStorage.setItem('okalam_lang', l);
+  document.querySelectorAll('.flag-btn[data-lang]').forEach(b => {
+    b.classList.toggle('active', b.getAttribute('data-lang') === l);
+  });
+  document.documentElement.lang = l;
+}
+// Init: highlight current lang on load
+(function(){
+  const saved = localStorage.getItem('okalam_lang');
+  const browser = navigator.language.slice(0,2);
+  const langs = ['en','fr','ja','zh','es','pt'];
+  const active = saved || (langs.includes(browser) ? browser : 'en');
+  document.querySelectorAll('.flag-btn[data-lang]').forEach(b => {
+    b.classList.toggle('active', b.getAttribute('data-lang') === active);
+  });
+  document.documentElement.lang = active;
+})();

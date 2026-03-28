@@ -189,3 +189,11 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;fon
   .ok-section,.ok-footer,.page-hero{padding-left:24px;padding-right:24px;}
   .ok-footer-cols{gap:32px;}
 }
+
+/* ── Flag picker (shared across pages) ── */
+.flag-picker{display:flex;gap:4px;align-items:center;}
+.flag-btn{background:transparent;border:1px solid var(--border2);border-radius:6px;padding:3px 7px;cursor:pointer;font-size:.78rem;transition:all .18s;color:var(--muted);line-height:1;}
+.flag-btn:hover{border-color:var(--accent);}
+.flag-btn.active{background:var(--accent-dim);border-color:var(--accent);color:var(--accent);}
+.flag-sep{width:1px;height:18px;background:var(--border2);margin:0 4px;}
+@media(max-width:768px){.flag-picker{display:none;}}
