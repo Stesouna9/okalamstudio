@@ -111,10 +111,10 @@ canvas{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-
 </nav>
 
 <div class="page-hero">
-  <div class="page-hero-label">Contact</div>
+  <div class="page-hero-label" data-i18n="ct_hero_label">Contact</div>
   <div class="page-hero-divider"></div>
-  <h1 class="page-hero-title">On vous <span class="accent-word">répond</span></h1>
-  <p class="page-hero-sub">Un projet, une idée, une collaboration — ou juste une question. On est là.</p>
+  <h1 class="page-hero-title" data-i18n="ct_hero_title">On vous <span class="accent-word">répond</span></h1>
+  <p class="page-hero-sub" data-i18n="ct_hero_sub">Un projet, une idée, une collaboration — ou juste une question. On est là.</p>
 </div>
 
 <section class="ok-section contact-section">
@@ -123,7 +123,7 @@ canvas{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-
       <!-- LEFT -->
       <div class="reveal">
         <div class="ok-label">Nous joindre directement</div>
-        <h2 class="ok-title" style="font-size:1.6rem;">Deux emails, deux sujets</h2>
+        <h2 class="ok-title" style="font-size:1.6rem;" data-i18n="ct_emails_title">Deux emails, deux sujets</h2>
         <div class="contact-channels">
           <a href="mailto:support@okalamstudio.com" class="channel">
             <div class="channel-icon">💬</div>
@@ -158,8 +158,8 @@ canvas{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-
       <!-- RIGHT: FORM -->
       <div class="contact-form reveal r1">
         <div id="form-wrap">
-          <div class="form-title">Envoyez-nous un message</div>
-          <p class="form-sub">Remplissez ce formulaire ou écrivez-nous directement par email — on répond à tout.</p>
+          <div class="form-title" data-i18n="ct_form_title">Envoyez-nous un message</div>
+          <p class="form-sub" data-i18n="ct_form_sub">Remplissez ce formulaire ou écrivez-nous directement par email — on répond à tout.</p>
           <form id="contactForm">
             <div class="form-row">
               <div class="form-group">
@@ -204,7 +204,7 @@ canvas{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-
 <section class="ok-section faq-section">
   <div class="ok-section-inner">
     <div class="ok-label">FAQ</div>
-    <h2 class="ok-title reveal">Questions fréquentes</h2>
+    <h2 class="ok-title reveal" data-i18n="ct_faq_title">Questions fréquentes</h2>
     <div class="faq-grid">
       <div class="faq-item reveal">
         <div class="faq-q">Vous acceptez des missions freelance ?</div>
@@ -255,6 +255,7 @@ canvas{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-
     </div>
   </div>
 </footer>
+<script src="shared-i18n.js"></script>
 <script src="shared.js"></script>
 <script>
 // Form handler - uses Formspree if configured, otherwise shows success anyway

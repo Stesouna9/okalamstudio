@@ -116,10 +116,10 @@ canvas{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-
 </nav>
 
 <div class="page-hero">
-  <div class="page-hero-label">Nos projets</div>
+  <div class="page-hero-label" data-i18n="proj_hero_label">Nos projets</div>
   <div class="page-hero-divider"></div>
-  <h1 class="page-hero-title">Ce qu'on <span class="accent-word">construit</span></h1>
-  <p class="page-hero-sub">Deux idées en cours de développement — construites avec soin, publiées quand elles sont prêtes.</p>
+  <h1 class="page-hero-title" data-i18n="proj_hero_title">Ce qu'on <span class="accent-word">construit</span></h1>
+  <p class="page-hero-sub" data-i18n="proj_hero_sub">Deux idées en cours de développement — construites avec soin, publiées quand elles sont prêtes.</p>
 </div>
 
 <section class="ok-section projects-section">
@@ -133,37 +133,17 @@ canvas{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-
         <img src="imgs/voteday_results.png" alt="VoteDay results" style="width:33%;height:100%;object-fit:cover;object-position:top;" onerror="this.style.display='none'"/>
       </div>
       <div class="project-content">
-        <div class="project-status">En développement</div>
+        <div class="project-status" data-i18n="proj_status">En développement</div>
         <h2 class="project-name">VoteDay</h2>
-        <p class="project-desc">Une question. Chaque jour. Pour tout le monde. Une app sociale qui connecte les gens à travers des micro-votes quotidiens et des opinions partagées.</p>
-        <div class="project-tags">
-          <span class="ptag">Social</span>
-          <span class="ptag">iOS</span>
-          <span class="ptag">Community</span>
-          <span class="ptag">Daily</span>
-        </div>
+        <p class="project-desc" data-i18n="proj_vd_desc">Une question. Chaque jour. Pour tout le monde.</p>
+        <div class="project-tags"><span class="ptag">Social</span><span class="ptag">iOS</span><span class="ptag">Community</span><span class="ptag">Daily</span></div>
         <div class="project-features">
-          <div class="feature">
-            <div class="feature-dot"></div>
-            <div class="feature-text"><strong>Une question quotidienne</strong> — soigneusement choisie, toujours pertinente</div>
-          </div>
-          <div class="feature">
-            <div class="feature-dot"></div>
-            <div class="feature-text"><strong>Découverte d'opinions</strong> — voir comment le monde répond, par pays, âge, profil</div>
-          </div>
-          <div class="feature">
-            <div class="feature-dot"></div>
-            <div class="feature-text"><strong>Communauté authentique</strong> — pas d'algorithme, pas de toxicité, juste des points de vue</div>
-          </div>
-          <div class="feature">
-            <div class="feature-dot"></div>
-            <div class="feature-text"><strong>Multilingue dès le départ</strong> — conçu pour une audience mondiale</div>
-          </div>
+          <div class="feature"><div class="feature-dot"></div><div class="feature-text" data-i18n="proj_vd_f1"><strong>Une question quotidienne</strong> — soigneusement choisie</div></div>
+          <div class="feature"><div class="feature-dot"></div><div class="feature-text" data-i18n="proj_vd_f2"><strong>Découverte d'opinions</strong> — voir comment le monde répond</div></div>
+          <div class="feature"><div class="feature-dot"></div><div class="feature-text" data-i18n="proj_vd_f3"><strong>Communauté authentique</strong> — pas d'algorithme, pas de toxicité</div></div>
+          <div class="feature"><div class="feature-dot"></div><div class="feature-text" data-i18n="proj_vd_f4"><strong>Multilingue dès le départ</strong> — conçu pour une audience mondiale</div></div>
         </div>
-        <div class="inprogress">
-          <div class="inprogress-icon">🛠️</div>
-          <div>Projet en cours de développement. Pas encore disponible. La sortie sera annoncée sur nos réseaux.</div>
-        </div>
+        <div class="inprogress"><div class="inprogress-icon">🛠️</div><div data-i18n="proj_vd_inprogress">Projet en cours de développement. Pas encore disponible.</div></div>
       </div>
     </div>
 
@@ -175,37 +155,17 @@ canvas{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-
         <img src="imgs/ltot_mountain.png" alt="Little ToT montagne" style="width:33%;height:100%;object-fit:cover;object-position:top;" onerror="this.style.display='none'"/>
       </div>
       <div class="project-content">
-        <div class="project-status">En développement</div>
+        <div class="project-status" data-i18n="proj_status">En développement</div>
         <h2 class="project-name">Little ToT</h2>
-        <p class="project-desc">Un RPG de poche en temps réel. Le temps qui passe dans ta vie est le temps qui passe dans le jeu — jour, nuit, sommeil, exploration. Ton personnage vit avec toi.</p>
-        <div class="project-tags">
-          <span class="ptag">RPG</span>
-          <span class="ptag">iOS</span>
-          <span class="ptag">Temps réel</span>
-          <span class="ptag">Aventure</span>
-        </div>
+        <p class="project-desc" data-i18n="proj_lt_desc">Un RPG de poche en temps réel. Le temps qui passe dans ta vie est le temps qui passe dans le jeu.</p>
+        <div class="project-tags"><span class="ptag">RPG</span><span class="ptag">iOS</span><span class="ptag">Temps réel</span><span class="ptag">Aventure</span></div>
         <div class="project-features">
-          <div class="feature">
-            <div class="feature-dot"></div>
-            <div class="feature-text"><strong>Temps réel</strong> — le jeu tourne en permanence, même quand tu ne joues pas</div>
-          </div>
-          <div class="feature">
-            <div class="feature-dot"></div>
-            <div class="feature-text"><strong>Biomes & exploration</strong> — désert, montagne, et d'autres environnements à traverser</div>
-          </div>
-          <div class="feature">
-            <div class="feature-dot"></div>
-            <div class="feature-text"><strong>Système RPG complet</strong> — Endurance, Combat, Chance, niveaux, XP, journal d'aventure</div>
-          </div>
-          <div class="feature">
-            <div class="feature-dot"></div>
-            <div class="feature-text"><strong>Rythme naturel</strong> — le sommeil, les cycles jour/nuit font partie du gameplay</div>
-          </div>
+          <div class="feature"><div class="feature-dot"></div><div class="feature-text" data-i18n="proj_lt_f1"><strong>Temps réel</strong> — le jeu tourne en permanence</div></div>
+          <div class="feature"><div class="feature-dot"></div><div class="feature-text" data-i18n="proj_lt_f2"><strong>Biomes & exploration</strong> — désert, montagne...</div></div>
+          <div class="feature"><div class="feature-dot"></div><div class="feature-text" data-i18n="proj_lt_f3"><strong>Système RPG complet</strong> — Endurance, Combat, Chance, XP</div></div>
+          <div class="feature"><div class="feature-dot"></div><div class="feature-text" data-i18n="proj_lt_f4"><strong>Rythme naturel</strong> — le sommeil fait partie du gameplay</div></div>
         </div>
-        <div class="inprogress">
-          <div class="inprogress-icon">🎮</div>
-          <div>Prototype fonctionnel en cours de finition. La sortie sera annoncée sur nos réseaux.</div>
-        </div>
+        <div class="inprogress"><div class="inprogress-icon">🎮</div><div data-i18n="proj_lt_inprogress">Prototype fonctionnel en cours de finition.</div></div>
       </div>
     </div>
 
@@ -215,15 +175,11 @@ canvas{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-
 <!-- MORE COMING -->
 <section class="ok-section more-section">
   <div class="ok-section-inner more-inner">
-    <div class="ok-label" style="justify-content:center;">Et après ?</div>
-    <h2 class="ok-title reveal" style="margin-bottom:12px;">D'autres idées en gestation</h2>
-    <p class="ok-desc reveal r1" style="max-width:500px;margin:0 auto 36px;">Le studio ne dort jamais. VoteDay et Little ToT ne sont que le début.</p>
-    <div class="more-dots reveal r2">
-      <div class="more-dot">?</div>
-      <div class="more-dot">?</div>
-      <div class="more-dot">?</div>
-    </div>
-    <a href="contact.html" class="btn-primary reveal r3">Vous avez une idée ? Parlons-en</a>
+    <div class="ok-label" data-i18n="proj_more_label" style="justify-content:center;">Et après ?</div>
+    <h2 class="ok-title reveal" data-i18n="proj_more_title" style="margin-bottom:12px;">D'autres idées en gestation</h2>
+    <p class="ok-desc reveal r1" data-i18n="proj_more_desc" style="max-width:500px;margin:0 auto 36px;">Le studio ne dort jamais. VoteDay et Little ToT ne sont que le début.</p>
+    <div class="more-dots reveal r2"><div class="more-dot">?</div><div class="more-dot">?</div><div class="more-dot">?</div></div>
+    <a href="contact.html" class="btn-primary reveal r3" data-i18n="proj_more_cta">Vous avez une idée ? Parlons-en</a>
   </div>
 </section>
 
@@ -256,6 +212,7 @@ canvas{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-
     </div>
   </div>
 </footer>
+<script src="shared-i18n.js"></script>
 <script src="shared.js"></script>
 </body>
 </html>
