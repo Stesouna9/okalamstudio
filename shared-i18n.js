@@ -3,10 +3,16 @@ const PAGE_T = {
   en: {
     // NAV (all pages)
     nav_studio:'Studio', nav_projects:'Projects', nav_collabs:'Collaborations', nav_contact:'Contact',
+    nav_games:'Games', nav_home:'Home',
     // FOOTER (all pages)
     footer_tagline:'Independent creative tech studio. Always moving.',
     footer_home:'Home', footer_studio:'Studio', footer_projects:'Projects',
     footer_collabs:'Collaborations', footer_contact:'Contact us',
+    footer_nav:'Navigation', footer_copy:'© 2026 OKALAM Studio. All rights reserved.',
+    // ── GAMES ──
+    games_label:'Mini-games',
+    games_sub:'A word game built by OKALAM Studio. More games coming soon.',
+    coming_label:'Coming soon', coming_title:'More games on the way',
 
     // ── STUDIO ──
     studio_hero_label:'About',
@@ -101,9 +107,15 @@ const PAGE_T = {
 
   fr: {
     nav_studio:'Studio', nav_projects:'Projets', nav_collabs:'Collaborations', nav_contact:'Contact',
+    nav_games:'Jeux', nav_home:'Accueil',
     footer_tagline:'Studio créatif indépendant. Toujours en mouvement.',
     footer_home:'Accueil', footer_studio:'Studio', footer_projects:'Projets',
     footer_collabs:'Collaborations', footer_contact:'Nous contacter',
+    footer_nav:'Navigation', footer_copy:'© 2026 OKALAM Studio. Tous droits réservés.',
+    // ── GAMES ──
+    games_label:'Mini-jeux',
+    games_sub:'Un jeu de mots créé par OKALAM Studio. D\'autres jeux bientôt disponibles.',
+    coming_label:'Bientôt disponible', coming_title:'D\'autres jeux arrivent',
     studio_hero_label:'À propos',
     studio_hero_title:'Le <span class="accent-word">Studio</span>',
     studio_hero_sub:'Un lab créatif indépendant à l\'intersection de la technologie, du jeu et de la narration.',
@@ -190,9 +202,14 @@ const PAGE_T = {
 
   ja: {
     nav_studio:'スタジオ', nav_projects:'プロジェクト', nav_collabs:'コラボ', nav_contact:'お問い合わせ',
+    nav_games:'ゲーム', nav_home:'ホーム',
     footer_tagline:'独立クリエイティブスタジオ。常に進化中。',
     footer_home:'ホーム', footer_studio:'スタジオ', footer_projects:'プロジェクト',
     footer_collabs:'コラボ', footer_contact:'お問い合わせ',
+    footer_nav:'ナビゲーション', footer_copy:'© 2026 OKALAM Studio. 無断転載禁止。',
+    games_label:'ミニゲーム',
+    games_sub:'OKALAMスタジオが作ったワードゲーム。もっとゲームが近日公開。',
+    coming_label:'近日公開', coming_title:'さらにゲームが追加されます',
     studio_hero_label:'私たちについて',
     studio_hero_title:'<span class="accent-word">スタジオ</span>',
     studio_hero_sub:'テクノロジー、ゲーム、ストーリーテリングの交差点にある独立クリエイティブラボ。',
@@ -279,9 +296,14 @@ const PAGE_T = {
 
   zh: {
     nav_studio:'工作室', nav_projects:'项目', nav_collabs:'合作', nav_contact:'联系',
+    nav_games:'游戏', nav_home:'首页',
     footer_tagline:'独立创意技术工作室。永远在路上。',
     footer_home:'首页', footer_studio:'工作室', footer_projects:'项目',
     footer_collabs:'合作', footer_contact:'联系我们',
+    footer_nav:'导航', footer_copy:'© 2026 OKALAM Studio. 保留所有权利。',
+    games_label:'迷你游戏',
+    games_sub:'OKALAM工作室制作的文字游戏。更多游戏即将推出。',
+    coming_label:'即将推出', coming_title:'更多游戏正在路上',
     studio_hero_label:'关于我们',
     studio_hero_title:'<span class="accent-word">工作室</span>',
     studio_hero_sub:'一个独立的创意实验室，处于技术、游戏和叙事的交汇处。',
@@ -368,9 +390,14 @@ const PAGE_T = {
 
   es: {
     nav_studio:'Estudio', nav_projects:'Proyectos', nav_collabs:'Colaboraciones', nav_contact:'Contacto',
+    nav_games:'Juegos', nav_home:'Inicio',
     footer_tagline:'Estudio creativo independiente. Siempre en movimiento.',
     footer_home:'Inicio', footer_studio:'Estudio', footer_projects:'Proyectos',
     footer_collabs:'Colaboraciones', footer_contact:'Contáctanos',
+    footer_nav:'Navegación', footer_copy:'© 2026 OKALAM Studio. Todos los derechos reservados.',
+    games_label:'Mini-juegos',
+    games_sub:'Un juego de palabras creado por OKALAM Studio. Más juegos próximamente.',
+    coming_label:'Próximamente', coming_title:'Más juegos en camino',
     studio_hero_label:'Sobre nosotros',
     studio_hero_title:'El <span class="accent-word">Estudio</span>',
     studio_hero_sub:'Un laboratorio creativo independiente en la intersección de tecnología, juegos y narrativa.',
@@ -457,9 +484,14 @@ const PAGE_T = {
 
   pt: {
     nav_studio:'Estúdio', nav_projects:'Projetos', nav_collabs:'Colaborações', nav_contact:'Contato',
+    nav_games:'Jogos', nav_home:'Início',
     footer_tagline:'Estúdio criativo independente. Sempre em movimento.',
     footer_home:'Início', footer_studio:'Estúdio', footer_projects:'Projetos',
     footer_collabs:'Colaborações', footer_contact:'Fale conosco',
+    footer_nav:'Navegação', footer_copy:'© 2026 OKALAM Studio. Todos os direitos reservados.',
+    games_label:'Mini-jogos',
+    games_sub:'Um jogo de palavras criado pelo OKALAM Studio. Mais jogos em breve.',
+    coming_label:'Em breve', coming_title:'Mais jogos a caminho',
     studio_hero_label:'Sobre nós',
     studio_hero_title:'O <span class="accent-word">Estúdio</span>',
     studio_hero_sub:'Um laboratório criativo independente na interseção de tecnologia, jogos e narrativa.',

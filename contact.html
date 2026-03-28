@@ -248,15 +248,15 @@ canvas{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-
   <div class="ok-footer-inner">
     <div>
       <div class="ok-footer-brand">OKALAM Studio</div>
-      <p class="ok-footer-tagline">Studio créatif indépendant. Toujours en mouvement.</p>
+      <p class="ok-footer-tagline" data-i18n="footer_tagline">Studio créatif indépendant. Toujours en mouvement.</p>
     </div>
     <div class="ok-footer-cols">
       <div class="ok-footer-col">
-        <h4>Navigation</h4>
-        <a href="index.html">Accueil</a>
-        <a href="studio.html">Studio</a>
-        <a href="projets.html">Projets</a>
-        <a href="collaborations.html">Collaborations</a>
+        <h4 data-i18n="footer_nav">Navigation</h4>
+        <a href="index.html" data-i18n="footer_home">Accueil</a>
+        <a href="studio.html" data-i18n="footer_studio">Studio</a>
+        <a href="projets.html" data-i18n="footer_projects">Projets</a>
+        <a href="collaborations.html" data-i18n="footer_collabs">Collaborations</a>
       </div>
       <div class="ok-footer-col">
         <h4>Contact</h4>
@@ -266,7 +266,7 @@ canvas{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-
     </div>
   </div>
   <div class="ok-footer-bottom">
-    <span class="ok-footer-copy">© 2026 OKALAM Studio. Tous droits réservés.</span>
+    <span class="ok-footer-copy" data-i18n="footer_copy">© 2026 OKALAM Studio. Tous droits réservés.</span>
     <div class="ok-social-links">
       <a href="https://github.com/Stesouna9" target="_blank" class="ok-social">⌥</a>
       <a href="mailto:support@okalamstudio.com" class="ok-social">✉</a>
@@ -276,19 +276,43 @@ canvas{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-
 <script src="shared-i18n.js"></script>
 <script src="shared.js"></script>
 <script>
-// Form handler - uses Formspree if configured, otherwise shows success anyway
+// Formspree IDs — créer sur formspree.io et remplacer ici
+// Form "Support général" → support@okalamstudio.com
+const FORM_SUPPORT      = 'YOUR_SUPPORT_FORM_ID';
+// Form "Partenariats"    → partnerships@okalamstudio.com
+const FORM_PARTNERSHIPS = 'YOUR_PARTNERSHIPS_FORM_ID';
+
+const PARTNERSHIP_SUBJECTS = ['collaboration', 'marque', 'media-kit'];
+
 document.getElementById('contactForm')?.addEventListener('submit', async function(e){
   e.preventDefault();
   const btn = document.getElementById('formBtn');
-  btn.disabled = true; btn.textContent = 'Envoi...';
-  const data = new FormData(this);
-  const body = Object.fromEntries(data);
-  // Try Formspree (replace YOUR_ID with real Formspree form ID if you want)
-  // For now just show success after short delay
-  setTimeout(()=>{
-    document.getElementById('form-wrap').style.display='none';
-    document.getElementById('formSuccess').classList.add('show');
-  }, 800);
+  btn.disabled = true;
+  btn.textContent = 'Envoi…';
+
+  const data    = new FormData(this);
+  const body    = Object.fromEntries(data);
+  const isPartnership = PARTNERSHIP_SUBJECTS.includes(body.sujet);
+  const formId  = isPartnership ? FORM_PARTNERSHIPS : FORM_SUPPORT;
+
+  try {
+    const res = await fetch(`https://formspree.io/f/${formId}`, {
+      method : 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body   : JSON.stringify(body)
+    });
+    if (res.ok) {
+      document.getElementById('form-wrap').style.display = 'none';
+      document.getElementById('formSuccess').classList.add('show');
+    } else {
+      const err = await res.json();
+      throw new Error(err?.errors?.[0]?.message || 'Erreur serveur');
+    }
+  } catch(err) {
+    btn.disabled  = false;
+    btn.textContent = 'Envoyer le message';
+    alert('Une erreur est survenue : ' + err.message + '\nÉcrivez-nous directement à support@okalamstudio.com');
+  }
 });
 </script>
 </body>
