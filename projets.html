@@ -34,6 +34,7 @@ canvas{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-
 }
 .project-visual.vd{background:linear-gradient(135deg,#0d1a2a,#0a1628);}
 .project-visual.lt{background:linear-gradient(135deg,#0a1a0e,#071510);}
+.project-visual.kb{background:linear-gradient(135deg,#0e0a1a,#150d28);}
 .project-content{}
 .project-status{
   display:inline-flex;align-items:center;gap:6px;
@@ -182,6 +183,28 @@ canvas{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-
           <div class="feature"><div class="feature-dot"></div><div class="feature-text" data-i18n="proj_lt_f4"><strong>Rythme naturel</strong> — le sommeil fait partie du gameplay</div></div>
         </div>
         <div class="inprogress"><div class="inprogress-icon">🎮</div><div data-i18n="proj_lt_inprogress">Prototype fonctionnel en cours de finition.</div></div>
+      </div>
+    </div>
+
+    <!-- Kotoba -->
+    <div class="project-block reveal">
+      <div class="project-visual kb" style="position:relative;overflow:hidden;display:flex;gap:0;padding:0;">
+        <img src="imgs/kotoba_jp.png" alt="Kotoba japonais" style="width:33%;height:100%;object-fit:cover;object-position:top;" onerror="this.parentElement.innerHTML='コ'"/>
+        <img src="imgs/kotoba_fr.png" alt="Kotoba français" style="width:34%;height:100%;object-fit:cover;object-position:top;border-left:1px solid rgba(0,0,0,.3);border-right:1px solid rgba(0,0,0,.3);" onerror="this.style.display='none'"/>
+        <img src="imgs/kotoba_play.png" alt="Kotoba play" style="width:33%;height:100%;object-fit:cover;object-position:top;" onerror="this.style.display='none'"/>
+      </div>
+      <div class="project-content">
+        <div class="project-status">En développement</div>
+        <h2 class="project-name">Kotoba</h2>
+        <p class="project-desc">Trouve le mot caché. Chaque jour, dans ta langue. Un jeu de devinette de mots inspiré de Motus et Wordle — disponible en 12 langues.</p>
+        <div class="project-tags"><span class="ptag">Word Game</span><span class="ptag">iOS</span><span class="ptag">12 langues</span><span class="ptag">SwiftUI</span></div>
+        <div class="project-features">
+          <div class="feature"><div class="feature-dot"></div><div class="feature-text"><strong>12 langues</strong> — FR, EN, ES, PT, DE, IT, NL, TR, PL, SV, RU, JA</div></div>
+          <div class="feature"><div class="feature-dot"></div><div class="feature-text"><strong>Mots de 4 à 11 lettres</strong> — clavier adaptatif (AZERTY, QWERTY, Cyrillique…)</div></div>
+          <div class="feature"><div class="feature-dot"></div><div class="feature-text"><strong>Bonus lettres</strong> — indices débloqués, packs d'achat, 1 gratuit par jour</div></div>
+          <div class="feature"><div class="feature-dot"></div><div class="feature-text"><strong>6 tentatives</strong> — la première lettre est révélée dès le départ</div></div>
+        </div>
+        <div class="inprogress"><div class="inprogress-icon">📱</div><div>Application iOS native en cours de développement. Bientôt disponible sur l'App Store.</div></div>
       </div>
     </div>
 

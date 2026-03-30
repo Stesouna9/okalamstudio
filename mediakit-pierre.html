@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="robots" content="noindex, nofollow"/>
+<title>Media Kit — Tesla Burger × OKALAM Studio</title>
+<meta name="description" content="Media Kit Tesla Burger — Partenariat OKALAM Studio"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#080c12;--bg2:#0d1220;--card:#111827;--card2:#141c2d;
+  --text:#e8edf5;--muted:#6b7280;--border:rgba(255,255,255,.08);--border2:rgba(255,255,255,.06);
+  --red:#f87171;--green:#4ade80;
+  --okalam:#8deaff;
+  --cr:#3b82f6;
+  --cr-dim:rgba(59,130,246,.12);--cr-glow:rgba(59,130,246,.2);--cr-border:rgba(59,130,246,.25);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;line-height:1.6;overflow-x:hidden;}
+::selection{background:rgba(59,130,246,.25);color:var(--cr);}
+
+/* ── ACCESS GATE ── */
+.gate{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px 24px;}
+.gate-lock{font-size:2.8rem;margin-bottom:20px;opacity:.35;}
+.gate-title{font-family:'Syne',sans-serif;font-weight:800;font-size:1.7rem;margin-bottom:6px;}
+.gate-sub{font-size:.88rem;color:var(--muted);margin-bottom:28px;}
+.gate-form{display:flex;gap:8px;align-items:center;margin-bottom:12px;}
+.gate-input{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:11px 16px;color:var(--text);font-family:'Space Mono',monospace;font-size:.85rem;outline:none;width:180px;transition:border-color .2s;}
+.gate-input:focus{border-color:var(--cr);}
+.gate-btn{background:var(--cr);color:#fff;font-family:'Syne',sans-serif;font-weight:700;font-size:.75rem;letter-spacing:.06em;border:none;border-radius:8px;padding:11px 20px;cursor:pointer;transition:all .2s;white-space:nowrap;}
+.gate-btn:hover{background:#60a5fa;}
+.gate-error{font-size:.75rem;color:var(--red);display:none;margin-bottom:8px;}
+.gate-home{margin-top:24px;font-size:.75rem;color:var(--muted);text-decoration:none;border:1px solid var(--border2);padding:8px 20px;border-radius:4px;transition:all .2s;}
+.gate-home:hover{border-color:var(--cr);color:var(--cr);}
+
+/* ── STICKY HEADER ── */
+.mk-header{position:sticky;top:0;z-index:100;background:rgba(8,12,18,.96);backdrop-filter:blur(20px);border-bottom:1px solid var(--border2);padding:14px 48px;display:flex;align-items:center;justify-content:space-between;gap:16px;}
+.mk-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:.85rem;letter-spacing:.25em;text-transform:uppercase;color:var(--okalam);text-decoration:none;}
+.mk-tag{font-family:'Space Mono',monospace;font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;background:var(--cr-dim);color:var(--cr);border:1px solid var(--cr-border);padding:4px 14px;border-radius:20px;}
+.mk-contact-btn{background:var(--cr);color:#fff;font-family:'Syne',sans-serif;font-weight:700;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;padding:10px 20px;border-radius:4px;text-decoration:none;transition:all .2s;white-space:nowrap;}
+.mk-contact-btn:hover{background:#60a5fa;transform:translateY(-1px);}
+
+/* ── HERO ── */
+.mk-hero{padding:80px 48px 64px;text-align:center;border-bottom:1px solid var(--border2);}
+.hero-avatar-wrap{width:180px;height:180px;border-radius:50%;overflow:hidden;margin:0 auto 32px;box-shadow:0 0 60px rgba(59,130,246,.25);border:3px solid rgba(59,130,246,.3);position:relative;}
+.hero-avatar-wrap img{width:180px;height:180px;object-fit:cover;object-position:top;display:block;border-radius:50%;}
+.hero-avatar-fallback{width:180px;height:180px;border-radius:50%;background:linear-gradient(135deg,#1d4ed8 0%,#3b82f6 100%);display:none;align-items:center;justify-content:center;font-size:3rem;}
+.mk-hero-name{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(2.2rem,5vw,3.4rem);letter-spacing:-.02em;margin-bottom:10px;}
+.mk-hero-tag{display:inline-flex;align-items:center;gap:6px;background:var(--cr-dim);border:1px solid var(--cr-border);border-radius:20px;padding:6px 18px;font-family:'Space Mono',monospace;font-size:.65rem;letter-spacing:.08em;color:var(--cr);margin-bottom:18px;}
+.mk-hero-pitch{font-size:.9rem;color:var(--muted);max-width:560px;margin:0 auto 36px;line-height:1.75;}
+.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;max-width:720px;margin:0 auto;}
+.hero-stat{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px 16px;text-align:center;}
+.hero-stat-val{font-family:'Syne',sans-serif;font-weight:800;font-size:1.7rem;color:var(--cr);letter-spacing:-.02em;display:block;margin-bottom:4px;}
+.hero-stat-lbl{font-family:'Space Mono',monospace;font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
+
+/* ── SECTIONS ── */
+.mk-section{padding:64px 48px;border-bottom:1px solid var(--border2);}
+.mk-section-inner{max-width:1100px;margin:0 auto;}
+.mk-label{font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cr);margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+.mk-label::before{content:'';width:20px;height:1px;background:var(--cr);}
+.mk-section-title{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(1.4rem,3vw,1.9rem);letter-spacing:-.02em;margin-bottom:10px;}
+.mk-section-intro{font-size:.88rem;color:var(--muted);max-width:700px;margin-bottom:28px;line-height:1.75;}
+
+/* ── PLATFORM GRID ── */
+.platform-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+.platform-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:26px;transition:all .3s;}
+.platform-card:hover{border-color:var(--cr);box-shadow:0 0 20px rgba(59,130,246,.08);}
+.pf-icon{font-size:1.5rem;margin-bottom:10px;}
+.pf-name{font-family:'Syne',sans-serif;font-weight:700;font-size:.85rem;margin-bottom:14px;color:var(--text);}
+.pf-stat-main{font-family:'Syne',sans-serif;font-weight:800;font-size:2rem;color:var(--cr);letter-spacing:-.02em;display:block;margin-bottom:2px;}
+.pf-stat-sub{font-family:'Space Mono',monospace;font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:10px;}
+.pf-row{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-top:1px solid var(--border2);font-size:.78rem;}
+.pf-row span:first-child{color:var(--muted);}
+.pf-row span:last-child{color:var(--text);font-weight:500;}
+.pf-explain{background:rgba(59,130,246,.08);border-left:3px solid var(--cr);padding:12px 16px;border-radius:0 8px 8px 0;font-size:.82rem;color:var(--muted);margin-top:12px;line-height:1.6;}
+.pf-badge{display:inline-block;background:var(--cr-dim);border:1px solid var(--cr-border);color:var(--cr);font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.06em;padding:4px 10px;border-radius:12px;margin-top:10px;}
+.pf-badge-rocket{background:rgba(59,130,246,.18);border-color:var(--cr);color:#93c5fd;}
+
+/* ── AUDIENCE CARDS ── */
+.audience-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.audience-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;line-height:1.7;}
+.audience-card p{font-size:.88rem;color:var(--muted);}
+.audience-note{font-size:.75rem;color:var(--muted);opacity:.6;margin-top:20px;font-family:'Space Mono',monospace;font-style:italic;}
+
+/* ── COLLAB CARDS ── */
+.collab-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;}
+.collab-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:28px;transition:all .3s;}
+.collab-card:hover{border-color:var(--cr);box-shadow:0 0 18px rgba(59,130,246,.06);}
+.cc-icon{font-size:1.6rem;margin-bottom:12px;}
+.cc-title{font-family:'Syne',sans-serif;font-weight:700;font-size:1rem;margin-bottom:8px;}
+.cc-desc{font-size:.85rem;color:var(--muted);margin-bottom:14px;line-height:1.7;}
+.cc-ideal{font-size:.75rem;color:var(--muted);margin-bottom:12px;font-style:italic;}
+.cc-ideal span{color:var(--text);}
+.cc-price{display:inline-block;background:var(--cr-dim);border:1px solid var(--cr-border);color:var(--cr);font-family:'Space Mono',monospace;font-size:.65rem;letter-spacing:.06em;padding:5px 12px;border-radius:8px;}
+
+/* ── PRICING ── */
+.pricing-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+.price-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:22px;transition:all .3s;}
+.price-card:hover{border-color:var(--cr);}
+.price-platform{font-family:'Space Mono',monospace;font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
+.price-val{font-family:'Syne',sans-serif;font-weight:800;font-size:1.4rem;color:var(--cr);margin-bottom:4px;}
+.price-reach{font-size:.8rem;color:var(--muted);}
+.pricing-callout{background:linear-gradient(135deg,rgba(59,130,246,.1),rgba(59,130,246,.04));border:1px solid var(--cr-border);border-radius:12px;padding:24px 28px;margin-top:20px;font-size:.92rem;color:var(--text);line-height:1.75;}
+.pricing-callout strong{color:var(--cr);}
+.pricing-source{font-size:.65rem;color:var(--muted);margin-top:14px;font-family:'Space Mono',monospace;opacity:.7;}
+
+/* ── CONTENT CARDS ── */
+.content-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.ct-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;transition:all .3s;}
+.ct-card:hover{border-color:var(--cr);}
+.ct-platform{font-family:'Space Mono',monospace;font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;color:var(--cr);margin-bottom:8px;}
+.ct-title{font-family:'Syne',sans-serif;font-weight:700;font-size:.9rem;margin-bottom:8px;line-height:1.3;}
+.ct-views{font-size:.82rem;color:var(--muted);}
+.ct-views strong{color:var(--cr);}
+
+/* ── CTA ── */
+.mk-cta{text-align:center;padding:80px 48px;border-bottom:1px solid var(--border2);background:linear-gradient(135deg,rgba(59,130,246,.04),rgba(59,130,246,.01));}
+.mk-cta-title{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(1.6rem,3vw,2.2rem);letter-spacing:-.02em;margin-bottom:12px;}
+.mk-cta-sub{font-size:.88rem;color:var(--muted);max-width:520px;margin:0 auto 28px;line-height:1.75;}
+.cta-main-btn{display:inline-block;background:var(--cr);color:#fff;font-family:'Syne',sans-serif;font-weight:700;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;padding:14px 36px;border-radius:6px;text-decoration:none;transition:all .2s;margin-bottom:16px;}
+.cta-main-btn:hover{background:#60a5fa;transform:translateY(-2px);}
+.cta-back{display:block;font-size:.78rem;color:var(--muted);text-decoration:none;margin-top:12px;transition:color .2s;}
+.cta-back:hover{color:var(--cr);}
+
+/* ── FOOTER ── */
+.mk-footer{border-top:1px solid var(--border2);padding:28px 48px;text-align:center;font-size:.72rem;color:var(--muted);font-family:'Space Mono',monospace;letter-spacing:.04em;}
+
+/* ── REVEAL ANIMATIONS ── */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .5s ease,transform .5s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+/* ── RESPONSIVE ── */
+@media(max-width:960px){
+  .platform-grid{grid-template-columns:repeat(2,1fr);}
+  .hero-stats{grid-template-columns:repeat(2,1fr);}
+  .collab-grid{grid-template-columns:1fr;}
+  .pricing-grid{grid-template-columns:1fr;}
+  .audience-grid{grid-template-columns:1fr;}
+  .content-grid{grid-template-columns:1fr;}
+}
+@media(max-width:640px){
+  .mk-header{padding:12px 16px;}
+  .mk-logo{font-size:.75rem;}
+  .mk-tag{display:none;}
+  .mk-hero{padding:56px 20px 44px;}
+  .mk-section{padding:48px 20px;}
+  .mk-cta{padding:56px 20px;}
+  .mk-footer{padding:24px 20px;}
+  .platform-grid{grid-template-columns:1fr;}
+  .hero-stats{grid-template-columns:repeat(2,1fr);}
+}
+</style>
+</head>
+<body>
+
+<!-- ACCESS GATE -->
+<div id="gate" class="gate" style="display:none;">
+  <div class="gate-lock">🔒</div>
+  <h1 class="gate-title">Media Kit Privé</h1>
+  <p class="gate-sub">Tesla Burger × OKALAM Studio</p>
+  <div class="gate-form">
+    <input id="gate-input" type="text" placeholder="Ton code…" class="gate-input"
+      autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+    <button class="gate-btn" onclick="submitGate()">Accéder →</button>
+  </div>
+  <p id="gate-error" class="gate-error">Code incorrect</p>
+  <a href="index.html" class="gate-home">← Retour à OKALAM Studio</a>
+</div>
+
+<!-- MEDIA KIT CONTENT -->
+<div id="content" style="display:none;">
+
+  <!-- STICKY HEADER -->
+  <header class="mk-header">
+    <a href="index.html" class="mk-logo">OKALAM STUDIO</a>
+    <span class="mk-tag">Tesla Burger</span>
+    <a href="mailto:contact@okalamstudio.com" class="mk-contact-btn">Contacter l'équipe</a>
+  </header>
+
+  <!-- HERO -->
+  <section class="mk-hero">
+    <div class="hero-avatar-wrap">
+      <img src="imgs/pierre-photo.jpg" alt="Tesla Burger — Pierre"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"/>
+      <div class="hero-avatar-fallback">⚡</div>
+    </div>
+    <h1 class="mk-hero-name">Tesla Burger</h1>
+    <div class="mk-hero-tag">⚡ Tech · VE · Solaire · Unboxing · France</div>
+    <p class="mk-hero-pitch">Créateur de contenu tech &amp; véhicules électriques, référence française sur la niche VE. 17,9M de vues YouTube pour une niche ultra-qualifiée.</p>
+    <div class="hero-stats reveal">
+      <div class="hero-stat">
+        <span class="hero-stat-val">11,9K</span>
+        <span class="hero-stat-lbl">Abonnés YouTube</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-val">9,7K</span>
+        <span class="hero-stat-lbl">Abonnés Instagram</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-val">17,9M</span>
+        <span class="hero-stat-lbl">Vues YouTube totales</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-val">23 700</span>
+        <span class="hero-stat-lbl">Vues / vidéo moy.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION: PLATEFORMES -->
+  <section class="mk-section">
+    <div class="mk-section-inner">
+      <div class="mk-label reveal">Présence en ligne</div>
+      <h2 class="mk-section-title reveal">Ses plateformes</h2>
+      <p class="mk-section-intro reveal">Pierre est présent sur 3 plateformes actives. Voici ce que chaque chiffre veut dire concrètement pour toi.</p>
+      <div class="platform-grid">
+
+        <!-- YouTube -->
+        <div class="platform-card reveal">
+          <div class="pf-icon">▶️</div>
+          <div class="pf-name">YouTube</div>
+          <span class="pf-stat-main">11 900</span>
+          <span class="pf-stat-sub">abonnés</span>
+          <div class="pf-row"><span>Vues totales</span><span>17,9M</span></div>
+          <div class="pf-row"><span>Vidéos</span><span>451</span></div>
+          <div class="pf-row"><span>Vues par vidéo</span><span>23 700 en moy.</span></div>
+          <div class="pf-explain">💡 17,9M de vues pour 11 900 abonnés = 199% au-dessus de la médiane. Ses vidéos sont trouvées par des milliers de personnes qui cherchent activement du contenu VE.</div>
+          <div class="pf-badge">23 700 vues/vidéo en moyenne</div>
+        </div>
+
+        <!-- Instagram -->
+        <div class="platform-card reveal">
+          <div class="pf-icon">📷</div>
+          <div class="pf-name">Instagram</div>
+          <span class="pf-stat-main">9 753</span>
+          <span class="pf-stat-sub">abonnés</span>
+          <div class="pf-row"><span>Publications</span><span>331</span></div>
+          <div class="pf-row"><span>Vues moy. par post</span><span>81 240</span></div>
+          <div class="pf-row"><span>Engagement</span><span>2,95%</span></div>
+          <div class="pf-explain">💡 81 240 vues en moyenne pour 9 753 abonnés = un ratio de 8x. Extraordinaire. Ses posts touchent bien au-delà de sa communauté directe.</div>
+          <div class="pf-badge pf-badge-rocket">🚀 8x plus de vues que d'abonnés</div>
+        </div>
+
+        <!-- TikTok -->
+        <div class="platform-card reveal">
+          <div class="pf-icon">🎵</div>
+          <div class="pf-name">TikTok</div>
+          <span class="pf-stat-main">1 438</span>
+          <span class="pf-stat-sub">abonnés</span>
+          <div class="pf-row"><span>Likes cumulés</span><span>73 235</span></div>
+          <div class="pf-row"><span>Vidéos</span><span>111</span></div>
+          <div class="pf-row"><span>Vues moy.</span><span>19 570</span></div>
+          <div class="pf-explain">💡 19 570 vues par vidéo sur TikTok avec seulement 1 438 abonnés = contenu qui tourne bien au-delà de la communauté. Engagement 4,78%.</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION: AUDIENCE -->
+  <section class="mk-section">
+    <div class="mk-section-inner">
+      <div class="mk-label reveal">Audience &amp; données</div>
+      <h2 class="mk-section-title reveal">Son audience</h2>
+      <p class="mk-section-intro reveal">Qui suit Tesla Burger ? Voici ce qu'on sait sur sa communauté.</p>
+      <div class="audience-grid">
+        <div class="audience-card reveal">
+          <p>🇫🇷 <strong style="color:var(--text);">Audience principale : France</strong> — ta campagne touche directement le marché français.</p>
+        </div>
+        <div class="audience-card reveal">
+          <p>⚡ <strong style="color:var(--text);">Niche : early adopters tech, propriétaires et futurs acheteurs de VE, passionnés solaire</strong> — profils à revenus élevés, acheteurs actifs.</p>
+        </div>
+        <div class="audience-card reveal">
+          <p>📊 <strong style="color:var(--text);">Instagram : ratio vues/abonnés de 833%</strong> — exceptionnel pour une niche B2C premium.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION: FORMATS -->
+  <section class="mk-section">
+    <div class="mk-section-inner">
+      <div class="mk-label reveal">Formats de collaboration</div>
+      <h2 class="mk-section-title reveal">Ce qu'on peut faire ensemble</h2>
+      <p class="mk-section-intro reveal">Voici les types de collaborations possibles avec Tesla Burger. Chaque format a ses avantages.</p>
+      <div class="collab-grid">
+
+        <div class="collab-card reveal">
+          <div class="cc-icon">📦</div>
+          <div class="cc-title">Review / Unboxing YouTube</div>
+          <p class="cc-desc">Pierre teste ton produit sur une vidéo dédiée. Vue par ~23 700 personnes tech &amp; VE en France.</p>
+          <p class="cc-ideal">Idéal pour : <span>accessoires VE, gadgets tech, équipements solaires</span></p>
+          <span class="cc-price">Tarif indicatif : 422–494 €</span>
+        </div>
+
+        <div class="collab-card reveal">
+          <div class="cc-icon">📎</div>
+          <div class="cc-title">Mention dans une vidéo YouTube</div>
+          <p class="cc-desc">Citation de ta marque dans une vidéo existante. Format moins engageant mais bon ROI.</p>
+          <p class="cc-ideal">Idéal pour : <span>logiciels, apps, services tech</span></p>
+          <span class="cc-price">Tarif indicatif : sur devis (&lt; 422 €)</span>
+        </div>
+
+        <div class="collab-card reveal">
+          <div class="cc-icon">📸</div>
+          <div class="cc-title">Post Instagram</div>
+          <p class="cc-desc">Post ou reel avec 81 240 vues moyennes. Ratio exceptionnel pour la niche tech premium.</p>
+          <p class="cc-ideal">Idéal pour : <span>produits premium, lancement</span></p>
+          <span class="cc-price">Tarif indicatif : 844–977 €</span>
+        </div>
+
+        <div class="collab-card reveal">
+          <div class="cc-icon">🎵</div>
+          <div class="cc-title">TikTok</div>
+          <p class="cc-desc">Vidéos courtes avec 19 570 vues moyennes et 4,78% d'engagement.</p>
+          <p class="cc-ideal">Idéal pour : <span>awareness marque, démonstrations rapides</span></p>
+          <span class="cc-price">Tarif indicatif : sur devis</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION: TARIFS -->
+  <section class="mk-section">
+    <div class="mk-section-inner">
+      <div class="mk-label reveal">Tarifs &amp; retour sur investissement</div>
+      <h2 class="mk-section-title reveal">Ce que ça vaut</h2>
+      <p class="mk-section-intro reveal">Les tarifs ci-dessous sont des estimations basées sur les données marché (source : NoxInfluencer). Ils servent de base de discussion — chaque projet est unique.</p>
+      <div class="pricing-grid">
+        <div class="price-card reveal">
+          <div class="price-platform">YouTube review</div>
+          <div class="price-val">422–494 €</div>
+          <div class="price-reach">~23 700 personnes touchées</div>
+        </div>
+        <div class="price-card reveal">
+          <div class="price-platform">Instagram post</div>
+          <div class="price-val">844–977 €</div>
+          <div class="price-reach">~81 240 vues estimées</div>
+        </div>
+        <div class="price-card reveal">
+          <div class="price-platform">TikTok</div>
+          <div class="price-val">Sur devis</div>
+          <div class="price-reach">19 570 vues/vidéo moy.</div>
+        </div>
+        <div class="price-card reveal">
+          <div class="price-platform">Pack multi-plateformes</div>
+          <div class="price-val">Sur devis</div>
+          <div class="price-reach">Couverture maximale</div>
+        </div>
+      </div>
+      <div class="pricing-callout reveal">
+        Pour une <strong>vidéo YouTube à 450 €</strong>, tu touches en moyenne <strong>23 700 passionnés de tech &amp; VE en France</strong> — une audience que tu ne trouves nulle part ailleurs aussi concentrée.
+      </div>
+      <p class="pricing-source reveal">Source : NoxInfluencer · Wednesday Analytics · Mis à jour : 30 mars 2026</p>
+    </div>
+  </section>
+
+  <!-- SECTION: CONTENU PHARE -->
+  <section class="mk-section">
+    <div class="mk-section-inner">
+      <div class="mk-label reveal">Contenu phare</div>
+      <h2 class="mk-section-title reveal">Ses meilleurs contenus</h2>
+      <div class="content-grid">
+        <div class="ct-card reveal">
+          <div class="ct-platform">YouTube</div>
+          <div class="ct-title">Xiaomi M365 review</div>
+          <div class="ct-views"><strong>362K vues</strong></div>
+        </div>
+        <div class="ct-card reveal">
+          <div class="ct-platform">YouTube</div>
+          <div class="ct-title">Guide recharge VE</div>
+          <div class="ct-views"><strong>100K+ vues</strong></div>
+        </div>
+        <div class="ct-card reveal">
+          <div class="ct-platform">YouTube</div>
+          <div class="ct-title">Installation panneaux solaires</div>
+          <div class="ct-views"><strong>100K+ vues</strong></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION: CONTACT -->
+  <div class="mk-cta">
+    <div class="mk-label reveal" style="justify-content:center;">Contact</div>
+    <h2 class="mk-cta-title reveal">Intéressé(e) par une collaboration ?</h2>
+    <p class="mk-cta-sub reveal">Pour toute demande de partenariat avec Tesla Burger, contacte l'équipe OKALAM Studio. On te répond sous 48h avec une proposition personnalisée.</p>
+    <a href="mailto:contact@okalamstudio.com" class="cta-main-btn reveal">Contacter OKALAM Studio</a>
+    <a href="index.html" class="cta-back reveal">← Retour au site</a>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="mk-footer">
+    OKALAM Studio · Tous droits réservés · Document confidentiel
+  </footer>
+
+</div>
+
+<script>
+const TOKEN = 'pierre25';
+
+function checkAccess() {
+  const params = new URLSearchParams(window.location.search);
+  const t = params.get('token');
+  if (t && t.toLowerCase() === TOKEN) {
+    document.getElementById('gate').style.display = 'none';
+    document.getElementById('content').style.display = 'block';
+    initReveal();
+  } else {
+    document.getElementById('gate').style.display = 'flex';
+    document.getElementById('content').style.display = 'none';
+  }
+}
+
+function submitGate() {
+  const val = document.getElementById('gate-input').value.trim().toLowerCase();
+  if (val === TOKEN) {
+    const url = new URL(window.location.href);
+    url.searchParams.set('token', val);
+    window.location.href = url.toString();
+  } else {
+    document.getElementById('gate-error').style.display = 'block';
+    document.getElementById('gate-input').focus();
+  }
+}
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') submitGate();
+});
+
+function initReveal() {
+  const els = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  els.forEach(function(el) { io.observe(el); });
+}
+
+checkAccess();
+</script>
+</body>
+</html>

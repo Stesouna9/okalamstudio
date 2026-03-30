@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="robots" content="noindex, nofollow"/>
+<title>Media Kit — OKALAM Studio</title>
+<meta name="description" content="Private media kit — OKALAM Studio Creator Partnerships"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<style>
+:root{--bg:#080c12;--bg2:#0d1220;--card:#111827;--card2:#141c2d;--accent:#8deaff;--accent2:#5bc8e8;--accent-dim:rgba(141,234,255,.12);--accent-glow:rgba(141,234,255,.25);--text:#e8edf5;--muted:#6b7280;--border:rgba(141,234,255,.1);--border2:rgba(255,255,255,.06);--green:#4ade80;--yellow:#fbbf24;--red:#f87171;}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;line-height:1.6;overflow-x:hidden;}
+::selection{background:rgba(141,234,255,.25);color:var(--accent);}
+
+/* ── ACCESS DENIED ── */
+.access-denied{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px 24px;}
+.ad-lock{font-size:3rem;margin-bottom:24px;opacity:.4;}
+.ad-title{font-family:'Syne',sans-serif;font-weight:800;font-size:1.6rem;margin-bottom:12px;color:var(--text);}
+.ad-sub{font-size:.9rem;color:var(--muted);margin-bottom:24px;}
+.ad-creators{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin-bottom:32px;}
+.ad-creator-btn{
+  background:var(--card);border:1px solid var(--border);border-radius:12px;
+  padding:20px 28px;cursor:pointer;text-decoration:none;
+  transition:all .2s;display:flex;flex-direction:column;align-items:center;gap:8px;min-width:160px;
+}
+.ad-creator-btn:hover{border-color:var(--accent);background:var(--card2);}
+.ad-creator-emoji{font-size:1.6rem;}
+.ad-creator-name{font-family:'Syne',sans-serif;font-weight:700;font-size:.95rem;color:var(--text);}
+.ad-who{font-family:'Syne',sans-serif;font-weight:700;font-size:.95rem;color:var(--text);}
+.ad-code-input{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px 16px;color:var(--text);font-family:'Space Mono',monospace;font-size:.85rem;outline:none;width:170px;transition:border-color .2s;}
+.ad-code-input:focus{border-color:var(--accent);}
+.ad-code-submit{background:var(--accent);color:#05080e;font-family:'Syne',sans-serif;font-weight:700;font-size:.75rem;letter-spacing:.06em;border:none;border-radius:8px;padding:10px 18px;cursor:pointer;transition:all .2s;}
+.ad-code-submit:hover{background:#fff;}
+.ad-email{color:var(--accent);text-decoration:none;font-size:.8rem;}
+.ad-email:hover{text-decoration:underline;}
+.ad-home{margin-top:24px;font-size:.75rem;color:var(--muted);text-decoration:none;border:1px solid var(--border2);padding:8px 20px;border-radius:4px;transition:all .2s;}
+.ad-home:hover{border-color:var(--accent);color:var(--accent);}
+
+/* ── HEADER ── */
+.mk-header{position:sticky;top:0;z-index:100;background:rgba(8,12,18,.96);backdrop-filter:blur(20px);border-bottom:1px solid var(--border2);padding:16px 48px;display:flex;align-items:center;justify-content:space-between;}
+.mk-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:.85rem;letter-spacing:.25em;text-transform:uppercase;color:var(--text);text-decoration:none;}
+.mk-header-right{display:flex;align-items:center;gap:16px;}
+.mk-badge{font-family:'Space Mono',monospace;font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;background:var(--accent-dim);color:var(--accent);border:1px solid var(--border);padding:4px 12px;border-radius:20px;}
+.btn-sm{background:var(--accent);color:#05080e;font-family:'Syne',sans-serif;font-weight:700;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;padding:10px 20px;border-radius:4px;text-decoration:none;transition:all .2s;border:none;cursor:pointer;}
+.btn-sm:hover{background:#fff;transform:translateY(-1px);}
+.btn-ghost-sm{background:transparent;color:var(--muted);border:1px solid var(--border2);font-family:'Space Mono',monospace;font-size:.65rem;letter-spacing:.05em;padding:8px 16px;border-radius:4px;text-decoration:none;cursor:pointer;transition:all .2s;}
+.btn-ghost-sm:hover{border-color:var(--accent);color:var(--accent);}
+
+/* ── CREATOR HERO ── */
+.mk-hero{padding:80px 48px 60px;text-align:center;border-bottom:1px solid var(--border2);}
+.mk-creator-icon{font-size:3rem;margin-bottom:16px;}
+.mk-creator-name{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(2rem,5vw,3.2rem);letter-spacing:-.02em;margin-bottom:8px;}
+.mk-creator-niche{font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;}
+.mk-creator-flag{font-size:.85rem;color:var(--muted);}
+
+/* ── SECTIONS ── */
+.mk-section{padding:64px 48px;border-bottom:1px solid var(--border2);max-width:1100px;margin:0 auto;}
+.mk-section:last-of-type{border-bottom:none;}
+.mk-label{font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;display:flex;align-items:center;gap:10px;}
+.mk-label::before{content:'';width:20px;height:1px;background:var(--accent);}
+.mk-title{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(1.4rem,3vw,2rem);letter-spacing:-.02em;margin-bottom:24px;}
+
+/* ── PLATFORM CARDS ── */
+.platform-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.platform-grid.has-fb{grid-template-columns:repeat(4,1fr);}
+@media(max-width:900px){.platform-grid.has-fb{grid-template-columns:repeat(2,1fr);}}
+.platform-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:28px;transition:all .3s;}
+.platform-card:hover{border-color:var(--accent);}
+.pf-icon{font-size:1.6rem;margin-bottom:12px;}
+.pf-name{font-family:'Syne',sans-serif;font-weight:700;font-size:.9rem;margin-bottom:16px;color:var(--text);}
+.pf-stat-main{font-family:'Syne',sans-serif;font-weight:800;font-size:2.2rem;color:var(--accent);letter-spacing:-.02em;display:block;margin-bottom:4px;}
+.pf-stat-label{font-family:'Space Mono',monospace;font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:12px;}
+.pf-stat-row{display:flex;justify-content:space-between;padding:6px 0;border-top:1px solid var(--border2);font-size:.8rem;}
+.pf-stat-row span:first-child{color:var(--muted);}
+.pf-stat-row span:last-child{color:var(--text);font-weight:500;}
+.pf-updated{font-size:.6rem;color:var(--muted);margin-top:20px;text-align:right;font-family:'Space Mono',monospace;letter-spacing:.05em;}
+
+.mk-desc{font-size:.88rem;color:var(--muted);line-height:1.7;max-width:700px;}
+.mk-creator-intro{font-size:.85rem;color:var(--muted);max-width:560px;margin:20px auto 0;line-height:1.75;border-top:1px solid var(--border2);padding-top:20px;}
+.mk-creator-intro strong{color:var(--text);}
+
+/* ── AUDIENCE ANALYTICS (Wednesday) ── */
+.analytics-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.analytics-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;text-align:center;}
+.an-value{font-family:'Syne',sans-serif;font-weight:800;font-size:1.6rem;color:var(--accent);display:block;margin-bottom:4px;}
+.an-label{font-family:'Space Mono',monospace;font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
+.an-hint{font-size:.7rem;color:var(--muted);opacity:.6;margin-top:6px;display:block;line-height:1.4;}
+.an-coming{color:var(--muted);font-style:italic;font-size:.85rem;}
+.an-source{font-size:.58rem;color:var(--muted);margin-top:20px;font-family:'Space Mono',monospace;letter-spacing:.04em;}
+
+/* ── TOP CONTENT ── */
+.content-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.content-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;transition:all .3s;}
+.content-card:hover{border-color:var(--accent);}
+.cc-platform{font-family:'Space Mono',monospace;font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;}
+.cc-title{font-family:'Syne',sans-serif;font-weight:700;font-size:.9rem;margin-bottom:8px;line-height:1.3;}
+.cc-views{font-size:.8rem;color:var(--muted);}
+.cc-views strong{color:var(--accent);font-weight:700;}
+
+/* ── FORMATS ── */
+.formats-grid{display:flex;flex-direction:column;gap:10px;}
+.format-row{display:flex;align-items:center;gap:16px;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:18px 24px;transition:all .2s;}
+.format-row:hover{border-color:var(--accent);}
+.format-icon{font-size:1.2rem;flex-shrink:0;}
+.format-name{font-family:'Syne',sans-serif;font-weight:700;font-size:.9rem;flex:1;}
+.format-desc{font-size:.8rem;color:var(--muted);flex:2;}
+
+/* ── WHY AUDIENCE ── */
+.audience-text{font-size:.95rem;color:var(--muted);line-height:1.8;max-width:700px;}
+
+/* ── CTA ── */
+.mk-cta{text-align:center;padding:80px 48px;background:linear-gradient(135deg,rgba(141,234,255,.04),rgba(141,234,255,.01));}
+.mk-cta-title{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(1.6rem,4vw,2.4rem);margin-bottom:16px;letter-spacing:-.02em;}
+.mk-cta-sub{font-size:.85rem;color:var(--muted);margin-bottom:32px;}
+
+/* ── FOOTER ── */
+.mk-footer{border-top:1px solid var(--border2);padding:28px 48px;text-align:center;font-size:.75rem;color:var(--muted);}
+.mk-footer a{color:var(--accent);text-decoration:none;}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .mk-header{padding:14px 20px;}
+  .mk-hero{padding:60px 24px 40px;}
+  .mk-section{padding:48px 24px;}
+  .platform-grid,.analytics-grid,.content-grid{grid-template-columns:1fr;}
+  .format-row{flex-direction:column;align-items:flex-start;gap:8px;}
+  .mk-cta{padding:60px 24px;}
+  .mk-footer{padding:24px 20px;}
+  .mk-header-right{gap:8px;}
+}
+</style>
+</head>
+<body>
+
+<!-- ACCESS DENIED (shown if token is invalid) -->
+<div id="access-denied" class="access-denied" style="display:none;">
+  <div class="ad-lock">🔒</div>
+  <h1 class="ad-title">Accès restreint.</h1>
+  <p class="ad-sub">Tu es un partenaire OKALAM Studio ? Sélectionne ton nom puis entre ton code.</p>
+  <div class="ad-creators" id="ad-creators">
+    <button class="ad-creator-btn" onclick="selectCreator('elisa','🏃‍♀️','Elisa Is Running')">
+      <span class="ad-creator-emoji">🏃‍♀️</span>
+      <span class="ad-creator-name">Elisa Is Running</span>
+    </button>
+    <button class="ad-creator-btn" onclick="selectCreator('pierre','⚡','Tesla Burger')">
+      <span class="ad-creator-emoji">⚡</span>
+      <span class="ad-creator-name">Tesla Burger</span>
+    </button>
+  </div>
+  <div id="ad-code-form" style="display:none;flex-direction:column;align-items:center;gap:14px;margin-bottom:24px;">
+    <p class="ad-who" id="ad-who"></p>
+    <div style="display:flex;gap:8px;align-items:center;">
+      <input id="ad-code-input" type="text" placeholder="Ton code…" class="ad-code-input" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <button class="ad-code-submit" onclick="submitCode()">Accéder →</button>
+    </div>
+    <p id="ad-error" style="display:none;font-size:.75rem;color:var(--red);">Code incorrect. Réessaie.</p>
+    <button onclick="resetCreator()" style="background:none;border:none;color:var(--muted);font-size:.75rem;cursor:pointer;text-decoration:underline;">← Changer de compte</button>
+  </div>
+  <a href="mailto:partnerships@okalamstudio.com" class="ad-email">partnerships@okalamstudio.com</a>
+  <a href="index.html" class="ad-home">&larr; Retour à OKALAM Studio</a>
+</div>
+
+<!-- MEDIA KIT (shown if token is valid) -->
+<div id="media-kit" style="display:none;">
+
+  <!-- HEADER -->
+  <header class="mk-header">
+    <a href="index.html" class="mk-logo">OKALAM</a>
+    <div class="mk-header-right">
+      <span class="mk-badge">Partenaire OKALAM Studio</span>
+      <a href="mailto:partnerships@okalamstudio.com" class="btn-sm">Nous contacter</a>
+      <button class="btn-ghost-sm" onclick="window.print()">Télécharger en PDF</button>
+    </div>
+  </header>
+
+  <!-- CREATOR HERO -->
+  <section class="mk-hero">
+    <div class="mk-creator-icon" id="mk-icon"></div>
+    <h1 class="mk-creator-name" id="mk-name"></h1>
+    <p class="mk-creator-niche" id="mk-niche"></p>
+    <p class="mk-creator-flag">🇫🇷 France</p>
+    <p class="mk-creator-intro">Ce document est ton <strong>media kit</strong> — c'est ce que nous présentons aux marques pour leur expliquer qui tu es, ce que tu crées, et pourquoi ton audience les intéresse. Il est confidentiel et personnel.</p>
+  </section>
+
+  <!-- SECTION 1: PLATFORM STATS -->
+  <section class="mk-section">
+    <div class="mk-label">Tes chiffres</div>
+    <h2 class="mk-title">Ton audience sur les réseaux</h2>
+    <p class="mk-desc">Ce sont les premières données qu'une marque regarde. Plus ces chiffres sont élevés, plus tu as de visibilité.</p>
+    <div class="platform-grid" id="platform-grid" style="margin-top:24px;"></div>
+    <p class="pf-updated" id="stats-updated"></p>
+  </section>
+
+  <!-- SECTION 2: AUDIENCE ANALYTICS (Wednesday) -->
+  <section class="mk-section">
+    <div class="mk-label">Ton audience en détail</div>
+    <h2 class="mk-title">Qui regarde tes contenus</h2>
+    <p class="mk-desc">Ces données vont plus loin que les abonnés — elles décrivent les personnes réelles derrière les chiffres. C'est ce qui intéresse vraiment les marques : à qui elles vont parler.</p>
+    <div class="analytics-grid" id="analytics-grid" style="margin-top:24px;"></div>
+    <p class="an-source" id="analytics-source"></p>
+  </section>
+
+  <!-- SECTION 3: TOP CONTENT -->
+  <section class="mk-section">
+    <div class="mk-label">Tes meilleurs contenus</div>
+    <h2 class="mk-title">Ce qui performe le mieux</h2>
+    <p class="mk-desc">Ces contenus montrent aux marques ce que ton audience aime. Un bon historique de contenus viraux ou engageants, c'est un argument fort pour négocier.</p>
+    <div class="content-grid" id="content-grid" style="margin-top:24px;"></div>
+  </section>
+
+  <!-- SECTION 4: PARTNERSHIP FORMATS -->
+  <section class="mk-section">
+    <div class="mk-label">Ce que tu peux proposer</div>
+    <h2 class="mk-title">Les formats de collaboration disponibles</h2>
+    <p class="mk-desc">Voici les types de partenariats que nous pouvons proposer à une marque en ton nom. Tu n'es pas obligé(e) de tout accepter — on sélectionne ensemble ce qui correspond à ton style.</p>
+    <div class="formats-grid" style="margin-top:24px;">
+      <div class="format-row"><span class="format-icon">🎬</span><span class="format-name">Vidéo dédiée</span><span class="format-desc">Une vidéo entière consacrée au produit — test, démonstration, avis honnête. Le format qui génère le plus de confiance.</span></div>
+      <div class="format-row"><span class="format-icon">📎</span><span class="format-name">Mention intégrée</span><span class="format-desc">La marque est mentionnée naturellement dans l'une de tes vidéos ou reels, sans interrompre le contenu.</span></div>
+      <div class="format-row"><span class="format-icon">📝</span><span class="format-name">Test complet (long format)</span><span class="format-desc">Unboxing, prise en main, utilisation au quotidien et verdict final. Idéal pour les produits tech ou équipements.</span></div>
+      <div class="format-row"><span class="format-icon">📸</span><span class="format-name">Story / post sponsorisé</span><span class="format-desc">Mise en avant du produit en story Instagram ou post feed, avec un lien ou un call-to-action clair.</span></div>
+      <div class="format-row"><span class="format-icon">🎞️</span><span class="format-name">Série sponsorisée</span><span class="format-desc">Partenariat sur plusieurs épisodes sur plusieurs semaines — pour un impact plus profond et une meilleure mémorisation.</span></div>
+    </div>
+  </section>
+
+  <!-- SECTION 5: WHY THIS AUDIENCE -->
+  <section class="mk-section">
+    <div class="mk-label">Pourquoi ton audience intéresse les marques</div>
+    <h2 class="mk-title" id="why-title"></h2>
+    <p class="mk-desc" style="margin-bottom:16px;">Voici l'argument principal que nous utilisons pour convaincre une marque de travailler avec toi.</p>
+    <p class="audience-text" id="why-text"></p>
+  </section>
+
+  <!-- SECTION 6: CTA -->
+  <div class="mk-cta">
+    <h2 class="mk-cta-title">On démarre quelque chose ?</h2>
+    <p class="mk-cta-sub">Si tu as des questions sur ce document ou une marque en tête, contacte-nous — on répond en général sous 48h.</p>
+    <a href="mailto:partnerships@okalamstudio.com" class="btn-sm" style="font-size:.8rem;padding:14px 32px;">partnerships@okalamstudio.com</a>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="mk-footer">
+    &copy; OKALAM Studio &middot; <a href="mailto:partnerships@okalamstudio.com">partnerships@okalamstudio.com</a>
+  </footer>
+</div>
+
+<script>
+// ── ACCESS FORM ───────────────────────────────────────────────────
+let _selectedCreator=null;
+function selectCreator(key,emoji,name){
+  _selectedCreator=key;
+  document.getElementById('ad-creators').style.display='none';
+  document.getElementById('ad-who').textContent=emoji+' '+name;
+  document.getElementById('ad-code-form').style.display='flex';
+  document.getElementById('ad-error').style.display='none';
+  document.getElementById('ad-code-input').value='';
+  setTimeout(()=>document.getElementById('ad-code-input').focus(),50);
+}
+function resetCreator(){
+  _selectedCreator=null;
+  document.getElementById('ad-creators').style.display='flex';
+  document.getElementById('ad-code-form').style.display='none';
+}
+function submitCode(){
+  const code=document.getElementById('ad-code-input').value.trim().toLowerCase();
+  if(VALID_TOKENS[_selectedCreator]===code){
+    const pages={elisa:'mediakit-elisa.html',pierre:'mediakit-pierre.html'};
+    window.location.href=pages[_selectedCreator]+'?token='+code;
+  }else{
+    document.getElementById('ad-error').style.display='block';
+    document.getElementById('ad-code-input').focus();
+  }
+}
+document.addEventListener('keydown',function(e){
+  if(e.key==='Enter'&&_selectedCreator) submitCode();
+});
+
+// ── ANALYTICS DATA (manually updated) ────────────────────────────
+// source: nom de la plateforme utilisée (ex: "Wednesday Analytics", "NoxInfluencer")
+const WEDNESDAY_DATA={
+  elisa:{
+    engagementRate:"5,04% YT · 4,27% TT",
+    audienceFemale:"",
+    audienceMale:"",
+    topAge:"",
+    topCountry:"France",
+    estimatedPriceRange:"YT 50–100 $ · TT 25–30 $",
+    lastUpdated:"30 mars 2026",
+    source:"NoxInfluencer"
+  },
+  pierre:{
+    engagementRate:"1,83% YT · 2,95% IG · 4,78% TT",
+    audienceFemale:"",
+    audienceMale:"",
+    topAge:"",
+    topCountry:"France",
+    estimatedPriceRange:"YT 422–494 $ · IG 844–977 $",
+    lastUpdated:"30 mars 2026",
+    source:"NoxInfluencer"
+  }
+};
+
+// ── CREATOR DATA ─────────────────────────────────────────────────
+const CREATORS={
+  elisa:{
+    icon:"\ud83c\udfc3\u200d\u2640\ufe0f",
+    name:"Elisa Is Running",
+    niche:"Running \u00b7 Lifestyle \u00b7 Marathon \u00b7 France",
+    fallback:{
+      yt:{subs:13900,views:4155184,videos:546},
+      ig:{followers:12760,verified:true,posts:1998},
+      tt:{followers:1573,hearts:140000,videos:113,avgViews:835}
+    },
+    topContent:[
+      {platform:"TikTok",title:"Vidéo virale running",views:"3,7M vues"},
+      {platform:"YouTube",title:"Série entraînement marathon",views:"Série populaire"},
+      {platform:"Instagram",title:"Tests équipements running",views:"Fort engagement"}
+    ],
+    whyTitle:"Une vraie communauté de coureurs",
+    whyText:"Une audience française de coureurs passionnés — athlètes confirmés et débutants motivés. Fort pouvoir d'achat sur les chaussures, équipements, nutrition sportive et vêtements de sport. YouTube : 5,04% d'engagement (au-dessus de la moyenne), 7,75K vues/vidéo, 546 vidéos publiées, 1 vidéo tous les 3 jours. TikTok : 140 000 likes cumulés, vidéo virale à 3,7M de vues — preuve d'un potentiel viral fort. Potentiel de collaboration 7/10 selon NoxInfluencer."
+  },
+  pierre:{
+    icon:"\u26a1",
+    name:"Tesla Burger",
+    niche:"Tech \u00b7 EV \u00b7 Solaire \u00b7 Unboxing \u00b7 France",
+    fallback:{
+      yt:{subs:11900,views:17899208,videos:451},
+      ig:{followers:9753,verified:false,posts:331,avgViews:81240,engRate:"2,95%"},
+      tt:{followers:1438,hearts:73235,videos:111,avgViews:19570}
+    },
+    topContent:[
+      {platform:"YouTube",title:"Xiaomi M365 review",views:"362K vues"},
+      {platform:"YouTube",title:"Guide recharge VE",views:"100K+ vues"},
+      {platform:"YouTube",title:"Installation panneaux solaires",views:"100K+ vues"}
+    ],
+    whyTitle:"Les early adopters tech & VE en France",
+    whyText:"Une audience française de passionnés de voitures électriques et de technologie — des profils à revenus élevés, acheteurs actifs d'accessoires VE, de panneaux solaires et de gadgets tech. YouTube : 17,9M de vues pour 11 900 abonnés (199% au-dessus de la médiane), 23 700 vues/vidéo en moyenne, 451 vidéos publiées. Instagram : 81 240 vues moyennes par post pour seulement 9 753 abonnés — un ratio exceptionnel (833% vues/abonnés). TikTok : 19 570 vues/vidéo malgré un compte récent."
+  }
+};
+
+// ── AUTH ──────────────────────────────────────────────────────────
+const params=new URLSearchParams(window.location.search);
+const creatorKey=params.get('creator');
+const token=params.get('token');
+
+const VALID_TOKENS={elisa:'elisa26',pierre:'pierre25'};
+
+function checkAccess(){
+  if(!creatorKey||!token||VALID_TOKENS[creatorKey]!==token){
+    document.getElementById('access-denied').style.display='flex';
+    return null;
+  }
+  document.getElementById('media-kit').style.display='block';
+  return creatorKey;
+}
+
+const activeCreator=checkAccess();
+if(activeCreator){
+  renderMediaKit(activeCreator);
+  fetchApifyStats(activeCreator);
+}
+
+// ── RENDER ───────────────────────────────────────────────────────
+function formatNumber(n){
+  if(n==null||isNaN(n)) return '\u2014';
+  if(n>=1e6) return (n/1e6).toFixed(1).replace(/\.0$/,'')+'M';
+  if(n>=1e3) return (n/1e3).toFixed(1).replace(/\.0$/,'')+'K';
+  return n.toLocaleString('en');
+}
+
+function renderMediaKit(key){
+  const c=CREATORS[key];
+  if(!c) return;
+
+  document.title=`${c.name} \u2014 Media Kit \u2014 OKALAM Studio`;
+  document.getElementById('mk-icon').textContent=c.icon;
+  document.getElementById('mk-name').textContent=c.name;
+  document.getElementById('mk-niche').textContent=c.niche;
+
+  // Platform cards with fallback data
+  const fb=c.fallback;
+  const verifiedBadge=fb.ig.verified?'<div style="margin-top:8px;"><span style="display:inline-flex;align-items:center;gap:4px;background:rgba(74,222,128,.08);color:var(--green);font-size:.6rem;font-family:Space Mono,monospace;letter-spacing:.05em;padding:2px 8px;border-radius:10px;border:1px solid rgba(74,222,128,.2);">Verified</span></div>':'';
+  const grid=document.getElementById('platform-grid');
+  if(key==='elisa') grid.classList.add('has-fb');
+  grid.innerHTML=`
+    <div class="platform-card">
+      <div class="pf-icon">\u25b6\ufe0f</div>
+      <div class="pf-name">YouTube</div>
+      <span class="pf-stat-main" id="pf-yt-subs">${formatNumber(fb.yt.subs)}</span>
+      <span class="pf-stat-label">Abonnés</span>
+      <div class="pf-stat-row"><span>Vues totales</span><span id="pf-yt-views">${formatNumber(fb.yt.views)}</span></div>
+      ${fb.yt.videos?`<div class="pf-stat-row"><span>Vidéos publiées</span><span>${fb.yt.videos.toLocaleString('fr')}</span></div>`:''}
+    </div>
+    <div class="platform-card">
+      <div class="pf-icon">\ud83d\udcf7</div>
+      <div class="pf-name">Instagram</div>
+      <span class="pf-stat-main" id="pf-ig-followers">${formatNumber(fb.ig.followers)}</span>
+      <span class="pf-stat-label">Abonnés</span>
+      ${verifiedBadge}
+      <div class="pf-stat-row"><span>Publications</span><span id="pf-ig-posts">${fb.ig.posts||'—'}</span></div>
+      <div class="pf-stat-row"><span>Engagement</span><span id="pf-ig-eng">${fb.ig.engRate||'—'}</span></div>
+    </div>
+    <div class="platform-card">
+      <div class="pf-icon">\ud83c\udfb5</div>
+      <div class="pf-name">TikTok</div>
+      <span class="pf-stat-main" id="pf-tt-followers">${formatNumber(fb.tt.followers)}</span>
+      <span class="pf-stat-label">Abonnés</span>
+      ${fb.tt.hearts?`<div class="pf-stat-row"><span>Likes totaux</span><span>${formatNumber(fb.tt.hearts)}</span></div>`:''}
+      ${fb.tt.videos?`<div class="pf-stat-row"><span>Vidéos</span><span>${fb.tt.videos}</span></div>`:''}
+      ${fb.tt.avgViews?`<div class="pf-stat-row"><span>Vues moyennes</span><span style="color:var(--accent);">${formatNumber(fb.tt.avgViews)}</span></div>`:''}
+      ${key==='elisa'?'<div class="pf-stat-row"><span>Vidéo virale</span><span style="color:var(--accent);">3,7M vues</span></div>':''}
+    </div>
+    ${key==='elisa'?`
+    <div class="platform-card">
+      <div class="pf-icon">\ud83d\udc64</div>
+      <div class="pf-name">Facebook</div>
+      <span class="pf-stat-main" id="pf-fb-followers">—</span>
+      <span class="pf-stat-label">Abonnés</span>
+      <div class="pf-stat-row"><span>Page</span><span style="color:var(--accent);font-size:.75rem;">elisa.is.running</span></div>
+    </div>`:''}
+  `;
+
+  // Wednesday analytics
+  const w=WEDNESDAY_DATA[key];
+  const hasData=w&&w.engagementRate;
+  if(hasData){
+    document.getElementById('analytics-grid').innerHTML=`
+      <div class="analytics-card"><span class="an-value">${w.engagementRate}</span><span class="an-label">Taux d'engagement</span><span class="an-hint">% de l'audience qui réagit à chaque contenu</span></div>
+      <div class="analytics-card"><span class="an-value">${w.audienceFemale} / ${w.audienceMale}</span><span class="an-label">Femmes / Hommes</span><span class="an-hint">Répartition de ton audience par genre</span></div>
+      <div class="analytics-card"><span class="an-value">${w.topAge}</span><span class="an-label">Tranche d'âge principale</span><span class="an-hint">La majorité de tes abonnés a cet âge</span></div>
+      <div class="analytics-card"><span class="an-value">${w.topCountry}</span><span class="an-label">Pays principal</span><span class="an-hint">D'où vient la plupart de ton audience</span></div>
+      <div class="analytics-card"><span class="an-value">${w.estimatedPriceRange}</span><span class="an-label">Tarif estimé / placement</span><span class="an-hint">Fourchette indicative pour une collaboration</span></div>
+    `;
+    const src=w.source||'Wednesday Analytics';
+    document.getElementById('analytics-source').textContent=`Source : ${src} \u00b7 Mis à jour : ${w.lastUpdated}`;
+  }else{
+    document.getElementById('analytics-grid').innerHTML=`
+      <div class="analytics-card" style="grid-column:1/-1;padding:40px;">
+        <p class="an-coming">\u2014 Bientôt disponible</p>
+        <p style="font-size:.78rem;color:var(--muted);margin-top:8px;">Les données détaillées sur ton audience (âge, genre, pays, engagement) seront affichées ici dès que les données sont collectées.</p>
+      </div>
+    `;
+    document.getElementById('analytics-source').textContent='Source : Wednesday Analytics \u00b7 Collecte en cours';
+  }
+
+  // Top content
+  document.getElementById('content-grid').innerHTML=c.topContent.map(tc=>`
+    <div class="content-card">
+      <div class="cc-platform">${tc.platform}</div>
+      <div class="cc-title">${tc.title}</div>
+      <div class="cc-views"><strong>${tc.views}</strong></div>
+    </div>
+  `).join('');
+
+  // Why this audience
+  document.getElementById('why-title').textContent=c.whyTitle;
+  document.getElementById('why-text').textContent=c.whyText;
+}
+
+// ── APIFY STATS ──────────────────────────────────────────────────
+const APIFY_TOKEN='apify_api_oFvPM0OpMKhkbcgdrJ4lvjkkcO2XbD1L7bvF';
+const APIFY_DATASETS={youtube:'srx5Ltfgea7cquMCE',instagram:'lZsYaugPwWnpk8I3D',tiktok:'nfjxw3C1rIr1vVDzC'};
+
+async function fetchApifyStats(key){
+  if(!APIFY_TOKEN) return;
+  try{
+    const fetchDS=async(id)=>{
+      const r=await fetch(`https://api.apify.com/v2/datasets/${id}/items?token=${APIFY_TOKEN}&clean=true&limit=10`);
+      if(!r.ok) throw new Error(r.status);
+      return r.json();
+    };
+    const [yt,ig,tt]=await Promise.all([
+      fetchDS(APIFY_DATASETS.youtube),
+      fetchDS(APIFY_DATASETS.instagram),
+      fetchDS(APIFY_DATASETS.tiktok)
+    ]);
+    const isElisa=key==='elisa';
+    const ytData=yt.find(c=>isElisa?/elisa/i.test(c.channelName):!/elisa/i.test(c.channelName));
+    const igData=ig.find(c=>isElisa?/elisa/i.test(c.username):!/elisa/i.test(c.username));
+    const ttData=tt.find(c=>isElisa?/elisa/i.test(c.authorMeta?.nickName||''):!/elisa/i.test(c.authorMeta?.nickName||''));
+
+    if(ytData){
+      const s=document.getElementById('pf-yt-subs');if(s)s.textContent=formatNumber(ytData.numberOfSubscribers);
+      const v=document.getElementById('pf-yt-views');if(v)v.textContent=formatNumber(ytData.channelTotalViews);
+    }
+    if(igData){
+      const e=document.getElementById('pf-ig-followers');if(e)e.textContent=formatNumber(igData.followersCount);
+      const p=document.getElementById('pf-ig-posts');if(p&&igData.postsCount)p.textContent=igData.postsCount.toLocaleString('fr');
+      // Calcul taux d'engagement depuis latestPosts
+      const posts=igData.latestPosts||[];
+      if(posts.length&&igData.followersCount){
+        const avgEng=posts.reduce((s,p)=>s+(p.likesCount||0)+(p.commentsCount||0),0)/posts.length;
+        const engPct=((avgEng/igData.followersCount)*100).toFixed(2).replace('.',',')+' %';
+        const engEl=document.getElementById('pf-ig-eng');if(engEl)engEl.textContent=engPct;
+      }
+    }
+    if(ttData){
+      const e=document.getElementById('pf-tt-followers');if(e)e.textContent=formatNumber(ttData.authorMeta?.fans);
+    }
+    // Update timestamp
+    const upd=document.getElementById('stats-updated');
+    if(upd) upd.textContent='Stats updated: '+new Date().toLocaleDateString('en',{year:'numeric',month:'short',day:'numeric'});
+  }catch(e){/* silent fallback */}
+}
+</script>
+</body>
+</html>

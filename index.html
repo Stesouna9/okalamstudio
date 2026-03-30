@@ -3,31 +3,21 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>OKALAM Studio — Creative Tech Studio</title>
-<meta name="description" content="OKALAM Studio — an independent creative lab building apps, games and digital experiences."/>
-<meta property="og:title" content="OKALAM Studio"/>
-<meta property="og:description" content="Apps. Games. AI. Ideas. Independent creative studio."/>
+<title>OKALAM Studio — Creator Partnership Studio</title>
+<meta name="description" content="OKALAM Studio connects brands with independent French creators in running, tech and EV niches. Professional media kits, brand matching and partnership management."/>
+<meta property="og:title" content="OKALAM Studio — Creator Partnerships"/>
+<meta property="og:description" content="We connect brands with independent creators. Running · Tech · EV · France · Europe"/>
 <meta property="og:url" content="https://stesouna9.github.io/okalamstudio/"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="shared.css"/>
 <style>
-:root{--bg:#080c12;--bg2:#0d1220;--card:#111827;--card2:#141c2d;--accent:#8deaff;--accent2:#5bc8e8;--accent-dim:rgba(141,234,255,.12);--text:#e8edf5;--muted:#6b7280;--border:rgba(141,234,255,.1);--border2:rgba(255,255,255,.06);}
-*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
 body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;line-height:1.6;overflow-x:hidden;}
 ::selection{background:rgba(141,234,255,.25);color:var(--accent);}
 canvas{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;opacity:.6;}
-
-/* ── NAV (index — override shared) ── */
-.ok-nav-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:.9rem;letter-spacing:.3em;text-transform:uppercase;color:var(--text);text-decoration:none;}
-
-/* FLAG PICKER */
-.flag-picker{display:flex;gap:5px;align-items:center;}
-.flag-btn{background:transparent;border:1px solid var(--border2);border-radius:6px;padding:4px 8px;cursor:pointer;font-size:.8rem;transition:all .18s;color:var(--muted);line-height:1;}
-.flag-btn:hover{border-color:var(--accent);}
-.flag-btn.active{background:var(--accent-dim);border-color:var(--accent);}
-.flag-sep{width:1px;height:20px;background:var(--border2);}
 
 /* ── HERO ── */
 .hero{position:relative;z-index:1;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:120px 24px 80px;}
@@ -39,7 +29,7 @@ canvas{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-
 .hero-title .l2{display:block;font-size:.78em;margin-top:.08em;color:rgba(141,234,255,.55);}
 .hero-sub{font-size:clamp(.95rem,2vw,1.2rem);font-weight:300;color:rgba(232,237,245,.55);margin-top:24px;letter-spacing:.04em;animation:fadeUp .8s .2s ease both;}
 .hero-sub2{font-family:'Space Mono',monospace;font-size:.7rem;color:var(--muted);letter-spacing:.15em;text-transform:uppercase;margin-top:10px;animation:fadeUp .8s .3s ease both;}
-.hero-cta{margin-top:44px;display:flex;gap:16px;align-items:center;animation:fadeUp .8s .4s ease both;}
+.hero-cta{margin-top:44px;display:flex;gap:16px;align-items:center;flex-wrap:wrap;justify-content:center;animation:fadeUp .8s .4s ease both;}
 .btn-p{background:var(--accent);color:#05080e;font-family:'Syne',sans-serif;font-weight:700;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;padding:14px 28px;border-radius:4px;text-decoration:none;transition:all .25s;}
 .btn-p:hover{background:#fff;transform:translateY(-2px);}
 .btn-g{color:var(--muted);font-size:.8rem;letter-spacing:.05em;text-decoration:none;display:flex;align-items:center;gap:6px;transition:color .2s;}
@@ -50,68 +40,61 @@ canvas{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-
 
 /* ── TICKER ── */
 .ticker-wrap{position:relative;z-index:1;background:var(--accent);padding:11px 0;overflow:hidden;}
-.ticker{display:flex;white-space:nowrap;animation:ticker 22s linear infinite;}
+.ticker{display:flex;white-space:nowrap;animation:ticker 28s linear infinite;}
 .ticker-inner{display:flex;}
 .titem{font-family:'Syne',sans-serif;font-weight:700;font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:#05080e;padding:0 36px;}
 @keyframes ticker{from{transform:translateX(0);}to{transform:translateX(-50%);}}
 
-/* ── PROJECTS ── */
-.projects-section{position:relative;z-index:1;padding:80px 48px 100px;max-width:1100px;margin:0 auto;}
+/* ── SECTIONS COMMON ── */
 .section-label{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;display:flex;align-items:center;gap:10px;}
 .section-label::before{content:'';width:20px;height:1px;background:var(--accent);}
 .section-title{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(1.8rem,4vw,2.8rem);letter-spacing:-.02em;margin-bottom:8px;}
-.section-desc{font-size:.9rem;color:var(--muted);margin-bottom:48px;max-width:500px;}
-.cards-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;}
-.card{background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;text-decoration:none;color:inherit;display:block;transition:all .35s;}
-.card:hover{border-color:var(--accent);transform:translateY(-6px);box-shadow:0 20px 60px rgba(141,234,255,.07);}
-.card-visual{height:260px;overflow:hidden;position:relative;display:flex;align-items:center;justify-content:center;font-size:5rem;}
-.card-visual img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;z-index:0;}
-.card-visual.vd{background:linear-gradient(135deg,#1a0f2e,#0d0a2a);}
-.card-visual.lt{background:linear-gradient(135deg,#0d0a2e,#0a0820);}
-.card-visual::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,transparent 50%,rgba(0,0,0,.45));z-index:1;}
-.card-status{position:relative;z-index:2;}
-.card-status{position:absolute;top:14px;right:14px;font-family:'Space Mono',monospace;font-size:.55rem;letter-spacing:.08em;text-transform:uppercase;background:rgba(251,191,36,.1);color:#fbbf24;border:1px solid rgba(251,191,36,.25);padding:3px 10px;border-radius:20px;z-index:1;}
-.card-body{padding:24px;}
-.card-tags{display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap;}
+.section-desc{font-size:.92rem;color:var(--muted);margin-bottom:48px;max-width:560px;line-height:1.75;}
+
+/* ── CREATORS SECTION ── */
+.creators-section{position:relative;z-index:1;padding:80px 48px 100px;max-width:1200px;margin:0 auto;}
+.creator-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px;}
+.creator-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:36px;transition:all .35s;position:relative;overflow:hidden;}
+.creator-card:hover{border-color:var(--accent);transform:translateY(-4px);box-shadow:0 20px 60px rgba(141,234,255,.06);}
+.creator-header{display:flex;align-items:center;gap:16px;margin-bottom:20px;}
+.creator-icon{width:52px;height:52px;border-radius:14px;background:var(--accent-dim);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:1.5rem;}
+.creator-name{font-family:'Syne',sans-serif;font-weight:800;font-size:1.3rem;letter-spacing:-.02em;}
+.creator-tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:20px;}
 .ctag{font-family:'Space Mono',monospace;font-size:.55rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent2);padding:3px 10px;border:1px solid rgba(141,234,255,.2);border-radius:20px;}
-.card-name{font-family:'Syne',sans-serif;font-weight:800;font-size:1.5rem;letter-spacing:-.02em;margin-bottom:8px;}
-.card-desc{font-size:.87rem;color:var(--muted);line-height:1.65;margin-bottom:18px;}
-.card-link{font-family:'Space Mono',monospace;font-size:.65rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:6px;transition:gap .2s;}
-.card:hover .card-link{gap:12px;}
-.card-link::after{content:'→';}
+.creator-stats{display:flex;flex-direction:column;gap:10px;margin-bottom:20px;}
+.stat-row{display:flex;align-items:center;gap:10px;font-size:.85rem;}
+.stat-platform{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);min-width:80px;}
+.stat-value{color:var(--text);font-weight:500;}
+.stat-detail{color:var(--muted);font-size:.8rem;}
+.stat-badge{display:inline-flex;align-items:center;gap:4px;background:rgba(74,222,128,.08);color:var(--green);font-size:.6rem;font-family:'Space Mono',monospace;letter-spacing:.05em;padding:2px 8px;border-radius:10px;border:1px solid rgba(74,222,128,.2);}
+.creator-pitch{font-size:.87rem;color:var(--muted);line-height:1.65;margin-bottom:20px;font-style:italic;border-left:2px solid var(--border);padding-left:16px;}
+.creator-link{font-family:'Space Mono',monospace;font-size:.65rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);display:inline-flex;align-items:center;gap:6px;text-decoration:none;transition:gap .2s;}
+.creator-link:hover{gap:12px;}
 
-/* ── STUDIO STRIP ── */
-.studio-strip{position:relative;z-index:1;border-top:1px solid var(--border2);border-bottom:1px solid var(--border2);background:var(--bg2);}
-.strip-inner{max-width:1100px;margin:0 auto;padding:60px 48px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
-.strip-text h2{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(1.5rem,3.5vw,2.2rem);line-height:1.15;letter-spacing:-.02em;margin-bottom:16px;}
-.strip-text h2 em{font-style:normal;color:var(--accent);}
-.strip-text p{font-size:.9rem;color:var(--muted);line-height:1.75;margin-bottom:20px;}
-.strip-links{display:flex;gap:12px;flex-wrap:wrap;}
-.strip-link{font-family:'Space Mono',monospace;font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);text-decoration:none;padding:8px 16px;border:1px solid var(--border);border-radius:4px;transition:all .2s;}
-.strip-link:hover{background:var(--accent-dim);}
-.strip-stats{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
-.sstat{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;text-align:center;}
-.sstat-n{font-family:'Syne',sans-serif;font-weight:800;font-size:2rem;color:var(--accent);display:block;letter-spacing:-.02em;}
-.sstat-l{font-family:'Space Mono',monospace;font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:4px;}
+/* ── WHY SECTION ── */
+.why-section{position:relative;z-index:1;border-top:1px solid var(--border2);border-bottom:1px solid var(--border2);background:var(--bg2);padding:80px 48px;}
+.why-inner{max-width:1100px;margin:0 auto;}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px;}
+.why-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:32px;transition:all .3s;text-align:center;}
+.why-card:hover{border-color:var(--accent);background:var(--card2);}
+.why-icon{font-size:2rem;margin-bottom:16px;}
+.why-title{font-family:'Syne',sans-serif;font-weight:700;font-size:1rem;margin-bottom:8px;}
+.why-desc{font-size:.85rem;color:var(--muted);line-height:1.65;}
 
-/* ── COLLAB TEASER ── */
-.collab-teaser{position:relative;z-index:1;padding:80px 48px;max-width:1100px;margin:0 auto;}
-.collab-inner{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:56px;display:flex;align-items:center;gap:60px;}
-.collab-icon{font-size:4rem;flex-shrink:0;}
-.collab-text{}
-.collab-label{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;}
-.collab-title{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(1.4rem,3.5vw,2rem);letter-spacing:-.02em;margin-bottom:12px;line-height:1.2;}
-.collab-desc{font-size:.9rem;color:var(--muted);line-height:1.7;margin-bottom:24px;}
-.collab-btns{display:flex;gap:12px;flex-wrap:wrap;}
+/* ── GLOBAL STATS ── */
+.global-stats{position:relative;z-index:1;padding:72px 48px;background:linear-gradient(135deg,rgba(141,234,255,.03),rgba(141,234,255,.008));}
+.stats-inner{max-width:1100px;margin:0 auto;}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+.g-stat{text-align:center;padding:28px 16px;}
+.g-stat-n{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(2rem,4vw,3rem);color:var(--accent);letter-spacing:-.02em;display:block;}
+.g-stat-l{font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:6px;display:block;}
 
-/* ── AI NOTE ── */
-.ai-note{position:relative;z-index:1;border-top:1px solid var(--border2);border-bottom:1px solid var(--border2);background:var(--bg2);padding:56px 48px;}
-.ai-note-inner{max-width:820px;margin:0 auto;display:flex;align-items:flex-start;gap:32px;}
-.ai-note-icon{font-size:2rem;flex-shrink:0;}
-.ai-note-label{font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;}
-.ai-note-text{font-family:'Syne',sans-serif;font-weight:700;font-size:clamp(1rem,2.2vw,1.4rem);line-height:1.35;margin-bottom:12px;}
-.ai-note-text em{font-style:normal;color:var(--accent);}
-.ai-note-sub{font-size:.87rem;color:var(--muted);line-height:1.7;}
+/* ── FOR BRANDS ── */
+.brands-section{position:relative;z-index:1;padding:80px 48px;max-width:1100px;margin:0 auto;}
+.brands-inner{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:56px;text-align:center;}
+.brands-title{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(1.4rem,3.5vw,2rem);letter-spacing:-.02em;margin-bottom:16px;line-height:1.2;}
+.brands-desc{font-size:.92rem;color:var(--muted);line-height:1.75;max-width:620px;margin:0 auto 32px;}
+.brands-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
 
 /* ── FOOTER ── */
 footer{border-top:1px solid var(--border2);padding:56px 48px;position:relative;z-index:1;}
@@ -136,17 +119,17 @@ footer{border-top:1px solid var(--border2);padding:56px 48px;position:relative;z
 
 /* ── RESPONSIVE ── */
 @media(max-width:900px){
-  nav{padding:14px 20px;}
-  .nav-center{display:none;}
-  .projects-section,.collab-teaser{padding-left:24px;padding-right:24px;}
-  .cards-grid{grid-template-columns:1fr;}
-  .strip-inner{grid-template-columns:1fr;gap:40px;padding:40px 24px;}
-  .collab-inner{flex-direction:column;gap:24px;padding:32px 24px;}
-  .ai-note{padding:40px 24px;}
-  .ai-note-inner{flex-direction:column;gap:16px;}
+  .creators-section,.why-section,.brands-section{padding-left:24px;padding-right:24px;}
+  .creator-grid{grid-template-columns:1fr;}
+  .why-grid{grid-template-columns:1fr;}
+  .stats-grid{grid-template-columns:repeat(2,1fr);}
+  .brands-inner{padding:32px 24px;}
   footer{padding:40px 24px;}
   .footer-cols{gap:32px;}
-  .flag-picker{display:none;}
+  .global-stats{padding:48px 24px;}
+}
+@media(max-width:480px){
+  .stats-grid{grid-template-columns:1fr 1fr;}
 }
 </style>
 </head>
@@ -157,16 +140,6 @@ footer{border-top:1px solid var(--border2);padding:56px 48px;position:relative;z
 <nav class="ok-nav">
   <a href="index.html" class="ok-nav-logo">OKALAM</a>
   <div class="ok-nav-right">
-    <div class="flag-picker">
-      <button class="flag-btn" onclick="setLang('en')" id="fl-en" title="English">🇬🇧</button>
-      <button class="flag-btn" onclick="setLang('fr')" id="fl-fr" title="Français">🇫🇷</button>
-      <button class="flag-btn" onclick="setLang('ja')" id="fl-ja" title="日本語">🇯🇵</button>
-      <button class="flag-btn" onclick="setLang('zh')" id="fl-zh" title="中文">🇨🇳</button>
-      <button class="flag-btn" onclick="setLang('es')" id="fl-es" title="Español">🇪🇸</button>
-      <button class="flag-btn" onclick="setLang('pt')" id="fl-pt" title="Português">🇵🇹</button>
-    </div>
-    <button style="background:rgba(255,255,255,.06);color:var(--muted);border:1px solid var(--border2);width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:.9rem;display:flex;align-items:center;justify-content:center;transition:.2s;" onclick="toggleMusic()" id="musicBtn" title="Music">♪</button>
-    <audio id="bgMusic" loop><source src="menu.mp3" type="audio/mpeg"/></audio>
     <button class="ok-nav-menu-btn" aria-label="Menu" style="margin-left:4px;">
       <div class="ok-nav-menu-icon"><span></span><span></span><span></span></div>
       <span>Menu</span>
@@ -176,36 +149,28 @@ footer{border-top:1px solid var(--border2);padding:56px 48px;position:relative;z
 <div class="ok-nav-overlay"></div>
 <nav class="ok-nav-dropdown">
   <div class="ok-nav-items">
+    <a href="index.html" class="ok-nav-link active" data-i18n="nav_home">Home</a>
+    <a href="collaborations.html" class="ok-nav-link" data-i18n="nav_collabs">Our Creators</a>
     <a href="studio.html" class="ok-nav-link" data-i18n="nav_studio">Studio</a>
-    <a href="projets.html" class="ok-nav-link" data-i18n="nav_projects">Projets</a>
-    <a href="collaborations.html" class="ok-nav-link" data-i18n="nav_collabs">Collaborations</a>
-    <a href="games.html" class="ok-nav-link" data-i18n="nav_games">Jeux</a>
+    <a href="contact.html" class="ok-nav-link" data-i18n="nav_contact">Contact</a>
   </div>
   <div class="ok-nav-cta-wrap">
-    <a href="contact.html" class="ok-nav-cta" data-i18n="nav_contact">Contact</a>
-  </div>
-  <div class="flag-picker" style="padding:24px 40px 0;flex-wrap:wrap;gap:6px;display:flex;">
-    <button class="flag-btn" onclick="setLang('en')" title="English">🇬🇧</button>
-    <button class="flag-btn" onclick="setLang('fr')" title="Français">🇫🇷</button>
-    <button class="flag-btn" onclick="setLang('ja')" title="日本語">🇯🇵</button>
-    <button class="flag-btn" onclick="setLang('zh')" title="中文">🇨🇳</button>
-    <button class="flag-btn" onclick="setLang('es')" title="Español">🇪🇸</button>
-    <button class="flag-btn" onclick="setLang('pt')" title="Português">🇵🇹</button>
+    <a href="mailto:partnerships@okalamstudio.com" class="ok-nav-cta">partnerships@okalamstudio.com</a>
   </div>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-badge" id="h_badge">Creative Tech Studio</div>
+  <div class="hero-badge" id="h_badge">Creator Partnership Studio</div>
   <h1 class="hero-title">
     <span class="l1">OKALAM</span>
     <span class="l2">Studio</span>
   </h1>
-  <p class="hero-sub" id="h_sub">Where imagination meets technology.</p>
-  <p class="hero-sub2" id="h_sub2">Apps · Games · AI · Ideas in progress</p>
+  <p class="hero-sub" id="h_sub">We connect brands with independent creators.</p>
+  <p class="hero-sub2" id="h_sub2">Running · Tech · EV · France · Europe</p>
   <div class="hero-cta">
-    <a href="projets.html" class="btn-p" id="h_cta1">See our work</a>
-    <a href="studio.html" class="btn-g" id="h_cta2">Our studio ↓</a>
+    <a href="#creators" class="btn-p" id="h_cta1">Meet our creators</a>
+    <a href="mailto:partnerships@okalamstudio.com" class="btn-g" id="h_cta2">Contact us ✉</a>
   </div>
   <div class="scroll-arrow"><div class="sarrow"></div></div>
 </section>
@@ -218,106 +183,146 @@ footer{border-top:1px solid var(--border2);padding:56px 48px;position:relative;z
   </div>
 </div>
 
-<!-- PROJECTS -->
-<div style="position:relative;z-index:1;">
-  <div class="projects-section">
-    <div class="section-label" id="p_label">Projects</div>
-    <h2 class="section-title reveal" id="p_title">What we're building</h2>
-    <p class="section-desc reveal r1" id="p_desc">Two ideas in motion — built with care, released when ready.</p>
-    <div class="cards-grid">
-      <!-- VoteDay -->
-      <a href="projets.html" class="card reveal">
-        <div class="card-visual vd" style="padding:0;">
-          <img src="imgs/voteday_home.png" alt="VoteDay" style="width:100%;height:100%;object-fit:cover;object-position:top;" onerror="this.parentElement.innerHTML='🗳️<div class=card-status id=vd_status>In development</div>'"/>
-          <div class="card-status" id="vd_status">In development</div>
+<!-- CREATORS -->
+<section class="creators-section" id="creators">
+  <div class="section-label" id="s_creators_label">Our Creators</div>
+  <h2 class="section-title reveal" id="s_creators_title">Two creators. Two niches. One studio.</h2>
+  <p class="section-desc reveal r1" id="s_creators_desc">OKALAM Studio manages brand partnerships for two French independent creators &mdash; each with a loyal, engaged audience in their niche. We handle media kits, brand matching, negotiation and follow-up.</p>
+  <div class="creator-grid">
+    <!-- ELISA -->
+    <div class="creator-card reveal r1">
+      <div class="creator-header">
+        <div class="creator-icon">🏃‍♀️</div>
+        <div class="creator-name">Elisa Is Running</div>
+      </div>
+      <div class="creator-tags">
+        <span class="ctag">Running</span><span class="ctag">Lifestyle</span><span class="ctag">Marathon</span><span class="ctag">France</span>
+      </div>
+      <div class="creator-stats">
+        <div class="stat-row">
+          <span class="stat-platform">YouTube</span>
+          <span class="stat-value" id="elisa-yt-subs">13.9K</span>
+          <span class="stat-detail" id="elisa-yt-views">4.2M vues</span>
         </div>
-        <div class="card-body">
-          <div class="card-tags"><span class="ctag">Social</span><span class="ctag">iOS</span><span class="ctag">Community</span></div>
-          <div class="card-name">VoteDay</div>
-          <p class="card-desc" id="vd_desc">One question every day. Vote A or B, discover results at 19:00, see what your friends chose. A daily social ritual connecting people through shared opinions.</p>
-          <span class="card-link" id="vd_link">Learn more</span>
+        <div class="stat-row">
+          <span class="stat-platform">Instagram</span>
+          <span class="stat-value" id="elisa-ig-followers">12.8K</span>
+          <span class="stat-badge">Verified</span>
         </div>
-      </a>
-      <!-- Little ToT -->
-      <a href="projets.html" class="card reveal r1">
-        <div class="card-visual lt" style="padding:0;">
-          <img src="imgs/ltot_menu.png" alt="Little ToT" style="width:100%;height:100%;object-fit:cover;object-position:top;" onerror="this.parentElement.innerHTML='⚔️<div class=card-status id=lt_status>In development</div>'"/>
-          <div class="card-status" id="lt_status">In development</div>
+        <div class="stat-row">
+          <span class="stat-platform">TikTok</span>
+          <span class="stat-value" id="elisa-tt-followers">1.6K</span>
+          <span class="stat-detail">1 viral: 3.7M views</span>
         </div>
-        <div class="card-body">
-          <div class="card-tags"><span class="ctag">RPG</span><span class="ctag">iOS</span><span class="ctag">Real-time</span></div>
-          <div class="card-name">Little ToT</div>
-          <p class="card-desc" id="lt_desc">A pocket RPG that runs in real time. Your day is your adventure — explore biomes, manage your stats (Endurance, Combat, Luck), level up and journal your journey.</p>
-          <span class="card-link" id="lt_link">Learn more</span>
+      </div>
+      <p class="creator-pitch" id="elisa_pitch">A passionate running community &mdash; real athletes, real gear, real engagement.</p>
+      <a href="partenaires.html?creator=elisa&token=elisa26" class="creator-link" id="elisa_link">View media kit <span>&rarr;</span></a>
+    </div>
+    <!-- TESLA BURGER -->
+    <div class="creator-card reveal r2">
+      <div class="creator-header">
+        <div class="creator-icon">⚡</div>
+        <div class="creator-name">Tesla Burger</div>
+      </div>
+      <div class="creator-tags">
+        <span class="ctag">Tech</span><span class="ctag">EV</span><span class="ctag">Solar</span><span class="ctag">Unboxing</span><span class="ctag">France</span>
+      </div>
+      <div class="creator-stats">
+        <div class="stat-row">
+          <span class="stat-platform">YouTube</span>
+          <span class="stat-value" id="pierre-yt-subs">11.9K</span>
+          <span class="stat-detail" id="pierre-yt-views">17.9M vues</span>
         </div>
-      </a>
+        <div class="stat-row">
+          <span class="stat-platform">Instagram</span>
+          <span class="stat-value" id="pierre-ig-followers">9.7K</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-platform">TikTok</span>
+          <span class="stat-value" id="pierre-tt-followers">1.4K</span>
+        </div>
+      </div>
+      <p class="creator-pitch" id="pierre_pitch">The go-to French creator for EV &amp; clean tech &mdash; trusted reviews, loyal audience.</p>
+      <a href="partenaires.html?creator=pierre&token=pierre25" class="creator-link" id="pierre_link">View media kit <span>&rarr;</span></a>
     </div>
   </div>
-</div>
+</section>
 
-<!-- STUDIO STRIP -->
-<div class="studio-strip">
-  <div class="strip-inner">
-    <div class="strip-text reveal">
-      <h2 data-i18n-html="strip_title">We are a <em>creative anthill</em> — always building, always experimenting.</h2>
-      <p id="strip_desc">OKALAM Studio is an independent creative lab at the intersection of technology, storytelling, and play. One studio. Many ideas. All of them moving.</p>
-      <div class="strip-links">
-        <a href="studio.html" class="strip-link" data-i18n="strip_link1">Our studio</a>
-        <a href="collaborations.html" class="strip-link" data-i18n="strip_link2">Collaborations</a>
-        <a href="games.html" class="strip-link" data-i18n="strip_link3">Mini-games</a>
+<!-- WHY WORK WITH US -->
+<section class="why-section">
+  <div class="why-inner">
+    <div class="section-label" id="why_label">Why us</div>
+    <h2 class="section-title reveal" id="why_title">Why work with OKALAM Studio?</h2>
+    <div class="why-grid">
+      <div class="why-card reveal r1">
+        <div class="why-icon">🎯</div>
+        <h3 class="why-title" id="why1_t">Niche audiences</h3>
+        <p class="why-desc" id="why1_d">Targeted communities that actually buy. Running athletes and EV early adopters with high purchase intent.</p>
+      </div>
+      <div class="why-card reveal r2">
+        <div class="why-icon">📋</div>
+        <h3 class="why-title" id="why2_t">Full service</h3>
+        <p class="why-desc" id="why2_d">Media kit, outreach, negotiation and reporting. We handle the entire partnership process for you.</p>
+      </div>
+      <div class="why-card reveal r3">
+        <div class="why-icon">🤝</div>
+        <h3 class="why-title" id="why3_t">Direct contact</h3>
+        <p class="why-desc" id="why3_d">No middlemen. One studio, two creators. Fast response, clear communication, real results.</p>
       </div>
     </div>
-    <div class="strip-stats reveal r1">
-      <div class="sstat"><span class="sstat-n">2</span><span class="sstat-l" data-i18n="stat1">Active projects</span></div>
-      <div class="sstat"><span class="sstat-n">6</span><span class="sstat-l" data-i18n="stat2">Languages</span></div>
-      <div class="sstat"><span class="sstat-n">∞</span><span class="sstat-l" data-i18n="stat3">Ideas</span></div>
-      <div class="sstat"><span class="sstat-n">1</span><span class="sstat-l" data-i18n="stat4">Studio</span></div>
-    </div>
   </div>
-</div>
+</section>
 
-<!-- COLLAB TEASER -->
-<div class="collab-teaser">
-  <div class="collab-inner reveal">
-    <div class="collab-icon">🤝</div>
-    <div class="collab-text">
-      <div class="collab-label" data-i18n="collab_label">Collaborations</div>
-      <h2 class="collab-title" id="collab_title">We also work with independent creators.</h2>
-      <p class="collab-desc" id="collab_desc">OKALAM Studio currently supports two independent creators with professional media kits, brand presentations and partnership strategy. A structured, human approach — not an agency.</p>
-      <div class="collab-btns">
-        <a href="collaborations.html" class="btn-p" id="collab_btn1">Learn more</a>
-        <a href="mailto:partnerships@okalamstudio.com" class="btn-g" id="collab_btn2">I'm a brand ✉</a>
+<!-- GLOBAL STATS -->
+<section class="global-stats">
+  <div class="stats-inner">
+    <div class="stats-grid">
+      <div class="g-stat reveal">
+        <span class="g-stat-n" id="gs_yt">25.8K</span>
+        <span class="g-stat-l" id="gs_yt_l">Combined YouTube subscribers</span>
+      </div>
+      <div class="g-stat reveal r1">
+        <span class="g-stat-n" id="gs_ig">22.5K</span>
+        <span class="g-stat-l" id="gs_ig_l">Combined Instagram followers</span>
+      </div>
+      <div class="g-stat reveal r2">
+        <span class="g-stat-n" id="gs_views">22M+</span>
+        <span class="g-stat-l" id="gs_views_l">Total YouTube views</span>
+      </div>
+      <div class="g-stat reveal r3">
+        <span class="g-stat-n">2</span>
+        <span class="g-stat-l" id="gs_creators_l">Creators, 3 platforms each</span>
       </div>
     </div>
   </div>
-</div>
+</section>
 
-<!-- AI NOTE -->
-<div class="ai-note">
-  <div class="ai-note-inner reveal">
-    <div class="ai-note-icon">🤝</div>
-    <div>
-      <div class="ai-note-label" data-i18n="ai_label">Our take on AI</div>
-      <p class="ai-note-text" id="ai_text">We use AI as a tool — <em>never as a replacement</em> for human creativity. Sound and visuals are always created with real artists.</p>
-      <p class="ai-note-sub" id="ai_sub">AI helps us move faster, prototype smarter, and think bigger. But the soul of every project — the music, the art, the feel — comes from real people, real hands, real vision.</p>
+<!-- FOR BRANDS -->
+<section class="brands-section">
+  <div class="brands-inner reveal">
+    <div class="section-label" style="justify-content:center;" id="brands_label">For brands</div>
+    <h2 class="brands-title" id="brands_title">You're a brand looking to reach European audiences?</h2>
+    <p class="brands-desc" id="brands_desc">Whether you sell running shoes, EV accessories, tech gadgets or sports equipment &mdash; we have the right creator for your product. We work with brands of all sizes, including emerging brands looking for their first European partnership.</p>
+    <div class="brands-btns">
+      <a href="mailto:partnerships@okalamstudio.com" class="btn-p" id="brands_cta1">Send us a brief</a>
+      <a href="collaborations.html" class="btn-g" id="brands_cta2">View media kits &rarr;</a>
     </div>
   </div>
-</div>
+</section>
 
 <!-- FOOTER -->
 <footer>
   <div class="footer-inner">
     <div>
       <div class="footer-brand">OKALAM Studio</div>
-      <p class="footer-tagline" data-i18n="footer_tagline">Creative tech studio. Always moving.</p>
+      <p class="footer-tagline" id="footer_tagline">Creator partnership studio. Always moving.</p>
     </div>
     <div class="footer-cols">
       <div class="footer-col">
         <h4 data-i18n="footer_nav">Navigation</h4>
+        <a href="index.html" data-i18n="nav_home">Home</a>
+        <a href="collaborations.html" data-i18n="nav_collabs">Our Creators</a>
         <a href="studio.html" data-i18n="nav_studio">Studio</a>
-        <a href="projets.html" data-i18n="nav_projects">Projects</a>
-        <a href="collaborations.html" data-i18n="nav_collabs">Collaborations</a>
-        <a href="games.html" data-i18n="nav_games">Games</a>
         <a href="contact.html" data-i18n="nav_contact">Contact</a>
       </div>
       <div class="footer-col">
@@ -329,10 +334,10 @@ footer{border-top:1px solid var(--border2);padding:56px 48px;position:relative;z
     </div>
   </div>
   <div class="footer-bottom">
-    <span class="footer-copy" data-i18n="footer_copy">© 2026 OKALAM Studio. All rights reserved.</span>
+    <span class="footer-copy" data-i18n="footer_copy">&copy; 2026 OKALAM Studio. All rights reserved.</span>
     <div class="social-links">
-      <a href="https://github.com/Stesouna9" target="_blank" class="slink">⌥</a>
-      <a href="mailto:support@okalamstudio.com" class="slink">✉</a>
+      <a href="https://github.com/Stesouna9" target="_blank" class="slink">&#x2325;</a>
+      <a href="mailto:partnerships@okalamstudio.com" class="slink">&#x2709;</a>
     </div>
   </div>
 </footer>
@@ -341,164 +346,129 @@ footer{border-top:1px solid var(--border2);padding:56px 48px;position:relative;z
 // ── TRANSLATIONS ─────────────────────────────────────────────────
 const T={
   en:{
-    nav_studio:"Studio",nav_projects:"Projects",nav_collabs:"Collaborations",nav_games:"Games",nav_contact:"Contact",nav_home:"Home",
-    h_badge:"Creative Tech Studio",h_sub:"Where imagination meets technology.",h_sub2:"Apps · Games · AI · Ideas in progress",
-    h_cta1:"See our work",h_cta2:"Our studio ↓",
-    p_label:"Projects",p_title:"What we're building",p_desc:"Two ideas in motion — built with care, released when ready.",
-    vd_desc:"One question every day. Vote A or B, discover results at 19:00, see what your friends chose. A daily social ritual connecting people through shared opinions.",vd_link:"Learn more",vd_status:"In development",
-    lt_desc:"A pocket RPG that runs in real time. Your day is your adventure — explore biomes, manage your stats (Endurance, Combat, Luck), level up and journal your journey.",lt_link:"Learn more",lt_status:"In development",
-    strip_desc:"OKALAM Studio is an independent creative lab at the intersection of technology, storytelling, and play. One studio. Many ideas. All of them moving.",
-    strip_link1:"Our studio",strip_link2:"Collaborations",strip_link3:"Mini-games",
-    stat1:"Active projects",stat2:"Languages",stat3:"Ideas",stat4:"Studio",
-    collab_label:"Collaborations",collab_title:"We also work with independent creators.",
-    collab_desc:"OKALAM Studio currently supports two independent creators with professional media kits, brand presentations and partnership strategy. A structured, human approach — not an agency.",
-    collab_btn1:"Learn more",collab_btn2:"I'm a brand ✉",
-    ai_label:"Our take on AI",ai_text_em:"never as a replacement",
-    ai_text:"We use AI as a tool — never as a replacement for human creativity. Sound and visuals are always created with real artists.",
-    ai_sub:"AI helps us move faster, prototype smarter, and think bigger. But the soul of every project — the music, the art, the feel — comes from real people, real hands, real vision.",
-    footer_tagline:"Creative tech studio. Always moving.",footer_nav:"Navigation",footer_privacy:"Privacy",footer_copy:"© 2026 OKALAM Studio. All rights reserved."
+    nav_home:"Home",nav_studio:"Studio",nav_collabs:"Our Creators",nav_contact:"Contact",
+    h_badge:"Creator Partnership Studio",
+    h_sub:"We connect brands with independent creators.",
+    h_sub2:"Running \u00b7 Tech \u00b7 EV \u00b7 France \u00b7 Europe",
+    h_cta1:"Meet our creators",h_cta2:"Contact us \u2709",
+    s_creators_label:"Our Creators",
+    s_creators_title:"Two creators. Two niches. One studio.",
+    s_creators_desc:"OKALAM Studio manages brand partnerships for two French independent creators \u2014 each with a loyal, engaged audience in their niche. We handle media kits, brand matching, negotiation and follow-up.",
+    elisa_pitch:"\u201cA passionate running community \u2014 real athletes, real gear, real engagement.\u201d",
+    elisa_link:"View media kit \u2192",
+    pierre_pitch:"\u201cThe go-to French creator for EV & clean tech \u2014 trusted reviews, loyal audience.\u201d",
+    pierre_link:"View media kit \u2192",
+    why_label:"Why us",why_title:"Why work with OKALAM Studio?",
+    why1_t:"Niche audiences",why1_d:"Targeted communities that actually buy. Running athletes and EV early adopters with high purchase intent.",
+    why2_t:"Full service",why2_d:"Media kit, outreach, negotiation and reporting. We handle the entire partnership process for you.",
+    why3_t:"Direct contact",why3_d:"No middlemen. One studio, two creators. Fast response, clear communication, real results.",
+    gs_yt_l:"Combined YouTube subscribers",gs_ig_l:"Combined Instagram followers",
+    gs_views_l:"Total YouTube views",gs_creators_l:"Creators, 3 platforms each",
+    brands_label:"For brands",
+    brands_title:"You\u2019re a brand looking to reach European audiences?",
+    brands_desc:"Whether you sell running shoes, EV accessories, tech gadgets or sports equipment \u2014 we have the right creator for your product. We work with brands of all sizes, including emerging brands looking for their first European partnership.",
+    brands_cta1:"Send us a brief",brands_cta2:"View media kits \u2192",
+    footer_tagline:"Creator partnership studio. Always moving.",
+    footer_nav:"Navigation",footer_privacy:"Privacy",
+    footer_copy:"\u00a9 2026 OKALAM Studio. All rights reserved."
   },
   fr:{
-    nav_studio:"Studio",nav_projects:"Projets",nav_collabs:"Collaborations",nav_games:"Jeux",nav_contact:"Contact",nav_home:"Accueil",
-    h_badge:"Studio créatif & tech",h_sub:"Là où l'imagination rencontre la technologie.",h_sub2:"Apps · Jeux · IA · Idées en cours",
-    h_cta1:"Voir nos projets",h_cta2:"Notre studio ↓",
-    p_label:"Projets",p_title:"Ce qu'on construit",p_desc:"Deux idées en mouvement — construites avec soin, publiées quand elles sont prêtes.",
-    vd_desc:"Une question chaque jour. Vote A ou B, découvre les résultats à 19h, vois ce qu'ont choisi tes amis. Un rituel social quotidien qui connecte les gens via des opinions partagées.",vd_link:"En savoir plus",vd_status:"En développement",
-    lt_desc:"Un RPG de poche en temps réel. Ta journée est ton aventure — explore des biomes, gère tes stats (Endurance, Combat, Chance), monte de niveau et tiens ton journal.",lt_link:"En savoir plus",lt_status:"En développement",
-    strip_desc:"OKALAM Studio est un lab créatif indépendant à l'intersection de la technologie, du jeu et de la narration. Un seul studio. Des dizaines d'idées. Toutes en mouvement.",
-    strip_link1:"Notre studio",strip_link2:"Collaborations",strip_link3:"Mini-jeux",
-    stat1:"Projets actifs",stat2:"Langues",stat3:"Idées",stat4:"Studio",
-    collab_label:"Collaborations",collab_title:"On accompagne aussi des créateurs indépendants.",
-    collab_desc:"OKALAM Studio accompagne actuellement deux créateurs indépendants avec des media kits professionnels, des présentations marques et une stratégie de partenariat. Une approche structurée et humaine — pas une agence.",
-    collab_btn1:"En savoir plus",collab_btn2:"Je suis une marque ✉",
-    ai_label:"Notre position sur l'IA",
-    ai_text:"Nous utilisons l'IA comme outil — jamais comme remplaçant de la créativité humaine. Le son et le visuel sont toujours créés avec de vrais artistes.",
-    ai_sub:"L'IA nous aide à aller plus vite, prototyper plus intelligemment, penser plus grand. Mais l'âme de chaque projet — la musique, l'art, le ressenti — vient de vraies personnes, de vraies mains, d'une vraie vision.",
-    footer_tagline:"Studio créatif indépendant. Toujours en mouvement.",footer_nav:"Navigation",footer_privacy:"Confidentialité",footer_copy:"© 2026 OKALAM Studio. Tous droits réservés."
+    nav_home:"Accueil",nav_studio:"Studio",nav_collabs:"Nos Cr\u00e9ateurs",nav_contact:"Contact",
+    h_badge:"Studio de Partenariats Cr\u00e9ateurs",
+    h_sub:"Nous connectons les marques avec des cr\u00e9ateurs ind\u00e9pendants.",
+    h_sub2:"Running \u00b7 Tech \u00b7 VE \u00b7 France \u00b7 Europe",
+    h_cta1:"D\u00e9couvrir nos cr\u00e9ateurs",h_cta2:"Nous contacter \u2709",
+    s_creators_label:"Nos Cr\u00e9ateurs",
+    s_creators_title:"Deux cr\u00e9ateurs. Deux niches. Un studio.",
+    s_creators_desc:"OKALAM Studio g\u00e8re les partenariats marque pour deux cr\u00e9ateurs fran\u00e7ais ind\u00e9pendants \u2014 chacun avec une audience fid\u00e8le et engag\u00e9e dans sa niche. Nous g\u00e9rons media kits, matching marques, n\u00e9gociation et suivi.",
+    elisa_pitch:"\u00abUne communaut\u00e9 running passionn\u00e9e \u2014 vrais athl\u00e8tes, vrai \u00e9quipement, vrai engagement.\u00bb",
+    elisa_link:"Voir le media kit \u2192",
+    pierre_pitch:"\u00abLe cr\u00e9ateur fran\u00e7ais r\u00e9f\u00e9rent VE & clean tech \u2014 avis de confiance, audience fid\u00e8le.\u00bb",
+    pierre_link:"Voir le media kit \u2192",
+    why_label:"Pourquoi nous",why_title:"Pourquoi travailler avec OKALAM Studio ?",
+    why1_t:"Audiences de niche",why1_d:"Des communaut\u00e9s cibl\u00e9es qui ach\u00e8tent vraiment. Athl\u00e8tes runners et early adopters VE avec forte intention d\u2019achat.",
+    why2_t:"Service complet",why2_d:"Media kit, prospection, n\u00e9gociation et reporting. Nous g\u00e9rons l\u2019int\u00e9gralit\u00e9 du processus de partenariat.",
+    why3_t:"Contact direct",why3_d:"Pas d\u2019interm\u00e9diaires. Un studio, deux cr\u00e9ateurs. R\u00e9ponse rapide, communication claire.",
+    gs_yt_l:"Abonn\u00e9s YouTube combin\u00e9s",gs_ig_l:"Followers Instagram combin\u00e9s",
+    gs_views_l:"Vues YouTube totales",gs_creators_l:"Cr\u00e9ateurs, 3 plateformes chacun",
+    brands_label:"Pour les marques",
+    brands_title:"Vous \u00eates une marque qui cherche \u00e0 toucher le public europ\u00e9en ?",
+    brands_desc:"Que vous vendiez des chaussures de running, des accessoires VE, des gadgets tech ou de l\u2019\u00e9quipement sportif \u2014 nous avons le bon cr\u00e9ateur pour votre produit. Nous travaillons avec des marques de toutes tailles.",
+    brands_cta1:"Envoyez-nous un brief",brands_cta2:"Voir les media kits \u2192",
+    footer_tagline:"Studio de partenariats cr\u00e9ateurs. Toujours en mouvement.",
+    footer_nav:"Navigation",footer_privacy:"Confidentialit\u00e9",
+    footer_copy:"\u00a9 2026 OKALAM Studio. Tous droits r\u00e9serv\u00e9s."
   },
   ja:{
-    nav_studio:"スタジオ",nav_projects:"プロジェクト",nav_collabs:"コラボ",nav_games:"ゲーム",nav_contact:"お問合せ",nav_home:"ホーム",
-    h_badge:"クリエイティブテックスタジオ",h_sub:"想像と技術が出会う場所。",h_sub2:"アプリ・ゲーム・AI・アイデア",
-    h_cta1:"作品を見る",h_cta2:"スタジオについて ↓",
-    p_label:"プロジェクト",p_title:"制作中のもの",p_desc:"二つのアイデアが動いています。",
-    vd_desc:"毎日一つの質問。AかBに投票し、19時に結果を確認。友達の選択を見よう。",vd_link:"詳しく見る",vd_status:"開発中",
-    lt_desc:"リアルタイムで動くポケットRPG。あなたの一日が冒険 — バイオームを探索し、ステータスを管理。",lt_link:"詳しく見る",lt_status:"開発中",
-    strip_desc:"OKALAMスタジオはテクノロジー、ストーリーテリング、プレイの交差点にある独立系クリエイティブラボです。",
-    strip_link1:"スタジオ",strip_link2:"コラボ",strip_link3:"ミニゲーム",
-    stat1:"進行中のプロジェクト",stat2:"言語",stat3:"アイデア",stat4:"スタジオ",
-    collab_label:"コラボレーション",collab_title:"クリエイターも支援しています。",
-    collab_desc:"OKALAMスタジオは現在2名のクリエイターのメディアキットとブランドパートナーシップをサポートしています。",
-    collab_btn1:"詳しく",collab_btn2:"ブランドの方はこちら ✉",
-    ai_label:"AIへのスタンス",
-    ai_text:"AIをツールとして活用しますが、人間の創造性の代替としては使いません。音と映像は常にリアルなアーティストと制作します。",
-    ai_sub:"AIで速く動き、賢くプロトタイプし、大きく考えます。でも音楽、アート、感覚はいつも本物の人間から来ます。",
-    footer_tagline:"独立系クリエイティブスタジオ。",footer_nav:"ナビゲーション",footer_privacy:"プライバシー",footer_copy:"© 2026 OKALAM Studio."
+    nav_home:"\u30db\u30fc\u30e0",nav_studio:"\u30b9\u30bf\u30b8\u30aa",nav_collabs:"\u30af\u30ea\u30a8\u30a4\u30bf\u30fc",nav_contact:"\u304a\u554f\u5408\u305b",
+    footer_nav:"\u30ca\u30d3\u30b2\u30fc\u30b7\u30e7\u30f3",footer_privacy:"\u30d7\u30e9\u30a4\u30d0\u30b7\u30fc",
+    footer_copy:"\u00a9 2026 OKALAM Studio."
   },
   zh:{
-    nav_studio:"工作室",nav_projects:"项目",nav_collabs:"合作",nav_games:"游戏",nav_contact:"联系",nav_home:"主页",
-    h_badge:"创意科技工作室",h_sub:"想象力与技术相遇之处。",h_sub2:"应用·游戏·AI·创意",
-    h_cta1:"查看作品",h_cta2:"关于我们 ↓",
-    p_label:"项目",p_title:"我们正在构建的",p_desc:"两个进行中的创意。",
-    vd_desc:"每天一个问题。投票A或B，19点查看结果，看看朋友们的选择。",vd_link:"了解更多",vd_status:"开发中",
-    lt_desc:"实时运行的口袋RPG。你的一天就是冒险——探索生态区，管理属性，升级。",lt_link:"了解更多",lt_status:"开发中",
-    strip_desc:"OKALAM工作室是处于技术、叙事和游戏交汇处的独立创意实验室。",
-    strip_link1:"工作室",strip_link2:"合作",strip_link3:"小游戏",
-    stat1:"活跃项目",stat2:"语言",stat3:"创意",stat4:"工作室",
-    collab_label:"合作",collab_title:"我们也支持独立创作者。",
-    collab_desc:"OKALAM工作室目前为两位独立创作者提供专业媒体工具包和品牌合作策略支持。",
-    collab_btn1:"了解更多",collab_btn2:"我是品牌 ✉",
-    ai_label:"关于AI的立场",
-    ai_text:"我们将AI作为工具使用——绝不替代人类创造力。声音和视觉作品始终由真正的艺术家创作。",
-    ai_sub:"AI帮助我们更快行动，但每个项目的灵魂来自真实的人。",
-    footer_tagline:"独立创意工作室。",footer_nav:"导航",footer_privacy:"隐私",footer_copy:"© 2026 OKALAM Studio."
+    nav_home:"\u4e3b\u9875",nav_studio:"\u5de5\u4f5c\u5ba4",nav_collabs:"\u521b\u4f5c\u8005",nav_contact:"\u8054\u7cfb",
+    footer_nav:"\u5bfc\u822a",footer_privacy:"\u9690\u79c1",
+    footer_copy:"\u00a9 2026 OKALAM Studio."
   },
   es:{
-    nav_studio:"Estudio",nav_projects:"Proyectos",nav_collabs:"Colaboraciones",nav_games:"Juegos",nav_contact:"Contacto",nav_home:"Inicio",
-    h_badge:"Estudio creativo y tecnológico",h_sub:"Donde la imaginación encuentra la tecnología.",h_sub2:"Apps · Juegos · IA · Ideas",
-    h_cta1:"Ver proyectos",h_cta2:"Nuestro estudio ↓",
-    p_label:"Proyectos",p_title:"Lo que estamos construyendo",p_desc:"Dos ideas en movimiento.",
-    vd_desc:"Una pregunta cada día. Vota A o B, descubre resultados a las 19h, ve qué eligieron tus amigos.",vd_link:"Saber más",vd_status:"En desarrollo",
-    lt_desc:"Un RPG de bolsillo en tiempo real. Tu día es tu aventura — explora biomas, gestiona tus stats, sube de nivel.",lt_link:"Saber más",lt_status:"En desarrollo",
-    strip_desc:"OKALAM Studio es un laboratorio creativo independiente.",
-    strip_link1:"Estudio",strip_link2:"Colaboraciones",strip_link3:"Mini-juegos",
-    stat1:"Proyectos activos",stat2:"Idiomas",stat3:"Ideas",stat4:"Estudio",
-    collab_label:"Colaboraciones",collab_title:"También apoyamos a creadores independientes.",
-    collab_desc:"OKALAM Studio apoya actualmente a dos creadores independientes con media kits y estrategia de partnerships.",
-    collab_btn1:"Saber más",collab_btn2:"Soy una marca ✉",
-    ai_label:"Nuestra posición sobre IA",
-    ai_text:"Usamos IA como herramienta — nunca como sustituto de la creatividad humana. El sonido y lo visual siempre se crean con artistas reales.",
-    ai_sub:"La IA nos ayuda a movernos más rápido, pero el alma de cada proyecto viene de personas reales.",
-    footer_tagline:"Estudio creativo independiente.",footer_nav:"Navegación",footer_privacy:"Privacidad",footer_copy:"© 2026 OKALAM Studio."
+    nav_home:"Inicio",nav_studio:"Estudio",nav_collabs:"Creadores",nav_contact:"Contacto",
+    footer_nav:"Navegaci\u00f3n",footer_privacy:"Privacidad",
+    footer_copy:"\u00a9 2026 OKALAM Studio."
   },
   pt:{
-    nav_studio:"Estúdio",nav_projects:"Projetos",nav_collabs:"Colaborações",nav_games:"Jogos",nav_contact:"Contato",nav_home:"Início",
-    h_badge:"Estúdio criativo e tecnológico",h_sub:"Onde a imaginação encontra a tecnologia.",h_sub2:"Apps · Jogos · IA · Ideias",
-    h_cta1:"Ver projetos",h_cta2:"Nosso estúdio ↓",
-    p_label:"Projetos",p_title:"O que estamos construindo",p_desc:"Duas ideias em movimento.",
-    vd_desc:"Uma pergunta por dia. Vote A ou B, descubra os resultados às 19h, veja o que seus amigos escolheram.",vd_link:"Saiba mais",vd_status:"Em desenvolvimento",
-    lt_desc:"Um RPG de bolso em tempo real. Seu dia é sua aventura — explore biomas, gerencie seus atributos, suba de nível.",lt_link:"Saiba mais",lt_status:"Em desenvolvimento",
-    strip_desc:"OKALAM Studio é um laboratório criativo independente na interseção de tecnologia, narrativa e jogo.",
-    strip_link1:"Estúdio",strip_link2:"Colaborações",strip_link3:"Mini-jogos",
-    stat1:"Projetos ativos",stat2:"Idiomas",stat3:"Ideias",stat4:"Estúdio",
-    collab_label:"Colaborações",collab_title:"Também apoiamos criadores independentes.",
-    collab_desc:"OKALAM Studio apoia atualmente dois criadores independentes com media kits e estratégia de parcerias.",
-    collab_btn1:"Saiba mais",collab_btn2:"Sou uma marca ✉",
-    ai_label:"Nossa posição sobre IA",
-    ai_text:"Usamos IA como ferramenta — nunca como substituto da criatividade humana. O som e o visual são sempre criados com artistas reais.",
-    ai_sub:"A IA nos ajuda a avançar mais rápido, mas a alma de cada projeto vem de pessoas reais.",
-    footer_tagline:"Estúdio criativo independente.",footer_nav:"Navegação",footer_privacy:"Privacidade",footer_copy:"© 2026 OKALAM Studio."
+    nav_home:"In\u00edcio",nav_studio:"Est\u00fadio",nav_collabs:"Criadores",nav_contact:"Contato",
+    footer_nav:"Navega\u00e7\u00e3o",footer_privacy:"Privacidade",
+    footer_copy:"\u00a9 2026 OKALAM Studio."
   }
 };
 
-const TICKER_WORDS={
-  en:['Mobile Apps','Narrative Games','AI Tools','iOS Development','Creative Studio','Game Design','Digital Experiences','Swift','Generative AI','Storytelling','Independent'],
-  fr:['Apps Mobiles','Jeux Narratifs','Outils IA','Développement iOS','Studio Créatif','Game Design','Swift','IA Générative','Narration','Indépendant'],
-  ja:['モバイルアプリ','ナラティブゲーム','AIツール','iOS開発','クリエイティブスタジオ','ゲームデザイン'],
-  zh:['移动应用','叙事游戏','AI工具','iOS开发','创意工作室','游戏设计'],
-  es:['Apps Móviles','Juegos Narrativos','Herramientas IA','Desarrollo iOS','Estudio Creativo','Diseño de Juegos'],
-  pt:['Apps Móveis','Jogos Narrativos','Ferramentas IA','Desenvolvimento iOS','Estúdio Criativo','Design de Jogos']
-};
-
-function buildTicker(l){
-  const words=TICKER_WORDS[l]||TICKER_WORDS.en;
-  const content=words.map(w=>`<span class="titem">${w} <span style="opacity:.3">·</span></span>`).join('');
+// ── TICKER ───────────────────────────────────────────────────────
+const TICKER_ITEMS='Elisa Is Running \u00b7 Tesla Burger \u00b7 Running \u00b7 Tech \u00b7 EV \u00b7 13,900 YouTube \u00b7 12,760 Instagram \u00b7 17.9M views \u00b7 France \u00b7 Creator Partnerships \u00b7 Brand Deals \u00b7 Europe \u00b7 OKALAM Studio \u00b7';
+function buildTicker(){
+  const content=TICKER_ITEMS.split('\u00b7').map(w=>`<span class="titem">${w.trim()} <span style="opacity:.3">\u00b7</span></span>`).join('');
   ['ticker1','ticker2'].forEach(id=>{const el=document.getElementById(id);if(el)el.innerHTML=content;});
 }
+buildTicker();
 
+// ── LANGUAGE ─────────────────────────────────────────────────────
 function setLang(l){
   localStorage.setItem('okalam_lang',l);
-  // Update flag buttons
-  document.querySelectorAll('.flag-btn').forEach(b=>b.classList.remove('active'));
-  const fb=document.getElementById('fl-'+l);if(fb)fb.classList.add('active');
-  const t=T[l];if(!t)return;
+  const t=T[l]||T.en;
+  // Fallback: merge with EN for incomplete translations
+  const merged=Object.assign({},T.en,t);
   // Update data-i18n elements
   document.querySelectorAll('[data-i18n]').forEach(el=>{
     const key=el.getAttribute('data-i18n');
-    if(t[key])el.textContent=t[key];
+    if(merged[key]!==undefined) el.innerHTML=merged[key];
   });
   // Update id-based elements
-  Object.keys(t).forEach(key=>{
+  Object.keys(merged).forEach(key=>{
     const el=document.getElementById(key);
-    if(el)el.textContent=t[key];
+    if(el) el.textContent=merged[key];
   });
-  // Special: ai_text with em
-  const aiEl=document.getElementById('ai_text');
-  if(aiEl&&t.ai_text){
-    aiEl.innerHTML=t.ai_text.replace('never as a replacement','<em>never as a replacement</em>')
-      .replace('jamais comme remplaçant','<em>jamais comme remplaçant</em>')
-      .replace('nunca como sustituto','<em>nunca como sustituto</em>')
-      .replace('nunca como substituto','<em>nunca como substituto</em>');
-  }
-  // Strip title with em
-  const stripT=document.querySelector('[data-i18n-html="strip_title"]');
-  if(stripT){
-    const titles={en:'We are a <em>creative anthill</em> — always building, always experimenting.',fr:'Nous sommes une <em>fourmilière créative</em> — toujours en train de construire.',ja:'私たちは<em>クリエイティブな蟻塚</em>です。',zh:'我们是一个<em>创意蚁穴</em>。',es:'Somos un <em>hormiguero creativo</em> — siempre construyendo.',pt:'Somos um <em>formigueiro criativo</em> — sempre construindo.'};
-    stripT.innerHTML=titles[l]||titles.en;
-  }
-  buildTicker(l);
-  // Update html lang
+  // Update sidebar flags
+  document.querySelectorAll('.flag-btn-s').forEach(b=>
+    b.classList.toggle('active',b.getAttribute('data-lang')===l)
+  );
   document.documentElement.lang=l;
 }
+
+// ── INJECT FLAG SIDEBAR (same as shared.js) ──────────────────────
+(function(){
+  const picker=document.createElement('div');
+  picker.className='flag-picker-sidebar';
+  picker.innerHTML=`
+    <button class="flag-btn-s" data-lang="en" title="English">\ud83c\uddec\ud83c\udde7</button>
+    <button class="flag-btn-s" data-lang="fr" title="Fran\u00e7ais">\ud83c\uddeb\ud83c\uddf7</button>
+    <button class="flag-btn-s" data-lang="ja" title="\u65e5\u672c\u8a9e">\ud83c\uddef\ud83c\uddf5</button>
+    <button class="flag-btn-s" data-lang="zh" title="\u4e2d\u6587">\ud83c\udde8\ud83c\uddf3</button>
+    <button class="flag-btn-s" data-lang="es" title="Espa\u00f1ol">\ud83c\uddea\ud83c\uddf8</button>
+    <button class="flag-btn-s" data-lang="pt" title="Portugu\u00eas">\ud83c\uddf5\ud83c\uddf9</button>
+  `;
+  picker.querySelectorAll('.flag-btn-s').forEach(btn=>{
+    btn.addEventListener('click',()=>setLang(btn.getAttribute('data-lang')));
+  });
+  document.body.appendChild(picker);
+})();
 
 // Init lang
 const sl=localStorage.getItem('okalam_lang');
@@ -506,13 +476,63 @@ const bl=navigator.language.slice(0,2);
 const initL=sl||(['en','fr','ja','zh','es','pt'].includes(bl)?bl:'en');
 setLang(initL);
 
-// Music
-function toggleMusic(){
-  const a=document.getElementById('bgMusic'),b=document.getElementById('musicBtn');
-  if(a.paused){a.play();b.style.color='var(--accent)';}else{a.pause();b.style.color='';}
+// ── APIFY STATS (dynamic) ────────────────────────────────────────
+const APIFY_TOKEN='apify_api_oFvPM0OpMKhkbcgdrJ4lvjkkcO2XbD1L7bvF';
+const APIFY_DATASETS={youtube:'srx5Ltfgea7cquMCE',instagram:'lZsYaugPwWnpk8I3D',tiktok:'nfjxw3C1rIr1vVDzC'};
+
+function formatNumber(n){
+  if(n==null||isNaN(n)) return '—';
+  if(n>=1e6) return (n/1e6).toFixed(1).replace(/\.0$/,'')+'M';
+  if(n>=1e3) return (n/1e3).toFixed(1).replace(/\.0$/,'')+'K';
+  return n.toLocaleString('en');
 }
 
-// ── Dropdown menu (index) ──
+async function fetchApifyStats(){
+  if(!APIFY_TOKEN) return;
+  try{
+    const fetchDS=async(id)=>{
+      const r=await fetch(`https://api.apify.com/v2/datasets/${id}/items?token=${APIFY_TOKEN}&clean=true&limit=10`);
+      if(!r.ok) throw new Error(r.status);
+      return r.json();
+    };
+    const [yt,ig,tt]=await Promise.all([
+      fetchDS(APIFY_DATASETS.youtube),
+      fetchDS(APIFY_DATASETS.instagram),
+      fetchDS(APIFY_DATASETS.tiktok)
+    ]);
+    // YouTube
+    const elisaYT=yt.find(c=>/elisa/i.test(c.channelName));
+    const pierreYT=yt.find(c=>!/elisa/i.test(c.channelName));
+    if(elisaYT){
+      const s=document.getElementById('elisa-yt-subs');if(s)s.textContent=formatNumber(elisaYT.numberOfSubscribers);
+      const v=document.getElementById('elisa-yt-views');if(v)v.textContent=formatNumber(elisaYT.channelTotalViews)+' vues';
+    }
+    if(pierreYT){
+      const s=document.getElementById('pierre-yt-subs');if(s)s.textContent=formatNumber(pierreYT.numberOfSubscribers);
+      const v=document.getElementById('pierre-yt-views');if(v)v.textContent=formatNumber(pierreYT.channelTotalViews)+' vues';
+    }
+    // Instagram
+    const elisaIG=ig.find(c=>/elisa/i.test(c.username));
+    const pierreIG=ig.find(c=>!/elisa/i.test(c.username));
+    if(elisaIG){const e=document.getElementById('elisa-ig-followers');if(e)e.textContent=formatNumber(elisaIG.followersCount);}
+    if(pierreIG){const e=document.getElementById('pierre-ig-followers');if(e)e.textContent=formatNumber(pierreIG.followersCount);}
+    // TikTok
+    const elisaTT=tt.find(c=>/elisa/i.test(c.authorMeta?.nickName||''));
+    const pierreTT=tt.find(c=>!/elisa/i.test(c.authorMeta?.nickName||''));
+    if(elisaTT){const e=document.getElementById('elisa-tt-followers');if(e)e.textContent=formatNumber(elisaTT.authorMeta?.fans);}
+    if(pierreTT){const e=document.getElementById('pierre-tt-followers');if(e)e.textContent=formatNumber(pierreTT.authorMeta?.fans);}
+    // Update combined global stats
+    const totalYTSubs=(elisaYT?.numberOfSubscribers||13900)+(pierreYT?.numberOfSubscribers||11900);
+    const totalIGFollow=(elisaIG?.followersCount||12760)+(pierreIG?.followersCount||9745);
+    const totalYTViews=(elisaYT?.channelTotalViews||4100000)+(pierreYT?.channelTotalViews||17900000);
+    const gsYT=document.getElementById('gs_yt');if(gsYT)gsYT.textContent=formatNumber(totalYTSubs);
+    const gsIG=document.getElementById('gs_ig');if(gsIG)gsIG.textContent=formatNumber(totalIGFollow);
+    const gsV=document.getElementById('gs_views');if(gsV)gsV.textContent=formatNumber(totalYTViews)+'+';
+  }catch(e){/* silent fallback — hardcoded values remain */}
+}
+fetchApifyStats();
+
+// ── DROPDOWN MENU ────────────────────────────────────────────────
 const _menuBtn=document.querySelector('.ok-nav-menu-btn');
 const _dropdown=document.querySelector('.ok-nav-dropdown');
 const _overlay=document.querySelector('.ok-nav-overlay');
@@ -521,13 +541,17 @@ if(_menuBtn){_menuBtn.addEventListener('click',()=>{_menuBtn.classList.contains(
 if(_overlay)_overlay.addEventListener('click',_closeMenu);
 document.querySelectorAll('.ok-nav-dropdown a').forEach(l=>l.addEventListener('click',_closeMenu));
 
-// Particles
+// ── SCROLL NAV ───────────────────────────────────────────────────
+const _nav=document.querySelector('.ok-nav');
+if(_nav)window.addEventListener('scroll',()=>_nav.classList.toggle('scrolled',window.scrollY>40));
+
+// ── PARTICLES ────────────────────────────────────────────────────
 const cv=document.getElementById('ok-particles-home'),cx=cv.getContext('2d');
 function rsz(){cv.width=innerWidth;cv.height=innerHeight;}rsz();window.addEventListener('resize',rsz);
 const pts=Array.from({length:70},()=>({x:Math.random()*innerWidth,y:Math.random()*innerHeight,r:Math.random()*1.3+.3,vx:(Math.random()-.5)*.1,vy:-Math.random()*.22-.04,o:Math.random()*.28+.06}));
 (function loop(){cx.clearRect(0,0,cv.width,cv.height);pts.forEach(p=>{cx.beginPath();cx.arc(p.x,p.y,p.r,0,Math.PI*2);cx.fillStyle=`rgba(141,234,255,${p.o})`;cx.fill();p.x+=p.vx;p.y+=p.vy;if(p.y<-10){p.y=cv.height+10;p.x=Math.random()*cv.width;}if(p.x<-10)p.x=cv.width+10;if(p.x>cv.width+10)p.x=-10;});requestAnimationFrame(loop);})();
 
-// Scroll reveal
+// ── SCROLL REVEAL ────────────────────────────────────────────────
 const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:.1});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 </script>
