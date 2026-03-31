@@ -1,460 +1,1128 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<meta name="robots" content="noindex, nofollow"/>
-<title>Media Kit — Elisa Is Running × OKALAM Studio</title>
-<meta name="description" content="Media Kit Elisa Is Running — Partenariat OKALAM Studio"/>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
-<style>
-:root{
-  --bg:#080c12;--bg2:#0d1220;--card:#111827;--card2:#141c2d;
-  --text:#e8edf5;--muted:#6b7280;--border:rgba(255,255,255,.08);--border2:rgba(255,255,255,.06);
-  --red:#f87171;--green:#4ade80;
-  --okalam:#8deaff;
-  --cr:#f59e0b;
-  --cr-dim:rgba(245,158,11,.12);--cr-glow:rgba(245,158,11,.2);--cr-border:rgba(245,158,11,.25);
-}
-*{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;line-height:1.6;overflow-x:hidden;}
-::selection{background:rgba(245,158,11,.25);color:var(--cr);}
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="robots" content="noindex, nofollow"/>
+  <title>Media Kit Privé — Elisa Is Running</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg: #080c12;
+      --bg2: #0d1220;
+      --card: #111827;
+      --card2: #141c2d;
+      --text: #e8edf5;
+      --muted: #6b7280;
+      --border: rgba(255,255,255,.08);
+      --border2: rgba(255,255,255,.06);
+      --red: #f87171;
+      --green: #4ade80;
+      --okalam: #8deaff;
+      --cr: #f59e0b;
+      --cr-dim: rgba(245,158,11,.12);
+      --cr-border: rgba(245,158,11,.25);
+    }
 
-/* ── ACCESS GATE ── */
-.gate{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px 24px;}
-.gate-lock{font-size:2.8rem;margin-bottom:20px;opacity:.35;}
-.gate-title{font-family:'Syne',sans-serif;font-weight:800;font-size:1.7rem;margin-bottom:6px;}
-.gate-sub{font-size:.88rem;color:var(--muted);margin-bottom:28px;}
-.gate-form{display:flex;gap:8px;align-items:center;margin-bottom:12px;}
-.gate-input{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:11px 16px;color:var(--text);font-family:'Space Mono',monospace;font-size:.85rem;outline:none;width:180px;transition:border-color .2s;}
-.gate-input:focus{border-color:var(--cr);}
-.gate-btn{background:var(--cr);color:#05080e;font-family:'Syne',sans-serif;font-weight:700;font-size:.75rem;letter-spacing:.06em;border:none;border-radius:8px;padding:11px 20px;cursor:pointer;transition:all .2s;white-space:nowrap;}
-.gate-btn:hover{background:#fbbf24;}
-.gate-error{font-size:.75rem;color:var(--red);display:none;margin-bottom:8px;}
-.gate-home{margin-top:24px;font-size:.75rem;color:var(--muted);text-decoration:none;border:1px solid var(--border2);padding:8px 20px;border-radius:4px;transition:all .2s;}
-.gate-home:hover{border-color:var(--cr);color:var(--cr);}
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-/* ── STICKY HEADER ── */
-.mk-header{position:sticky;top:0;z-index:100;background:rgba(8,12,18,.96);backdrop-filter:blur(20px);border-bottom:1px solid var(--border2);padding:14px 48px;display:flex;align-items:center;justify-content:space-between;gap:16px;}
-.mk-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:.85rem;letter-spacing:.25em;text-transform:uppercase;color:var(--okalam);text-decoration:none;}
-.mk-tag{font-family:'Space Mono',monospace;font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;background:var(--cr-dim);color:var(--cr);border:1px solid var(--cr-border);padding:4px 14px;border-radius:20px;}
-.mk-contact-btn{background:var(--cr);color:#05080e;font-family:'Syne',sans-serif;font-weight:700;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;padding:10px 20px;border-radius:4px;text-decoration:none;transition:all .2s;white-space:nowrap;}
-.mk-contact-btn:hover{background:#fbbf24;transform:translateY(-1px);}
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
 
-/* ── HERO ── */
-.mk-hero{padding:80px 48px 64px;text-align:center;border-bottom:1px solid var(--border2);}
-.hero-avatar-wrap{width:180px;height:180px;border-radius:50%;overflow:hidden;margin:0 auto 32px;box-shadow:0 0 60px rgba(245,158,11,.25);border:3px solid rgba(245,158,11,.3);}
-.hero-avatar-wrap img{width:180px;height:180px;object-fit:cover;object-position:top;display:block;border-radius:50%;}
-.hero-avatar-fallback{width:180px;height:180px;border-radius:50%;background:linear-gradient(135deg,#d97706 0%,#f59e0b 100%);display:none;align-items:center;justify-content:center;font-size:3rem;}
-.mk-hero-name{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(2.2rem,5vw,3.4rem);letter-spacing:-.02em;margin-bottom:10px;}
-.mk-hero-tag{display:inline-flex;align-items:center;gap:6px;background:var(--cr-dim);border:1px solid var(--cr-border);border-radius:20px;padding:6px 18px;font-family:'Space Mono',monospace;font-size:.65rem;letter-spacing:.08em;color:var(--cr);margin-bottom:18px;}
-.mk-hero-pitch{font-size:.9rem;color:var(--muted);max-width:540px;margin:0 auto 36px;line-height:1.75;}
-.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;max-width:720px;margin:0 auto;}
-.hero-stat{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px 16px;text-align:center;}
-.hero-stat-val{font-family:'Syne',sans-serif;font-weight:800;font-size:1.7rem;color:var(--cr);letter-spacing:-.02em;display:block;margin-bottom:4px;}
-.hero-stat-lbl{font-family:'Space Mono',monospace;font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
+    h1, h2, h3, h4 { font-family: 'Syne', sans-serif; }
 
-/* ── SECTIONS ── */
-.mk-section{padding:64px 48px;border-bottom:1px solid var(--border2);}
-.mk-section-inner{max-width:1100px;margin:0 auto;}
-.mk-label{font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cr);margin-bottom:14px;display:flex;align-items:center;gap:10px;}
-.mk-label::before{content:'';width:20px;height:1px;background:var(--cr);}
-.mk-section-title{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(1.4rem,3vw,1.9rem);letter-spacing:-.02em;margin-bottom:10px;}
-.mk-section-intro{font-size:.88rem;color:var(--muted);max-width:700px;margin-bottom:28px;line-height:1.75;}
+    /* GATE */
+    #gate {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 24px;
+    }
 
-/* ── PLATFORM GRID ── */
-.platform-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
-.platform-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:26px;transition:all .3s;}
-.platform-card:hover{border-color:var(--cr);box-shadow:0 0 20px rgba(245,158,11,.08);}
-.pf-icon{font-size:1.5rem;margin-bottom:10px;}
-.pf-name{font-family:'Syne',sans-serif;font-weight:700;font-size:.85rem;margin-bottom:14px;color:var(--text);}
-.pf-stat-main{font-family:'Syne',sans-serif;font-weight:800;font-size:2rem;color:var(--cr);letter-spacing:-.02em;display:block;margin-bottom:2px;}
-.pf-stat-sub{font-family:'Space Mono',monospace;font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:10px;}
-.pf-row{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-top:1px solid var(--border2);font-size:.78rem;}
-.pf-row span:first-child{color:var(--muted);}
-.pf-row span:last-child{color:var(--text);font-weight:500;}
-.pf-explain{background:rgba(245,158,11,.08);border-left:3px solid var(--cr);padding:12px 16px;border-radius:0 8px 8px 0;font-size:.82rem;color:var(--muted);margin-top:12px;line-height:1.6;}
-.pf-badge{display:inline-block;background:var(--cr-dim);border:1px solid var(--cr-border);color:var(--cr);font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.06em;padding:4px 10px;border-radius:12px;margin-top:10px;}
-.pf-badge-fire{background:rgba(245,158,11,.18);border-color:var(--cr);color:#fbbf24;}
+    .gate-card {
+      background: var(--card);
+      border: 1px solid var(--cr-border);
+      border-radius: 20px;
+      padding: 48px 40px;
+      max-width: 420px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 0 60px rgba(245,158,11,.08);
+    }
 
-/* ── AUDIENCE CARDS ── */
-.audience-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
-.audience-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;line-height:1.7;}
-.audience-card p{font-size:.88rem;color:var(--muted);}
-.audience-note{font-size:.75rem;color:var(--muted);opacity:.6;margin-top:20px;font-family:'Space Mono',monospace;font-style:italic;}
+    .gate-lock { font-size: 3rem; margin-bottom: 20px; }
 
-/* ── COLLAB CARDS ── */
-.collab-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;}
-.collab-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:28px;transition:all .3s;}
-.collab-card:hover{border-color:var(--cr);box-shadow:0 0 18px rgba(245,158,11,.06);}
-.cc-icon{font-size:1.6rem;margin-bottom:12px;}
-.cc-title{font-family:'Syne',sans-serif;font-weight:700;font-size:1rem;margin-bottom:8px;}
-.cc-desc{font-size:.85rem;color:var(--muted);margin-bottom:14px;line-height:1.7;}
-.cc-ideal{font-size:.75rem;color:var(--muted);margin-bottom:12px;font-style:italic;}
-.cc-ideal span{color:var(--text);}
-.cc-price{display:inline-block;background:var(--cr-dim);border:1px solid var(--cr-border);color:var(--cr);font-family:'Space Mono',monospace;font-size:.65rem;letter-spacing:.06em;padding:5px 12px;border-radius:8px;}
+    .gate-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
 
-/* ── PRICING TABLE ── */
-.pricing-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
-.price-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:22px;transition:all .3s;}
-.price-card:hover{border-color:var(--cr);}
-.price-platform{font-family:'Space Mono',monospace;font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
-.price-val{font-family:'Syne',sans-serif;font-weight:800;font-size:1.4rem;color:var(--cr);margin-bottom:4px;}
-.price-reach{font-size:.8rem;color:var(--muted);}
-.pricing-callout{background:linear-gradient(135deg,rgba(245,158,11,.1),rgba(245,158,11,.04));border:1px solid var(--cr-border);border-radius:12px;padding:24px 28px;margin-top:20px;font-size:.92rem;color:var(--text);line-height:1.75;}
-.pricing-callout strong{color:var(--cr);}
-.pricing-source{font-size:.65rem;color:var(--muted);margin-top:14px;font-family:'Space Mono',monospace;opacity:.7;}
+    .gate-sub {
+      color: var(--muted);
+      font-size: .9rem;
+      margin-bottom: 32px;
+    }
 
-/* ── CONTENT CARDS ── */
-.content-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
-.ct-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;transition:all .3s;}
-.ct-card:hover{border-color:var(--cr);}
-.ct-platform{font-family:'Space Mono',monospace;font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;color:var(--cr);margin-bottom:8px;}
-.ct-title{font-family:'Syne',sans-serif;font-weight:700;font-size:.9rem;margin-bottom:8px;line-height:1.3;}
-.ct-views{font-size:.82rem;color:var(--muted);}
-.ct-views strong{color:var(--cr);}
+    .gate-input {
+      width: 100%;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 18px;
+      color: var(--text);
+      font-family: 'Space Mono', monospace;
+      font-size: .95rem;
+      outline: none;
+      margin-bottom: 12px;
+      transition: border-color .2s;
+    }
 
-/* ── CTA SECTION ── */
-.mk-cta{text-align:center;padding:80px 48px;border-bottom:1px solid var(--border2);background:linear-gradient(135deg,rgba(245,158,11,.04),rgba(245,158,11,.01));}
-.mk-cta-title{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(1.6rem,3vw,2.2rem);letter-spacing:-.02em;margin-bottom:12px;}
-.mk-cta-sub{font-size:.88rem;color:var(--muted);max-width:520px;margin:0 auto 28px;line-height:1.75;}
-.cta-main-btn{display:inline-block;background:var(--cr);color:#05080e;font-family:'Syne',sans-serif;font-weight:700;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;padding:14px 36px;border-radius:6px;text-decoration:none;transition:all .2s;margin-bottom:16px;}
-.cta-main-btn:hover{background:#fbbf24;transform:translateY(-2px);}
-.cta-back{display:block;font-size:.78rem;color:var(--muted);text-decoration:none;margin-top:12px;transition:color .2s;}
-.cta-back:hover{color:var(--cr);}
+    .gate-input:focus { border-color: var(--cr); }
 
-/* ── FOOTER ── */
-.mk-footer{border-top:1px solid var(--border2);padding:28px 48px;text-align:center;font-size:.72rem;color:var(--muted);font-family:'Space Mono',monospace;letter-spacing:.04em;}
+    .gate-btn {
+      width: 100%;
+      background: var(--cr);
+      color: #000;
+      border: none;
+      border-radius: 10px;
+      padding: 14px;
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: opacity .2s;
+    }
 
-/* ── REVEAL ANIMATIONS ── */
-.reveal{opacity:0;transform:translateY(22px);transition:opacity .5s ease,transform .5s ease;}
-.reveal.visible{opacity:1;transform:translateY(0);}
+    .gate-btn:hover { opacity: .85; }
 
-/* ── RESPONSIVE ── */
-@media(max-width:960px){
-  .platform-grid{grid-template-columns:repeat(2,1fr);}
-  .hero-stats{grid-template-columns:repeat(2,1fr);}
-  .collab-grid{grid-template-columns:1fr;}
-  .pricing-grid{grid-template-columns:1fr;}
-  .audience-grid{grid-template-columns:1fr;}
-  .content-grid{grid-template-columns:1fr;}
-}
-@media(max-width:640px){
-  .mk-header{padding:12px 16px;}
-  .mk-logo{font-size:.75rem;}
-  .mk-tag{display:none;}
-  .mk-hero{padding:56px 20px 44px;}
-  .mk-section{padding:48px 20px;}
-  .mk-cta{padding:56px 20px;}
-  .mk-footer{padding:24px 20px;}
-  .platform-grid{grid-template-columns:1fr;}
-  .hero-stats{grid-template-columns:repeat(2,1fr);}
-}
-</style>
+    .gate-error {
+      display: none;
+      color: var(--red);
+      font-size: .85rem;
+      margin-top: 12px;
+    }
+
+    .gate-back {
+      display: inline-block;
+      margin-top: 24px;
+      color: var(--muted);
+      font-size: .85rem;
+      text-decoration: none;
+      transition: color .2s;
+    }
+
+    .gate-back:hover { color: var(--text); }
+
+    /* CONTENT */
+    #content { display: none; }
+
+    /* STICKY HEADER */
+    .sticky-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(8,12,18,.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 32px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .header-brand {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1rem;
+      color: var(--okalam);
+      letter-spacing: .08em;
+    }
+
+    .header-creator {
+      font-family: 'Space Mono', monospace;
+      font-size: .8rem;
+      color: var(--cr);
+      background: var(--cr-dim);
+      border: 1px solid var(--cr-border);
+      border-radius: 20px;
+      padding: 5px 14px;
+    }
+
+    .header-contact {
+      color: var(--muted);
+      font-size: .82rem;
+      text-decoration: none;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 6px 14px;
+      transition: all .2s;
+    }
+
+    .header-contact:hover { color: var(--cr); border-color: var(--cr-border); }
+
+    /* MAIN */
+    .main { max-width: 900px; margin: 0 auto; padding: 60px 24px 80px; }
+
+    /* HERO */
+    .hero { text-align: center; padding: 60px 0 48px; }
+
+    .avatar-wrap { display: inline-block; position: relative; margin-bottom: 24px; }
+
+    .avatar {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--cr);
+      box-shadow: 0 0 40px rgba(245,158,11,.3), 0 0 80px rgba(245,158,11,.12);
+    }
+
+    .avatar-fallback {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background: var(--cr-dim);
+      border: 3px solid var(--cr);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+      box-shadow: 0 0 40px rgba(245,158,11,.3);
+    }
+
+    .hero-name {
+      font-size: 2.8rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+      line-height: 1.1;
+    }
+
+    .hero-niche {
+      display: inline-block;
+      background: var(--cr-dim);
+      border: 1px solid var(--cr-border);
+      color: var(--cr);
+      font-family: 'Space Mono', monospace;
+      font-size: .78rem;
+      border-radius: 20px;
+      padding: 5px 16px;
+      margin-bottom: 36px;
+      letter-spacing: .05em;
+    }
+
+    .quick-stats {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .qs-pill {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px 22px;
+      min-width: 140px;
+      text-align: center;
+    }
+
+    .qs-value {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--cr);
+      display: block;
+    }
+
+    .qs-label {
+      font-family: 'Space Mono', monospace;
+      font-size: .68rem;
+      color: var(--muted);
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      display: block;
+      margin-top: 4px;
+    }
+
+    /* SECTION TITLES */
+    .section { margin-bottom: 64px; }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 32px;
+    }
+
+    .section-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .section-line {
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* PLATFORM CARDS */
+    .platforms-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .platform-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      transition: border-color .2s;
+    }
+
+    .platform-card:hover { border-color: var(--cr-border); }
+
+    .platform-card.placeholder { opacity: .45; border-style: dashed; }
+
+    .platform-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .platform-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+    }
+
+    .icon-yt { background: rgba(255,0,0,.12); }
+    .icon-ig { background: rgba(225,48,108,.12); }
+    .icon-tt { background: rgba(0,0,0,.3); border: 1px solid var(--border); }
+    .icon-fb { background: rgba(24,119,242,.12); }
+
+    .platform-name {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+    }
+
+    .platform-main-stat {
+      font-family: 'Syne', sans-serif;
+      font-size: 2.4rem;
+      font-weight: 800;
+      color: var(--cr);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .platform-main-label {
+      font-family: 'Space Mono', monospace;
+      font-size: .7rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      margin-bottom: 20px;
+    }
+
+    .stat-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border2);
+      font-size: .88rem;
+    }
+
+    .stat-row:last-of-type { border-bottom: none; }
+    .stat-label { color: var(--muted); }
+
+    .stat-value {
+      font-family: 'Space Mono', monospace;
+      font-size: .82rem;
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .expl-box {
+      background: var(--cr-dim);
+      border-left: 3px solid var(--cr);
+      padding: 12px 16px;
+      border-radius: 0 8px 8px 0;
+      margin-top: 16px;
+      font-size: .82rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .expl-box strong { color: var(--text); }
+
+    .viral-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(245,158,11,.18);
+      border: 1px solid var(--cr-border);
+      color: var(--cr);
+      font-family: 'Space Mono', monospace;
+      font-size: .72rem;
+      border-radius: 20px;
+      padding: 4px 12px;
+      margin-top: 10px;
+      font-weight: 700;
+    }
+
+    /* STATS EXPLAINER */
+    .stats-grid { display: flex; flex-direction: column; gap: 24px; }
+
+    .stat-explainer {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+    }
+
+    .stat-explainer-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .stat-explainer-desc {
+      color: var(--muted);
+      font-size: .9rem;
+      margin-bottom: 20px;
+      line-height: 1.65;
+    }
+
+    .formula-box {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 16px;
+      font-family: 'Space Mono', monospace;
+      font-size: .78rem;
+      color: var(--okalam);
+      margin-bottom: 20px;
+    }
+
+    .scale-title {
+      font-family: 'Space Mono', monospace;
+      font-size: .72rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .scale-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 20px;
+    }
+
+    .scale-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: .85rem;
+      flex-wrap: wrap;
+    }
+
+    .scale-range {
+      font-family: 'Space Mono', monospace;
+      font-size: .78rem;
+      color: var(--muted);
+      min-width: 130px;
+    }
+
+    .scale-label { color: var(--muted); font-size: .82rem; }
+
+    .badge {
+      font-family: 'Space Mono', monospace;
+      font-size: .7rem;
+      border-radius: 20px;
+      padding: 3px 10px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .badge-green { background: rgba(74,222,128,.15); color: var(--green); border: 1px solid rgba(74,222,128,.3); }
+    .badge-amber { background: rgba(245,158,11,.15); color: #f59e0b; border: 1px solid rgba(245,158,11,.3); }
+    .badge-red   { background: rgba(248,113,113,.15); color: var(--red); border: 1px solid rgba(248,113,113,.3); }
+
+    .your-score {
+      background: var(--cr-dim);
+      border: 1px solid var(--cr-border);
+      border-radius: 10px;
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .your-score-label {
+      font-family: 'Space Mono', monospace;
+      font-size: .78rem;
+      color: var(--muted);
+    }
+
+    .your-score-value {
+      font-family: 'Syne', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--cr);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* TOP CONTENT */
+    .content-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+
+    .content-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 22px;
+    }
+
+    .content-platform {
+      font-family: 'Space Mono', monospace;
+      font-size: .7rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--cr);
+      margin-bottom: 10px;
+    }
+
+    .content-title {
+      font-family: 'Syne', sans-serif;
+      font-size: .95rem;
+      font-weight: 600;
+      margin-bottom: 14px;
+      line-height: 1.4;
+    }
+
+    .content-stat {
+      font-family: 'Space Mono', monospace;
+      font-size: .8rem;
+      color: var(--muted);
+    }
+
+    .content-stat span { color: var(--cr); font-weight: 700; }
+
+    /* CONTACT */
+    .contact-card {
+      background: var(--card);
+      border: 1px solid var(--cr-border);
+      border-radius: 20px;
+      padding: 40px;
+      text-align: center;
+      box-shadow: 0 0 40px rgba(245,158,11,.06);
+    }
+
+    .contact-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .contact-desc {
+      color: var(--muted);
+      font-size: .9rem;
+      margin-bottom: 28px;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      background: var(--cr);
+      color: #000;
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: .95rem;
+      padding: 14px 28px;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: opacity .2s;
+    }
+
+    .cta-btn:hover { opacity: .85; }
+
+    .back-link {
+      display: block;
+      color: var(--muted);
+      font-size: .85rem;
+      text-decoration: none;
+      margin-top: 16px;
+      transition: color .2s;
+    }
+
+    .back-link:hover { color: var(--text); }
+
+    /* FOOTER */
+    .page-footer {
+      text-align: center;
+      padding: 32px 24px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-family: 'Space Mono', monospace;
+      font-size: .72rem;
+      letter-spacing: .04em;
+    }
+
+    .update-note {
+      text-align: center;
+      color: var(--muted);
+      font-family: 'Space Mono', monospace;
+      font-size: .72rem;
+      margin-top: -32px;
+      margin-bottom: 48px;
+    }
+
+    /* REVEAL */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity .5s ease, transform .5s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 600px) {
+      .sticky-header { padding: 0 16px; }
+      .header-brand { font-size: .85rem; }
+      .header-contact { display: none; }
+      .hero-name { font-size: 2rem; }
+      .main { padding: 40px 16px 60px; }
+      .gate-card { padding: 36px 24px; }
+      .contact-card { padding: 28px 20px; }
+    }
+  </style>
 </head>
 <body>
 
-<!-- ACCESS GATE -->
-<div id="gate" class="gate" style="display:none;">
-  <div class="gate-lock">🔒</div>
-  <h1 class="gate-title">Media Kit Privé</h1>
-  <p class="gate-sub">Elisa Is Running × OKALAM Studio</p>
-  <div class="gate-form">
-    <input id="gate-input" type="text" placeholder="Ton code…" class="gate-input"
-      autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
-    <button class="gate-btn" onclick="submitGate()">Accéder →</button>
+<!-- GATE -->
+<div id="gate">
+  <div class="gate-card">
+    <div class="gate-lock">🔒</div>
+    <div class="gate-title">Media Kit Privé</div>
+    <div class="gate-sub">Elisa Is Running × OKALAM Studio</div>
+    <input type="text" class="gate-input" id="tokenInput" placeholder="Ton code d'accès" autocomplete="off"/>
+    <button class="gate-btn" onclick="tryAccess()">Accéder</button>
+    <div class="gate-error" id="gateError">Code incorrect — réessaie.</div>
+    <a href="index.html" class="gate-back">← Retour au site</a>
   </div>
-  <p id="gate-error" class="gate-error">Code incorrect</p>
-  <a href="index.html" class="gate-home">← Retour à OKALAM Studio</a>
 </div>
 
-<!-- MEDIA KIT CONTENT -->
-<div id="content" style="display:none;">
+<!-- CONTENT -->
+<div id="content">
 
-  <!-- STICKY HEADER -->
-  <header class="mk-header">
-    <a href="index.html" class="mk-logo">OKALAM STUDIO</a>
-    <span class="mk-tag">Elisa Is Running</span>
-    <a href="mailto:contact@okalamstudio.com" class="mk-contact-btn">Contacter l'équipe</a>
+  <header class="sticky-header">
+    <div class="header-brand">OKALAM STUDIO</div>
+    <div class="header-creator">ELISA IS RUNNING</div>
+    <a href="mailto:contact@okalamstudio.com" class="header-contact">contact@okalamstudio.com</a>
   </header>
 
-  <!-- HERO -->
-  <section class="mk-hero">
-    <div class="hero-avatar-wrap">
-      <img src="imgs/elisa-photo.jpg" alt="Elisa Is Running" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"/>
-      <div class="hero-avatar-fallback" style="display:none;">🏃‍♀️</div>
-    </div>
-    <h1 class="mk-hero-name">Elisa Is Running</h1>
-    <div class="mk-hero-tag">🏃‍♀️ Running · Lifestyle · Marathon · France</div>
-    <p class="mk-hero-pitch">Créatrice de contenu running &amp; lifestyle basée en France. Une communauté authentique de coureurs passionnés sur YouTube, Instagram et TikTok.</p>
-    <div class="hero-stats reveal">
-      <div class="hero-stat">
-        <span class="hero-stat-val">13,9K</span>
-        <span class="hero-stat-lbl">Abonnés YouTube</span>
-      </div>
-      <div class="hero-stat">
-        <span class="hero-stat-val">12,7K</span>
-        <span class="hero-stat-lbl">Abonnés Instagram</span>
-      </div>
-      <div class="hero-stat">
-        <span class="hero-stat-val">4,2M</span>
-        <span class="hero-stat-lbl">Vues YouTube totales</span>
-      </div>
-      <div class="hero-stat">
-        <span class="hero-stat-val">5,04%</span>
-        <span class="hero-stat-lbl">Engagement YouTube</span>
-      </div>
-    </div>
-  </section>
+  <div class="main">
 
-  <!-- SECTION: PLATEFORMES -->
-  <section class="mk-section">
-    <div class="mk-section-inner">
-      <div class="mk-label reveal">Présence en ligne</div>
-      <h2 class="mk-section-title reveal">Ses plateformes</h2>
-      <p class="mk-section-intro reveal">Elisa est présente sur 4 plateformes. Voici ce que chaque chiffre veut dire concrètement pour toi.</p>
-      <div class="platform-grid">
+    <!-- HERO -->
+    <section class="hero reveal">
+      <div class="avatar-wrap">
+        <img src="imgs/elisa-photo.jpg" alt="Elisa" class="avatar"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+        <div class="avatar-fallback">🏃</div>
+      </div>
+      <h1 class="hero-name">Elisa Is Running</h1>
+      <div class="hero-niche">Running · Sport · Lifestyle France</div>
+      <div class="quick-stats">
+        <div class="qs-pill">
+          <span class="qs-value">13 900</span>
+          <span class="qs-label">Abonnés YouTube</span>
+        </div>
+        <div class="qs-pill">
+          <span class="qs-value">12 760</span>
+          <span class="qs-label">Abonnés Instagram</span>
+        </div>
+        <div class="qs-pill">
+          <span class="qs-value">4,1M</span>
+          <span class="qs-label">Vues YouTube totales</span>
+        </div>
+        <div class="qs-pill">
+          <span class="qs-value">~4,5%</span>
+          <span class="qs-label">Engagement moyen</span>
+        </div>
+      </div>
+    </section>
 
-        <!-- YouTube -->
+    <div class="update-note">Données au 30 mars 2026 · Sources : NoxInfluencer + Wednesday Analytics (Apify)</div>
+
+    <!-- PLATEFORMES -->
+    <section class="section">
+      <div class="section-header reveal">
+        <span class="section-title">Tes plateformes</span>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="platforms-grid">
+
+        <!-- YOUTUBE -->
         <div class="platform-card reveal">
-          <div class="pf-icon">▶️</div>
-          <div class="pf-name">YouTube</div>
-          <span class="pf-stat-main">13 900</span>
-          <span class="pf-stat-sub">abonnés</span>
-          <div class="pf-row"><span>Vues totales</span><span>4,2M</span></div>
-          <div class="pf-row"><span>Vidéos publiées</span><span>546</span></div>
-          <div class="pf-row"><span>Vues par vidéo</span><span>7 750 en moy.</span></div>
-          <div class="pf-explain">💡 Chaque vidéo est vue en moyenne par 7 750 personnes. C'est une audience qualifiée — ces gens ont cherché activement du contenu running.</div>
-          <div class="pf-badge">5,04% d'engagement — 2x la moyenne</div>
+          <div class="platform-header">
+            <div class="platform-icon icon-yt">▶️</div>
+            <span class="platform-name">YouTube</span>
+          </div>
+          <div class="platform-main-stat">13 900</div>
+          <div class="platform-main-label">Abonnés</div>
+          <div class="stat-row">
+            <span class="stat-label">Vues totales</span>
+            <span class="stat-value">4 155 184</span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-label">Vidéos publiées</span>
+            <span class="stat-value">546</span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-label">Vues moy. par vidéo</span>
+            <span class="stat-value">~7 750</span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-label">Taux d'engagement</span>
+            <span class="stat-value">5,04%</span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-label">Audience principale</span>
+            <span class="stat-value">🇫🇷 France</span>
+          </div>
+          <div class="expl-box">
+            <strong>Tes abonnés</strong> = les personnes qui ont cliqué "S'abonner". Mais ce qui compte vraiment, c'est tes vues par vidéo : <strong>~7 750 vues en moyenne</strong>. C'est <strong>bon</strong> — la moyenne pour un créateur de ta taille est ~3 000–5 000 vues/vidéo. Tu dépasses la moyenne.
+          </div>
         </div>
 
-        <!-- Instagram -->
+        <!-- INSTAGRAM -->
         <div class="platform-card reveal">
-          <div class="pf-icon">📷</div>
-          <div class="pf-name">Instagram</div>
-          <span class="pf-stat-main">12 760</span>
-          <span class="pf-stat-sub">abonnés</span>
-          <div class="pf-row"><span>Publications</span><span>1 998</span></div>
-          <div class="pf-row"><span>Compte vérifié</span><span>✓</span></div>
-          <div class="pf-explain">💡 Compte vérifié = authenticité reconnue. L'audience voit ses posts directement dans son feed.</div>
+          <div class="platform-header">
+            <div class="platform-icon icon-ig">📸</div>
+            <span class="platform-name">Instagram &nbsp;<span style="color:var(--cr);font-size:.75rem;font-weight:400;">✓ Vérifié</span></span>
+          </div>
+          <div class="platform-main-stat">12 760</div>
+          <div class="platform-main-label">Abonnés</div>
+          <div class="stat-row">
+            <span class="stat-label">Publications</span>
+            <span class="stat-value">1 998</span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-label">Engagement</span>
+            <span class="stat-value">Calculé en direct</span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-label">Compte vérifié</span>
+            <span class="stat-value" style="color:var(--cr);">✓ Oui</span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-label">Audience principale</span>
+            <span class="stat-value">🇫🇷 France</span>
+          </div>
+          <div class="expl-box">
+            <strong>Tes abonnés voient tes posts dans leur fil.</strong> Ton compte est vérifié ✓ — c'est un gage d'authenticité reconnu officiellement par Instagram. Ça signifie que ta présence est réelle et établie. L'engagement est mesuré en temps réel via notre outil d'analyse.
+          </div>
         </div>
 
-        <!-- TikTok -->
+        <!-- TIKTOK -->
         <div class="platform-card reveal">
-          <div class="pf-icon">🎵</div>
-          <div class="pf-name">TikTok</div>
-          <span class="pf-stat-main">1 573</span>
-          <span class="pf-stat-sub">abonnés</span>
-          <div class="pf-row"><span>Likes cumulés</span><span>140K</span></div>
-          <div class="pf-row"><span>Vidéos</span><span>113</span></div>
-          <div class="pf-row"><span>Record absolu</span><span>3,7M vues</span></div>
-          <div class="pf-explain">💡 Sur TikTok, les abonnés ne sont pas tout — l'algorithme peut propulser n'importe quelle vidéo. Preuve : 3,7M vues sur une seule vidéo.</div>
-          <div class="pf-badge pf-badge-fire">🔥 1 vidéo = 3,7M vues</div>
+          <div class="platform-header">
+            <div class="platform-icon icon-tt">🎵</div>
+            <span class="platform-name">TikTok</span>
+          </div>
+          <div class="platform-main-stat">1 573</div>
+          <div class="platform-main-label">Abonnés</div>
+          <div class="stat-row">
+            <span class="stat-label">Likes cumulés</span>
+            <span class="stat-value">140 000</span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-label">Vidéos publiées</span>
+            <span class="stat-value">113</span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-label">Vues moy. par vidéo</span>
+            <span class="stat-value">835</span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-label">Taux d'engagement</span>
+            <span class="stat-value">4,27%</span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-label">Meilleure vidéo</span>
+            <span class="stat-value" style="color:var(--cr);">3 700 000 vues</span>
+          </div>
+          <div class="viral-badge">🔥 Vidéo virale · 3 700 000 vues</div>
+          <div class="expl-box">
+            Sur TikTok, les abonnés comptent peu — c'est <strong>l'algorithme</strong> qui distribue les vidéos. Ce qui compte : tes vues par vidéo et ton taux d'engagement (4,27% → <strong>bon</strong>). Et surtout : <strong>tu as une vidéo à 3,7M vues</strong> — preuve que tu peux exploser à tout moment.
+          </div>
         </div>
 
-        <!-- Facebook -->
-        <div class="platform-card reveal">
-          <div class="pf-icon">👤</div>
-          <div class="pf-name">Facebook</div>
-          <span class="pf-stat-main" style="font-size:1.1rem;margin-bottom:6px;">elisa.is.running</span>
-          <span class="pf-stat-sub">page</span>
-          <div class="pf-explain" style="margin-top:8px;">Stats en cours de collecte</div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- SECTION: AUDIENCE -->
-  <section class="mk-section">
-    <div class="mk-section-inner">
-      <div class="mk-label reveal">Audience &amp; données</div>
-      <h2 class="mk-section-title reveal">Son audience</h2>
-      <p class="mk-section-intro reveal">Qui suit Elisa ? Voici ce qu'on sait sur sa communauté.</p>
-      <div class="audience-grid">
-        <div class="audience-card reveal">
-          <p>🇫🇷 <strong style="color:var(--text);">Audience principale : France</strong> — ta campagne touche directement le marché français.</p>
-        </div>
-        <div class="audience-card reveal">
-          <p>👟 <strong style="color:var(--text);">Niche : Running, marathon, équipement sportif</strong> — une audience avec un fort pouvoir d'achat sur les produits sport.</p>
-        </div>
-        <div class="audience-card reveal">
-          <p>📊 <strong style="color:var(--text);">Engagement YouTube 5,04%</strong> — au-dessus de la moyenne des créateurs (1–3%). Ça veut dire que sa communauté réagit, commente, partage.</p>
-        </div>
-      </div>
-      <p class="audience-note reveal">Données démographiques détaillées (âge, genre) disponibles sur demande.</p>
-    </div>
-  </section>
-
-  <!-- SECTION: FORMATS -->
-  <section class="mk-section">
-    <div class="mk-section-inner">
-      <div class="mk-label reveal">Formats de collaboration</div>
-      <h2 class="mk-section-title reveal">Ce qu'on peut faire ensemble</h2>
-      <p class="mk-section-intro reveal">Voici les types de collaborations possibles avec Elisa. Chaque format a ses avantages.</p>
-      <div class="collab-grid">
-
-        <div class="collab-card reveal">
-          <div class="cc-icon">📎</div>
-          <div class="cc-title">Mention dans une vidéo YouTube <span style="font-size:.75rem;color:var(--muted);font-weight:400;">(30–90 sec)</span></div>
-          <p class="cc-desc">Elisa cite ton produit ou service dans une de ses vidéos running. Vue par ~7 750 personnes en moyenne.</p>
-          <p class="cc-ideal">Idéal pour : <span>chaussures, vêtements sport, nutrition, apps fitness</span></p>
-          <span class="cc-price">Tarif indicatif : 50–100 €</span>
-        </div>
-
-        <div class="collab-card reveal">
-          <div class="cc-icon">🎬</div>
-          <div class="cc-title">Vidéo dédiée YouTube</div>
-          <p class="cc-desc">Une vidéo entière consacrée à ton produit : test, avis honnête, démonstration. Le format le plus efficace pour la conversion.</p>
-          <p class="cc-ideal">Idéal pour : <span>lancement produit, comparatif</span></p>
-          <span class="cc-price">Tarif indicatif : sur devis</span>
-        </div>
-
-        <div class="collab-card reveal">
-          <div class="cc-icon">📸</div>
-          <div class="cc-title">Reel / Post Instagram</div>
-          <p class="cc-desc">Format court sur Instagram. Communauté vérifiée et active en France.</p>
-          <p class="cc-ideal">Idéal pour : <span>visibilité rapide, offre promotionnelle</span></p>
-          <span class="cc-price">Tarif indicatif : sur devis</span>
-        </div>
-
-        <div class="collab-card reveal">
-          <div class="cc-icon">🎵</div>
-          <div class="cc-title">Vidéo TikTok</div>
-          <p class="cc-desc">Potentiel viral prouvé. Une vidéo peut atteindre des millions de vues au-delà de sa communauté.</p>
-          <p class="cc-ideal">Idéal pour : <span>awareness, challenge, produits lifestyle</span></p>
-          <span class="cc-price">Tarif indicatif : 25–30 €</span>
+        <!-- FACEBOOK PLACEHOLDER -->
+        <div class="platform-card placeholder reveal">
+          <div class="platform-header">
+            <div class="platform-icon icon-fb">📘</div>
+            <span class="platform-name">Facebook</span>
+          </div>
+          <div class="platform-main-stat" style="font-size:1.4rem;color:var(--muted);">À venir</div>
+          <div class="platform-main-label">Données en cours de collecte</div>
+          <div class="expl-box" style="border-left-color:var(--border);background:rgba(255,255,255,.03);">
+            Les statistiques Facebook seront ajoutées prochainement.
+          </div>
         </div>
 
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- SECTION: TARIFS -->
-  <section class="mk-section">
-    <div class="mk-section-inner">
-      <div class="mk-label reveal">Tarifs &amp; retour sur investissement</div>
-      <h2 class="mk-section-title reveal">Ce que ça vaut</h2>
-      <p class="mk-section-intro reveal">Les tarifs ci-dessous sont des estimations basées sur les données marché (source : NoxInfluencer). Ils servent de base de discussion — chaque projet est unique.</p>
-      <div class="pricing-grid">
-        <div class="price-card reveal">
-          <div class="price-platform">YouTube (mention)</div>
-          <div class="price-val">50–100 €</div>
-          <div class="price-reach">Portée estimée : 7 750 personnes par vidéo</div>
-        </div>
-        <div class="price-card reveal">
-          <div class="price-platform">TikTok</div>
-          <div class="price-val">25–30 €</div>
-          <div class="price-reach">Potentiel : jusqu'à 3,7M vues (prouvé)</div>
-        </div>
-        <div class="price-card reveal">
-          <div class="price-platform">Instagram</div>
-          <div class="price-val">Sur devis</div>
-          <div class="price-reach">12 760 abonnés directs</div>
-        </div>
-        <div class="price-card reveal">
-          <div class="price-platform">Pack multi-plateformes</div>
-          <div class="price-val">Sur devis</div>
-          <div class="price-reach">Couverture maximale</div>
-        </div>
+    <!-- COMPRENDRE TES STATS -->
+    <section class="section">
+      <div class="section-header reveal">
+        <span class="section-title">Comprendre tes stats</span>
+        <div class="section-line"></div>
       </div>
-      <div class="pricing-callout reveal">
-        Pour <strong>100 € investis sur YouTube</strong>, tu touches en moyenne <strong>7 750 personnes passionnées de running en France.</strong>
-      </div>
-      <p class="pricing-source reveal">Source : NoxInfluencer · Wednesday Analytics · Mis à jour : 30 mars 2026</p>
-    </div>
-  </section>
 
-  <!-- SECTION: CONTENU PHARE -->
-  <section class="mk-section">
-    <div class="mk-section-inner">
-      <div class="mk-label reveal">Contenu phare</div>
-      <h2 class="mk-section-title reveal">Ses meilleurs contenus</h2>
+      <div class="stats-grid">
+
+        <!-- TAUX D'ENGAGEMENT -->
+        <div class="stat-explainer reveal">
+          <div class="stat-explainer-title">📊 Taux d'engagement — c'est quoi ?</div>
+          <div class="stat-explainer-desc">
+            Le taux d'engagement mesure le <strong>pourcentage de ton audience qui réagit</strong> à tes contenus (likes, commentaires, partages, sauvegardes). C'est l'indicateur le plus important pour les marques — bien plus que le nombre d'abonnés. Une marque préférera 10 000 abonnés qui réagissent à 100 000 abonnés silencieux.
+          </div>
+          <div class="formula-box">
+            (Likes + Commentaires) ÷ Abonnés × 100 = Taux d'engagement
+          </div>
+
+          <div class="scale-title">Barème YouTube</div>
+          <div class="scale-grid">
+            <div class="scale-row">
+              <span class="scale-range">Moins de 1%</span>
+              <span class="badge badge-red">Faible</span>
+              <span class="scale-label">— audience peu réactive</span>
+            </div>
+            <div class="scale-row">
+              <span class="scale-range">1% – 3%</span>
+              <span class="badge badge-amber">Dans la moyenne</span>
+            </div>
+            <div class="scale-row">
+              <span class="scale-range">3% – 6%</span>
+              <span class="badge badge-green">Bon ✓</span>
+            </div>
+            <div class="scale-row">
+              <span class="scale-range">Plus de 6%</span>
+              <span class="badge badge-green">Excellent</span>
+              <span class="scale-label">— audience très engagée</span>
+            </div>
+          </div>
+
+          <div class="scale-title">Barème Instagram / TikTok</div>
+          <div class="scale-grid">
+            <div class="scale-row">
+              <span class="scale-range">Moins de 1%</span>
+              <span class="badge badge-red">Faible</span>
+            </div>
+            <div class="scale-row">
+              <span class="scale-range">1% – 3%</span>
+              <span class="badge badge-amber">Correct</span>
+            </div>
+            <div class="scale-row">
+              <span class="scale-range">3% – 6%</span>
+              <span class="badge badge-green">Bon ✓</span>
+            </div>
+            <div class="scale-row">
+              <span class="scale-range">Plus de 6%</span>
+              <span class="badge badge-green">Très fort</span>
+            </div>
+          </div>
+
+          <div class="your-score" style="margin-bottom:8px;">
+            <span class="your-score-label">Ton score YouTube</span>
+            <span class="your-score-value">5,04% <span class="badge badge-green">Bon ✓</span></span>
+          </div>
+          <div class="your-score">
+            <span class="your-score-label">Ton score TikTok</span>
+            <span class="your-score-value">4,27% <span class="badge badge-green">Bon ✓</span></span>
+          </div>
+        </div>
+
+        <!-- VUES PAR VIDÉO -->
+        <div class="stat-explainer reveal">
+          <div class="stat-explainer-title">👁️ Vues par vidéo — c'est quoi ?</div>
+          <div class="stat-explainer-desc">
+            Le nombre moyen de personnes qui regardent chaque vidéo. C'est plus fiable que le nombre d'abonnés pour estimer ta vraie portée — beaucoup d'abonnés ne regardent pas toutes les vidéos, et inversement, des non-abonnés peuvent tomber dessus via l'algorithme ou la recherche.
+          </div>
+
+          <div class="scale-title">Barème YouTube (créateurs 10K–50K abonnés)</div>
+          <div class="scale-grid">
+            <div class="scale-row">
+              <span class="scale-range">Moins de 2 000</span>
+              <span class="badge badge-red">Faible</span>
+            </div>
+            <div class="scale-row">
+              <span class="scale-range">2 000 – 5 000</span>
+              <span class="badge badge-amber">Dans la moyenne</span>
+            </div>
+            <div class="scale-row">
+              <span class="scale-range">5 000 – 15 000</span>
+              <span class="badge badge-green">Bon ✓</span>
+            </div>
+            <div class="scale-row">
+              <span class="scale-range">Plus de 15 000</span>
+              <span class="badge badge-green">Excellent</span>
+            </div>
+          </div>
+
+          <div class="your-score">
+            <span class="your-score-label">Ton score YouTube</span>
+            <span class="your-score-value">~7 750 vues/vidéo <span class="badge badge-green">Bon ✓</span></span>
+          </div>
+        </div>
+
+        <!-- RATIO VUES/ABONNÉS -->
+        <div class="stat-explainer reveal">
+          <div class="stat-explainer-title">📈 Ratio vues/abonnés (YouTube) — c'est quoi ?</div>
+          <div class="stat-explainer-desc">
+            Ce ratio compare tes vues totales à ton nombre d'abonnés. Un ratio élevé signifie que tes vidéos sont trouvées par des gens qui ne sont <strong>pas</strong> abonnés — via la recherche YouTube, l'algorithme, ou les partages. C'est une mesure de ton référencement organique.
+          </div>
+          <div class="formula-box">
+            Vues totales ÷ Abonnés × 100 = Ratio vues/abonnés
+          </div>
+
+          <div class="scale-title">Barème</div>
+          <div class="scale-grid">
+            <div class="scale-row">
+              <span class="scale-range">Moins de 100%</span>
+              <span class="badge badge-red">Faible</span>
+              <span class="scale-label">— peu trouvé hors abonnés</span>
+            </div>
+            <div class="scale-row">
+              <span class="scale-range">100% – 500%</span>
+              <span class="badge badge-amber">Bien</span>
+            </div>
+            <div class="scale-row">
+              <span class="scale-range">Plus de 500%</span>
+              <span class="badge badge-green">Excellent</span>
+              <span class="scale-label">— fort référencement organique</span>
+            </div>
+          </div>
+
+          <div class="your-score" style="margin-bottom:10px;">
+            <span class="your-score-label">Ton score · 4 155 184 ÷ 13 900 × 100</span>
+            <span class="your-score-value">29 900% <span class="badge badge-green">Excellent 🚀</span></span>
+          </div>
+          <div style="padding:12px 16px;background:rgba(74,222,128,.06);border-radius:8px;font-size:.83rem;color:var(--muted);line-height:1.6;">
+            Concrètement : pour chaque abonné, tes vidéos génèrent l'équivalent de <strong style="color:var(--green);">299 vues</strong>. Tes contenus sont très bien référencés et trouvés bien au-delà de ta communauté.
+          </div>
+        </div>
+
+        <!-- NOX SCORE / POTENTIEL COOP -->
+        <div class="stat-explainer reveal">
+          <div class="stat-explainer-title">🏆 Potentiel de collaboration (NoxInfluencer) — c'est quoi ?</div>
+          <div class="stat-explainer-desc">
+            NoxInfluencer est une plateforme qui analyse des créateurs du monde entier. Leur score de potentiel (sur 10) évalue si ton profil correspond à ce que cherchent les marques : régularité de publication, engagement, niche claire, authenticité de l'audience.
+          </div>
+
+          <div class="scale-title">Barème potentiel de collaboration (sur 10)</div>
+          <div class="scale-grid">
+            <div class="scale-row">
+              <span class="scale-range">0 – 4</span>
+              <span class="badge badge-red">Débutant</span>
+              <span class="scale-label">— ou compte peu actif</span>
+            </div>
+            <div class="scale-row">
+              <span class="scale-range">4 – 6</span>
+              <span class="badge badge-amber">En développement</span>
+            </div>
+            <div class="scale-row">
+              <span class="scale-range">6 – 8</span>
+              <span class="badge badge-green">Bon créateur établi ✓</span>
+            </div>
+            <div class="scale-row">
+              <span class="scale-range">8 – 10</span>
+              <span class="badge badge-green">Top créateur</span>
+              <span class="scale-label">— très rare</span>
+            </div>
+          </div>
+
+          <div class="your-score">
+            <span class="your-score-label">Ton potentiel de coop</span>
+            <span class="your-score-value">7/10 <span class="badge badge-green">Bon potentiel ✓</span></span>
+          </div>
+          <div style="margin-top:10px;font-size:.83rem;color:var(--muted);">
+            Profil attractif pour les partenariats de marque. Tu es dans la bonne zone.
+          </div>
+        </div>
+
+        <!-- TARIF ESTIMÉ -->
+        <div class="stat-explainer reveal">
+          <div class="stat-explainer-title">💰 Tarif estimé par partenariat — c'est quoi ?</div>
+          <div class="stat-explainer-desc">
+            Une fourchette indicative basée sur tes stats actuelles, calculée par NoxInfluencer selon les standards du marché français. Ce n'est pas un prix fixe — c'est une base de départ pour négocier avec une marque.
+          </div>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px;">
+            <div style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:16px;text-align:center;">
+              <div style="font-family:'Space Mono',monospace;font-size:.68rem;color:var(--muted);text-transform:uppercase;margin-bottom:6px;">YouTube</div>
+              <div style="font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:800;color:var(--cr);">50–100 €</div>
+              <div style="font-size:.75rem;color:var(--muted);margin-top:4px;">par contenu sponsorisé</div>
+            </div>
+            <div style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:16px;text-align:center;">
+              <div style="font-family:'Space Mono',monospace;font-size:.68rem;color:var(--muted);text-transform:uppercase;margin-bottom:6px;">TikTok</div>
+              <div style="font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:800;color:var(--cr);">25–30 €</div>
+              <div style="font-size:.75rem;color:var(--muted);margin-top:4px;">par vidéo</div>
+            </div>
+          </div>
+
+          <div style="background:rgba(248,113,113,.06);border:1px solid rgba(248,113,113,.15);border-radius:8px;padding:12px 16px;font-size:.82rem;color:var(--muted);line-height:1.65;margin-bottom:12px;">
+            ⚠️ Ce n'est pas un prix fixe — c'est une base de négociation. Le tarif réel dépend du type de contenu, de la marque, et de la durée du partenariat.
+          </div>
+
+          <div style="background:var(--cr-dim);border-radius:8px;padding:12px 16px;font-size:.83rem;color:var(--muted);line-height:1.65;">
+            Ce que ça veut dire concrètement : pour une marque qui investit 100 €, elle touche en moyenne <strong style="color:var(--text);">~7 750 personnes</strong> passionnées de running en France.
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- TES MEILLEURS CONTENUS -->
+    <section class="section">
+      <div class="section-header reveal">
+        <span class="section-title">Tes meilleurs contenus</span>
+        <div class="section-line"></div>
+      </div>
+
       <div class="content-grid">
-        <div class="ct-card reveal">
-          <div class="ct-platform">TikTok</div>
-          <div class="ct-title">Vidéo virale running</div>
-          <div class="ct-views">🔥 <strong>3,7M vues</strong></div>
+        <div class="content-card reveal">
+          <div class="content-platform">TikTok · Vidéo virale 🔥</div>
+          <div class="content-title">Ta vidéo la plus vue de toute ta carrière TikTok</div>
+          <div class="content-stat">Vues : <span>3 700 000</span></div>
+          <div class="content-stat" style="margin-top:6px;line-height:1.5;">
+            Preuve que l'algorithme TikTok peut te propulser à tout moment, indépendamment du nombre d'abonnés.
+          </div>
         </div>
-        <div class="ct-card reveal">
-          <div class="ct-platform">YouTube</div>
-          <div class="ct-title">Série entraînement marathon</div>
-          <div class="ct-views"><strong>Série populaire</strong></div>
+        <div class="content-card reveal">
+          <div class="content-platform">YouTube · Régularité</div>
+          <div class="content-title">546 vidéos · 7 750 vues en moyenne</div>
+          <div class="content-stat">Engagement : <span>5,04%</span></div>
+          <div class="content-stat" style="margin-top:6px;line-height:1.5;">
+            Une audience régulière et fidèle construite sur le long terme. La régularité est un signal fort pour les marques.
+          </div>
         </div>
-        <div class="ct-card reveal">
-          <div class="ct-platform">Instagram</div>
-          <div class="ct-title">Tests équipements running</div>
-          <div class="ct-views"><strong>Fort engagement</strong></div>
+        <div class="content-card reveal">
+          <div class="content-platform">Instagram · Authenticité</div>
+          <div class="content-title">1 998 publications · Compte certifié ✓</div>
+          <div class="content-stat">Abonnés : <span>12 760</span></div>
+          <div class="content-stat" style="margin-top:6px;line-height:1.5;">
+            Présence Instagram établie avec certification officielle — gage d'authenticité et de crédibilité.
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- SECTION: CONTACT -->
-  <div class="mk-cta">
-    <div class="mk-label reveal" style="justify-content:center;">Contact</div>
-    <h2 class="mk-cta-title reveal">Intéressé(e) par une collaboration ?</h2>
-    <p class="mk-cta-sub reveal">Pour toute demande de partenariat avec Elisa Is Running, contacte l'équipe OKALAM Studio. On te répond sous 48h avec une proposition personnalisée.</p>
-    <a href="mailto:contact@okalamstudio.com" class="cta-main-btn reveal">Contacter OKALAM Studio</a>
-    <a href="index.html" class="cta-back reveal">← Retour au site</a>
+    <!-- CONTACT -->
+    <section class="section">
+      <div class="section-header reveal">
+        <span class="section-title">Contact OKALAM</span>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="contact-card reveal">
+        <div class="contact-title">Des questions sur tes stats ?</div>
+        <div class="contact-desc">Tu veux comprendre quelque chose ou discuter d'une opportunité de partenariat ? On est là pour t'aider.</div>
+        <a href="mailto:contact@okalamstudio.com" class="cta-btn">✉️ contact@okalamstudio.com</a>
+        <a href="index.html" class="back-link">← Retour au site OKALAM</a>
+      </div>
+    </section>
+
   </div>
 
-  <!-- FOOTER -->
-  <footer class="mk-footer">
-    OKALAM Studio · Tous droits réservés · Document confidentiel
+  <footer class="page-footer">
+    OKALAM Studio · Document privé · Ne pas partager
   </footer>
 
 </div>
 
 <script>
-const TOKEN = 'elisa26';
+  const VALID_TOKEN = 'elisa26';
 
-function checkAccess() {
-  const params = new URLSearchParams(window.location.search);
-  const t = params.get('token');
-  if (t && t.toLowerCase() === TOKEN) {
-    document.getElementById('gate').style.display = 'none';
-    document.getElementById('content').style.display = 'block';
-    initReveal();
-  } else {
-    document.getElementById('gate').style.display = 'flex';
-    document.getElementById('content').style.display = 'none';
+  function checkToken(t) {
+    return t && t.trim().toLowerCase() === VALID_TOKEN;
   }
-}
 
-function submitGate() {
-  const val = document.getElementById('gate-input').value.trim().toLowerCase();
-  if (val === TOKEN) {
-    const url = new URL(window.location.href);
-    url.searchParams.set('token', val);
-    window.location.href = url.toString();
-  } else {
-    document.getElementById('gate-error').style.display = 'block';
-    document.getElementById('gate-input').focus();
+  function tryAccess() {
+    const val = document.getElementById('tokenInput').value;
+    if (checkToken(val)) {
+      const url = new URL(location.href);
+      url.searchParams.set('token', val.trim().toLowerCase());
+      location.href = url.toString();
+    } else {
+      document.getElementById('gateError').style.display = 'block';
+    }
   }
-}
 
-document.addEventListener('keydown', function(e) {
-  if (e.key === 'Enter') submitGate();
-});
+  document.getElementById('tokenInput').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') tryAccess();
+  });
 
-function initReveal() {
-  const els = document.querySelectorAll('.reveal');
-  const io = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        io.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-  els.forEach(function(el) { io.observe(el); });
-}
-
-checkAccess();
+  (function init() {
+    const token = new URLSearchParams(location.search).get('token');
+    if (checkToken(token)) {
+      document.getElementById('gate').style.display = 'none';
+      document.getElementById('content').style.display = 'block';
+      // Reveal animation
+      const els = document.querySelectorAll('.reveal');
+      const obs = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) {
+          if (e.isIntersecting) {
+            e.target.classList.add('visible');
+            obs.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.08 });
+      els.forEach(function(el) { obs.observe(el); });
+    }
+  })();
 </script>
+
 </body>
 </html>
