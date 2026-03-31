@@ -362,8 +362,8 @@ canvas{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-
 <section class="cseq-section" id="sequence">
   <div class="cseq-wrap">
     <h2 style="font-family:'Syne',sans-serif;font-weight:800;font-size:2.5rem;letter-spacing:-.02em;margin-bottom:8px;">SÉQUENCE</h2>
-    <div class="cseq-badge">10 cartes — 0 erreur tolérée</div>
-    <p style="font-size:.85rem;color:var(--muted);margin-bottom:4px;">Mémorisez l'ordre des couleurs, puis reproduisez-le. Une erreur et c'est terminé.</p>
+    <div class="cseq-badge" id="cseq-badge">10 cartes — 0 erreur tolérée</div>
+    <p style="font-size:.85rem;color:var(--muted);margin-bottom:4px;" id="cseq-sub">Mémorisez l'ordre des couleurs, puis reproduisez-le. Une erreur et c'est terminé.</p>
 
     <div class="cseq-cards" id="cseq-cards"></div>
 
@@ -735,6 +735,24 @@ if(isMobile&&muInput){
 }
 
 // ── SÉQUENCE GAME (Fort Boyard style) ──────────────────────────
+const CSEQ_UI={
+  fr:{badge:'10 cartes — 0 erreur tolérée',sub:"Mémorisez l'ordre des couleurs, puis reproduisez-le. Une erreur et c'est terminé.",btnRed:'ROUGE',btnBlack:'NOIR',btnWhite:'BLANC',start:'▶ DÉMARRER',replay:'▶ REJOUER',retry:'▶ RÉESSAYER',memo:'Mémorisez bien...',recall:'À vous ! Reproduisez la séquence.',win:"🎉 PARFAIT ! Séquence complète !",wrong:(s,c)=>`✗ Raté ! La carte ${s} était ${c}.`,progress:s=>`Carte <span>${s}</span> / 10`,colorNames:{red:'ROUGE',black:'NOIR',white:'BLANC'}},
+  en:{badge:'10 cards — 0 mistakes allowed',sub:'Memorize the color sequence, then reproduce it. One mistake and it\'s over.',btnRed:'RED',btnBlack:'BLACK',btnWhite:'WHITE',start:'▶ START',replay:'▶ PLAY AGAIN',retry:'▶ RETRY',memo:'Memorize...',recall:'Your turn! Reproduce the sequence.',win:'🎉 PERFECT! Sequence complete!',wrong:(s,c)=>`✗ Wrong! Card ${s} was ${c}.`,progress:s=>`Card <span>${s}</span> / 10`,colorNames:{red:'RED',black:'BLACK',white:'WHITE'}},
+  ja:{badge:'10枚 — ミス0',sub:'色の順番を覚えて、再現してください。1ミスで終了。',btnRed:'赤',btnBlack:'黒',btnWhite:'白',start:'▶ スタート',replay:'▶ もう一度',retry:'▶ やり直し',memo:'覚えてください...',recall:'あなたの番！順番を再現して。',win:'🎉 パーフェクト！コンプリート！',wrong:(s,c)=>`✗ 失敗！${s}枚目は${c}でした。`,progress:s=>`カード <span>${s}</span> / 10`,colorNames:{red:'赤',black:'黒',white:'白'}},
+  zh:{badge:'10张牌 — 0失误',sub:'记住颜色顺序，然后重现它。一个错误即结束。',btnRed:'红',btnBlack:'黑',btnWhite:'白',start:'▶ 开始',replay:'▶ 再玩',retry:'▶ 重试',memo:'请记住...',recall:'轮到你了！重现顺序。',win:'🎉 完美！序列完成！',wrong:(s,c)=>`✗ 错了！第${s}张是${c}。`,progress:s=>`第 <span>${s}</span> 张 / 10`,colorNames:{red:'红',black:'黑',white:'白'}},
+  es:{badge:'10 cartas — 0 errores permitidos',sub:'Memoriza el orden de los colores, luego reprodúcelo. Un error y termina.',btnRed:'ROJO',btnBlack:'NEGRO',btnWhite:'BLANCO',start:'▶ EMPEZAR',replay:'▶ JUGAR OTRA VEZ',retry:'▶ REINTENTAR',memo:'Memoriza bien...',recall:'¡Tu turno! Reproduce la secuencia.',win:'🎉 ¡PERFECTO! ¡Secuencia completa!',wrong:(s,c)=>`✗ ¡Error! La carta ${s} era ${c}.`,progress:s=>`Carta <span>${s}</span> / 10`,colorNames:{red:'ROJO',black:'NEGRO',white:'BLANCO'}},
+  pt:{badge:'10 cartas — 0 erros permitidos',sub:'Memorize a ordem das cores, depois reproduza-a. Um erro e acabou.',btnRed:'VERMELHO',btnBlack:'PRETO',btnWhite:'BRANCO',start:'▶ COMEÇAR',replay:'▶ JOGAR NOVAMENTE',retry:'▶ TENTAR NOVAMENTE',memo:'Memorize bem...',recall:'Sua vez! Reproduza a sequência.',win:'🎉 PERFEITO! Sequência completa!',wrong:(s,c)=>`✗ Errou! A carta ${s} era ${c}.`,progress:s=>`Carta <span>${s}</span> / 10`,colorNames:{red:'VERMELHO',black:'PRETO',white:'BRANCO'}}
+};
+function cseqApplyLang(lang){
+  const u=CSEQ_UI[lang]||CSEQ_UI.fr;
+  const badge=document.getElementById('cseq-badge');if(badge)badge.textContent=u.badge;
+  const sub=document.getElementById('cseq-sub');if(sub)sub.textContent=u.sub;
+  const bred=document.getElementById('cseq-bred');if(bred)bred.textContent=u.btnRed;
+  const bblack=document.getElementById('cseq-bblack');if(bblack)bblack.textContent=u.btnBlack;
+  const bwhite=document.getElementById('cseq-bwhite');if(bwhite)bwhite.textContent=u.btnWhite;
+  const startbtn=document.getElementById('cseq-startbtn');
+  if(startbtn&&cseqPhase==='idle')startbtn.textContent=u.start;
+}
 const CSEQ_N = 10;
 const CSEQ_COLORS = ['red','black','white'];
 let cseqSeq = [], cseqStep = 0, cseqPhase = 'idle';
@@ -760,7 +778,8 @@ function cseqStart() {
   cseqPhase = 'show';
   cseqBuildCards();
   cseqSetBtns(false);
-  cseqSetMsg('Mémorisez bien...', 'info');
+  const _cu=CSEQ_UI[mLang]||CSEQ_UI.fr;
+  cseqSetMsg(_cu.memo, 'info');
   cseqSetProgress('');
   document.getElementById('cseq-startbtn').style.display = 'none';
 
@@ -774,7 +793,7 @@ function cseqStart() {
     setTimeout(() => {
       cseqPhase = 'recall';
       cseqStep = 0;
-      cseqSetMsg('À vous ! Reproduisez la séquence.', 'info');
+      cseqSetMsg((CSEQ_UI[mLang]||CSEQ_UI.fr).recall, 'info');
       cseqSetProgress();
       cseqSetBtns(true);
     }, 900);
@@ -827,10 +846,11 @@ function cseqClick(color) {
       setTimeout(() => {
         if (navigator.vibrate) navigator.vibrate([60, 40, 60, 40, 120]);
         cseqSndWin();
-        cseqSetMsg('🎉 PARFAIT ! Séquence complète !', 'win');
+        const _cuw=CSEQ_UI[mLang]||CSEQ_UI.fr;
+        cseqSetMsg(_cuw.win, 'win');
         sutomConfetti();
         const btn = document.getElementById('cseq-startbtn');
-        btn.textContent = '▶ REJOUER';
+        btn.textContent = _cuw.replay;
         btn.style.display = 'inline-block';
       }, 250);
     }
@@ -846,14 +866,14 @@ function cseqClick(color) {
       card.classList.remove('cred','cblack','cwhite');
       card.classList.add(color === 'red' ? 'cred' : color === 'black' ? 'cblack' : 'cwhite', 'wrong-shake');
     }
-    const colorName = {red:'ROUGE', black:'NOIR', white:'BLANC'};
+    const _cul=CSEQ_UI[mLang]||CSEQ_UI.fr;
     setTimeout(() => {
-      cseqSetMsg('✗ Raté ! La carte ' + (cseqStep+1) + ' était ' + colorName[expected] + '.', 'err');
+      cseqSetMsg(_cul.wrong(cseqStep+1, _cul.colorNames[expected]), 'err');
       cseqRevealAnswer();
     }, 500);
     setTimeout(() => {
       const btn = document.getElementById('cseq-startbtn');
-      btn.textContent = '▶ RÉESSAYER';
+      btn.textContent = _cul.retry;
       btn.style.display = 'inline-block';
     }, 2200);
   }
@@ -876,7 +896,7 @@ function cseqSetProgress(txt) {
   const el = document.getElementById('cseq-progress');
   if (!el) return;
   if (txt !== undefined) { el.innerHTML = txt; return; }
-  el.innerHTML = 'Carte <span>' + cseqStep + '</span> / ' + CSEQ_N;
+  el.innerHTML = (CSEQ_UI[mLang]||CSEQ_UI.fr).progress(cseqStep);
 }
 
 function cseqSetMsg(t, type = '') {
@@ -947,13 +967,17 @@ cseqBuildCards();
 
 // ── Init with saved lang or page lang — sync avec la langue du site
 const savedMotusLang=localStorage.getItem('okalam_lang')||localStorage.getItem('motus_lang')||'fr';
-motusSetLang(['en','fr','ja','zh','es','pt'].includes(savedMotusLang)?savedMotusLang:'fr');
+const initLang=['en','fr','ja','zh','es','pt'].includes(savedMotusLang)?savedMotusLang:'fr';
+motusSetLang(initLang);
+cseqApplyLang(initLang);
 
 // ── Sync page translations when sharedSetLang is called ──
 const _origSharedSetLang = typeof sharedSetLang === 'function' ? sharedSetLang : null;
 window.sharedSetLang = function(l){
   if(_origSharedSetLang) _origSharedSetLang(l);
-  motusSetLang(['en','fr','ja','zh','es','pt'].includes(l)?l:'fr');
+  const lang=['en','fr','ja','zh','es','pt'].includes(l)?l:'fr';
+  motusSetLang(lang);
+  cseqApplyLang(lang);
 };
 </script>
 </body>
