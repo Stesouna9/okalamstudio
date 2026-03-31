@@ -671,15 +671,15 @@
       <div class="hero-niche">Food · Culture · Lifestyle France</div>
       <div class="quick-stats">
         <div class="qs-pill">
-          <span class="qs-value">11 900</span>
+          <span class="qs-value" id="dyn-yt-subs">11 900</span>
           <span class="qs-label">Abonnés YouTube</span>
         </div>
         <div class="qs-pill">
-          <span class="qs-value">9 753</span>
+          <span class="qs-value" id="dyn-ig-followers">9 753</span>
           <span class="qs-label">Abonnés Instagram</span>
         </div>
         <div class="qs-pill">
-          <span class="qs-value">17,9M</span>
+          <span class="qs-value" id="dyn-yt-views">17,9M</span>
           <span class="qs-label">Vues YouTube totales</span>
         </div>
         <div class="qs-pill">
@@ -689,7 +689,7 @@
       </div>
     </section>
 
-    <div class="update-note">Données au 30 mars 2026 · Sources : NoxInfluencer + Wednesday Analytics (Apify)</div>
+    <div class="update-note" id="dyn-update-note">Données au 30 mars 2026 · Sources : NoxInfluencer + Wednesday Analytics (Apify)</div>
 
     <!-- PLATEFORMES -->
     <section class="section">
@@ -706,15 +706,15 @@
             <div class="platform-icon icon-yt">▶️</div>
             <span class="platform-name">YouTube</span>
           </div>
-          <div class="platform-main-stat">11 900</div>
+          <div class="platform-main-stat" id="dyn-yt-main">11 900</div>
           <div class="platform-main-label">Abonnés</div>
           <div class="stat-row">
             <span class="stat-label">Vues totales</span>
-            <span class="stat-value">17 899 208</span>
+            <span class="stat-value" id="dyn-yt-views-total">17 899 208</span>
           </div>
           <div class="stat-row">
             <span class="stat-label">Vidéos publiées</span>
-            <span class="stat-value">451</span>
+            <span class="stat-value" id="dyn-yt-videos">451</span>
           </div>
           <div class="stat-row">
             <span class="stat-label">Vues moy. par vidéo</span>
@@ -740,11 +740,11 @@
             <div class="platform-icon icon-ig">📸</div>
             <span class="platform-name">Instagram</span>
           </div>
-          <div class="platform-main-stat">9 753</div>
+          <div class="platform-main-stat" id="dyn-ig-main">9 753</div>
           <div class="platform-main-label">Abonnés</div>
           <div class="stat-row">
             <span class="stat-label">Publications</span>
-            <span class="stat-value">331</span>
+            <span class="stat-value" id="dyn-ig-posts">331</span>
           </div>
           <div class="stat-row">
             <span class="stat-label">Vues moy. par post</span>
@@ -770,7 +770,7 @@
             <div class="platform-icon icon-tt">🎵</div>
             <span class="platform-name">TikTok</span>
           </div>
-          <div class="platform-main-stat">1 438</div>
+          <div class="platform-main-stat" id="dyn-tt-main">1 438</div>
           <div class="platform-main-label">Abonnés</div>
           <div class="stat-row">
             <span class="stat-label">Likes cumulés</span>
@@ -1090,6 +1090,38 @@
       }, { threshold: 0.08 });
       els.forEach(function(el) { obs.observe(el); });
     }
+  })();
+
+  // ── DYNAMIC STATS LOADER (data/stats.json mis à jour chaque nuit) ──
+  (async function loadStats(){
+    try{
+      const r=await fetch('data/stats.json?_='+Date.now());
+      if(!r.ok) return;
+      const d=await r.json();
+      const p=d.pierre;
+      if(!p) return;
+      const fmt=n=>n==null?null:n>=1000000?(n/1000000).toFixed(1).replace('.',',')+'M':n>=1000?Math.round(n).toLocaleString('fr'):String(n);
+      const set=(id,val)=>{if(val!=null){const el=document.getElementById(id);if(el)el.textContent=val;}};
+      if(p.youtube){
+        set('dyn-yt-subs', p.youtube.subscribers?.toLocaleString('fr'));
+        set('dyn-yt-main', p.youtube.subscribers?.toLocaleString('fr'));
+        set('dyn-yt-views', fmt(p.youtube.views));
+        set('dyn-yt-views-total', p.youtube.views?.toLocaleString('fr'));
+        set('dyn-yt-videos', p.youtube.videos?.toLocaleString('fr'));
+      }
+      if(p.instagram){
+        set('dyn-ig-followers', p.instagram.followers?.toLocaleString('fr'));
+        set('dyn-ig-main', p.instagram.followers?.toLocaleString('fr'));
+        set('dyn-ig-posts', p.instagram.posts?.toLocaleString('fr'));
+      }
+      if(p.tiktok){
+        set('dyn-tt-main', p.tiktok.followers?.toLocaleString('fr'));
+      }
+      if(d.updated_at){
+        const date=new Date(d.updated_at).toLocaleDateString('fr',{day:'numeric',month:'long',year:'numeric'});
+        set('dyn-update-note', 'Données au '+date+' · Sources : NoxInfluencer + Wednesday Analytics');
+      }
+    }catch(err){/* fallback silencieux sur les valeurs statiques */}
   })();
 </script>
 

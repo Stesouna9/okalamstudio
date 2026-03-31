@@ -460,50 +460,34 @@ function renderMediaKit(key){
   document.getElementById('why-text').textContent=c.whyText;
 }
 
-// ── APIFY STATS ──────────────────────────────────────────────────
-const APIFY_TOKEN='apify_api_oFvPM0OpMKhkbcgdrJ4lvjkkcO2XbD1L7bvF';
-const APIFY_DATASETS={youtube:'srx5Ltfgea7cquMCE',instagram:'lZsYaugPwWnpk8I3D',tiktok:'nfjxw3C1rIr1vVDzC'};
-
+// ── STATS (lit data/stats.json, mis à jour chaque nuit par GitHub Actions) ──
 async function fetchApifyStats(key){
-  if(!APIFY_TOKEN) return;
   try{
-    const fetchDS=async(id)=>{
-      const r=await fetch(`https://api.apify.com/v2/datasets/${id}/items?token=${APIFY_TOKEN}&clean=true&limit=10`);
-      if(!r.ok) throw new Error(r.status);
-      return r.json();
-    };
-    const [yt,ig,tt]=await Promise.all([
-      fetchDS(APIFY_DATASETS.youtube),
-      fetchDS(APIFY_DATASETS.instagram),
-      fetchDS(APIFY_DATASETS.tiktok)
-    ]);
-    const isElisa=key==='elisa';
-    const ytData=yt.find(c=>isElisa?/elisa/i.test(c.channelName):!/elisa/i.test(c.channelName));
-    const igData=ig.find(c=>isElisa?/elisa/i.test(c.username):!/elisa/i.test(c.username));
-    const ttData=tt.find(c=>isElisa?/elisa/i.test(c.authorMeta?.nickName||''):!/elisa/i.test(c.authorMeta?.nickName||''));
+    const r=await fetch('data/stats.json?_='+Date.now());
+    if(!r.ok) return;
+    const data=await r.json();
+    const c=data[key];
+    if(!c) return;
 
-    if(ytData){
-      const s=document.getElementById('pf-yt-subs');if(s)s.textContent=formatNumber(ytData.numberOfSubscribers);
-      const v=document.getElementById('pf-yt-views');if(v)v.textContent=formatNumber(ytData.channelTotalViews);
+    if(c.youtube){
+      const s=document.getElementById('pf-yt-subs');if(s)s.textContent=formatNumber(c.youtube.subscribers);
+      const v=document.getElementById('pf-yt-views');if(v)v.textContent=formatNumber(c.youtube.views);
     }
-    if(igData){
-      const e=document.getElementById('pf-ig-followers');if(e)e.textContent=formatNumber(igData.followersCount);
-      const p=document.getElementById('pf-ig-posts');if(p&&igData.postsCount)p.textContent=igData.postsCount.toLocaleString('fr');
-      // Calcul taux d'engagement depuis latestPosts
-      const posts=igData.latestPosts||[];
-      if(posts.length&&igData.followersCount){
-        const avgEng=posts.reduce((s,p)=>s+(p.likesCount||0)+(p.commentsCount||0),0)/posts.length;
-        const engPct=((avgEng/igData.followersCount)*100).toFixed(2).replace('.',',')+' %';
-        const engEl=document.getElementById('pf-ig-eng');if(engEl)engEl.textContent=engPct;
-      }
+    if(c.instagram){
+      const f=document.getElementById('pf-ig-followers');if(f)f.textContent=formatNumber(c.instagram.followers);
+      const p=document.getElementById('pf-ig-posts');if(p&&c.instagram.posts)p.textContent=c.instagram.posts.toLocaleString('fr');
+      const e=document.getElementById('pf-ig-eng');
+      if(e&&c.instagram.engagement!=null)e.textContent=c.instagram.engagement.toFixed(2).replace('.',',')+' %';
     }
-    if(ttData){
-      const e=document.getElementById('pf-tt-followers');if(e)e.textContent=formatNumber(ttData.authorMeta?.fans);
+    if(c.tiktok){
+      const f=document.getElementById('pf-tt-followers');if(f)f.textContent=formatNumber(c.tiktok.followers);
     }
-    // Update timestamp
     const upd=document.getElementById('stats-updated');
-    if(upd) upd.textContent='Stats updated: '+new Date().toLocaleDateString('en',{year:'numeric',month:'short',day:'numeric'});
-  }catch(e){/* silent fallback */}
+    if(upd&&data.updated_at){
+      const d=new Date(data.updated_at);
+      upd.textContent='Stats mises à jour : '+d.toLocaleDateString('fr',{year:'numeric',month:'long',day:'numeric'});
+    }
+  }catch(e){/* silent fallback sur les valeurs statiques */}
 }
 </script>
 </body>

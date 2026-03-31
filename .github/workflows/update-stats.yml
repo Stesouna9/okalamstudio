@@ -2,8 +2,8 @@ name: Update Creator Stats
 
 on:
   schedule:
-    - cron: '0 2 * * *'
-  workflow_dispatch:
+    - cron: '0 6 * * *'   # Every day at 6:00 UTC
+  workflow_dispatch:        # Manual trigger from GitHub UI
 
 jobs:
   update-stats:
@@ -12,26 +12,22 @@ jobs:
       contents: write
 
     steps:
-      - name: Checkout repository
+      - name: Checkout repo
         uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          python-version: '3.11'
+          node-version: '20'
 
-      - name: Install dependencies
-        run: pip install requests
-
-      - name: Fetch YouTube stats
+      - name: Fetch stats from Apify
         env:
-          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
-        run: python scripts/fetch_stats.py
+          APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
+        run: node scripts/fetch-stats.js
 
-      - name: Commit and push if data changed
+      - name: Commit updated stats
         run: |
-          git config --global user.name "OKALAM Stats Bot"
-          git config --global user.email "bot@okalamstudio.com"
-          git add data/creators.json
-          git diff --staged --quiet || git commit -m "📊 Auto-update creator stats [$(date '+%Y-%m-%d')]"
-          git push
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/stats.json
+          git diff --staged --quiet && echo "No changes" || (git commit -m "chore: update creator stats [skip ci]" && git push)
