@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="robots" content="noindex, nofollow"/>
+<title>Brand Partnership Kit — OKALAM Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#080c12;--bg2:#0d1220;--card:#111827;--card2:#141c2d;
+  --accent:#8deaff;--accent-dim:rgba(141,234,255,.1);
+  --text:#e8edf5;--muted:#6b7280;
+  --border:rgba(141,234,255,.1);--border2:rgba(255,255,255,.06);
+  --green:#4ade80;--amber:#f59e0b;--blue:#3b82f6;
+  --elisa:#f59e0b;--elisa-dim:rgba(245,158,11,.1);
+  --pierre:#3b82f6;--pierre-dim:rgba(59,130,246,.1);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;line-height:1.6;overflow-x:hidden;}
+::selection{background:rgba(141,234,255,.2);color:var(--accent);}
+
+/* ── GATE ── */
+#gate{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px 24px;}
+.gate-lock{font-size:2.5rem;margin-bottom:20px;opacity:.35;}
+.gate-title{font-family:'Syne',sans-serif;font-weight:800;font-size:1.5rem;margin-bottom:8px;}
+.gate-sub{font-size:.88rem;color:var(--muted);margin-bottom:32px;}
+.gate-form{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;}
+.gate-input{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:11px 18px;color:var(--text);font-family:'Space Mono',monospace;font-size:.85rem;outline:none;width:200px;transition:border-color .2s;text-align:center;}
+.gate-input:focus{border-color:var(--accent);}
+.gate-btn{background:var(--accent);color:#05080e;font-family:'Syne',sans-serif;font-weight:700;font-size:.75rem;letter-spacing:.08em;border:none;border-radius:8px;padding:11px 22px;cursor:pointer;transition:all .2s;}
+.gate-btn:hover{background:#fff;}
+.gate-error{color:#f87171;font-size:.8rem;margin-top:12px;display:none;}
+.gate-home{margin-top:28px;font-size:.75rem;color:var(--muted);text-decoration:none;border:1px solid var(--border2);padding:8px 20px;border-radius:4px;transition:all .2s;}
+.gate-home:hover{border-color:var(--accent);color:var(--accent);}
+
+/* ── HEADER ── */
+.bk-header{position:sticky;top:0;z-index:100;background:rgba(8,12,18,.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--border2);padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:60px;}
+.bk-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:.8rem;letter-spacing:.22em;color:var(--text);text-decoration:none;}
+.bk-logo:hover{color:var(--accent);}
+.bk-header-right{display:flex;align-items:center;gap:12px;}
+.bk-badge{font-family:'Space Mono',monospace;font-size:.5rem;letter-spacing:.12em;text-transform:uppercase;background:var(--accent-dim);color:var(--accent);border:1px solid var(--border);padding:4px 12px;border-radius:20px;}
+
+/* ── LANG SWITCHER ── */
+.lang-bar{display:flex;gap:6px;}
+.lb{background:none;border:1px solid var(--border2);color:var(--muted);font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.06em;padding:4px 9px;border-radius:4px;cursor:pointer;transition:all .18s;}
+.lb:hover,.lb.active{border-color:var(--accent);color:var(--accent);}
+
+/* ── HERO ── */
+.bk-hero{padding:80px 40px 64px;text-align:center;border-bottom:1px solid var(--border2);background:radial-gradient(ellipse 60% 40% at 50% 0%,rgba(141,234,255,.04),transparent);}
+.bk-hero-eyebrow{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:20px;}
+.bk-hero-title{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(2rem,5vw,3.4rem);letter-spacing:-.02em;line-height:1.05;margin-bottom:16px;}
+.bk-hero-sub{font-size:clamp(.9rem,2vw,1.05rem);color:var(--muted);max-width:600px;margin:0 auto 40px;font-weight:300;}
+.bk-hero-stats{display:flex;gap:32px;justify-content:center;flex-wrap:wrap;}
+.bk-hstat{text-align:center;}
+.bk-hstat-val{font-family:'Syne',sans-serif;font-weight:800;font-size:1.8rem;color:var(--accent);display:block;}
+.bk-hstat-lbl{font-family:'Space Mono',monospace;font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
+
+/* ── SECTION ── */
+.bk-section{padding:72px 40px;max-width:1200px;margin:0 auto;}
+.bk-section-eyebrow{font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;display:flex;align-items:center;gap:10px;}
+.bk-section-eyebrow::before{content:'';width:20px;height:1px;background:var(--accent);}
+.bk-section-title{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(1.5rem,3vw,2.2rem);letter-spacing:-.02em;margin-bottom:8px;}
+.bk-section-desc{font-size:.9rem;color:var(--muted);margin-bottom:48px;max-width:560px;line-height:1.75;}
+
+/* ── CREATOR CARDS ── */
+.creators-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px;}
+@media(max-width:780px){.creators-grid{grid-template-columns:1fr;}}
+
+.cr-card{border-radius:20px;border:1px solid var(--border);background:var(--card);overflow:hidden;transition:all .3s;}
+.cr-card.elisa{border-color:rgba(245,158,11,.25);}
+.cr-card.pierre{border-color:rgba(59,130,246,.25);}
+.cr-card:hover{transform:translateY(-4px);box-shadow:0 24px 60px rgba(0,0,0,.3);}
+
+.cr-top{padding:32px 32px 0;display:flex;align-items:center;gap:20px;}
+.cr-avatar{width:72px;height:72px;border-radius:50%;object-fit:cover;border:3px solid;}
+.cr-card.elisa .cr-avatar{border-color:var(--elisa);}
+.cr-card.pierre .cr-avatar{border-color:var(--pierre);}
+.cr-avatar-fb{width:72px;height:72px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2rem;border:3px solid;}
+.cr-info{flex:1;}
+.cr-name{font-family:'Syne',sans-serif;font-weight:800;font-size:1.2rem;margin-bottom:4px;}
+.cr-niche{font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;}
+.cr-card.elisa .cr-niche{color:var(--elisa);}
+.cr-card.pierre .cr-niche{color:var(--pierre);}
+.cr-flag{font-size:.85rem;color:var(--muted);margin-top:4px;}
+
+.cr-platforms{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border2);margin:24px 0 0;}
+.cr-plat{background:var(--card);padding:20px 16px;text-align:center;}
+.cr-plat-icon{font-size:1.1rem;margin-bottom:6px;}
+.cr-plat-val{font-family:'Syne',sans-serif;font-weight:800;font-size:1.3rem;display:block;}
+.cr-card.elisa .cr-plat-val{color:var(--elisa);}
+.cr-card.pierre .cr-plat-val{color:var(--pierre);}
+.cr-plat-lbl{font-family:'Space Mono',monospace;font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
+
+.cr-body{padding:28px 32px 32px;}
+.cr-pitch{font-size:.88rem;color:var(--muted);line-height:1.7;margin-bottom:24px;font-style:italic;border-left:2px solid;padding-left:14px;}
+.cr-card.elisa .cr-pitch{border-color:var(--elisa);}
+.cr-card.pierre .cr-pitch{border-color:var(--pierre);}
+
+.cr-kpis{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px;}
+.cr-kpi{background:var(--bg2);border-radius:10px;padding:14px 16px;border:1px solid var(--border2);}
+.cr-kpi-val{font-family:'Syne',sans-serif;font-weight:800;font-size:1.1rem;display:block;margin-bottom:2px;}
+.cr-card.elisa .cr-kpi-val{color:var(--elisa);}
+.cr-card.pierre .cr-kpi-val{color:var(--pierre);}
+.cr-kpi-lbl{font-size:.72rem;color:var(--muted);}
+
+.cr-tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:24px;}
+.cr-tag{font-family:'Space Mono',monospace;font-size:.52rem;letter-spacing:.06em;text-transform:uppercase;padding:4px 10px;border-radius:20px;border:1px solid;}
+.cr-card.elisa .cr-tag{color:var(--elisa);border-color:rgba(245,158,11,.3);}
+.cr-card.pierre .cr-tag{color:var(--pierre);border-color:rgba(59,130,246,.3);}
+
+.cr-rates{background:var(--bg2);border:1px solid var(--border2);border-radius:12px;padding:18px 20px;margin-bottom:24px;}
+.cr-rates-title{font-family:'Space Mono',monospace;font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;}
+.cr-rate-row{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid var(--border2);font-size:.82rem;}
+.cr-rate-row:last-child{border-bottom:none;}
+.cr-rate-plat{color:var(--muted);}
+.cr-rate-val{font-weight:600;}
+.cr-card.elisa .cr-rate-val{color:var(--elisa);}
+.cr-card.pierre .cr-rate-val{color:var(--pierre);}
+
+.cr-cta{display:block;text-align:center;font-family:'Syne',sans-serif;font-weight:700;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;padding:13px 24px;border-radius:8px;text-decoration:none;transition:all .2s;}
+.cr-card.elisa .cr-cta{background:var(--elisa);color:#05080e;}
+.cr-card.elisa .cr-cta:hover{background:#fbbf24;}
+.cr-card.pierre .cr-cta{background:var(--pierre);color:#fff;}
+.cr-card.pierre .cr-cta:hover{background:#60a5fa;}
+
+/* ── WHY SECTION ── */
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+@media(max-width:700px){.why-grid{grid-template-columns:1fr;}}
+.why-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:28px;transition:all .3s;}
+.why-card:hover{border-color:var(--accent);}
+.why-icon{font-size:1.6rem;margin-bottom:14px;}
+.why-title{font-family:'Syne',sans-serif;font-weight:700;font-size:1rem;margin-bottom:8px;}
+.why-desc{font-size:.83rem;color:var(--muted);line-height:1.65;}
+
+/* ── PROCESS ── */
+.process-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+@media(max-width:700px){.process-steps{grid-template-columns:repeat(2,1fr);}}
+.ps{text-align:center;padding:24px 16px;}
+.ps-num{font-family:'Syne',sans-serif;font-weight:800;font-size:2rem;color:var(--accent);opacity:.3;margin-bottom:8px;}
+.ps-title{font-family:'Syne',sans-serif;font-weight:700;font-size:.92rem;margin-bottom:6px;}
+.ps-desc{font-size:.78rem;color:var(--muted);line-height:1.6;}
+
+/* ── CONTACT ── */
+.contact-block{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:56px 48px;text-align:center;max-width:680px;margin:0 auto;}
+.contact-title{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(1.4rem,3vw,2rem);margin-bottom:12px;}
+.contact-desc{font-size:.9rem;color:var(--muted);margin-bottom:32px;line-height:1.7;}
+.contact-email{display:inline-block;font-family:'Syne',sans-serif;font-weight:700;font-size:.82rem;letter-spacing:.08em;background:var(--accent);color:#05080e;padding:14px 32px;border-radius:8px;text-decoration:none;transition:all .2s;margin-bottom:16px;}
+.contact-email:hover{background:#fff;}
+.contact-note{font-size:.75rem;color:var(--muted);}
+
+/* ── FOOTER ── */
+.bk-footer{border-top:1px solid var(--border2);padding:24px 40px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+.bk-footer-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:.75rem;letter-spacing:.2em;color:var(--muted);}
+.bk-footer-note{font-size:.7rem;color:var(--muted);font-family:'Space Mono',monospace;}
+.update-stamp{font-size:.6rem;color:var(--muted);font-family:'Space Mono',monospace;text-align:center;padding:12px;opacity:.5;}
+
+/* ── DIVIDER ── */
+.bk-divider{border:none;border-top:1px solid var(--border2);margin:0;}
+
+/* ── REVEAL ── */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease;}
+.reveal.visible{opacity:1;transform:none;}
+
+@media(max-width:600px){
+  .bk-section{padding:48px 20px;}
+  .bk-hero{padding:60px 20px 48px;}
+  .cr-top{flex-direction:column;align-items:flex-start;}
+  .cr-body,.cr-top{padding-left:20px;padding-right:20px;}
+  .cr-kpis{grid-template-columns:1fr;}
+  .contact-block{padding:36px 24px;}
+  .bk-footer{flex-direction:column;text-align:center;}
+  .bk-header{padding:0 16px;}
+  .lang-bar .lb{font-size:.5rem;padding:3px 6px;}
+}
+</style>
+</head>
+<body>
+
+<!-- ══ ACCESS GATE ══════════════════════════════════════════════════ -->
+<div id="gate">
+  <div class="gate-lock">🔒</div>
+  <div class="gate-title" id="g-title">Brand Partnership Kit</div>
+  <div class="gate-sub" id="g-sub">OKALAM Studio — Accès réservé aux partenaires marques</div>
+  <div class="gate-form">
+    <input type="text" class="gate-input" id="gateInput" placeholder="Code d'accès" autocomplete="off"/>
+    <button class="gate-btn" onclick="checkCode()" id="g-btn">Accéder</button>
+  </div>
+  <div class="gate-error" id="gateError" id="g-err">Code incorrect.</div>
+  <a href="index.html" class="gate-home">← OKALAM Studio</a>
+</div>
+
+<!-- ══ CONTENT (hidden until access) ═══════════════════════════════ -->
+<div id="content" style="display:none;">
+
+  <!-- HEADER -->
+  <header class="bk-header">
+    <a href="index.html" class="bk-logo">OKALAM STUDIO</a>
+    <div class="bk-header-right">
+      <div class="lang-bar">
+        <button class="lb active" onclick="setLang('fr')">FR</button>
+        <button class="lb" onclick="setLang('en')">EN</button>
+        <button class="lb" onclick="setLang('zh')">中文</button>
+        <button class="lb" onclick="setLang('ja')">JA</button>
+        <button class="lb" onclick="setLang('es')">ES</button>
+        <button class="lb" onclick="setLang('pt')">PT</button>
+      </div>
+      <span class="bk-badge" data-i18n="badge">Brand Kit</span>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="bk-hero">
+    <div class="bk-hero-eyebrow" data-i18n="hero_eyebrow">OKALAM Studio · Partenariats Créateurs</div>
+    <h1 class="bk-hero-title" data-i18n="hero_title">Deux créateurs.<br>Une audience engagée.<br>Des niches de valeur.</h1>
+    <p class="bk-hero-sub" data-i18n="hero_sub">Nous représentons des créateurs indépendants français avec des communautés ciblées et fidèles. Connectons votre marque à la bonne audience.</p>
+    <div class="bk-hero-stats">
+      <div class="bk-hstat">
+        <span class="bk-hstat-val" id="total-subs">25 800</span>
+        <span class="bk-hstat-lbl" data-i18n="stat_subs">Abonnés YouTube combinés</span>
+      </div>
+      <div class="bk-hstat">
+        <span class="bk-hstat-val" id="total-views">22,1M</span>
+        <span class="bk-hstat-lbl" data-i18n="stat_views">Vues YouTube totales</span>
+      </div>
+      <div class="bk-hstat">
+        <span class="bk-hstat-val" id="total-ig">22 513</span>
+        <span class="bk-hstat-lbl" data-i18n="stat_ig">Followers Instagram combinés</span>
+      </div>
+      <div class="bk-hstat">
+        <span class="bk-hstat-val">2</span>
+        <span class="bk-hstat-lbl" data-i18n="stat_creators">Créateurs · 3 plateformes</span>
+      </div>
+    </div>
+  </section>
+
+  <hr class="bk-divider"/>
+
+  <!-- CREATORS -->
+  <section class="bk-section">
+    <div class="bk-section-eyebrow reveal" data-i18n="cr_eyebrow">Nos créateurs</div>
+    <h2 class="bk-section-title reveal" data-i18n="cr_title">Profils & statistiques</h2>
+    <p class="bk-section-desc reveal" data-i18n="cr_desc">Chaque créateur est spécialisé dans sa niche. Des audiences authentiques, mesurées et vérifiées.</p>
+
+    <div class="creators-grid">
+
+      <!-- ── ELISA ─────────────────────────────────────────── -->
+      <div class="cr-card elisa reveal">
+        <div class="cr-top">
+          <img src="imgs/elisa-photo.jpg" alt="Elisa" class="cr-avatar"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+          <div class="cr-avatar-fb" style="display:none;border-color:var(--elisa);background:var(--elisa-dim);">🏃</div>
+          <div class="cr-info">
+            <div class="cr-name">Elisa Is Running</div>
+            <div class="cr-niche" data-i18n="elisa_niche">Running · Sport · Lifestyle France</div>
+            <div class="cr-flag">🇫🇷 France · ✓ <span data-i18n="verified">Compte Instagram vérifié</span></div>
+          </div>
+        </div>
+
+        <div class="cr-platforms">
+          <div class="cr-plat">
+            <div class="cr-plat-icon">▶️</div>
+            <span class="cr-plat-val" id="e-yt-subs">13 900</span>
+            <span class="cr-plat-lbl" data-i18n="subs">Abonnés</span>
+          </div>
+          <div class="cr-plat">
+            <div class="cr-plat-icon">📸</div>
+            <span class="cr-plat-val" id="e-ig-followers">12 760</span>
+            <span class="cr-plat-lbl" data-i18n="followers">Followers</span>
+          </div>
+          <div class="cr-plat">
+            <div class="cr-plat-icon">🎵</div>
+            <span class="cr-plat-val" id="e-tt-followers">1 573</span>
+            <span class="cr-plat-lbl" data-i18n="followers">Followers</span>
+          </div>
+        </div>
+
+        <div class="cr-body">
+          <p class="cr-pitch" data-i18n="elisa_pitch">Une communauté de runners passionnés — vrais athlètes, vrai équipement, vrai engagement. Elisa teste, court et partage avec authenticité.</p>
+
+          <div class="cr-kpis">
+            <div class="cr-kpi">
+              <span class="cr-kpi-val" id="e-yt-views">4,1M</span>
+              <span class="cr-kpi-lbl" data-i18n="yt_views">Vues YouTube totales</span>
+            </div>
+            <div class="cr-kpi">
+              <span class="cr-kpi-val">~4,5%</span>
+              <span class="cr-kpi-lbl" data-i18n="avg_eng">Engagement moyen</span>
+            </div>
+            <div class="cr-kpi">
+              <span class="cr-kpi-val">~7 750</span>
+              <span class="cr-kpi-lbl" data-i18n="avg_views_vid">Vues moy./vidéo YT</span>
+            </div>
+            <div class="cr-kpi">
+              <span class="cr-kpi-val" data-i18n="elisa_audience_age">25–40 ans</span>
+              <span class="cr-kpi-lbl" data-i18n="main_audience">Audience principale</span>
+            </div>
+          </div>
+
+          <div class="cr-tags">
+            <span class="cr-tag" data-i18n="tag_running">Running</span>
+            <span class="cr-tag" data-i18n="tag_sport">Sport</span>
+            <span class="cr-tag" data-i18n="tag_nutrition">Nutrition</span>
+            <span class="cr-tag" data-i18n="tag_wellness">Bien-être</span>
+            <span class="cr-tag" data-i18n="tag_lifestyle">Lifestyle</span>
+            <span class="cr-tag" data-i18n="tag_france">🇫🇷 France</span>
+          </div>
+
+          <div class="cr-rates">
+            <div class="cr-rates-title" data-i18n="rates_title">Tarifs indicatifs</div>
+            <div class="cr-rate-row">
+              <span class="cr-rate-plat">▶️ YouTube</span>
+              <span class="cr-rate-val">50 – 100 €</span>
+            </div>
+            <div class="cr-rate-row">
+              <span class="cr-rate-plat">📸 Instagram</span>
+              <span class="cr-rate-val">30 – 60 €</span>
+            </div>
+            <div class="cr-rate-row">
+              <span class="cr-rate-plat">🎵 TikTok</span>
+              <span class="cr-rate-val">25 – 40 €</span>
+            </div>
+            <div class="cr-rate-row">
+              <span class="cr-rate-plat" data-i18n="rate_pack">Pack multi-plateforme</span>
+              <span class="cr-rate-val" data-i18n="rate_on_request">Sur devis</span>
+            </div>
+          </div>
+
+          <a href="mailto:contact@okalamstudio.com?subject=Partenariat Elisa Is Running" class="cr-cta" data-i18n="elisa_cta">Proposer un partenariat →</a>
+        </div>
+      </div>
+
+      <!-- ── PIERRE ──────────────────────────────────────────────── -->
+      <div class="cr-card pierre reveal">
+        <div class="cr-top">
+          <img src="imgs/pierre-photo.jpg" alt="Pierre" class="cr-avatar"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+          <div class="cr-avatar-fb" style="display:none;border-color:var(--pierre);background:var(--pierre-dim);">⚡</div>
+          <div class="cr-info">
+            <div class="cr-name">Tesla Burger · Pierre</div>
+            <div class="cr-niche" data-i18n="pierre_niche">Tesla · Électrique · Tech · Lifestyle France</div>
+            <div class="cr-flag">🇫🇷 France</div>
+          </div>
+        </div>
+
+        <div class="cr-platforms">
+          <div class="cr-plat">
+            <div class="cr-plat-icon">▶️</div>
+            <span class="cr-plat-val" id="p-yt-subs">11 900</span>
+            <span class="cr-plat-lbl" data-i18n="subs">Abonnés</span>
+          </div>
+          <div class="cr-plat">
+            <div class="cr-plat-icon">📸</div>
+            <span class="cr-plat-val" id="p-ig-followers">9 753</span>
+            <span class="cr-plat-lbl" data-i18n="followers">Followers</span>
+          </div>
+          <div class="cr-plat">
+            <div class="cr-plat-icon">🎵</div>
+            <span class="cr-plat-val" id="p-tt-followers">1 438</span>
+            <span class="cr-plat-lbl" data-i18n="followers">Followers</span>
+          </div>
+        </div>
+
+        <div class="cr-body">
+          <p class="cr-pitch" data-i18n="pierre_pitch">Le créateur français référent sur les véhicules électriques et la tech. Avis de confiance, tests terrain, audience d'early adopters avec forte intention d'achat.</p>
+
+          <div class="cr-kpis">
+            <div class="cr-kpi">
+              <span class="cr-kpi-val" id="p-yt-views">17,9M</span>
+              <span class="cr-kpi-lbl" data-i18n="yt_views">Vues YouTube totales</span>
+            </div>
+            <div class="cr-kpi">
+              <span class="cr-kpi-val">150 400%</span>
+              <span class="cr-kpi-lbl" data-i18n="views_ratio">Ratio vues/abonnés YT</span>
+            </div>
+            <div class="cr-kpi">
+              <span class="cr-kpi-val">~23 700</span>
+              <span class="cr-kpi-lbl" data-i18n="avg_views_vid">Vues moy./vidéo YT</span>
+            </div>
+            <div class="cr-kpi">
+              <span class="cr-kpi-val" data-i18n="pierre_audience_age">30–50 ans</span>
+              <span class="cr-kpi-lbl" data-i18n="main_audience">Audience principale</span>
+            </div>
+          </div>
+
+          <div class="cr-tags">
+            <span class="cr-tag" data-i18n="tag_tesla">Tesla</span>
+            <span class="cr-tag" data-i18n="tag_ev">Véhicule électrique</span>
+            <span class="cr-tag" data-i18n="tag_tech">Tech</span>
+            <span class="cr-tag" data-i18n="tag_cleantech">Clean tech</span>
+            <span class="cr-tag" data-i18n="tag_lifestyle">Lifestyle</span>
+            <span class="cr-tag" data-i18n="tag_france">🇫🇷 France</span>
+          </div>
+
+          <div class="cr-rates">
+            <div class="cr-rates-title" data-i18n="rates_title">Tarifs indicatifs</div>
+            <div class="cr-rate-row">
+              <span class="cr-rate-plat">▶️ YouTube</span>
+              <span class="cr-rate-val">422 – 494 €</span>
+            </div>
+            <div class="cr-rate-row">
+              <span class="cr-rate-plat">📸 Instagram</span>
+              <span class="cr-rate-val">844 – 977 €</span>
+            </div>
+            <div class="cr-rate-row">
+              <span class="cr-rate-plat">🎵 TikTok</span>
+              <span class="cr-rate-val">40 – 80 €</span>
+            </div>
+            <div class="cr-rate-row">
+              <span class="cr-rate-plat" data-i18n="rate_pack">Pack multi-plateforme</span>
+              <span class="cr-rate-val" data-i18n="rate_on_request">Sur devis</span>
+            </div>
+          </div>
+
+          <a href="mailto:contact@okalamstudio.com?subject=Partenariat Tesla Burger Pierre" class="cr-cta" data-i18n="pierre_cta">Proposer un partenariat →</a>
+        </div>
+      </div>
+
+    </div><!-- /creators-grid -->
+  </section>
+
+  <hr class="bk-divider"/>
+
+  <!-- WHY OKALAM -->
+  <section class="bk-section">
+    <div class="bk-section-eyebrow reveal" data-i18n="why_eyebrow">Pourquoi OKALAM</div>
+    <h2 class="bk-section-title reveal" data-i18n="why_title">Ce que nous offrons aux marques</h2>
+    <div class="why-grid">
+      <div class="why-card reveal">
+        <div class="why-icon">🎯</div>
+        <div class="why-title" data-i18n="why1_t">Audiences de niche</div>
+        <div class="why-desc" data-i18n="why1_d">Des communautés ciblées avec une vraie intention d'achat. Runners actifs et early adopters tech — pas des audiences génériques.</div>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon">📊</div>
+        <div class="why-title" data-i18n="why2_t">Stats transparentes</div>
+        <div class="why-desc" data-i18n="why2_d">Toutes nos statistiques sont vérifiées et mises à jour automatiquement. Pas de chiffres gonflés. Ce que vous voyez est réel.</div>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon">⚡</div>
+        <div class="why-title" data-i18n="why3_t">Service complet</div>
+        <div class="why-desc" data-i18n="why3_d">Brief, production, publication, reporting. OKALAM Studio gère l'intégralité de la campagne. Zéro friction pour votre équipe.</div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="bk-divider"/>
+
+  <!-- PROCESS -->
+  <section class="bk-section">
+    <div class="bk-section-eyebrow reveal" data-i18n="process_eyebrow">Comment ça marche</div>
+    <h2 class="bk-section-title reveal" data-i18n="process_title">4 étapes simples</h2>
+    <div class="process-steps">
+      <div class="ps reveal">
+        <div class="ps-num">01</div>
+        <div class="ps-title" data-i18n="step1_t">Brief</div>
+        <div class="ps-desc" data-i18n="step1_d">Envoyez-nous votre brief — produit, objectif, budget, timing.</div>
+      </div>
+      <div class="ps reveal">
+        <div class="ps-num">02</div>
+        <div class="ps-title" data-i18n="step2_t">Matching</div>
+        <div class="ps-desc" data-i18n="step2_d">Nous sélectionnons le créateur le mieux adapté à votre niche et objectif.</div>
+      </div>
+      <div class="ps reveal">
+        <div class="ps-num">03</div>
+        <div class="ps-title" data-i18n="step3_t">Production</div>
+        <div class="ps-desc" data-i18n="step3_d">Le créateur produit le contenu. Vous validez avant publication.</div>
+      </div>
+      <div class="ps reveal">
+        <div class="ps-num">04</div>
+        <div class="ps-title" data-i18n="step4_t">Reporting</div>
+        <div class="ps-desc" data-i18n="step4_d">Rapport de performance complet après campagne.</div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="bk-divider"/>
+
+  <!-- CONTACT -->
+  <section class="bk-section">
+    <div class="contact-block reveal">
+      <div class="contact-title" data-i18n="contact_title">Prêt à collaborer ?</div>
+      <p class="contact-desc" data-i18n="contact_desc">Envoyez-nous votre brief ou posez vos questions. Nous répondons sous 48h. Les tarifs sont indicatifs et négociables selon le volume et la durée de la campagne.</p>
+      <a href="mailto:contact@okalamstudio.com" class="contact-email">contact@okalamstudio.com</a>
+      <div class="contact-note" data-i18n="contact_note">Réponse en français, anglais ou selon votre langue préférée.</div>
+    </div>
+  </section>
+
+  <div class="update-stamp" id="update-stamp">—</div>
+
+  <footer class="bk-footer">
+    <span class="bk-footer-logo">OKALAM STUDIO</span>
+    <span class="bk-footer-note" data-i18n="footer_note">Document confidentiel · Ne pas diffuser</span>
+  </footer>
+
+</div><!-- /content -->
+
+<script>
+// ── TRANSLATIONS ──────────────────────────────────────────────────
+const T = {
+  fr: {
+    badge:'Brand Kit Confidentiel',
+    hero_eyebrow:'OKALAM Studio · Partenariats Créateurs',
+    hero_title:'Deux créateurs.<br>Une audience engagée.<br>Des niches de valeur.',
+    hero_sub:'Nous représentons des créateurs indépendants français avec des communautés ciblées et fidèles. Connectons votre marque à la bonne audience.',
+    stat_subs:'Abonnés YouTube combinés',stat_views:'Vues YouTube totales',
+    stat_ig:'Followers Instagram combinés',stat_creators:'Créateurs · 3 plateformes chacun',
+    cr_eyebrow:'Nos créateurs',cr_title:'Profils & statistiques',
+    cr_desc:'Chaque créateur est spécialisé dans sa niche. Des audiences authentiques, mesurées et vérifiées.',
+    elisa_niche:'Running · Sport · Lifestyle France',
+    pierre_niche:'Tesla · Électrique · Tech · Lifestyle France',
+    verified:'Compte Instagram vérifié',
+    subs:'Abonnés',followers:'Followers',
+    elisa_pitch:'Une communauté de runners passionnés — vrais athlètes, vrai équipement, vrai engagement. Elisa teste, court et partage avec authenticité.',
+    pierre_pitch:'Le créateur français référent sur les véhicules électriques et la tech. Avis de confiance, tests terrain, audience d\'early adopters avec forte intention d\'achat.',
+    yt_views:'Vues YouTube totales',avg_eng:'Engagement moyen',avg_views_vid:'Vues moy./vidéo YT',
+    views_ratio:'Ratio vues/abonnés YT',main_audience:'Audience principale',
+    elisa_audience_age:'25–40 ans',pierre_audience_age:'30–50 ans',
+    tag_running:'Running',tag_sport:'Sport',tag_nutrition:'Nutrition',tag_wellness:'Bien-être',
+    tag_lifestyle:'Lifestyle',tag_france:'🇫🇷 France',
+    tag_tesla:'Tesla',tag_ev:'Véhicule électrique',tag_tech:'Tech',tag_cleantech:'Clean tech',
+    rates_title:'Tarifs indicatifs',rate_pack:'Pack multi-plateforme',rate_on_request:'Sur devis',
+    elisa_cta:'Proposer un partenariat →',pierre_cta:'Proposer un partenariat →',
+    why_eyebrow:'Pourquoi OKALAM',why_title:'Ce que nous offrons aux marques',
+    why1_t:'Audiences de niche',why1_d:'Des communautés ciblées avec une vraie intention d\'achat. Runners actifs et early adopters tech — pas des audiences génériques.',
+    why2_t:'Stats transparentes',why2_d:'Toutes nos statistiques sont vérifiées et mises à jour automatiquement. Pas de chiffres gonflés. Ce que vous voyez est réel.',
+    why3_t:'Service complet',why3_d:'Brief, production, publication, reporting. OKALAM Studio gère l\'intégralité de la campagne. Zéro friction pour votre équipe.',
+    process_eyebrow:'Comment ça marche',process_title:'4 étapes simples',
+    step1_t:'Brief',step1_d:'Envoyez-nous votre brief — produit, objectif, budget, timing.',
+    step2_t:'Matching',step2_d:'Nous sélectionnons le créateur le mieux adapté à votre niche et objectif.',
+    step3_t:'Production',step3_d:'Le créateur produit le contenu. Vous validez avant publication.',
+    step4_t:'Reporting',step4_d:'Rapport de performance complet après campagne.',
+    contact_title:'Prêt à collaborer ?',
+    contact_desc:'Envoyez-nous votre brief ou posez vos questions. Nous répondons sous 48h. Les tarifs sont indicatifs et négociables selon le volume et la durée.',
+    contact_note:'Réponse en français, anglais ou selon votre langue préférée.',
+    footer_note:'Document confidentiel · Ne pas diffuser',
+  },
+  en: {
+    badge:'Confidential Brand Kit',
+    hero_eyebrow:'OKALAM Studio · Creator Partnerships',
+    hero_title:'Two creators.<br>An engaged audience.<br>High-value niches.',
+    hero_sub:'We represent independent French creators with targeted, loyal communities. Let\'s connect your brand to the right audience.',
+    stat_subs:'Combined YouTube subscribers',stat_views:'Total YouTube views',
+    stat_ig:'Combined Instagram followers',stat_creators:'Creators · 3 platforms each',
+    cr_eyebrow:'Our creators',cr_title:'Profiles & statistics',
+    cr_desc:'Each creator is a specialist in their niche. Authentic, measured and verified audiences.',
+    elisa_niche:'Running · Sport · Lifestyle France',
+    pierre_niche:'Tesla · Electric Vehicles · Tech · Lifestyle France',
+    verified:'Verified Instagram account',
+    subs:'Subscribers',followers:'Followers',
+    elisa_pitch:'A passionate running community — real athletes, real gear, real engagement. Elisa tests, runs and shares authentically.',
+    pierre_pitch:'France\'s leading creator on electric vehicles and tech. Trusted reviews, field tests, early adopter audience with strong purchase intent.',
+    yt_views:'Total YouTube views',avg_eng:'Average engagement',avg_views_vid:'Avg views/video YT',
+    views_ratio:'Views/subscribers ratio YT',main_audience:'Main audience',
+    elisa_audience_age:'25–40 y.o.',pierre_audience_age:'30–50 y.o.',
+    tag_running:'Running',tag_sport:'Sport',tag_nutrition:'Nutrition',tag_wellness:'Wellness',
+    tag_lifestyle:'Lifestyle',tag_france:'🇫🇷 France',
+    tag_tesla:'Tesla',tag_ev:'Electric vehicle',tag_tech:'Tech',tag_cleantech:'Clean tech',
+    rates_title:'Indicative rates',rate_pack:'Multi-platform package',rate_on_request:'On request',
+    elisa_cta:'Propose a partnership →',pierre_cta:'Propose a partnership →',
+    why_eyebrow:'Why OKALAM',why_title:'What we offer brands',
+    why1_t:'Niche audiences',why1_d:'Targeted communities with real purchase intent. Active runners and tech early adopters — not generic audiences.',
+    why2_t:'Transparent stats',why2_d:'All our statistics are verified and updated automatically. No inflated numbers. What you see is real.',
+    why3_t:'Full service',why3_d:'Brief, production, publishing, reporting. OKALAM Studio manages the entire campaign. Zero friction for your team.',
+    process_eyebrow:'How it works',process_title:'4 simple steps',
+    step1_t:'Brief',step1_d:'Send us your brief — product, objective, budget, timing.',
+    step2_t:'Matching',step2_d:'We select the creator best suited to your niche and objective.',
+    step3_t:'Production',step3_d:'The creator produces the content. You validate before publication.',
+    step4_t:'Reporting',step4_d:'Full performance report after the campaign.',
+    contact_title:'Ready to collaborate?',
+    contact_desc:'Send us your brief or ask your questions. We respond within 48h. Rates are indicative and negotiable based on volume and campaign duration.',
+    contact_note:'We reply in French, English, or your preferred language.',
+    footer_note:'Confidential document · Do not distribute',
+  },
+  zh: {
+    badge:'品牌合作手册（保密）',
+    hero_eyebrow:'OKALAM Studio · 创作者合作',
+    hero_title:'两位创作者。<br>高度活跃的受众。<br>高价值细分市场。',
+    hero_sub:'我们代理法国独立创作者，拥有精准、忠实的社区。让我们将您的品牌与合适的受众连接起来。',
+    stat_subs:'YouTube订阅者总数',stat_views:'YouTube总播放量',
+    stat_ig:'Instagram粉丝总数',stat_creators:'创作者 · 各3个平台',
+    cr_eyebrow:'我们的创作者',cr_title:'简介与数据统计',
+    cr_desc:'每位创作者专注于其细分领域，拥有真实、可验证的忠实受众。',
+    elisa_niche:'跑步 · 运动 · 生活方式 法国',
+    pierre_niche:'特斯拉 · 电动汽车 · 科技 · 生活方式 法国',
+    verified:'Instagram认证账号',
+    subs:'订阅者',followers:'粉丝',
+    elisa_pitch:'热情的跑步社区——真实的运动员，真实的装备，真实的互动。Elisa 以真诚的态度测试、奔跑并分享。',
+    pierre_pitch:'法国电动汽车与科技领域的头部创作者。可信的评测，实地测试，具有强烈购买意向的早期采用者受众。',
+    yt_views:'YouTube总播放量',avg_eng:'平均互动率',avg_views_vid:'YouTube每视频平均播放量',
+    views_ratio:'播放量/订阅者比率',main_audience:'主要受众',
+    elisa_audience_age:'25–40岁',pierre_audience_age:'30–50岁',
+    tag_running:'跑步',tag_sport:'运动',tag_nutrition:'营养',tag_wellness:'健康',
+    tag_lifestyle:'生活方式',tag_france:'🇫🇷 法国',
+    tag_tesla:'特斯拉',tag_ev:'电动汽车',tag_tech:'科技',tag_cleantech:'清洁技术',
+    rates_title:'参考价格',rate_pack:'多平台套餐',rate_on_request:'按需报价',
+    elisa_cta:'提交合作提案 →',pierre_cta:'提交合作提案 →',
+    why_eyebrow:'为什么选择OKALAM',why_title:'我们为品牌提供的价值',
+    why1_t:'精准细分受众',why1_d:'具有真实购买意向的目标社区。活跃的跑步爱好者和科技早期采用者——不是泛众。',
+    why2_t:'透明数据',why2_d:'所有数据经过验证并自动更新。没有虚假数字，所见即所得。',
+    why3_t:'全程服务',why3_d:'创意简报、内容制作、发布、效果报告。OKALAM Studio 管理整个活动，为您的团队零摩擦。',
+    process_eyebrow:'合作流程',process_title:'4个简单步骤',
+    step1_t:'创意简报',step1_d:'发送您的简报——产品、目标、预算、时间节点。',
+    step2_t:'创作者匹配',step2_d:'我们根据您的细分领域和目标，为您匹配最合适的创作者。',
+    step3_t:'内容制作',step3_d:'创作者制作内容，发布前由您审核确认。',
+    step4_t:'效果报告',step4_d:'活动结束后提供完整的效果分析报告。',
+    contact_title:'准备开始合作？',
+    contact_desc:'发送您的合作需求或提出问题。我们在48小时内回复。价格为参考价格，可根据合作量和活动周期协商。',
+    contact_note:'我们可以用法语、英语或您偏好的语言进行回复。',
+    footer_note:'保密文件 · 请勿传播',
+  },
+  ja: {
+    badge:'ブランドキット（機密）',
+    hero_eyebrow:'OKALAM Studio · クリエイターパートナーシップ',
+    hero_title:'2人のクリエイター。<br>エンゲージされたオーディエンス。<br>価値あるニッチ市場。',
+    hero_sub:'私たちはターゲットを絞った忠実なコミュニティを持つ、フランスの独立クリエイターを代理しています。貴ブランドを最適なオーディエンスとつなぎます。',
+    stat_subs:'YouTube登録者数（合計）',stat_views:'YouTube総再生数',
+    stat_ig:'Instagramフォロワー数（合計）',stat_creators:'クリエイター · 各3プラットフォーム',
+    cr_eyebrow:'クリエイター',cr_title:'プロフィールと統計',
+    cr_desc:'各クリエイターはニッチ分野の専門家です。真正で測定可能な検証済みオーディエンスを持ちます。',
+    elisa_niche:'ランニング · スポーツ · ライフスタイル（フランス）',
+    pierre_niche:'テスラ · 電気自動車 · テック · ライフスタイル（フランス）',
+    verified:'Instagram認証済みアカウント',
+    subs:'登録者',followers:'フォロワー',
+    elisa_pitch:'情熱的なランナーコミュニティ — 本物のアスリート、本物のギア、本物のエンゲージメント。Elisaは誠実にテスト・走行・シェアします。',
+    pierre_pitch:'フランスの電気自動車とテックの第一人者クリエイター。信頼できるレビュー、実地テスト、強い購買意欲を持つアーリーアダプター層。',
+    yt_views:'YouTube総再生数',avg_eng:'平均エンゲージメント率',avg_views_vid:'YT動画平均再生数',
+    views_ratio:'再生数/登録者比率',main_audience:'メインオーディエンス',
+    elisa_audience_age:'25〜40歳',pierre_audience_age:'30〜50歳',
+    tag_running:'ランニング',tag_sport:'スポーツ',tag_nutrition:'栄養',tag_wellness:'ウェルネス',
+    tag_lifestyle:'ライフスタイル',tag_france:'🇫🇷 フランス',
+    tag_tesla:'テスラ',tag_ev:'電気自動車',tag_tech:'テック',tag_cleantech:'クリーンテック',
+    rates_title:'参考料金',rate_pack:'マルチプラットフォームパッケージ',rate_on_request:'要見積もり',
+    elisa_cta:'パートナーシップを提案する →',pierre_cta:'パートナーシップを提案する →',
+    why_eyebrow:'OKALAMを選ぶ理由',why_title:'ブランドへの提供価値',
+    why1_t:'ニッチなオーディエンス',why1_d:'真の購買意欲を持つターゲットコミュニティ。アクティブなランナーとテックアーリーアダプター — 一般的なオーディエンスではありません。',
+    why2_t:'透明性のある統計',why2_d:'すべての統計は自動的に検証・更新されています。水増しなし。ご覧の数字が実数です。',
+    why3_t:'ワンストップサービス',why3_d:'ブリーフィング、制作、公開、レポート。OKALAMスタジオがキャンペーン全体を管理。チームの負担ゼロ。',
+    process_eyebrow:'進め方',process_title:'4つのシンプルなステップ',
+    step1_t:'ブリーフィング',step1_d:'ブリーフをお送りください — 商品、目標、予算、スケジュール。',
+    step2_t:'マッチング',step2_d:'ニッチと目標に最適なクリエイターをご提案します。',
+    step3_t:'制作',step3_d:'クリエイターがコンテンツを制作。公開前にご確認いただけます。',
+    step4_t:'レポート',step4_d:'キャンペーン後に完全なパフォーマンスレポートをご提供します。',
+    contact_title:'コラボレーションを始めませんか？',
+    contact_desc:'ブリーフをお送りいただくか、ご質問ください。48時間以内にご返答します。料金は参考価格であり、量や期間に応じてご相談可能です。',
+    contact_note:'フランス語、英語、またはご希望の言語でご返答します。',
+    footer_note:'機密文書 · 配布不可',
+  },
+  es: {
+    badge:'Kit de Marca Confidencial',
+    hero_eyebrow:'OKALAM Studio · Asociaciones con Creadores',
+    hero_title:'Dos creadores.<br>Una audiencia comprometida.<br>Nichos de alto valor.',
+    hero_sub:'Representamos a creadores independientes franceses con comunidades específicas y leales. Conectemos tu marca con la audiencia correcta.',
+    stat_subs:'Suscriptores YouTube combinados',stat_views:'Vistas totales YouTube',
+    stat_ig:'Seguidores Instagram combinados',stat_creators:'Creadores · 3 plataformas c/u',
+    cr_eyebrow:'Nuestros creadores',cr_title:'Perfiles y estadísticas',
+    cr_desc:'Cada creador es especialista en su nicho. Audiencias auténticas, medidas y verificadas.',
+    elisa_niche:'Running · Deporte · Lifestyle Francia',
+    pierre_niche:'Tesla · Vehículo eléctrico · Tech · Lifestyle Francia',
+    verified:'Cuenta Instagram verificada',
+    subs:'Suscriptores',followers:'Seguidores',
+    elisa_pitch:'Una comunidad apasionada de runners — atletas reales, equipamiento real, engagement real. Elisa prueba, corre y comparte con autenticidad.',
+    pierre_pitch:'El creador francés referente en vehículos eléctricos y tech. Reseñas de confianza, pruebas de campo, audiencia early adopter con fuerte intención de compra.',
+    yt_views:'Vistas totales YouTube',avg_eng:'Engagement promedio',avg_views_vid:'Vistas prom./video YT',
+    views_ratio:'Ratio vistas/suscriptores YT',main_audience:'Audiencia principal',
+    elisa_audience_age:'25–40 años',pierre_audience_age:'30–50 años',
+    tag_running:'Running',tag_sport:'Deporte',tag_nutrition:'Nutrición',tag_wellness:'Bienestar',
+    tag_lifestyle:'Lifestyle',tag_france:'🇫🇷 Francia',
+    tag_tesla:'Tesla',tag_ev:'Vehículo eléctrico',tag_tech:'Tech',tag_cleantech:'Clean tech',
+    rates_title:'Tarifas orientativas',rate_pack:'Pack multiplataforma',rate_on_request:'A consultar',
+    elisa_cta:'Proponer una colaboración →',pierre_cta:'Proponer una colaboración →',
+    why_eyebrow:'Por qué OKALAM',why_title:'Lo que ofrecemos a las marcas',
+    why1_t:'Audiencias de nicho',why1_d:'Comunidades específicas con verdadera intención de compra. Runners activos y early adopters tech — no audiencias genéricas.',
+    why2_t:'Estadísticas transparentes',why2_d:'Todas nuestras estadísticas se verifican y actualizan automáticamente. Sin números inflados. Lo que ves es real.',
+    why3_t:'Servicio completo',why3_d:'Brief, producción, publicación, reporting. OKALAM Studio gestiona toda la campaña. Cero fricción para tu equipo.',
+    process_eyebrow:'Cómo funciona',process_title:'4 pasos simples',
+    step1_t:'Brief',step1_d:'Envíanos tu brief — producto, objetivo, presupuesto, timing.',
+    step2_t:'Matching',step2_d:'Seleccionamos el creador más adecuado para tu nicho y objetivo.',
+    step3_t:'Producción',step3_d:'El creador produce el contenido. Tú lo validas antes de publicar.',
+    step4_t:'Reporting',step4_d:'Informe de rendimiento completo tras la campaña.',
+    contact_title:'¿Listo para colaborar?',
+    contact_desc:'Envíanos tu brief o tus preguntas. Respondemos en 48h. Las tarifas son orientativas y negociables según volumen y duración.',
+    contact_note:'Respondemos en francés, inglés o en tu idioma preferido.',
+    footer_note:'Documento confidencial · No distribuir',
+  },
+  pt: {
+    badge:'Kit de Marca Confidencial',
+    hero_eyebrow:'OKALAM Studio · Parcerias com Criadores',
+    hero_title:'Dois criadores.<br>Uma audiência engajada.<br>Nichos de alto valor.',
+    hero_sub:'Representamos criadores independentes franceses com comunidades segmentadas e fiéis. Vamos conectar a sua marca à audiência certa.',
+    stat_subs:'Inscritos YouTube combinados',stat_views:'Visualizações totais YouTube',
+    stat_ig:'Seguidores Instagram combinados',stat_creators:'Criadores · 3 plataformas cada',
+    cr_eyebrow:'Os nossos criadores',cr_title:'Perfis e estatísticas',
+    cr_desc:'Cada criador é especialista no seu nicho. Audiências autênticas, medidas e verificadas.',
+    elisa_niche:'Running · Desporto · Lifestyle França',
+    pierre_niche:'Tesla · Veículo Elétrico · Tech · Lifestyle França',
+    verified:'Conta Instagram verificada',
+    subs:'Inscritos',followers:'Seguidores',
+    elisa_pitch:'Uma comunidade apaixonada de runners — atletas reais, equipamento real, engagement real. Elisa testa, corre e partilha com autenticidade.',
+    pierre_pitch:'O criador francês de referência em veículos elétricos e tech. Avaliações de confiança, testes no terreno, audiência de early adopters com forte intenção de compra.',
+    yt_views:'Visualizações totais YouTube',avg_eng:'Engagement médio',avg_views_vid:'Média vistas/vídeo YT',
+    views_ratio:'Rácio vistas/inscritos YT',main_audience:'Audiência principal',
+    elisa_audience_age:'25–40 anos',pierre_audience_age:'30–50 anos',
+    tag_running:'Running',tag_sport:'Desporto',tag_nutrition:'Nutrição',tag_wellness:'Bem-estar',
+    tag_lifestyle:'Lifestyle',tag_france:'🇫🇷 França',
+    tag_tesla:'Tesla',tag_ev:'Veículo elétrico',tag_tech:'Tech',tag_cleantech:'Clean tech',
+    rates_title:'Tarifas indicativas',rate_pack:'Pack multiplataforma',rate_on_request:'Sob consulta',
+    elisa_cta:'Propor uma parceria →',pierre_cta:'Propor uma parceria →',
+    why_eyebrow:'Porquê OKALAM',why_title:'O que oferecemos às marcas',
+    why1_t:'Audiências de nicho',why1_d:'Comunidades segmentadas com verdadeira intenção de compra. Runners ativos e early adopters tech — não audiências genéricas.',
+    why2_t:'Estatísticas transparentes',why2_d:'Todas as estatísticas são verificadas e atualizadas automaticamente. Sem números inflacionados. O que vê é real.',
+    why3_t:'Serviço completo',why3_d:'Brief, produção, publicação, reporting. O OKALAM Studio gere toda a campanha. Zero fricção para a sua equipa.',
+    process_eyebrow:'Como funciona',process_title:'4 passos simples',
+    step1_t:'Brief',step1_d:'Envie o seu brief — produto, objetivo, orçamento, timing.',
+    step2_t:'Matching',step2_d:'Selecionamos o criador mais adequado ao seu nicho e objetivo.',
+    step3_t:'Produção',step3_d:'O criador produz o conteúdo. Valida antes da publicação.',
+    step4_t:'Reporting',step4_d:'Relatório de desempenho completo após a campanha.',
+    contact_title:'Pronto para colaborar?',
+    contact_desc:'Envie o seu brief ou coloque as suas questões. Respondemos em 48h. Os valores são indicativos e negociáveis consoante o volume e a duração.',
+    contact_note:'Respondemos em francês, inglês ou no idioma da sua preferência.',
+    footer_note:'Documento confidencial · Não distribuir',
+  }
+};
+
+let currentLang = localStorage.getItem('okalam_brand_lang') || 'fr';
+
+function setLang(l) {
+  currentLang = l;
+  localStorage.setItem('okalam_brand_lang', l);
+  const t = T[l] || T.fr;
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (t[key] !== undefined) el.innerHTML = t[key];
+  });
+  document.querySelectorAll('.lb').forEach(b => b.classList.toggle('active', b.textContent.trim() === l.toUpperCase() || (l==='zh'&&b.textContent.trim()==='中文')));
+  document.documentElement.lang = l;
+}
+
+// ── ACCESS GATE ───────────────────────────────────────────────────
+const TOKEN = 'brand2026';
+function checkCode() {
+  const v = document.getElementById('gateInput').value.trim().toLowerCase();
+  if (v === TOKEN) {
+    document.getElementById('gate').style.display = 'none';
+    document.getElementById('content').style.display = 'block';
+    setLang(currentLang);
+    loadStats();
+    initReveal();
+  } else {
+    const err = document.getElementById('gateError');
+    err.style.display = 'block';
+    setTimeout(() => { err.style.display = 'none'; }, 3000);
+  }
+}
+document.getElementById('gateInput').addEventListener('keydown', e => { if (e.key === 'Enter') checkCode(); });
+
+// Auto-unlock from URL param
+const urlToken = new URLSearchParams(location.search).get('token');
+if (urlToken === TOKEN) {
+  document.getElementById('gate').style.display = 'none';
+  document.getElementById('content').style.display = 'block';
+  setTimeout(() => { setLang(currentLang); loadStats(); initReveal(); }, 10);
+}
+
+// ── STATS LOADER ──────────────────────────────────────────────────
+function fmt(n) {
+  if (n == null) return null;
+  if (n >= 1000000) return (n / 1000000).toFixed(1).replace('.', ',') + 'M';
+  if (n >= 1000) return Math.round(n).toLocaleString('fr');
+  return String(n);
+}
+function setEl(id, val) {
+  if (val != null) { const el = document.getElementById(id); if (el) el.textContent = val; }
+}
+
+async function loadStats() {
+  try {
+    const r = await fetch('data/stats.json?_=' + Date.now());
+    if (!r.ok) return;
+    const d = await r.json();
+    const e = d.elisa, p = d.pierre;
+
+    if (e?.youtube) { setEl('e-yt-subs', e.youtube.subscribers?.toLocaleString('fr')); setEl('e-yt-views', fmt(e.youtube.views)); }
+    if (e?.instagram) setEl('e-ig-followers', e.instagram.followers?.toLocaleString('fr'));
+    if (e?.tiktok) setEl('e-tt-followers', e.tiktok.followers?.toLocaleString('fr'));
+
+    if (p?.youtube) { setEl('p-yt-subs', p.youtube.subscribers?.toLocaleString('fr')); setEl('p-yt-views', fmt(p.youtube.views)); }
+    if (p?.instagram) setEl('p-ig-followers', p.instagram.followers?.toLocaleString('fr'));
+    if (p?.tiktok) setEl('p-tt-followers', p.tiktok.followers?.toLocaleString('fr'));
+
+    // Combined totals
+    const totalSubs = (e?.youtube?.subscribers || 0) + (p?.youtube?.subscribers || 0);
+    const totalViews = (e?.youtube?.views || 0) + (p?.youtube?.views || 0);
+    const totalIG = (e?.instagram?.followers || 0) + (p?.instagram?.followers || 0);
+    setEl('total-subs', totalSubs.toLocaleString('fr'));
+    setEl('total-views', fmt(totalViews));
+    setEl('total-ig', totalIG.toLocaleString('fr'));
+
+    if (d.updated_at) {
+      const date = new Date(d.updated_at).toLocaleDateString('fr', { day: 'numeric', month: 'long', year: 'numeric' });
+      setEl('update-stamp', '↻ ' + date);
+    }
+  } catch (err) { /* silent fallback */ }
+}
+
+// ── REVEAL ON SCROLL ──────────────────────────────────────────────
+function initReveal() {
+  const els = document.querySelectorAll('.reveal');
+  if (!els.length) return;
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+  }, { threshold: 0.08 });
+  els.forEach(el => obs.observe(el));
+}
+</script>
+</body>
+</html>
