@@ -46,8 +46,19 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;lin
 
 /* ── LANG SWITCHER ── */
 .lang-bar{display:flex;gap:6px;}
-.lb{background:none;border:1px solid var(--border2);color:var(--muted);font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.06em;padding:4px 9px;border-radius:4px;cursor:pointer;transition:all .18s;}
-.lb:hover,.lb.active{border-color:var(--accent);color:var(--accent);}
+.lb{background:none;border:1px solid var(--border2);color:var(--muted);font-size:.9rem;padding:3px 7px;border-radius:4px;cursor:pointer;transition:all .18s;line-height:1;}
+.lb:hover,.lb.active{border-color:var(--accent);background:var(--accent-dim);}
+
+/* ── CREATOR SOCIAL LINKS ── */
+.cr-social{display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap;}
+.cr-social-link{display:inline-flex;align-items:center;gap:6px;font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.06em;text-transform:uppercase;padding:6px 12px;border-radius:6px;border:1px solid;text-decoration:none;transition:all .2s;}
+.cr-card.elisa .cr-social-link{color:var(--elisa);border-color:rgba(245,158,11,.3);}
+.cr-card.elisa .cr-social-link:hover{background:var(--elisa-dim);border-color:var(--elisa);}
+.cr-card.pierre .cr-social-link{color:var(--pierre);border-color:rgba(59,130,246,.3);}
+.cr-card.pierre .cr-social-link:hover{background:var(--pierre-dim);border-color:var(--pierre);}
+
+/* ── UPDATE STAMP ── */
+.update-stamp{font-size:.65rem;color:var(--muted);font-family:'Space Mono',monospace;text-align:center;padding:16px;opacity:.7;letter-spacing:.05em;}
 
 /* ── HERO ── */
 .bk-hero{padding:80px 40px 64px;text-align:center;border-bottom:1px solid var(--border2);background:radial-gradient(ellipse 60% 40% at 50% 0%,rgba(141,234,255,.04),transparent);}
@@ -201,12 +212,12 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;lin
     <a href="index.html" class="bk-logo">OKALAM STUDIO</a>
     <div class="bk-header-right">
       <div class="lang-bar">
-        <button class="lb active" onclick="setLang('fr')">FR</button>
-        <button class="lb" onclick="setLang('en')">EN</button>
-        <button class="lb" onclick="setLang('zh')">中文</button>
-        <button class="lb" onclick="setLang('ja')">JA</button>
-        <button class="lb" onclick="setLang('es')">ES</button>
-        <button class="lb" onclick="setLang('pt')">PT</button>
+        <button class="lb active" data-lang="fr" onclick="setLang('fr')" title="Français">🇫🇷</button>
+        <button class="lb" data-lang="en" onclick="setLang('en')" title="English">🇬🇧</button>
+        <button class="lb" data-lang="zh" onclick="setLang('zh')" title="中文">🇨🇳</button>
+        <button class="lb" data-lang="ja" onclick="setLang('ja')" title="日本語">🇯🇵</button>
+        <button class="lb" data-lang="es" onclick="setLang('es')" title="Español">🇪🇸</button>
+        <button class="lb" data-lang="pt" onclick="setLang('pt')" title="Português">🇵🇹</button>
       </div>
       <span class="bk-badge" data-i18n="badge">Brand Kit</span>
     </div>
@@ -281,6 +292,13 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;lin
         <div class="cr-body">
           <p class="cr-pitch" data-i18n="elisa_pitch">Une communauté de runners passionnés — vrais athlètes, vrai équipement, vrai engagement. Elisa teste, court et partage avec authenticité.</p>
 
+          <div class="cr-social">
+            <a href="https://youtube.com/@Nox" target="_blank" class="cr-social-link">▶ Nox</a>
+            <a href="https://instagram.com/elisa_is_running" target="_blank" class="cr-social-link">📸 Instagram</a>
+            <a href="https://tiktok.com/@elisaisrunning" target="_blank" class="cr-social-link">🎵 TikTok</a>
+            <a href="mediakit-elisa.html" class="cr-social-link">📄 Media Kit</a>
+          </div>
+
           <div class="cr-kpis">
             <div class="cr-kpi">
               <span class="cr-kpi-val" id="e-yt-views">4,1M</span>
@@ -329,7 +347,7 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;lin
             </div>
           </div>
 
-          <a href="mailto:contact@okalamstudio.com?subject=Partenariat Elisa Is Running" class="cr-cta" data-i18n="elisa_cta">Proposer un partenariat →</a>
+          <a href="mailto:partnerships@okalamstudio.com?subject=Partenariat Elisa Is Running" class="cr-cta" data-i18n="elisa_cta">Proposer un partenariat →</a>
         </div>
       </div>
 
@@ -366,6 +384,13 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;lin
 
         <div class="cr-body">
           <p class="cr-pitch" data-i18n="pierre_pitch">Le créateur français référent sur les véhicules électriques et la tech. Avis de confiance, tests terrain, audience d'early adopters avec forte intention d'achat.</p>
+
+          <div class="cr-social">
+            <a href="https://youtube.com/@Wednesday" target="_blank" class="cr-social-link">▶ Wednesday</a>
+            <a href="https://instagram.com/teslaburger" target="_blank" class="cr-social-link">📸 Instagram</a>
+            <a href="https://tiktok.com/@teslaburger" target="_blank" class="cr-social-link">🎵 TikTok</a>
+            <a href="mediakit-pierre.html" class="cr-social-link">📄 Media Kit</a>
+          </div>
 
           <div class="cr-kpis">
             <div class="cr-kpi">
@@ -415,7 +440,7 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;lin
             </div>
           </div>
 
-          <a href="mailto:contact@okalamstudio.com?subject=Partenariat Tesla Burger Pierre" class="cr-cta" data-i18n="pierre_cta">Proposer un partenariat →</a>
+          <a href="mailto:partnerships@okalamstudio.com?subject=Partenariat Tesla Burger Pierre" class="cr-cta" data-i18n="pierre_cta">Proposer un partenariat →</a>
         </div>
       </div>
 
@@ -484,7 +509,7 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;lin
     <div class="contact-block reveal">
       <div class="contact-title" data-i18n="contact_title">Prêt à collaborer ?</div>
       <p class="contact-desc" data-i18n="contact_desc">Envoyez-nous votre brief ou posez vos questions. Nous répondons sous 48h. Les tarifs sont indicatifs et négociables selon le volume et la durée de la campagne.</p>
-      <a href="mailto:contact@okalamstudio.com" class="contact-email">contact@okalamstudio.com</a>
+      <a href="mailto:partnerships@okalamstudio.com" class="contact-email">partnerships@okalamstudio.com</a>
       <div class="contact-note" data-i18n="contact_note">Réponse en français, anglais ou selon votre langue préférée.</div>
     </div>
   </section>
@@ -735,7 +760,7 @@ function setLang(l) {
     const key = el.getAttribute('data-i18n');
     if (t[key] !== undefined) el.innerHTML = t[key];
   });
-  document.querySelectorAll('.lb').forEach(b => b.classList.toggle('active', b.textContent.trim() === l.toUpperCase() || (l==='zh'&&b.textContent.trim()==='中文')));
+  document.querySelectorAll('.lb').forEach(b => b.classList.toggle('active', b.dataset.lang === l));
   document.documentElement.lang = l;
 }
 
