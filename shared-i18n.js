@@ -5,7 +5,7 @@ const PAGE_T = {
     nav_studio:'Studio', nav_projects:'Projects', nav_collabs:'Collaborations', nav_contact:'Contact',
     nav_games:'Games', nav_home:'Home',
     // FOOTER (all pages)
-    footer_tagline:'Creative Studio \u00b7 iOS Apps \u00b7 Creator Management',
+    footer_tagline:'Creative Studio \u00b7 iOS Apps \u00b7 Talent Creator',
     footer_home:'Home', footer_studio:'Studio', footer_projects:'Projects',
     footer_collabs:'Collaborations', footer_contact:'Contact us',
     footer_nav:'Navigation', footer_copy:'© 2026 OKALAM Studio. All rights reserved.',
@@ -108,7 +108,7 @@ const PAGE_T = {
   fr: {
     nav_studio:'Studio', nav_projects:'Projets', nav_collabs:'Collaborations', nav_contact:'Contact',
     nav_games:'Jeux', nav_home:'Accueil',
-    footer_tagline:'Studio Cr\u00e9atif \u00b7 Apps iOS \u00b7 Creator Management',
+    footer_tagline:'Studio Cr\u00e9atif \u00b7 Apps iOS \u00b7 Management Cr\u00e9ateur',
     footer_home:'Accueil', footer_studio:'Studio', footer_projects:'Projets',
     footer_collabs:'Collaborations', footer_contact:'Nous contacter',
     footer_nav:'Navigation', footer_copy:'© 2026 OKALAM Studio. Tous droits réservés.',
@@ -203,7 +203,7 @@ const PAGE_T = {
   ja: {
     nav_studio:'スタジオ', nav_projects:'プロジェクト', nav_collabs:'コラボ', nav_contact:'お問い合わせ',
     nav_games:'ゲーム', nav_home:'ホーム',
-    footer_tagline:'\u30af\u30ea\u30a8\u30a4\u30c6\u30a3\u30d6\u30b9\u30bf\u30b8\u30aa \u00b7 iOS\u30a2\u30d7\u30ea \u00b7 \u30af\u30ea\u30a8\u30a4\u30bf\u30fc\u30de\u30cd\u30b8\u30e1\u30f3\u30c8',
+    footer_tagline:'\u30af\u30ea\u30a8\u30a4\u30c6\u30a3\u30d6\u30b9\u30bf\u30b8\u30aa \u00b7 iOS\u30a2\u30d7\u30ea \u00b7 \u30bf\u30ec\u30f3\u30c8\u30af\u30ea\u30a8\u30a4\u30bf\u30fc',
     footer_home:'ホーム', footer_studio:'スタジオ', footer_projects:'プロジェクト',
     footer_collabs:'コラボ', footer_contact:'お問い合わせ',
     footer_nav:'ナビゲーション', footer_copy:'© 2026 OKALAM Studio. 無断転載禁止。',
@@ -297,7 +297,7 @@ const PAGE_T = {
   zh: {
     nav_studio:'工作室', nav_projects:'项目', nav_collabs:'合作', nav_contact:'联系',
     nav_games:'游戏', nav_home:'首页',
-    footer_tagline:'\u521b\u610f\u5de5\u4f5c\u5ba4 \u00b7 iOS\u5e94\u7528 \u00b7 \u521b\u4f5c\u8005\u7ba1\u7406',
+    footer_tagline:'\u521b\u610f\u5de5\u4f5c\u5ba4 \u00b7 iOS\u5e94\u7528 \u00b7 \u521b\u4f5c\u8005\u7ba1\u7406\u652f\u6301',
     footer_home:'首页', footer_studio:'工作室', footer_projects:'项目',
     footer_collabs:'合作', footer_contact:'联系我们',
     footer_nav:'导航', footer_copy:'© 2026 OKALAM Studio. 保留所有权利。',
@@ -391,7 +391,7 @@ const PAGE_T = {
   es: {
     nav_studio:'Estudio', nav_projects:'Proyectos', nav_collabs:'Colaboraciones', nav_contact:'Contacto',
     nav_games:'Juegos', nav_home:'Inicio',
-    footer_tagline:'Estudio Creativo \u00b7 Apps iOS \u00b7 Gesti\u00f3n de Creadores',
+    footer_tagline:'Estudio Creativo \u00b7 Apps iOS \u00b7 Management Creador',
     footer_home:'Inicio', footer_studio:'Estudio', footer_projects:'Proyectos',
     footer_collabs:'Colaboraciones', footer_contact:'Contáctanos',
     footer_nav:'Navegación', footer_copy:'© 2026 OKALAM Studio. Todos los derechos reservados.',
@@ -485,7 +485,7 @@ const PAGE_T = {
   pt: {
     nav_studio:'Estúdio', nav_projects:'Projetos', nav_collabs:'Colaborações', nav_contact:'Contato',
     nav_games:'Jogos', nav_home:'Início',
-    footer_tagline:'Est\u00fadio Criativo \u00b7 Apps iOS \u00b7 Gest\u00e3o de Criadores',
+    footer_tagline:'Est\u00fadio Criativo \u00b7 Apps iOS \u00b7 Management Criador',
     footer_home:'Início', footer_studio:'Estúdio', footer_projects:'Projetos',
     footer_collabs:'Colaborações', footer_contact:'Fale conosco',
     footer_nav:'Navegação', footer_copy:'© 2026 OKALAM Studio. Todos os direitos reservados.',
