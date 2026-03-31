@@ -97,6 +97,9 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;fon
 .ok-nav-link:hover::before{transform:scaleY(1);}
 .ok-nav-link.active{color:var(--accent);}
 .ok-nav-link.active::before{transform:scaleY(1);}
+.ok-nav-link--private{color:#f59e0b;font-size:.85rem;letter-spacing:.06em;border-bottom:none;border-top:1px solid var(--border2);margin-top:4px;}
+.ok-nav-link--private::before{background:#f59e0b;}
+.ok-nav-link--private:hover{color:#fbbf24;}
 
 /* CTA in dropdown */
 .ok-nav-cta-wrap{padding:32px 40px 0;}
