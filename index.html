@@ -189,11 +189,11 @@ footer{border-top:1px solid var(--border2);padding:56px 48px;position:relative;z
   <h2 class="section-title reveal" id="s_creators_title">Two creators. Two niches. One studio.</h2>
   <p class="section-desc reveal r1" id="s_creators_desc">OKALAM Studio manages brand partnerships for two French independent creators &mdash; each with a loyal, engaged audience in their niche. We handle media kits, brand matching, negotiation and follow-up.</p>
   <div class="creator-grid">
-    <!-- ELISA -->
+    <!-- CREATOR 1 -->
     <div class="creator-card reveal r1">
       <div class="creator-header">
         <div class="creator-icon">🏃‍♀️</div>
-        <div class="creator-name">Elisa Is Running</div>
+        <div class="creator-name" id="s_cr1_name">Running &amp; Lifestyle</div>
       </div>
       <div class="creator-tags">
         <span class="ctag">Running</span><span class="ctag">Lifestyle</span><span class="ctag">Marathon</span><span class="ctag">France</span>
@@ -216,13 +216,13 @@ footer{border-top:1px solid var(--border2);padding:56px 48px;position:relative;z
         </div>
       </div>
       <p class="creator-pitch" id="elisa_pitch">A passionate running community &mdash; real athletes, real gear, real engagement.</p>
-      <a href="partenaires.html?creator=elisa&token=elisa26" class="creator-link" id="elisa_link">View media kit <span>&rarr;</span></a>
+      <a href="partenaires.html" class="creator-link" id="elisa_link">Demander le media kit <span>&rarr;</span></a>
     </div>
-    <!-- TESLA BURGER -->
+    <!-- CREATOR 2 -->
     <div class="creator-card reveal r2">
       <div class="creator-header">
         <div class="creator-icon">⚡</div>
-        <div class="creator-name">Tesla Burger</div>
+        <div class="creator-name" id="s_cr2_name">Tech &amp; Véhicules Électriques</div>
       </div>
       <div class="creator-tags">
         <span class="ctag">Tech</span><span class="ctag">EV</span><span class="ctag">Solar</span><span class="ctag">Unboxing</span><span class="ctag">France</span>
@@ -243,7 +243,7 @@ footer{border-top:1px solid var(--border2);padding:56px 48px;position:relative;z
         </div>
       </div>
       <p class="creator-pitch" id="pierre_pitch">The go-to French creator for EV &amp; clean tech &mdash; trusted reviews, loyal audience.</p>
-      <a href="partenaires.html?creator=pierre&token=pierre25" class="creator-link" id="pierre_link">View media kit <span>&rarr;</span></a>
+      <a href="partenaires.html" class="creator-link" id="pierre_link">Demander le media kit <span>&rarr;</span></a>
     </div>
   </div>
 </section>
@@ -354,10 +354,10 @@ const T={
     s_creators_label:"Our Creators",
     s_creators_title:"Two creators. Two niches. One studio.",
     s_creators_desc:"OKALAM Studio manages brand partnerships for two French independent creators \u2014 each with a loyal, engaged audience in their niche. We handle media kits, brand matching, negotiation and follow-up.",
-    elisa_pitch:"\u201cA passionate running community \u2014 real athletes, real gear, real engagement.\u201d",
-    elisa_link:"View media kit \u2192",
-    pierre_pitch:"\u201cThe go-to French creator for EV & clean tech \u2014 trusted reviews, loyal audience.\u201d",
-    pierre_link:"View media kit \u2192",
+    elisa_pitch:"A passionate running community \u2014 real athletes, real gear, real engagement.",
+    elisa_link:"Request media kit \u2192",
+    pierre_pitch:"The go-to French creator for EV & clean tech \u2014 trusted reviews, loyal audience.",
+    pierre_link:"Request media kit \u2192",
     why_label:"Why us",why_title:"Why work with OKALAM Studio?",
     why1_t:"Niche audiences",why1_d:"Targeted communities that actually buy. Running athletes and EV early adopters with high purchase intent.",
     why2_t:"Full service",why2_d:"Media kit, outreach, negotiation and reporting. We handle the entire partnership process for you.",
@@ -381,10 +381,10 @@ const T={
     s_creators_label:"Nos Cr\u00e9ateurs",
     s_creators_title:"Deux cr\u00e9ateurs. Deux niches. Un studio.",
     s_creators_desc:"OKALAM Studio g\u00e8re les partenariats marque pour deux cr\u00e9ateurs fran\u00e7ais ind\u00e9pendants \u2014 chacun avec une audience fid\u00e8le et engag\u00e9e dans sa niche. Nous g\u00e9rons media kits, matching marques, n\u00e9gociation et suivi.",
-    elisa_pitch:"\u00abUne communaut\u00e9 running passionn\u00e9e \u2014 vrais athl\u00e8tes, vrai \u00e9quipement, vrai engagement.\u00bb",
-    elisa_link:"Voir le media kit \u2192",
-    pierre_pitch:"\u00abLe cr\u00e9ateur fran\u00e7ais r\u00e9f\u00e9rent VE & clean tech \u2014 avis de confiance, audience fid\u00e8le.\u00bb",
-    pierre_link:"Voir le media kit \u2192",
+    elisa_pitch:"Une communaut\u00e9 running passionn\u00e9e \u2014 vrais athl\u00e8tes, vrai \u00e9quipement, vrai engagement.",
+    elisa_link:"Demander le media kit \u2192",
+    pierre_pitch:"Le cr\u00e9ateur fran\u00e7ais r\u00e9f\u00e9rent VE & clean tech \u2014 avis de confiance, audience fid\u00e8le.",
+    pierre_link:"Demander le media kit \u2192",
     why_label:"Pourquoi nous",why_title:"Pourquoi travailler avec OKALAM Studio ?",
     why1_t:"Audiences de niche",why1_d:"Des communaut\u00e9s cibl\u00e9es qui ach\u00e8tent vraiment. Athl\u00e8tes runners et early adopters VE avec forte intention d\u2019achat.",
     why2_t:"Service complet",why2_d:"Media kit, prospection, n\u00e9gociation et reporting. Nous g\u00e9rons l\u2019int\u00e9gralit\u00e9 du processus de partenariat.",
@@ -422,7 +422,7 @@ const T={
 };
 
 // ── TICKER ───────────────────────────────────────────────────────
-const TICKER_ITEMS='Elisa Is Running \u00b7 Tesla Burger \u00b7 Running \u00b7 Tech \u00b7 EV \u00b7 13,900 YouTube \u00b7 12,760 Instagram \u00b7 17.9M views \u00b7 France \u00b7 Creator Partnerships \u00b7 Brand Deals \u00b7 Europe \u00b7 OKALAM Studio \u00b7';
+const TICKER_ITEMS='Running \u00b7 Tech \u00b7 EV \u00b7 Lifestyle \u00b7 France \u00b7 Creator Partnerships \u00b7 Brand Deals \u00b7 Europe \u00b7 OKALAM Studio \u00b7 25K+ abonnés \u00b7 22M+ vues \u00b7 Niche Audiences \u00b7';
 function buildTicker(){
   const content=TICKER_ITEMS.split('\u00b7').map(w=>`<span class="titem">${w.trim()} <span style="opacity:.3">\u00b7</span></span>`).join('');
   ['ticker1','ticker2'].forEach(id=>{const el=document.getElementById(id);if(el)el.innerHTML=content;});
