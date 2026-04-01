@@ -455,7 +455,7 @@ const MOTUS_UI={
   zh:{badge:n=>"🇨🇳 中文 — "+n+"字",l1:"位置正确",l2:"位置错误",l3:"不存在",reveal:"答案是",newbtn:"新单词",invalid:"未知！",short:"太短！",win:"🎉 太棒了！",lose:"很遗憾！",sub:"6次内猜出"}
 };
 const ROWS=6;
-let mLang='en',mCols=5,mTarget='',mRow=0,mGuess=[],mOver=false,mKeyStates={},mCache={};
+let mLang='en',mCols=5,mTarget='',mRow=0,mGuess=[],mOver=false,mKeyStates={},mCache={},mFound={};
 
 function motusSetLang(l){
   mLang=l;
@@ -471,7 +471,7 @@ function motusNewGame(){
   mCols=cfg.cols;
   const list=cfg.words.filter(w=>w.length===mCols);
   mTarget=list[Math.floor(Math.random()*list.length)];
-  mRow=0;mGuess=[];mOver=false;mKeyStates={};
+  mRow=0;mGuess=[];mOver=false;mKeyStates={};mFound={};
   const u=MOTUS_UI[mLang]||MOTUS_UI.en;
   const set=(id,v)=>{const e=document.getElementById(id);if(e)e.textContent=v;};
   set('mu-badge',u.badge(mCols));
@@ -511,23 +511,57 @@ function motusBuildKB(){
   });
 }
 function motusShowFirst(){const c=document.getElementById('mc-'+mRow+'-0');if(c){c.className='mcell mfix';c.textContent=mTarget[0];}motusUpdateKey(mTarget[0],'correct');}
+function motusPrefill(){
+  // Pre-fill cells with letters found in correct position from previous rows
+  for(const[pos,letter]of Object.entries(mFound)){
+    const i=parseInt(pos);if(i===0)continue; // first letter already shown
+    const cell=document.getElementById('mc-'+mRow+'-'+i);
+    if(cell){cell.textContent=letter;cell.className='mcell mfix';}
+  }
+}
 function motusActivateRow(){for(let c=1;c<mCols;c++){const el=document.getElementById('mc-'+mRow+'-'+c);if(el)el.classList.add('mar');}}
 function motusRender(){
   for(let c=0;c<mCols;c++){
     const cell=document.getElementById('mc-'+mRow+'-'+c);if(!cell)continue;
     if(c===0){cell.className='mcell mfix';cell.textContent=mTarget[0];continue;}
-    cell.className='mcell mar';
-    if(c<mGuess.length){cell.textContent=mGuess[c];cell.classList.add('mfil');}else cell.textContent='';
+    if(c<mGuess.length){
+      cell.className='mcell mar mfil';cell.textContent=mGuess[c];
+    }else if(mFound[c]){
+      // Show pre-filled correct letter (editable — will be overwritten by typing)
+      cell.className='mcell mfix';cell.textContent=mFound[c];
+    }else{
+      cell.className='mcell mar';cell.textContent='';
+    }
   }
 }
 function motusKey(key){
   if(mOver)return;
-  if(key==='⌫'||key==='Backspace'){if(mGuess.length>0){sndBackspace();mGuess.pop();motusRender();}}
-  else if(key==='✓'||key==='Enter'){motusSubmit();}
+  if(key==='⌫'||key==='Backspace'){
+    if(mGuess.length>1){sndBackspace();mGuess.pop();motusRender();}
+  }
+  else if(key==='✓'||key==='Enter'){
+    // Before submitting, fill in any remaining pre-filled positions
+    motusAutoFillFound();
+    motusSubmit();
+  }
   else if(/^[A-Z]$/.test(key)&&mGuess.length<mCols){
     if(mGuess.length===0)mGuess.push(mTarget[0]);
-    if(mGuess.length<mCols){sndKey();mGuess.push(key);motusRender();}
+    if(mGuess.length<mCols){
+      // Skip over pre-filled positions by auto-inserting found letters
+      sndKey();mGuess.push(key);
+      while(mGuess.length<mCols&&mFound[mGuess.length]){
+        mGuess.push(mFound[mGuess.length]);
+      }
+      motusRender();
+    }
     if(mGuess.length===mCols) setTimeout(()=>motusSubmit(),120);
+  }
+}
+function motusAutoFillFound(){
+  // Fill any gaps with pre-found letters before submit
+  while(mGuess.length<mCols){
+    if(mFound[mGuess.length])mGuess.push(mFound[mGuess.length]);
+    else break;
   }
 }
 async function motusSubmit(){
@@ -560,12 +594,19 @@ async function motusSubmit(){
       if(winRow) winRow.classList.add('mwin');
       setTimeout(()=>{sndWin();motusSetMsg(u.win,'win');mOver=true;sutomConfetti();},mCols*70+200);
     }else{
+      // Store correct positions from this attempt
+      for(let i=0;i<mCols;i++){if(res[i]==='correct')mFound[i]=word[i];}
       mRow++;mGuess=[mTarget[0]];
       if(mRow>=ROWS){
         mOver=true;sndLose();motusSetMsg(u.lose,'err');
         const rev=document.getElementById('mu-reveal');const mr=document.getElementById('mu-revealed');
         if(mr)mr.textContent=mTarget;if(rev)rev.classList.add('show');
-      }else{motusShowFirst();motusActivateRow();motusSetMsg(' ');}
+      }else{
+        motusShowFirst();motusActivateRow();
+        // Pre-fill found letters (correct positions from previous rows)
+        motusPrefill();
+        motusSetMsg(' ');
+      }
     }
   },mCols*80+120);
 }
@@ -712,25 +753,33 @@ document.addEventListener('keydown',e=>{
 // ── Clavier natif mobile ──
 const muInput=document.getElementById('mu-input');
 const isMobile=/Mobi|Android|iPhone|iPad/i.test(navigator.userAgent);
+const SENTINEL='\u200B'; // zero-width space — iOS needs something to "delete"
 if(isMobile&&muInput){
-  // Afficher le hint
   const hint=document.getElementById('mu-tap-hint');
   if(hint)hint.style.display='block';
+  // Keep sentinel so iOS backspace always has something to remove
+  muInput.value=SENTINEL;
 
-  // Capturer les lettres tapées
+  muInput.addEventListener('beforeinput',function(e){
+    if(e.inputType==='deleteContentBackward'){
+      e.preventDefault();
+      motusKey('Backspace');
+      this.value=SENTINEL;
+      // Place cursor after sentinel
+      setTimeout(()=>{this.setSelectionRange(1,1);},0);
+    }
+  });
   muInput.addEventListener('input',function(){
-    const val=this.value.replace(/[^a-zA-Z]/g,'').toUpperCase();
-    this.value='';
+    const raw=this.value.replace(/[\u200B]/g,'');
+    const val=raw.replace(/[^a-zA-Z]/g,'').toUpperCase();
+    this.value=SENTINEL;
+    setTimeout(()=>{this.setSelectionRange(1,1);},0);
     if(val)motusKey(val[val.length-1]);
   });
-  // Capturer le backspace natif
-  muInput.addEventListener('beforeinput',function(e){
-    if(e.inputType==='deleteContentBackward'){motusKey('Backspace');e.preventDefault();}
-  });
   // Tap sur la grille ou la zone de jeu → focus input → clavier natif s'ouvre
-  document.getElementById('mu-grid')?.addEventListener('click',()=>{if(!mOver)muInput.focus();});
+  document.getElementById('mu-grid')?.addEventListener('click',()=>{if(!mOver){muInput.focus();muInput.value=SENTINEL;setTimeout(()=>{muInput.setSelectionRange(1,1);},0);}});
   document.getElementById('sutom')?.addEventListener('click',e=>{
-    if(!mOver&&!e.target.closest('.mkey,.flag-btn,#mu-newbtn,#mu-input'))muInput.focus();
+    if(!mOver&&!e.target.closest('.mkey,.flag-btn,#mu-newbtn,#mu-input')){muInput.focus();muInput.value=SENTINEL;setTimeout(()=>{muInput.setSelectionRange(1,1);},0);}
   });
 }
 
