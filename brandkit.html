@@ -100,7 +100,10 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;lin
 
 .cr-platforms{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border2);margin:24px 0 0;}
 .cr-plat{background:var(--card);padding:20px 16px;text-align:center;}
-.cr-plat-icon{font-size:1.1rem;margin-bottom:6px;}
+.cr-plat-icon{font-size:1.1rem;margin-bottom:6px;display:flex;justify-content:center;}
+.cr-plat-icon a{color:inherit;text-decoration:none;display:flex;align-items:center;transition:opacity .2s;}
+.cr-plat-icon a:hover{opacity:.7;}
+.cr-plat-icon svg{width:22px;height:22px;}
 .cr-plat-val{font-family:'Syne',sans-serif;font-weight:800;font-size:1.3rem;display:block;}
 .cr-card.elisa .cr-plat-val{color:var(--elisa);}
 .cr-card.pierre .cr-plat-val{color:var(--pierre);}
@@ -267,23 +270,23 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;lin
           <div class="cr-info">
             <div class="cr-name">Elisa Is Running</div>
             <div class="cr-niche" data-i18n="elisa_niche">Running · Sport · Lifestyle France</div>
-            <div class="cr-flag">🇫🇷 France · ✓ <span data-i18n="verified">Compte Instagram vérifié</span></div>
+            <div class="cr-flag">🇫🇷 France · ✓ <span data-i18n="verified">Créateur vérifié</span></div>
           </div>
         </div>
 
         <div class="cr-platforms">
           <div class="cr-plat">
-            <div class="cr-plat-icon">▶️</div>
+            <div class="cr-plat-icon"><a href="https://youtube.com/@Nox" target="_blank" title="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31.4 31.4 0 0 0 0 12a31.4 31.4 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1c.5-1.9.5-5.8.5-5.8s0-3.9-.5-5.8zM9.5 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg></a></div>
             <span class="cr-plat-val" id="e-yt-subs">13 900</span>
             <span class="cr-plat-lbl" data-i18n="subs">Abonnés</span>
           </div>
           <div class="cr-plat">
-            <div class="cr-plat-icon">📸</div>
+            <div class="cr-plat-icon"><a href="https://instagram.com/elisa_is_running" target="_blank" title="Instagram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.2c2.7 0 3 0 4.1.1 1 0 1.5.2 1.9.3.5.2.8.4 1.1.7.3.3.5.7.7 1.1.1.4.3.9.3 1.9 0 1 .1 1.4.1 4.1s0 3-.1 4.1c0 1-.2 1.5-.3 1.9-.2.5-.4.8-.7 1.1-.3.3-.7.5-1.1.7-.4.1-.9.3-1.9.3-1 0-1.4.1-4.1.1s-3 0-4.1-.1c-1 0-1.5-.2-1.9-.3-.5-.2-.8-.4-1.1-.7-.3-.3-.5-.7-.7-1.1-.1-.4-.3-.9-.3-1.9 0-1-.1-1.4-.1-4.1s0-3 .1-4.1c0-1 .2-1.5.3-1.9.2-.5.4-.8.7-1.1.3-.3.7-.5 1.1-.7.4-.1.9-.3 1.9-.3 1 0 1.4-.1 4.1-.1zm0-1.7C9.3.5 8.8.5 7.7.5c-1 0-1.8.2-2.4.4C4.6 1.2 4 1.5 3.5 2 3 2.5 2.6 3.1 2.3 3.8c-.2.7-.4 1.4-.4 2.4 0 1.1-.1 1.5-.1 4.3s0 3.2.1 4.3c0 1 .2 1.8.4 2.4.3.7.6 1.3 1.2 1.8.5.5 1.1.9 1.8 1.2.7.2 1.4.4 2.4.4 1.1 0 1.5.1 4.3.1s3.2 0 4.3-.1c1 0 1.8-.2 2.4-.4.7-.3 1.3-.6 1.8-1.2.5-.5.9-1.1 1.2-1.8.2-.7.4-1.4.4-2.4 0-1.1.1-1.5.1-4.3s0-3.2-.1-4.3c0-1-.2-1.8-.4-2.4-.3-.7-.6-1.3-1.2-1.8-.5-.5-1.1-.9-1.8-1.2C17.5.7 16.8.5 15.8.5c-1.1 0-1.5-.1-3.8 0zM12 6.4a5.6 5.6 0 1 0 0 11.2 5.6 5.6 0 0 0 0-11.2zm0 9.2a3.6 3.6 0 1 1 0-7.3 3.6 3.6 0 0 1 0 7.3zm7.1-9.4a1.3 1.3 0 1 0-2.6 0 1.3 1.3 0 0 0 2.6 0z"/></svg></a></div>
             <span class="cr-plat-val" id="e-ig-followers">12 760</span>
             <span class="cr-plat-lbl" data-i18n="followers">Followers</span>
           </div>
           <div class="cr-plat">
-            <div class="cr-plat-icon">🎵</div>
+            <div class="cr-plat-icon"><a href="https://tiktok.com/@elisaisrunning" target="_blank" title="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.3 5.3a4.8 4.8 0 0 1-2.9-1.5A4.7 4.7 0 0 1 15.2.5h-3.7v13.8a2.8 2.8 0 0 1-2.8 2.6 2.8 2.8 0 0 1-2.8-2.8 2.8 2.8 0 0 1 2.8-2.8c.3 0 .6 0 .8.1V7.6a6.6 6.6 0 0 0-.8-.1 6.5 6.5 0 0 0-6.5 6.6 6.5 6.5 0 0 0 6.5 6.5 6.5 6.5 0 0 0 6.5-6.5V8.5a8.5 8.5 0 0 0 4.9 1.6V6.3a4.8 4.8 0 0 1-1.9-1z"/></svg></a></div>
             <span class="cr-plat-val" id="e-tt-followers">1 573</span>
             <span class="cr-plat-lbl" data-i18n="followers">Followers</span>
           </div>
@@ -293,9 +296,9 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;lin
           <p class="cr-pitch" data-i18n="elisa_pitch">Une communauté de runners passionnés — vrais athlètes, vrai équipement, vrai engagement. Elisa teste, court et partage avec authenticité.</p>
 
           <div class="cr-social">
-            <a href="https://youtube.com/@Nox" target="_blank" class="cr-social-link">▶ Nox</a>
-            <a href="https://instagram.com/elisa_is_running" target="_blank" class="cr-social-link">📸 Instagram</a>
-            <a href="https://tiktok.com/@elisaisrunning" target="_blank" class="cr-social-link">🎵 TikTok</a>
+            <a href="https://youtube.com/@Nox" target="_blank" class="cr-social-link"><svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14" style="width:14px;height:14px;"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31.4 31.4 0 0 0 0 12a31.4 31.4 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1c.5-1.9.5-5.8.5-5.8s0-3.9-.5-5.8zM9.5 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg> Nox</a>
+            <a href="https://instagram.com/elisa_is_running" target="_blank" class="cr-social-link"><svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14" style="width:14px;height:14px;"><path d="M12 2.2c2.7 0 3 0 4.1.1 1 0 1.5.2 1.9.3.5.2.8.4 1.1.7.3.3.5.7.7 1.1.1.4.3.9.3 1.9 0 1 .1 1.4.1 4.1s0 3-.1 4.1c0 1-.2 1.5-.3 1.9-.2.5-.4.8-.7 1.1-.3.3-.7.5-1.1.7-.4.1-.9.3-1.9.3-1 0-1.4.1-4.1.1s-3 0-4.1-.1c-1 0-1.5-.2-1.9-.3-.5-.2-.8-.4-1.1-.7-.3-.3-.5-.7-.7-1.1-.1-.4-.3-.9-.3-1.9 0-1-.1-1.4-.1-4.1s0-3 .1-4.1c0-1 .2-1.5.3-1.9.2-.5.4-.8.7-1.1.3-.3.7-.5 1.1-.7.4-.1.9-.3 1.9-.3 1 0 1.4-.1 4.1-.1zm0-1.7C9.3.5 8.8.5 7.7.5c-1 0-1.8.2-2.4.4C4.6 1.2 4 1.5 3.5 2 3 2.5 2.6 3.1 2.3 3.8c-.2.7-.4 1.4-.4 2.4 0 1.1-.1 1.5-.1 4.3s0 3.2.1 4.3c0 1 .2 1.8.4 2.4.3.7.6 1.3 1.2 1.8.5.5 1.1.9 1.8 1.2.7.2 1.4.4 2.4.4 1.1 0 1.5.1 4.3.1s3.2 0 4.3-.1c1 0 1.8-.2 2.4-.4.7-.3 1.3-.6 1.8-1.2.5-.5.9-1.1 1.2-1.8.2-.7.4-1.4.4-2.4 0-1.1.1-1.5.1-4.3s0-3.2-.1-4.3c0-1-.2-1.8-.4-2.4-.3-.7-.6-1.3-1.2-1.8-.5-.5-1.1-.9-1.8-1.2C17.5.7 16.8.5 15.8.5c-1.1 0-1.5-.1-3.8 0zM12 6.4a5.6 5.6 0 1 0 0 11.2 5.6 5.6 0 0 0 0-11.2zm0 9.2a3.6 3.6 0 1 1 0-7.3 3.6 3.6 0 0 1 0 7.3zm7.1-9.4a1.3 1.3 0 1 0-2.6 0 1.3 1.3 0 0 0 2.6 0z"/></svg> Instagram</a>
+            <a href="https://tiktok.com/@elisaisrunning" target="_blank" class="cr-social-link"><svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14" style="width:14px;height:14px;"><path d="M19.3 5.3a4.8 4.8 0 0 1-2.9-1.5A4.7 4.7 0 0 1 15.2.5h-3.7v13.8a2.8 2.8 0 0 1-2.8 2.6 2.8 2.8 0 0 1-2.8-2.8 2.8 2.8 0 0 1 2.8-2.8c.3 0 .6 0 .8.1V7.6a6.6 6.6 0 0 0-.8-.1 6.5 6.5 0 0 0-6.5 6.6 6.5 6.5 0 0 0 6.5 6.5 6.5 6.5 0 0 0 6.5-6.5V8.5a8.5 8.5 0 0 0 4.9 1.6V6.3a4.8 4.8 0 0 1-1.9-1z"/></svg> TikTok</a>
             <a href="mediakit-elisa.html" class="cr-social-link">📄 Media Kit</a>
           </div>
 
@@ -330,15 +333,15 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;lin
           <div class="cr-rates">
             <div class="cr-rates-title" data-i18n="rates_title">Tarifs indicatifs</div>
             <div class="cr-rate-row">
-              <span class="cr-rate-plat">▶️ YouTube</span>
+              <span class="cr-rate-plat"><svg viewBox="0 0 24 24" fill="currentColor" style="width:12px;height:12px;vertical-align:middle;margin-right:4px;"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31.4 31.4 0 0 0 0 12a31.4 31.4 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1c.5-1.9.5-5.8.5-5.8s0-3.9-.5-5.8zM9.5 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg> YouTube</span>
               <span class="cr-rate-val">50 – 100 €</span>
             </div>
             <div class="cr-rate-row">
-              <span class="cr-rate-plat">📸 Instagram</span>
+              <span class="cr-rate-plat"><svg viewBox="0 0 24 24" fill="currentColor" style="width:12px;height:12px;vertical-align:middle;margin-right:4px;"><path d="M12 2.2c2.7 0 3 0 4.1.1 1 0 1.5.2 1.9.3.5.2.8.4 1.1.7.3.3.5.7.7 1.1.1.4.3.9.3 1.9 0 1 .1 1.4.1 4.1s0 3-.1 4.1c0 1-.2 1.5-.3 1.9-.2.5-.4.8-.7 1.1-.3.3-.7.5-1.1.7-.4.1-.9.3-1.9.3-1 0-1.4.1-4.1.1s-3 0-4.1-.1c-1 0-1.5-.2-1.9-.3-.5-.2-.8-.4-1.1-.7-.3-.3-.5-.7-.7-1.1-.1-.4-.3-.9-.3-1.9 0-1-.1-1.4-.1-4.1s0-3 .1-4.1c0-1 .2-1.5.3-1.9.2-.5.4-.8.7-1.1.3-.3.7-.5 1.1-.7.4-.1.9-.3 1.9-.3 1 0 1.4-.1 4.1-.1zm0-1.7C9.3.5 8.8.5 7.7.5c-1 0-1.8.2-2.4.4C4.6 1.2 4 1.5 3.5 2 3 2.5 2.6 3.1 2.3 3.8c-.2.7-.4 1.4-.4 2.4 0 1.1-.1 1.5-.1 4.3s0 3.2.1 4.3c0 1 .2 1.8.4 2.4.3.7.6 1.3 1.2 1.8.5.5 1.1.9 1.8 1.2.7.2 1.4.4 2.4.4 1.1 0 1.5.1 4.3.1s3.2 0 4.3-.1c1 0 1.8-.2 2.4-.4.7-.3 1.3-.6 1.8-1.2.5-.5.9-1.1 1.2-1.8.2-.7.4-1.4.4-2.4 0-1.1.1-1.5.1-4.3s0-3.2-.1-4.3c0-1-.2-1.8-.4-2.4-.3-.7-.6-1.3-1.2-1.8-.5-.5-1.1-.9-1.8-1.2C17.5.7 16.8.5 15.8.5c-1.1 0-1.5-.1-3.8 0zM12 6.4a5.6 5.6 0 1 0 0 11.2 5.6 5.6 0 0 0 0-11.2zm0 9.2a3.6 3.6 0 1 1 0-7.3 3.6 3.6 0 0 1 0 7.3zm7.1-9.4a1.3 1.3 0 1 0-2.6 0 1.3 1.3 0 0 0 2.6 0z"/></svg> Instagram</span>
               <span class="cr-rate-val">30 – 60 €</span>
             </div>
             <div class="cr-rate-row">
-              <span class="cr-rate-plat">🎵 TikTok</span>
+              <span class="cr-rate-plat"><svg viewBox="0 0 24 24" fill="currentColor" style="width:12px;height:12px;vertical-align:middle;margin-right:4px;"><path d="M19.3 5.3a4.8 4.8 0 0 1-2.9-1.5A4.7 4.7 0 0 1 15.2.5h-3.7v13.8a2.8 2.8 0 0 1-2.8 2.6 2.8 2.8 0 0 1-2.8-2.8 2.8 2.8 0 0 1 2.8-2.8c.3 0 .6 0 .8.1V7.6a6.6 6.6 0 0 0-.8-.1 6.5 6.5 0 0 0-6.5 6.6 6.5 6.5 0 0 0 6.5 6.5 6.5 6.5 0 0 0 6.5-6.5V8.5a8.5 8.5 0 0 0 4.9 1.6V6.3a4.8 4.8 0 0 1-1.9-1z"/></svg> TikTok</span>
               <span class="cr-rate-val">25 – 40 €</span>
             </div>
             <div class="cr-rate-row">
@@ -360,23 +363,23 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;lin
           <div class="cr-info">
             <div class="cr-name">Tesla Burger · Pierre</div>
             <div class="cr-niche" data-i18n="pierre_niche">Tesla · Électrique · Tech · Lifestyle France</div>
-            <div class="cr-flag">🇫🇷 France</div>
+            <div class="cr-flag">🇫🇷 France · ✓ <span data-i18n="verified">Créateur vérifié</span></div>
           </div>
         </div>
 
         <div class="cr-platforms">
           <div class="cr-plat">
-            <div class="cr-plat-icon">▶️</div>
+            <div class="cr-plat-icon"><a href="https://youtube.com/@Wednesday" target="_blank" title="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31.4 31.4 0 0 0 0 12a31.4 31.4 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1c.5-1.9.5-5.8.5-5.8s0-3.9-.5-5.8zM9.5 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg></a></div>
             <span class="cr-plat-val" id="p-yt-subs">11 900</span>
             <span class="cr-plat-lbl" data-i18n="subs">Abonnés</span>
           </div>
           <div class="cr-plat">
-            <div class="cr-plat-icon">📸</div>
+            <div class="cr-plat-icon"><a href="https://instagram.com/teslaburger" target="_blank" title="Instagram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.2c2.7 0 3 0 4.1.1 1 0 1.5.2 1.9.3.5.2.8.4 1.1.7.3.3.5.7.7 1.1.1.4.3.9.3 1.9 0 1 .1 1.4.1 4.1s0 3-.1 4.1c0 1-.2 1.5-.3 1.9-.2.5-.4.8-.7 1.1-.3.3-.7.5-1.1.7-.4.1-.9.3-1.9.3-1 0-1.4.1-4.1.1s-3 0-4.1-.1c-1 0-1.5-.2-1.9-.3-.5-.2-.8-.4-1.1-.7-.3-.3-.5-.7-.7-1.1-.1-.4-.3-.9-.3-1.9 0-1-.1-1.4-.1-4.1s0-3 .1-4.1c0-1 .2-1.5.3-1.9.2-.5.4-.8.7-1.1.3-.3.7-.5 1.1-.7.4-.1.9-.3 1.9-.3 1 0 1.4-.1 4.1-.1zm0-1.7C9.3.5 8.8.5 7.7.5c-1 0-1.8.2-2.4.4C4.6 1.2 4 1.5 3.5 2 3 2.5 2.6 3.1 2.3 3.8c-.2.7-.4 1.4-.4 2.4 0 1.1-.1 1.5-.1 4.3s0 3.2.1 4.3c0 1 .2 1.8.4 2.4.3.7.6 1.3 1.2 1.8.5.5 1.1.9 1.8 1.2.7.2 1.4.4 2.4.4 1.1 0 1.5.1 4.3.1s3.2 0 4.3-.1c1 0 1.8-.2 2.4-.4.7-.3 1.3-.6 1.8-1.2.5-.5.9-1.1 1.2-1.8.2-.7.4-1.4.4-2.4 0-1.1.1-1.5.1-4.3s0-3.2-.1-4.3c0-1-.2-1.8-.4-2.4-.3-.7-.6-1.3-1.2-1.8-.5-.5-1.1-.9-1.8-1.2C17.5.7 16.8.5 15.8.5c-1.1 0-1.5-.1-3.8 0zM12 6.4a5.6 5.6 0 1 0 0 11.2 5.6 5.6 0 0 0 0-11.2zm0 9.2a3.6 3.6 0 1 1 0-7.3 3.6 3.6 0 0 1 0 7.3zm7.1-9.4a1.3 1.3 0 1 0-2.6 0 1.3 1.3 0 0 0 2.6 0z"/></svg></a></div>
             <span class="cr-plat-val" id="p-ig-followers">9 753</span>
             <span class="cr-plat-lbl" data-i18n="followers">Followers</span>
           </div>
           <div class="cr-plat">
-            <div class="cr-plat-icon">🎵</div>
+            <div class="cr-plat-icon"><a href="https://tiktok.com/@teslaburger" target="_blank" title="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.3 5.3a4.8 4.8 0 0 1-2.9-1.5A4.7 4.7 0 0 1 15.2.5h-3.7v13.8a2.8 2.8 0 0 1-2.8 2.6 2.8 2.8 0 0 1-2.8-2.8 2.8 2.8 0 0 1 2.8-2.8c.3 0 .6 0 .8.1V7.6a6.6 6.6 0 0 0-.8-.1 6.5 6.5 0 0 0-6.5 6.6 6.5 6.5 0 0 0 6.5 6.5 6.5 6.5 0 0 0 6.5-6.5V8.5a8.5 8.5 0 0 0 4.9 1.6V6.3a4.8 4.8 0 0 1-1.9-1z"/></svg></a></div>
             <span class="cr-plat-val" id="p-tt-followers">1 438</span>
             <span class="cr-plat-lbl" data-i18n="followers">Followers</span>
           </div>
@@ -386,9 +389,9 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;lin
           <p class="cr-pitch" data-i18n="pierre_pitch">Le créateur français référent sur les véhicules électriques et la tech. Avis de confiance, tests terrain, audience d'early adopters avec forte intention d'achat.</p>
 
           <div class="cr-social">
-            <a href="https://youtube.com/@Wednesday" target="_blank" class="cr-social-link">▶ Wednesday</a>
-            <a href="https://instagram.com/teslaburger" target="_blank" class="cr-social-link">📸 Instagram</a>
-            <a href="https://tiktok.com/@teslaburger" target="_blank" class="cr-social-link">🎵 TikTok</a>
+            <a href="https://youtube.com/@Wednesday" target="_blank" class="cr-social-link"><svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14" style="width:14px;height:14px;"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31.4 31.4 0 0 0 0 12a31.4 31.4 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1c.5-1.9.5-5.8.5-5.8s0-3.9-.5-5.8zM9.5 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg> Wednesday</a>
+            <a href="https://instagram.com/teslaburger" target="_blank" class="cr-social-link"><svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14" style="width:14px;height:14px;"><path d="M12 2.2c2.7 0 3 0 4.1.1 1 0 1.5.2 1.9.3.5.2.8.4 1.1.7.3.3.5.7.7 1.1.1.4.3.9.3 1.9 0 1 .1 1.4.1 4.1s0 3-.1 4.1c0 1-.2 1.5-.3 1.9-.2.5-.4.8-.7 1.1-.3.3-.7.5-1.1.7-.4.1-.9.3-1.9.3-1 0-1.4.1-4.1.1s-3 0-4.1-.1c-1 0-1.5-.2-1.9-.3-.5-.2-.8-.4-1.1-.7-.3-.3-.5-.7-.7-1.1-.1-.4-.3-.9-.3-1.9 0-1-.1-1.4-.1-4.1s0-3 .1-4.1c0-1 .2-1.5.3-1.9.2-.5.4-.8.7-1.1.3-.3.7-.5 1.1-.7.4-.1.9-.3 1.9-.3 1 0 1.4-.1 4.1-.1zm0-1.7C9.3.5 8.8.5 7.7.5c-1 0-1.8.2-2.4.4C4.6 1.2 4 1.5 3.5 2 3 2.5 2.6 3.1 2.3 3.8c-.2.7-.4 1.4-.4 2.4 0 1.1-.1 1.5-.1 4.3s0 3.2.1 4.3c0 1 .2 1.8.4 2.4.3.7.6 1.3 1.2 1.8.5.5 1.1.9 1.8 1.2.7.2 1.4.4 2.4.4 1.1 0 1.5.1 4.3.1s3.2 0 4.3-.1c1 0 1.8-.2 2.4-.4.7-.3 1.3-.6 1.8-1.2.5-.5.9-1.1 1.2-1.8.2-.7.4-1.4.4-2.4 0-1.1.1-1.5.1-4.3s0-3.2-.1-4.3c0-1-.2-1.8-.4-2.4-.3-.7-.6-1.3-1.2-1.8-.5-.5-1.1-.9-1.8-1.2C17.5.7 16.8.5 15.8.5c-1.1 0-1.5-.1-3.8 0zM12 6.4a5.6 5.6 0 1 0 0 11.2 5.6 5.6 0 0 0 0-11.2zm0 9.2a3.6 3.6 0 1 1 0-7.3 3.6 3.6 0 0 1 0 7.3zm7.1-9.4a1.3 1.3 0 1 0-2.6 0 1.3 1.3 0 0 0 2.6 0z"/></svg> Instagram</a>
+            <a href="https://tiktok.com/@teslaburger" target="_blank" class="cr-social-link"><svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14" style="width:14px;height:14px;"><path d="M19.3 5.3a4.8 4.8 0 0 1-2.9-1.5A4.7 4.7 0 0 1 15.2.5h-3.7v13.8a2.8 2.8 0 0 1-2.8 2.6 2.8 2.8 0 0 1-2.8-2.8 2.8 2.8 0 0 1 2.8-2.8c.3 0 .6 0 .8.1V7.6a6.6 6.6 0 0 0-.8-.1 6.5 6.5 0 0 0-6.5 6.6 6.5 6.5 0 0 0 6.5 6.5 6.5 6.5 0 0 0 6.5-6.5V8.5a8.5 8.5 0 0 0 4.9 1.6V6.3a4.8 4.8 0 0 1-1.9-1z"/></svg> TikTok</a>
             <a href="mediakit-pierre.html" class="cr-social-link">📄 Media Kit</a>
           </div>
 
@@ -423,15 +426,15 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;lin
           <div class="cr-rates">
             <div class="cr-rates-title" data-i18n="rates_title">Tarifs indicatifs</div>
             <div class="cr-rate-row">
-              <span class="cr-rate-plat">▶️ YouTube</span>
+              <span class="cr-rate-plat"><svg viewBox="0 0 24 24" fill="currentColor" style="width:12px;height:12px;vertical-align:middle;margin-right:4px;"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31.4 31.4 0 0 0 0 12a31.4 31.4 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1c.5-1.9.5-5.8.5-5.8s0-3.9-.5-5.8zM9.5 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg> YouTube</span>
               <span class="cr-rate-val">422 – 494 €</span>
             </div>
             <div class="cr-rate-row">
-              <span class="cr-rate-plat">📸 Instagram</span>
+              <span class="cr-rate-plat"><svg viewBox="0 0 24 24" fill="currentColor" style="width:12px;height:12px;vertical-align:middle;margin-right:4px;"><path d="M12 2.2c2.7 0 3 0 4.1.1 1 0 1.5.2 1.9.3.5.2.8.4 1.1.7.3.3.5.7.7 1.1.1.4.3.9.3 1.9 0 1 .1 1.4.1 4.1s0 3-.1 4.1c0 1-.2 1.5-.3 1.9-.2.5-.4.8-.7 1.1-.3.3-.7.5-1.1.7-.4.1-.9.3-1.9.3-1 0-1.4.1-4.1.1s-3 0-4.1-.1c-1 0-1.5-.2-1.9-.3-.5-.2-.8-.4-1.1-.7-.3-.3-.5-.7-.7-1.1-.1-.4-.3-.9-.3-1.9 0-1-.1-1.4-.1-4.1s0-3 .1-4.1c0-1 .2-1.5.3-1.9.2-.5.4-.8.7-1.1.3-.3.7-.5 1.1-.7.4-.1.9-.3 1.9-.3 1 0 1.4-.1 4.1-.1zm0-1.7C9.3.5 8.8.5 7.7.5c-1 0-1.8.2-2.4.4C4.6 1.2 4 1.5 3.5 2 3 2.5 2.6 3.1 2.3 3.8c-.2.7-.4 1.4-.4 2.4 0 1.1-.1 1.5-.1 4.3s0 3.2.1 4.3c0 1 .2 1.8.4 2.4.3.7.6 1.3 1.2 1.8.5.5 1.1.9 1.8 1.2.7.2 1.4.4 2.4.4 1.1 0 1.5.1 4.3.1s3.2 0 4.3-.1c1 0 1.8-.2 2.4-.4.7-.3 1.3-.6 1.8-1.2.5-.5.9-1.1 1.2-1.8.2-.7.4-1.4.4-2.4 0-1.1.1-1.5.1-4.3s0-3.2-.1-4.3c0-1-.2-1.8-.4-2.4-.3-.7-.6-1.3-1.2-1.8-.5-.5-1.1-.9-1.8-1.2C17.5.7 16.8.5 15.8.5c-1.1 0-1.5-.1-3.8 0zM12 6.4a5.6 5.6 0 1 0 0 11.2 5.6 5.6 0 0 0 0-11.2zm0 9.2a3.6 3.6 0 1 1 0-7.3 3.6 3.6 0 0 1 0 7.3zm7.1-9.4a1.3 1.3 0 1 0-2.6 0 1.3 1.3 0 0 0 2.6 0z"/></svg> Instagram</span>
               <span class="cr-rate-val">844 – 977 €</span>
             </div>
             <div class="cr-rate-row">
-              <span class="cr-rate-plat">🎵 TikTok</span>
+              <span class="cr-rate-plat"><svg viewBox="0 0 24 24" fill="currentColor" style="width:12px;height:12px;vertical-align:middle;margin-right:4px;"><path d="M19.3 5.3a4.8 4.8 0 0 1-2.9-1.5A4.7 4.7 0 0 1 15.2.5h-3.7v13.8a2.8 2.8 0 0 1-2.8 2.6 2.8 2.8 0 0 1-2.8-2.8 2.8 2.8 0 0 1 2.8-2.8c.3 0 .6 0 .8.1V7.6a6.6 6.6 0 0 0-.8-.1 6.5 6.5 0 0 0-6.5 6.6 6.5 6.5 0 0 0 6.5 6.5 6.5 6.5 0 0 0 6.5-6.5V8.5a8.5 8.5 0 0 0 4.9 1.6V6.3a4.8 4.8 0 0 1-1.9-1z"/></svg> TikTok</span>
               <span class="cr-rate-val">40 – 80 €</span>
             </div>
             <div class="cr-rate-row">
@@ -765,7 +768,7 @@ function setLang(l) {
 }
 
 // ── ACCESS GATE ───────────────────────────────────────────────────
-const TOKEN = 'brand2026';
+const TOKEN = 'brand27';
 function checkCode() {
   const v = document.getElementById('gateInput').value.trim().toLowerCase();
   if (v === TOKEN) {
