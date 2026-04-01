@@ -347,7 +347,8 @@ const params=new URLSearchParams(window.location.search);
 const creatorKey=params.get('creator');
 const token=params.get('token');
 
-const VALID_TOKENS={elisa:'elisa26',pierre:'pierre25'};
+// Tokens are now encrypted in individual mediakit pages
+const VALID_TOKENS={elisa:'elisa26',pierre:'pierre25'}; // kept for gateway redirect only
 
 function checkAccess(){
   if(!creatorKey||!token||VALID_TOKENS[creatorKey]!==token){

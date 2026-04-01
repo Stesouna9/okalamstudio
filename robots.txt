@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+Disallow: /brandkit.html
+Disallow: /mediakit-elisa.html
+Disallow: /mediakit-pierre.html
+Disallow: /partenaires.html
+Disallow: /_src/
+Disallow: /scripts/
+
+Sitemap: https://stesouna9.github.io/okalamstudio/sitemap.xml
