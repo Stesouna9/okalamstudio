@@ -1118,8 +1118,10 @@
         set('dyn-tt-main', p.tiktok.followers?.toLocaleString('fr'));
       }
       if(d.updated_at){
-        const date=new Date(d.updated_at).toLocaleDateString('fr',{day:'numeric',month:'long',year:'numeric'});
-        set('dyn-update-note', 'Données au '+date+' · Sources : NoxInfluencer + Wednesday Analytics');
+        const dt=new Date(d.updated_at);
+        const date=dt.toLocaleDateString('fr',{day:'numeric',month:'long',year:'numeric'});
+        const time=dt.toLocaleTimeString('fr',{hour:'2-digit',minute:'2-digit'});
+        set('dyn-update-note', 'Données au '+date+' à '+time+' · Sources : NoxInfluencer + Wednesday Analytics');
       }
     }catch(err){/* fallback silencieux sur les valeurs statiques */}
   })();
