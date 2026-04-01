@@ -98,6 +98,19 @@ canvas{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-
 #mu-reveal.show{display:block;}
 #mu-revealed{color:var(--accent);font-weight:800;font-family:'Space Mono',monospace;}
 
+/* SOUND TOGGLE */
+.sound-toggle{
+  position:absolute;top:16px;right:16px;
+  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);
+  border-radius:50%;width:38px;height:38px;
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;transition:all .2s;z-index:10;
+  color:var(--muted);
+}
+.sound-toggle:hover{border-color:var(--accent);color:var(--accent);background:rgba(141,234,255,.08);}
+.sound-toggle.muted{opacity:.4;}
+.sound-toggle svg{width:18px;height:18px;fill:currentColor;}
+
 /* KEYBOARD */
 #mu-keyboard{margin:16px 0;}
 .mkrow{display:flex;justify-content:center;gap:5px;margin-bottom:5px;}
@@ -315,6 +328,10 @@ canvas{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-
 </div>
 
 <section class="sutom-section" id="sutom">
+  <button class="sound-toggle" id="sound-toggle" title="Sons on/off" onclick="toggleSound()">
+    <svg id="sound-icon-on" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+    <svg id="sound-icon-off" viewBox="0 0 24 24" style="display:none;"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>
+  </button>
   <div class="sutom-wrap">
     <h2 style="font-family:'Syne',sans-serif;font-weight:800;font-size:2.5rem;letter-spacing:-.02em;margin-bottom:8px;">SUTOM</h2>
 
@@ -649,7 +666,29 @@ function sutomConfetti(){
 // ── SONS SUTOM (Web Audio API) ──────────────────────────────────
 const _AC = window.AudioContext || window.webkitAudioContext;
 let _ctx = null;
-function _ac(){ if(!_ctx) _ctx = new _AC(); return _ctx; }
+let mSoundOn = localStorage.getItem('sutom_sound') !== 'off';
+function _ac(){ if(!mSoundOn) return null; if(!_ctx) _ctx = new _AC(); return _ctx; }
+function toggleSound(){
+  mSoundOn = !mSoundOn;
+  localStorage.setItem('sutom_sound', mSoundOn ? 'on' : 'off');
+  const btn = document.getElementById('sound-toggle');
+  const iconOn = document.getElementById('sound-icon-on');
+  const iconOff = document.getElementById('sound-icon-off');
+  if(btn) btn.classList.toggle('muted', !mSoundOn);
+  if(iconOn) iconOn.style.display = mSoundOn ? '' : 'none';
+  if(iconOff) iconOff.style.display = mSoundOn ? 'none' : '';
+}
+// Init icon state on load
+(function(){
+  const btn=document.getElementById('sound-toggle');
+  const iconOn=document.getElementById('sound-icon-on');
+  const iconOff=document.getElementById('sound-icon-off');
+  if(!mSoundOn){
+    if(btn)btn.classList.add('muted');
+    if(iconOn)iconOn.style.display='none';
+    if(iconOff)iconOff.style.display='';
+  }
+})();
 
 function sndKey(){
   try{
