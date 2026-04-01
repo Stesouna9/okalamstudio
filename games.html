@@ -667,7 +667,13 @@ function sutomConfetti(){
 const _AC = window.AudioContext || window.webkitAudioContext;
 let _ctx = null;
 let mSoundOn = localStorage.getItem('sutom_sound') !== 'off';
-function _ac(){ if(!mSoundOn) return null; if(!_ctx) _ctx = new _AC(); return _ctx; }
+function _ac(){
+  if(!mSoundOn) return null;
+  if(!_ctx) _ctx = new _AC();
+  // Safari suspends AudioContext until user gesture — resume it
+  if(_ctx.state==='suspended') _ctx.resume();
+  return _ctx;
+}
 function toggleSound(){
   mSoundOn = !mSoundOn;
   localStorage.setItem('sutom_sound', mSoundOn ? 'on' : 'off');
