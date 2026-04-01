@@ -139,26 +139,17 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;lin
 <!-- ACCESS DENIED (shown if token is invalid) -->
 <div id="access-denied" class="access-denied" style="display:none;">
   <div class="ad-lock">🔒</div>
-  <h1 class="ad-title">Accès restreint.</h1>
-  <p class="ad-sub">Tu es un partenaire OKALAM Studio ? Sélectionne ton nom puis entre ton code.</p>
+  <h1 class="ad-title">Espace créateurs</h1>
+  <p class="ad-sub">Sélectionne ton profil pour accéder à ton media kit personnel.</p>
   <div class="ad-creators" id="ad-creators">
-    <button class="ad-creator-btn" onclick="selectCreator('elisa','🏃‍♀️','Elisa Is Running')">
+    <a href="mediakit-elisa.html" class="ad-creator-btn" style="text-decoration:none;">
       <span class="ad-creator-emoji">🏃‍♀️</span>
       <span class="ad-creator-name">Elisa Is Running</span>
-    </button>
-    <button class="ad-creator-btn" onclick="selectCreator('pierre','⚡','Tesla Burger')">
+    </a>
+    <a href="mediakit-pierre.html" class="ad-creator-btn" style="text-decoration:none;">
       <span class="ad-creator-emoji">⚡</span>
       <span class="ad-creator-name">Tesla Burger</span>
-    </button>
-  </div>
-  <div id="ad-code-form" style="display:none;flex-direction:column;align-items:center;gap:14px;margin-bottom:24px;">
-    <p class="ad-who" id="ad-who"></p>
-    <div style="display:flex;gap:8px;align-items:center;">
-      <input id="ad-code-input" type="text" placeholder="Ton code…" class="ad-code-input" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
-      <button class="ad-code-submit" onclick="submitCode()">Accéder →</button>
-    </div>
-    <p id="ad-error" style="display:none;font-size:.75rem;color:var(--red);">Code incorrect. Réessaie.</p>
-    <button onclick="resetCreator()" style="background:none;border:none;color:var(--muted);font-size:.75rem;cursor:pointer;text-decoration:underline;">← Changer de compte</button>
+    </a>
   </div>
   <a href="mailto:partnerships@okalamstudio.com" class="ad-email">partnerships@okalamstudio.com</a>
   <a href="brandkit.html" style="margin-top:16px;font-size:.75rem;color:var(--accent);text-decoration:none;border:1px solid var(--border);padding:8px 20px;border-radius:4px;transition:all .2s;display:inline-block;" onmouseover="this.style.borderColor='var(--accent)'" >🏢 Vous êtes une marque ? → Brand Kit</a>
