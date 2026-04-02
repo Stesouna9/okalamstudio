@@ -240,31 +240,7 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;lin
 </div>
 
 <script>
-// ── ACCESS FORM ───────────────────────────────────────────────────
-let _selectedCreator=null;
-function selectCreator(key,emoji,name){
-  _selectedCreator=key;
-  document.getElementById('ad-creators').style.display='none';
-  document.getElementById('ad-who').textContent=emoji+' '+name;
-  document.getElementById('ad-code-form').style.display='flex';
-  document.getElementById('ad-error').style.display='none';
-  document.getElementById('ad-code-input').value='';
-  setTimeout(()=>document.getElementById('ad-code-input').focus(),50);
-}
-function resetCreator(){
-  _selectedCreator=null;
-  document.getElementById('ad-creators').style.display='flex';
-  document.getElementById('ad-code-form').style.display='none';
-}
-function submitCode(){
-  const code=document.getElementById('ad-code-input').value.trim().toLowerCase();
-  if(VALID_TOKENS[_selectedCreator]===code){
-    const pages={elisa:'mediakit-elisa.html',pierre:'mediakit-pierre.html'};
-    window.location.href=pages[_selectedCreator]+'?token='+code;
-  }else{
-    document.getElementById('ad-error').style.display='block';
-    document.getElementById('ad-code-input').focus();
-  }
+// ── ACCESS FORM (legacy — removed, pages are now individually encrypted) ──
 }
 document.addEventListener('keydown',function(e){
   if(e.key==='Enter'&&_selectedCreator) submitCode();
