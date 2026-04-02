@@ -3,7 +3,7 @@ const PAGE_T = {
   en: {
     // NAV (all pages)
     nav_studio:'Studio', nav_projects:'Projects', nav_collabs:'Collaborations', nav_contact:'Contact',
-    nav_games:'Games', nav_home:'Home',
+    nav_games:'Games', nav_home:'Home', nav_elisa:'🔒 Elisa', nav_pierre:'🔒 Pierre', nav_brands:'🏢 Brand Space',
     // FOOTER (all pages)
     footer_tagline:'Creative Studio \u00b7 iOS Apps \u00b7 Talent Creator',
     footer_home:'Home', footer_studio:'Studio', footer_projects:'Projects',
@@ -107,7 +107,7 @@ const PAGE_T = {
 
   fr: {
     nav_studio:'Studio', nav_projects:'Projets', nav_collabs:'Collaborations', nav_contact:'Contact',
-    nav_games:'Jeux', nav_home:'Accueil',
+    nav_games:'Jeux', nav_home:'Accueil', nav_elisa:'🔒 Elisa', nav_pierre:'🔒 Pierre', nav_brands:'🏢 Espace Marques',
     footer_tagline:'Studio Cr\u00e9atif \u00b7 Apps iOS \u00b7 Management Cr\u00e9ateur',
     footer_home:'Accueil', footer_studio:'Studio', footer_projects:'Projets',
     footer_collabs:'Collaborations', footer_contact:'Nous contacter',
@@ -202,7 +202,7 @@ const PAGE_T = {
 
   ja: {
     nav_studio:'スタジオ', nav_projects:'プロジェクト', nav_collabs:'コラボ', nav_contact:'お問い合わせ',
-    nav_games:'ゲーム', nav_home:'ホーム',
+    nav_games:'ゲーム', nav_home:'ホーム', nav_elisa:'🔒 Elisa', nav_pierre:'🔒 Pierre', nav_brands:'🏢 ブランド',
     footer_tagline:'\u30af\u30ea\u30a8\u30a4\u30c6\u30a3\u30d6\u30b9\u30bf\u30b8\u30aa \u00b7 iOS\u30a2\u30d7\u30ea \u00b7 \u30bf\u30ec\u30f3\u30c8\u30af\u30ea\u30a8\u30a4\u30bf\u30fc',
     footer_home:'ホーム', footer_studio:'スタジオ', footer_projects:'プロジェクト',
     footer_collabs:'コラボ', footer_contact:'お問い合わせ',
@@ -296,7 +296,7 @@ const PAGE_T = {
 
   zh: {
     nav_studio:'工作室', nav_projects:'项目', nav_collabs:'合作', nav_contact:'联系',
-    nav_games:'游戏', nav_home:'首页',
+    nav_games:'游戏', nav_home:'首页', nav_elisa:'🔒 Elisa', nav_pierre:'🔒 Pierre', nav_brands:'🏢 品牌空间',
     footer_tagline:'\u521b\u610f\u5de5\u4f5c\u5ba4 \u00b7 iOS\u5e94\u7528 \u00b7 \u521b\u4f5c\u8005\u7ba1\u7406\u652f\u6301',
     footer_home:'首页', footer_studio:'工作室', footer_projects:'项目',
     footer_collabs:'合作', footer_contact:'联系我们',
@@ -390,7 +390,7 @@ const PAGE_T = {
 
   es: {
     nav_studio:'Estudio', nav_projects:'Proyectos', nav_collabs:'Colaboraciones', nav_contact:'Contacto',
-    nav_games:'Juegos', nav_home:'Inicio',
+    nav_games:'Juegos', nav_home:'Inicio', nav_elisa:'🔒 Elisa', nav_pierre:'🔒 Pierre', nav_brands:'🏢 Espacio Marcas',
     footer_tagline:'Estudio Creativo \u00b7 Apps iOS \u00b7 Management Creador',
     footer_home:'Inicio', footer_studio:'Estudio', footer_projects:'Proyectos',
     footer_collabs:'Colaboraciones', footer_contact:'Contáctanos',
@@ -484,7 +484,7 @@ const PAGE_T = {
 
   pt: {
     nav_studio:'Estúdio', nav_projects:'Projetos', nav_collabs:'Colaborações', nav_contact:'Contato',
-    nav_games:'Jogos', nav_home:'Início',
+    nav_games:'Jogos', nav_home:'Início', nav_elisa:'🔒 Elisa', nav_pierre:'🔒 Pierre', nav_brands:'🏢 Espaço Marcas',
     footer_tagline:'Est\u00fadio Criativo \u00b7 Apps iOS \u00b7 Management Criador',
     footer_home:'Início', footer_studio:'Estúdio', footer_projects:'Projetos',
     footer_collabs:'Colaborações', footer_contact:'Fale conosco',
