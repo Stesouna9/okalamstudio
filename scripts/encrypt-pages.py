@@ -111,15 +111,36 @@ body{{background:#080c12;color:#e8edf5;font-family:'Segoe UI',system-ui,-apple-s
 <div class="gate">
   <div class="gate-logo">OKALAM STUDIO</div>
   <div class="gate-lock">🔒</div>
-  <h1 class="gate-title">Accès protégé</h1>
-  <p class="gate-sub">Ce document est réservé aux partenaires OKALAM Studio.</p>
+  <h1 class="gate-title" id="g-title">Accès protégé</h1>
+  <p class="gate-sub" id="g-sub">Ce document est réservé aux partenaires OKALAM Studio.</p>
   <form class="gate-form" onsubmit="return decrypt(event)">
     <input type="password" class="gate-input" id="pwd" placeholder="Code d'accès" autocomplete="off"/>
-    <button type="submit" class="gate-btn">ACCÉDER</button>
+    <button type="submit" class="gate-btn" id="g-btn">ACCÉDER</button>
   </form>
   <div class="gate-error" id="err">Code incorrect. Réessaie.</div>
-  <a href="index.html" class="gate-home">← Retour au site</a>
+  <a href="index.html" class="gate-home" id="g-back">← Retour au site</a>
 </div>
+<script>
+(function(){{
+  const T={{
+    fr:{{title:"Accès protégé",sub:"Ce document est réservé aux partenaires OKALAM Studio.",ph:"Code d'accès",btn:"ACCÉDER",err:"Code incorrect. Réessaie.",back:"← Retour au site"}},
+    en:{{title:"Protected access",sub:"This document is reserved for OKALAM Studio partners.",ph:"Access code",btn:"ACCESS",err:"Incorrect code. Try again.",back:"← Back to site"}},
+    ja:{{title:"アクセス保護",sub:"このドキュメントはOKALAM Studioのパートナー専用です。",ph:"アクセスコード",btn:"アクセス",err:"コードが正しくありません。",back:"← サイトに戻る"}},
+    zh:{{title:"受保护的访问",sub:"此文档仅供OKALAM Studio合作伙伴使用。",ph:"访问代码",btn:"访问",err:"代码不正确，请重试。",back:"← 返回网站"}},
+    es:{{title:"Acceso protegido",sub:"Este documento está reservado para los socios de OKALAM Studio.",ph:"Código de acceso",btn:"ACCEDER",err:"Código incorrecto. Inténtalo de nuevo.",back:"← Volver al sitio"}},
+    pt:{{title:"Acesso protegido",sub:"Este documento é reservado aos parceiros do OKALAM Studio.",ph:"Código de acesso",btn:"ACEDER",err:"Código incorreto. Tenta novamente.",back:"← Voltar ao site"}}
+  }};
+  const lang=localStorage.getItem('okalam_lang')||'fr';
+  const t=T[lang]||T.fr;
+  document.getElementById('g-title').textContent=t.title;
+  document.getElementById('g-sub').textContent=t.sub;
+  document.getElementById('pwd').placeholder=t.ph;
+  document.getElementById('g-btn').textContent=t.btn;
+  document.getElementById('err').textContent=t.err;
+  document.getElementById('g-back').textContent=t.back;
+  document.title=t.title+' — OKALAM Studio';
+}})();
+</script>
 <script id="encrypted-data" type="application/json">{encrypted_data}</script>
 <script>
 async function decrypt(e){{
