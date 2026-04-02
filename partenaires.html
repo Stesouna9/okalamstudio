@@ -334,27 +334,9 @@ const CREATORS={
 };
 
 // ── AUTH ──────────────────────────────────────────────────────────
-const params=new URLSearchParams(window.location.search);
-const creatorKey=params.get('creator');
-const token=params.get('token');
-
-// Tokens are now encrypted in individual mediakit pages
-const VALID_TOKENS={elisa:'elisa26',pierre:'pierre25'}; // kept for gateway redirect only
-
-function checkAccess(){
-  if(!creatorKey||!token||VALID_TOKENS[creatorKey]!==token){
-    document.getElementById('access-denied').style.display='flex';
-    return null;
-  }
-  document.getElementById('media-kit').style.display='block';
-  return creatorKey;
-}
-
-const activeCreator=checkAccess();
-if(activeCreator){
-  renderMediaKit(activeCreator);
-  fetchApifyStats(activeCreator);
-}
+// Pages are now individually encrypted with AES-256.
+// This page is just a selection gateway — no authentication needed here.
+document.getElementById('access-denied').style.display='flex';
 
 // ── RENDER ───────────────────────────────────────────────────────
 function formatNumber(n){
