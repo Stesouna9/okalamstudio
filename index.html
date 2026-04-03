@@ -516,7 +516,7 @@ async function fetchApifyStats(){
     if(pierreTT){const e=document.getElementById('pierre-tt-followers');if(e)e.textContent=formatNumber(pierreTT.authorMeta?.fans);}
     // Update combined global stats
     const totalYTSubs=(elisaYT?.numberOfSubscribers||13900)+(pierreYT?.numberOfSubscribers||11900);
-    const totalIGFollow=(elisaIG?.followersCount||12760)+(pierreIG?.followersCount||9745);
+    const totalIGFollow=(elisaIG?.followersCount||12760)+(pierreIG?.followersCount||10000);
     const totalYTViews=(elisaYT?.channelTotalViews||4100000)+(pierreYT?.channelTotalViews||17900000);
     const gsYT=document.getElementById('gs_yt');if(gsYT)gsYT.textContent=formatNumber(totalYTSubs);
     const gsIG=document.getElementById('gs_ig');if(gsIG)gsIG.textContent=formatNumber(totalIGFollow);

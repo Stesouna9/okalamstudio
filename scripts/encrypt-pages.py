@@ -10,7 +10,7 @@ from pathlib import Path
 
 # ── CONFIG ──────────────────────────────────────────────────────
 PAGES = {
-    "brandkit.html":        "brand26",
+    # brandkit.html is now public (no encryption)
     "mediakit-elisa.html":  "elisa26",
     "mediakit-pierre.html": "pierre25",
 }
