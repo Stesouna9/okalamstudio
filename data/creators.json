@@ -30,15 +30,16 @@
     "instagram": {
       "handle": "@tesla_burger",
       "url": "https://www.instagram.com/tesla_burger",
-      "followers": "7k+",
-      "followers_raw": 7000,
-      "engagement_rate": "—"
+      "followers": "10k",
+      "followers_raw": 10000,
+      "engagement_rate": "2.95%"
     },
     "tiktok": {
       "handle": "@teslaburger1",
       "url": "https://www.tiktok.com/@teslaburger1",
-      "followers": "—",
-      "avg_views": "—"
+      "followers": "1440",
+      "followers_raw": 1440,
+      "avg_views": "19570"
     },
     "last_updated_youtube": "2026-03",
     "last_updated_manual": "2026-03"
@@ -74,15 +75,16 @@
     "instagram": {
       "handle": "@elisa_is_running",
       "url": "https://www.instagram.com/elisa_is_running",
-      "followers": "—",
-      "followers_raw": 0,
-      "engagement_rate": "—"
+      "followers": "12.8k",
+      "followers_raw": 12760,
+      "engagement_rate": "4.5%"
     },
     "tiktok": {
       "handle": "@elisa.is.running",
       "url": "https://www.tiktok.com/@elisa.is.running",
-      "followers": "—",
-      "avg_views": "—"
+      "followers": "1573",
+      "followers_raw": 1573,
+      "avg_views": "835"
     },
     "last_updated_youtube": "2026-03",
     "last_updated_manual": "2026-03"
