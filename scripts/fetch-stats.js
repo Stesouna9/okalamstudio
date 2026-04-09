@@ -3,7 +3,11 @@
 // Run via GitHub Actions daily; token stored as repo secret APIFY_TOKEN
 
 const TOKEN = process.env.APIFY_TOKEN;
-if (!TOKEN) { console.error('Missing APIFY_TOKEN'); process.exit(1); }
+if (!TOKEN) {
+  console.error('ERROR: Missing APIFY_TOKEN secret.');
+  console.error('Go to GitHub repo → Settings → Secrets → Actions → add APIFY_TOKEN');
+  process.exit(1);
+}
 
 const DATASETS = {
   youtube:   'srx5Ltfgea7cquMCE',
