@@ -113,9 +113,9 @@ canvas{
     <h1 id="ov-title">ALF</h1>
     <div class="sub" id="ov-sub">Maison européenne · Provence</div>
     <div class="keys" id="ov-keys">
-      Bouger <kbd>Z</kbd><kbd>Q</kbd><kbd>S</kbd><kbd>D</kbd> · Tirer <kbd>Espace</kbd><br>
-      Traverse les portes pour passer d'une pièce à l'autre.<br>
-      Vaincs le boss au grenier pour terminer la maison.
+      Bouger <kbd>Z</kbd><kbd>Q</kbd><kbd>S</kbd><kbd>D</kbd> · Tirer <kbd>↑</kbd><kbd>↓</kbd><kbd>←</kbd><kbd>→</kbd> (4 directions)<br>
+      Manette PS5 / Xbox : stick gauche bouger · stick droit tirer · X tirer<br>
+      Traverse les portes · vaincs le boss au grenier.
     </div>
     <button class="btn" id="play-btn">Jouer</button>
   </div>
@@ -150,11 +150,38 @@ canvas{
     surface:'#d4a06a', light:'#ffe8a8',
     grout:'#1a1028', sky:'#1a1028',
   };
+  // Alf — orange tabby (bright golden)
   const A = {
-    body:'#7a8ab8', bodyShade:'#4a5a88', bodyHi:'#a8b8d8',
-    belly:'#c8d4e8', ear:'#4a5a88', innerEar:'#f48ab8',
-    nose:'#5a3848', eye:'#fdc83a', pupil:'#0a0820', outline:'#0a0820',
+    body:'#f4a832', bodyHi:'#fdc04a', stripe:'#b86010', shade:'#a87010',
+    belly:'#f4ecd8', bellyShade:'#d8c4a0',
+    ear:'#b86010', innerEar:'#f48ab8',
+    nose:'#f48a3a', eye:'#b8e83a', eyeHi:'#fff', pupil:'#0a0408',
+    outline:'#2a1408', whisker:'#f4ecd8',
   };
+  // Minou — brown tabby (darker, sitting NPC)
+  const M = {
+    body:'#a87434', bodyHi:'#d49a54', stripe:'#3a2010', shade:'#7a4818',
+    belly:'#f4ecd8', bellyShade:'#c8b89a',
+    ear:'#7a4818', innerEar:'#f48ab8',
+    nose:'#5a3848', eye:'#a8d83a', eyeHi:'#fff', pupil:'#0a0408',
+    outline:'#1a0a05', whisker:'#f4ecd8',
+  };
+
+  // ── Sprite images (loaded from /sprites/) ───────────────────
+  const SPRITES = {};
+  function loadSprite(key, src){
+    return new Promise(res => {
+      const img = new Image();
+      img.onload = () => { SPRITES[key] = img; res(); };
+      img.onerror = () => { SPRITES[key] = null; res(); };
+      img.src = src;
+    });
+  }
+  // Pre-load sprites (fail-soft: game still runs if a sprite is missing)
+  Promise.all([
+    loadSprite('alf',   'sprites/alf.png'),
+    loadSprite('minou', 'sprites/minou.png'),
+  ]);
 
   // ── Geometry ────────────────────────────────────────────────
   const TILE = 16;
@@ -393,9 +420,10 @@ canvas{
     } else if(data.type==='salon'){
       // already handled
     } else if(data.type==='marchand'){
-      // shop: 3 hearts to buy with coins (free for now to demo)
-      state.pickups.push({type:'heart', x: 8*TILE, y: 8*TILE});
-      state.pickups.push({type:'coinPile', x: 11*TILE, y: 8*TILE});
+      // Minou the merchant + items for sale
+      state.npc = { kind:'minou', x: 9.5*TILE, y: 4.5*TILE, talk:0 };
+      state.pickups.push({type:'heart', x: 7*TILE, y: 8*TILE});
+      state.pickups.push({type:'coinPile', x: 12*TILE, y: 8*TILE});
     } else if(data.type==='grenier'){
       spawnBoss(10*TILE, 4*TILE);
     } else if(data.type==='entrance'){
@@ -429,6 +457,7 @@ canvas{
     state.projectiles = [];
     state.coins = [];
     state.particles = [];
+    state.npc = null;
     spawnRoom(rx, ry);
     // Position player at entry door
     if(!state.player) state.player = makePlayer();
@@ -514,30 +543,72 @@ canvas{
     state.damageFlash = Math.max(0, state.damageFlash - dt);
     state.cameraShake = Math.max(0, state.cameraShake - dt*60);
 
-    // Player input
+    // ── Input: keyboard + gamepad (twin-stick) ───────────────
+    // WASD/ZQSD → move · Arrows → shoot 4 directions · Space → shoot facing
+    // Gamepad: left stick → move · right stick → shoot 360° · X → shoot facing
     let mx = 0, my = 0;
-    if(keys['arrowup']||keys['z']||keys['w']) my -= 1;
-    if(keys['arrowdown']||keys['s']) my += 1;
-    if(keys['arrowleft']||keys['q']||keys['a']) mx -= 1;
-    if(keys['arrowright']||keys['d']) mx += 1;
+    if(keys['z']||keys['w']) my -= 1;
+    if(keys['s']) my += 1;
+    if(keys['q']||keys['a']) mx -= 1;
+    if(keys['d']) mx += 1;
+
+    let sx = 0, sy = 0;
+    if(keys['arrowup']) sy -= 1;
+    if(keys['arrowdown']) sy += 1;
+    if(keys['arrowleft']) sx -= 1;
+    if(keys['arrowright']) sx += 1;
+
+    // Gamepad (PS5 / Xbox / generic) — overrides keyboard if active
+    const pads = navigator.getGamepads ? navigator.getGamepads() : [];
+    let gp = null;
+    for(const p of pads){ if(p && p.connected){ gp = p; break; } }
+    if(gp){
+      const dz = 0.20;
+      const lx = Math.abs(gp.axes[0])>dz ? gp.axes[0] : 0;
+      const ly = Math.abs(gp.axes[1])>dz ? gp.axes[1] : 0;
+      if(lx||ly){ mx = lx; my = ly; }
+      // D-pad fallback (some pads expose dpad as buttons 12-15)
+      if(gp.buttons[12]?.pressed) my = -1;
+      if(gp.buttons[13]?.pressed) my =  1;
+      if(gp.buttons[14]?.pressed) mx = -1;
+      if(gp.buttons[15]?.pressed) mx =  1;
+      // Right stick → shoot 360°
+      const dz2 = 0.30;
+      const rx = Math.abs(gp.axes[2])>dz2 ? gp.axes[2] : 0;
+      const ry = Math.abs(gp.axes[3])>dz2 ? gp.axes[3] : 0;
+      if(rx||ry){ sx = rx; sy = ry; }
+      // X / square buttons (0 or 2) → shoot facing direction
+      if((gp.buttons[0]?.pressed || gp.buttons[2]?.pressed) && !sx && !sy){
+        const dirs = {N:[0,-1],S:[0,1],W:[-1,0],E:[1,0]};
+        [sx, sy] = dirs[state.player.dir];
+      }
+    }
+
     const len = Math.hypot(mx,my);
     if(len>0){ mx/=len; my/=len; state.player.walkPhase += dt*9; }
     else state.player.walkPhase *= 0.85;
     tryMove(state.player, mx*state.player.speed*dt, my*state.player.speed*dt);
-    if(my<0) state.player.dir='N';
-    else if(my>0) state.player.dir='S';
-    else if(mx<0) state.player.dir='W';
-    else if(mx>0) state.player.dir='E';
+    if(my<-0.3) state.player.dir='N';
+    else if(my>0.3) state.player.dir='S';
+    else if(mx<-0.3) state.player.dir='W';
+    else if(mx>0.3) state.player.dir='E';
 
-    // Attack
+    // ── Attack (twin-stick) ─────────────────────────────────
     state.player.attackCd = Math.max(0, state.player.attackCd - dt);
-    if(keys[' '] && state.player.attackCd<=0){
-      state.player.attackCd = 0.30;
+    let wantShoot = sx!==0 || sy!==0;
+    let dx = sx, dy = sy;
+    if(!wantShoot && keys[' ']){
       const dirs = {N:[0,-1],S:[0,1],W:[-1,0],E:[1,0]};
-      const [dx,dy] = dirs[state.player.dir];
+      [dx, dy] = dirs[state.player.dir];
+      wantShoot = true;
+    }
+    if(wantShoot && state.player.attackCd<=0){
+      state.player.attackCd = 0.28;
+      const slen = Math.hypot(dx,dy)||1;
+      dx /= slen; dy /= slen;
       state.projectiles.push({
         x: state.player.x + dx*8, y: state.player.y + dy*8,
-        vx: dx*160, vy: dy*160, life: 0.7, r:3, dmg: state.player.dmg, friend:true,
+        vx: dx*180, vy: dy*180, life: 0.8, r:3, dmg: state.player.dmg, friend:true,
       });
     }
 
@@ -805,77 +876,54 @@ canvas{
   }
 
   function drawAlf(){
-    const px = Math.round(state.player.x - 8), py = Math.round(state.player.y - 8);
-    const flash = state.player.hurtCd>0 && Math.floor(state.player.hurtCd*10)%2===0;
-    const body = flash ? '#ffd6d0' : A.body;
-    const belly = flash ? '#fff' : A.belly;
-    const out = A.outline;
+    const player = state.player;
+    const px = Math.round(player.x), py = Math.round(player.y);
+    const flash = player.hurtCd>0 && Math.floor(player.hurtCd*10)%2===0;
+    const yoff = Math.floor(player.walkPhase)%2;
+    // shadow
     ctx.fillStyle = 'rgba(0,0,0,.35)';
-    ctx.fillRect(px+3, py+14, 10, 1);
-    const yoff = Math.floor(state.player.walkPhase)%2;
-    if(state.player.dir==='S' || state.player.dir==='N'){
-      // body
-      ctx.fillStyle = out;
-      ctx.fillRect(px+4, py+5+yoff, 8, 1);
-      ctx.fillRect(px+3, py+6+yoff, 1, 5);
-      ctx.fillRect(px+12, py+6+yoff, 1, 5);
-      ctx.fillRect(px+4, py+11+yoff, 8, 1);
-      ctx.fillStyle = body;
-      ctx.fillRect(px+4, py+6+yoff, 8, 5);
-      ctx.fillStyle = belly;
-      ctx.fillRect(px+5, py+9+yoff, 6, 2);
-      // head
-      ctx.fillStyle = out;
-      ctx.fillRect(px+5, py+2, 6, 1);
-      ctx.fillRect(px+4, py+3, 1, 4);
-      ctx.fillRect(px+11, py+3, 1, 4);
-      ctx.fillStyle = body;
-      ctx.fillRect(px+5, py+3, 6, 4);
-      ctx.fillStyle = A.ear;
-      ctx.fillRect(px+4, py+1, 2, 2);
-      ctx.fillRect(px+10, py+1, 2, 2);
-      if(state.player.dir==='S'){
-        ctx.fillStyle = A.innerEar;
-        ctx.fillRect(px+5, py+2, 1, 1);
-        ctx.fillRect(px+10, py+2, 1, 1);
-        ctx.fillStyle = A.eye;
-        ctx.fillRect(px+5, py+5, 2, 1);
-        ctx.fillRect(px+9, py+5, 2, 1);
-        ctx.fillStyle = A.pupil;
-        ctx.fillRect(px+6, py+5, 1, 1);
-        ctx.fillRect(px+10, py+5, 1, 1);
-        ctx.fillStyle = A.nose;
-        ctx.fillRect(px+7, py+6, 2, 1);
-        ctx.fillStyle = out;
-        ctx.fillRect(px+12, py+8+yoff, 2, 1);
-        ctx.fillRect(px+13, py+9+yoff, 1, 1);
-      } else {
-        // back: tail other side
-        ctx.fillStyle = out;
-        ctx.fillRect(px+2, py+9+yoff, 2, 1);
-        ctx.fillRect(px+1, py+8+yoff, 1, 1);
-      }
+    ctx.fillRect(px-7, py+8, 14, 1);
+    const img = SPRITES.alf;
+    if(!img){ // fallback (image still loading)
+      ctx.fillStyle = '#f4a832';
+      ctx.fillRect(px-6, py-7, 12, 14);
+      return;
+    }
+    // Sprite is side-view; flip for W; use side for N/S too (single-pose for now)
+    const w = 22, h = 16;
+    const flip = player.dir==='W';
+    ctx.save();
+    if(flash){ ctx.filter = 'brightness(2.2)'; }
+    if(flip){
+      ctx.scale(-1, 1);
+      ctx.drawImage(img, -px - w/2, py - h/2 - yoff, w, h);
     } else {
-      // side view
-      const flip = state.player.dir==='W';
-      const dp = (x,y,w,h,c) => { ctx.fillStyle = c; const fx = flip ? px+15-x-w+1 : px+x; ctx.fillRect(fx, py+y, w, h); };
-      dp(3,5+yoff,9,1,out);
-      dp(3,11+yoff,9,1,out);
-      dp(2,6+yoff,1,5,out);
-      dp(12,6+yoff,1,5,out);
-      dp(3,6+yoff,9,5,body);
-      dp(3,9+yoff,9,2,belly);
-      dp(10,2,4,1,out);
-      dp(9,3,1,4,out);
-      dp(14,3,1,3,out);
-      dp(10,3,4,4,body);
-      dp(11,1,2,2,A.ear);
-      dp(11,2,1,1,A.innerEar);
-      dp(12,4,1,1,A.eye);
-      dp(13,4,1,1,A.pupil);
-      dp(14,5,1,1,A.nose);
-      dp(0,7+yoff,2,1,out);
-      dp(0,6+yoff,1,1,out);
+      ctx.drawImage(img, px - w/2, py - h/2 - yoff, w, h);
+    }
+    if(flash){ ctx.filter = 'none'; }
+    ctx.restore();
+  }
+  function drawMinou(n){
+    const x = Math.round(n.x), y = Math.round(n.y);
+    ctx.fillStyle = 'rgba(0,0,0,.35)';
+    ctx.fillRect(x-8, y+11, 16, 1);
+    const img = SPRITES.minou;
+    if(!img){
+      ctx.fillStyle = '#a87434';
+      ctx.fillRect(x-7, y-10, 14, 21);
+      return;
+    }
+    // Sitting front pose — slightly larger than Alf
+    const w = 20, h = 26;
+    ctx.drawImage(img, x - w/2, y - h/2 + 2, w, h);
+    // sparkle if player nearby
+    const px = state.player.x, py = state.player.y;
+    if(Math.hypot(px-n.x, py-n.y) < 32){
+      const t = (Date.now()%1000)/1000;
+      ctx.fillStyle = '#fdc04a';
+      ctx.fillRect(x-1, y-16, 2, 2);
+      ctx.fillStyle = '#fff';
+      ctx.fillRect(x, y-16+Math.sin(t*Math.PI*2)*1, 1, 1);
     }
   }
 
@@ -1131,6 +1179,7 @@ canvas{
       ...state.pickups.map(p => ({y:p.y, draw:()=>drawPickup(p)})),
       ...state.coins.map(c => ({y:c.y, draw:()=>drawCoin(c)})),
       ...state.enemies.map(e => ({y:e.y, draw:()=> e.kind==='mouse' ? drawMouse(e) : e.kind==='mouche' ? drawMouche(e) : drawBoss(e)})),
+      ...(state.npc ? [{y: state.npc.y, draw: ()=>drawMinou(state.npc)}] : []),
       {y: state.player.y, draw: drawAlf},
     ].sort((a,b) => a.y-b.y);
     ents.forEach(e => e.draw());
