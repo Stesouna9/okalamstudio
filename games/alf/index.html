@@ -1,632 +1,774 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="utf-8">
-<title>Alf — Hi-Fi</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=VT323&display=swap" rel="stylesheet">
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+<meta name="theme-color" content="#0e0a08"/>
+<title>Alf — OKALAM Studio</title>
+<meta name="description" content="Alf — roguelike top-down 2D. Un chat, 5 maisons, des ennemis."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=VT323&display=swap" rel="stylesheet"/>
 <style>
-  html, body { margin: 0; padding: 0; background: #0e0a08; color: #f4ecd8; font-family: "Cormorant Garamond", serif; }
-  * { box-sizing: border-box; }
-  #root { min-height: 100vh; }
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{height:100%;overflow:hidden;}
+body{
+  background:#0e0a08;color:#f4ecd8;
+  font-family:"VT323",monospace;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  min-height:100svh;
+  -webkit-tap-highlight-color:transparent;
+  user-select:none;-webkit-user-select:none;
+}
 
-  /* pixel rendering globally for game viewports */
-  .pixelated, .pixelated * { image-rendering: pixelated; image-rendering: crisp-edges; }
+.bar{
+  position:fixed;top:0;left:0;right:0;
+  padding:10px 16px;display:flex;justify-content:space-between;align-items:center;
+  z-index:20;font-family:"VT323",monospace;font-size:18px;letter-spacing:.08em;
+}
+.bar a{
+  color:#f4ecd8;text-decoration:none;
+  background:rgba(14,10,8,.6);border:2px solid #5a4030;
+  padding:4px 12px;border-radius:4px;backdrop-filter:blur(6px);transition:all .2s;
+}
+.bar a:hover{color:#fdc04a;border-color:#fdc04a;}
+.bar .brand{color:#fdc04a;letter-spacing:.25em;font-weight:700;}
 
-  /* DC overrides for dark theme */
-  body { background: #0e0a08 !important; }
+.stage{
+  position:relative;
+  display:flex;align-items:center;justify-content:center;
+  width:100%;height:100svh;
+}
+canvas{
+  image-rendering:pixelated;image-rendering:crisp-edges;
+  background:#0e0a08;
+  max-width:100%;max-height:100%;
+  display:block;
+  box-shadow:0 0 60px rgba(244,168,58,.15);
+}
 
-  /* Scrollbars */
-  ::-webkit-scrollbar { width: 12px; height: 12px; }
-  ::-webkit-scrollbar-track { background: #1a1410; }
-  ::-webkit-scrollbar-thumb { background: #5a4030; border: 2px solid #1a1410; }
+.overlay{
+  position:absolute;inset:0;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  background:rgba(14,10,8,.85);backdrop-filter:blur(6px);
+  text-align:center;padding:24px;gap:14px;z-index:10;
+  transition:opacity .2s;
+}
+.overlay.hidden{opacity:0;pointer-events:none;}
+.overlay h1{
+  font-family:"Cinzel",serif;font-weight:900;letter-spacing:.04em;
+  font-size:clamp(2.2rem,8vw,4.5rem);color:#fdc04a;line-height:1;
+  text-shadow:0 0 24px rgba(253,192,74,.4);
+}
+.overlay .sub{
+  font-size:clamp(1.1rem,2.8vw,1.5rem);color:#c8b89a;letter-spacing:.06em;
+}
+.overlay .keys{
+  font-size:1.05rem;color:#9a8a78;letter-spacing:.04em;line-height:1.7;
+  margin-top:8px;
+}
+.overlay kbd{
+  background:#2a1f3a;border:1px solid #5a4030;color:#fdc04a;
+  padding:2px 8px;border-radius:3px;font-family:inherit;font-size:.95em;
+  margin:0 2px;
+}
+.btn{
+  font-family:"Cinzel",serif;font-weight:700;
+  font-size:1.2rem;letter-spacing:.15em;text-transform:uppercase;
+  color:#0e0a08;background:#fdc04a;
+  border:none;padding:12px 32px;border-radius:3px;cursor:pointer;
+  margin-top:6px;transition:all .15s;
+  box-shadow:0 4px 0 #b8842a;
+}
+.btn:hover{background:#fff;transform:translateY(-2px);box-shadow:0 6px 0 #b8842a;}
+.btn:active{transform:translateY(2px);box-shadow:0 2px 0 #b8842a;}
 
-  /* OKALAM back link */
-  .okalam-back {
-    position: fixed; top: 14px; left: 14px; z-index: 9999;
-    font-family: "VT323", monospace; font-size: 16px; letter-spacing: .08em;
-    text-transform: uppercase; text-decoration: none;
-    color: #f4ecd8; background: rgba(14,10,8,.78);
-    border: 2px solid #5a4030; padding: 6px 12px; border-radius: 4px;
-    backdrop-filter: blur(6px); transition: all .2s;
-  }
-  .okalam-back:hover { color: #fdc04a; border-color: #fdc04a; }
+/* Touch controls (mobile) */
+.touch{
+  position:fixed;bottom:14px;left:14px;right:14px;
+  display:none;justify-content:space-between;align-items:flex-end;
+  pointer-events:none;z-index:15;
+}
+.dpad{
+  display:grid;grid-template-columns:repeat(3,52px);grid-template-rows:repeat(3,52px);gap:4px;
+  pointer-events:auto;
+}
+.dpad button{
+  background:rgba(42,31,58,.7);border:2px solid #5a4030;color:#fdc04a;
+  font-family:"VT323",monospace;font-size:24px;
+  border-radius:6px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  touch-action:manipulation;
+}
+.dpad button:active{background:rgba(253,192,74,.3);}
+.dpad .u{grid-column:2;grid-row:1;}
+.dpad .l{grid-column:1;grid-row:2;}
+.dpad .r{grid-column:3;grid-row:2;}
+.dpad .d{grid-column:2;grid-row:3;}
+.attackBtn{
+  pointer-events:auto;
+  background:#fdc04a;color:#0e0a08;
+  font-family:"Cinzel",serif;font-weight:700;
+  font-size:14px;letter-spacing:.1em;
+  width:80px;height:80px;border-radius:50%;border:none;
+  cursor:pointer;touch-action:manipulation;
+  box-shadow:0 4px 0 #b8842a;
+}
+.attackBtn:active{transform:translateY(2px);box-shadow:0 2px 0 #b8842a;}
+@media (hover:none) and (pointer:coarse){
+  .touch{display:flex;}
+  .bar{font-size:14px;}
+}
 </style>
 </head>
 <body>
-<a href="../../games.html" class="okalam-back">← Galerie</a>
-<div id="root"></div>
 
-<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<header class="bar">
+  <a href="../../games.html">← Galerie</a>
+  <span class="brand">ALF</span>
+</header>
 
-<script type="text/babel" src="tokens.jsx"></script>
-<script type="text/babel" src="sprites-alf.jsx"></script>
-<script type="text/babel" src="sprites-enemies.jsx"></script>
-<script type="text/babel" src="hud.jsx"></script>
-<script type="text/babel" src="rooms-base.jsx"></script>
-<script type="text/babel" src="rooms-content.jsx"></script>
-<script type="text/babel" src="screens.jsx"></script>
-<script type="text/babel" src="design-canvas.jsx"></script>
-<script type="text/babel" src="tweaks-panel.jsx"></script>
+<div class="stage">
+  <canvas id="game" width="320" height="192" aria-label="Alf — jeu"></canvas>
 
-<script type="text/babel">
-const { useState } = React;
-
-const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
-  "focusHouse": "eu",
-  "focusRoom": "kitchen",
-  "focusHud": "min"
-}/*EDITMODE-END*/;
-
-// ─────────────────────────────────────────────────────────────
-// Game viewport — RoomBase wired with palette + room id
-// ─────────────────────────────────────────────────────────────
-const FLOOR_BY_HOUSE = {
-  eu:    'planks',
-  haunt: 'tile',
-  jp:    'tatami',
-  ru:    'parquet',
-  fort:  'stone',
-};
-
-function GameView({ houseKey, roomKey, doors, dim = 0, w = 720, h = 450 }) {
-  const palette = PALETTES[houseKey];
-  const RoomFn = Room[roomKey] || Room.living;
-  const floorPattern = FLOOR_BY_HOUSE[houseKey];
-  return (
-    <div className="pixelated" style={{ width: w, height: h, position: 'relative', overflow: 'hidden', background: palette.sky, border: '3px solid #0a0608', boxShadow: '0 0 0 1px #fdc04a, 0 8px 30px rgba(0,0,0,0.5)' }}>
-      <RoomBase palette={palette} doors={doors} floorPattern={floorPattern} dim={dim}>
-        {RoomFn(palette)}
-      </RoomBase>
+  <div class="overlay" id="overlay">
+    <h1 id="ov-title">ALF</h1>
+    <div class="sub" id="ov-sub">Maison européenne · Cuisine</div>
+    <div class="keys" id="ov-keys">
+      Déplacer <kbd>Z</kbd><kbd>Q</kbd><kbd>S</kbd><kbd>D</kbd> · Attaquer <kbd>Espace</kbd>
     </div>
-  );
-}
+    <button class="btn" id="play-btn">Jouer</button>
+  </div>
+</div>
 
-function GameViewWithHUD({ houseKey, roomKey, doors, hudVariant = 'min', roomTitle, roomNum = '03/12', w = 960, h = 600 }) {
-  const palette = PALETTES[houseKey];
-  const HudComp = hudVariant === 'full' ? HUD_Coins : HUD_Coins_Min;
-  return (
-    <div style={{ width: w, height: h, position: 'relative' }}>
-      <GameView houseKey={houseKey} roomKey={roomKey} doors={doors} w={w} h={h} />
-      <div style={{ position: 'absolute', inset: 0 }}>
-        <HudComp roomTitle={roomTitle || palette.name} roomNum={roomNum} accent={palette.accent2 || '#fdc04a'} />
-      </div>
-    </div>
-  );
-}
+<div class="touch" id="touch">
+  <div class="dpad" aria-hidden="true">
+    <button class="u" data-dir="up">▲</button>
+    <button class="l" data-dir="left">◀</button>
+    <button class="r" data-dir="right">▶</button>
+    <button class="d" data-dir="down">▼</button>
+  </div>
+  <button class="attackBtn" id="attack-btn">TIR</button>
+</div>
 
-// ─────────────────────────────────────────────────────────────
-// Mood board card
-// ─────────────────────────────────────────────────────────────
-function HousePaletteCard({ houseKey }) {
-  const p = PALETTES[houseKey];
-  const swatches = [
-    { c: p.floor, l: 'sol' },
-    { c: p.floorAlt, l: 'sol/alt' },
-    { c: p.wall, l: 'mur' },
-    { c: p.wallTop, l: 'mur/haut' },
-    { c: p.surface, l: 'mobilier' },
-    { c: p.accent, l: 'accent' },
-    { c: p.accent2, l: 'accent 2' },
-    { c: p.light, l: 'lumière' },
+<script>
+(() => {
+  const canvas = document.getElementById('game');
+  const ctx = canvas.getContext('2d');
+  ctx.imageSmoothingEnabled = false;
+  const overlay = document.getElementById('overlay');
+  const ovTitle = document.getElementById('ov-title');
+  const ovSub = document.getElementById('ov-sub');
+  const ovKeys = document.getElementById('ov-keys');
+  const playBtn = document.getElementById('play-btn');
+
+  // ── Palette (Provence eu) + Alf ─────────────────────────────
+  const P = {
+    floor:'#e8c894', floorAlt:'#c89a5e',
+    wall:'#2a1f3a', wallTop:'#4a3858',
+    accent:'#f4a83a', accent2:'#9a78d8',
+    surface:'#d4a06a', light:'#ffe8a8',
+    grout:'#1a1028', sky:'#1a1028',
+  };
+  const A = {
+    body:'#7a8ab8', bodyShade:'#4a5a88', bodyHi:'#a8b8d8',
+    belly:'#c8d4e8', ear:'#4a5a88', innerEar:'#f48ab8',
+    nose:'#5a3848', eye:'#fdc83a', pupil:'#0a0820', outline:'#0a0820',
+  };
+
+  // ── World ───────────────────────────────────────────────────
+  const TILE = 16;
+  const COLS = 20, ROWS = 12;       // 320x192
+  const W = COLS*TILE, H = ROWS*TILE;
+
+  // 0 floor · 1 wall · 2 furniture · 3 carpet · 4 door
+  const ROOM = [
+    [1,1,1,1,1,1,1,1,1,4,4,1,1,1,1,1,1,1,1,1],
+    [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+    [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+    [1,0,0,2,2,2,2,0,0,0,0,0,0,0,0,2,2,0,0,1],
+    [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,0,0,1],
+    [1,0,0,0,0,0,0,0,0,3,3,0,0,0,0,0,0,0,0,1],
+    [1,0,0,0,0,0,0,0,0,3,3,0,0,0,0,0,0,0,0,1],
+    [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+    [1,0,0,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+    [1,0,0,2,2,0,0,0,0,0,0,0,0,0,2,2,2,2,0,1],
+    [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+    [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
   ];
-  return (
-    <div style={{ width: 360, padding: 20, background: p.sky, border: '2px solid #0a0608', boxShadow: '0 0 0 1px #fdc04a, 0 8px 24px rgba(0,0,0,0.4)', color: '#f4ecd8' }}>
-      <div style={{ fontFamily: FONTS.pixel, fontSize: 16, color: p.accent, letterSpacing: 3 }}>{p.subtitle.toUpperCase()}</div>
-      <div style={{ fontFamily: FONTS.display, fontSize: 26, fontWeight: 700, color: '#f4ecd8', textShadow: '2px 2px 0 #0a0608', letterSpacing: 2 }}>{p.name}</div>
-      <div style={{ marginTop: 14, display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 6 }}>
-        {swatches.map((s, i) => (
-          <div key={i}>
-            <div style={{ width: '100%', aspectRatio: '1/1', background: s.c, border: '1.5px solid #0a0608' }} />
-            <div style={{ fontFamily: FONTS.pixel, fontSize: 12, color: '#f4ecd8', marginTop: 2, opacity: 0.8 }}>{s.l}</div>
-            <div style={{ fontFamily: FONTS.pixel, fontSize: 10, color: '#a89878' }}>{s.c}</div>
-          </div>
-        ))}
-      </div>
-      <div style={{ marginTop: 14, fontFamily: FONTS.body, fontSize: 14, fontStyle: 'italic', color: '#d8c8a8', lineHeight: 1.5 }}>
-        ambiance · <b>{p.mood === 'gothic' ? 'gothique sombre' : 'cosy'}</b> · pattern {FLOOR_BY_HOUSE[houseKey]}
-      </div>
-    </div>
-  );
-}
 
-// ─────────────────────────────────────────────────────────────
-// Sprite sheet card — Alf
-// ─────────────────────────────────────────────────────────────
-function AlfSpriteSheet() {
-  const dirs = ['S', 'N', 'E', 'W'];
-  const frames = ['idle', 'walk1', 'walk2', 'attack'];
-  return (
-    <div style={{ background: '#1a1410', border: '2px solid #fdc04a', padding: 24, color: '#f4ecd8' }}>
-      <div style={{ fontFamily: FONTS.display, fontSize: 28, color: '#fdc04a', letterSpacing: 4, textShadow: '2px 2px 0 #0a0608' }}>ALF — chartreux</div>
-      <div style={{ fontFamily: FONTS.body, fontStyle: 'italic', fontSize: 16, color: '#d8c8a8', marginTop: 4 }}>4 directions × 4 frames · 16×16 px (×8)</div>
-      <table style={{ marginTop: 18, borderCollapse: 'collapse' }}>
-        <thead>
-          <tr>
-            <th></th>
-            {frames.map(f => <th key={f} style={{ fontFamily: FONTS.pixel, fontSize: 14, color: '#fdc04a', padding: '6px 14px', letterSpacing: 2 }}>{f.toUpperCase()}</th>)}
-          </tr>
-        </thead>
-        <tbody>
-          {dirs.map(d => (
-            <tr key={d}>
-              <td style={{ fontFamily: FONTS.pixel, fontSize: 14, color: '#fdc04a', padding: '0 12px' }}>{d}</td>
-              {frames.map(f => (
-                <td key={f} style={{ padding: 6 }}>
-                  <div className="pixelated" style={{ width: 144, height: 144, background: '#0a0608', display: 'grid', placeItems: 'center', border: '1px solid #5a4030' }}>
-                    <AlfSprite dir={d} frame={f} scale={8} />
-                  </div>
-                </td>
-              ))}
-            </tr>
-          ))}
-        </tbody>
-      </table>
-      <div style={{ marginTop: 16, display: 'flex', gap: 32, alignItems: 'flex-start' }}>
-        <div>
-          <div style={{ fontFamily: FONTS.pixel, fontSize: 14, color: '#fdc04a', letterSpacing: 2 }}>PALETTE</div>
-          {Object.entries(ALF).map(([k, v]) => (
-            <div key={k} style={{ display: 'flex', alignItems: 'center', gap: 8, fontFamily: FONTS.pixel, fontSize: 13, color: '#d8c8a8', marginTop: 4 }}>
-              <span style={{ width: 16, height: 16, background: v, border: '1px solid #5a4030' }} />
-              <span style={{ width: 90 }}>{k}</span>
-              <span style={{ color: '#a89878' }}>{v}</span>
-            </div>
-          ))}
-        </div>
-        <div style={{ flex: 1 }}>
-          <div style={{ fontFamily: FONTS.pixel, fontSize: 14, color: '#fdc04a', letterSpacing: 2 }}>ANIMATIONS À PRÉVOIR</div>
-          <ul style={{ fontFamily: FONTS.body, fontSize: 14, lineHeight: 1.7, paddingLeft: 18, color: '#d8c8a8' }}>
-            <li><b>idle</b> — 2 frames, queue qui frémit, 600 ms/cycle</li>
-            <li><b>walk</b> — 2 frames alternées, 180 ms/cycle</li>
-            <li><b>attack</b> — flash + recul 80 ms</li>
-            <li><b>damage</b> — clignote 3× en rouge sur hit</li>
-            <li><b>death</b> — chute sur le côté + ★ flotte</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  );
-}
+  function tileAt(x,y){
+    const c = Math.floor(x/TILE), r = Math.floor(y/TILE);
+    if(r<0||r>=ROWS||c<0||c>=COLS) return 1;
+    return ROOM[r][c];
+  }
+  function solid(x,y){ const t = tileAt(x,y); return t===1||t===2; }
+  function isDoor(x,y){ return tileAt(x,y)===4; }
 
-// ─────────────────────────────────────────────────────────────
-// Bestiary card grid
-// ─────────────────────────────────────────────────────────────
-const BESTIARY = [
-  { house: null,    Comp: E_Souris,    name: 'Souris',     hp: 2, beh: 'Récurrent · avance droit, vite. Skin réadapté par maison.' },
-  { house: 'eu',    Comp: E_Mouche,    name: 'Mouche',     hp: 1, beh: 'Vol erratique en zigzag, fragile.' },
-  { house: 'eu',    Comp: E_Fermier,   name: 'Fermier',    hp: 5, beh: 'Lance sa fourche en ligne droite.' },
-  { house: 'haunt', Comp: E_Fantome,   name: 'Fantôme',    hp: 3, beh: 'Traverse les murs, suit Alf.' },
-  { house: 'haunt', Comp: E_Squelette, name: 'Squelette',  hp: 4, beh: 'Ressuscite 1× après mort.' },
-  { house: 'jp',    Comp: E_Tanuki,    name: 'Tanuki',     hp: 3, beh: 'Charge alignée quand Alf est en vue.' },
-  { house: 'jp',    Comp: E_Yokai,     name: 'Yokai',      hp: 6, beh: 'Téléporte · invoque 1 souris.' },
-  { house: 'ru',    Comp: E_Ours,      name: 'Ours',       hp: 8, beh: 'Tank · charge dévastatrice.' },
-  { house: 'ru',    Comp: E_Babouchka, name: 'Babouchka',  hp: 4, beh: 'Lance des poupées (3 sub-mobs à la mort).' },
-  { house: 'fort',  Comp: E_Garde,     name: 'Garde',      hp: 6, beh: 'Bouclier frontal · contournement.' },
-  { house: 'fort',  Comp: E_Tourelle,  name: 'Tourelle',   hp: 4, beh: 'Statique · tir en croix toutes les 1.5 s.' },
-];
+  // ── Entities ────────────────────────────────────────────────
+  let player, enemies, projectiles, coins, particles;
+  let gameState = 'title'; // title · playing · over · cleared
+  let coinCount = 0;
+  let bestCoins = parseInt(localStorage.getItem('okalam_alf_best')||'0',10);
+  let damageFlash = 0;
+  let cameraShake = 0;
 
-function EnemyTile({ Comp, name, hp, beh, house }) {
-  const accent = house ? PALETTES[house].accent : '#fdc04a';
-  return (
-    <div style={{ width: 220, background: '#1a1410', border: '2px solid #5a4030', padding: 12, position: 'relative' }}>
-      <div className="pixelated" style={{ height: 140, background: '#0a0608', display: 'grid', placeItems: 'center', border: '1px solid #3a2818' }}>
-        <Comp scale={6} />
-      </div>
-      <span style={{ position: 'absolute', top: 4, right: 6, width: 12, height: 12, background: accent, border: '1.5px solid #0a0608', borderRadius: '50%' }} />
-      <div style={{ marginTop: 10, fontFamily: FONTS.display, fontSize: 22, color: '#fdc04a', letterSpacing: 1 }}>{name}</div>
-      <div style={{ fontFamily: FONTS.pixel, fontSize: 12, color: '#a89878', letterSpacing: 1 }}>HP {hp}{Array.from({ length: Math.min(hp, 8) }).map((_, i) => '♥').join('')}</div>
-      <div style={{ fontFamily: FONTS.body, fontSize: 13, color: '#d8c8a8', marginTop: 4, lineHeight: 1.4, fontStyle: 'italic' }}>{beh}</div>
-    </div>
-  );
-}
+  function reset(){
+    player = {
+      x: W/2, y: H/2, w: 10, h: 10,
+      vx:0, vy:0, dir:'S', hp:3, maxHp:3,
+      attackCd:0, hurtCd:0, walkPhase:0,
+    };
+    enemies = [];
+    projectiles = [];
+    coins = [];
+    particles = [];
+    coinCount = 0;
+    spawnEnemies(3);
+  }
 
-function BestiaryGrid() {
-  const houses = ['eu', 'haunt', 'jp', 'ru', 'fort'];
-  return (
-    <div style={{ background: '#0e0a08', padding: 24, border: '2px solid #fdc04a' }}>
-      <div style={{ fontFamily: FONTS.display, fontSize: 28, color: '#fdc04a', letterSpacing: 4, textShadow: '2px 2px 0 #0a0608' }}>BESTIAIRE</div>
-      <div style={{ fontFamily: FONTS.body, fontStyle: 'italic', fontSize: 15, color: '#d8c8a8', marginTop: 4, marginBottom: 16 }}>1 récurrent · 2 par maison · 1 boss commun (3 phases — skin par maison plus tard)</div>
+  function spawnEnemies(n){
+    let placed = 0, tries = 0;
+    while(placed<n && tries<200){
+      tries++;
+      const cx = 2 + Math.floor(Math.random()*(COLS-4));
+      const cy = 2 + Math.floor(Math.random()*(ROWS-4));
+      if(ROOM[cy][cx]!==0) continue;
+      const x = cx*TILE+TILE/2, y = cy*TILE+TILE/2;
+      const d = Math.hypot(x-player.x, y-player.y);
+      if(d<60) continue;
+      enemies.push({x,y,w:9,h:9,hp:2,vx:0,vy:0,phase:Math.random()*Math.PI*2});
+      placed++;
+    }
+  }
 
-      <div style={{ fontFamily: FONTS.pixel, fontSize: 14, color: '#fdc04a', letterSpacing: 2, marginTop: 6, marginBottom: 8 }}>RÉCURRENT</div>
-      <div style={{ display: 'flex', gap: 12 }}>
-        <EnemyTile {...BESTIARY[0]} />
-        <div style={{ width: 220, padding: 12, background: '#1a1410', border: '2px dashed #5a4030', fontFamily: FONTS.body, fontSize: 13, color: '#d8c8a8', fontStyle: 'italic', lineHeight: 1.5 }}>
-          La <b>Souris</b> apparaît dans toutes les maisons. Couleur du pelage adaptée à la palette du niveau (gris EU, blême hanté, blanche JP, hivernale RU, sombre fort).
-        </div>
-      </div>
+  // ── Input ───────────────────────────────────────────────────
+  const keys = {};
+  window.addEventListener('keydown', e => {
+    const k = e.key.toLowerCase();
+    keys[k] = true;
+    if(['arrowup','arrowdown','arrowleft','arrowright',' '].includes(k)) e.preventDefault();
+  });
+  window.addEventListener('keyup', e => { keys[e.key.toLowerCase()] = false; });
 
-      {houses.map(hk => {
-        const mobs = BESTIARY.filter(b => b.house === hk);
-        const p = PALETTES[hk];
-        return (
-          <div key={hk}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginTop: 24, marginBottom: 8 }}>
-              <span style={{ width: 14, height: 14, background: p.accent, border: '1.5px solid #0a0608', borderRadius: '50%' }} />
-              <span style={{ fontFamily: FONTS.pixel, fontSize: 14, color: '#fdc04a', letterSpacing: 2 }}>{p.name.toUpperCase()}</span>
-            </div>
-            <div style={{ display: 'flex', gap: 12 }}>
-              {mobs.map((m, i) => <EnemyTile key={i} {...m} />)}
-            </div>
-          </div>
-        );
-      })}
+  document.querySelectorAll('.dpad button').forEach(b => {
+    const dir = b.dataset.dir;
+    const map = {up:'arrowup',down:'arrowdown',left:'arrowleft',right:'arrowright'};
+    const press = e => { e.preventDefault(); keys[map[dir]] = true; };
+    const release = e => { e.preventDefault(); keys[map[dir]] = false; };
+    b.addEventListener('touchstart', press, {passive:false});
+    b.addEventListener('touchend', release);
+    b.addEventListener('mousedown', press);
+    b.addEventListener('mouseup', release);
+    b.addEventListener('mouseleave', release);
+  });
+  const attackBtn = document.getElementById('attack-btn');
+  attackBtn.addEventListener('touchstart', e => { e.preventDefault(); keys[' '] = true; }, {passive:false});
+  attackBtn.addEventListener('touchend', e => { e.preventDefault(); keys[' '] = false; });
 
-      <div style={{ marginTop: 24, marginBottom: 8, fontFamily: FONTS.pixel, fontSize: 14, color: '#c83020', letterSpacing: 2 }}>BOSS · placeholder commun</div>
-      <div style={{ display: 'flex', gap: 12 }}>
-        <EnemyTile Comp={E_Boss} name="Le Maître" hp={"30 + 10/lvl"} beh="3 phases · charge → projectiles → invocations." house="fort" />
-        <div style={{ flex: 1, padding: 14, background: '#1a1410', border: '2px solid #5a4030', fontFamily: FONTS.body, fontSize: 14, lineHeight: 1.6, color: '#d8c8a8' }}>
-          <div style={{ fontFamily: FONTS.display, fontSize: 22, color: '#fdc04a', marginBottom: 6 }}>Skins de boss à itérer plus tard</div>
-          <ul style={{ paddingLeft: 18, margin: 0 }}>
-            <li>EU · gros chien de garde</li>
-            <li>Hantée · fantôme géant</li>
-            <li>JP · samouraï-chat</li>
-            <li>RU · ours-sorcier</li>
-            <li>Forteresse · roi/sorcier corrompu</li>
-          </ul>
-          <div style={{ marginTop: 10, fontStyle: 'italic', color: '#a89878' }}>Récompense post-boss : pièces + 1 cœur de conteneur + porte vers la maison suivante.</div>
-        </div>
-      </div>
-    </div>
-  );
-}
+  // ── AABB collision ──────────────────────────────────────────
+  function tryMove(e, dx, dy){
+    // X axis
+    e.x += dx;
+    if(collides(e)){
+      e.x -= dx;
+      while(dx!==0 && !collides(e)){ e.x += Math.sign(dx); }
+      if(collides(e)) e.x -= Math.sign(dx);
+    }
+    // Y axis
+    e.y += dy;
+    if(collides(e)){
+      e.y -= dy;
+      while(dy!==0 && !collides(e)){ e.y += Math.sign(dy); }
+      if(collides(e)) e.y -= Math.sign(dy);
+    }
+  }
+  function collides(e){
+    const x1 = e.x - e.w/2, x2 = e.x + e.w/2;
+    const y1 = e.y - e.h/2, y2 = e.y + e.h/2;
+    return solid(x1,y1)||solid(x2,y1)||solid(x1,y2)||solid(x2,y2);
+  }
 
-// ─────────────────────────────────────────────────────────────
-// Style guide
-// ─────────────────────────────────────────────────────────────
-function StyleGuide() {
-  return (
-    <div style={{ background: '#1a1410', border: '2px solid #fdc04a', padding: 24, color: '#f4ecd8', width: 880 }}>
-      <div style={{ fontFamily: FONTS.display, fontSize: 28, color: '#fdc04a', letterSpacing: 4, textShadow: '2px 2px 0 #0a0608' }}>STYLE GUIDE — UI</div>
+  // ── Update ──────────────────────────────────────────────────
+  function update(dt){
+    if(gameState!=='playing') return;
+    damageFlash = Math.max(0, damageFlash - dt);
+    cameraShake = Math.max(0, cameraShake - dt*60);
 
-      {/* Typography */}
-      <div style={{ marginTop: 18, fontFamily: FONTS.pixel, fontSize: 14, color: '#fdc04a', letterSpacing: 2 }}>TYPOGRAPHIE</div>
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 14, marginTop: 8 }}>
-        <div style={{ padding: 12, background: '#0a0608', border: '1px solid #5a4030' }}>
-          <div style={{ fontFamily: FONTS.display, fontSize: 32, color: '#fdc04a', letterSpacing: 4 }}>ALF</div>
-          <div style={{ fontFamily: FONTS.body, fontSize: 12, fontStyle: 'italic', color: '#a89878' }}>Cinzel · titres + écrans</div>
-        </div>
-        <div style={{ padding: 12, background: '#0a0608', border: '1px solid #5a4030' }}>
-          <div style={{ fontFamily: FONTS.body, fontSize: 22, fontStyle: 'italic' }}>les neuf maisons</div>
-          <div style={{ fontFamily: FONTS.body, fontSize: 12, fontStyle: 'italic', color: '#a89878' }}>Cormorant Garamond · corps</div>
-        </div>
-        <div style={{ padding: 12, background: '#0a0608', border: '1px solid #5a4030' }}>
-          <div style={{ fontFamily: FONTS.pixel, fontSize: 24, color: '#fdc04a' }}>04:32 · 14¢</div>
-          <div style={{ fontFamily: FONTS.body, fontSize: 12, fontStyle: 'italic', color: '#a89878' }}>VT323 · HUD + pixel</div>
-        </div>
-      </div>
+    // Player input
+    let mx = 0, my = 0;
+    if(keys['arrowup']||keys['z']||keys['w']) my -= 1;
+    if(keys['arrowdown']||keys['s']) my += 1;
+    if(keys['arrowleft']||keys['q']||keys['a']) mx -= 1;
+    if(keys['arrowright']||keys['d']) mx += 1;
+    const len = Math.hypot(mx,my);
+    if(len>0){ mx/=len; my/=len; player.walkPhase += dt*8; }
+    else player.walkPhase *= 0.85;
+    const speed = 70;
+    tryMove(player, mx*speed*dt, my*speed*dt);
 
-      {/* UI palette */}
-      <div style={{ marginTop: 18, fontFamily: FONTS.pixel, fontSize: 14, color: '#fdc04a', letterSpacing: 2 }}>PALETTE UI</div>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(8, 1fr)', gap: 8, marginTop: 8 }}>
-        {Object.entries(UI).map(([k, v]) => (
-          <div key={k} style={{ textAlign: 'center' }}>
-            <div style={{ width: '100%', aspectRatio: '1/1', background: v, border: '1.5px solid #0a0608' }} />
-            <div style={{ fontFamily: FONTS.pixel, fontSize: 11, color: '#d8c8a8', marginTop: 2 }}>{k}</div>
-            <div style={{ fontFamily: FONTS.pixel, fontSize: 9, color: '#a89878' }}>{typeof v === 'string' ? v.slice(0, 7) : ''}</div>
-          </div>
-        ))}
-      </div>
+    if(my<0) player.dir='N';
+    else if(my>0) player.dir='S';
+    else if(mx<0) player.dir='W';
+    else if(mx>0) player.dir='E';
 
-      {/* Icons */}
-      <div style={{ marginTop: 18, fontFamily: FONTS.pixel, fontSize: 14, color: '#fdc04a', letterSpacing: 2 }}>ICONOGRAPHIE HUD (16×16 px)</div>
-      <div style={{ display: 'flex', gap: 14, marginTop: 8, alignItems: 'center', flexWrap: 'wrap' }}>
-        <IconCard label="cœur plein"><Heart kind="full" size={32} /></IconCard>
-        <IconCard label="cœur 1/2"><Heart kind="half" size={32} /></IconCard>
-        <IconCard label="cœur vide"><Heart kind="empty" size={32} /></IconCard>
-        <IconCard label="pièce"><ResourcePill kind="coin" value={14} /></IconCard>
-        <IconCard label="clé"><ResourcePill kind="key" value={2} /></IconCard>
-        <IconCard label="bombe"><ResourcePill kind="bomb" value={3} /></IconCard>
-        <IconCard label="item slot"><ItemSlot size={48} label="RAGE" cooldown={0} prompt="L1" /></IconCard>
-        <IconCard label="cooldown"><ItemSlot size={48} label="RAGE" cooldown={45} prompt="L1" /></IconCard>
-      </div>
+    // Attack
+    player.attackCd = Math.max(0, player.attackCd - dt);
+    if(keys[' '] && player.attackCd<=0){
+      player.attackCd = 0.32;
+      const dirs = {N:[0,-1],S:[0,1],W:[-1,0],E:[1,0]};
+      const [dx,dy] = dirs[player.dir];
+      projectiles.push({
+        x: player.x + dx*8, y: player.y + dy*8,
+        vx: dx*150, vy: dy*150, life: 0.8, r: 3,
+      });
+    }
 
-      {/* Prompts */}
-      <div style={{ marginTop: 18, fontFamily: FONTS.pixel, fontSize: 14, color: '#fdc04a', letterSpacing: 2 }}>PROMPTS · MANETTE PS5 + CLAVIER</div>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 12, marginTop: 8, fontFamily: FONTS.body, fontSize: 14 }}>
-        <PromptRow icon={<PSBtn kind="cross" />} pad="✕" kbd="ESPACE" label="attaque / valider" />
-        <PromptRow icon={<PSBtn kind="circle" />} pad="◯" kbd="ÉCHAP" label="annuler / pause" />
-        <PromptRow icon={<PSBtn kind="square" />} pad="□" kbd="CTRL" label="item actif" />
-        <PromptRow icon={<PSBtn kind="triangle" />} pad="△" kbd="E" label="interagir" />
-        <PromptRow icon={<span style={{ fontFamily: FONTS.pixel, color: '#fdc04a', fontSize: 18 }}>L1</span>} pad="L1" kbd="Q" label="bombe" />
-        <PromptRow icon={<span style={{ fontFamily: FONTS.pixel, color: '#fdc04a', fontSize: 18 }}>R1</span>} pad="R1" kbd="R" label="recharger" />
-        <PromptRow icon={<span style={{ fontFamily: FONTS.pixel, color: '#fdc04a', fontSize: 18 }}>OPT</span>} pad="opt" kbd="TAB" label="inventaire" />
-        <PromptRow icon={<span style={{ fontFamily: FONTS.pixel, color: '#fdc04a', fontSize: 18 }}>TPAD</span>} pad="touch" kbd="M" label="carte" />
-      </div>
-    </div>
-  );
-}
+    // Projectiles
+    for(let i=projectiles.length-1;i>=0;i--){
+      const p = projectiles[i];
+      p.x += p.vx*dt; p.y += p.vy*dt; p.life -= dt;
+      if(p.life<=0 || solid(p.x,p.y)){
+        for(let k=0;k<4;k++) particles.push({x:p.x,y:p.y,vx:(Math.random()-.5)*40,vy:(Math.random()-.5)*40,life:.3,c:'#a8c4ff'});
+        projectiles.splice(i,1); continue;
+      }
+      // hit enemy
+      for(let j=enemies.length-1;j>=0;j--){
+        const e = enemies[j];
+        if(Math.abs(p.x-e.x)<6 && Math.abs(p.y-e.y)<6){
+          e.hp--;
+          for(let k=0;k<6;k++) particles.push({x:e.x,y:e.y,vx:(Math.random()-.5)*60,vy:(Math.random()-.5)*60,life:.4,c:'#e83a4a'});
+          projectiles.splice(i,1);
+          if(e.hp<=0){
+            cameraShake = 4;
+            for(let k=0;k<10;k++) particles.push({x:e.x,y:e.y,vx:(Math.random()-.5)*80,vy:(Math.random()-.5)*80,life:.6,c:'#e83a4a'});
+            // drop coin
+            coins.push({x:e.x, y:e.y, life:9999, bob:0});
+            enemies.splice(j,1);
+          }
+          break;
+        }
+      }
+    }
 
-function IconCard({ children, label }) {
-  return (
-    <div style={{ textAlign: 'center', padding: 8, background: '#0a0608', border: '1px solid #5a4030', minWidth: 70 }}>
-      <div style={{ display: 'grid', placeItems: 'center', minHeight: 50 }}>{children}</div>
-      <div style={{ fontFamily: FONTS.pixel, fontSize: 11, color: '#d8c8a8', marginTop: 4 }}>{label}</div>
-    </div>
-  );
-}
-function PromptRow({ icon, pad, kbd, label }) {
-  return (
-    <div style={{ padding: 8, background: '#0a0608', border: '1px solid #5a4030', display: 'flex', alignItems: 'center', gap: 8 }}>
-      {icon}
-      <kbd style={{ fontFamily: FONTS.pixel, fontSize: 12, padding: '1px 6px', background: '#1a1410', border: '1px solid #5a4030', color: '#d8c8a8' }}>{kbd}</kbd>
-      <span style={{ color: '#d8c8a8', fontStyle: 'italic', fontSize: 13 }}>{label}</span>
-    </div>
-  );
-}
+    // Enemies (mice — move toward player)
+    enemies.forEach(e => {
+      e.phase += dt*5;
+      const dx = player.x - e.x, dy = player.y - e.y;
+      const dist = Math.hypot(dx,dy)||1;
+      const sp = 35;
+      const wob = Math.sin(e.phase)*0.3;
+      const ex = dx/dist*sp + Math.cos(e.phase)*sp*wob;
+      const ey = dy/dist*sp + Math.sin(e.phase)*sp*wob;
+      tryMove(e, ex*dt, ey*dt);
+      // damage player
+      if(player.hurtCd<=0 && Math.abs(player.x-e.x)<8 && Math.abs(player.y-e.y)<8){
+        player.hp--;
+        player.hurtCd = 1.2;
+        damageFlash = 0.3;
+        cameraShake = 6;
+        const kx = (player.x-e.x)/dist*40, ky = (player.y-e.y)/dist*40;
+        tryMove(player, kx*0.04, ky*0.04);
+        if(player.hp<=0) gameOver();
+      }
+    });
+    player.hurtCd = Math.max(0, player.hurtCd - dt);
 
-// ─────────────────────────────────────────────────────────────
-// Boss combat — large, with HP bar
-// ─────────────────────────────────────────────────────────────
-function BossCombat({ houseKey = 'fort', w = 960, h = 600 }) {
-  const palette = PALETTES[houseKey];
-  return (
-    <div style={{ width: w, height: h, position: 'relative' }}>
-      <GameView houseKey={houseKey} roomKey="boss" doors={['S']} w={w} h={h} dim={0.15} />
-      {/* boss name + hp */}
-      <div style={{ position: 'absolute', top: 16, left: '50%', transform: 'translateX(-50%)', textAlign: 'center', width: 600 }}>
-        <div style={{ fontFamily: FONTS.display, fontSize: 28, color: '#c83020', letterSpacing: 8, textShadow: '0 0 12px #5a0a0a, 3px 3px 0 #0a0608', fontWeight: 900 }}>LE MAÎTRE</div>
-        <div style={{ fontFamily: FONTS.body, fontSize: 14, fontStyle: 'italic', color: '#fdc04a', marginTop: -2, textShadow: '2px 2px 0 #0a0608' }}>~ phase II / III · projectiles ~</div>
-        {/* HP bar */}
-        <div style={{ marginTop: 8, height: 16, background: '#0a0608', border: '2px solid #fdc04a', position: 'relative', boxShadow: '0 0 12px rgba(200,48,32,0.6)' }}>
-          <div style={{ height: '100%', width: '62%', background: 'linear-gradient(180deg, #ff5040, #c83020 60%, #5a0a0a)', boxShadow: '0 0 8px #c83020' }} />
-          <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: FONTS.pixel, fontSize: 13, color: '#fff', textShadow: '1px 1px 0 #0a0608' }}>62 / 100</div>
-        </div>
-      </div>
-      {/* HUD min */}
-      <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none' }}>
-        <HUD_Coins_Min roomTitle="" roomNum="12/12" accent={palette.accent2 || '#fdc04a'} hideTitle={true} />
-      </div>
-    </div>
-  );
-}
+    // Coins pickup
+    for(let i=coins.length-1;i>=0;i--){
+      const c = coins[i];
+      c.bob += dt*4;
+      if(Math.abs(player.x-c.x)<8 && Math.abs(player.y-c.y)<8){
+        coinCount++;
+        coins.splice(i,1);
+        for(let k=0;k<5;k++) particles.push({x:c.x,y:c.y,vx:(Math.random()-.5)*60,vy:-Math.random()*80,life:.5,c:'#fdc04a'});
+      }
+    }
 
-// ─────────────────────────────────────────────────────────────
-// Brief sticky
-// ─────────────────────────────────────────────────────────────
-function BriefIntro() {
-  return (
-    <div style={{ width: 720, padding: 24, background: '#1a1410', border: '2px solid #fdc04a', color: '#f4ecd8' }}>
-      <div style={{ fontFamily: FONTS.pixel, fontSize: 14, color: '#fdc04a', letterSpacing: 4 }}>HI-FI · ROGUELIKE 2D · TOP-DOWN</div>
-      <div style={{ fontFamily: FONTS.display, fontSize: 56, fontWeight: 900, color: '#fdc04a', letterSpacing: 10, textShadow: '0 0 20px #c83020, 4px 4px 0 #0a0608', marginTop: 4 }}>ALF</div>
-      <div style={{ fontFamily: FONTS.body, fontStyle: 'italic', fontSize: 18, color: '#d8c8a8', marginTop: 4, lineHeight: 1.5 }}>
-        Un chartreux qui traverse cinq maisons, du <span style={{ color: '#fdc04a' }}>cottage</span> à la <span style={{ color: '#c83020' }}>forteresse</span>, en passant par l'<span style={{ color: '#9a4abe' }}>au-delà</span>. Style pixel-art 16×16 · ambiance gothique cosy · projet hi-fi.
-      </div>
-      <div style={{ marginTop: 12, fontFamily: FONTS.body, fontSize: 14, color: '#a89878', lineHeight: 1.6 }}>
-        <b style={{ color: '#fdc04a' }}>Décisions cadrées :</b> pixel-art, permadeath strict, 1 pièce = 1 salle, marchand activé. <b style={{ color: '#fdc04a' }}>HUD :</b> variation <i>min</i> par défaut (4 coins discrets). Voir Tweaks pour basculer entre maison / pièce / HUD sur l'artboard de focus.
-      </div>
-    </div>
-  );
-}
+    // Particles
+    for(let i=particles.length-1;i>=0;i--){
+      const p = particles[i];
+      p.x += p.vx*dt; p.y += p.vy*dt;
+      p.vx *= 0.92; p.vy *= 0.92;
+      p.life -= dt;
+      if(p.life<=0) particles.splice(i,1);
+    }
 
-// ─────────────────────────────────────────────────────────────
-// MAIN APP — design canvas with all artboards
-// ─────────────────────────────────────────────────────────────
-function App() {
-  const [tweaks, setTweak] = useTweaks(TWEAK_DEFAULTS);
+    // Door (top)
+    if(isDoor(player.x, player.y-6)){
+      if(enemies.length===0) cleared();
+    }
 
-  return (
-    <React.Fragment>
-      <DesignCanvas>
+    // Respawn enemies if all dead and player hasn't reached door
+    if(enemies.length===0 && coins.length===0 && gameState==='playing'){
+      // wait for door — handled above
+    }
+  }
 
-        {/* ───── 00 · brief ───── */}
-        <DCSection id="00-brief" title="00 · brief">
-          <DCArtboard id="brief" label="Brief Alf" width={760} height={280}>
-            <BriefIntro />
-          </DCArtboard>
-          <DCArtboard id="style-guide" label="Style guide UI" width={920} height={620}>
-            <StyleGuide />
-          </DCArtboard>
-        </DCSection>
+  function gameOver(){
+    gameState = 'over';
+    if(coinCount > bestCoins){ bestCoins = coinCount; localStorage.setItem('okalam_alf_best', String(bestCoins)); }
+    ovTitle.textContent = 'GAME OVER';
+    ovSub.textContent = `Pièces · ${coinCount}   Record · ${bestCoins}`;
+    ovKeys.innerHTML = 'Le chat a perdu sa neuvième vie...';
+    playBtn.textContent = 'Recommencer';
+    overlay.classList.remove('hidden');
+  }
+  function cleared(){
+    gameState = 'cleared';
+    if(coinCount > bestCoins){ bestCoins = coinCount; localStorage.setItem('okalam_alf_best', String(bestCoins)); }
+    ovTitle.textContent = 'PIÈCE NETTOYÉE';
+    ovSub.textContent = `Pièces · ${coinCount}   Record · ${bestCoins}`;
+    ovKeys.innerHTML = 'Le grenier t\'attend... (à venir)';
+    playBtn.textContent = 'Rejouer';
+    overlay.classList.remove('hidden');
+  }
 
-        {/* ───── 01 · mood board ───── */}
-        <DCSection id="01-moodboard" title="01 · mood board · 5 maisons" subtitle="palettes propres + ambiance">
-          {['eu', 'haunt', 'jp', 'ru', 'fort'].map(hk => (
-            <DCArtboard key={hk} id={`mood-${hk}`} label={PALETTES[hk].name} width={400} height={460}>
-              <HousePaletteCard houseKey={hk} />
-            </DCArtboard>
-          ))}
-        </DCSection>
+  // ── Drawing helpers ─────────────────────────────────────────
+  function drawTile(c,r){
+    const t = ROOM[r][c];
+    const x = c*TILE, y = r*TILE;
+    if(t===0){
+      // floor planks — alternate color subtly
+      ctx.fillStyle = (c+r)%2===0 ? P.floor : '#dfbb86';
+      ctx.fillRect(x,y,TILE,TILE);
+      // plank seams
+      ctx.fillStyle = 'rgba(26,16,40,.18)';
+      ctx.fillRect(x, y+15, TILE, 1);
+    } else if(t===1){
+      // wall — use top color for top row, side color elsewhere
+      const above = r>0 ? ROOM[r-1][c] : 1;
+      if(above!==1){
+        ctx.fillStyle = P.wallTop;
+        ctx.fillRect(x,y,TILE,TILE);
+        ctx.fillStyle = P.wall;
+        ctx.fillRect(x, y+11, TILE, 5);
+        ctx.fillStyle = 'rgba(0,0,0,.3)';
+        ctx.fillRect(x, y+11, TILE, 1);
+      } else {
+        ctx.fillStyle = P.wall;
+        ctx.fillRect(x,y,TILE,TILE);
+        // brick pattern
+        ctx.fillStyle = 'rgba(0,0,0,.2)';
+        if(r%2===0){ ctx.fillRect(x+8, y, 1, TILE); }
+        else { ctx.fillRect(x+4, y, 1, TILE); ctx.fillRect(x+12, y, 1, TILE); }
+      }
+    } else if(t===2){
+      // furniture — wooden surface (table)
+      ctx.fillStyle = P.surface;
+      ctx.fillRect(x,y,TILE,TILE);
+      ctx.fillStyle = '#a87a48';
+      ctx.fillRect(x, y+TILE-2, TILE, 2);
+      ctx.fillStyle = 'rgba(0,0,0,.15)';
+      ctx.fillRect(x, y+8, TILE, 1);
+    } else if(t===3){
+      // carpet (lavender)
+      ctx.fillStyle = P.accent2;
+      ctx.fillRect(x,y,TILE,TILE);
+      ctx.fillStyle = 'rgba(255,232,168,.3)';
+      const o = (c+r)%2===0 ? 4 : 12;
+      ctx.fillRect(x+o, y+o, 2, 2);
+    } else if(t===4){
+      // door — opening with light glow
+      ctx.fillStyle = P.grout;
+      ctx.fillRect(x,y,TILE,TILE);
+      ctx.fillStyle = 'rgba(255,232,168,.35)';
+      ctx.fillRect(x, y+TILE-4, TILE, 4);
+    }
+  }
 
-        {/* ───── 02 · sprite sheet ───── */}
-        <DCSection id="02-alf" title="02 · sprite sheet · Alf" subtitle="chartreux, 4 directions, 4 frames">
-          <DCArtboard id="alf-sheet" label="Sprite sheet Alf" width={780} height={780}>
-            <AlfSpriteSheet />
-          </DCArtboard>
-          <DCArtboard id="minou" label="Minou — marchand" width={420} height={580}>
-            <div style={{ background: '#1a1410', border: '2px solid #fdc04a', padding: 24, color: '#f4ecd8' }}>
-              <div style={{ fontFamily: FONTS.display, fontSize: 24, color: '#fdc04a', letterSpacing: 3, textShadow: '2px 2px 0 #0a0608' }}>MINOU</div>
-              <div style={{ fontFamily: FONTS.body, fontStyle: 'italic', fontSize: 14, color: '#d8c8a8' }}>chat marchand · une pièce dédiée par maison</div>
-              <div className="pixelated" style={{ marginTop: 14, height: 220, background: '#0a0608', display: 'grid', placeItems: 'center', border: '1px solid #5a4030' }}>
-                <MinouSprite scale={9} />
-              </div>
-              <ul style={{ fontFamily: FONTS.body, fontSize: 14, lineHeight: 1.7, paddingLeft: 18, color: '#d8c8a8', marginTop: 14 }}>
-                <li>derrière son comptoir, ne bouge pas</li>
-                <li>pelage <b style={{ color: '#3a78c8' }}>bleu</b> · noeud papillon · monocle</li>
-                <li>vend cœurs · clés · bombes · items contre pièces</li>
-                <li>parfois en promo (rouge clignotant)</li>
-              </ul>
-            </div>
-          </DCArtboard>
-        </DCSection>
+  function drawAlf(){
+    const px = Math.round(player.x - 8), py = Math.round(player.y - 8);
+    const flash = player.hurtCd>0 && Math.floor(player.hurtCd*10)%2===0;
+    const body = flash ? '#ffd6d0' : A.body;
+    const shade = flash ? '#ffb0a0' : A.bodyShade;
+    const belly = flash ? '#fff' : A.belly;
+    const out = A.outline;
+    // shadow
+    ctx.fillStyle = 'rgba(0,0,0,.35)';
+    ctx.fillRect(px+3, py+14, 10, 1);
+    // walking bob
+    const walk = Math.floor(player.walkPhase)%2;
+    const yoff = walk;
 
-        {/* ───── 03 · HUD variations ───── */}
-        <DCSection id="03-hud" title="03 · HUD · variation B coins" subtitle="2 sous-variations · sobre & full">
-          <DCArtboard id="hud-min" label="HUD · min (par défaut)" width={1000} height={640}>
-            <GameViewWithHUD houseKey="eu" roomKey="kitchen" doors={['N','S','E','W']} hudVariant="min" roomTitle="~ Cuisine ~" w={960} h={600} />
-          </DCArtboard>
-          <DCArtboard id="hud-full" label="HUD · full (densité +)" width={1000} height={640}>
-            <GameViewWithHUD houseKey="haunt" roomKey="living" doors={['N','S','E','W']} hudVariant="full" roomTitle="~ Salon hanté ~" w={960} h={600} />
-          </DCArtboard>
-        </DCSection>
+    if(player.dir==='S'){
+      // body
+      ctx.fillStyle = out;
+      ctx.fillRect(px+4, py+5+yoff, 8, 1);
+      ctx.fillRect(px+3, py+6+yoff, 1, 5);
+      ctx.fillRect(px+12, py+6+yoff, 1, 5);
+      ctx.fillRect(px+4, py+11+yoff, 8, 1);
+      ctx.fillStyle = body;
+      ctx.fillRect(px+4, py+6+yoff, 8, 5);
+      ctx.fillStyle = belly;
+      ctx.fillRect(px+5, py+9+yoff, 6, 2);
+      // head (top)
+      ctx.fillStyle = out;
+      ctx.fillRect(px+5, py+2, 6, 1);
+      ctx.fillRect(px+4, py+3, 1, 4);
+      ctx.fillRect(px+11, py+3, 1, 4);
+      ctx.fillStyle = body;
+      ctx.fillRect(px+5, py+3, 6, 4);
+      // ears
+      ctx.fillStyle = A.ear;
+      ctx.fillRect(px+4, py+1, 2, 2);
+      ctx.fillRect(px+10, py+1, 2, 2);
+      ctx.fillStyle = A.innerEar;
+      ctx.fillRect(px+5, py+2, 1, 1);
+      ctx.fillRect(px+10, py+2, 1, 1);
+      // eyes
+      ctx.fillStyle = A.eye;
+      ctx.fillRect(px+5, py+5, 2, 1);
+      ctx.fillRect(px+9, py+5, 2, 1);
+      ctx.fillStyle = A.pupil;
+      ctx.fillRect(px+6, py+5, 1, 1);
+      ctx.fillRect(px+10, py+5, 1, 1);
+      // nose
+      ctx.fillStyle = A.nose;
+      ctx.fillRect(px+7, py+6, 2, 1);
+      // tail
+      ctx.fillStyle = out;
+      ctx.fillRect(px+12, py+8+yoff, 2, 1);
+      ctx.fillRect(px+13, py+9+yoff, 1, 1);
+    } else if(player.dir==='N'){
+      ctx.fillStyle = out;
+      ctx.fillRect(px+4, py+5+yoff, 8, 1);
+      ctx.fillRect(px+3, py+6+yoff, 1, 5);
+      ctx.fillRect(px+12, py+6+yoff, 1, 5);
+      ctx.fillRect(px+4, py+11+yoff, 8, 1);
+      ctx.fillStyle = body;
+      ctx.fillRect(px+4, py+6+yoff, 8, 5);
+      ctx.fillStyle = shade;
+      ctx.fillRect(px+5, py+9+yoff, 6, 2);
+      // head from behind
+      ctx.fillStyle = out;
+      ctx.fillRect(px+5, py+2, 6, 1);
+      ctx.fillRect(px+4, py+3, 1, 4);
+      ctx.fillRect(px+11, py+3, 1, 4);
+      ctx.fillStyle = body;
+      ctx.fillRect(px+5, py+3, 6, 4);
+      // ears (back view, more visible)
+      ctx.fillStyle = A.ear;
+      ctx.fillRect(px+4, py+1, 2, 2);
+      ctx.fillRect(px+10, py+1, 2, 2);
+      // tail
+      ctx.fillStyle = out;
+      ctx.fillRect(px+2, py+9+yoff, 2, 1);
+      ctx.fillRect(px+1, py+8+yoff, 1, 1);
+    } else {
+      // side view (W or E)
+      const flip = player.dir==='W';
+      const sx = flip ? -1 : 1;
+      const ox = flip ? px+15 : px;
+      const drawPx = (x,y,w,h,c) => {
+        ctx.fillStyle = c;
+        const fx = flip ? ox - x - w + 1 : ox + x;
+        ctx.fillRect(fx, py+y, w, h);
+      };
+      // body
+      drawPx(3,5+yoff,9,1,out);
+      drawPx(3,11+yoff,9,1,out);
+      drawPx(2,6+yoff,1,5,out);
+      drawPx(12,6+yoff,1,5,out);
+      drawPx(3,6+yoff,9,5,body);
+      drawPx(3,9+yoff,9,2,belly);
+      // head
+      drawPx(10,2,4,1,out);
+      drawPx(9,3,1,4,out);
+      drawPx(14,3,1,3,out);
+      drawPx(10,3,4,4,body);
+      // ear
+      drawPx(11,1,2,2,A.ear);
+      drawPx(11,2,1,1,A.innerEar);
+      // eye
+      drawPx(12,4,1,1,A.eye);
+      drawPx(13,4,1,1,A.pupil);
+      // nose
+      drawPx(14,5,1,1,A.nose);
+      // tail
+      drawPx(0,7+yoff,2,1,out);
+      drawPx(0,6+yoff,1,1,out);
+    }
+  }
 
-        {/* ───── 04 · pièces · maison EU complète ───── */}
-        <DCSection id="04-rooms-eu" title="04 · 10 pièces · maison européenne" subtitle="même structure réutilisée par maison">
-          {[
-            ['hall', 'Entrée / hall', ['N','S','E','W']],
-            ['corridor', 'Couloir', ['E','W']],
-            ['living', 'Salon', ['N','S','E','W']],
-            ['kitchen', 'Cuisine — vie', ['N','S','W']],
-            ['playroom', 'Salle de jeu — item', ['N','S']],
-            ['bedroom', 'Chambre — don', ['S','E']],
-            ['bathroom', 'Salle de bain — pièces', ['N','E']],
-            ['shop', 'Marchand — Minou', ['S']],
-            ['secret', 'Salle secrète', ['W']],
-            ['boss', 'Grenier · boss', ['S']],
-          ].map(([rk, label, doors]) => (
-            <DCArtboard key={rk} id={`eu-${rk}`} label={label} width={760} height={480}>
-              <GameView houseKey="eu" roomKey={rk} doors={doors} w={720} h={450} />
-            </DCArtboard>
-          ))}
-        </DCSection>
+  function drawMouse(e){
+    const x = Math.round(e.x-5), y = Math.round(e.y-4);
+    // body
+    ctx.fillStyle = '#0a0820';
+    ctx.fillRect(x, y+2, 9, 1);
+    ctx.fillRect(x, y+5, 9, 1);
+    ctx.fillRect(x, y+3, 1, 2);
+    ctx.fillRect(x+9, y+3, 1, 2);
+    ctx.fillStyle = '#9a8aa8';
+    ctx.fillRect(x+1, y+3, 8, 2);
+    // head
+    ctx.fillStyle = '#0a0820';
+    ctx.fillRect(x+8, y+1, 1, 4);
+    ctx.fillRect(x+9, y+2, 1, 2);
+    ctx.fillStyle = '#9a8aa8';
+    ctx.fillRect(x+8, y+2, 1, 2);
+    // ear
+    ctx.fillStyle = '#f48ab8';
+    ctx.fillRect(x+7, y, 1, 1);
+    // eye
+    ctx.fillStyle = '#fdc83a';
+    ctx.fillRect(x+8, y+2, 1, 1);
+    // tail
+    ctx.fillStyle = '#5a4a68';
+    ctx.fillRect(x-2, y+3, 2, 1);
+    // shadow
+    ctx.fillStyle = 'rgba(0,0,0,.3)';
+    ctx.fillRect(x+1, y+7, 7, 1);
+    // hurt flash
+    if(e.hp<2){
+      ctx.fillStyle = 'rgba(232,58,74,.5)';
+      ctx.fillRect(x, y, 10, 6);
+    }
+  }
 
-        {/* ───── 05 · pièces signature par maison ───── */}
-        <DCSection id="05-signatures" title="05 · pièces signature · 1 par maison" subtitle="vocabulaire spécifique au niveau">
-          {[
-            ['eu', 'signature_eu', 'Cave à vins'],
-            ['haunt', 'signature_haunt', 'Crypte'],
-            ['jp', 'signature_jp', 'Jardin zen'],
-            ['ru', 'signature_ru', 'Bania (sauna)'],
-            ['fort', 'signature_fort', "Salle d'armes"],
-          ].map(([hk, rk, label]) => (
-            <DCArtboard key={hk} id={`sig-${hk}`} label={`${PALETTES[hk].name} · ${label}`} width={760} height={480}>
-              <GameView houseKey={hk} roomKey={rk} doors={['N','S','E','W']} w={720} h={450} />
-            </DCArtboard>
-          ))}
-        </DCSection>
+  function drawCoin(c){
+    const yoff = Math.sin(c.bob)*1;
+    const x = Math.round(c.x-3), y = Math.round(c.y-3+yoff);
+    ctx.fillStyle = '#0a0820';
+    ctx.fillRect(x, y+1, 6, 4);
+    ctx.fillRect(x+1, y, 4, 6);
+    ctx.fillStyle = P.accent;
+    ctx.fillRect(x+1, y+1, 4, 4);
+    ctx.fillRect(x+2, y, 2, 6);
+    ctx.fillStyle = '#fff0a8';
+    ctx.fillRect(x+2, y+1, 1, 2);
+  }
 
-        {/* ───── 06 · Salons/cuisines toutes maisons (tile sheet rapide) ───── */}
-        <DCSection id="06-rooms-all" title="06 · même pièce, 5 maisons" subtitle="comparatif palettes · cuisine">
-          {['eu', 'haunt', 'jp', 'ru', 'fort'].map(hk => (
-            <DCArtboard key={hk} id={`all-kit-${hk}`} label={`Cuisine · ${PALETTES[hk].name}`} width={520} height={340}>
-              <GameView houseKey={hk} roomKey="kitchen" doors={['N','S','E','W']} w={480} h={300} />
-            </DCArtboard>
-          ))}
-        </DCSection>
+  function drawProj(p){
+    const x = Math.round(p.x-2), y = Math.round(p.y-2);
+    ctx.fillStyle = '#fff';
+    ctx.fillRect(x+1, y, 2, 1);
+    ctx.fillRect(x+1, y+3, 2, 1);
+    ctx.fillRect(x, y+1, 1, 2);
+    ctx.fillRect(x+3, y+1, 1, 2);
+    ctx.fillStyle = '#a8c4ff';
+    ctx.fillRect(x+1, y+1, 2, 2);
+  }
 
-        {/* ───── 07 · bestiaire ───── */}
-        <DCSection id="07-bestiary" title="07 · bestiaire" subtitle="11 ennemis + 1 boss commun">
-          <DCArtboard id="bestiary" label="Bestiaire complet" width={1240} height={1340}>
-            <BestiaryGrid />
-          </DCArtboard>
-        </DCSection>
+  function drawHUD(){
+    // Hearts (top-left)
+    for(let i=0;i<player.maxHp;i++){
+      const x = 4 + i*10, y = 4;
+      const filled = i < player.hp;
+      ctx.fillStyle = '#0a0820';
+      ctx.fillRect(x+1, y, 6, 1);
+      ctx.fillRect(x, y+1, 8, 5);
+      ctx.fillRect(x+1, y+6, 6, 1);
+      ctx.fillRect(x+2, y+7, 4, 1);
+      ctx.fillRect(x+3, y+8, 2, 1);
+      if(filled){
+        ctx.fillStyle = '#e83a4a';
+        ctx.fillRect(x+1, y+1, 6, 5);
+        ctx.fillRect(x+2, y+6, 4, 1);
+        ctx.fillRect(x+3, y+7, 2, 1);
+        ctx.fillStyle = '#ff8a9a';
+        ctx.fillRect(x+2, y+2, 1, 1);
+      } else {
+        ctx.fillStyle = 'rgba(80,40,50,.4)';
+        ctx.fillRect(x+1, y+1, 6, 5);
+      }
+    }
+    // Coins (bottom-left)
+    drawCoin({x:8, y:H-8, bob:0});
+    ctx.fillStyle = P.accent;
+    ctx.font = '11px VT323, monospace';
+    ctx.textBaseline = 'bottom';
+    ctx.fillText('×' + coinCount, 14, H-3);
+    // Room title (top-center)
+    ctx.fillStyle = P.light;
+    ctx.font = '10px VT323, monospace';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'top';
+    ctx.fillText('~ Cuisine ~', W/2, 4);
+    ctx.textAlign = 'left';
+  }
 
-        {/* ───── 08 · combat boss ───── */}
-        <DCSection id="08-boss" title="08 · combat de boss" subtitle="grenier · barre de PV · 3 phases">
-          <DCArtboard id="boss-fight" label="Boss · forteresse" width={1000} height={640}>
-            <BossCombat houseKey="fort" w={960} h={600} />
-          </DCArtboard>
-          <DCArtboard id="boss-fight-eu" label="Boss · européenne" width={1000} height={640}>
-            <BossCombat houseKey="eu" w={960} h={600} />
-          </DCArtboard>
-        </DCSection>
+  // ── Render ──────────────────────────────────────────────────
+  function draw(){
+    // shake offset
+    const sx = (Math.random()-.5)*cameraShake;
+    const sy = (Math.random()-.5)*cameraShake;
+    ctx.save();
+    ctx.translate(sx, sy);
 
-        {/* ───── 09 · marchand ───── */}
-        <DCSection id="09-shop" title="09 · marchand · Minou" subtitle="achat items · pièces">
-          <DCArtboard id="shop-eu" label="Marchand · maison EU" width={1000} height={640}>
-            <GameViewWithHUD houseKey="eu" roomKey="shop" doors={['S']} hudVariant="min" roomTitle="~ La boutique de Minou ~" roomNum="07/12" w={960} h={600} />
-          </DCArtboard>
-          <DCArtboard id="shop-jp" label="Marchand · maison JP" width={1000} height={640}>
-            <GameViewWithHUD houseKey="jp" roomKey="shop" doors={['S']} hudVariant="min" roomTitle="~ Minou-yatai ~" roomNum="06/14" w={960} h={600} />
-          </DCArtboard>
-        </DCSection>
+    // floor + walls
+    for(let r=0;r<ROWS;r++) for(let c=0;c<COLS;c++) drawTile(c,r);
 
-        {/* ───── 10 · système ───── */}
-        <DCSection id="10-system" title="10 · écrans système" subtitle="titre · pause · inventaire · transition · fin">
-          <DCArtboard id="title" label="Titre" width={960} height={600}>
-            <div style={{ width: 960, height: 600 }}>
-              <TitleScreen palette={PALETTES.eu} />
-            </div>
-          </DCArtboard>
-          <DCArtboard id="pause" label="Pause (overlay)" width={960} height={600}>
-            <PauseScreen>
-              <GameView houseKey="ru" roomKey="living" doors={['N','S','E','W']} w={960} h={600} />
-            </PauseScreen>
-          </DCArtboard>
-          <DCArtboard id="inventory" label="Inventaire" width={960} height={600}>
-            <InventoryScreen />
-          </DCArtboard>
-          <DCArtboard id="map" label="Carte plein écran" width={960} height={600}>
-            <FullMapScreen palette={PALETTES.jp} />
-          </DCArtboard>
-          <DCArtboard id="transition" label="Transition niveau" width={960} height={600}>
-            <TransitionScreen from="Maison hantée" to="Maison japonaise" n={2} />
-          </DCArtboard>
-          <DCArtboard id="gameover" label="Game over" width={960} height={600}>
-            <GameOverScreen />
-          </DCArtboard>
-          <DCArtboard id="victory" label="Victoire" width={960} height={600}>
-            <VictoryScreen />
-          </DCArtboard>
-        </DCSection>
+    // light pool from window/door
+    const grad = ctx.createRadialGradient(W*0.5, 8, 4, W*0.5, 8, 80);
+    grad.addColorStop(0, 'rgba(255,232,168,.25)');
+    grad.addColorStop(1, 'rgba(255,232,168,0)');
+    ctx.fillStyle = grad;
+    ctx.fillRect(0,0,W,H);
 
-        {/* ───── 11 · focus combiné — driven by Tweaks ───── */}
-        <DCSection id="11-focus" title="11 · vue focus · driven by Tweaks" subtitle="bascule maison / pièce / HUD via le panneau">
-          <DCArtboard id="focus-stage" label={`Focus · ${PALETTES[tweaks.focusHouse].name} · ${tweaks.focusRoom}`} width={1000} height={640}>
-            <GameViewWithHUD
-              houseKey={tweaks.focusHouse}
-              roomKey={tweaks.focusRoom}
-              doors={['N','S','E','W']}
-              hudVariant={tweaks.focusHud}
-              roomTitle={`~ ${tweaks.focusRoom} ~`}
-              w={960}
-              h={600}
-            />
-          </DCArtboard>
-        </DCSection>
+    // entities sorted by y
+    const ents = [
+      ...coins.map(c => ({y:c.y, draw:()=>drawCoin(c)})),
+      ...enemies.map(e => ({y:e.y, draw:()=>drawMouse(e)})),
+      {y: player.y, draw: drawAlf},
+    ].sort((a,b) => a.y-b.y);
+    ents.forEach(e => e.draw());
 
-      </DesignCanvas>
+    // projectiles on top
+    projectiles.forEach(drawProj);
 
-      {/* TWEAKS PANEL */}
-      <TweaksPanel title="Tweaks">
-        <TweakSection title="Vue focus (section 11)">
-          <TweakSelect
-            label="Maison"
-            value={tweaks.focusHouse}
-            onChange={(v) => setTweak('focusHouse', v)}
-            options={[
-              { value: 'eu', label: '01 · Européenne' },
-              { value: 'haunt', label: '02 · Hantée' },
-              { value: 'jp', label: '03 · Japonaise' },
-              { value: 'ru', label: '04 · Russe' },
-              { value: 'fort', label: '05 · Forteresse' },
-            ]}
-          />
-          <TweakSelect
-            label="Type de pièce"
-            value={tweaks.focusRoom}
-            onChange={(v) => setTweak('focusRoom', v)}
-            options={[
-              { value: 'hall', label: 'Entrée / hall' },
-              { value: 'corridor', label: 'Couloir' },
-              { value: 'living', label: 'Salon' },
-              { value: 'kitchen', label: 'Cuisine' },
-              { value: 'playroom', label: 'Salle de jeu' },
-              { value: 'bedroom', label: 'Chambre' },
-              { value: 'bathroom', label: 'Salle de bain' },
-              { value: 'shop', label: 'Marchand' },
-              { value: 'secret', label: 'Salle secrète' },
-              { value: 'boss', label: 'Grenier (boss)' },
-            ]}
-          />
-          <TweakRadio
-            label="HUD"
-            value={tweaks.focusHud}
-            onChange={(v) => setTweak('focusHud', v)}
-            options={[
-              { value: 'min', label: 'min' },
-              { value: 'full', label: 'full' },
-            ]}
-          />
-        </TweakSection>
-      </TweaksPanel>
-    </React.Fragment>
-  );
-}
+    // particles
+    particles.forEach(p => {
+      ctx.fillStyle = p.c;
+      const a = Math.min(1, p.life*3);
+      ctx.globalAlpha = a;
+      ctx.fillRect(Math.round(p.x-1), Math.round(p.y-1), 2, 2);
+      ctx.globalAlpha = 1;
+    });
 
-ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+    // damage flash
+    if(damageFlash>0){
+      ctx.fillStyle = `rgba(232,58,74,${damageFlash*1.2})`;
+      ctx.fillRect(0,0,W,H);
+    }
+
+    drawHUD();
+    ctx.restore();
+  }
+
+  // ── Loop ────────────────────────────────────────────────────
+  let last = 0;
+  function loop(t){
+    const dt = Math.min(0.05, (t-last)/1000 || 0);
+    last = t;
+    update(dt);
+    draw();
+    requestAnimationFrame(loop);
+  }
+
+  function start(){
+    reset();
+    gameState = 'playing';
+    overlay.classList.add('hidden');
+  }
+
+  playBtn.addEventListener('click', start);
+  reset();
+  draw();
+  requestAnimationFrame(loop);
+
+  // Resize canvas to fit while keeping pixel aspect
+  function fit(){
+    const stage = document.querySelector('.stage');
+    const sw = stage.clientWidth, sh = stage.clientHeight;
+    const ratio = Math.min(sw/W, sh/H);
+    const k = Math.max(1, Math.floor(ratio));
+    canvas.style.width = (W*k) + 'px';
+    canvas.style.height = (H*k) + 'px';
+  }
+  fit();
+  window.addEventListener('resize', fit);
+})();
 </script>
 </body>
 </html>

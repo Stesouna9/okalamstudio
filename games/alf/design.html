@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Alf — Hi-Fi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=VT323&display=swap" rel="stylesheet">
+<style>
+  html, body { margin: 0; padding: 0; background: #0e0a08; color: #f4ecd8; font-family: "Cormorant Garamond", serif; }
+  * { box-sizing: border-box; }
+  #root { min-height: 100vh; }
+
+  /* pixel rendering globally for game viewports */
+  .pixelated, .pixelated * { image-rendering: pixelated; image-rendering: crisp-edges; }
+
+  /* DC overrides for dark theme */
+  body { background: #0e0a08 !important; }
+
+  /* Scrollbars */
+  ::-webkit-scrollbar { width: 12px; height: 12px; }
+  ::-webkit-scrollbar-track { background: #1a1410; }
+  ::-webkit-scrollbar-thumb { background: #5a4030; border: 2px solid #1a1410; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script type="text/babel" src="tokens.jsx"></script>
+<script type="text/babel" src="sprites-alf.jsx"></script>
+<script type="text/babel" src="sprites-enemies.jsx"></script>
+<script type="text/babel" src="hud.jsx"></script>
+<script type="text/babel" src="rooms-base.jsx"></script>
+<script type="text/babel" src="rooms-content.jsx"></script>
+<script type="text/babel" src="screens.jsx"></script>
+<script type="text/babel" src="design-canvas.jsx"></script>
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+
+<script type="text/babel">
+const { useState } = React;
+
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "focusHouse": "eu",
+  "focusRoom": "kitchen",
+  "focusHud": "min"
+}/*EDITMODE-END*/;
+
+// ─────────────────────────────────────────────────────────────
+// Game viewport — RoomBase wired with palette + room id
+// ─────────────────────────────────────────────────────────────
+const FLOOR_BY_HOUSE = {
+  eu:    'planks',
+  haunt: 'tile',
+  jp:    'tatami',
+  ru:    'parquet',
+  fort:  'stone',
+};
+
+function GameView({ houseKey, roomKey, doors, dim = 0, w = 720, h = 450 }) {
+  const palette = PALETTES[houseKey];
+  const RoomFn = Room[roomKey] || Room.living;
+  const floorPattern = FLOOR_BY_HOUSE[houseKey];
+  return (
+    <div className="pixelated" style={{ width: w, height: h, position: 'relative', overflow: 'hidden', background: palette.sky, border: '3px solid #0a0608', boxShadow: '0 0 0 1px #fdc04a, 0 8px 30px rgba(0,0,0,0.5)' }}>
+      <RoomBase palette={palette} doors={doors} floorPattern={floorPattern} dim={dim}>
+        {RoomFn(palette)}
+      </RoomBase>
+    </div>
+  );
+}
+
+function GameViewWithHUD({ houseKey, roomKey, doors, hudVariant = 'min', roomTitle, roomNum = '03/12', w = 960, h = 600 }) {
+  const palette = PALETTES[houseKey];
+  const HudComp = hudVariant === 'full' ? HUD_Coins : HUD_Coins_Min;
+  return (
+    <div style={{ width: w, height: h, position: 'relative' }}>
+      <GameView houseKey={houseKey} roomKey={roomKey} doors={doors} w={w} h={h} />
+      <div style={{ position: 'absolute', inset: 0 }}>
+        <HudComp roomTitle={roomTitle || palette.name} roomNum={roomNum} accent={palette.accent2 || '#fdc04a'} />
+      </div>
+    </div>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────
+// Mood board card
+// ─────────────────────────────────────────────────────────────
+function HousePaletteCard({ houseKey }) {
+  const p = PALETTES[houseKey];
+  const swatches = [
+    { c: p.floor, l: 'sol' },
+    { c: p.floorAlt, l: 'sol/alt' },
+    { c: p.wall, l: 'mur' },
+    { c: p.wallTop, l: 'mur/haut' },
+    { c: p.surface, l: 'mobilier' },
+    { c: p.accent, l: 'accent' },
+    { c: p.accent2, l: 'accent 2' },
+    { c: p.light, l: 'lumière' },
+  ];
+  return (
+    <div style={{ width: 360, padding: 20, background: p.sky, border: '2px solid #0a0608', boxShadow: '0 0 0 1px #fdc04a, 0 8px 24px rgba(0,0,0,0.4)', color: '#f4ecd8' }}>
+      <div style={{ fontFamily: FONTS.pixel, fontSize: 16, color: p.accent, letterSpacing: 3 }}>{p.subtitle.toUpperCase()}</div>
+      <div style={{ fontFamily: FONTS.display, fontSize: 26, fontWeight: 700, color: '#f4ecd8', textShadow: '2px 2px 0 #0a0608', letterSpacing: 2 }}>{p.name}</div>
+      <div style={{ marginTop: 14, display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 6 }}>
+        {swatches.map((s, i) => (
+          <div key={i}>
+            <div style={{ width: '100%', aspectRatio: '1/1', background: s.c, border: '1.5px solid #0a0608' }} />
+            <div style={{ fontFamily: FONTS.pixel, fontSize: 12, color: '#f4ecd8', marginTop: 2, opacity: 0.8 }}>{s.l}</div>
+            <div style={{ fontFamily: FONTS.pixel, fontSize: 10, color: '#a89878' }}>{s.c}</div>
+          </div>
+        ))}
+      </div>
+      <div style={{ marginTop: 14, fontFamily: FONTS.body, fontSize: 14, fontStyle: 'italic', color: '#d8c8a8', lineHeight: 1.5 }}>
+        ambiance · <b>{p.mood === 'gothic' ? 'gothique sombre' : 'cosy'}</b> · pattern {FLOOR_BY_HOUSE[houseKey]}
+      </div>
+    </div>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────
+// Sprite sheet card — Alf
+// ─────────────────────────────────────────────────────────────
+function AlfSpriteSheet() {
+  const dirs = ['S', 'N', 'E', 'W'];
+  const frames = ['idle', 'walk1', 'walk2', 'attack'];
+  return (
+    <div style={{ background: '#1a1410', border: '2px solid #fdc04a', padding: 24, color: '#f4ecd8' }}>
+      <div style={{ fontFamily: FONTS.display, fontSize: 28, color: '#fdc04a', letterSpacing: 4, textShadow: '2px 2px 0 #0a0608' }}>ALF — chartreux</div>
+      <div style={{ fontFamily: FONTS.body, fontStyle: 'italic', fontSize: 16, color: '#d8c8a8', marginTop: 4 }}>4 directions × 4 frames · 16×16 px (×8)</div>
+      <table style={{ marginTop: 18, borderCollapse: 'collapse' }}>
+        <thead>
+          <tr>
+            <th></th>
+            {frames.map(f => <th key={f} style={{ fontFamily: FONTS.pixel, fontSize: 14, color: '#fdc04a', padding: '6px 14px', letterSpacing: 2 }}>{f.toUpperCase()}</th>)}
+          </tr>
+        </thead>
+        <tbody>
+          {dirs.map(d => (
+            <tr key={d}>
+              <td style={{ fontFamily: FONTS.pixel, fontSize: 14, color: '#fdc04a', padding: '0 12px' }}>{d}</td>
+              {frames.map(f => (
+                <td key={f} style={{ padding: 6 }}>
+                  <div className="pixelated" style={{ width: 144, height: 144, background: '#0a0608', display: 'grid', placeItems: 'center', border: '1px solid #5a4030' }}>
+                    <AlfSprite dir={d} frame={f} scale={8} />
+                  </div>
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <div style={{ marginTop: 16, display: 'flex', gap: 32, alignItems: 'flex-start' }}>
+        <div>
+          <div style={{ fontFamily: FONTS.pixel, fontSize: 14, color: '#fdc04a', letterSpacing: 2 }}>PALETTE</div>
+          {Object.entries(ALF).map(([k, v]) => (
+            <div key={k} style={{ display: 'flex', alignItems: 'center', gap: 8, fontFamily: FONTS.pixel, fontSize: 13, color: '#d8c8a8', marginTop: 4 }}>
+              <span style={{ width: 16, height: 16, background: v, border: '1px solid #5a4030' }} />
+              <span style={{ width: 90 }}>{k}</span>
+              <span style={{ color: '#a89878' }}>{v}</span>
+            </div>
+          ))}
+        </div>
+        <div style={{ flex: 1 }}>
+          <div style={{ fontFamily: FONTS.pixel, fontSize: 14, color: '#fdc04a', letterSpacing: 2 }}>ANIMATIONS À PRÉVOIR</div>
+          <ul style={{ fontFamily: FONTS.body, fontSize: 14, lineHeight: 1.7, paddingLeft: 18, color: '#d8c8a8' }}>
+            <li><b>idle</b> — 2 frames, queue qui frémit, 600 ms/cycle</li>
+            <li><b>walk</b> — 2 frames alternées, 180 ms/cycle</li>
+            <li><b>attack</b> — flash + recul 80 ms</li>
+            <li><b>damage</b> — clignote 3× en rouge sur hit</li>
+            <li><b>death</b> — chute sur le côté + ★ flotte</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────
+// Bestiary card grid
+// ─────────────────────────────────────────────────────────────
+const BESTIARY = [
+  { house: null,    Comp: E_Souris,    name: 'Souris',     hp: 2, beh: 'Récurrent · avance droit, vite. Skin réadapté par maison.' },
+  { house: 'eu',    Comp: E_Mouche,    name: 'Mouche',     hp: 1, beh: 'Vol erratique en zigzag, fragile.' },
+  { house: 'eu',    Comp: E_Fermier,   name: 'Fermier',    hp: 5, beh: 'Lance sa fourche en ligne droite.' },
+  { house: 'haunt', Comp: E_Fantome,   name: 'Fantôme',    hp: 3, beh: 'Traverse les murs, suit Alf.' },
+  { house: 'haunt', Comp: E_Squelette, name: 'Squelette',  hp: 4, beh: 'Ressuscite 1× après mort.' },
+  { house: 'jp',    Comp: E_Tanuki,    name: 'Tanuki',     hp: 3, beh: 'Charge alignée quand Alf est en vue.' },
+  { house: 'jp',    Comp: E_Yokai,     name: 'Yokai',      hp: 6, beh: 'Téléporte · invoque 1 souris.' },
+  { house: 'ru',    Comp: E_Ours,      name: 'Ours',       hp: 8, beh: 'Tank · charge dévastatrice.' },
+  { house: 'ru',    Comp: E_Babouchka, name: 'Babouchka',  hp: 4, beh: 'Lance des poupées (3 sub-mobs à la mort).' },
+  { house: 'fort',  Comp: E_Garde,     name: 'Garde',      hp: 6, beh: 'Bouclier frontal · contournement.' },
+  { house: 'fort',  Comp: E_Tourelle,  name: 'Tourelle',   hp: 4, beh: 'Statique · tir en croix toutes les 1.5 s.' },
+];
+
+function EnemyTile({ Comp, name, hp, beh, house }) {
+  const accent = house ? PALETTES[house].accent : '#fdc04a';
+  return (
+    <div style={{ width: 220, background: '#1a1410', border: '2px solid #5a4030', padding: 12, position: 'relative' }}>
+      <div className="pixelated" style={{ height: 140, background: '#0a0608', display: 'grid', placeItems: 'center', border: '1px solid #3a2818' }}>
+        <Comp scale={6} />
+      </div>
+      <span style={{ position: 'absolute', top: 4, right: 6, width: 12, height: 12, background: accent, border: '1.5px solid #0a0608', borderRadius: '50%' }} />
+      <div style={{ marginTop: 10, fontFamily: FONTS.display, fontSize: 22, color: '#fdc04a', letterSpacing: 1 }}>{name}</div>
+      <div style={{ fontFamily: FONTS.pixel, fontSize: 12, color: '#a89878', letterSpacing: 1 }}>HP {hp}{Array.from({ length: Math.min(hp, 8) }).map((_, i) => '♥').join('')}</div>
+      <div style={{ fontFamily: FONTS.body, fontSize: 13, color: '#d8c8a8', marginTop: 4, lineHeight: 1.4, fontStyle: 'italic' }}>{beh}</div>
+    </div>
+  );
+}
+
+function BestiaryGrid() {
+  const houses = ['eu', 'haunt', 'jp', 'ru', 'fort'];
+  return (
+    <div style={{ background: '#0e0a08', padding: 24, border: '2px solid #fdc04a' }}>
+      <div style={{ fontFamily: FONTS.display, fontSize: 28, color: '#fdc04a', letterSpacing: 4, textShadow: '2px 2px 0 #0a0608' }}>BESTIAIRE</div>
+      <div style={{ fontFamily: FONTS.body, fontStyle: 'italic', fontSize: 15, color: '#d8c8a8', marginTop: 4, marginBottom: 16 }}>1 récurrent · 2 par maison · 1 boss commun (3 phases — skin par maison plus tard)</div>
+
+      <div style={{ fontFamily: FONTS.pixel, fontSize: 14, color: '#fdc04a', letterSpacing: 2, marginTop: 6, marginBottom: 8 }}>RÉCURRENT</div>
+      <div style={{ display: 'flex', gap: 12 }}>
+        <EnemyTile {...BESTIARY[0]} />
+        <div style={{ width: 220, padding: 12, background: '#1a1410', border: '2px dashed #5a4030', fontFamily: FONTS.body, fontSize: 13, color: '#d8c8a8', fontStyle: 'italic', lineHeight: 1.5 }}>
+          La <b>Souris</b> apparaît dans toutes les maisons. Couleur du pelage adaptée à la palette du niveau (gris EU, blême hanté, blanche JP, hivernale RU, sombre fort).
+        </div>
+      </div>
+
+      {houses.map(hk => {
+        const mobs = BESTIARY.filter(b => b.house === hk);
+        const p = PALETTES[hk];
+        return (
+          <div key={hk}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginTop: 24, marginBottom: 8 }}>
+              <span style={{ width: 14, height: 14, background: p.accent, border: '1.5px solid #0a0608', borderRadius: '50%' }} />
+              <span style={{ fontFamily: FONTS.pixel, fontSize: 14, color: '#fdc04a', letterSpacing: 2 }}>{p.name.toUpperCase()}</span>
+            </div>
+            <div style={{ display: 'flex', gap: 12 }}>
+              {mobs.map((m, i) => <EnemyTile key={i} {...m} />)}
+            </div>
+          </div>
+        );
+      })}
+
+      <div style={{ marginTop: 24, marginBottom: 8, fontFamily: FONTS.pixel, fontSize: 14, color: '#c83020', letterSpacing: 2 }}>BOSS · placeholder commun</div>
+      <div style={{ display: 'flex', gap: 12 }}>
+        <EnemyTile Comp={E_Boss} name="Le Maître" hp={"30 + 10/lvl"} beh="3 phases · charge → projectiles → invocations." house="fort" />
+        <div style={{ flex: 1, padding: 14, background: '#1a1410', border: '2px solid #5a4030', fontFamily: FONTS.body, fontSize: 14, lineHeight: 1.6, color: '#d8c8a8' }}>
+          <div style={{ fontFamily: FONTS.display, fontSize: 22, color: '#fdc04a', marginBottom: 6 }}>Skins de boss à itérer plus tard</div>
+          <ul style={{ paddingLeft: 18, margin: 0 }}>
+            <li>EU · gros chien de garde</li>
+            <li>Hantée · fantôme géant</li>
+            <li>JP · samouraï-chat</li>
+            <li>RU · ours-sorcier</li>
+            <li>Forteresse · roi/sorcier corrompu</li>
+          </ul>
+          <div style={{ marginTop: 10, fontStyle: 'italic', color: '#a89878' }}>Récompense post-boss : pièces + 1 cœur de conteneur + porte vers la maison suivante.</div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────
+// Style guide
+// ─────────────────────────────────────────────────────────────
+function StyleGuide() {
+  return (
+    <div style={{ background: '#1a1410', border: '2px solid #fdc04a', padding: 24, color: '#f4ecd8', width: 880 }}>
+      <div style={{ fontFamily: FONTS.display, fontSize: 28, color: '#fdc04a', letterSpacing: 4, textShadow: '2px 2px 0 #0a0608' }}>STYLE GUIDE — UI</div>
+
+      {/* Typography */}
+      <div style={{ marginTop: 18, fontFamily: FONTS.pixel, fontSize: 14, color: '#fdc04a', letterSpacing: 2 }}>TYPOGRAPHIE</div>
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 14, marginTop: 8 }}>
+        <div style={{ padding: 12, background: '#0a0608', border: '1px solid #5a4030' }}>
+          <div style={{ fontFamily: FONTS.display, fontSize: 32, color: '#fdc04a', letterSpacing: 4 }}>ALF</div>
+          <div style={{ fontFamily: FONTS.body, fontSize: 12, fontStyle: 'italic', color: '#a89878' }}>Cinzel · titres + écrans</div>
+        </div>
+        <div style={{ padding: 12, background: '#0a0608', border: '1px solid #5a4030' }}>
+          <div style={{ fontFamily: FONTS.body, fontSize: 22, fontStyle: 'italic' }}>les neuf maisons</div>
+          <div style={{ fontFamily: FONTS.body, fontSize: 12, fontStyle: 'italic', color: '#a89878' }}>Cormorant Garamond · corps</div>
+        </div>
+        <div style={{ padding: 12, background: '#0a0608', border: '1px solid #5a4030' }}>
+          <div style={{ fontFamily: FONTS.pixel, fontSize: 24, color: '#fdc04a' }}>04:32 · 14¢</div>
+          <div style={{ fontFamily: FONTS.body, fontSize: 12, fontStyle: 'italic', color: '#a89878' }}>VT323 · HUD + pixel</div>
+        </div>
+      </div>
+
+      {/* UI palette */}
+      <div style={{ marginTop: 18, fontFamily: FONTS.pixel, fontSize: 14, color: '#fdc04a', letterSpacing: 2 }}>PALETTE UI</div>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(8, 1fr)', gap: 8, marginTop: 8 }}>
+        {Object.entries(UI).map(([k, v]) => (
+          <div key={k} style={{ textAlign: 'center' }}>
+            <div style={{ width: '100%', aspectRatio: '1/1', background: v, border: '1.5px solid #0a0608' }} />
+            <div style={{ fontFamily: FONTS.pixel, fontSize: 11, color: '#d8c8a8', marginTop: 2 }}>{k}</div>
+            <div style={{ fontFamily: FONTS.pixel, fontSize: 9, color: '#a89878' }}>{typeof v === 'string' ? v.slice(0, 7) : ''}</div>
+          </div>
+        ))}
+      </div>
+
+      {/* Icons */}
+      <div style={{ marginTop: 18, fontFamily: FONTS.pixel, fontSize: 14, color: '#fdc04a', letterSpacing: 2 }}>ICONOGRAPHIE HUD (16×16 px)</div>
+      <div style={{ display: 'flex', gap: 14, marginTop: 8, alignItems: 'center', flexWrap: 'wrap' }}>
+        <IconCard label="cœur plein"><Heart kind="full" size={32} /></IconCard>
+        <IconCard label="cœur 1/2"><Heart kind="half" size={32} /></IconCard>
+        <IconCard label="cœur vide"><Heart kind="empty" size={32} /></IconCard>
+        <IconCard label="pièce"><ResourcePill kind="coin" value={14} /></IconCard>
+        <IconCard label="clé"><ResourcePill kind="key" value={2} /></IconCard>
+        <IconCard label="bombe"><ResourcePill kind="bomb" value={3} /></IconCard>
+        <IconCard label="item slot"><ItemSlot size={48} label="RAGE" cooldown={0} prompt="L1" /></IconCard>
+        <IconCard label="cooldown"><ItemSlot size={48} label="RAGE" cooldown={45} prompt="L1" /></IconCard>
+      </div>
+
+      {/* Prompts */}
+      <div style={{ marginTop: 18, fontFamily: FONTS.pixel, fontSize: 14, color: '#fdc04a', letterSpacing: 2 }}>PROMPTS · MANETTE PS5 + CLAVIER</div>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 12, marginTop: 8, fontFamily: FONTS.body, fontSize: 14 }}>
+        <PromptRow icon={<PSBtn kind="cross" />} pad="✕" kbd="ESPACE" label="attaque / valider" />
+        <PromptRow icon={<PSBtn kind="circle" />} pad="◯" kbd="ÉCHAP" label="annuler / pause" />
+        <PromptRow icon={<PSBtn kind="square" />} pad="□" kbd="CTRL" label="item actif" />
+        <PromptRow icon={<PSBtn kind="triangle" />} pad="△" kbd="E" label="interagir" />
+        <PromptRow icon={<span style={{ fontFamily: FONTS.pixel, color: '#fdc04a', fontSize: 18 }}>L1</span>} pad="L1" kbd="Q" label="bombe" />
+        <PromptRow icon={<span style={{ fontFamily: FONTS.pixel, color: '#fdc04a', fontSize: 18 }}>R1</span>} pad="R1" kbd="R" label="recharger" />
+        <PromptRow icon={<span style={{ fontFamily: FONTS.pixel, color: '#fdc04a', fontSize: 18 }}>OPT</span>} pad="opt" kbd="TAB" label="inventaire" />
+        <PromptRow icon={<span style={{ fontFamily: FONTS.pixel, color: '#fdc04a', fontSize: 18 }}>TPAD</span>} pad="touch" kbd="M" label="carte" />
+      </div>
+    </div>
+  );
+}
+
+function IconCard({ children, label }) {
+  return (
+    <div style={{ textAlign: 'center', padding: 8, background: '#0a0608', border: '1px solid #5a4030', minWidth: 70 }}>
+      <div style={{ display: 'grid', placeItems: 'center', minHeight: 50 }}>{children}</div>
+      <div style={{ fontFamily: FONTS.pixel, fontSize: 11, color: '#d8c8a8', marginTop: 4 }}>{label}</div>
+    </div>
+  );
+}
+function PromptRow({ icon, pad, kbd, label }) {
+  return (
+    <div style={{ padding: 8, background: '#0a0608', border: '1px solid #5a4030', display: 'flex', alignItems: 'center', gap: 8 }}>
+      {icon}
+      <kbd style={{ fontFamily: FONTS.pixel, fontSize: 12, padding: '1px 6px', background: '#1a1410', border: '1px solid #5a4030', color: '#d8c8a8' }}>{kbd}</kbd>
+      <span style={{ color: '#d8c8a8', fontStyle: 'italic', fontSize: 13 }}>{label}</span>
+    </div>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────
+// Boss combat — large, with HP bar
+// ─────────────────────────────────────────────────────────────
+function BossCombat({ houseKey = 'fort', w = 960, h = 600 }) {
+  const palette = PALETTES[houseKey];
+  return (
+    <div style={{ width: w, height: h, position: 'relative' }}>
+      <GameView houseKey={houseKey} roomKey="boss" doors={['S']} w={w} h={h} dim={0.15} />
+      {/* boss name + hp */}
+      <div style={{ position: 'absolute', top: 16, left: '50%', transform: 'translateX(-50%)', textAlign: 'center', width: 600 }}>
+        <div style={{ fontFamily: FONTS.display, fontSize: 28, color: '#c83020', letterSpacing: 8, textShadow: '0 0 12px #5a0a0a, 3px 3px 0 #0a0608', fontWeight: 900 }}>LE MAÎTRE</div>
+        <div style={{ fontFamily: FONTS.body, fontSize: 14, fontStyle: 'italic', color: '#fdc04a', marginTop: -2, textShadow: '2px 2px 0 #0a0608' }}>~ phase II / III · projectiles ~</div>
+        {/* HP bar */}
+        <div style={{ marginTop: 8, height: 16, background: '#0a0608', border: '2px solid #fdc04a', position: 'relative', boxShadow: '0 0 12px rgba(200,48,32,0.6)' }}>
+          <div style={{ height: '100%', width: '62%', background: 'linear-gradient(180deg, #ff5040, #c83020 60%, #5a0a0a)', boxShadow: '0 0 8px #c83020' }} />
+          <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: FONTS.pixel, fontSize: 13, color: '#fff', textShadow: '1px 1px 0 #0a0608' }}>62 / 100</div>
+        </div>
+      </div>
+      {/* HUD min */}
+      <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none' }}>
+        <HUD_Coins_Min roomTitle="" roomNum="12/12" accent={palette.accent2 || '#fdc04a'} hideTitle={true} />
+      </div>
+    </div>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────
+// Brief sticky
+// ─────────────────────────────────────────────────────────────
+function BriefIntro() {
+  return (
+    <div style={{ width: 720, padding: 24, background: '#1a1410', border: '2px solid #fdc04a', color: '#f4ecd8' }}>
+      <div style={{ fontFamily: FONTS.pixel, fontSize: 14, color: '#fdc04a', letterSpacing: 4 }}>HI-FI · ROGUELIKE 2D · TOP-DOWN</div>
+      <div style={{ fontFamily: FONTS.display, fontSize: 56, fontWeight: 900, color: '#fdc04a', letterSpacing: 10, textShadow: '0 0 20px #c83020, 4px 4px 0 #0a0608', marginTop: 4 }}>ALF</div>
+      <div style={{ fontFamily: FONTS.body, fontStyle: 'italic', fontSize: 18, color: '#d8c8a8', marginTop: 4, lineHeight: 1.5 }}>
+        Un chartreux qui traverse cinq maisons, du <span style={{ color: '#fdc04a' }}>cottage</span> à la <span style={{ color: '#c83020' }}>forteresse</span>, en passant par l'<span style={{ color: '#9a4abe' }}>au-delà</span>. Style pixel-art 16×16 · ambiance gothique cosy · projet hi-fi.
+      </div>
+      <div style={{ marginTop: 12, fontFamily: FONTS.body, fontSize: 14, color: '#a89878', lineHeight: 1.6 }}>
+        <b style={{ color: '#fdc04a' }}>Décisions cadrées :</b> pixel-art, permadeath strict, 1 pièce = 1 salle, marchand activé. <b style={{ color: '#fdc04a' }}>HUD :</b> variation <i>min</i> par défaut (4 coins discrets). Voir Tweaks pour basculer entre maison / pièce / HUD sur l'artboard de focus.
+      </div>
+    </div>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────
+// MAIN APP — design canvas with all artboards
+// ─────────────────────────────────────────────────────────────
+function App() {
+  const [tweaks, setTweak] = useTweaks(TWEAK_DEFAULTS);
+
+  return (
+    <React.Fragment>
+      <DesignCanvas>
+
+        {/* ───── 00 · brief ───── */}
+        <DCSection id="00-brief" title="00 · brief">
+          <DCArtboard id="brief" label="Brief Alf" width={760} height={280}>
+            <BriefIntro />
+          </DCArtboard>
+          <DCArtboard id="style-guide" label="Style guide UI" width={920} height={620}>
+            <StyleGuide />
+          </DCArtboard>
+        </DCSection>
+
+        {/* ───── 01 · mood board ───── */}
+        <DCSection id="01-moodboard" title="01 · mood board · 5 maisons" subtitle="palettes propres + ambiance">
+          {['eu', 'haunt', 'jp', 'ru', 'fort'].map(hk => (
+            <DCArtboard key={hk} id={`mood-${hk}`} label={PALETTES[hk].name} width={400} height={460}>
+              <HousePaletteCard houseKey={hk} />
+            </DCArtboard>
+          ))}
+        </DCSection>
+
+        {/* ───── 02 · sprite sheet ───── */}
+        <DCSection id="02-alf" title="02 · sprite sheet · Alf" subtitle="chartreux, 4 directions, 4 frames">
+          <DCArtboard id="alf-sheet" label="Sprite sheet Alf" width={780} height={780}>
+            <AlfSpriteSheet />
+          </DCArtboard>
+          <DCArtboard id="minou" label="Minou — marchand" width={420} height={580}>
+            <div style={{ background: '#1a1410', border: '2px solid #fdc04a', padding: 24, color: '#f4ecd8' }}>
+              <div style={{ fontFamily: FONTS.display, fontSize: 24, color: '#fdc04a', letterSpacing: 3, textShadow: '2px 2px 0 #0a0608' }}>MINOU</div>
+              <div style={{ fontFamily: FONTS.body, fontStyle: 'italic', fontSize: 14, color: '#d8c8a8' }}>chat marchand · une pièce dédiée par maison</div>
+              <div className="pixelated" style={{ marginTop: 14, height: 220, background: '#0a0608', display: 'grid', placeItems: 'center', border: '1px solid #5a4030' }}>
+                <MinouSprite scale={9} />
+              </div>
+              <ul style={{ fontFamily: FONTS.body, fontSize: 14, lineHeight: 1.7, paddingLeft: 18, color: '#d8c8a8', marginTop: 14 }}>
+                <li>derrière son comptoir, ne bouge pas</li>
+                <li>pelage <b style={{ color: '#3a78c8' }}>bleu</b> · noeud papillon · monocle</li>
+                <li>vend cœurs · clés · bombes · items contre pièces</li>
+                <li>parfois en promo (rouge clignotant)</li>
+              </ul>
+            </div>
+          </DCArtboard>
+        </DCSection>
+
+        {/* ───── 03 · HUD variations ───── */}
+        <DCSection id="03-hud" title="03 · HUD · variation B coins" subtitle="2 sous-variations · sobre & full">
+          <DCArtboard id="hud-min" label="HUD · min (par défaut)" width={1000} height={640}>
+            <GameViewWithHUD houseKey="eu" roomKey="kitchen" doors={['N','S','E','W']} hudVariant="min" roomTitle="~ Cuisine ~" w={960} h={600} />
+          </DCArtboard>
+          <DCArtboard id="hud-full" label="HUD · full (densité +)" width={1000} height={640}>
+            <GameViewWithHUD houseKey="haunt" roomKey="living" doors={['N','S','E','W']} hudVariant="full" roomTitle="~ Salon hanté ~" w={960} h={600} />
+          </DCArtboard>
+        </DCSection>
+
+        {/* ───── 04 · pièces · maison EU complète ───── */}
+        <DCSection id="04-rooms-eu" title="04 · 10 pièces · maison européenne" subtitle="même structure réutilisée par maison">
+          {[
+            ['hall', 'Entrée / hall', ['N','S','E','W']],
+            ['corridor', 'Couloir', ['E','W']],
+            ['living', 'Salon', ['N','S','E','W']],
+            ['kitchen', 'Cuisine — vie', ['N','S','W']],
+            ['playroom', 'Salle de jeu — item', ['N','S']],
+            ['bedroom', 'Chambre — don', ['S','E']],
+            ['bathroom', 'Salle de bain — pièces', ['N','E']],
+            ['shop', 'Marchand — Minou', ['S']],
+            ['secret', 'Salle secrète', ['W']],
+            ['boss', 'Grenier · boss', ['S']],
+          ].map(([rk, label, doors]) => (
+            <DCArtboard key={rk} id={`eu-${rk}`} label={label} width={760} height={480}>
+              <GameView houseKey="eu" roomKey={rk} doors={doors} w={720} h={450} />
+            </DCArtboard>
+          ))}
+        </DCSection>
+
+        {/* ───── 05 · pièces signature par maison ───── */}
+        <DCSection id="05-signatures" title="05 · pièces signature · 1 par maison" subtitle="vocabulaire spécifique au niveau">
+          {[
+            ['eu', 'signature_eu', 'Cave à vins'],
+            ['haunt', 'signature_haunt', 'Crypte'],
+            ['jp', 'signature_jp', 'Jardin zen'],
+            ['ru', 'signature_ru', 'Bania (sauna)'],
+            ['fort', 'signature_fort', "Salle d'armes"],
+          ].map(([hk, rk, label]) => (
+            <DCArtboard key={hk} id={`sig-${hk}`} label={`${PALETTES[hk].name} · ${label}`} width={760} height={480}>
+              <GameView houseKey={hk} roomKey={rk} doors={['N','S','E','W']} w={720} h={450} />
+            </DCArtboard>
+          ))}
+        </DCSection>
+
+        {/* ───── 06 · Salons/cuisines toutes maisons (tile sheet rapide) ───── */}
+        <DCSection id="06-rooms-all" title="06 · même pièce, 5 maisons" subtitle="comparatif palettes · cuisine">
+          {['eu', 'haunt', 'jp', 'ru', 'fort'].map(hk => (
+            <DCArtboard key={hk} id={`all-kit-${hk}`} label={`Cuisine · ${PALETTES[hk].name}`} width={520} height={340}>
+              <GameView houseKey={hk} roomKey="kitchen" doors={['N','S','E','W']} w={480} h={300} />
+            </DCArtboard>
+          ))}
+        </DCSection>
+
+        {/* ───── 07 · bestiaire ───── */}
+        <DCSection id="07-bestiary" title="07 · bestiaire" subtitle="11 ennemis + 1 boss commun">
+          <DCArtboard id="bestiary" label="Bestiaire complet" width={1240} height={1340}>
+            <BestiaryGrid />
+          </DCArtboard>
+        </DCSection>
+
+        {/* ───── 08 · combat boss ───── */}
+        <DCSection id="08-boss" title="08 · combat de boss" subtitle="grenier · barre de PV · 3 phases">
+          <DCArtboard id="boss-fight" label="Boss · forteresse" width={1000} height={640}>
+            <BossCombat houseKey="fort" w={960} h={600} />
+          </DCArtboard>
+          <DCArtboard id="boss-fight-eu" label="Boss · européenne" width={1000} height={640}>
+            <BossCombat houseKey="eu" w={960} h={600} />
+          </DCArtboard>
+        </DCSection>
+
+        {/* ───── 09 · marchand ───── */}
+        <DCSection id="09-shop" title="09 · marchand · Minou" subtitle="achat items · pièces">
+          <DCArtboard id="shop-eu" label="Marchand · maison EU" width={1000} height={640}>
+            <GameViewWithHUD houseKey="eu" roomKey="shop" doors={['S']} hudVariant="min" roomTitle="~ La boutique de Minou ~" roomNum="07/12" w={960} h={600} />
+          </DCArtboard>
+          <DCArtboard id="shop-jp" label="Marchand · maison JP" width={1000} height={640}>
+            <GameViewWithHUD houseKey="jp" roomKey="shop" doors={['S']} hudVariant="min" roomTitle="~ Minou-yatai ~" roomNum="06/14" w={960} h={600} />
+          </DCArtboard>
+        </DCSection>
+
+        {/* ───── 10 · système ───── */}
+        <DCSection id="10-system" title="10 · écrans système" subtitle="titre · pause · inventaire · transition · fin">
+          <DCArtboard id="title" label="Titre" width={960} height={600}>
+            <div style={{ width: 960, height: 600 }}>
+              <TitleScreen palette={PALETTES.eu} />
+            </div>
+          </DCArtboard>
+          <DCArtboard id="pause" label="Pause (overlay)" width={960} height={600}>
+            <PauseScreen>
+              <GameView houseKey="ru" roomKey="living" doors={['N','S','E','W']} w={960} h={600} />
+            </PauseScreen>
+          </DCArtboard>
+          <DCArtboard id="inventory" label="Inventaire" width={960} height={600}>
+            <InventoryScreen />
+          </DCArtboard>
+          <DCArtboard id="map" label="Carte plein écran" width={960} height={600}>
+            <FullMapScreen palette={PALETTES.jp} />
+          </DCArtboard>
+          <DCArtboard id="transition" label="Transition niveau" width={960} height={600}>
+            <TransitionScreen from="Maison hantée" to="Maison japonaise" n={2} />
+          </DCArtboard>
+          <DCArtboard id="gameover" label="Game over" width={960} height={600}>
+            <GameOverScreen />
+          </DCArtboard>
+          <DCArtboard id="victory" label="Victoire" width={960} height={600}>
+            <VictoryScreen />
+          </DCArtboard>
+        </DCSection>
+
+        {/* ───── 11 · focus combiné — driven by Tweaks ───── */}
+        <DCSection id="11-focus" title="11 · vue focus · driven by Tweaks" subtitle="bascule maison / pièce / HUD via le panneau">
+          <DCArtboard id="focus-stage" label={`Focus · ${PALETTES[tweaks.focusHouse].name} · ${tweaks.focusRoom}`} width={1000} height={640}>
+            <GameViewWithHUD
+              houseKey={tweaks.focusHouse}
+              roomKey={tweaks.focusRoom}
+              doors={['N','S','E','W']}
+              hudVariant={tweaks.focusHud}
+              roomTitle={`~ ${tweaks.focusRoom} ~`}
+              w={960}
+              h={600}
+            />
+          </DCArtboard>
+        </DCSection>
+
+      </DesignCanvas>
+
+      {/* TWEAKS PANEL */}
+      <TweaksPanel title="Tweaks">
+        <TweakSection title="Vue focus (section 11)">
+          <TweakSelect
+            label="Maison"
+            value={tweaks.focusHouse}
+            onChange={(v) => setTweak('focusHouse', v)}
+            options={[
+              { value: 'eu', label: '01 · Européenne' },
+              { value: 'haunt', label: '02 · Hantée' },
+              { value: 'jp', label: '03 · Japonaise' },
+              { value: 'ru', label: '04 · Russe' },
+              { value: 'fort', label: '05 · Forteresse' },
+            ]}
+          />
+          <TweakSelect
+            label="Type de pièce"
+            value={tweaks.focusRoom}
+            onChange={(v) => setTweak('focusRoom', v)}
+            options={[
+              { value: 'hall', label: 'Entrée / hall' },
+              { value: 'corridor', label: 'Couloir' },
+              { value: 'living', label: 'Salon' },
+              { value: 'kitchen', label: 'Cuisine' },
+              { value: 'playroom', label: 'Salle de jeu' },
+              { value: 'bedroom', label: 'Chambre' },
+              { value: 'bathroom', label: 'Salle de bain' },
+              { value: 'shop', label: 'Marchand' },
+              { value: 'secret', label: 'Salle secrète' },
+              { value: 'boss', label: 'Grenier (boss)' },
+            ]}
+          />
+          <TweakRadio
+            label="HUD"
+            value={tweaks.focusHud}
+            onChange={(v) => setTweak('focusHud', v)}
+            options={[
+              { value: 'min', label: 'min' },
+              { value: 'full', label: 'full' },
+            ]}
+          />
+        </TweakSection>
+      </TweaksPanel>
+    </React.Fragment>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+</script>
+</body>
+</html>
