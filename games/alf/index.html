@@ -39,9 +39,50 @@ body{
   width:100%;height:100svh;
 }
 canvas{
-  image-rendering:pixelated;image-rendering:crisp-edges;
   background:#0e0a08;display:block;
   box-shadow:0 0 60px rgba(244,168,58,.15);
+  /* smooth upscaling — keeps characters & UI readable, soft on tiles */
+  image-rendering: auto;
+}
+
+/* ── HUD overlay (HTML, crisp text on top of canvas) ─────── */
+.hud-overlay{
+  position:absolute;inset:0;pointer-events:none;z-index:5;
+}
+.hud-room{
+  position:absolute;top:18px;left:50%;transform:translateX(-50%);
+  font-family:'Cinzel',serif;font-weight:700;font-size:clamp(18px,2.4vw,26px);
+  color:#fdc04a;letter-spacing:.08em;white-space:nowrap;
+  text-shadow:0 2px 6px #000, 0 0 24px rgba(253,192,74,.4);
+}
+.hud-hearts{position:absolute;top:18px;left:18px;display:flex;gap:4px;}
+.hud-hearts svg{width:clamp(20px,2.4vw,28px);height:clamp(20px,2.4vw,28px);filter:drop-shadow(0 2px 4px #000);}
+.hud-coins{
+  position:absolute;bottom:18px;left:18px;
+  font-family:'VT323',monospace;font-size:clamp(20px,2.6vw,28px);
+  color:#fdc04a;text-shadow:0 2px 4px #000;
+  display:flex;align-items:center;gap:6px;
+}
+.hud-coin-icon{
+  width:clamp(16px,2vw,22px);height:clamp(16px,2vw,22px);
+  background:radial-gradient(circle at 35% 35%,#fff0a8,#fdc04a 50%,#b8842a);
+  border-radius:50%;border:2px solid #2a1408;
+  box-shadow:0 2px 4px #000;
+}
+.hud-tip{
+  position:absolute;bottom:18%;left:50%;transform:translateX(-50%);
+  font-family:'VT323',monospace;font-size:clamp(16px,2vw,22px);
+  color:#fff;padding:8px 18px;
+  background:rgba(14,10,8,.85);border:1px solid #5a4030;
+  border-radius:6px;opacity:0;transition:opacity .15s;
+  white-space:nowrap;text-align:center;
+  box-shadow:0 4px 12px rgba(0,0,0,.6);
+}
+.hud-tip.show{opacity:1;}
+.hud-tip b{color:#fdc04a;}
+.hud-tip kbd{
+  background:#2a1f3a;border:1px solid #5a4030;color:#fdc04a;
+  padding:1px 6px;border-radius:3px;font-family:inherit;font-size:.95em;margin:0 2px;
 }
 
 .overlay{
@@ -108,6 +149,15 @@ canvas{
 
 <div class="stage">
   <canvas id="game" width="320" height="192"></canvas>
+
+  <div class="hud-overlay" id="hud-overlay">
+    <div class="hud-room" id="hud-room"></div>
+    <div class="hud-hearts" id="hud-hearts"></div>
+    <div class="hud-coins" id="hud-coins">
+      <span class="hud-coin-icon"></span><span id="hud-coin-count">0</span>
+    </div>
+    <div class="hud-tip" id="hud-tip"></div>
+  </div>
 
   <div class="overlay" id="overlay">
     <h1 id="ov-title">ALF</h1>
@@ -177,11 +227,35 @@ canvas{
       img.src = src;
     });
   }
-  // Pre-load sprites (pixel-art processed versions, with raw PNGs as fallback)
+  // Use original high-res PNGs (smooth scaling now that canvas isn't pixelated)
   Promise.all([
-    loadSprite('alf',   'sprites/alf_sprite.png'),
-    loadSprite('minou', 'sprites/minou_sprite.png'),
+    loadSprite('alf',   'sprites/alf.png'),
+    loadSprite('minou', 'sprites/minou.png'),
   ]);
+
+  // ── Items (Isaac-inspired, 10 passive items) ────────────────
+  const ITEMS = [
+    { id:'silvermouse', name:"Souris d'argent", desc:"+30% vitesse",        price:8,  c1:'#c8d4e8', c2:'#7a8aa8',
+      apply: (p,s) => { p.speed = Math.round(p.speed*1.3); } },
+    { id:'warmilk',     name:"Lait chaud",      desc:"Soigne 1 cœur",        price:5,  c1:'#fff',    c2:'#e8e0d0',
+      apply: (p,s) => { p.hp = Math.min(p.maxHp, p.hp+1); } },
+    { id:'embereye',    name:"Œil de braise",   desc:"+1 dégât",             price:12, c1:'#e83a4a', c2:'#fdc04a',
+      apply: (p,s) => { p.dmg += 1; } },
+    { id:'hairball',    name:"Boulette de poil",desc:"Tirs perçants",        price:15, c1:'#7a5a3a', c2:'#3a2010',
+      apply: (p,s) => { p.pierce = true; } },
+    { id:'goldcatnip',  name:"Cataire d'or",    desc:"+50% cadence de tir",  price:10, c1:'#fdc04a', c2:'#b8842a',
+      apply: (p,s) => { p.attackSpeed = (p.attackSpeed||1)*1.5; } },
+    { id:'crackedbell', name:"Cloche fêlée",    desc:"Révèle salles secrètes",price:7, c1:'#fdc04a', c2:'#7a4818',
+      apply: (p,s) => { s.revealedSecret = true; } },
+    { id:'rabbitfoot',  name:"Patte de lapin",  desc:"25% chance d'esquive", price:9,  c1:'#f4ecd8', c2:'#c8b89a',
+      apply: (p,s) => { p.dodge = (p.dodge||0)+0.25; } },
+    { id:'mouseskull',  name:"Crâne de souris", desc:"+1 dégât, +taille tirs",price:11,c1:'#e8e0d0', c2:'#5a4a48',
+      apply: (p,s) => { p.dmg += 1; p.tearSize = (p.tearSize||3)+1; } },
+    { id:'blackfeather',name:"Plume noire",     desc:"+1 cœur max",          price:14, c1:'#1a1028', c2:'#4a3858',
+      apply: (p,s) => { p.maxHp += 1; p.hp = p.maxHp; } },
+    { id:'enchantedkibble',name:"Croquette enchantée",desc:"+1 cœur, +1 dégât",price:20,c1:'#fdc04a',c2:'#e83a4a',
+      apply: (p,s) => { p.maxHp += 1; p.hp = p.maxHp; p.dmg += 1; } },
+  ];
 
   // ── Geometry ────────────────────────────────────────────────
   const TILE = 16;
@@ -420,10 +494,14 @@ canvas{
     } else if(data.type==='salon'){
       // already handled
     } else if(data.type==='marchand'){
-      // Minou the merchant + items for sale
+      // Minou the merchant
       state.npc = { kind:'minou', x: 9.5*TILE, y: 4.5*TILE, talk:0 };
-      state.pickups.push({type:'heart', x: 7*TILE, y: 8*TILE});
-      state.pickups.push({type:'coinPile', x: 12*TILE, y: 8*TILE});
+      // 3 random items on pedestals
+      const shuffled = [...ITEMS].sort(()=>Math.random()-0.5).slice(0,3);
+      const slots = [{x:6*TILE+8, y:8*TILE+8}, {x:9.5*TILE, y:8.5*TILE}, {x:13*TILE+8, y:8*TILE+8}];
+      shuffled.forEach((item, i) => {
+        state.pickups.push({type:'shopItem', x: slots[i].x, y: slots[i].y, item, bought:false, bob:0});
+      });
     } else if(data.type==='grenier'){
       spawnBoss(10*TILE, 4*TILE);
     } else if(data.type==='entrance'){
@@ -515,6 +593,28 @@ canvas{
   const attackBtn = document.getElementById('attack-btn');
   attackBtn.addEventListener('touchstart', e => { e.preventDefault(); keys[' '] = true; }, {passive:false});
   attackBtn.addEventListener('touchend', e => { e.preventDefault(); keys[' '] = false; });
+
+  // ── Buy interaction (E key + L2/R2 + Options) ──────────────
+  let buyJustUsed = false;
+  function buyHeld(){
+    if(buyJustUsed) return false;
+    if(keys['e']) return true;
+    const pads = navigator.getGamepads ? navigator.getGamepads() : [];
+    for(const gp of pads){
+      if(!gp || !gp.connected) continue;
+      if(gp.buttons[6]?.pressed || gp.buttons[7]?.pressed || gp.buttons[9]?.pressed) return true;
+    }
+    return false;
+  }
+  // Reset latch on key/button release
+  setInterval(() => {
+    if(buyJustUsed){
+      const stillHeld = keys['e'] ||
+        (navigator.getGamepads()||[]).some(gp => gp && gp.connected &&
+          (gp.buttons[6]?.pressed || gp.buttons[7]?.pressed || gp.buttons[9]?.pressed));
+      if(!stillHeld) buyJustUsed = false;
+    }
+  }, 60);
 
   // ── Collision ───────────────────────────────────────────────
   function tryMove(e, dx, dy){
@@ -616,12 +716,13 @@ canvas{
       wantShoot = true;
     }
     if(wantShoot && state.player.attackCd<=0){
-      state.player.attackCd = 0.28;
+      state.player.attackCd = 0.28 / (state.player.attackSpeed || 1);
       const slen = Math.hypot(dx,dy)||1;
       dx /= slen; dy /= slen;
       state.projectiles.push({
         x: state.player.x + dx*8, y: state.player.y + dy*8,
-        vx: dx*180, vy: dy*180, life: 0.8, r:3, dmg: state.player.dmg, friend:true,
+        vx: dx*180, vy: dy*180, life: 0.8, r: state.player.tearSize||3,
+        dmg: state.player.dmg, friend:true, pierce: state.player.pierce||false,
       });
     }
 
@@ -637,10 +738,14 @@ canvas{
         for(let j=state.enemies.length-1;j>=0;j--){
           const e = state.enemies[j];
           if(Math.abs(p.x-e.x)<e.w/2+3 && Math.abs(p.y-e.y)<e.h/2+3){
+            // pierce: skip enemies already hit by this projectile
+            p.hits = p.hits || new Set();
+            if(p.hits.has(e)) continue;
+            p.hits.add(e);
             e.hp -= p.dmg;
             e.hurt = .12;
             for(let k=0;k<5;k++) state.particles.push({x:e.x,y:e.y,vx:(Math.random()-.5)*60,vy:(Math.random()-.5)*60,life:.35,c:'#e83a4a'});
-            state.projectiles.splice(i,1);
+            if(!p.pierce) state.projectiles.splice(i,1);
             if(e.hp<=0){
               state.cameraShake = 5;
               for(let k=0;k<10;k++) state.particles.push({x:e.x,y:e.y,vx:(Math.random()-.5)*80,vy:(Math.random()-.5)*80,life:.5,c: e.kind==='boss'?'#fdc04a':'#e83a4a'});
@@ -727,11 +832,25 @@ canvas{
     state.player.hurtCd = Math.max(0, state.player.hurtCd - dt);
 
     // Pickups
+    state.nearItem = null;
     for(let i=state.pickups.length-1;i>=0;i--){
       const p = state.pickups[i];
       p.bob = (p.bob||0) + dt*4;
-      if(state.locked && p.type!=='heart') continue; // can't grab during combat (except hearts)
-      if(Math.abs(state.player.x-p.x)<8 && Math.abs(state.player.y-p.y)<8){
+      if(state.locked && p.type!=='heart' && p.type!=='shopItem') continue;
+      const dx = Math.abs(state.player.x-p.x), dy = Math.abs(state.player.y-p.y);
+      if(p.type==='shopItem'){
+        if(dx<14 && dy<14){
+          state.nearItem = p;
+          if(buyHeld() && state.coinCount >= p.item.price){
+            state.coinCount -= p.item.price;
+            p.item.apply(state.player, state);
+            particleBurst(p.x, p.y, p.item.c1, 14);
+            particleBurst(p.x, p.y, '#fdc04a', 8);
+            state.pickups.splice(i,1);
+            buyJustUsed = true;
+          }
+        }
+      } else if(dx<8 && dy<8){
         if(p.type==='heart'){ if(state.player.hp<state.player.maxHp){ state.player.hp++; state.pickups.splice(i,1); particleBurst(p.x,p.y,'#e83a4a',8);} }
         else if(p.type==='maxhp'){ state.player.maxHp++; state.player.hp = state.player.maxHp; state.pickups.splice(i,1); particleBurst(p.x,p.y,'#fdc04a',12); }
         else if(p.type==='coinPile'){ state.coinCount += 5; state.pickups.splice(i,1); particleBurst(p.x,p.y,'#fdc04a',10); }
@@ -902,10 +1021,12 @@ canvas{
       ctx.fillRect(px-6, py-7, 12, 14);
       return;
     }
-    // Sprite native size (pre-processed pixel-art): 35x24. Draw at native res for crispness.
-    const w = img.naturalWidth || 35, h = img.naturalHeight || 24;
+    // Smooth-rendered sprite (high-res source, scaled down with bilinear)
+    const w = 32, h = 22;
     const flip = player.dir==='W';
     ctx.save();
+    ctx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingQuality = 'high';
     if(flash){ ctx.filter = 'brightness(2.2)'; }
     if(flip){
       ctx.scale(-1, 1);
@@ -914,6 +1035,7 @@ canvas{
       ctx.drawImage(img, px - w/2, py - h/2 - yoff, w, h);
     }
     if(flash){ ctx.filter = 'none'; }
+    ctx.imageSmoothingEnabled = false;
     ctx.restore();
   }
   function drawMinou(n){
@@ -926,9 +1048,14 @@ canvas{
       ctx.fillRect(x-7, y-10, 14, 21);
       return;
     }
-    // Sitting front pose — native pixel-art size for crispness
-    const w = img.naturalWidth || 22, h = img.naturalHeight || 32;
+    // Smooth-rendered sitting pose
+    const w = 24, h = 32;
+    ctx.save();
+    ctx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingQuality = 'high';
     ctx.drawImage(img, x - w/2, y - h/2 + 4, w, h);
+    ctx.imageSmoothingEnabled = false;
+    ctx.restore();
     // sparkle if player nearby
     const px = state.player.x, py = state.player.y;
     if(Math.hypot(px-n.x, py-n.y) < 32){
@@ -1080,6 +1207,38 @@ canvas{
       drawCoin({x:p.x-3, y:p.y, bob:p.bob});
       drawCoin({x:p.x+3, y:p.y, bob:p.bob+1});
       drawCoin({x:p.x, y:p.y-3, bob:p.bob+2});
+    } else if(p.type==='shopItem'){
+      // pedestal
+      ctx.fillStyle = '#4a3858';
+      ctx.fillRect(x-7, y+5, 14, 4);
+      ctx.fillStyle = '#2a1f3a';
+      ctx.fillRect(x-7, y+8, 14, 1);
+      ctx.fillStyle = '#d4a06a';
+      ctx.fillRect(x-8, y+3, 16, 3);
+      // glow
+      const t = Date.now()/300;
+      ctx.fillStyle = `rgba(253,192,74,${0.15 + Math.sin(t)*0.05})`;
+      ctx.beginPath();
+      ctx.arc(x, y-2, 10, 0, Math.PI*2);
+      ctx.fill();
+      // item icon (12x12, centered above pedestal, bobbing)
+      const item = p.item;
+      const iy = y - 4 + yoff*0.5;
+      ctx.fillStyle = '#0a0408';
+      ctx.beginPath(); ctx.arc(x, iy, 6.5, 0, Math.PI*2); ctx.fill();
+      ctx.fillStyle = item.c1;
+      ctx.beginPath(); ctx.arc(x, iy, 5.5, 0, Math.PI*2); ctx.fill();
+      ctx.fillStyle = item.c2;
+      ctx.beginPath(); ctx.arc(x-1, iy+1, 3, 0, Math.PI*2); ctx.fill();
+      ctx.fillStyle = '#fff';
+      ctx.fillRect(x-2, iy-3, 1, 1);
+      // price tag
+      ctx.fillStyle = '#fdc04a';
+      ctx.font = '10px VT323, monospace';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'top';
+      ctx.fillText(item.price + '¢', x, y+10);
+      ctx.textAlign = 'left';
     }
   }
 
@@ -1096,45 +1255,56 @@ canvas{
   }
 
   function drawHUD(){
-    // hearts
-    for(let i=0;i<state.player.maxHp;i++){
-      const x = 4 + i*10, y = 4;
-      const filled = i < state.player.hp;
-      ctx.fillStyle = '#0a0820';
-      ctx.fillRect(x+1, y, 6, 1);
-      ctx.fillRect(x, y+1, 8, 5);
-      ctx.fillRect(x+1, y+6, 6, 1);
-      ctx.fillRect(x+2, y+7, 4, 1);
-      ctx.fillRect(x+3, y+8, 2, 1);
-      ctx.fillStyle = filled ? '#e83a4a' : 'rgba(80,40,50,.4)';
-      ctx.fillRect(x+1, y+1, 6, 5);
-      if(filled){
-        ctx.fillRect(x+2, y+6, 4, 1);
-        ctx.fillRect(x+3, y+7, 2, 1);
-        ctx.fillStyle = '#ff8a9a';
-        ctx.fillRect(x+2, y+2, 1, 1);
-      }
-    }
-    // coin counter (bottom-left)
-    drawCoin({x:8, y:H-8, bob:0});
-    ctx.fillStyle = P.accent;
-    ctx.font = '10px VT323, monospace';
-    ctx.textBaseline = 'bottom';
-    ctx.fillText('×' + state.coinCount, 14, H-3);
-    // room name (top-center)
-    const data = HOUSE[`${state.current.x},${state.current.y}`];
-    if(data && state.enemies.findIndex(e=>e.kind==='boss')<0){
-      ctx.fillStyle = P.light;
-      ctx.font = '10px VT323, monospace';
-      ctx.textAlign = 'center';
-      ctx.textBaseline = 'top';
-      ctx.fillText('~ ' + data.name + ' ~', W/2, 4);
-      ctx.textAlign = 'left';
-    }
-    // mini-map (top-right)
+    // mini-map only — text HUD is in HTML overlay
     drawMiniMap();
-    // gamepad debug HUD (bottom-right)
     drawGamepadHUD();
+  }
+
+  // ── HTML HUD overlay updater (crisp text) ──────────────────
+  const HEART_FULL = '<svg viewBox="0 0 24 24"><path d="M12 21s-7-4.6-9.5-9.2C-.5 6.5 4 2 8 4c1.6.8 3 2.4 4 4 1-1.6 2.4-3.2 4-4 4-2 8.5 2.5 5.5 7.8C19 16.4 12 21 12 21z" fill="#e83a4a" stroke="#0a0408" stroke-width="1.5"/><circle cx="9" cy="9" r="1.5" fill="#ff8a9a"/></svg>';
+  const HEART_EMPTY = '<svg viewBox="0 0 24 24"><path d="M12 21s-7-4.6-9.5-9.2C-.5 6.5 4 2 8 4c1.6.8 3 2.4 4 4 1-1.6 2.4-3.2 4-4 4-2 8.5 2.5 5.5 7.8C19 16.4 12 21 12 21z" fill="rgba(40,20,30,.4)" stroke="#5a3030" stroke-width="1.5"/></svg>';
+  const elRoom = document.getElementById('hud-room');
+  const elHearts = document.getElementById('hud-hearts');
+  const elCoin = document.getElementById('hud-coin-count');
+  const elTip = document.getElementById('hud-tip');
+  let lastHpDisplay = -1, lastMaxHpDisplay = -1, lastRoomKey = '';
+  function updateHUDOverlay(){
+    if(state.phase!=='play'){
+      elRoom.style.display = 'none';
+      elHearts.style.display = 'none';
+      elCoin.parentElement.style.display = 'none';
+      elTip.classList.remove('show');
+      return;
+    }
+    elRoom.style.display = '';
+    elHearts.style.display = '';
+    elCoin.parentElement.style.display = '';
+    const data = HOUSE[`${state.current.x},${state.current.y}`];
+    const isBoss = state.enemies.some(e => e.kind==='boss');
+    const roomKey = `${state.current.x},${state.current.y}|${isBoss}`;
+    if(roomKey !== lastRoomKey){
+      lastRoomKey = roomKey;
+      elRoom.textContent = isBoss ? '⚔ LE RONGEUR ⚔' : (data ? '~ '+data.name+' ~' : '');
+    }
+    if(state.player.hp !== lastHpDisplay || state.player.maxHp !== lastMaxHpDisplay){
+      lastHpDisplay = state.player.hp;
+      lastMaxHpDisplay = state.player.maxHp;
+      let html = '';
+      for(let i=0;i<state.player.maxHp;i++){
+        html += i < state.player.hp ? HEART_FULL : HEART_EMPTY;
+      }
+      elHearts.innerHTML = html;
+    }
+    elCoin.textContent = state.coinCount;
+    // Shop tooltip
+    if(state.nearItem){
+      const it = state.nearItem.item;
+      const canBuy = state.coinCount >= it.price;
+      elTip.innerHTML = `<b>${it.name}</b> — ${it.desc}<br>${canBuy ? '<kbd>E</kbd> ou <kbd>L2</kbd> pour acheter' : '<span style="color:#f87171">pièces insuffisantes</span>'} <span style="color:#fdc04a">${it.price}¢</span>`;
+      elTip.classList.add('show');
+    } else {
+      elTip.classList.remove('show');
+    }
   }
 
   // ── Gamepad debug HUD ──────────────────────────────────────
@@ -1256,6 +1426,7 @@ canvas{
     last = t;
     update(dt);
     draw();
+    updateHUDOverlay();
     requestAnimationFrame(loop);
   }
 
