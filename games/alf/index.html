@@ -177,10 +177,10 @@ canvas{
       img.src = src;
     });
   }
-  // Pre-load sprites (fail-soft: game still runs if a sprite is missing)
+  // Pre-load sprites (pixel-art processed versions, with raw PNGs as fallback)
   Promise.all([
-    loadSprite('alf',   'sprites/alf.png'),
-    loadSprite('minou', 'sprites/minou.png'),
+    loadSprite('alf',   'sprites/alf_sprite.png'),
+    loadSprite('minou', 'sprites/minou_sprite.png'),
   ]);
 
   // ── Geometry ────────────────────────────────────────────────
@@ -572,13 +572,26 @@ canvas{
       if(gp.buttons[13]?.pressed) my =  1;
       if(gp.buttons[14]?.pressed) mx = -1;
       if(gp.buttons[15]?.pressed) mx =  1;
-      // Right stick → shoot 360°
+      // Right stick → shoot 360° (priority over face buttons)
       const dz2 = 0.30;
       const rx = Math.abs(gp.axes[2])>dz2 ? gp.axes[2] : 0;
       const ry = Math.abs(gp.axes[3])>dz2 ? gp.axes[3] : 0;
-      if(rx||ry){ sx = rx; sy = ry; }
-      // X / square buttons (0 or 2) → shoot facing direction
-      if((gp.buttons[0]?.pressed || gp.buttons[2]?.pressed) && !sx && !sy){
+      if(rx||ry){
+        sx = rx; sy = ry;
+      } else {
+        // Face buttons → 4-directional shooting (Isaac-style)
+        // PS5 / DualSense / Xbox standard mapping:
+        //   button 3 = Triangle / Y  → up
+        //   button 0 = X / A         → down
+        //   button 2 = Square / X    → left
+        //   button 1 = Circle / B    → right
+        if(gp.buttons[3]?.pressed) { sx = 0; sy = -1; }
+        else if(gp.buttons[0]?.pressed) { sx = 0; sy = 1; }
+        else if(gp.buttons[2]?.pressed) { sx = -1; sy = 0; }
+        else if(gp.buttons[1]?.pressed) { sx = 1; sy = 0; }
+      }
+      // L1/R1 (4/5) shoulder buttons also = facing-direction shoot fallback
+      if(!sx && !sy && (gp.buttons[4]?.pressed || gp.buttons[5]?.pressed)){
         const dirs = {N:[0,-1],S:[0,1],W:[-1,0],E:[1,0]};
         [sx, sy] = dirs[state.player.dir];
       }
@@ -889,8 +902,8 @@ canvas{
       ctx.fillRect(px-6, py-7, 12, 14);
       return;
     }
-    // Sprite is side-view; flip for W; use side for N/S too (single-pose for now)
-    const w = 22, h = 16;
+    // Sprite native size (pre-processed pixel-art): 35x24. Draw at native res for crispness.
+    const w = img.naturalWidth || 35, h = img.naturalHeight || 24;
     const flip = player.dir==='W';
     ctx.save();
     if(flash){ ctx.filter = 'brightness(2.2)'; }
@@ -913,9 +926,9 @@ canvas{
       ctx.fillRect(x-7, y-10, 14, 21);
       return;
     }
-    // Sitting front pose — slightly larger than Alf
-    const w = 20, h = 26;
-    ctx.drawImage(img, x - w/2, y - h/2 + 2, w, h);
+    // Sitting front pose — native pixel-art size for crispness
+    const w = img.naturalWidth || 22, h = img.naturalHeight || 32;
+    ctx.drawImage(img, x - w/2, y - h/2 + 4, w, h);
     // sparkle if player nearby
     const px = state.player.x, py = state.player.y;
     if(Math.hypot(px-n.x, py-n.y) < 32){
