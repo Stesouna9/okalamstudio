@@ -48,30 +48,50 @@ canvas{
   image-rendering: auto;
 }
 
-/* ── HUD overlay (HTML, crisp text on top of canvas) ─────── */
+/* ── HUD overlay (HTML, clean dashboard layout) ─────── */
 .hud-overlay{
-  position:absolute;
-  top:60px;left:0;right:0;bottom:0;  /* below the top bar (no overlap) */
+  position:absolute;top:60px;left:0;right:0;bottom:0;
   pointer-events:none;z-index:5;
 }
+/* Top-left stat panel: hearts + house indicator */
+.hud-stats{
+  position:absolute;top:14px;left:18px;
+  background:linear-gradient(135deg,rgba(20,12,32,.92),rgba(40,20,60,.92));
+  border:2px solid #fdc04a;border-radius:10px;
+  padding:12px 16px;display:flex;flex-direction:column;gap:8px;
+  box-shadow:0 6px 20px rgba(0,0,0,.5),0 0 24px rgba(253,192,74,.12);
+  min-width:200px;
+}
+.hud-house-label{
+  font-family:'VT323',monospace;font-size:clamp(11px,1.2vw,14px);
+  color:#c8b89a;letter-spacing:.18em;text-transform:uppercase;
+  border-bottom:1px solid rgba(253,192,74,.3);padding-bottom:6px;
+  display:flex;justify-content:space-between;align-items:center;
+}
+.hud-house-label b{color:#fdc04a;font-family:'Cinzel',serif;font-weight:700;letter-spacing:.06em;}
+.hud-hearts{display:flex;gap:5px;}
+.hud-hearts svg{width:clamp(26px,3vw,34px);height:clamp(26px,3vw,34px);filter:drop-shadow(0 2px 4px #000);}
+.hud-row-resources{display:flex;gap:14px;align-items:center;font-family:'VT323',monospace;font-size:clamp(18px,2.2vw,24px);color:#fdc04a;}
+.hud-res{display:flex;align-items:center;gap:5px;}
+.hud-coin-icon{
+  width:18px;height:18px;
+  background:radial-gradient(circle at 35% 35%,#fff0a8,#fdc04a 50%,#b8842a);
+  border-radius:50%;border:2px solid #2a1408;box-shadow:0 2px 4px #000;
+  flex-shrink:0;
+}
+/* Center: room name */
 .hud-room{
   position:absolute;top:14px;left:50%;transform:translateX(-50%);
-  font-family:'Cinzel',serif;font-weight:700;font-size:clamp(20px,2.6vw,30px);
+  font-family:'Cinzel',serif;font-weight:900;font-size:clamp(22px,3vw,34px);
   color:#fdc04a;letter-spacing:.08em;white-space:nowrap;
-  text-shadow:0 2px 6px #000, 0 0 24px rgba(253,192,74,.4);
-  background:rgba(14,10,8,.55);padding:4px 24px;border-radius:6px;
-  border:1px solid rgba(90,64,48,.4);
+  text-shadow:0 2px 6px #000, 0 0 24px rgba(253,192,74,.5);
+  background:linear-gradient(135deg,rgba(20,12,32,.92),rgba(40,20,60,.92));
+  padding:8px 32px;border-radius:8px;
+  border:2px solid #fdc04a;
+  box-shadow:0 6px 20px rgba(0,0,0,.5),0 0 24px rgba(253,192,74,.12);
 }
-.hud-hearts{position:absolute;top:14px;left:18px;display:flex;gap:5px;}
-.hud-hearts svg{width:clamp(28px,3.2vw,38px);height:clamp(28px,3.2vw,38px);filter:drop-shadow(0 2px 4px #000);}
-.hud-coins{
-  position:absolute;bottom:18px;left:18px;
-  font-family:'VT323',monospace;font-size:clamp(24px,3vw,32px);
-  color:#fdc04a;text-shadow:0 2px 4px #000;
-  display:flex;align-items:center;gap:8px;
-  background:rgba(14,10,8,.55);padding:4px 14px;border-radius:6px;
-  border:1px solid rgba(90,64,48,.4);
-}
+/* Old hud-coins kept for backward compat (hidden) */
+.hud-coins{display:none !important;}
 .hud-coin-icon{
   width:clamp(16px,2vw,22px);height:clamp(16px,2vw,22px);
   background:radial-gradient(circle at 35% 35%,#fff0a8,#fdc04a 50%,#b8842a);
@@ -355,11 +375,15 @@ canvas{
   <canvas id="game"></canvas>
 
   <div class="hud-overlay" id="hud-overlay">
-    <div class="hud-room" id="hud-room"></div>
-    <div class="hud-hearts" id="hud-hearts"></div>
-    <div class="hud-coins" id="hud-coins">
-      <span class="hud-coin-icon"></span><span id="hud-coin-count">0</span>
+    <div class="hud-stats">
+      <div class="hud-house-label"><span id="hud-house-num">MAISON 1/5</span><b id="hud-house-name">PROVENCE</b></div>
+      <div class="hud-hearts" id="hud-hearts"></div>
+      <div class="hud-row-resources">
+        <div class="hud-res"><span class="hud-coin-icon"></span><span id="hud-coin-count">0</span></div>
+      </div>
     </div>
+    <div class="hud-room" id="hud-room"></div>
+    <div class="hud-coins" id="hud-coins" style="display:none;"></div>
     <div class="mini-map" id="mini-map"></div>
     <div class="price-tags" id="price-tags"></div>
     <div class="hud-tip" id="hud-tip"></div>
@@ -2126,6 +2150,8 @@ canvas{
   const elHearts = document.getElementById('hud-hearts');
   const elCoin = document.getElementById('hud-coin-count');
   const elTip = document.getElementById('hud-tip');
+  const elHouseNum = document.getElementById('hud-house-num');
+  const elHouseName = document.getElementById('hud-house-name');
   let lastHpDisplay = -1, lastMaxHpDisplay = -1, lastRoomKey = '';
   function updateHUDOverlay(){
     if(state.phase!=='play'){
@@ -2143,7 +2169,13 @@ canvas{
     const roomKey = `${state.current.x},${state.current.y}|${isBoss}`;
     if(roomKey !== lastRoomKey){
       lastRoomKey = roomKey;
-      elRoom.textContent = isBoss ? '⚔ LE RONGEUR ⚔' : (data ? '~ '+data.name+' ~' : '');
+      const bossName = isBoss ? (BOSS_THEMES[HOUSE_ORDER[state.houseIdx]]?.name || 'BOSS') : '';
+      elRoom.textContent = isBoss ? '⚔ '+bossName+' ⚔' : (data ? '~ '+data.name+' ~' : '');
+      // House label
+      const houseKey = HOUSE_ORDER[state.houseIdx];
+      const houseMeta = HOUSE_DISPLAY[houseKey];
+      elHouseNum.textContent = `MAISON ${state.houseIdx+1}/${HOUSE_ORDER.length}`;
+      elHouseName.textContent = houseMeta ? houseMeta.name.toUpperCase() : '';
     }
     if(state.player.hp !== lastHpDisplay || state.player.maxHp !== lastMaxHpDisplay){
       lastHpDisplay = state.player.hp;
