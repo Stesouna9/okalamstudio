@@ -1225,6 +1225,36 @@ canvas{
   }
 
   playBtn.addEventListener('click', startNewRun);
+  // Gamepad: start / restart the game with X / square / Start buttons
+  let gpStartLatch = false;
+  function pollGamepadStart(){
+    if(state.phase==='play') { gpStartLatch = false; return; }
+    const pads = navigator.getGamepads ? navigator.getGamepads() : [];
+    let any = false;
+    for(const p of pads){
+      if(!p) continue;
+      // any face button (0..3) or start (9) triggers start
+      if(p.buttons[0]?.pressed || p.buttons[1]?.pressed || p.buttons[2]?.pressed || p.buttons[3]?.pressed || p.buttons[9]?.pressed){
+        any = true; break;
+      }
+    }
+    if(any && !gpStartLatch){ gpStartLatch = true; startNewRun(); }
+    if(!any) gpStartLatch = false;
+  }
+  setInterval(pollGamepadStart, 100);
+  // Keyboard shortcut: Enter / Space starts/restarts on overlay
+  window.addEventListener('keydown', e => {
+    if(state.phase!=='play' && (e.key==='Enter' || e.key===' ')){
+      e.preventDefault();
+      startNewRun();
+    }
+  });
+  // Show "Manette détectée" indicator
+  window.addEventListener('gamepadconnected', e => {
+    const sub = document.getElementById('ov-sub');
+    if(sub && state.phase!=='play') sub.innerHTML = 'Maison européenne · Provence<br><span style="color:#fdc04a">🎮 Manette détectée — appuie sur X</span>';
+  });
+
   state.player = makePlayer();
   enterRoom(START.x, START.y, null);
   draw();
