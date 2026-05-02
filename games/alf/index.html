@@ -1133,6 +1133,40 @@ canvas{
     }
     // mini-map (top-right)
     drawMiniMap();
+    // gamepad debug HUD (bottom-right)
+    drawGamepadHUD();
+  }
+
+  // ── Gamepad debug HUD ──────────────────────────────────────
+  let lastBtnPressed = '';
+  let lastBtnTime = 0;
+  function drawGamepadHUD(){
+    const pads = navigator.getGamepads ? navigator.getGamepads() : [];
+    let gp = null;
+    for(const p of pads){ if(p && p.connected){ gp = p; break; } }
+    const x0 = W - 70, y0 = H - 28;
+    ctx.fillStyle = 'rgba(10,8,32,.7)';
+    ctx.fillRect(x0, y0, 66, 22);
+    ctx.font = '8px VT323, monospace';
+    ctx.textAlign = 'left';
+    if(!gp){
+      ctx.fillStyle = '#9a8a78';
+      ctx.fillText('no pad', x0+4, y0+8);
+      ctx.fillText('press btn', x0+4, y0+17);
+      return;
+    }
+    // Detect button presses
+    const labels = ['X','◯','□','△'];
+    for(let i=0;i<4;i++){
+      if(gp.buttons[i]?.pressed){
+        lastBtnPressed = `btn${i}=${labels[i]}`;
+        lastBtnTime = Date.now();
+      }
+    }
+    ctx.fillStyle = P.accent;
+    ctx.fillText(gp.mapping||'?', x0+4, y0+8);
+    ctx.fillStyle = (Date.now()-lastBtnTime<500) ? '#fff' : '#9a8a78';
+    ctx.fillText(lastBtnPressed||'(test btn)', x0+4, y0+17);
   }
 
   function drawMiniMap(){
