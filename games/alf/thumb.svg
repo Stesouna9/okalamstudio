@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 150" width="240" height="150" shape-rendering="crispEdges">
+  <!-- night sky -->
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1a1028"/>
+      <stop offset="100%" stop-color="#2a1f3a"/>
+    </linearGradient>
+    <radialGradient id="moonGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffe8a8" stop-opacity=".5"/>
+      <stop offset="100%" stop-color="#ffe8a8" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="windowGlow" cx="50%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="#ffe8a8" stop-opacity=".7"/>
+      <stop offset="100%" stop-color="#ffe8a8" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="240" height="150" fill="url(#sky)"/>
+
+  <!-- stars -->
+  <g fill="#ffe8a8">
+    <rect x="20" y="18" width="2" height="2"/>
+    <rect x="62" y="10" width="2" height="2"/>
+    <rect x="105" y="22" width="2" height="2"/>
+    <rect x="158" y="14" width="2" height="2"/>
+    <rect x="200" y="28" width="2" height="2"/>
+    <rect x="42" y="38" width="2" height="2"/>
+    <rect x="186" y="48" width="2" height="2"/>
+    <rect x="218" y="12" width="2" height="2"/>
+  </g>
+
+  <!-- moon glow + moon -->
+  <circle cx="195" cy="40" r="28" fill="url(#moonGlow)"/>
+  <circle cx="195" cy="40" r="12" fill="#ffe8a8"/>
+  <circle cx="200" cy="36" r="3" fill="#e8c894" opacity=".5"/>
+
+  <!-- distant hills -->
+  <path d="M0,110 L40,95 L75,105 L110,88 L150,100 L190,92 L240,108 L240,150 L0,150 Z" fill="#0a0820"/>
+
+  <!-- floor (stone) -->
+  <rect x="0" y="120" width="240" height="30" fill="#c89a5e"/>
+  <g fill="#a87a48" opacity=".5">
+    <rect x="0" y="120" width="40" height="2"/>
+    <rect x="60" y="120" width="35" height="2"/>
+    <rect x="120" y="120" width="50" height="2"/>
+    <rect x="190" y="120" width="50" height="2"/>
+  </g>
+
+  <!-- house silhouette (provence) -->
+  <g>
+    <!-- main body -->
+    <rect x="22" y="65" width="80" height="55" fill="#2a1f3a"/>
+    <!-- roof -->
+    <path d="M14,65 L62,42 L110,65 Z" fill="#4a3858"/>
+    <!-- chimney -->
+    <rect x="80" y="48" width="8" height="14" fill="#2a1f3a"/>
+    <!-- window with glow -->
+    <circle cx="62" cy="88" r="14" fill="url(#windowGlow)"/>
+    <rect x="56" y="80" width="12" height="14" fill="#f4a83a"/>
+    <rect x="62" y="80" width="0.5" height="14" fill="#2a1f3a"/>
+    <rect x="56" y="86" width="12" height="0.5" fill="#2a1f3a"/>
+    <!-- door -->
+    <rect x="38" y="98" width="10" height="22" fill="#1a1028"/>
+    <rect x="46" y="108" width="1" height="2" fill="#fdc04a"/>
+  </g>
+
+  <!-- Alf the cat silhouette -->
+  <g fill="#7a8aa8">
+    <!-- body -->
+    <rect x="148" y="108" width="14" height="9"/>
+    <!-- head -->
+    <rect x="158" y="100" width="10" height="9"/>
+    <!-- ears -->
+    <rect x="158" y="97" width="3" height="3"/>
+    <rect x="165" y="97" width="3" height="3"/>
+    <!-- tail -->
+    <rect x="144" y="106" width="4" height="2"/>
+    <rect x="142" y="103" width="3" height="3"/>
+    <!-- legs -->
+    <rect x="149" y="117" width="2" height="3"/>
+    <rect x="159" y="117" width="2" height="3"/>
+  </g>
+  <!-- amber eye -->
+  <rect x="163" y="103" width="2" height="2" fill="#fdc04a"/>
+
+  <!-- title -->
+  <text x="12" y="142" font-family="VT323, monospace" font-size="11" fill="#fdc04a" letter-spacing="2">ALF · 2026</text>
+</svg>
