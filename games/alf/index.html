@@ -108,12 +108,13 @@ canvas{
   box-shadow:0 6px 18px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.05);
 }
 .mm-cell{
-  width:14px;height:11px;
+  width:26px;height:20px;
   background:rgba(20,12,32,.4);
   border:1px solid rgba(90,64,48,.3);
-  border-radius:2px;position:relative;
+  border-radius:3px;position:relative;
   display:flex;align-items:center;justify-content:center;
-  font-size:9px;color:transparent;
+  font-size:13px;color:transparent;
+  font-family:'Cinzel',serif;font-weight:700;
 }
 .mm-cell.visited{background:#7a4818;border-color:#a87434;color:rgba(244,236,216,.7);}
 .mm-cell.cleared{background:#a87434;border-color:#fdc04a;color:rgba(253,192,74,.9);}
@@ -170,6 +171,38 @@ canvas{
 .pause-hint{
   margin-top:14px;font-size:.85rem;color:#7a6a58;
   font-family:'VT323',monospace;letter-spacing:.05em;
+}
+
+/* House transition splash */
+.house-splash{
+  position:absolute;inset:0;
+  display:none;flex-direction:column;align-items:center;justify-content:center;
+  gap:10px;background:radial-gradient(ellipse at center,rgba(14,10,8,.85),rgba(0,0,0,.95));
+  pointer-events:none;z-index:8;
+}
+.house-splash.show{display:flex;animation:hs-fade .35s ease;}
+.hs-icon{font-size:clamp(60px,10vw,120px);filter:drop-shadow(0 6px 24px rgba(253,192,74,.4));animation:hs-bounce .6s ease;}
+.hs-num{font-family:'VT323',monospace;font-size:clamp(14px,1.6vw,18px);letter-spacing:.3em;color:#fdc04a;}
+.hs-name{font-family:'Cinzel',serif;font-weight:900;letter-spacing:.05em;font-size:clamp(28px,5vw,52px);color:#fff;text-shadow:0 0 24px rgba(253,192,74,.6);}
+@keyframes hs-fade{from{opacity:0;}to{opacity:1;}}
+@keyframes hs-bounce{0%{transform:scale(.4);}60%{transform:scale(1.15);}100%{transform:scale(1);}}
+
+/* Volume slider in pause menu */
+.pause-vol{
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+  margin:8px 0;color:#c8b89a;font-family:'VT323',monospace;letter-spacing:.08em;
+}
+.pause-vol input[type=range]{
+  -webkit-appearance:none;appearance:none;width:240px;height:6px;
+  background:#3a2848;border-radius:4px;outline:none;
+}
+.pause-vol input[type=range]::-webkit-slider-thumb{
+  -webkit-appearance:none;width:18px;height:18px;border-radius:50%;
+  background:#fdc04a;border:2px solid #fff;cursor:pointer;
+  box-shadow:0 2px 6px rgba(0,0,0,.4);
+}
+.pause-vol input[type=range]::-moz-range-thumb{
+  width:18px;height:18px;border-radius:50%;background:#fdc04a;border:2px solid #fff;cursor:pointer;
 }
 
 /* Permanent debug overlay (bottom-right, subtle) */
@@ -324,6 +357,11 @@ canvas{
     <div class="mini-map" id="mini-map"></div>
     <div class="price-tags" id="price-tags"></div>
     <div class="hud-tip" id="hud-tip"></div>
+    <div class="house-splash" id="house-splash">
+      <div class="hs-icon" id="hs-icon"></div>
+      <div class="hs-num" id="hs-num"></div>
+      <div class="hs-name" id="hs-name"></div>
+    </div>
     <div class="debug-overlay" id="debug-overlay">
       <div><b>FPS</b> <span id="dbg-fps">--</span></div>
       <div><b>SALLE</b> <span id="dbg-room">--</span></div>
@@ -340,6 +378,10 @@ canvas{
       <button class="pause-opt" data-act="mute">Son : ON</button>
       <button class="pause-opt" data-act="restart">Recommencer</button>
       <button class="pause-opt" data-act="gallery">Quitter</button>
+    </div>
+    <div class="pause-vol">
+      <label for="vol-slider">VOLUME</label>
+      <input type="range" id="vol-slider" min="0" max="100" value="40" step="5"/>
     </div>
     <div class="pause-hint">↑↓ ou stick gauche · X pour valider · Options pour reprendre</div>
   </div>
@@ -379,14 +421,27 @@ canvas{
   const ovKeys = document.getElementById('ov-keys');
   const playBtn = document.getElementById('play-btn');
 
-  // ── Palette + Alf ───────────────────────────────────────────
-  const P = {
-    floor:'#e8c894', floorAlt:'#dfbb86',
-    wall:'#2a1f3a', wallTop:'#4a3858',
-    accent:'#f4a83a', accent2:'#9a78d8',
-    surface:'#d4a06a', light:'#ffe8a8',
-    grout:'#1a1028', sky:'#1a1028',
+  // ── House palettes (from Claude Design tokens.jsx) ─────────
+  const HOUSE_PALETTES = {
+    eu:    { floor:'#e8c894', floorAlt:'#dfbb86', wall:'#2a1f3a', wallTop:'#4a3858', accent:'#f4a83a', accent2:'#9a78d8', surface:'#d4a06a', light:'#ffe8a8', grout:'#1a1028', sky:'#1a1028' },
+    haunt: { floor:'#2a3a6e', floorAlt:'#1a2858', wall:'#0a1230', wallTop:'#1a2452', accent:'#e8e0f4', accent2:'#e83a4a', surface:'#3a4a78', light:'#a8c4ff', grout:'#05081c', sky:'#05081c' },
+    jp:    { floor:'#f4d8e0', floorAlt:'#e8b8c8', wall:'#1a2858', wallTop:'#2a3a78', accent:'#f48ab8', accent2:'#3a4a98', surface:'#f8e8d8', light:'#fff0e8', grout:'#0a1230', sky:'#0a1230' },
+    ru:    { floor:'#d8b878', floorAlt:'#a88848', wall:'#1a3a78', wallTop:'#2a5aa8', accent:'#e83a4a', accent2:'#fdc83a', surface:'#3a78d8', light:'#ffe8a8', grout:'#0a1a48', sky:'#0a1a48' },
+    fort:  { floor:'#7a98c8', floorAlt:'#5a78a8', wall:'#1a1838', wallTop:'#3a3868', accent:'#9a4ad8', accent2:'#5ad8f4', surface:'#4a5a98', light:'#a8c8f4', grout:'#0a0820', sky:'#0a0820' },
   };
+  const HOUSE_ORDER = ['eu', 'haunt', 'jp', 'ru', 'fort'];
+  const HOUSE_DISPLAY = {
+    eu:    { name:'Maison de Provence', subtitle:'lvl 01 · cottage', icon:'🏡' },
+    haunt: { name:'Manoir Hanté',       subtitle:'lvl 02 · clair de lune', icon:'👻' },
+    jp:    { name:'Maison Japonaise',   subtitle:'lvl 03 · sakura',       icon:'🏯' },
+    ru:    { name:'Izba Russe',         subtitle:'lvl 04 · folklore',     icon:'⛪' },
+    fort:  { name:'Forteresse',         subtitle:'lvl 05 · final',        icon:'🏰' },
+  };
+  // Mutable palette object — replaced when entering a new house
+  const P = {...HOUSE_PALETTES.eu};
+  function setHouse(idx){
+    Object.assign(P, HOUSE_PALETTES[HOUSE_ORDER[idx]]);
+  }
   // Alf — orange tabby (bright golden)
   const A = {
     body:'#f4a832', bodyHi:'#fdc04a', stripe:'#b86010', shade:'#a87010',
@@ -416,10 +471,16 @@ canvas{
   }
   // Use original high-res PNGs (smooth scaling now that canvas isn't pixelated)
   Promise.all([
-    loadSprite('alf',    'sprites/alf.png'),
-    loadSprite('minou',  'sprites/minou.png'),
-    loadSprite('souris', 'sprites/souris.png'),
-    loadSprite('mouche', 'sprites/mouche.png'),
+    loadSprite('alf',     'sprites/alf.png'),
+    loadSprite('minou',   'sprites/minou.png'),
+    loadSprite('souris',  'sprites/souris.png'),
+    loadSprite('mouche',  'sprites/mouche.png'),
+    loadSprite('fermier', 'sprites/fermier.png'),
+    loadSprite('fantome', 'sprites/fantome.png'),
+    loadSprite('squelette', 'sprites/squelette.png'),
+    loadSprite('tanuki',    'sprites/tanuki.png'),
+    loadSprite('yokai',     'sprites/yokai.png'),
+    loadSprite('ours',      'sprites/ours.png'),
   ]);
 
   // ── Items (Isaac-inspired, 10 passive items) ────────────────
@@ -626,24 +687,26 @@ canvas{
 
   // ── State ───────────────────────────────────────────────────
   const state = {
+    houseIdx: 0,         // 0..4 → eu, haunt, jp, ru, fort
     current: {x:1,y:1},
     grid: null,
     player: null,
     enemies: [],
     projectiles: [],
     coins: [],
-    pickups: [],   // hearts
+    pickups: [],
     particles: [],
     visited: new Set(),
     cleared: new Set(),
     coinCount: 0,
     keyCount: 0,
     bombCount: 0,
-    transition: null, // {dir, t}
-    locked: false,    // doors locked during combat
+    transition: null,
+    transitionT: 0,      // for house-change splash
+    locked: false,
     damageFlash: 0,
     cameraShake: 0,
-    phase: 'title', // title · play · over · win
+    phase: 'title',
     bossDefeated: false,
   };
   let bestCoins = parseInt(localStorage.getItem('okalam_alf_best')||'0',10);
@@ -667,17 +730,26 @@ canvas{
     state.enemies = [];
     state.pickups = [];
     if(state.cleared.has(`${rx},${ry}`)) return;
+    // Per-house enemy mapping (3 enemy types per house, brief-faithful)
+    // EU: souris/mouche/fermier · haunt: souris/fantome · jp/ru/fort: souris fallback
+    const HE = {
+      eu:    { common:'mouse',  light:'mouche',  heavy:'fermier'   },
+      haunt: { common:'mouse',  light:'fantome', heavy:'squelette' },
+      jp:    { common:'mouse',  light:'tanuki',  heavy:'yokai'     },
+      ru:    { common:'mouse',  light:'fermier', heavy:'ours'      },
+      fort:  { common:'mouse',  light:'fantome', heavy:'squelette' },
+    };
+    const E = HE[HOUSE_ORDER[state.houseIdx]] || HE.eu;
     if(data.type==='salon'){
-      spawnEnemy('mouse', 5,3); spawnEnemy('mouse', 14,3);
-      spawnEnemy('mouche', 9,8);
+      spawnEnemy(E.common, 5,3); spawnEnemy(E.common, 14,3);
+      spawnEnemy(E.heavy, 9,8);
     } else if(data.type==='cuisine'){
-      spawnEnemy('mouse', 14,7);
-      // hearts on floor next to table (was on table = inaccessible)
+      spawnEnemy(E.common, 14,7);
       state.pickups.push({type:'heart', x: 4*TILE+8, y: 3*TILE+8});
     } else if(data.type==='chambre'){
-      spawnEnemy('mouche', 9,5); spawnEnemy('mouche', 14,7);
+      spawnEnemy(E.light, 9,5); spawnEnemy(E.light, 14,7);
     } else if(data.type==='jeu'){
-      spawnEnemy('mouse', 4,5); spawnEnemy('mouse', 16,7);
+      spawnEnemy(E.common, 4,5); spawnEnemy(E.common, 16,7);
       // maxhp on floor below pedestal (was on solid pedestal = inaccessible)
       state.pickups.push({type:'maxhp', x: 9.5*TILE, y: 8*TILE});
     } else if(data.type==='salon'){
@@ -705,6 +777,19 @@ canvas{
       state.enemies.push({kind, x, y, w:9, h:9, hp:2, vx:0, vy:0, phase: Math.random()*Math.PI*2});
     } else if(kind==='mouche'){
       state.enemies.push({kind, x, y, w:8, h:7, hp:1, vx:0, vy:0, phase: Math.random()*Math.PI*2, target:{x,y}, retarget:0});
+    } else if(kind==='fermier'){
+      state.enemies.push({kind, x, y, w:12, h:14, hp:5, vx:0, vy:0, phase: Math.random()*Math.PI*2, attackCd: 1.5, dir:'S'});
+    } else if(kind==='fantome'){
+      state.enemies.push({kind, x, y, w:10, h:12, hp:3, vx:0, vy:0, phase: Math.random()*Math.PI*2, ghost:true});
+    } else if(kind==='squelette'){
+      state.enemies.push({kind, x, y, w:11, h:14, hp:4, vx:0, vy:0, phase: Math.random()*Math.PI*2, dir:'S', resurrects:1});
+    } else if(kind==='tanuki'){
+      state.enemies.push({kind, x, y, w:12, h:12, hp:3, vx:0, vy:0, phase: Math.random()*Math.PI*2, mode:'idle', modeT:1+Math.random(), chargeDx:0, chargeDy:0});
+    } else if(kind==='yokai'){
+      state.enemies.push({kind, x, y, w:14, h:18, hp:6, vx:0, vy:0, phase: Math.random()*Math.PI*2, teleCd:3, summonCd:5, fadeT:0});
+    } else if(kind==='ours'){
+      // HP8 tank, slow walker, periodic frontal charge
+      state.enemies.push({kind, x, y, w:18, h:14, hp:8, vx:0, vy:0, phase: Math.random()*Math.PI*2, mode:'walk', modeT: 2.5+Math.random(), chargeDx:0, chargeDy:0, dir:'S'});
     }
   }
   function spawnBoss(x, y){
@@ -939,10 +1024,18 @@ canvas{
             if(e.hp<=0){
               state.cameraShake = 5;
               for(let k=0;k<10;k++) state.particles.push({x:e.x,y:e.y,vx:(Math.random()-.5)*80,vy:(Math.random()-.5)*80,life:.5,c: e.kind==='boss'?'#fdc04a':'#e83a4a'});
-              if(e.kind!=='boss'){
-                state.coins.push({x:e.x, y:e.y, bob:0});
+              // Squelette resurrects once
+              if(e.kind==='squelette' && e.resurrects>0){
+                e.resurrects = 0;
+                e.hp = 2;
+                e.hurt = .3;
+                for(let k=0;k<14;k++) state.particles.push({x:e.x,y:e.y,vx:(Math.random()-.5)*60,vy:-Math.random()*60,life:.7,c:'#e8e0d0'});
+              } else {
+                if(e.kind!=='boss'){
+                  state.coins.push({x:e.x, y:e.y, bob:0});
+                }
+                state.enemies.splice(j,1);
               }
-              state.enemies.splice(j,1);
             }
             break;
           }
@@ -980,6 +1073,124 @@ canvas{
         const d = Math.hypot(dx,dy)||1;
         const sp = 55;
         tryMove(e, (dx/d)*sp*dt, (dy/d)*sp*dt);
+        damageOnTouch(e, 1);
+      } else if(e.kind==='ours'){
+        e.modeT -= dt;
+        if(e.modeT<=0){
+          if(e.mode==='walk'){
+            // Telegraph charge
+            e.mode='telegraph'; e.modeT=0.8;
+            const dx = state.player.x-e.x, dy = state.player.y-e.y;
+            const d = Math.hypot(dx,dy)||1;
+            e.chargeDx = dx/d; e.chargeDy = dy/d;
+          } else if(e.mode==='telegraph'){
+            e.mode='charge'; e.modeT=0.6;
+          } else {
+            e.mode='walk'; e.modeT=2.5+Math.random();
+          }
+        }
+        if(e.mode==='walk'){
+          const dx = state.player.x-e.x, dy = state.player.y-e.y;
+          const d = Math.hypot(dx,dy)||1;
+          tryMove(e, (dx/d)*22*dt, (dy/d)*22*dt);
+          e.dir = Math.abs(dx)>Math.abs(dy) ? (dx>0?'E':'W') : (dy>0?'S':'N');
+        } else if(e.mode==='charge'){
+          tryMove(e, e.chargeDx*200*dt, e.chargeDy*200*dt);
+          if(collides(e)){ e.mode='walk'; e.modeT=1.2; state.cameraShake=4; }
+        }
+        damageOnTouch(e, 1);
+      } else if(e.kind==='yokai'){
+        e.phase += dt*3;
+        e.teleCd -= dt;
+        e.summonCd -= dt;
+        if(e.fadeT > 0) e.fadeT -= dt;
+        if(e.teleCd <= 0){
+          // teleport near player
+          e.fadeT = 0.4;
+          for(let k=0;k<10;k++) state.particles.push({x:e.x,y:e.y,vx:(Math.random()-.5)*60,vy:(Math.random()-.5)*60,life:.4,c:'#9a78d8'});
+          let nx, ny, tries=0;
+          do {
+            const a = Math.random()*Math.PI*2;
+            const r = 40 + Math.random()*30;
+            nx = state.player.x + Math.cos(a)*r;
+            ny = state.player.y + Math.sin(a)*r;
+            tries++;
+          } while((isSolid(nx,ny) || nx<16 || nx>W-16 || ny<16 || ny>H-16) && tries<10);
+          e.x = nx; e.y = ny;
+          for(let k=0;k<10;k++) state.particles.push({x:e.x,y:e.y,vx:(Math.random()-.5)*60,vy:(Math.random()-.5)*60,life:.4,c:'#e83a4a'});
+          e.teleCd = 4 + Math.random()*2;
+        }
+        if(e.summonCd <= 0){
+          // summon a mouse near self
+          spawnEnemy('mouse', Math.floor(e.x/TILE), Math.floor(e.y/TILE));
+          for(let k=0;k<6;k++) state.particles.push({x:e.x,y:e.y+8,vx:(Math.random()-.5)*40,vy:(Math.random()-.5)*40,life:.5,c:'#fdc04a'});
+          e.summonCd = 7 + Math.random()*2;
+        }
+        damageOnTouch(e, 1);
+      } else if(e.kind==='tanuki'){
+        e.modeT -= dt;
+        if(e.modeT<=0){
+          if(e.mode==='idle'){
+            // Telegraph: lock charge direction toward player
+            e.mode = 'telegraph';
+            e.modeT = 0.7;
+            const dx = state.player.x - e.x, dy = state.player.y - e.y;
+            const d = Math.hypot(dx,dy)||1;
+            e.chargeDx = dx/d; e.chargeDy = dy/d;
+          } else if(e.mode==='telegraph'){
+            e.mode = 'charge';
+            e.modeT = 0.5;
+          } else {
+            e.mode = 'idle';
+            e.modeT = 1.2 + Math.random()*0.8;
+          }
+        }
+        if(e.mode==='charge'){
+          tryMove(e, e.chargeDx*180*dt, e.chargeDy*180*dt);
+          if(collides(e)){ e.mode='idle'; e.modeT=1.0; }
+        } else if(e.mode==='idle'){
+          // small wobble
+          tryMove(e, Math.cos(e.phase*1.2)*8*dt, Math.sin(e.phase*1.2)*8*dt);
+        }
+        e.phase += dt*4;
+        damageOnTouch(e, 1);
+      } else if(e.kind==='squelette'){
+        // Slow walker, blocked by walls, sturdy
+        const dx = state.player.x-e.x, dy = state.player.y-e.y;
+        const d = Math.hypot(dx,dy)||1;
+        const sp = 26;
+        tryMove(e, (dx/d)*sp*dt, (dy/d)*sp*dt);
+        e.dir = Math.abs(dx)>Math.abs(dy) ? (dx>0?'E':'W') : (dy>0?'S':'N');
+        damageOnTouch(e, 1);
+      } else if(e.kind==='fantome'){
+        // Floats toward player THROUGH walls (no collision)
+        const dx = state.player.x-e.x, dy = state.player.y-e.y;
+        const d = Math.hypot(dx,dy)||1;
+        const sp = 28;
+        const wob = Math.sin(e.phase*1.5)*8;
+        e.x += (dx/d)*sp*dt;
+        e.y += (dy/d)*sp*dt + wob*dt;
+        // clamp inside room (don't escape grid bounds)
+        e.x = Math.max(8, Math.min(W-8, e.x));
+        e.y = Math.max(8, Math.min(H-8, e.y));
+        damageOnTouch(e, 1);
+      } else if(e.kind==='fermier'){
+        // Slow walker, keeps medium distance, throws pitchfork projectiles
+        const dx = state.player.x-e.x, dy = state.player.y-e.y;
+        const d = Math.hypot(dx,dy)||1;
+        const desired = 60; // ideal distance
+        const sp = 22;
+        if(d > desired+10) tryMove(e, (dx/d)*sp*dt, (dy/d)*sp*dt);
+        else if(d < desired-10) tryMove(e, -(dx/d)*sp*dt, -(dy/d)*sp*dt);
+        e.dir = Math.abs(dx)>Math.abs(dy) ? (dx>0?'E':'W') : (dy>0?'S':'N');
+        e.attackCd -= dt;
+        if(e.attackCd<=0 && d < 130){
+          e.attackCd = 2.0;
+          state.projectiles.push({
+            x: e.x, y: e.y, vx: (dx/d)*100, vy: (dy/d)*100,
+            life: 1.5, r: 4, dmg: 1, friend:false
+          });
+        }
         damageOnTouch(e, 1);
       } else if(e.kind==='boss'){
         // Boss AI: 3 phases, cycle
@@ -1113,13 +1324,25 @@ canvas{
     overlay.classList.remove('hidden');
   }
   function win(){
-    state.phase = 'win';
     if(state.coinCount > bestCoins){ bestCoins = state.coinCount; localStorage.setItem('okalam_alf_best', String(bestCoins)); }
-    ovTitle.textContent = 'MAISON CLEAR';
-    ovSub.textContent = `Boss vaincu · ${state.coinCount} pièces   Record · ${bestCoins}`;
-    ovKeys.innerHTML = 'Maison hantée à venir...';
-    playBtn.textContent = 'Rejouer';
-    overlay.classList.remove('hidden');
+    // Last house cleared → final win screen
+    if(state.houseIdx >= HOUSE_ORDER.length - 1){
+      state.phase = 'win';
+      ovTitle.textContent = 'VICTOIRE';
+      ovSub.textContent = `Les 5 maisons sont libérées · ${state.coinCount} pièces`;
+      ovKeys.innerHTML = 'Alf est devenu le héros que tous les chats attendaient.';
+      playBtn.textContent = 'Recommencer une aventure';
+      overlay.classList.remove('hidden');
+      return;
+    }
+    // Otherwise advance to next house
+    state.houseIdx++;
+    setHouse(state.houseIdx);
+    state.cleared = new Set();
+    state.visited = new Set();
+    state.transitionT = 2.5; // show splash for 2.5s
+    enterRoom(START.x, START.y, null);
+    // sync music will pick up next track on next interval
   }
 
   // ── Drawing ─────────────────────────────────────────────────
@@ -1310,6 +1533,166 @@ canvas{
     ctx.restore();
   }
 
+  function drawOurs(e){
+    const img = SPRITES.ours;
+    const x = Math.round(e.x), y = Math.round(e.y);
+    ctx.fillStyle = 'rgba(0,0,0,.5)';
+    ctx.fillRect(x-11, y+9, 22, 1);
+    if(!img){
+      ctx.fillStyle = e.hurt>0 ? '#fff' : '#7a4818';
+      ctx.fillRect(x-9, y-7, 18, 14);
+      return;
+    }
+    const w = 28, h = 22;
+    const flip = e.dir==='W';
+    let scale = 1;
+    if(e.mode==='telegraph'){
+      scale = 1 + Math.sin(performance.now()/30)*0.05;
+      ctx.fillStyle = 'rgba(232,58,74,.2)';
+      ctx.fillRect(x-w/2-2, y-h/2-2, w+4, h+4);
+    }
+    ctx.save();
+    ctx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingQuality = 'high';
+    if(e.hurt>0) ctx.filter = 'brightness(2.2)';
+    if(flip){
+      ctx.scale(-1,1);
+      ctx.drawImage(img, -x - w*scale/2, y - h*scale/2, w*scale, h*scale);
+    } else {
+      ctx.drawImage(img, x - w*scale/2, y - h*scale/2, w*scale, h*scale);
+    }
+    ctx.filter = 'none';
+    ctx.imageSmoothingEnabled = false;
+    ctx.restore();
+  }
+
+  function drawYokai(e){
+    const img = SPRITES.yokai;
+    const x = Math.round(e.x), y = Math.round(e.y);
+    ctx.fillStyle = 'rgba(0,0,0,.45)';
+    ctx.fillRect(x-9, y+11, 18, 1);
+    if(!img){
+      ctx.fillStyle = e.hurt>0 ? '#fff' : '#e83a4a';
+      ctx.fillRect(x-7, y-9, 14, 18);
+      return;
+    }
+    const w = 22, h = 26;
+    const float = Math.sin(e.phase*1.2)*1.5;
+    ctx.save();
+    ctx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingQuality = 'high';
+    if(e.fadeT > 0) ctx.globalAlpha = 0.4;
+    if(e.hurt>0) ctx.filter = 'brightness(2.2)';
+    ctx.drawImage(img, x - w/2, y - h/2 + float, w, h);
+    ctx.filter = 'none';
+    ctx.globalAlpha = 1;
+    ctx.imageSmoothingEnabled = false;
+    ctx.restore();
+  }
+
+  function drawTanuki(e){
+    const img = SPRITES.tanuki;
+    const x = Math.round(e.x), y = Math.round(e.y);
+    ctx.fillStyle = 'rgba(0,0,0,.4)';
+    ctx.fillRect(x-7, y+8, 14, 1);
+    if(!img){
+      ctx.fillStyle = e.hurt>0 ? '#fff' : '#7a4818';
+      ctx.fillRect(x-7, y-7, 14, 14);
+      return;
+    }
+    const w = 18, h = 18;
+    let scale = 1;
+    if(e.mode === 'telegraph'){
+      scale = 1 + Math.sin(performance.now()/40)*0.08; // pulse
+      ctx.fillStyle = 'rgba(244,138,184,.25)';
+      ctx.beginPath(); ctx.arc(x, y+2, 12, 0, Math.PI*2); ctx.fill();
+    }
+    ctx.save();
+    ctx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingQuality = 'high';
+    if(e.hurt>0) ctx.filter = 'brightness(2.2)';
+    ctx.drawImage(img, x - w*scale/2, y - h*scale/2, w*scale, h*scale);
+    ctx.filter = 'none';
+    ctx.imageSmoothingEnabled = false;
+    ctx.restore();
+  }
+
+  function drawSquelette(e){
+    const img = SPRITES.squelette;
+    const x = Math.round(e.x), y = Math.round(e.y);
+    ctx.fillStyle = 'rgba(0,0,0,.4)';
+    ctx.fillRect(x-7, y+9, 14, 1);
+    if(!img){
+      ctx.fillStyle = e.hurt>0 ? '#fff' : '#e8e0d0';
+      ctx.fillRect(x-6, y-9, 12, 18);
+      return;
+    }
+    const w = 16, h = 22;
+    const flip = e.dir==='W';
+    ctx.save();
+    ctx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingQuality = 'high';
+    if(e.hurt>0) ctx.filter = 'brightness(2.2)';
+    if(flip){
+      ctx.scale(-1,1);
+      ctx.drawImage(img, -x - w/2, y - h/2, w, h);
+    } else {
+      ctx.drawImage(img, x - w/2, y - h/2, w, h);
+    }
+    ctx.filter = 'none';
+    ctx.imageSmoothingEnabled = false;
+    ctx.restore();
+  }
+
+  function drawFantome(e){
+    const img = SPRITES.fantome;
+    const x = Math.round(e.x), y = Math.round(e.y);
+    if(!img){
+      ctx.fillStyle = e.hurt>0 ? '#fff' : 'rgba(232,224,244,.7)';
+      ctx.fillRect(x-6, y-7, 12, 14);
+      return;
+    }
+    const w = 16, h = 18;
+    const float = Math.sin(e.phase*1.2)*1.5;
+    ctx.save();
+    ctx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingQuality = 'high';
+    ctx.globalAlpha = 0.85; // ghostly
+    if(e.hurt>0) ctx.filter = 'brightness(2.2)';
+    ctx.drawImage(img, x - w/2, y - h/2 + float, w, h);
+    ctx.filter = 'none';
+    ctx.globalAlpha = 1;
+    ctx.imageSmoothingEnabled = false;
+    ctx.restore();
+  }
+
+  function drawFermier(e){
+    const img = SPRITES.fermier;
+    const x = Math.round(e.x), y = Math.round(e.y);
+    ctx.fillStyle = 'rgba(0,0,0,.4)';
+    ctx.fillRect(x-7, y+9, 14, 1);
+    if(!img){
+      ctx.fillStyle = e.hurt>0 ? '#fff' : '#7a4818';
+      ctx.fillRect(x-6, y-9, 12, 18);
+      return;
+    }
+    const w = 18, h = 22;
+    const flip = e.dir==='W';
+    ctx.save();
+    ctx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingQuality = 'high';
+    if(e.hurt>0) ctx.filter = 'brightness(2.2)';
+    if(flip){
+      ctx.scale(-1,1);
+      ctx.drawImage(img, -x - w/2, y - h/2, w, h);
+    } else {
+      ctx.drawImage(img, x - w/2, y - h/2, w, h);
+    }
+    ctx.filter = 'none';
+    ctx.imageSmoothingEnabled = false;
+    ctx.restore();
+  }
+
   function drawBoss(e){
     const x = Math.round(e.x - e.w/2), y = Math.round(e.y - e.h/2);
     // shadow
@@ -1476,6 +1859,17 @@ canvas{
   setMuted(muted);
   document.getElementById('mute-btn').addEventListener('click', () => setMuted(!muted));
 
+  // Volume slider in pause menu
+  const volSlider = document.getElementById('vol-slider');
+  let savedVol = parseFloat(localStorage.getItem('okalam_alf_vol')||'0.4');
+  volSlider.value = Math.round(savedVol*100);
+  Object.values(audioEls).forEach(a => { a.volume = savedVol; });
+  volSlider.addEventListener('input', () => {
+    const v = parseInt(volSlider.value, 10) / 100;
+    Object.values(audioEls).forEach(a => { a.volume = v; });
+    localStorage.setItem('okalam_alf_vol', String(v));
+  });
+
   // Audio unlock on FIRST user gesture (browsers block autoplay otherwise)
   let audioUnlocked = false;
   function unlockAudio(){
@@ -1565,6 +1959,31 @@ canvas{
     updateMiniMap();
     updatePriceTags();
     updateDebugHUD();
+    updateHouseSplash();
+  }
+
+  // ── House transition splash ─────────────────────────────────
+  const elHouseSplash = document.getElementById('house-splash');
+  const elHsIcon = document.getElementById('hs-icon');
+  const elHsNum = document.getElementById('hs-num');
+  const elHsName = document.getElementById('hs-name');
+  let lastSplashHouse = -1;
+  function updateHouseSplash(){
+    if(state.transitionT > 0){
+      // tick down
+      state.transitionT -= 1/60;
+      if(state.houseIdx !== lastSplashHouse){
+        lastSplashHouse = state.houseIdx;
+        const key = HOUSE_ORDER[state.houseIdx];
+        const meta = HOUSE_DISPLAY[key];
+        elHsIcon.textContent = meta.icon;
+        elHsNum.textContent = `MAISON ${state.houseIdx+1} / ${HOUSE_ORDER.length}`;
+        elHsName.textContent = meta.name;
+      }
+      elHouseSplash.classList.add('show');
+    } else {
+      elHouseSplash.classList.remove('show');
+    }
   }
 
   // ── HTML mini-map ───────────────────────────────────────────
@@ -1774,7 +2193,17 @@ canvas{
     const ents = [
       ...state.pickups.map(p => ({y:p.y, draw:()=>drawPickup(p)})),
       ...state.coins.map(c => ({y:c.y, draw:()=>drawCoin(c)})),
-      ...state.enemies.map(e => ({y:e.y, draw:()=> e.kind==='mouse' ? drawMouse(e) : e.kind==='mouche' ? drawMouche(e) : drawBoss(e)})),
+      ...state.enemies.map(e => ({y:e.y, draw:()=> {
+        if(e.kind==='mouse') return drawMouse(e);
+        if(e.kind==='mouche') return drawMouche(e);
+        if(e.kind==='fermier') return drawFermier(e);
+        if(e.kind==='fantome') return drawFantome(e);
+        if(e.kind==='squelette') return drawSquelette(e);
+        if(e.kind==='tanuki') return drawTanuki(e);
+        if(e.kind==='yokai') return drawYokai(e);
+        if(e.kind==='ours') return drawOurs(e);
+        return drawBoss(e);
+      }})),
       ...(state.npc ? [{y: state.npc.y, draw: ()=>drawMinou(state.npc)}] : []),
       {y: state.player.y, draw: drawAlf},
     ].sort((a,b) => a.y-b.y);
@@ -1811,11 +2240,14 @@ canvas{
 
   function startNewRun(){
     state.player = makePlayer();
+    state.houseIdx = 0;
+    setHouse(0);
     state.cleared = new Set();
     state.visited = new Set();
     state.coinCount = 0;
     state.coins = [];
     state.particles = [];
+    state.transitionT = 0;
     enterRoom(START.x, START.y, null);
     state.phase = 'play';
     overlay.classList.add('hidden');
