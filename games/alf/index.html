@@ -85,6 +85,128 @@ canvas{
   padding:1px 6px;border-radius:3px;font-family:inherit;font-size:.95em;margin:0 2px;
 }
 
+/* Price tags positioned over canvas at world coords */
+.price-tags{position:absolute;inset:0;pointer-events:none;}
+.price-tag{
+  position:absolute;
+  font-family:'Cinzel',serif;font-weight:700;
+  font-size:clamp(13px,1.5vw,16px);
+  color:#fdc04a;text-shadow:0 2px 4px #000,0 0 6px rgba(253,192,74,.4);
+  transform:translate(-50%,0);white-space:nowrap;
+  letter-spacing:.05em;
+}
+
+/* HTML mini-map (top-right, beautiful) */
+.mini-map{
+  position:absolute;top:18px;right:18px;
+  background:linear-gradient(135deg,rgba(20,12,32,.85),rgba(40,20,60,.85));
+  border:2px solid #5a4030;border-radius:8px;
+  padding:8px;display:grid;gap:3px;
+  box-shadow:0 6px 18px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.05);
+}
+.mm-cell{
+  width:14px;height:11px;
+  background:rgba(20,12,32,.4);
+  border:1px solid rgba(90,64,48,.3);
+  border-radius:2px;position:relative;
+  display:flex;align-items:center;justify-content:center;
+  font-size:9px;color:transparent;
+}
+.mm-cell.visited{background:#7a4818;border-color:#a87434;color:rgba(244,236,216,.7);}
+.mm-cell.cleared{background:#a87434;border-color:#fdc04a;color:rgba(253,192,74,.9);}
+.mm-cell.current{
+  background:#fdc04a;border-color:#fff;color:#0e0a08;
+  animation:mm-pulse 1.5s ease-in-out infinite;
+  box-shadow:0 0 8px rgba(253,192,74,.6);
+}
+.mm-cell.boss{background:#5a1f24;border-color:#e83a4a;}
+.mm-cell.boss.visited{background:#e83a4a;}
+.mm-cell.empty{background:transparent;border-color:transparent;}
+@keyframes mm-pulse{0%,100%{box-shadow:0 0 8px rgba(253,192,74,.6);}50%{box-shadow:0 0 16px rgba(253,192,74,.9);}}
+
+/* Audio control (top bar) */
+.audio-btn{
+  background:rgba(14,10,8,.6);border:2px solid #5a4030;
+  color:#f4ecd8;padding:4px 10px;border-radius:4px;
+  font-family:'VT323',monospace;font-size:18px;cursor:pointer;
+  backdrop-filter:blur(6px);transition:all .2s;margin-right:8px;
+}
+.audio-btn:hover{color:#fdc04a;border-color:#fdc04a;}
+
+/* Pause menu */
+.pause-overlay{
+  position:fixed;inset:0;z-index:30;
+  background:radial-gradient(ellipse at center,rgba(14,10,8,.92),rgba(0,0,0,.96));
+  backdrop-filter:blur(10px);
+  display:none;flex-direction:column;align-items:center;justify-content:center;
+  gap:18px;
+}
+.pause-overlay.show{display:flex;}
+.pause-title{
+  font-family:'Cinzel',serif;font-weight:900;letter-spacing:.16em;
+  font-size:clamp(2.4rem,7vw,4rem);color:#fdc04a;
+  text-shadow:0 0 30px rgba(253,192,74,.5);
+  margin-bottom:12px;
+}
+.pause-options{display:flex;flex-direction:column;gap:10px;min-width:280px;}
+.pause-opt{
+  font-family:'Cinzel',serif;font-weight:700;
+  font-size:clamp(1rem,2.2vw,1.3rem);letter-spacing:.12em;
+  text-transform:uppercase;
+  color:#c8b89a;background:transparent;
+  border:2px solid #5a4030;border-radius:4px;
+  padding:14px 28px;cursor:pointer;
+  transition:all .15s;text-align:center;
+  box-shadow:inset 0 0 0 1px transparent;
+}
+.pause-opt:hover,.pause-opt.selected{
+  color:#0e0a08;background:#fdc04a;border-color:#fff;
+  transform:translateX(4px);
+  box-shadow:0 4px 0 #b8842a;
+}
+.pause-hint{
+  margin-top:14px;font-size:.85rem;color:#7a6a58;
+  font-family:'VT323',monospace;letter-spacing:.05em;
+}
+
+/* Permanent debug overlay (bottom-right, subtle) */
+.debug-overlay{
+  position:absolute;bottom:14px;right:14px;
+  background:rgba(14,10,8,.65);border:1px solid rgba(90,64,48,.4);
+  border-radius:4px;padding:6px 10px;
+  font-family:'VT323',monospace;font-size:12px;line-height:1.4;
+  color:#9a8a78;text-align:right;
+  pointer-events:none;backdrop-filter:blur(4px);
+}
+.debug-overlay b{color:#fdc04a;font-weight:normal;}
+.debug-overlay .dbg-active{color:#fff;}
+
+/* Title-screen polish: animated subtle glow */
+.overlay h1#ov-title{
+  position:relative;
+  background:linear-gradient(135deg,#fdc04a 0%,#ff8a3a 50%,#fdc04a 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;color:transparent;
+  filter:drop-shadow(0 4px 12px rgba(253,192,74,.4));
+  animation:title-glow 4s ease-in-out infinite;
+}
+@keyframes title-glow{
+  0%,100%{filter:drop-shadow(0 4px 12px rgba(253,192,74,.4));}
+  50%{filter:drop-shadow(0 6px 24px rgba(253,192,74,.7));}
+}
+.overlay::before{
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(2px 2px at 20% 30%,rgba(253,192,74,.4) 50%,transparent),
+    radial-gradient(2px 2px at 80% 70%,rgba(244,168,58,.3) 50%,transparent),
+    radial-gradient(1px 1px at 60% 20%,rgba(255,232,168,.5) 50%,transparent),
+    radial-gradient(1px 1px at 30% 80%,rgba(253,192,74,.3) 50%,transparent);
+  background-size:300px 300px;
+  animation:stars 60s linear infinite;
+  pointer-events:none;opacity:.6;
+}
+@keyframes stars{from{transform:translate(0,0);}to{transform:translate(-300px,-300px);}}
+
 .overlay{
   position:absolute;inset:0;
   display:flex;flex-direction:column;align-items:center;justify-content:center;
@@ -144,8 +266,16 @@ canvas{
 
 <header class="bar">
   <a href="../../games.html">← Galerie</a>
-  <span class="brand">ALF</span>
+  <div style="display:flex;align-items:center;">
+    <button class="audio-btn" id="mute-btn" title="Couper le son">🔊</button>
+    <span class="brand">ALF</span>
+  </div>
 </header>
+
+<!-- Audio (CC0 RandomMind via OpenGameArt) -->
+<audio id="audio-title" src="audio/title.mp3" preload="auto" loop></audio>
+<audio id="audio-explore" src="audio/explore.mp3" preload="auto" loop></audio>
+<audio id="audio-boss" src="audio/boss.ogg" preload="auto" loop></audio>
 
 <div class="stage">
   <canvas id="game" width="320" height="192"></canvas>
@@ -156,7 +286,27 @@ canvas{
     <div class="hud-coins" id="hud-coins">
       <span class="hud-coin-icon"></span><span id="hud-coin-count">0</span>
     </div>
+    <div class="mini-map" id="mini-map"></div>
+    <div class="price-tags" id="price-tags"></div>
     <div class="hud-tip" id="hud-tip"></div>
+    <div class="debug-overlay" id="debug-overlay">
+      <div><b>FPS</b> <span id="dbg-fps">--</span></div>
+      <div><b>SALLE</b> <span id="dbg-room">--</span></div>
+      <div><b>VIE</b> <span id="dbg-hp">--</span> · <b>DMG</b> <span id="dbg-dmg">--</span></div>
+      <div><b>MANETTE</b> <span id="dbg-pad">--</span></div>
+    </div>
+  </div>
+
+  <!-- Pause / Options menu (Esc or PS5 Options button) -->
+  <div class="pause-overlay" id="pause-overlay">
+    <h2 class="pause-title">PAUSE</h2>
+    <div class="pause-options" id="pause-options">
+      <button class="pause-opt" data-act="resume">Reprendre</button>
+      <button class="pause-opt" data-act="mute">Son : ON</button>
+      <button class="pause-opt" data-act="restart">Recommencer</button>
+      <button class="pause-opt" data-act="gallery">Quitter</button>
+    </div>
+    <div class="pause-hint">↑↓ ou stick gauche · X pour valider · Options pour reprendre</div>
   </div>
 
   <div class="overlay" id="overlay">
@@ -483,14 +633,14 @@ canvas{
       spawnEnemy('mouche', 9,8);
     } else if(data.type==='cuisine'){
       spawnEnemy('mouse', 14,7);
-      // hearts on table cluster (top-left)
-      state.pickups.push({type:'heart', x: 4*TILE+8, y: 1*TILE+8});
+      // hearts on floor next to table (was on table = inaccessible)
+      state.pickups.push({type:'heart', x: 4*TILE+8, y: 3*TILE+8});
     } else if(data.type==='chambre'){
       spawnEnemy('mouche', 9,5); spawnEnemy('mouche', 14,7);
     } else if(data.type==='jeu'){
       spawnEnemy('mouse', 4,5); spawnEnemy('mouse', 16,7);
-      // passive item (placeholder — gives +1 maxHp)
-      state.pickups.push({type:'maxhp', x: 9.5*TILE, y: 5.5*TILE+4});
+      // maxhp on floor below pedestal (was on solid pedestal = inaccessible)
+      state.pickups.push({type:'maxhp', x: 9.5*TILE, y: 8*TILE});
     } else if(data.type==='salon'){
       // already handled
     } else if(data.type==='marchand'){
@@ -640,6 +790,7 @@ canvas{
   // ── Update ──────────────────────────────────────────────────
   function update(dt){
     if(state.phase!=='play') return;
+    if(paused) return;
     state.damageFlash = Math.max(0, state.damageFlash - dt);
     state.cameraShake = Math.max(0, state.cameraShake - dt*60);
 
@@ -1232,13 +1383,7 @@ canvas{
       ctx.beginPath(); ctx.arc(x-1, iy+1, 3, 0, Math.PI*2); ctx.fill();
       ctx.fillStyle = '#fff';
       ctx.fillRect(x-2, iy-3, 1, 1);
-      // price tag
-      ctx.fillStyle = '#fdc04a';
-      ctx.font = '10px VT323, monospace';
-      ctx.textAlign = 'center';
-      ctx.textBaseline = 'top';
-      ctx.fillText(item.price + '¢', x, y+10);
-      ctx.textAlign = 'left';
+      // price tag is rendered in HTML overlay (crisp), positioned over this item
     }
   }
 
@@ -1255,10 +1400,64 @@ canvas{
   }
 
   function drawHUD(){
-    // mini-map only — text HUD is in HTML overlay
-    drawMiniMap();
-    drawGamepadHUD();
+    // All HUD now in HTML overlay (mini-map, hearts, coins, room name, debug)
   }
+
+  // ── Audio (CC0 RandomMind via OpenGameArt) ─────────────────
+  const audioEls = {
+    title: document.getElementById('audio-title'),
+    explore: document.getElementById('audio-explore'),
+    boss: document.getElementById('audio-boss'),
+  };
+  Object.values(audioEls).forEach(a => { a.volume = 0.4; });
+  let currentTrack = null;
+  let muted = localStorage.getItem('okalam_alf_muted')==='1';
+  function playTrack(name){
+    if(currentTrack === name) return;
+    Object.values(audioEls).forEach(a => { a.pause(); });
+    currentTrack = name;
+    if(!muted && audioEls[name]){
+      const promise = audioEls[name].play();
+      if(promise) promise.catch(()=>{}); // ignore autoplay-blocked
+    }
+  }
+  function setMuted(m){
+    muted = m;
+    localStorage.setItem('okalam_alf_muted', m ? '1' : '0');
+    Object.values(audioEls).forEach(a => { a.muted = m; });
+    document.getElementById('mute-btn').textContent = m ? '🔇' : '🔊';
+    // update pause menu mute label
+    const muteOpt = document.querySelector('.pause-opt[data-act="mute"]');
+    if(muteOpt) muteOpt.textContent = 'Son : ' + (m ? 'OFF' : 'ON');
+  }
+  setMuted(muted);
+  document.getElementById('mute-btn').addEventListener('click', () => setMuted(!muted));
+
+  // ── Pause menu ─────────────────────────────────────────────
+  const pauseOverlay = document.getElementById('pause-overlay');
+  const pauseOpts = Array.from(document.querySelectorAll('.pause-opt'));
+  let pauseSelected = 0;
+  let paused = false;
+  function setPauseSelected(i){
+    pauseSelected = (i + pauseOpts.length) % pauseOpts.length;
+    pauseOpts.forEach((o,idx) => o.classList.toggle('selected', idx===pauseSelected));
+  }
+  function setPaused(p){
+    if(state.phase!=='play' && p) return;
+    paused = p;
+    pauseOverlay.classList.toggle('show', p);
+    if(p){ setPauseSelected(0); }
+  }
+  function pauseAction(act){
+    if(act==='resume') setPaused(false);
+    else if(act==='mute') setMuted(!muted);
+    else if(act==='restart'){ setPaused(false); startNewRun(); }
+    else if(act==='gallery') { window.location.href = '../../games.html'; }
+  }
+  pauseOpts.forEach((o,idx) => {
+    o.addEventListener('click', () => pauseAction(o.dataset.act));
+    o.addEventListener('mouseenter', () => setPauseSelected(idx));
+  });
 
   // ── HTML HUD overlay updater (crisp text) ──────────────────
   const HEART_FULL = '<svg viewBox="0 0 24 24"><path d="M12 21s-7-4.6-9.5-9.2C-.5 6.5 4 2 8 4c1.6.8 3 2.4 4 4 1-1.6 2.4-3.2 4-4 4-2 8.5 2.5 5.5 7.8C19 16.4 12 21 12 21z" fill="#e83a4a" stroke="#0a0408" stroke-width="1.5"/><circle cx="9" cy="9" r="1.5" fill="#ff8a9a"/></svg>';
@@ -1305,39 +1504,157 @@ canvas{
     } else {
       elTip.classList.remove('show');
     }
+    updateMiniMap();
+    updatePriceTags();
+    updateDebugHUD();
   }
 
-  // ── Gamepad debug HUD ──────────────────────────────────────
-  let lastBtnPressed = '';
-  let lastBtnTime = 0;
-  function drawGamepadHUD(){
-    const pads = navigator.getGamepads ? navigator.getGamepads() : [];
-    let gp = null;
-    for(const p of pads){ if(p && p.connected){ gp = p; break; } }
-    const x0 = W - 70, y0 = H - 28;
-    ctx.fillStyle = 'rgba(10,8,32,.7)';
-    ctx.fillRect(x0, y0, 66, 22);
-    ctx.font = '8px VT323, monospace';
-    ctx.textAlign = 'left';
-    if(!gp){
-      ctx.fillStyle = '#9a8a78';
-      ctx.fillText('no pad', x0+4, y0+8);
-      ctx.fillText('press btn', x0+4, y0+17);
-      return;
-    }
-    // Detect button presses
-    const labels = ['X','◯','□','△'];
-    for(let i=0;i<4;i++){
-      if(gp.buttons[i]?.pressed){
-        lastBtnPressed = `btn${i}=${labels[i]}`;
-        lastBtnTime = Date.now();
+  // ── HTML mini-map ───────────────────────────────────────────
+  const elMiniMap = document.getElementById('mini-map');
+  let miniMapBuilt = false;
+  let mmBounds = null;
+  function buildMiniMap(){
+    const xs = [], ys = [];
+    Object.keys(HOUSE).forEach(k => { const [x,y] = k.split(',').map(Number); xs.push(x); ys.push(y); });
+    const minX = Math.min(...xs), maxX = Math.max(...xs);
+    const minY = Math.min(...ys), maxY = Math.max(...ys);
+    mmBounds = {minX, maxX, minY, maxY};
+    const cols = maxX-minX+1, rows = maxY-minY+1;
+    elMiniMap.style.gridTemplateColumns = `repeat(${cols}, 1fr)`;
+    let html = '';
+    for(let y=minY;y<=maxY;y++){
+      for(let x=minX;x<=maxX;x++){
+        const k = `${x},${y}`;
+        const data = HOUSE[k];
+        if(!data){ html += `<div class="mm-cell empty"></div>`; }
+        else {
+          const icons = {entrance:'·',salon:'⚔',chambre:'☽',jeu:'◆',cuisine:'❤',marchand:'$',grenier:'☠'};
+          html += `<div class="mm-cell" data-key="${k}" data-type="${data.type}">${icons[data.type]||''}</div>`;
+        }
       }
     }
-    ctx.fillStyle = P.accent;
-    ctx.fillText(gp.mapping||'?', x0+4, y0+8);
-    ctx.fillStyle = (Date.now()-lastBtnTime<500) ? '#fff' : '#9a8a78';
-    ctx.fillText(lastBtnPressed||'(test btn)', x0+4, y0+17);
+    elMiniMap.innerHTML = html;
+    miniMapBuilt = true;
   }
+  function updateMiniMap(){
+    if(!miniMapBuilt) buildMiniMap();
+    elMiniMap.querySelectorAll('.mm-cell').forEach(cell => {
+      const k = cell.dataset.key;
+      if(!k) return;
+      const isCurrent = `${state.current.x},${state.current.y}` === k;
+      const visited = state.visited.has(k);
+      const cleared = state.cleared.has(k);
+      const isBoss = cell.dataset.type === 'grenier';
+      cell.classList.toggle('current', isCurrent);
+      cell.classList.toggle('visited', visited && !cleared && !isCurrent);
+      cell.classList.toggle('cleared', cleared && !isCurrent);
+      cell.classList.toggle('boss', isBoss);
+    });
+  }
+
+  // ── HTML price tags positioned over canvas ──────────────────
+  const elPriceTags = document.getElementById('price-tags');
+  let priceTagSig = '';
+  function updatePriceTags(){
+    const items = state.pickups.filter(p => p.type === 'shopItem');
+    const sig = items.map(p => `${p.x},${p.y},${p.item.price}`).join('|');
+    if(sig !== priceTagSig){
+      elPriceTags.innerHTML = items.map(p => `<div class="price-tag">${p.item.price}¢</div>`).join('');
+      priceTagSig = sig;
+    }
+    if(items.length === 0) return;
+    const rect = canvas.getBoundingClientRect();
+    const stageRect = canvas.parentElement.getBoundingClientRect();
+    const sx = rect.width / canvas.width;
+    const sy = rect.height / canvas.height;
+    const ox = rect.left - stageRect.left;
+    const oy = rect.top - stageRect.top;
+    const tags = elPriceTags.children;
+    items.forEach((p,i) => {
+      const t = tags[i]; if(!t) return;
+      t.style.left = (ox + p.x*sx) + 'px';
+      t.style.top = (oy + (p.y+12)*sy) + 'px';
+    });
+  }
+
+  // ── Debug HUD ───────────────────────────────────────────────
+  const dbgFps = document.getElementById('dbg-fps');
+  const dbgRoom = document.getElementById('dbg-room');
+  const dbgHp = document.getElementById('dbg-hp');
+  const dbgDmg = document.getElementById('dbg-dmg');
+  const dbgPad = document.getElementById('dbg-pad');
+  let fpsSamples = [], lastFpsT = 0;
+  function updateDebugHUD(){
+    const now = performance.now();
+    fpsSamples.push(now);
+    while(fpsSamples.length && fpsSamples[0] < now-1000) fpsSamples.shift();
+    if(now - lastFpsT > 250){
+      lastFpsT = now;
+      dbgFps.textContent = fpsSamples.length;
+    }
+    dbgRoom.textContent = state.current.x+','+state.current.y;
+    dbgHp.textContent = state.player.hp+'/'+state.player.maxHp;
+    dbgDmg.textContent = state.player.dmg;
+    const pads = navigator.getGamepads ? navigator.getGamepads() : [];
+    let pad = null;
+    for(const p of pads){ if(p && p.connected){ pad = p; break; } }
+    dbgPad.textContent = pad ? (pad.mapping||'detected') : 'aucune';
+    dbgPad.className = pad ? 'dbg-active' : '';
+  }
+
+  // ── Pause / Options button polling ──────────────────────────
+  let optionsLatch = false;
+  function pollOptionsButton(){
+    const pads = navigator.getGamepads ? navigator.getGamepads() : [];
+    let pressed = false;
+    for(const p of pads){
+      if(!p) continue;
+      if(p.buttons[9]?.pressed) { pressed = true; break; } // Options / Start
+    }
+    if(pressed && !optionsLatch){
+      optionsLatch = true;
+      if(state.phase==='play') setPaused(!paused);
+    }
+    if(!pressed) optionsLatch = false;
+  }
+  setInterval(pollOptionsButton, 80);
+  // Pause-menu navigation with controller
+  let navLatchY = false, navLatchA = false;
+  function pollPauseNav(){
+    if(!paused) return;
+    const pads = navigator.getGamepads ? navigator.getGamepads() : [];
+    let dy = 0, accept = false;
+    for(const p of pads){
+      if(!p) continue;
+      const ly = Math.abs(p.axes[1])>0.5 ? Math.sign(p.axes[1]) : 0;
+      if(p.buttons[12]?.pressed) dy = -1;
+      if(p.buttons[13]?.pressed) dy = 1;
+      if(ly!==0) dy = ly;
+      if(p.buttons[0]?.pressed) accept = true;
+    }
+    if(dy && !navLatchY){ navLatchY = true; setPauseSelected(pauseSelected + dy); }
+    if(!dy) navLatchY = false;
+    if(accept && !navLatchA){ navLatchA = true; pauseAction(pauseOpts[pauseSelected].dataset.act); }
+    if(!accept) navLatchA = false;
+  }
+  setInterval(pollPauseNav, 80);
+
+  // Esc / P keys for pause
+  window.addEventListener('keydown', e => {
+    if(state.phase!=='play') return;
+    if(e.key==='Escape' || e.key==='p' || e.key==='P'){
+      e.preventDefault();
+      setPaused(!paused);
+    }
+    if(paused){
+      if(e.key==='ArrowUp'||e.key==='w') { e.preventDefault(); setPauseSelected(pauseSelected-1); }
+      else if(e.key==='ArrowDown'||e.key==='s') { e.preventDefault(); setPauseSelected(pauseSelected+1); }
+      else if(e.key==='Enter'||e.key===' ') { e.preventDefault(); pauseAction(pauseOpts[pauseSelected].dataset.act); }
+    }
+  });
+
+  // Gamepad debug HUD removed — no longer needed (mapping confirmed standard)
+  function drawGamepadHUD(){}
 
   function drawMiniMap(){
     const cellW = 7, cellH = 5, gap = 1;
@@ -1440,7 +1757,22 @@ canvas{
     enterRoom(START.x, START.y, null);
     state.phase = 'play';
     overlay.classList.add('hidden');
+    paused = false;
+    pauseOverlay.classList.remove('show');
+    playTrack('explore');
   }
+  // Switch music track based on current room (boss vs explore)
+  function syncMusic(){
+    if(state.phase==='play'){
+      const data = HOUSE[`${state.current.x},${state.current.y}`];
+      if(data?.type==='grenier' && state.enemies.some(e=>e.kind==='boss')) playTrack('boss');
+      else playTrack('explore');
+    } else {
+      playTrack('title');
+    }
+  }
+  // re-sync music every second (cheap)
+  setInterval(syncMusic, 800);
 
   playBtn.addEventListener('click', startNewRun);
   // Gamepad: start / restart the game with X / square / Start buttons
