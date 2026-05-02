@@ -481,6 +481,8 @@ canvas{
     loadSprite('tanuki',    'sprites/tanuki.png'),
     loadSprite('yokai',     'sprites/yokai.png'),
     loadSprite('ours',      'sprites/ours.png'),
+    loadSprite('babouchka', 'sprites/babouchka.png'),
+    loadSprite('garde',     'sprites/garde.png'),
   ]);
 
   // ── Items (Isaac-inspired, 10 passive items) ────────────────
@@ -733,11 +735,11 @@ canvas{
     // Per-house enemy mapping (3 enemy types per house, brief-faithful)
     // EU: souris/mouche/fermier · haunt: souris/fantome · jp/ru/fort: souris fallback
     const HE = {
-      eu:    { common:'mouse',  light:'mouche',  heavy:'fermier'   },
-      haunt: { common:'mouse',  light:'fantome', heavy:'squelette' },
-      jp:    { common:'mouse',  light:'tanuki',  heavy:'yokai'     },
-      ru:    { common:'mouse',  light:'fermier', heavy:'ours'      },
-      fort:  { common:'mouse',  light:'fantome', heavy:'squelette' },
+      eu:    { common:'mouse',  light:'mouche',    heavy:'fermier'   },
+      haunt: { common:'mouse',  light:'fantome',   heavy:'squelette' },
+      jp:    { common:'mouse',  light:'tanuki',    heavy:'yokai'     },
+      ru:    { common:'mouse',  light:'babouchka', heavy:'ours'      },
+      fort:  { common:'mouse',  light:'garde',     heavy:'squelette' },
     };
     const E = HE[HOUSE_ORDER[state.houseIdx]] || HE.eu;
     if(data.type==='salon'){
@@ -788,8 +790,17 @@ canvas{
     } else if(kind==='yokai'){
       state.enemies.push({kind, x, y, w:14, h:18, hp:6, vx:0, vy:0, phase: Math.random()*Math.PI*2, teleCd:3, summonCd:5, fadeT:0});
     } else if(kind==='ours'){
-      // HP8 tank, slow walker, periodic frontal charge
       state.enemies.push({kind, x, y, w:18, h:14, hp:8, vx:0, vy:0, phase: Math.random()*Math.PI*2, mode:'walk', modeT: 2.5+Math.random(), chargeDx:0, chargeDy:0, dir:'S'});
+    } else if(kind==='babouchka'){
+      // HP4, throws matriochkas (subdivide on hit). Slow walker, keeps distance.
+      state.enemies.push({kind, x, y, w:14, h:16, hp:4, vx:0, vy:0, phase: Math.random()*Math.PI*2, attackCd: 1.6, dir:'S'});
+    } else if(kind==='matriochka'){
+      const size = arguments[3] || 3;
+      const w = 4 + size*2;
+      state.enemies.push({kind, x, y, w, h:w, hp:1, vx:0, vy:0, phase: Math.random()*Math.PI*2, splitSize: size});
+    } else if(kind==='garde'){
+      // HP6, frontal shield blocks tears, vulnerable from behind
+      state.enemies.push({kind, x, y, w:14, h:18, hp:6, vx:0, vy:0, phase: Math.random()*Math.PI*2, dir:'S'});
     }
   }
   function spawnBoss(x, y){
@@ -1007,13 +1018,28 @@ canvas{
       p.x += p.vx*dt; p.y += p.vy*dt; p.life -= dt;
       if(p.life<=0 || isSolid(p.x,p.y)){
         for(let k=0;k<3;k++) state.particles.push({x:p.x,y:p.y,vx:(Math.random()-.5)*40,vy:(Math.random()-.5)*40,life:.25,c: p.friend?'#a8c4ff':'#e83a4a'});
+        // Matriochka projectile becomes a walking matriochka enemy on landing
+        if(p.isMatriochka && p.splitSize>0){
+          spawnEnemy('matriochka', Math.floor(p.x/TILE), Math.floor(p.y/TILE), p.splitSize);
+        }
         state.projectiles.splice(i,1); continue;
       }
       if(p.friend){
         for(let j=state.enemies.length-1;j>=0;j--){
           const e = state.enemies[j];
           if(Math.abs(p.x-e.x)<e.w/2+3 && Math.abs(p.y-e.y)<e.h/2+3){
-            // pierce: skip enemies already hit by this projectile
+            // Garde shield: block projectiles coming from front (dot product with facing > 0)
+            if(e.kind==='garde' && e.faceX !== undefined){
+              const incomingX = -p.vx, incomingY = -p.vy;
+              const ilen = Math.hypot(incomingX, incomingY)||1;
+              const dot = (incomingX/ilen)*e.faceX + (incomingY/ilen)*e.faceY;
+              if(dot > 0.3){
+                // blocked!
+                for(let k=0;k<6;k++) state.particles.push({x:p.x,y:p.y,vx:(Math.random()-.5)*60,vy:(Math.random()-.5)*60,life:.3,c:'#fdc04a'});
+                state.projectiles.splice(i,1);
+                continue;
+              }
+            }
             p.hits = p.hits || new Set();
             if(p.hits.has(e)) continue;
             p.hits.add(e);
@@ -1030,6 +1056,15 @@ canvas{
                 e.hp = 2;
                 e.hurt = .3;
                 for(let k=0;k<14;k++) state.particles.push({x:e.x,y:e.y,vx:(Math.random()-.5)*60,vy:-Math.random()*60,life:.7,c:'#e8e0d0'});
+              } else if(e.kind==='matriochka' && e.splitSize>1){
+                // split into 2 smaller matriochkas
+                const newSize = e.splitSize - 1;
+                for(let s=0;s<2;s++){
+                  const a = Math.random()*Math.PI*2;
+                  const offX = Math.cos(a)*4, offY = Math.sin(a)*4;
+                  spawnEnemy('matriochka', Math.floor((e.x+offX)/TILE), Math.floor((e.y+offY)/TILE), newSize);
+                }
+                state.enemies.splice(j,1);
               } else {
                 if(e.kind!=='boss'){
                   state.coins.push({x:e.x, y:e.y, bob:0});
@@ -1072,6 +1107,40 @@ canvas{
         const dx = e.target.x-e.x, dy = e.target.y-e.y;
         const d = Math.hypot(dx,dy)||1;
         const sp = 55;
+        tryMove(e, (dx/d)*sp*dt, (dy/d)*sp*dt);
+        damageOnTouch(e, 1);
+      } else if(e.kind==='garde'){
+        // Always faces player, walks slow, blocks frontal projectiles
+        const dx = state.player.x-e.x, dy = state.player.y-e.y;
+        const d = Math.hypot(dx,dy)||1;
+        tryMove(e, (dx/d)*20*dt, (dy/d)*20*dt);
+        e.dir = Math.abs(dx)>Math.abs(dy) ? (dx>0?'E':'W') : (dy>0?'S':'N');
+        // store facing vector for shield-block check
+        e.faceX = dx/d; e.faceY = dy/d;
+        damageOnTouch(e, 1);
+      } else if(e.kind==='babouchka'){
+        // Walks slowly, keeps distance, throws matriochkas
+        const dx = state.player.x-e.x, dy = state.player.y-e.y;
+        const d = Math.hypot(dx,dy)||1;
+        const desired = 70;
+        const sp = 18;
+        if(d > desired+10) tryMove(e, (dx/d)*sp*dt, (dy/d)*sp*dt);
+        else if(d < desired-10) tryMove(e, -(dx/d)*sp*dt*0.7, -(dy/d)*sp*dt*0.7);
+        e.dir = Math.abs(dx)>Math.abs(dy) ? (dx>0?'E':'W') : (dy>0?'S':'N');
+        e.attackCd -= dt;
+        if(e.attackCd<=0 && d < 150){
+          e.attackCd = 2.4;
+          // throw a matriochka projectile that becomes an enemy on impact
+          state.projectiles.push({
+            x: e.x, y: e.y, vx: (dx/d)*70, vy: (dy/d)*70,
+            life: 2.0, r: 5, dmg: 1, friend:false, isMatriochka: true, splitSize: 3
+          });
+        }
+        damageOnTouch(e, 1);
+      } else if(e.kind==='matriochka'){
+        const dx = state.player.x-e.x, dy = state.player.y-e.y;
+        const d = Math.hypot(dx,dy)||1;
+        const sp = 50 + (3-e.splitSize)*15;
         tryMove(e, (dx/d)*sp*dt, (dy/d)*sp*dt);
         damageOnTouch(e, 1);
       } else if(e.kind==='ours'){
@@ -1531,6 +1600,76 @@ canvas{
     ctx.filter = 'none';
     ctx.imageSmoothingEnabled = false;
     ctx.restore();
+  }
+
+  function drawGarde(e){
+    const img = SPRITES.garde;
+    const x = Math.round(e.x), y = Math.round(e.y);
+    ctx.fillStyle = 'rgba(0,0,0,.5)';
+    ctx.fillRect(x-9, y+10, 18, 1);
+    if(!img){
+      ctx.fillStyle = e.hurt>0 ? '#fff' : '#3a3868';
+      ctx.fillRect(x-7, y-9, 14, 18);
+      return;
+    }
+    const w = 22, h = 26;
+    const flip = e.dir==='W';
+    ctx.save();
+    ctx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingQuality = 'high';
+    if(e.hurt>0) ctx.filter = 'brightness(2.2)';
+    if(flip){
+      ctx.scale(-1,1);
+      ctx.drawImage(img, -x - w/2, y - h/2, w, h);
+    } else {
+      ctx.drawImage(img, x - w/2, y - h/2, w, h);
+    }
+    ctx.filter = 'none';
+    ctx.imageSmoothingEnabled = false;
+    ctx.restore();
+  }
+
+  function drawBabouchka(e){
+    const img = SPRITES.babouchka;
+    const x = Math.round(e.x), y = Math.round(e.y);
+    ctx.fillStyle = 'rgba(0,0,0,.45)';
+    ctx.fillRect(x-9, y+9, 18, 1);
+    if(!img){
+      ctx.fillStyle = e.hurt>0 ? '#fff' : '#a87010';
+      ctx.fillRect(x-7, y-9, 14, 18);
+      return;
+    }
+    const w = 22, h = 24;
+    const flip = e.dir==='W';
+    ctx.save();
+    ctx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingQuality = 'high';
+    if(e.hurt>0) ctx.filter = 'brightness(2.2)';
+    if(flip){
+      ctx.scale(-1,1);
+      ctx.drawImage(img, -x - w/2, y - h/2, w, h);
+    } else {
+      ctx.drawImage(img, x - w/2, y - h/2, w, h);
+    }
+    ctx.filter = 'none';
+    ctx.imageSmoothingEnabled = false;
+    ctx.restore();
+  }
+  function drawMatriochka(e){
+    const x = Math.round(e.x), y = Math.round(e.y);
+    const s = e.splitSize; // 3 / 2 / 1
+    const r = 3 + s;
+    // body (red base, gold accent)
+    ctx.fillStyle = '#0a0408';
+    ctx.beginPath(); ctx.ellipse(x, y, r+1, r+2, 0, 0, Math.PI*2); ctx.fill();
+    ctx.fillStyle = e.hurt>0 ? '#fff' : '#e83a4a';
+    ctx.beginPath(); ctx.ellipse(x, y, r, r+1, 0, 0, Math.PI*2); ctx.fill();
+    // face
+    ctx.fillStyle = '#fdc83a';
+    ctx.beginPath(); ctx.ellipse(x, y-1, r-1, r-1, 0, 0, Math.PI*2); ctx.fill();
+    ctx.fillStyle = '#0a0408';
+    ctx.fillRect(x-1, y-1, 1, 1);
+    ctx.fillRect(x+1, y-1, 1, 1);
   }
 
   function drawOurs(e){
@@ -2202,6 +2341,9 @@ canvas{
         if(e.kind==='tanuki') return drawTanuki(e);
         if(e.kind==='yokai') return drawYokai(e);
         if(e.kind==='ours') return drawOurs(e);
+        if(e.kind==='babouchka') return drawBabouchka(e);
+        if(e.kind==='matriochka') return drawMatriochka(e);
+        if(e.kind==='garde') return drawGarde(e);
         return drawBoss(e);
       }})),
       ...(state.npc ? [{y: state.npc.y, draw: ()=>drawMinou(state.npc)}] : []),
