@@ -4,6 +4,9 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
 <meta name="theme-color" content="#0e0a08"/>
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
+<meta http-equiv="Pragma" content="no-cache"/>
+<meta http-equiv="Expires" content="0"/>
 <title>Alf — OKALAM Studio</title>
 <meta name="description" content="Alf — roguelike top-down. Maison européenne. ZQSD pour bouger, espace pour tirer."/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -207,6 +210,38 @@ canvas{
 }
 @keyframes stars{from{transform:translate(0,0);}to{transform:translate(-300px,-300px);}}
 
+/* Title screen Alf preview */
+.title-cat{
+  width:clamp(140px,18vw,260px);
+  margin-bottom:-8px;
+  filter:drop-shadow(0 8px 24px rgba(253,192,74,.4));
+  animation:cat-bob 2.4s ease-in-out infinite;
+  position:relative;z-index:2;
+}
+@keyframes cat-bob{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
+
+.kbd-row{display:block;margin:6px 0;font-size:.95rem;}
+.kbd-row b{color:#fdc04a;letter-spacing:.08em;}
+.ps-btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  min-width:22px;height:22px;padding:0 6px;margin:0 2px;
+  background:#2a1f3a;border:1px solid #5a4030;color:#fdc04a;
+  border-radius:50%;font-family:'Cinzel',serif;font-weight:700;font-size:.85em;
+  vertical-align:middle;
+}
+
+.title-credits{
+  font-family:'VT323',monospace;font-size:.85rem;color:#7a6a58;
+  letter-spacing:.08em;margin-top:14px;
+}
+.version-tag{
+  position:absolute;bottom:14px;right:14px;
+  font-family:'VT323',monospace;font-size:.75rem;
+  color:#7a6a58;letter-spacing:.1em;
+  background:rgba(14,10,8,.7);padding:4px 10px;
+  border:1px solid #3a2a18;border-radius:3px;
+}
+
 .overlay{
   position:absolute;inset:0;
   display:flex;flex-direction:column;align-items:center;justify-content:center;
@@ -278,7 +313,7 @@ canvas{
 <audio id="audio-boss" src="audio/boss.ogg" preload="auto" loop></audio>
 
 <div class="stage">
-  <canvas id="game" width="320" height="192"></canvas>
+  <canvas id="game" width="640" height="384"></canvas>
 
   <div class="hud-overlay" id="hud-overlay">
     <div class="hud-room" id="hud-room"></div>
@@ -310,14 +345,16 @@ canvas{
   </div>
 
   <div class="overlay" id="overlay">
+    <img class="title-cat" src="sprites/alf.png" alt="" aria-hidden="true"/>
     <h1 id="ov-title">ALF</h1>
     <div class="sub" id="ov-sub">Maison européenne · Provence</div>
     <div class="keys" id="ov-keys">
-      Bouger <kbd>Z</kbd><kbd>Q</kbd><kbd>S</kbd><kbd>D</kbd> · Tirer <kbd>↑</kbd><kbd>↓</kbd><kbd>←</kbd><kbd>→</kbd> (4 directions)<br>
-      Manette PS5 / Xbox : stick gauche bouger · stick droit tirer · X tirer<br>
-      Traverse les portes · vaincs le boss au grenier.
+      <span class="kbd-row"><b>Clavier</b> · <kbd>Z</kbd><kbd>Q</kbd><kbd>S</kbd><kbd>D</kbd> bouger · <kbd>↑</kbd><kbd>↓</kbd><kbd>←</kbd><kbd>→</kbd> tirer · <kbd>E</kbd> acheter · <kbd>Esc</kbd> pause</span>
+      <span class="kbd-row"><b>Manette</b> · <span class="ps-btn">L</span> bouger · <span class="ps-btn">△</span><span class="ps-btn">✕</span><span class="ps-btn">□</span><span class="ps-btn">○</span> tirer · <span class="ps-btn">L2</span> acheter · <span class="ps-btn">⊕</span> pause</span>
     </div>
     <button class="btn" id="play-btn">Jouer</button>
+    <div class="title-credits">Musique CC0 · RandomMind / OpenGameArt</div>
+    <div class="version-tag">v · 2026·05·02 · Twin-Stick</div>
   </div>
 </div>
 
@@ -1433,6 +1470,21 @@ canvas{
   setMuted(muted);
   document.getElementById('mute-btn').addEventListener('click', () => setMuted(!muted));
 
+  // Audio unlock on FIRST user gesture (browsers block autoplay otherwise)
+  let audioUnlocked = false;
+  function unlockAudio(){
+    if(audioUnlocked) return;
+    audioUnlocked = true;
+    Object.values(audioEls).forEach(a => {
+      try { a.muted = muted; const p = a.play(); if(p) p.then(()=>a.pause()).catch(()=>{}); } catch(e){}
+    });
+    // immediately resume current track
+    setTimeout(() => { if(currentTrack && audioEls[currentTrack]) audioEls[currentTrack].play().catch(()=>{}); }, 50);
+  }
+  ['click','keydown','touchstart','pointerdown'].forEach(ev =>
+    window.addEventListener(ev, unlockAudio, {once:false, passive:true, capture:true})
+  );
+
   // ── Pause menu ─────────────────────────────────────────────
   const pauseOverlay = document.getElementById('pause-overlay');
   const pauseOpts = Array.from(document.querySelectorAll('.pause-opt'));
@@ -1565,8 +1617,9 @@ canvas{
     if(items.length === 0) return;
     const rect = canvas.getBoundingClientRect();
     const stageRect = canvas.parentElement.getBoundingClientRect();
-    const sx = rect.width / canvas.width;
-    const sy = rect.height / canvas.height;
+    // Canvas is 2x logical res — use logical 320x192 for HTML positioning
+    const sx = rect.width / 320;
+    const sy = rect.height / 192;
     const ox = rect.left - stageRect.left;
     const oy = rect.top - stageRect.top;
     const tags = elPriceTags.children;
@@ -1692,6 +1745,8 @@ canvas{
 
   // ── Render ──────────────────────────────────────────────────
   function draw(){
+    // canvas is 2x logical resolution → scale up draw context for sharper sprites
+    ctx.setTransform(2, 0, 0, 2, 0, 0);
     const sx = (Math.random()-.5)*state.cameraShake;
     const sy = (Math.random()-.5)*state.cameraShake;
     ctx.save();
