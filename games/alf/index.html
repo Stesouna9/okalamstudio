@@ -514,6 +514,7 @@ canvas{
     loadSprite('babouchka', 'sprites/babouchka.png'),
     loadSprite('garde',     'sprites/garde.png'),
     loadSprite('tourelle',  'sprites/tourelle.png'),
+    loadSprite('boss_eu',   'sprites/boss_eu.png'),
   ]);
 
   // ── Items (Isaac-inspired, 10 passive items) ────────────────
@@ -838,7 +839,7 @@ canvas{
   }
   function spawnBoss(x, y){
     state.enemies.push({
-      kind:'boss', x, y, w:22, h:22, hp:30, maxHp:30,
+      kind:'boss', x, y, w:32, h:30, hp:30, maxHp:30,
       vx:0, vy:0, phase: 0, attackCd: 1.5, mode:'idle',
       modeT: 0, modeIdx: 0,
     });
@@ -1369,6 +1370,13 @@ canvas{
             buyJustUsed = true;
           }
         }
+      } else if(p.type==='portal'){
+        // wider hitbox, advances to next house
+        if(dx<14 && dy<14){
+          particleBurst(p.x, p.y, '#fdc04a', 30);
+          state.pickups.splice(i,1);
+          advanceHouse();
+        }
       } else if(dx<8 && dy<8){
         if(p.type==='heart'){ if(state.player.hp<state.player.maxHp){ state.player.hp++; state.pickups.splice(i,1); particleBurst(p.x,p.y,'#e83a4a',8);} }
         else if(p.type==='maxhp'){ state.player.maxHp++; state.player.hp = state.player.maxHp; state.pickups.splice(i,1); particleBurst(p.x,p.y,'#fdc04a',12); }
@@ -1441,9 +1449,60 @@ canvas{
     playBtn.textContent = 'Recommencer';
     overlay.classList.remove('hidden');
   }
+  // ── "Chez Minou" sign (drawn on canvas in marchand room) ────
+  function drawChezMinouSign(){
+    const x = W/2, y = 18;
+    // hanging chains
+    ctx.strokeStyle = '#3a2010';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(x-30, 4); ctx.lineTo(x-30, 10);
+    ctx.moveTo(x+30, 4); ctx.lineTo(x+30, 10);
+    ctx.stroke();
+    // wood plank shadow
+    ctx.fillStyle = 'rgba(0,0,0,.5)';
+    ctx.fillRect(x-37, y-9, 74, 19);
+    // wood plank body
+    const grad = ctx.createLinearGradient(x-35, y-7, x+35, y+9);
+    grad.addColorStop(0, '#7a4818'); grad.addColorStop(0.5, '#a86b28'); grad.addColorStop(1, '#7a4818');
+    ctx.fillStyle = grad;
+    ctx.fillRect(x-35, y-8, 70, 16);
+    // dark border
+    ctx.strokeStyle = '#3a2010';
+    ctx.lineWidth = 1;
+    ctx.strokeRect(x-35, y-8, 70, 16);
+    // wood grain lines
+    ctx.fillStyle = 'rgba(58,32,16,.4)';
+    ctx.fillRect(x-32, y-4, 64, 1);
+    ctx.fillRect(x-32, y+2, 64, 1);
+    // nails (corners)
+    ctx.fillStyle = '#1a0a05';
+    ctx.fillRect(x-32, y-6, 2, 2);
+    ctx.fillRect(x+30, y-6, 2, 2);
+    ctx.fillRect(x-32, y+4, 2, 2);
+    ctx.fillRect(x+30, y+4, 2, 2);
+    // text
+    ctx.font = 'bold 10px Cinzel, serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    // shadow
+    ctx.fillStyle = '#1a0a05';
+    ctx.fillText('Chez Minou', x+1, y+1);
+    // gold text
+    ctx.fillStyle = '#fdc04a';
+    ctx.fillText('Chez Minou', x, y);
+    ctx.textAlign = 'left';
+    ctx.textBaseline = 'alphabetic';
+  }
+
+  // Boss defeated → spawn portal in grenier (player walks through when ready)
   function win(){
     if(state.coinCount > bestCoins){ bestCoins = state.coinCount; localStorage.setItem('okalam_alf_best', String(bestCoins)); }
-    // Last house cleared → final win screen
+    if(state.portalSpawned) return;
+    state.portalSpawned = true;
+    state.pickups.push({ type:'portal', x: W/2, y: H/2 - 8, bob: 0 });
+  }
+  function advanceHouse(){
     if(state.houseIdx >= HOUSE_ORDER.length - 1){
       state.phase = 'win';
       ovTitle.textContent = 'VICTOIRE';
@@ -1453,14 +1512,13 @@ canvas{
       overlay.classList.remove('hidden');
       return;
     }
-    // Otherwise advance to next house
     state.houseIdx++;
     setHouse(state.houseIdx);
     state.cleared = new Set();
     state.visited = new Set();
-    state.transitionT = 2.5; // show splash for 2.5s
+    state.transitionT = 2.5;
+    state.portalSpawned = false;
     enterRoom(START.x, START.y, null);
-    // sync music will pick up next track on next interval
   }
 
   // ── Drawing ─────────────────────────────────────────────────
@@ -1553,7 +1611,7 @@ canvas{
       return;
     }
     // Smooth-rendered sprite (high-res source, scaled down with bilinear)
-    const w = 44, h = 30;
+    const w = 56, h = 38;
     const flip = player.dir==='W';
     ctx.save();
     ctx.imageSmoothingEnabled = true;
@@ -1580,7 +1638,7 @@ canvas{
       return;
     }
     // Bigger sitting pose
-    const w = 34, h = 44;
+    const w = 44, h = 56;
     ctx.save();
     ctx.imageSmoothingEnabled = true;
     ctx.imageSmoothingQuality = 'high';
@@ -1615,7 +1673,7 @@ canvas{
       ctx.fillRect(x-5, y-3, 10, 7);
       return;
     }
-    const w = 18, h = 14;
+    const w = 32, h = 24;
     // facing direction (flip if moving left)
     const flipX = (e.x - state.player.x) > 0; // mice approach player; face them
     ctx.save();
@@ -1644,7 +1702,7 @@ canvas{
       ctx.fillRect(x-4, y-3, 8, 6);
       return;
     }
-    const w = 14, h = 14;
+    const w = 28, h = 28;
     // gentle hover bob
     const bob = Math.sin(e.phase*1.5) * 1;
     ctx.save();
@@ -1667,7 +1725,7 @@ canvas{
       ctx.fillRect(x-8, y-9, 16, 18);
       return;
     }
-    const w = 24, h = 28;
+    const w = 32, h = 38;
     // glow when about to fire
     if(e.attackCd < 0.3){
       const pulse = Math.sin(performance.now()/40)*0.3 + 0.5;
@@ -1694,7 +1752,7 @@ canvas{
       ctx.fillRect(x-7, y-9, 14, 18);
       return;
     }
-    const w = 22, h = 26;
+    const w = 30, h = 34;
     const flip = e.dir==='W';
     ctx.save();
     ctx.imageSmoothingEnabled = true;
@@ -1721,7 +1779,7 @@ canvas{
       ctx.fillRect(x-7, y-9, 14, 18);
       return;
     }
-    const w = 22, h = 24;
+    const w = 30, h = 32;
     const flip = e.dir==='W';
     ctx.save();
     ctx.imageSmoothingEnabled = true;
@@ -1764,7 +1822,7 @@ canvas{
       ctx.fillRect(x-9, y-7, 18, 14);
       return;
     }
-    const w = 28, h = 22;
+    const w = 38, h = 30;
     const flip = e.dir==='W';
     let scale = 1;
     if(e.mode==='telegraph'){
@@ -1797,7 +1855,7 @@ canvas{
       ctx.fillRect(x-7, y-9, 14, 18);
       return;
     }
-    const w = 22, h = 26;
+    const w = 30, h = 34;
     const float = Math.sin(e.phase*1.2)*1.5;
     ctx.save();
     ctx.imageSmoothingEnabled = true;
@@ -1821,7 +1879,7 @@ canvas{
       ctx.fillRect(x-7, y-7, 14, 14);
       return;
     }
-    const w = 18, h = 18;
+    const w = 24, h = 24;
     let scale = 1;
     if(e.mode === 'telegraph'){
       scale = 1 + Math.sin(performance.now()/40)*0.08; // pulse
@@ -1848,7 +1906,7 @@ canvas{
       ctx.fillRect(x-6, y-9, 12, 18);
       return;
     }
-    const w = 16, h = 22;
+    const w = 22, h = 30;
     const flip = e.dir==='W';
     ctx.save();
     ctx.imageSmoothingEnabled = true;
@@ -1873,7 +1931,7 @@ canvas{
       ctx.fillRect(x-6, y-7, 12, 14);
       return;
     }
-    const w = 16, h = 18;
+    const w = 22, h = 24;
     const float = Math.sin(e.phase*1.2)*1.5;
     ctx.save();
     ctx.imageSmoothingEnabled = true;
@@ -1897,7 +1955,7 @@ canvas{
       ctx.fillRect(x-6, y-9, 12, 18);
       return;
     }
-    const w = 18, h = 22;
+    const w = 26, h = 30;
     const flip = e.dir==='W';
     ctx.save();
     ctx.imageSmoothingEnabled = true;
@@ -1922,11 +1980,46 @@ canvas{
     ru:    { name:'TSAR DES OURS',bodyDark:'#0a1a48', body:'#7a4818', bodyLight:'#a87434', earTip:'#fdc04a', eye:'#e83a4a' },
     fort:  { name:'ROI-SORCIER',  bodyDark:'#0a0820', body:'#3a1858', bodyLight:'#9a4ad8', earTip:'#5ad8f4', eye:'#9a4ad8' },
   };
+  const BOSS_SPRITES = { eu: 'boss_eu' }; // each house can override with a real PNG
   function drawBoss(e){
     const theme = BOSS_THEMES[HOUSE_ORDER[state.houseIdx]] || BOSS_THEMES.eu;
+    const houseKey = HOUSE_ORDER[state.houseIdx];
+    const cx = Math.round(e.x), cy = Math.round(e.y);
+    // shadow
+    ctx.fillStyle = 'rgba(0,0,0,.55)';
+    ctx.fillRect(cx-22, cy+18, 44, 3);
+    // PNG sprite if available for this house
+    const spriteKey = BOSS_SPRITES[houseKey];
+    const img = spriteKey && SPRITES[spriteKey];
+    if(img){
+      const w = 56, h = 56;
+      ctx.save();
+      ctx.imageSmoothingEnabled = true;
+      ctx.imageSmoothingQuality = 'high';
+      if(e.hurt>0) ctx.filter = 'brightness(2.2)';
+      // glow aura when in shoot mode
+      if(e.mode==='shoot'){
+        ctx.fillStyle = 'rgba(232,58,74,.18)';
+        ctx.beginPath(); ctx.arc(cx, cy, 36, 0, Math.PI*2); ctx.fill();
+      }
+      ctx.drawImage(img, cx - w/2, cy - h/2, w, h);
+      ctx.filter = 'none';
+      ctx.imageSmoothingEnabled = false;
+      ctx.restore();
+      // HP bar (same as before)
+      const bx = 10, by = H - 14, bw = W - 20, bh = 5;
+      ctx.fillStyle = '#0a0820'; ctx.fillRect(bx-1, by-1, bw+2, bh+2);
+      ctx.fillStyle = '#3a2848'; ctx.fillRect(bx, by, bw, bh);
+      ctx.fillStyle = theme.eye; ctx.fillRect(bx, by, bw*(e.hp/e.maxHp), bh);
+      ctx.fillStyle = P.light;
+      ctx.font = 'bold 10px Cinzel, serif';
+      ctx.textAlign = 'center';
+      ctx.fillText(theme.name, W/2, by-3);
+      ctx.textAlign = 'left';
+      return;
+    }
+    // Fallback: programmatic pixel boss (for houses without a PNG yet)
     const x = Math.round(e.x - e.w/2), y = Math.round(e.y - e.h/2);
-    ctx.fillStyle = 'rgba(0,0,0,.5)';
-    ctx.fillRect(x+2, y+e.h-1, e.w-4, 3);
     const flash = e.hurt>0;
     // body
     ctx.fillStyle = theme.bodyDark;
@@ -2010,6 +2103,47 @@ canvas{
       drawCoin({x:p.x-3, y:p.y, bob:p.bob});
       drawCoin({x:p.x+3, y:p.y, bob:p.bob+1});
       drawCoin({x:p.x, y:p.y-3, bob:p.bob+2});
+    } else if(p.type==='portal'){
+      // Animated glowing arch portal
+      const t = (Date.now()%2000)/2000;
+      const pulse = Math.sin(t*Math.PI*2);
+      // outer glow
+      const grad = ctx.createRadialGradient(x, y, 4, x, y, 26);
+      grad.addColorStop(0, 'rgba(253,192,74,.6)');
+      grad.addColorStop(0.5, `rgba(244,168,58,${0.3+pulse*0.1})`);
+      grad.addColorStop(1, 'rgba(253,192,74,0)');
+      ctx.fillStyle = grad;
+      ctx.fillRect(x-30, y-30, 60, 60);
+      // arch base (darker)
+      ctx.fillStyle = '#3a2010';
+      ctx.fillRect(x-12, y+6, 24, 4);
+      // arch (semicircle outline)
+      ctx.strokeStyle = '#fdc04a';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.arc(x, y+6, 12, Math.PI, 0);
+      ctx.stroke();
+      // inner shimmer
+      ctx.fillStyle = `rgba(255,232,168,${0.5+pulse*0.3})`;
+      ctx.beginPath();
+      ctx.arc(x, y+6, 8, Math.PI, 0);
+      ctx.fill();
+      // sparks
+      for(let k=0;k<3;k++){
+        const a = (t*Math.PI*2) + k*Math.PI*2/3;
+        const sx = x + Math.cos(a)*10;
+        const sy = y + 6 + Math.sin(a)*4;
+        ctx.fillStyle = '#fff';
+        ctx.fillRect(Math.round(sx)-1, Math.round(sy)-1, 2, 2);
+      }
+      // label
+      ctx.font = 'bold 8px Cinzel, serif';
+      ctx.textAlign = 'center';
+      ctx.fillStyle = '#0a0408';
+      ctx.fillText('Maison suivante', x+1, y-14);
+      ctx.fillStyle = '#fdc04a';
+      ctx.fillText('Maison suivante', x, y-15);
+      ctx.textAlign = 'left';
     } else if(p.type==='shopItem'){
       // pedestal
       ctx.fillStyle = '#4a3858';
@@ -2419,6 +2553,11 @@ canvas{
     ctx.translate(sx, sy);
 
     for(let r=0;r<ROWS;r++) for(let c=0;c<COLS;c++) drawTile(c,r);
+
+    // "Chez Minou" sign in marchand room (above the counter)
+    if(HOUSE[`${state.current.x},${state.current.y}`]?.type === 'marchand'){
+      drawChezMinouSign();
+    }
 
     // ambient light pool from doors
     ctx.save();
