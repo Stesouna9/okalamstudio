@@ -20,29 +20,31 @@
       "channel_id": "UCrbI9_VkZ2ndzvgmKN3SfIw",
       "handle": "@TeslaBurger",
       "url": "https://youtube.com/@TeslaBurger",
-      "subscribers_raw": 12000,
-      "subscribers": "12.0k",
-      "total_views_raw": 17926821,
-      "total_views": "17.9M",
-      "video_count": 452,
+      "subscribers_raw": 12500,
+      "subscribers": "12.5k",
+      "total_views_raw": 18754090,
+      "total_views": "18.8M",
+      "video_count": 480,
       "title": "Tesla Burger"
     },
     "instagram": {
       "handle": "@tesla_burger",
       "url": "https://www.instagram.com/tesla_burger",
-      "followers": "10k",
-      "followers_raw": 10000,
+      "followers": "12k",
+      "followers_raw": 12000,
+      "posts": 358,
       "engagement_rate": "2.95%"
     },
     "tiktok": {
       "handle": "@teslaburger1",
       "url": "https://www.tiktok.com/@teslaburger1",
-      "followers": "1440",
-      "followers_raw": 1440,
+      "followers": "2052",
+      "followers_raw": 2052,
+      "likes_raw": 103700,
       "avg_views": "19570"
     },
-    "last_updated_youtube": "2026-03",
-    "last_updated_manual": "2026-03"
+    "last_updated_youtube": "2026-05",
+    "last_updated_manual": "2026-05"
   },
   "elisa-running": {
     "name": "Elisa is running",
@@ -65,28 +67,30 @@
       "channel_id": "UChxg0VY4KoLmvsMqvuE4Xfw",
       "handle": "@elisaisrunning",
       "url": "https://youtube.com/@elisaisrunning",
-      "subscribers_raw": 13900,
-      "subscribers": "13.9k",
-      "total_views_raw": 4161214,
-      "total_views": "4.2M",
-      "video_count": 548,
+      "subscribers_raw": 14000,
+      "subscribers": "14.0k",
+      "total_views_raw": 4297905,
+      "total_views": "4.3M",
+      "video_count": 557,
       "title": "Elisa is running"
     },
     "instagram": {
       "handle": "@elisa_is_running",
       "url": "https://www.instagram.com/elisa_is_running",
-      "followers": "12.8k",
-      "followers_raw": 12760,
+      "followers": "13k",
+      "followers_raw": 13000,
+      "posts": 2018,
       "engagement_rate": "4.5%"
     },
     "tiktok": {
       "handle": "@elisa.is.running",
       "url": "https://www.tiktok.com/@elisa.is.running",
-      "followers": "1573",
-      "followers_raw": 1573,
+      "followers": "1577",
+      "followers_raw": 1577,
+      "likes_raw": 141100,
       "avg_views": "835"
     },
-    "last_updated_youtube": "2026-03",
-    "last_updated_manual": "2026-03"
+    "last_updated_youtube": "2026-05",
+    "last_updated_manual": "2026-05"
   }
 }
