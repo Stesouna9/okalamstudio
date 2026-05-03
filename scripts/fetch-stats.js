@@ -1,6 +1,7 @@
 #!/usr/bin/env node
-// fetch-stats.js — fetches Apify datasets and writes data/stats.json
-// Run via GitHub Actions daily; token stored as repo secret APIFY_TOKEN
+// fetch-stats.js — calls Apify actors fresh each run, writes data/stats.json.
+// Why fresh runs vs hardcoded dataset IDs: Apify FREE plan deletes datasets after 7 days,
+// so persistent IDs eventually 404. Fresh runs cost ~$0.015 each — well within $5/mo credit.
 
 const TOKEN = process.env.APIFY_TOKEN;
 if (!TOKEN) {
@@ -9,16 +10,27 @@ if (!TOKEN) {
   process.exit(1);
 }
 
-const DATASETS = {
-  youtube:   'srx5Ltfgea7cquMCE',
-  instagram: 'lZsYaugPwWnpk8I3D',
-  tiktok:    'nfjxw3C1rIr1vVDzC'
+const ACTORS = {
+  youtube:   'streamers~youtube-channel-scraper',
+  instagram: 'apify~instagram-profile-scraper',
+  tiktok:    'clockworks~free-tiktok-scraper'
 };
 
-async function fetchDS(id) {
-  const url = `https://api.apify.com/v2/datasets/${id}/items?token=${TOKEN}&clean=true&limit=20`;
-  const r = await fetch(url);
-  if (!r.ok) throw new Error(`Dataset ${id}: HTTP ${r.status}`);
+const HANDLES = {
+  elisa:  { ytUrl: 'https://www.youtube.com/@elisaisrunning', ig: 'elisa_is_running', tt: 'elisa.is.running' },
+  pierre: { ytUrl: 'https://www.youtube.com/@TeslaBurger',    ig: 'tesla_burger',     tt: 'teslaburger1' }
+};
+
+async function runActor(actor, input) {
+  const url = `https://api.apify.com/v2/acts/${actor}/run-sync-get-dataset-items?token=${TOKEN}&timeout=300`;
+  const r = await fetch(url, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(input)
+  });
+  if (!r.ok) {
+    throw new Error(`Actor ${actor}: HTTP ${r.status} — ${(await r.text()).slice(0, 200)}`);
+  }
   return r.json();
 }
 
@@ -30,27 +42,36 @@ function calcIGEngagement(igData) {
 }
 
 async function main() {
-  console.log('Fetching Apify datasets...');
+  console.log('Calling Apify actors (fresh runs)...');
   const [yt, ig, tt] = await Promise.all([
-    fetchDS(DATASETS.youtube),
-    fetchDS(DATASETS.instagram),
-    fetchDS(DATASETS.tiktok)
+    runActor(ACTORS.youtube, {
+      startUrls: [{ url: HANDLES.elisa.ytUrl }, { url: HANDLES.pierre.ytUrl }],
+      maxResults: 0,
+      maxResultsShorts: 0,
+      maxResultStreams: 0
+    }),
+    runActor(ACTORS.instagram, {
+      usernames: [HANDLES.elisa.ig, HANDLES.pierre.ig]
+    }),
+    runActor(ACTORS.tiktok, {
+      profiles: [HANDLES.elisa.tt, HANDLES.pierre.tt],
+      resultsPerPage: 1,
+      profileSorting: 'latest',
+      excludePinnedPosts: false
+    })
   ]);
+  console.log(`  YT items=${yt.length}, IG items=${ig.length}, TT items=${tt.length}`);
 
-  // Elisa = elisa_is_running, Pierre = tesla_burger
-  const elisaYT  = yt.find(c => /elisa/i.test(c.channelName || ''));
-  const pierreYT = yt.find(c => !/elisa/i.test(c.channelName || ''));
+  const elisaYT  = yt.find(c => /elisa/i.test(c.channelName || c.channelUsername || c.channelUrl || ''));
+  const pierreYT = yt.find(c => /tesla|burger/i.test(c.channelName || c.channelUsername || c.channelUrl || ''));
   const elisaIG  = ig.find(c => /elisa/i.test(c.username || ''));
-  const pierreIG = ig.find(c => !/elisa/i.test(c.username || ''));
-  const elisaTT  = tt.find(c => /elisa/i.test(c.authorMeta?.nickName || ''));
-  const pierreTT = tt.find(c => !/elisa/i.test(c.authorMeta?.nickName || ''));
+  const pierreIG = ig.find(c => /tesla|burger/i.test(c.username || ''));
+  const elisaTT  = tt.find(c => /elisa/i.test(c.authorMeta?.name || c.authorMeta?.nickName || ''));
+  const pierreTT = tt.find(c => /tesla|burger/i.test(c.authorMeta?.name || c.authorMeta?.nickName || ''));
 
-  // Current stats.json to use as fallback for missing fields
+  const fs = await import('fs');
   let prev = {};
-  try {
-    const fs = await import('fs');
-    prev = JSON.parse(fs.readFileSync('data/stats.json', 'utf8'));
-  } catch { /* no previous file */ }
+  try { prev = JSON.parse(fs.readFileSync('data/stats.json', 'utf8')); } catch {}
 
   const stats = {
     updated_at: new Date().toISOString(),
@@ -59,19 +80,25 @@ async function main() {
         subscribers: elisaYT.numberOfSubscribers,
         views:       elisaYT.channelTotalViews,
         videos:      elisaYT.numberOfVideos,
-        noxScore:    elisaYT.noxScore ?? prev.elisa?.youtube?.noxScore ?? null
+        noxScore:    prev.elisa?.youtube?.noxScore ?? null,
+        engagement:  prev.elisa?.youtube?.engagement ?? null,
+        avgViewsPerVideo: elisaYT.channelTotalViews && elisaYT.numberOfVideos
+          ? Math.round(elisaYT.channelTotalViews / elisaYT.numberOfVideos)
+          : (prev.elisa?.youtube?.avgViewsPerVideo ?? null)
       } : prev.elisa?.youtube ?? null,
       instagram: elisaIG ? {
         followers:  elisaIG.followersCount,
         posts:      elisaIG.postsCount,
         verified:   elisaIG.verified ?? true,
         engagement: calcIGEngagement(elisaIG) ?? prev.elisa?.instagram?.engagement ?? null
-      } : prev.elisa?.instagram ?? { followers: 12760, posts: 1998, verified: true, engagement: null },
+      } : prev.elisa?.instagram ?? null,
       tiktok: elisaTT ? {
         followers: elisaTT.authorMeta?.fans,
         likes:     elisaTT.authorMeta?.heart,
         videos:    elisaTT.authorMeta?.video,
-        noxScore:  elisaTT.noxScore ?? prev.elisa?.tiktok?.noxScore ?? null
+        engagement: prev.elisa?.tiktok?.engagement ?? null,
+        avgViewsPerVideo: prev.elisa?.tiktok?.avgViewsPerVideo ?? null,
+        topVideoViews: prev.elisa?.tiktok?.topVideoViews ?? null
       } : prev.elisa?.tiktok ?? null
     },
     pierre: {
@@ -79,24 +106,29 @@ async function main() {
         subscribers: pierreYT.numberOfSubscribers,
         views:       pierreYT.channelTotalViews,
         videos:      pierreYT.numberOfVideos,
-        noxScore:    pierreYT.noxScore ?? prev.pierre?.youtube?.noxScore ?? null
+        noxScore:    prev.pierre?.youtube?.noxScore ?? null,
+        engagement:  prev.pierre?.youtube?.engagement ?? null,
+        avgViewsPerVideo: pierreYT.channelTotalViews && pierreYT.numberOfVideos
+          ? Math.round(pierreYT.channelTotalViews / pierreYT.numberOfVideos)
+          : (prev.pierre?.youtube?.avgViewsPerVideo ?? null)
       } : prev.pierre?.youtube ?? null,
       instagram: pierreIG ? {
         followers:  pierreIG.followersCount,
         posts:      pierreIG.postsCount,
         verified:   pierreIG.verified ?? false,
-        engagement: calcIGEngagement(pierreIG) ?? prev.pierre?.instagram?.engagement ?? null
+        engagement: calcIGEngagement(pierreIG) ?? prev.pierre?.instagram?.engagement ?? null,
+        avgViewsPerPost: prev.pierre?.instagram?.avgViewsPerPost ?? null
       } : prev.pierre?.instagram ?? null,
       tiktok: pierreTT ? {
         followers: pierreTT.authorMeta?.fans,
         likes:     pierreTT.authorMeta?.heart,
         videos:    pierreTT.authorMeta?.video,
-        noxScore:  pierreTT.noxScore ?? prev.pierre?.tiktok?.noxScore ?? null
+        engagement: prev.pierre?.tiktok?.engagement ?? null,
+        avgViewsPerVideo: prev.pierre?.tiktok?.avgViewsPerVideo ?? null
       } : prev.pierre?.tiktok ?? null
     }
   };
 
-  const fs = await import('fs');
   fs.mkdirSync('data', { recursive: true });
   fs.writeFileSync('data/stats.json', JSON.stringify(stats, null, 2));
 
