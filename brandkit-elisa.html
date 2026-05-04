@@ -37,16 +37,35 @@ main{position:relative;z-index:1;}
 .lang-bar{display:flex;gap:5px;}
 .lb{background:none;border:1px solid var(--border2);color:var(--muted);font-size:.95rem;padding:4px 7px;border-radius:5px;cursor:pointer;transition:all .2s;line-height:1;}
 .lb:hover,.lb.active{border-color:var(--el);background:var(--el-dim);}
-.hero{padding:140px 40px 110px;text-align:center;position:relative;border-bottom:1px solid var(--border);overflow:hidden;}
+.hero{padding:120px 40px 110px;position:relative;border-bottom:1px solid var(--border);overflow:hidden;}
 .hero::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 50% 50% at 50% 50%,rgba(255,140,26,.10),transparent 70%);pointer-events:none;}
-.hero-content{position:relative;max-width:1100px;margin:0 auto;}
-.hero-eye{font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.32em;text-transform:uppercase;color:var(--el-warm);margin-bottom:32px;display:inline-block;padding:8px 18px;border:1px solid var(--el-mid);border-radius:30px;background:var(--el-dim);}
-.hero-title{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(2.6rem,7vw,5.5rem);letter-spacing:-.03em;line-height:.95;margin-bottom:24px;background:linear-gradient(135deg,#fff 0%,var(--el-warm) 50%,var(--el) 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+.hero-content{position:relative;max-width:1200px;margin:0 auto;}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:64px;align-items:center;margin-bottom:64px;}
+@media(max-width:980px){.hero-grid{grid-template-columns:1fr;gap:48px;text-align:center;}}
+.hero-text{min-width:0;}
+.hero-eye{font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.32em;text-transform:uppercase;color:var(--el-warm);margin-bottom:28px;display:inline-block;padding:8px 18px;border:1px solid var(--el-mid);border-radius:30px;background:var(--el-dim);}
+.hero-title{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(2.4rem,6vw,4.8rem);letter-spacing:-.03em;line-height:.95;margin-bottom:24px;background:linear-gradient(135deg,#fff 0%,var(--el-warm) 50%,var(--el) 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
 .hero-x{display:inline-block;color:var(--el);-webkit-text-fill-color:var(--el);font-weight:300;font-size:.6em;vertical-align:middle;margin:0 .15em;}
-.hero-sub{font-size:clamp(1rem,2vw,1.2rem);color:var(--text2);max-width:700px;margin:0 auto 48px;font-weight:300;line-height:1.6;}
-.hero-pills{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:60px;}
+.hero-sub{font-size:clamp(.95rem,1.6vw,1.1rem);color:var(--text2);margin-bottom:32px;font-weight:300;line-height:1.65;}
+.hero-pills{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:0;}
+@media(max-width:980px){.hero-pills{justify-content:center;}}
 .hero-pill{font-family:'Space Mono',monospace;font-size:.68rem;letter-spacing:.06em;color:var(--el-warm);border:1px solid var(--el-mid);padding:8px 18px;border-radius:24px;background:rgba(15,13,9,.5);backdrop-filter:blur(10px);}
-.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;max-width:900px;margin:0 auto;background:var(--border);border:1px solid var(--border);border-radius:18px;overflow:hidden;box-shadow:var(--shadow);}
+.hero-photo-wrap{position:relative;display:flex;flex-direction:column;align-items:center;gap:24px;}
+.hero-photo-frame{position:relative;width:100%;max-width:380px;aspect-ratio:1;border-radius:50%;overflow:hidden;border:2px solid var(--el-mid);box-shadow:0 0 0 8px rgba(255,140,26,.06),0 30px 80px rgba(255,140,26,.25),0 0 60px rgba(255,140,26,.18) inset;}
+.hero-photo-frame::before{content:"";position:absolute;inset:-2px;border-radius:50%;padding:2px;background:conic-gradient(from 180deg at 50% 50%,var(--el),var(--gold),var(--el-warm),var(--el-deep),var(--el));-webkit-mask:linear-gradient(#000,#000) content-box,linear-gradient(#000,#000);-webkit-mask-composite:xor;mask-composite:exclude;animation:spin 12s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg);}}
+.hero-photo-frame img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(1.05) contrast(1.03);}
+.hero-photo-badge{position:absolute;bottom:18px;right:8%;background:linear-gradient(135deg,var(--el),var(--el-deep));color:#0a0805;font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;padding:8px 14px;border-radius:20px;font-weight:700;box-shadow:0 8px 24px rgba(255,140,26,.4);border:2px solid #0a0805;display:flex;align-items:center;gap:6px;}
+.hero-ig-card{display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,rgba(255,140,26,.08),rgba(255,206,91,.04));border:1px solid var(--el-mid);border-radius:16px;padding:14px 20px;text-decoration:none;transition:all .3s;width:100%;max-width:380px;}
+.hero-ig-card:hover{border-color:var(--el);background:linear-gradient(135deg,rgba(255,140,26,.16),rgba(255,206,91,.08));transform:translateY(-2px);box-shadow:0 12px 32px rgba(255,140,26,.18);}
+.hero-ig-icon{width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,#feda75,#fa7e1e 25%,#d62976 50%,#962fbf 75%,#4f5bd5);display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0;}
+.hero-ig-meta{flex:1;min-width:0;text-align:left;}
+.hero-ig-handle{font-family:'Space Mono',monospace;font-size:.78rem;color:var(--el-warm);font-weight:700;display:flex;align-items:center;gap:6px;}
+.hero-ig-handle .v{color:var(--gold);font-size:.72rem;}
+.hero-ig-name{font-size:.72rem;color:var(--muted);margin-top:2px;}
+.hero-ig-arrow{color:var(--el-warm);font-size:1.2rem;flex-shrink:0;transition:transform .3s;}
+.hero-ig-card:hover .hero-ig-arrow{transform:translateX(4px);}
+.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;max-width:1100px;margin:0 auto;background:var(--border);border:1px solid var(--border);border-radius:18px;overflow:hidden;box-shadow:var(--shadow);}
 .hero-stat{background:rgba(15,13,9,.6);backdrop-filter:blur(10px);padding:30px 20px;text-align:center;}
 .hero-stat-v{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(1.6rem,3vw,2.4rem);background:linear-gradient(135deg,var(--gold),var(--el));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;display:block;line-height:1;margin-bottom:8px;}
 .hero-stat-l{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);}
@@ -184,14 +203,32 @@ main{position:relative;z-index:1;}
 
 <section class="hero">
   <div class="hero-content">
-    <div class="hero-eye reveal" data-i18n="hero_eye">Brand Partnership Kit · Mai 2026</div>
-    <h1 class="hero-title reveal"><span data-i18n="hero_t1">Elisa is running</span><br><span class="hero-x">×</span><span data-i18n="hero_t2">votre marque</span></h1>
-    <p class="hero-sub reveal" data-i18n="hero_sub">Créatrice running française · audience CSP+ 35-54 ans · 88% France · engagement 5,32% IG (au-dessus moyenne marché). Compte vérifié, communauté ultra-engagée, viral cap prouvé à 3,7M de vues.</p>
-    <div class="hero-pills reveal">
-      <span class="hero-pill" data-i18n="pill1">🏃 Running · Marathon · Trail</span>
-      <span class="hero-pill" data-i18n="pill2">🇫🇷 Niche FR pure</span>
-      <span class="hero-pill" data-i18n="pill3">✓ Verified IG</span>
-      <span class="hero-pill" data-i18n="pill4">82% audience réelle</span>
+    <div class="hero-grid">
+      <div class="hero-text">
+        <div class="hero-eye reveal" data-i18n="hero_eye">Brand Partnership Kit · Mai 2026</div>
+        <h1 class="hero-title reveal"><span data-i18n="hero_t1">Elisa is running</span><br><span class="hero-x">×</span><span data-i18n="hero_t2">votre marque</span></h1>
+        <p class="hero-sub reveal" data-i18n="hero_sub">Créatrice running française · audience CSP+ 35-54 ans · 88% France · engagement 5,32% IG (au-dessus moyenne marché). Compte vérifié, communauté ultra-engagée, viral cap prouvé à 3,7M de vues.</p>
+        <div class="hero-pills reveal">
+          <span class="hero-pill" data-i18n="pill1">🏃 Running · Marathon · Trail</span>
+          <span class="hero-pill" data-i18n="pill2">🇫🇷 Niche FR pure</span>
+          <span class="hero-pill" data-i18n="pill3">✓ Verified IG</span>
+          <span class="hero-pill" data-i18n="pill4">82% audience réelle</span>
+        </div>
+      </div>
+      <div class="hero-photo-wrap reveal">
+        <div class="hero-photo-frame">
+          <img src="imgs/elisa-photo.jpg" alt="Elisa" loading="lazy"/>
+          <div class="hero-photo-badge"><span style="color:var(--gold);">✓</span> <span data-i18n="verified">Vérifiée</span></div>
+        </div>
+        <a href="https://instagram.com/elisa_is_running" target="_blank" rel="noopener" class="hero-ig-card">
+          <div class="hero-ig-icon">📷</div>
+          <div class="hero-ig-meta">
+            <div class="hero-ig-handle">@elisa_is_running <span class="v">✓</span></div>
+            <div class="hero-ig-name" data-i18n="ig_followers"><b style="color:var(--el-warm);">12 906</b> abonnés vérifiés · Instagram</div>
+          </div>
+          <div class="hero-ig-arrow">→</div>
+        </a>
+      </div>
     </div>
     <div class="hero-stats reveal">
       <div class="hero-stat"><span class="hero-stat-v">~24 000</span><span class="hero-stat-l" data-i18n="hs_reach">Reach unique estimé</span></div>
