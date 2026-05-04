@@ -73,6 +73,14 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;lin
 .hero-stat{background:rgba(17,24,39,.6);backdrop-filter:blur(10px);padding:30px 20px;text-align:center;border:none;border-radius:0;}
 .hero-stat-val{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(1.5rem,3vw,2.4rem);background:linear-gradient(135deg,#93c5fd,var(--cr));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;display:block;line-height:1;margin-bottom:8px;letter-spacing:-.02em;}
 .hero-stat-lbl{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);}
+.live-bar{display:inline-flex;align-items:center;gap:10px;font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);background:rgba(17,24,39,.5);border:1px solid var(--border2);border-radius:24px;padding:8px 16px;margin-bottom:32px;backdrop-filter:blur(10px);}
+.live-bar a{color:var(--cr);text-decoration:none;display:inline-flex;align-items:center;gap:4px;border-bottom:1px dashed transparent;transition:border-color .2s;}
+.live-bar a:hover{border-bottom-color:var(--cr);}
+.live-bar.synced{border-color:rgba(74,222,128,.25);}
+.live-bar.offline{border-color:rgba(248,113,113,.25);color:var(--red);}
+.live-dot{width:8px;height:8px;border-radius:50%;background:var(--muted);position:relative;flex-shrink:0;}
+.live-dot.on{background:#4ade80;box-shadow:0 0 0 0 rgba(74,222,128,.5);animation:pulse 2s ease-out infinite;}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(74,222,128,.6);}100%{box-shadow:0 0 0 14px rgba(74,222,128,0);}}
 
 /* ── SECTIONS ── */
 .mk-section{padding:64px 48px;border-bottom:1px solid var(--border2);}
@@ -189,6 +197,7 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;lin
     <div class="mk-hero-inner">
       <div class="hero-grid">
         <div class="hero-text reveal">
+          <div class="live-bar"><span class="live-dot"></span>Auto-synced · Apify · <span data-updated>—</span> · <a href="https://github.com/Stesouna9/okalamstudio/actions" target="_blank" rel="noopener">GitHub Actions ↗</a></div>
           <div class="mk-hero-tag">⚡ Tech · VE · Solaire · Unboxing · France</div>
           <h1 class="mk-hero-name">Tesla Burger</h1>
           <p class="mk-hero-pitch">Créateur de contenu tech &amp; véhicules électriques, référence française sur la niche VE. 18,8M de vues YouTube cumulées pour une niche ultra-qualifiée — audience tech-savvy, intention d'achat élevée, pouvoir d'achat premium.</p>
@@ -204,7 +213,7 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;lin
             <div class="hero-ig-icon">📷</div>
             <div class="hero-ig-meta">
               <div class="hero-ig-handle">@tesla_burger</div>
-              <div class="hero-ig-name"><b style="color:#93c5fd;">12 000</b> abonnés · Instagram</div>
+              <div class="hero-ig-name"><b style="color:#93c5fd;" data-stat="pierre.instagram.followers" data-fmt="numFR">12 000</b> abonnés · Instagram</div>
             </div>
             <div class="hero-ig-arrow">→</div>
           </a>
@@ -212,19 +221,19 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;lin
       </div>
       <div class="hero-stats reveal">
         <div class="hero-stat">
-          <span class="hero-stat-val">12,5K</span>
+          <span class="hero-stat-val" data-stat="pierre.youtube.subscribers" data-fmt="kFR">12,5K</span>
           <span class="hero-stat-lbl">Abonnés YouTube</span>
         </div>
         <div class="hero-stat">
-          <span class="hero-stat-val">12K</span>
+          <span class="hero-stat-val" data-stat="pierre.instagram.followers" data-fmt="kFR">12K</span>
           <span class="hero-stat-lbl">Abonnés Instagram</span>
         </div>
         <div class="hero-stat">
-          <span class="hero-stat-val">18,8M</span>
+          <span class="hero-stat-val" data-stat="pierre.youtube.views" data-fmt="kFR">18,8M</span>
           <span class="hero-stat-lbl">Vues YouTube totales</span>
         </div>
         <div class="hero-stat">
-          <span class="hero-stat-val">39 100</span>
+          <span class="hero-stat-val" data-stat="pierre.youtube.avgViewsPerVideo" data-fmt="numFR">39 100</span>
           <span class="hero-stat-lbl">Vues / vidéo moy.</span>
         </div>
       </div>
@@ -243,38 +252,38 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;lin
         <div class="platform-card reveal">
           <div class="pf-icon">▶️</div>
           <div class="pf-name">YouTube</div>
-          <span class="pf-stat-main">11 900</span>
+          <span class="pf-stat-main" data-stat="pierre.youtube.subscribers" data-fmt="numFR">12 600</span>
           <span class="pf-stat-sub">abonnés</span>
-          <div class="pf-row"><span>Vues totales</span><span>17,9M</span></div>
-          <div class="pf-row"><span>Vidéos</span><span>451</span></div>
-          <div class="pf-row"><span>Vues par vidéo</span><span>23 700 en moy.</span></div>
-          <div class="pf-explain">💡 17,9M de vues pour 11 900 abonnés = 199% au-dessus de la médiane. Ses vidéos sont trouvées par des milliers de personnes qui cherchent activement du contenu VE.</div>
-          <div class="pf-badge">23 700 vues/vidéo en moyenne</div>
+          <div class="pf-row"><span>Vues totales</span><span data-stat="pierre.youtube.views" data-fmt="kFR">18,8M</span></div>
+          <div class="pf-row"><span>Vues par vidéo</span><span><span data-stat="pierre.youtube.avgViewsPerVideo" data-fmt="numFR">39 100</span> en moy.</span></div>
+          <div class="pf-row"><span>Engagement</span><span data-stat="pierre.youtube.engagement" data-fmt="pct">1,83%</span></div>
+          <div class="pf-explain">💡 Vues massives pour la taille du canal — ses vidéos sont trouvées par des milliers de personnes qui cherchent activement du contenu VE.</div>
+          <div class="pf-badge"><span data-stat="pierre.youtube.avgViewsPerVideo" data-fmt="numFR">39 100</span> vues/vidéo moy.</div>
         </div>
 
         <!-- Instagram -->
         <div class="platform-card reveal">
           <div class="pf-icon">📷</div>
           <div class="pf-name">Instagram</div>
-          <span class="pf-stat-main">9 753</span>
+          <span class="pf-stat-main" data-stat="pierre.instagram.followers" data-fmt="numFR">12 453</span>
           <span class="pf-stat-sub">abonnés</span>
-          <div class="pf-row"><span>Publications</span><span>331</span></div>
-          <div class="pf-row"><span>Vues moy. par post</span><span>81 240</span></div>
-          <div class="pf-row"><span>Engagement</span><span>2,95%</span></div>
-          <div class="pf-explain">💡 81 240 vues en moyenne pour 9 753 abonnés = un ratio de 8x. Extraordinaire. Ses posts touchent bien au-delà de sa communauté directe.</div>
-          <div class="pf-badge pf-badge-rocket">🚀 8x plus de vues que d'abonnés</div>
+          <div class="pf-row"><span>Publications</span><span data-stat="pierre.instagram.posts" data-fmt="numFR">358</span></div>
+          <div class="pf-row"><span>Vues moy. par post</span><span data-stat="pierre.instagram.avgViewsPerPost" data-fmt="numFR">81 240</span></div>
+          <div class="pf-row"><span>Engagement</span><span data-stat="pierre.instagram.engagement" data-fmt="pct">2,95%</span></div>
+          <div class="pf-explain">💡 Vues moyennes par post bien au-dessus du nombre d'abonnés — ses posts touchent largement au-delà de sa communauté directe.</div>
+          <div class="pf-badge pf-badge-rocket">🚀 Reach &gt; communauté directe</div>
         </div>
 
         <!-- TikTok -->
         <div class="platform-card reveal">
           <div class="pf-icon">🎵</div>
           <div class="pf-name">TikTok</div>
-          <span class="pf-stat-main">1 438</span>
+          <span class="pf-stat-main" data-stat="pierre.tiktok.followers" data-fmt="numFR">2 067</span>
           <span class="pf-stat-sub">abonnés</span>
-          <div class="pf-row"><span>Likes cumulés</span><span>73 235</span></div>
-          <div class="pf-row"><span>Vidéos</span><span>111</span></div>
-          <div class="pf-row"><span>Vues moy.</span><span>19 570</span></div>
-          <div class="pf-explain">💡 19 570 vues par vidéo sur TikTok avec seulement 1 438 abonnés = contenu qui tourne bien au-delà de la communauté. Engagement 4,78%.</div>
+          <div class="pf-row"><span>Likes cumulés</span><span data-stat="pierre.tiktok.likes" data-fmt="kFR">104,7K</span></div>
+          <div class="pf-row"><span>Vidéos</span><span data-stat="pierre.tiktok.videos" data-fmt="numFR">138</span></div>
+          <div class="pf-row"><span>Vues moy.</span><span data-stat="pierre.tiktok.avgViewsPerVideo" data-fmt="numFR">19 570</span></div>
+          <div class="pf-explain">💡 Vues par vidéo bien au-delà de la base abonnés — contenu qui tourne sur la For You Page.</div>
         </div>
 
       </div>
@@ -437,5 +446,6 @@ function initReveal() {
 
 initReveal();
 </script>
+<script defer src="live-stats.js"></script>
 </body>
 </html>

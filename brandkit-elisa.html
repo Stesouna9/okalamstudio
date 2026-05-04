@@ -69,6 +69,14 @@ main{position:relative;z-index:1;}
 .hero-stat{background:rgba(15,13,9,.6);backdrop-filter:blur(10px);padding:30px 20px;text-align:center;}
 .hero-stat-v{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(1.6rem,3vw,2.4rem);background:linear-gradient(135deg,var(--gold),var(--el));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;display:block;line-height:1;margin-bottom:8px;}
 .hero-stat-l{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);}
+.live-bar{display:inline-flex;align-items:center;gap:10px;font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);background:rgba(15,13,9,.5);border:1px solid var(--border2);border-radius:24px;padding:8px 16px;margin-bottom:28px;backdrop-filter:blur(10px);}
+.live-bar a{color:var(--el-warm);text-decoration:none;display:inline-flex;align-items:center;gap:4px;border-bottom:1px dashed transparent;transition:border-color .2s;}
+.live-bar a:hover{border-bottom-color:var(--el);}
+.live-bar.synced{border-color:rgba(74,222,128,.25);}
+.live-bar.offline{border-color:rgba(248,113,113,.25);}
+.live-dot{width:8px;height:8px;border-radius:50%;background:var(--muted);position:relative;flex-shrink:0;}
+.live-dot.on{background:#4ade80;box-shadow:0 0 0 0 rgba(74,222,128,.5);animation:pulse-live 2s ease-out infinite;}
+@keyframes pulse-live{0%{box-shadow:0 0 0 0 rgba(74,222,128,.6);}100%{box-shadow:0 0 0 14px rgba(74,222,128,0);}}
 .sec{padding:100px 40px;max-width:1200px;margin:0 auto;position:relative;}
 .sec-head{margin-bottom:56px;max-width:680px;}
 .sec-eye{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.24em;text-transform:uppercase;color:var(--el);margin-bottom:14px;display:flex;align-items:center;gap:14px;}
@@ -205,6 +213,7 @@ main{position:relative;z-index:1;}
   <div class="hero-content">
     <div class="hero-grid">
       <div class="hero-text">
+        <div class="live-bar reveal"><span class="live-dot"></span>Auto-synced · Apify · <span data-updated>—</span> · <a href="https://github.com/Stesouna9/okalamstudio/actions" target="_blank" rel="noopener">GitHub Actions ↗</a></div>
         <div class="hero-eye reveal" data-i18n="hero_eye">Brand Partnership Kit · Mai 2026</div>
         <h1 class="hero-title reveal"><span data-i18n="hero_t1">Elisa is running</span><br><span class="hero-x">×</span><span data-i18n="hero_t2">votre marque</span></h1>
         <p class="hero-sub reveal" data-i18n="hero_sub">Créatrice running française · audience CSP+ 35-54 ans · 88% France · engagement 5,32% IG (au-dessus moyenne marché). Compte vérifié, communauté ultra-engagée, viral cap prouvé à 3,7M de vues.</p>
@@ -224,17 +233,17 @@ main{position:relative;z-index:1;}
           <div class="hero-ig-icon">📷</div>
           <div class="hero-ig-meta">
             <div class="hero-ig-handle">@elisa_is_running <span class="v">✓</span></div>
-            <div class="hero-ig-name" data-i18n="ig_followers"><b style="color:var(--el-warm);">12 906</b> abonnés vérifiés · Instagram</div>
+            <div class="hero-ig-name"><b style="color:var(--el-warm);" data-stat="elisa.instagram.followers" data-fmt="numFR">12 906</b> abonnés vérifiés · Instagram</div>
           </div>
           <div class="hero-ig-arrow">→</div>
         </a>
       </div>
     </div>
     <div class="hero-stats reveal">
-      <div class="hero-stat"><span class="hero-stat-v">~24 000</span><span class="hero-stat-l" data-i18n="hs_reach">Reach unique estimé</span></div>
-      <div class="hero-stat"><span class="hero-stat-v">5,32%</span><span class="hero-stat-l" data-i18n="hs_eng">Engagement IG</span></div>
-      <div class="hero-stat"><span class="hero-stat-v">88%</span><span class="hero-stat-l" data-i18n="hs_fr">Audience France</span></div>
-      <div class="hero-stat"><span class="hero-stat-v">558</span><span class="hero-stat-l" data-i18n="hs_videos">Vidéos publiées</span></div>
+      <div class="hero-stat"><span class="hero-stat-v" data-stat="elisa.instagram.followers" data-fmt="numFR">12 906</span><span class="hero-stat-l">Abonnés Instagram</span></div>
+      <div class="hero-stat"><span class="hero-stat-v" data-stat="elisa.youtube.subscribers" data-fmt="kFR">14K</span><span class="hero-stat-l">Abonnés YouTube</span></div>
+      <div class="hero-stat"><span class="hero-stat-v" data-stat="elisa.youtube.views" data-fmt="kFR">4,3M</span><span class="hero-stat-l">Vues YouTube totales</span></div>
+      <div class="hero-stat"><span class="hero-stat-v" data-stat="elisa.tiktok.topVideoViews" data-fmt="kFR">3,7M</span><span class="hero-stat-l">Top viral TikTok</span></div>
     </div>
   </div>
 </section>
@@ -501,6 +510,7 @@ setLang(localStorage.getItem('okalam_lang')||'en');
 const obs=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');});},{threshold:.1});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 </script>
+<script defer src="live-stats.js"></script>
 
 </body>
 </html>
