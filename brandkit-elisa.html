@@ -77,6 +77,10 @@ main{position:relative;z-index:1;}
 .live-dot{width:8px;height:8px;border-radius:50%;background:var(--muted);position:relative;flex-shrink:0;}
 .live-dot.on{background:#4ade80;box-shadow:0 0 0 0 rgba(74,222,128,.5);animation:pulse-live 2s ease-out infinite;}
 @keyframes pulse-live{0%{box-shadow:0 0 0 0 rgba(74,222,128,.6);}100%{box-shadow:0 0 0 14px rgba(74,222,128,0);}}
+.hero-stat-delta{display:block;margin-top:6px;font-family:'Space Mono',monospace;font-size:.55rem;letter-spacing:.06em;color:var(--muted);min-height:8px;}
+.hero-stat-delta.delta-up{color:#4ade80;}
+.hero-stat-delta.delta-down{color:#f87171;}
+.hero-stat-delta.delta-flat{color:var(--muted);}
 .sec{padding:100px 40px;max-width:1200px;margin:0 auto;position:relative;}
 .sec-head{margin-bottom:56px;max-width:680px;}
 .sec-eye{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.24em;text-transform:uppercase;color:var(--el);margin-bottom:14px;display:flex;align-items:center;gap:14px;}
@@ -213,7 +217,7 @@ main{position:relative;z-index:1;}
   <div class="hero-content">
     <div class="hero-grid">
       <div class="hero-text">
-        <div class="live-bar reveal"><span class="live-dot"></span>Auto-synced · Apify · <span data-updated>—</span> · <a href="https://github.com/Stesouna9/okalamstudio/actions" target="_blank" rel="noopener">GitHub Actions ↗</a></div>
+        <div class="live-bar reveal"><span class="live-dot"></span>Auto-synced · Apify · <span data-updated>—</span> · <a href="https://github.com/Stesouna9/okalamstudio/actions" target="_blank" rel="noopener">GitHub Actions ↗</a> <span data-workflow-badge></span></div>
         <div class="hero-eye reveal" data-i18n="hero_eye">Brand Partnership Kit · Mai 2026</div>
         <h1 class="hero-title reveal"><span data-i18n="hero_t1">Elisa is running</span><br><span class="hero-x">×</span><span data-i18n="hero_t2">votre marque</span></h1>
         <p class="hero-sub reveal" data-i18n="hero_sub">Créatrice running française · audience CSP+ 35-54 ans · 88% France · engagement 5,32% IG (au-dessus moyenne marché). Compte vérifié, communauté ultra-engagée, viral cap prouvé à 3,7M de vues.</p>
@@ -240,9 +244,9 @@ main{position:relative;z-index:1;}
       </div>
     </div>
     <div class="hero-stats reveal">
-      <div class="hero-stat"><span class="hero-stat-v" data-stat="elisa.instagram.followers" data-fmt="numFR">12 906</span><span class="hero-stat-l">Abonnés Instagram</span></div>
-      <div class="hero-stat"><span class="hero-stat-v" data-stat="elisa.youtube.subscribers" data-fmt="kFR">14K</span><span class="hero-stat-l">Abonnés YouTube</span></div>
-      <div class="hero-stat"><span class="hero-stat-v" data-stat="elisa.youtube.views" data-fmt="kFR">4,3M</span><span class="hero-stat-l">Vues YouTube totales</span></div>
+      <div class="hero-stat"><span class="hero-stat-v" data-stat="elisa.instagram.followers" data-fmt="numFR">12 906</span><span class="hero-stat-l">Abonnés Instagram</span><span class="hero-stat-delta" data-delta="elisa.instagram.followers"></span></div>
+      <div class="hero-stat"><span class="hero-stat-v" data-stat="elisa.youtube.subscribers" data-fmt="kFR">14K</span><span class="hero-stat-l">Abonnés YouTube</span><span class="hero-stat-delta" data-delta="elisa.youtube.subscribers"></span></div>
+      <div class="hero-stat"><span class="hero-stat-v" data-stat="elisa.youtube.views" data-fmt="kFR">4,3M</span><span class="hero-stat-l">Vues YouTube totales</span><span class="hero-stat-delta" data-delta="elisa.youtube.views"></span></div>
       <div class="hero-stat"><span class="hero-stat-v" data-stat="elisa.tiktok.topVideoViews" data-fmt="kFR">3,7M</span><span class="hero-stat-l">Top viral TikTok</span></div>
     </div>
   </div>

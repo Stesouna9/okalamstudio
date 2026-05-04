@@ -81,6 +81,10 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;lin
 .live-dot{width:8px;height:8px;border-radius:50%;background:var(--muted);position:relative;flex-shrink:0;}
 .live-dot.on{background:#4ade80;box-shadow:0 0 0 0 rgba(74,222,128,.5);animation:pulse 2s ease-out infinite;}
 @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(74,222,128,.6);}100%{box-shadow:0 0 0 14px rgba(74,222,128,0);}}
+.hero-stat-delta{display:block;margin-top:6px;font-family:'Space Mono',monospace;font-size:.55rem;letter-spacing:.06em;color:var(--muted);min-height:8px;}
+.hero-stat-delta.delta-up{color:#4ade80;}
+.hero-stat-delta.delta-down{color:#f87171;}
+.hero-stat-delta.delta-flat{color:var(--muted);}
 
 /* ── SECTIONS ── */
 .mk-section{padding:64px 48px;border-bottom:1px solid var(--border2);}
@@ -197,7 +201,7 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;lin
     <div class="mk-hero-inner">
       <div class="hero-grid">
         <div class="hero-text reveal">
-          <div class="live-bar"><span class="live-dot"></span>Auto-synced · Apify · <span data-updated>—</span> · <a href="https://github.com/Stesouna9/okalamstudio/actions" target="_blank" rel="noopener">GitHub Actions ↗</a></div>
+          <div class="live-bar"><span class="live-dot"></span>Auto-synced · Apify · <span data-updated>—</span> · <a href="https://github.com/Stesouna9/okalamstudio/actions" target="_blank" rel="noopener">GitHub Actions ↗</a> <span data-workflow-badge></span></div>
           <div class="mk-hero-tag">⚡ Tech · VE · Solaire · Unboxing · France</div>
           <h1 class="mk-hero-name">Tesla Burger</h1>
           <p class="mk-hero-pitch">Créateur de contenu tech &amp; véhicules électriques, référence française sur la niche VE. 18,8M de vues YouTube cumulées pour une niche ultra-qualifiée — audience tech-savvy, intention d'achat élevée, pouvoir d'achat premium.</p>
@@ -223,14 +227,17 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;lin
         <div class="hero-stat">
           <span class="hero-stat-val" data-stat="pierre.youtube.subscribers" data-fmt="kFR">12,5K</span>
           <span class="hero-stat-lbl">Abonnés YouTube</span>
+          <span class="hero-stat-delta" data-delta="pierre.youtube.subscribers"></span>
         </div>
         <div class="hero-stat">
           <span class="hero-stat-val" data-stat="pierre.instagram.followers" data-fmt="kFR">12K</span>
           <span class="hero-stat-lbl">Abonnés Instagram</span>
+          <span class="hero-stat-delta" data-delta="pierre.instagram.followers"></span>
         </div>
         <div class="hero-stat">
           <span class="hero-stat-val" data-stat="pierre.youtube.views" data-fmt="kFR">18,8M</span>
           <span class="hero-stat-lbl">Vues YouTube totales</span>
+          <span class="hero-stat-delta" data-delta="pierre.youtube.views"></span>
         </div>
         <div class="hero-stat">
           <span class="hero-stat-val" data-stat="pierre.youtube.avgViewsPerVideo" data-fmt="numFR">39 100</span>

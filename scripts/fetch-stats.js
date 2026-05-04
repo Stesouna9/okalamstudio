@@ -132,7 +132,32 @@ async function main() {
   fs.mkdirSync('data', { recursive: true });
   fs.writeFileSync('data/stats.json', JSON.stringify(stats, null, 2));
 
+  // Append snapshot to history (keep last 90 days, dedupe same-day)
+  let history = [];
+  try { history = JSON.parse(fs.readFileSync('data/stats-history.json', 'utf8')); } catch {}
+  const today = stats.updated_at.slice(0, 10);
+  history = history.filter(h => h.date !== today);
+  history.push({
+    date: today,
+    elisa: {
+      yt: stats.elisa.youtube?.subscribers ?? null,
+      ytViews: stats.elisa.youtube?.views ?? null,
+      ig: stats.elisa.instagram?.followers ?? null,
+      tt: stats.elisa.tiktok?.followers ?? null,
+    },
+    pierre: {
+      yt: stats.pierre.youtube?.subscribers ?? null,
+      ytViews: stats.pierre.youtube?.views ?? null,
+      ig: stats.pierre.instagram?.followers ?? null,
+      tt: stats.pierre.tiktok?.followers ?? null,
+    },
+  });
+  const cutoff = new Date(Date.now() - 90 * 86400000).toISOString().slice(0, 10);
+  history = history.filter(h => h.date >= cutoff).sort((a, b) => a.date.localeCompare(b.date));
+  fs.writeFileSync('data/stats-history.json', JSON.stringify(history, null, 2));
+
   console.log('✓ data/stats.json updated at', stats.updated_at);
+  console.log('✓ data/stats-history.json —', history.length, 'snapshots');
   console.log('  Elisa  YT:', stats.elisa.youtube?.subscribers, 'subs |', stats.elisa.youtube?.views, 'views');
   console.log('  Elisa  IG:', stats.elisa.instagram?.followers, 'followers');
   console.log('  Elisa  TT:', stats.elisa.tiktok?.followers, 'followers');
