@@ -153,11 +153,11 @@ async function decrypt(e){{
   try{{
     const keyMaterial=await crypto.subtle.importKey('raw',new TextEncoder().encode(pwd),'PBKDF2',false,['deriveBits','deriveKey']);
     const key=await crypto.subtle.deriveKey({{name:'PBKDF2',salt:salt,iterations:data.iter,hash:'SHA-256'}},keyMaterial,{{name:'AES-CBC',length:256}},false,['decrypt']);
+    // Web Crypto AES-CBC auto-unpads PKCS7. Our Python encrypt already added PKCS7 padding,
+    // then chained openssl with -nopad. So Web Crypto sees valid PKCS7 and unpads correctly.
     const decrypted=await crypto.subtle.decrypt({{name:'AES-CBC',iv:iv}},key,ct);
     const html=new TextDecoder().decode(decrypted);
-    // Remove PKCS7 padding
-    const trimmed=html.replace(/[\\x01-\\x10]+$/,'');
-    document.open();document.write(trimmed);document.close();
+    document.open();document.write(html);document.close();
   }}catch(err){{
     document.getElementById('err').style.display='block';
     document.getElementById('pwd').value='';
