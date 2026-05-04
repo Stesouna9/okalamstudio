@@ -65,7 +65,12 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;lin
 .hero-photo-badge{position:absolute;bottom:18px;right:8%;background:linear-gradient(135deg,#3b82f6,#1d4ed8);color:#fff;font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;padding:8px 14px;border-radius:20px;font-weight:700;box-shadow:0 8px 24px rgba(59,130,246,.4);border:2px solid #080c12;display:flex;align-items:center;gap:6px;}
 .hero-ig-card{display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,rgba(59,130,246,.08),rgba(96,165,250,.04));border:1px solid var(--cr-border);border-radius:16px;padding:14px 20px;text-decoration:none;transition:all .3s;width:100%;max-width:380px;}
 .hero-ig-card:hover{border-color:var(--cr);background:linear-gradient(135deg,rgba(59,130,246,.16),rgba(96,165,250,.08));transform:translateY(-2px);box-shadow:0 12px 32px rgba(59,130,246,.20);}
-.hero-ig-icon{width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,#feda75,#fa7e1e 25%,#d62976 50%,#962fbf 75%,#4f5bd5);display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0;}
+.hero-ig-icon{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;overflow:hidden;}
+.hero-ig-icon svg{width:42px;height:42px;display:block;}
+.brand-ic{display:inline-flex;align-items:center;justify-content:center;}
+.brand-ic svg{width:100%;height:100%;display:block;}
+.verified-tick{display:inline-block;width:15px;height:15px;vertical-align:-3px;flex-shrink:0;}
+.verified-tick svg{width:100%;height:100%;display:block;}
 .hero-ig-meta{flex:1;min-width:0;text-align:left;}
 .hero-ig-handle{font-family:'Space Mono',monospace;font-size:.78rem;color:var(--cr);font-weight:700;display:flex;align-items:center;gap:6px;}
 .hero-ig-name{font-size:.72rem;color:var(--muted);margin-top:2px;}
@@ -99,7 +104,8 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;lin
 .platform-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
 .platform-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:26px;transition:all .3s;}
 .platform-card:hover{border-color:var(--cr);box-shadow:0 0 20px rgba(59,130,246,.08);}
-.pf-icon{font-size:1.5rem;margin-bottom:10px;}
+.pf-icon{width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,rgba(255,255,255,.04),rgba(255,255,255,.01));border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;margin-bottom:14px;overflow:hidden;}
+.pf-icon svg{width:28px;height:28px;display:block;}
 .pf-name{font-family:'Syne',sans-serif;font-weight:700;font-size:.85rem;margin-bottom:14px;color:var(--text);}
 .pf-stat-main{font-family:'Syne',sans-serif;font-weight:800;font-size:2rem;color:var(--cr);letter-spacing:-.02em;display:block;margin-bottom:2px;}
 .pf-stat-sub{font-family:'Space Mono',monospace;font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:10px;}
@@ -186,6 +192,7 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;lin
 </style>
 </head>
 <body>
+<svg style="position:absolute;width:0;height:0" aria-hidden="true"><defs><linearGradient id="ig-grad" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#feda75"/><stop offset="25%" stop-color="#fa7e1e"/><stop offset="50%" stop-color="#d62976"/><stop offset="75%" stop-color="#962fbf"/><stop offset="100%" stop-color="#4f5bd5"/></linearGradient><symbol id="ic-ig" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5.5" fill="url(#ig-grad)"/><circle cx="12" cy="12" r="4.4" fill="none" stroke="#fff" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.25" fill="#fff"/></symbol><symbol id="ic-yt" viewBox="0 0 24 24"><path d="M21.582 6.186a2.506 2.506 0 0 0-1.768-1.768C18.254 4 12 4 12 4s-6.254 0-7.814.418A2.506 2.506 0 0 0 2.418 6.186C2 7.746 2 12 2 12s0 4.254.418 5.814a2.506 2.506 0 0 0 1.768 1.768C5.746 20 12 20 12 20s6.254 0 7.814-.418a2.506 2.506 0 0 0 1.768-1.768C22 16.254 22 12 22 12s0-4.254-.418-5.814z" fill="#FF0000"/><path d="M10 15.464V8.536L16 12l-6 3.464z" fill="#fff"/></symbol><symbol id="ic-tt" viewBox="0 0 24 24"><path d="M19.589 6.686a4.793 4.793 0 0 1-3.77-4.245V2h-3.445v13.672a2.896 2.896 0 0 1-5.201 1.743 2.895 2.895 0 0 1 3.183-4.51v-3.5a6.329 6.329 0 0 0-5.394 10.692 6.33 6.33 0 0 0 10.857-4.424V8.687a8.182 8.182 0 0 0 4.773 1.526V6.79a4.831 4.831 0 0 1-1.003-.104z" fill="#25F4EE" transform="translate(-1.2 1.2)"/><path d="M19.589 6.686a4.793 4.793 0 0 1-3.77-4.245V2h-3.445v13.672a2.896 2.896 0 0 1-5.201 1.743 2.895 2.895 0 0 1 3.183-4.51v-3.5a6.329 6.329 0 0 0-5.394 10.692 6.33 6.33 0 0 0 10.857-4.424V8.687a8.182 8.182 0 0 0 4.773 1.526V6.79a4.831 4.831 0 0 1-1.003-.104z" fill="#FE2C55" transform="translate(1.2 -1.2)"/><path d="M19.589 6.686a4.793 4.793 0 0 1-3.77-4.245V2h-3.445v13.672a2.896 2.896 0 0 1-5.201 1.743 2.895 2.895 0 0 1 3.183-4.51v-3.5a6.329 6.329 0 0 0-5.394 10.692 6.33 6.33 0 0 0 10.857-4.424V8.687a8.182 8.182 0 0 0 4.773 1.526V6.79a4.831 4.831 0 0 1-1.003-.104z" fill="#fff"/></symbol><symbol id="ic-fb" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" fill="#1877F2"/></symbol><symbol id="ic-verified" viewBox="0 0 24 24"><path d="M22.5 12.5c0-1.58-.875-2.95-2.148-3.6.154-.435.238-.905.238-1.4 0-2.21-1.71-3.998-3.818-3.998-.47 0-.92.084-1.336.25C14.818 2.415 13.51 1.5 12 1.5s-2.816.917-3.437 2.25c-.415-.165-.866-.25-1.336-.25-2.11 0-3.818 1.79-3.818 4 0 .494.083.964.237 1.4-1.272.65-2.147 2.018-2.147 3.6 0 1.495.782 2.798 1.942 3.486-.02.17-.032.34-.032.514 0 2.21 1.708 4 3.818 4 .47 0 .92-.086 1.335-.25.62 1.334 1.926 2.25 3.437 2.25 1.512 0 2.818-.916 3.437-2.25.415.163.865.25 1.336.25 2.11 0 3.818-1.79 3.818-4 0-.174-.012-.344-.033-.513 1.158-.687 1.943-1.99 1.943-3.484z" fill="#1DA1F2"/><path d="M9.81 15.75l-3.06-3.06 1.41-1.41 1.65 1.65 5.16-5.16 1.41 1.41z" fill="#fff"/></symbol></defs></svg>
 
 <!-- MEDIA KIT CONTENT -->
 <div id="content">
@@ -214,9 +221,9 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;lin
             <div class="hero-photo-badge">⚡ Tech FR</div>
           </div>
           <a href="https://www.instagram.com/tesla_burger" target="_blank" rel="noopener" class="hero-ig-card">
-            <div class="hero-ig-icon">📷</div>
+            <div class="hero-ig-icon"><svg viewBox="0 0 24 24"><use href="#ic-ig"/></svg></div>
             <div class="hero-ig-meta">
-              <div class="hero-ig-handle">@tesla_burger</div>
+              <div class="hero-ig-handle">@tesla_burger <span class="verified-tick"><svg viewBox="0 0 24 24"><use href="#ic-verified"/></svg></span></div>
               <div class="hero-ig-name"><b style="color:#93c5fd;" data-stat="pierre.instagram.followers" data-fmt="numFR">12 000</b> abonnés · Instagram</div>
             </div>
             <div class="hero-ig-arrow">→</div>
@@ -261,8 +268,8 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;lin
 
         <!-- YouTube -->
         <div class="platform-card reveal">
-          <div class="pf-icon">▶️</div>
-          <div class="pf-name">YouTube</div>
+          <div class="pf-icon"><svg viewBox="0 0 24 24"><use href="#ic-yt"/></svg></div>
+          <div class="pf-name">YouTube <span class="verified-tick"><svg viewBox="0 0 24 24"><use href="#ic-verified"/></svg></span></div>
           <span class="pf-stat-main" data-stat="pierre.youtube.subscribers" data-fmt="numFR">12 600</span>
           <span class="pf-stat-sub">abonnés</span>
           <div class="pf-row"><span>Vues totales</span><span data-stat="pierre.youtube.views" data-fmt="kFR">18,8M</span></div>
@@ -274,8 +281,8 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;lin
 
         <!-- Instagram -->
         <div class="platform-card reveal">
-          <div class="pf-icon">📷</div>
-          <div class="pf-name">Instagram</div>
+          <div class="pf-icon"><svg viewBox="0 0 24 24"><use href="#ic-ig"/></svg></div>
+          <div class="pf-name">Instagram <span class="verified-tick"><svg viewBox="0 0 24 24"><use href="#ic-verified"/></svg></span></div>
           <span class="pf-stat-main" data-stat="pierre.instagram.followers" data-fmt="numFR">12 453</span>
           <span class="pf-stat-sub">abonnés</span>
           <div class="pf-row"><span>Publications</span><span data-stat="pierre.instagram.posts" data-fmt="numFR">358</span></div>
@@ -287,8 +294,8 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;lin
 
         <!-- TikTok -->
         <div class="platform-card reveal">
-          <div class="pf-icon">🎵</div>
-          <div class="pf-name">TikTok</div>
+          <div class="pf-icon" style="background:#000;"><svg viewBox="0 0 24 24"><use href="#ic-tt"/></svg></div>
+          <div class="pf-name">TikTok <span class="verified-tick"><svg viewBox="0 0 24 24"><use href="#ic-verified"/></svg></span></div>
           <span class="pf-stat-main" data-stat="pierre.tiktok.followers" data-fmt="numFR">2 067</span>
           <span class="pf-stat-sub">abonnés</span>
           <div class="pf-row"><span>Likes cumulés</span><span data-stat="pierre.tiktok.likes" data-fmt="kFR">104,7K</span></div>
