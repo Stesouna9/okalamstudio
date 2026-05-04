@@ -10,8 +10,7 @@ from pathlib import Path
 
 # ── CONFIG ──────────────────────────────────────────────────────
 PAGES = {
-    # brandkit.html is now public (no encryption)
-    "mediakit-elisa.html":  "elisa26",
+    # brandkit.html, mediakit-elisa.html, brandkit-elisa.html now public (no encryption)
     "mediakit-pierre.html": "pierre25",
 }
 SRC_DIR = Path(__file__).resolve().parent.parent / "_src"
