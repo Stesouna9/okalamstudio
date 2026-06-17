@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="robots" content="noindex, nofollow"/>
+<title>Brand Kit — Elisa Is Running Club</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;700;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#050b07;--bg2:#0d1f12;--card:#102a1a;--card2:#163d24;
+  --el:#7DE36B;--el-warm:#A5F89A;--el-deep:#3DBC2C;
+  --el-dim:rgba(125,227,107,.10);--el-mid:rgba(125,227,107,.28);--el-strong:rgba(125,227,107,.5);
+  --gold:#C0F5B0;
+  --text:#ffffff;--text2:#d4f0cc;--muted:#7da185;
+  --border:rgba(125,227,107,.16);--border2:rgba(255,255,255,.05);
+  --shadow:0 24px 80px rgba(125,227,107,.20);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;line-height:1.65;overflow-x:hidden;
+  background-image:radial-gradient(ellipse 80% 50% at 20% 0%,rgba(125,227,107,.08),transparent 50%),radial-gradient(ellipse 60% 50% at 80% 30%,rgba(61,188,44,.06),transparent 50%),radial-gradient(ellipse 60% 60% at 50% 100%,rgba(192,245,176,.04),transparent 50%);}
+::selection{background:var(--el);color:#000;}
+a{color:var(--el-warm);text-decoration:none;}a:hover{color:#fff;}
+.orb{position:fixed;border-radius:50%;filter:blur(140px);opacity:.55;pointer-events:none;z-index:0;will-change:transform;}
+.orb-1{width:680px;height:680px;background:radial-gradient(circle,#7DE36B,#3DBC2C);top:-220px;left:-220px;animation:orb-1 18s ease-in-out infinite alternate;}
+.orb-2{width:560px;height:560px;background:radial-gradient(circle,#C0F5B0,#7DE36B);bottom:-180px;right:-180px;animation:orb-2 22s ease-in-out infinite alternate;}
+.orb-3{position:fixed;width:480px;height:480px;background:radial-gradient(circle,#3DBC2C,transparent 70%);border-radius:50%;filter:blur(110px);opacity:.4;top:30%;right:-180px;animation:orb-3 16s ease-in-out infinite alternate;pointer-events:none;z-index:0;}
+@keyframes orb-1{0%{transform:translate(0,0) scale(1);}100%{transform:translate(160px,180px) scale(1.15);}}
+@keyframes orb-2{0%{transform:translate(0,0) scale(1);}100%{transform:translate(-180px,-140px) scale(1.1);}}
+@keyframes orb-3{0%{transform:translate(0,0) scale(1) rotate(0);}100%{transform:translate(-200px,140px) scale(1.2) rotate(60deg);}}
+main{position:relative;z-index:1;}
+.bk-h{position:sticky;top:0;z-index:50;background:rgba(8,7,5,.85);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border-bottom:1px solid var(--border);padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:68px;gap:20px;}
+.bk-logo{font-family:'Archivo Black','Archivo',sans-serif;font-weight:800;font-size:.78rem;letter-spacing:.22em;color:var(--text);}
+.bk-logo a{color:inherit;}
+.bk-logo a:hover{color:var(--el);}
+.bk-h-right{display:flex;align-items:center;gap:14px;}
+.bk-badge{font-family:'JetBrains Mono',monospace;font-size:.55rem;letter-spacing:.14em;text-transform:uppercase;background:linear-gradient(135deg,var(--el-dim),rgba(192,245,176,.05));color:var(--el-warm);border:1px solid var(--el-mid);padding:6px 14px;border-radius:24px;}
+.lang-bar{display:flex;gap:5px;}
+.lb{background:none;border:1px solid var(--border2);color:var(--muted);font-size:.95rem;padding:4px 7px;border-radius:5px;cursor:pointer;transition:all .2s;line-height:1;}
+.lb:hover,.lb.active{border-color:var(--el);background:var(--el-dim);}
+.hero{padding:120px 40px 110px;position:relative;border-bottom:1px solid var(--border);overflow:hidden;}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 50% 50% at 50% 50%,rgba(125,227,107,.10),transparent 70%);pointer-events:none;}
+.hero-content{position:relative;max-width:1200px;margin:0 auto;}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:64px;align-items:center;margin-bottom:64px;}
+@media(max-width:980px){.hero-grid{grid-template-columns:1fr;gap:48px;text-align:center;}}
+.hero-text{min-width:0;}
+.hero-eye{font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.32em;text-transform:uppercase;color:var(--el-warm);margin-bottom:28px;display:inline-block;padding:8px 18px;border:1px solid var(--el-mid);border-radius:30px;background:var(--el-dim);}
+.hero-title{font-family:'Archivo Black','Archivo',sans-serif;font-weight:800;font-size:clamp(2.8rem,7vw,5.4rem);letter-spacing:-.035em;line-height:.92;margin-bottom:24px;background:linear-gradient(135deg,#fff 0%,var(--el-warm) 40%,var(--el) 70%,var(--el-deep) 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;filter:drop-shadow(0 4px 30px rgba(125,227,107,.25));animation:title-glow 4s ease-in-out infinite alternate;}
+@keyframes title-glow{0%{filter:drop-shadow(0 4px 30px rgba(125,227,107,.2));}100%{filter:drop-shadow(0 4px 50px rgba(125,227,107,.45));}}
+.hero-x{display:inline-block;color:var(--el);-webkit-text-fill-color:var(--el);font-weight:300;font-size:.6em;vertical-align:middle;margin:0 .15em;}
+.hero-sub{font-size:clamp(.95rem,1.6vw,1.1rem);color:var(--text2);margin-bottom:32px;font-weight:300;line-height:1.65;}
+.hero-pills{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:0;}
+@media(max-width:980px){.hero-pills{justify-content:center;}}
+.hero-pill{font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.06em;color:var(--el-warm);border:1px solid var(--el-mid);padding:8px 18px;border-radius:24px;background:rgba(15,13,9,.5);backdrop-filter:blur(10px);}
+.hero-photo-wrap{position:relative;display:flex;flex-direction:column;align-items:center;gap:24px;}
+.hero-photo-frame{position:relative;width:100%;max-width:400px;aspect-ratio:1;border-radius:50%;overflow:hidden;border:2px solid var(--el-mid);box-shadow:0 0 0 10px rgba(125,227,107,.05),0 0 0 20px rgba(125,227,107,.025),0 30px 90px rgba(125,227,107,.35),0 0 80px rgba(125,227,107,.2) inset;animation:photo-pulse 5s ease-in-out infinite;will-change:transform;}
+@keyframes photo-pulse{0%,100%{box-shadow:0 0 0 10px rgba(125,227,107,.05),0 0 0 20px rgba(125,227,107,.025),0 30px 90px rgba(125,227,107,.35),0 0 80px rgba(125,227,107,.2) inset;}50%{box-shadow:0 0 0 14px rgba(125,227,107,.08),0 0 0 28px rgba(125,227,107,.04),0 40px 110px rgba(125,227,107,.45),0 0 100px rgba(125,227,107,.28) inset;}}
+.hero-photo-frame::before{content:"";position:absolute;inset:-2px;border-radius:50%;padding:2px;background:conic-gradient(from 180deg at 50% 50%,var(--el),var(--gold),var(--el-warm),var(--el-deep),var(--el));-webkit-mask:linear-gradient(#000,#000) content-box,linear-gradient(#000,#000);-webkit-mask-composite:xor;mask-composite:exclude;animation:spin 12s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg);}}
+.hero-photo-frame img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(1.05) contrast(1.03);}
+.hero-photo-badge{position:absolute;bottom:18px;right:8%;background:linear-gradient(135deg,var(--el),var(--el-deep));color:#031208;font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;padding:8px 14px;border-radius:20px;font-weight:700;box-shadow:0 8px 24px rgba(125,227,107,.4);border:2px solid #031208;display:flex;align-items:center;gap:6px;}
+.hero-ig-card{display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,rgba(125,227,107,.08),rgba(192,245,176,.04));border:1px solid var(--el-mid);border-radius:16px;padding:14px 20px;text-decoration:none;transition:all .3s;width:100%;max-width:380px;}
+.hero-ig-card:hover{border-color:var(--el);background:linear-gradient(135deg,rgba(125,227,107,.16),rgba(192,245,176,.08));transform:translateY(-2px);box-shadow:0 12px 32px rgba(125,227,107,.18);}
+.hero-ig-icon{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;overflow:hidden;}
+.hero-ig-icon svg{width:42px;height:42px;display:block;}
+.brand-ic{display:inline-flex;align-items:center;justify-content:center;}
+.brand-ic svg{width:100%;height:100%;display:block;}
+.verified-tick{display:inline-block;width:15px;height:15px;vertical-align:-3px;flex-shrink:0;}
+.verified-tick svg{width:100%;height:100%;display:block;}
+.hero-ig-meta{flex:1;min-width:0;text-align:left;}
+.hero-ig-handle{font-family:'JetBrains Mono',monospace;font-size:.78rem;color:var(--el-warm);font-weight:700;display:flex;align-items:center;gap:6px;}
+.hero-ig-handle .v{color:var(--gold);font-size:.72rem;}
+.hero-ig-name{font-size:.72rem;color:var(--muted);margin-top:2px;}
+.hero-ig-arrow{color:var(--el-warm);font-size:1.2rem;flex-shrink:0;transition:transform .3s;}
+.hero-ig-card:hover .hero-ig-arrow{transform:translateX(4px);}
+.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;max-width:1100px;margin:0 auto;}
+.hero-stat{position:relative;background:linear-gradient(160deg,rgba(21,17,11,.85),rgba(29,24,16,.7));backdrop-filter:blur(20px) saturate(160%);-webkit-backdrop-filter:blur(20px) saturate(160%);padding:28px 22px 22px;text-align:left;border:1px solid var(--border2);border-radius:20px;overflow:hidden;transition:transform .4s cubic-bezier(.2,.8,.2,1),border-color .3s,box-shadow .4s;}
+.hero-stat::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--el),transparent);opacity:.5;}
+.hero-stat::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 0%,var(--el-dim),transparent 60%);opacity:0;transition:opacity .4s;pointer-events:none;}
+.hero-stat:hover{transform:translateY(-6px);border-color:var(--el-mid);box-shadow:0 24px 60px rgba(125,227,107,.18);}
+.hero-stat:hover::after{opacity:1;}
+.hero-stat-v{font-family:'Archivo Black','Archivo',sans-serif;font-weight:800;font-size:clamp(1.7rem,2.6vw,2.4rem);background:linear-gradient(135deg,#fff 0%,var(--gold) 35%,var(--el) 75%,var(--el-deep) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;display:block;line-height:1;margin-bottom:10px;letter-spacing:-.03em;text-shadow:0 0 40px rgba(125,227,107,.3);white-space:nowrap;}
+.hero-stat-l{font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--text2);display:block;margin-bottom:14px;}
+.hero-stat-spark{display:block;width:100%;height:28px;margin-bottom:8px;opacity:0;transition:opacity .6s;}
+.hero-stat-spark.rendered{opacity:.95;}
+.hero-stat-delta{display:inline-flex;align-items:center;gap:4px;font-family:'JetBrains Mono',monospace;font-size:.6rem;font-weight:700;letter-spacing:.04em;color:var(--muted);padding:3px 9px;border-radius:20px;background:rgba(255,255,255,.04);border:1px solid var(--border2);}
+.hero-stat-delta:empty{display:none;}
+.hero-stat-delta.delta-up{color:#86efac;background:rgba(74,222,128,.08);border-color:rgba(74,222,128,.25);}
+.hero-stat-delta.delta-down{color:#fca5a5;background:rgba(248,113,113,.08);border-color:rgba(248,113,113,.25);}
+.hero-stat-delta .delta-arrow{font-size:.85em;}
+.sec{padding:100px 40px;max-width:1200px;margin:0 auto;position:relative;}
+.sec-head{margin-bottom:56px;max-width:680px;}
+.sec-eye{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.24em;text-transform:uppercase;color:var(--el);margin-bottom:14px;display:flex;align-items:center;gap:14px;}
+.sec-eye::before{content:'';width:32px;height:1px;background:linear-gradient(90deg,var(--el),transparent);}
+.sec-title{font-family:'Archivo Black','Archivo',sans-serif;font-weight:800;font-size:clamp(1.8rem,4vw,2.8rem);letter-spacing:-.025em;margin-bottom:12px;line-height:1.1;}
+.sec-title .el{color:var(--el);}
+.sec-desc{font-size:.95rem;color:var(--text2);line-height:1.75;}
+.platforms{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
+@media(max-width:980px){.platforms{grid-template-columns:repeat(2,1fr);}}
+.plat{position:relative;background:linear-gradient(160deg,var(--card),var(--card2));border:1px solid var(--border2);border-radius:18px;padding:28px 22px;transition:all .35s cubic-bezier(.2,.8,.2,1);overflow:hidden;}
+.plat::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--el),transparent);opacity:0;transition:opacity .35s;}
+.plat:hover{border-color:var(--el-mid);transform:translateY(-6px);box-shadow:0 20px 50px rgba(125,227,107,.15);}
+.plat:hover::before{opacity:1;}
+.plat-icon{width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,rgba(255,255,255,.04),rgba(255,255,255,.01));border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;margin-bottom:18px;overflow:hidden;}
+.plat-icon svg{width:28px;height:28px;display:block;}
+.plat-name{font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;}
+.plat-handle{font-size:.78rem;color:var(--el-warm);margin-bottom:18px;font-family:'JetBrains Mono',monospace;word-break:break-all;}
+.plat-main{font-family:'Archivo Black','Archivo',sans-serif;font-weight:800;font-size:2.2rem;line-height:1;margin-bottom:6px;background:linear-gradient(135deg,#fff,var(--el-warm));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.plat-sub{font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:18px;}
+.plat-rows{font-size:.82rem;color:var(--text2);line-height:1.85;border-top:1px solid var(--border2);padding-top:14px;}
+.plat-rows b{color:var(--el-warm);font-weight:700;}
+.audience-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;}
+@media(max-width:900px){.audience-grid{grid-template-columns:1fr;}}
+.demo-card{background:linear-gradient(160deg,var(--card),var(--card2));border:1px solid var(--border2);border-radius:20px;padding:36px;display:flex;flex-direction:column;gap:24px;}
+.donut-wrap{display:flex;align-items:center;gap:36px;flex-wrap:wrap;}
+.donut{position:relative;width:180px;height:180px;flex-shrink:0;}
+.donut svg{width:100%;height:100%;transform:rotate(-90deg);}
+.donut-track{fill:none;stroke:var(--border2);stroke-width:18;}
+.donut-bar{fill:none;stroke-width:18;stroke-linecap:round;}
+.donut-bar.male{stroke:var(--el);}
+.donut-bar.female{stroke:var(--gold);}
+.donut-c{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+.donut-c b{font-family:'Archivo Black','Archivo',sans-serif;font-weight:800;font-size:1.6rem;}
+.donut-c span{font-size:.65rem;color:var(--muted);font-family:'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase;}
+.donut-legend{display:flex;flex-direction:column;gap:14px;flex:1;min-width:140px;}
+.dleg{display:flex;align-items:center;gap:10px;font-size:.85rem;}
+.dleg-dot{width:12px;height:12px;border-radius:3px;}
+.dleg-dot.m{background:var(--el);}
+.dleg-dot.f{background:var(--gold);}
+.dleg b{color:var(--el-warm);margin-left:auto;font-family:'Archivo Black','Archivo',sans-serif;font-weight:700;}
+.age-bars{display:flex;flex-direction:column;gap:14px;}
+.age-row{display:flex;align-items:center;gap:14px;font-size:.82rem;}
+.age-lbl{width:80px;color:var(--muted);font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.05em;}
+.age-bar{flex:1;height:8px;background:var(--border2);border-radius:4px;overflow:hidden;position:relative;}
+.age-bar-fill{height:100%;background:linear-gradient(90deg,var(--el-deep),var(--el));border-radius:4px;}
+.age-val{width:42px;text-align:right;font-family:'Archivo Black','Archivo',sans-serif;font-weight:700;color:var(--el-warm);}
+.geo-card{background:linear-gradient(160deg,var(--card),var(--card2));border:1px solid var(--border2);border-radius:20px;padding:36px;}
+.geo-head{font-family:'JetBrains Mono',monospace;font-size:.65rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:24px;}
+.geo-row{display:flex;align-items:center;gap:14px;font-size:.9rem;padding:14px 0;border-bottom:1px solid var(--border2);}
+.geo-row:last-child{border:none;}
+.geo-flag{font-size:1.3rem;}
+.geo-name{flex:1;}
+.geo-bar{width:140px;height:6px;background:var(--border2);border-radius:3px;overflow:hidden;}
+.geo-bar-fill{height:100%;background:linear-gradient(90deg,var(--el),var(--gold));}
+.geo-pct{width:48px;text-align:right;font-family:'Archivo Black','Archivo',sans-serif;font-weight:800;color:var(--el-warm);}
+.perf-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:28px;}
+@media(max-width:900px){.perf-grid{grid-template-columns:repeat(2,1fr);}}
+.perf{background:linear-gradient(160deg,var(--card),var(--card2));border:1px solid var(--border2);border-radius:14px;padding:22px;text-align:center;position:relative;overflow:hidden;}
+.perf::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 0%,var(--el-dim),transparent 70%);opacity:0;transition:opacity .3s;}
+.perf:hover::after{opacity:1;}
+.perf-v{font-family:'Archivo Black','Archivo',sans-serif;font-weight:800;font-size:1.8rem;color:var(--el-warm);line-height:1;margin-bottom:6px;}
+.perf-l{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);}
+.perf-d{font-size:.72rem;color:var(--text2);margin-top:10px;line-height:1.5;}
+.why-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;}
+@media(max-width:780px){.why-grid{grid-template-columns:1fr;}}
+.why-card{position:relative;background:linear-gradient(160deg,var(--card),var(--card2));border:1px solid var(--border2);border-radius:18px;padding:32px;border-top:3px solid var(--el);transition:all .3s;}
+.why-card:hover{border-color:var(--el-mid);transform:translateY(-3px);}
+.why-num{font-family:'Archivo Black','Archivo',sans-serif;font-weight:800;font-size:.85rem;color:var(--el);margin-bottom:14px;letter-spacing:.1em;}
+.why-h{font-family:'Archivo Black','Archivo',sans-serif;font-weight:700;font-size:1.15rem;margin-bottom:10px;line-height:1.3;}
+.why-p{font-size:.88rem;color:var(--text2);line-height:1.75;}
+.pills{display:flex;gap:10px;flex-wrap:wrap;}
+.pill{font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.05em;font-weight:700;padding:10px 18px;border-radius:24px;border:1px solid var(--el-mid);background:linear-gradient(135deg,var(--el-dim),transparent);color:var(--el-warm);transition:all .25s;}
+.pill:hover{background:var(--el);color:#000;border-color:var(--el);}
+.rates{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:24px;}
+@media(max-width:780px){.rates{grid-template-columns:repeat(2,1fr);}}
+.rate{background:linear-gradient(160deg,var(--card),var(--card2));border:1px solid var(--border2);border-radius:16px;padding:24px;text-align:center;transition:all .3s;}
+.rate:hover{border-color:var(--el-mid);transform:translateY(-4px);box-shadow:0 16px 40px rgba(125,227,107,.1);}
+.rate-p{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
+.rate-v{font-family:'Archivo Black','Archivo',sans-serif;font-weight:800;font-size:1.7rem;line-height:1;background:linear-gradient(135deg,#fff,var(--el-warm));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.rate-u{font-size:.7rem;color:var(--muted);margin-top:8px;letter-spacing:.04em;}
+.bundle{position:relative;background:linear-gradient(135deg,rgba(125,227,107,.12),rgba(192,245,176,.04));border:1px solid var(--el);border-radius:20px;padding:38px;text-align:center;overflow:hidden;box-shadow:var(--shadow);}
+.bundle::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(192,245,176,.15),transparent 60%);pointer-events:none;}
+.bundle-l{font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--el);margin-bottom:10px;position:relative;}
+.bundle-v{font-family:'Archivo Black','Archivo',sans-serif;font-weight:800;font-size:3rem;line-height:1;position:relative;background:linear-gradient(135deg,var(--gold),var(--el));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.bundle-d{font-size:.92rem;color:var(--text2);margin-top:14px;position:relative;}
+.bundle-d strong{color:var(--el-warm);}
+.process{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
+@media(max-width:900px){.process{grid-template-columns:repeat(2,1fr);}}
+.step{position:relative;background:linear-gradient(160deg,var(--card),var(--card2));border:1px solid var(--border2);border-radius:16px;padding:28px;transition:all .3s;}
+.step:hover{border-color:var(--el-mid);}
+.step-n{font-family:'Archivo Black','Archivo',sans-serif;font-weight:800;font-size:3rem;line-height:1;background:linear-gradient(135deg,var(--el),var(--el-deep));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:12px;}
+.step-h{font-family:'Archivo Black','Archivo',sans-serif;font-weight:700;font-size:1rem;margin-bottom:8px;}
+.step-p{font-size:.8rem;color:var(--text2);line-height:1.7;}
+.compare{background:linear-gradient(160deg,var(--card),var(--card2));border:1px solid var(--border2);border-radius:20px;overflow:hidden;}
+.compare table{width:100%;border-collapse:collapse;}
+.compare th,.compare td{padding:14px 22px;text-align:left;font-size:.88rem;border-bottom:1px solid var(--border2);}
+.compare th{font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:400;background:var(--card2);}
+.compare td.num{font-family:'Archivo Black','Archivo',sans-serif;font-weight:700;color:var(--el-warm);text-align:right;}
+.compare tr:last-child td{border:none;}
+.compare tr:hover td{background:rgba(125,227,107,.04);}
+.cta-section{padding:120px 40px;text-align:center;position:relative;border-top:1px solid var(--border);background:radial-gradient(ellipse 60% 50% at 50% 100%,rgba(125,227,107,.12),transparent);}
+.cta-h{font-family:'Archivo Black','Archivo',sans-serif;font-weight:800;font-size:clamp(2rem,4vw,3rem);margin-bottom:18px;background:linear-gradient(135deg,#fff,var(--el-warm));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.cta-p{color:var(--text2);max-width:560px;margin:0 auto 36px;font-size:1.05rem;}
+.cta-btn{display:inline-block;background:linear-gradient(135deg,var(--el),var(--el-warm));color:#031208;font-family:'Archivo Black','Archivo',sans-serif;font-weight:800;font-size:.95rem;letter-spacing:.06em;padding:18px 38px;border-radius:12px;text-decoration:none;transition:all .25s;box-shadow:0 12px 30px rgba(125,227,107,.4);}
+.cta-btn:hover{transform:translateY(-2px);box-shadow:0 18px 40px rgba(125,227,107,.55);}
+.cta-mail{display:block;margin-top:28px;font-size:.85rem;color:var(--muted);font-family:'JetBrains Mono',monospace;letter-spacing:.05em;}
+.foot{padding:40px;text-align:center;border-top:1px solid var(--border2);font-size:.7rem;color:var(--muted);font-family:'JetBrains Mono',monospace;letter-spacing:.06em;}
+.stamp{display:inline-block;margin-bottom:10px;color:var(--el-warm);}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .8s,transform .8s;}
+.reveal.in{opacity:1;transform:none;}
+@media(max-width:780px){.bk-h{padding:0 20px;flex-wrap:wrap;height:auto;padding-top:14px;padding-bottom:14px;}.hero{padding:80px 20px 60px;}.sec{padding:60px 20px;}.cta-section{padding:80px 20px;}}
+</style>
+</head>
+<body>
+<svg style="position:absolute;width:0;height:0" aria-hidden="true"><defs><linearGradient id="ig-grad" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#feda75"/><stop offset="25%" stop-color="#fa7e1e"/><stop offset="50%" stop-color="#d62976"/><stop offset="75%" stop-color="#962fbf"/><stop offset="100%" stop-color="#4f5bd5"/></linearGradient><symbol id="ic-ig" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5.5" fill="url(#ig-grad)"/><circle cx="12" cy="12" r="4.4" fill="none" stroke="#fff" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.25" fill="#fff"/></symbol><symbol id="ic-yt" viewBox="0 0 24 24"><path d="M21.582 6.186a2.506 2.506 0 0 0-1.768-1.768C18.254 4 12 4 12 4s-6.254 0-7.814.418A2.506 2.506 0 0 0 2.418 6.186C2 7.746 2 12 2 12s0 4.254.418 5.814a2.506 2.506 0 0 0 1.768 1.768C5.746 20 12 20 12 20s6.254 0 7.814-.418a2.506 2.506 0 0 0 1.768-1.768C22 16.254 22 12 22 12s0-4.254-.418-5.814z" fill="#FF0000"/><path d="M10 15.464V8.536L16 12l-6 3.464z" fill="#fff"/></symbol><symbol id="ic-tt" viewBox="0 0 24 24"><path d="M19.589 6.686a4.793 4.793 0 0 1-3.77-4.245V2h-3.445v13.672a2.896 2.896 0 0 1-5.201 1.743 2.895 2.895 0 0 1 3.183-4.51v-3.5a6.329 6.329 0 0 0-5.394 10.692 6.33 6.33 0 0 0 10.857-4.424V8.687a8.182 8.182 0 0 0 4.773 1.526V6.79a4.831 4.831 0 0 1-1.003-.104z" fill="#25F4EE" transform="translate(-1.2 1.2)"/><path d="M19.589 6.686a4.793 4.793 0 0 1-3.77-4.245V2h-3.445v13.672a2.896 2.896 0 0 1-5.201 1.743 2.895 2.895 0 0 1 3.183-4.51v-3.5a6.329 6.329 0 0 0-5.394 10.692 6.33 6.33 0 0 0 10.857-4.424V8.687a8.182 8.182 0 0 0 4.773 1.526V6.79a4.831 4.831 0 0 1-1.003-.104z" fill="#FE2C55" transform="translate(1.2 -1.2)"/><path d="M19.589 6.686a4.793 4.793 0 0 1-3.77-4.245V2h-3.445v13.672a2.896 2.896 0 0 1-5.201 1.743 2.895 2.895 0 0 1 3.183-4.51v-3.5a6.329 6.329 0 0 0-5.394 10.692 6.33 6.33 0 0 0 10.857-4.424V8.687a8.182 8.182 0 0 0 4.773 1.526V6.79a4.831 4.831 0 0 1-1.003-.104z" fill="#fff"/></symbol><symbol id="ic-fb" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" fill="#1877F2"/></symbol><symbol id="ic-verified" viewBox="0 0 24 24"><path d="M22.5 12.5c0-1.58-.875-2.95-2.148-3.6.154-.435.238-.905.238-1.4 0-2.21-1.71-3.998-3.818-3.998-.47 0-.92.084-1.336.25C14.818 2.415 13.51 1.5 12 1.5s-2.816.917-3.437 2.25c-.415-.165-.866-.25-1.336-.25-2.11 0-3.818 1.79-3.818 4 0 .494.083.964.237 1.4-1.272.65-2.147 2.018-2.147 3.6 0 1.495.782 2.798 1.942 3.486-.02.17-.032.34-.032.514 0 2.21 1.708 4 3.818 4 .47 0 .92-.086 1.335-.25.62 1.334 1.926 2.25 3.437 2.25 1.512 0 2.818-.916 3.437-2.25.415.163.865.25 1.336.25 2.11 0 3.818-1.79 3.818-4 0-.174-.012-.344-.033-.513 1.158-.687 1.943-1.99 1.943-3.484z" fill="#1DA1F2"/><path d="M9.81 15.75l-3.06-3.06 1.41-1.41 1.65 1.65 5.16-5.16 1.41 1.41z" fill="#fff"/></symbol></defs></svg>
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<div class="orb-3"></div>
+<main>
+
+<header class="bk-h">
+  <div class="bk-logo"><a href="/">ELISA IS RUNNING CLUB</a></div>
+  <div class="bk-h-right">
+    <div class="lang-bar">
+      <button class="lb" data-lang="fr">🇫🇷</button>
+      <button class="lb" data-lang="en">🇬🇧</button>
+      <button class="lb" data-lang="ja">🇯🇵</button>
+      <button class="lb" data-lang="zh">🇨🇳</button>
+      <button class="lb" data-lang="es">🇪🇸</button>
+      <button class="lb" data-lang="pt">🇵🇹</button>
+    </div>
+    <span class="bk-badge" data-i18n="badge">Brand Kit · Confidentiel</span>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-grid">
+      <div class="hero-text">
+        <div class="hero-eye reveal" data-i18n="hero_eye">Brand Partnership Kit · Juin 2026</div>
+        <h1 class="hero-title reveal"><span data-i18n="hero_t1">Elisa is running</span><br><span class="hero-x">×</span><span data-i18n="hero_t2">votre marque</span></h1>
+        <p class="hero-sub reveal" data-i18n="hero_sub">Créatrice running française · audience CSP+ 35-54 ans · 88% France · engagement 5,32% IG (au-dessus moyenne marché). Compte vérifié, communauté ultra-engagée, viral cap prouvé à 3,7M de vues.</p>
+        <div class="hero-pills reveal">
+          <span class="hero-pill" data-i18n="pill1">🏃 Running · Marathon · Trail</span>
+          <span class="hero-pill" data-i18n="pill2">🇫🇷 Niche FR pure</span>
+          <span class="hero-pill" data-i18n="pill3">✓ Verified IG</span>
+          <span class="hero-pill" data-i18n="pill4">82% audience réelle</span>
+        </div>
+      </div>
+      <div class="hero-photo-wrap reveal">
+        <div class="hero-photo-frame">
+          <img src="imgs/elisa-photo.jpg" alt="Elisa" loading="lazy"/>
+          <div class="hero-photo-badge"><span style="color:var(--gold);">✓</span> <span data-i18n="verified">Vérifiée</span></div>
+        </div>
+        <a href="https://www.instagram.com/elisa_is_running/" target="_blank" rel="noopener" class="hero-ig-card">
+          <div class="hero-ig-icon"><svg viewBox="0 0 24 24"><use href="#ic-ig"/></svg></div>
+          <div class="hero-ig-meta">
+            <div class="hero-ig-handle">@elisa_is_running <span class="verified-tick"><svg viewBox="0 0 24 24"><use href="#ic-verified"/></svg></span></div>
+            <div class="hero-ig-name"><b style="color:var(--el-warm);" data-stat="elisa.instagram.followers" data-fmt="numFR">13 011</b> abonnés vérifiés · Instagram</div>
+          </div>
+          <div class="hero-ig-arrow">→</div>
+        </a>
+      </div>
+    </div>
+    <div class="hero-stats reveal">
+      <div class="hero-stat">
+        <span class="hero-stat-v" data-stat="elisa.instagram.followers" data-fmt="numFR">13 011</span>
+        <span class="hero-stat-l">Abonnés Instagram ✓</span>
+        <svg class="hero-stat-spark" data-sparkline="elisa.instagram.followers"></svg>
+        <span class="hero-stat-delta" data-delta="elisa.instagram.followers"></span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-v" data-stat="elisa.youtube.subscribers" data-fmt="numFR">14 200</span>
+        <span class="hero-stat-l">Abonnés YouTube</span>
+        <svg class="hero-stat-spark" data-sparkline="elisa.youtube.subscribers"></svg>
+        <span class="hero-stat-delta" data-delta="elisa.youtube.subscribers"></span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-v" data-stat="elisa.youtube.views" data-fmt="kFR">4,4M</span>
+        <span class="hero-stat-l">Vues YouTube totales</span>
+        <svg class="hero-stat-spark" data-sparkline="elisa.youtube.views"></svg>
+        <span class="hero-stat-delta" data-delta="elisa.youtube.views"></span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-v" data-stat="elisa.tiktok.topVideoViews" data-fmt="kFR" data-animate="false">3,7M</span>
+        <span class="hero-stat-l">Top viral TikTok</span>
+        <span class="hero-stat-delta" style="margin-top:38px;">🔥 Viral cap prouvé</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="sec-head reveal">
+    <div class="sec-eye" data-i18n="s1_eye">01 · Snapshot 4 plateformes</div>
+    <h2 class="sec-title" data-i18n="s1_title">Une présence <span class="el">multi-canal</span> cohérente</h2>
+    <p class="sec-desc" data-i18n="s1_desc">Données synchronisées automatiquement chaque jour via API. Dernière mise à jour juin 2026.</p>
+  </div>
+  <div class="platforms">
+    <div class="plat reveal">
+      <div class="plat-icon"><svg viewBox="0 0 24 24"><use href="#ic-yt"/></svg></div>
+      <div class="plat-name">YouTube <span class="verified-tick"><svg viewBox="0 0 24 24"><use href="#ic-verified"/></svg></span></div>
+      <div class="plat-handle">@elisaisrunning</div>
+      <div class="plat-main">14 200</div>
+      <div class="plat-sub" data-i18n="p_subs">abonnés</div>
+      <div class="plat-rows">
+        <div data-i18n="yt_r1"><b>4,4 M</b> vues totales</div>
+        <div data-i18n="yt_r2"><b>569</b> vidéos · <b>7 716</b> vues moy.</div>
+        <div data-i18n="yt_r3">Engagement <b>5,04%</b></div>
+      </div>
+    </div>
+    <div class="plat reveal">
+      <div class="plat-icon"><svg viewBox="0 0 24 24"><use href="#ic-ig"/></svg></div>
+      <div class="plat-name">Instagram <span class="verified-tick"><svg viewBox="0 0 24 24"><use href="#ic-verified"/></svg></span></div>
+      <div class="plat-handle">@elisa_is_running</div>
+      <div class="plat-main">13 011</div>
+      <div class="plat-sub" data-i18n="p_subs_v">abonnés vérifiés</div>
+      <div class="plat-rows">
+        <div data-i18n="ig_r1"><b>660</b> likes + <b>22</b> com / post</div>
+        <div data-i18n="ig_r2">Audience <b>82%</b> réelle</div>
+        <div data-i18n="ig_r3">CPE <b>0,27 €</b> · Eng <b>5,32%</b></div>
+      </div>
+    </div>
+    <div class="plat reveal">
+      <div class="plat-icon" style="background:#000;"><svg viewBox="0 0 24 24"><use href="#ic-tt"/></svg></div>
+      <div class="plat-name">TikTok <span class="verified-tick"><svg viewBox="0 0 24 24"><use href="#ic-verified"/></svg></span></div>
+      <div class="plat-handle">@elisa.is.running</div>
+      <div class="plat-main">1 570</div>
+      <div class="plat-sub" data-i18n="p_subs">abonnés</div>
+      <div class="plat-rows">
+        <div data-i18n="tt_r1"><b>142k</b> likes cumulés</div>
+        <div data-i18n="tt_r2"><b>137</b> vidéos publiées</div>
+        <div data-i18n="tt_r3">1 viral à <b>3,7 M</b> vues</div>
+      </div>
+    </div>
+    <div class="plat reveal">
+      <div class="plat-icon"><svg viewBox="0 0 24 24"><use href="#ic-fb"/></svg></div>
+      <div class="plat-name">Facebook <span class="verified-tick"><svg viewBox="0 0 24 24"><use href="#ic-verified"/></svg></span></div>
+      <div class="plat-handle">/elisa.is.running</div>
+      <div class="plat-main">6 000</div>
+      <div class="plat-sub" data-i18n="p_subs">abonnés</div>
+      <div class="plat-rows">
+        <div data-i18n="fb_r1">Recommandé <b>100%</b> (15 avis)</div>
+        <div data-i18n="fb_r2"><b>~181</b> likes / post</div>
+        <div data-i18n="fb_r3">Engagement <b>~3%</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="sec-head reveal">
+    <div class="sec-eye" data-i18n="s2_eye">02 · Audience qualité</div>
+    <h2 class="sec-title" data-i18n="s2_title">Une communauté <span class="el">française & engagée</span></h2>
+    <p class="sec-desc" data-i18n="s2_desc">Source plateforme tierce d'analyse créateurs (donnée Instagram).</p>
+  </div>
+  <div class="audience-grid">
+    <div class="demo-card reveal">
+      <div class="geo-head" data-i18n="demo_head">Démographie</div>
+      <div class="donut-wrap">
+        <div class="donut">
+          <svg viewBox="0 0 100 100">
+            <circle class="donut-track" cx="50" cy="50" r="40"/>
+            <circle class="donut-bar male" cx="50" cy="50" r="40" stroke-dasharray="160.85 251.33"/>
+            <circle class="donut-bar female" cx="50" cy="50" r="40" stroke-dasharray="90.48 251.33" stroke-dashoffset="-160.85"/>
+          </svg>
+          <div class="donut-c"><b>64/36</b><span data-i18n="gender_mix">Mix genre</span></div>
+        </div>
+        <div class="donut-legend">
+          <div class="dleg"><span class="dleg-dot m"></span><span data-i18n="men">Hommes</span> <b>64%</b></div>
+          <div class="dleg"><span class="dleg-dot f"></span><span data-i18n="women">Femmes</span> <b>36%</b></div>
+          <div style="font-size:.78rem;color:var(--muted);line-height:1.6;margin-top:6px;" data-i18n="gender_note">Mix atypique pour le running féminin — ouvre simultanément le marché homme et femme.</div>
+        </div>
+      </div>
+      <div class="age-bars">
+        <div class="age-row"><div class="age-lbl">21-24</div><div class="age-bar"><div class="age-bar-fill" style="width:14%"></div></div><div class="age-val">8%</div></div>
+        <div class="age-row"><div class="age-lbl">25-34</div><div class="age-bar"><div class="age-bar-fill" style="width:57%"></div></div><div class="age-val">33%</div></div>
+        <div class="age-row"><div class="age-lbl">35-54</div><div class="age-bar"><div class="age-bar-fill" style="width:100%"></div></div><div class="age-val">58%</div></div>
+      </div>
+    </div>
+    <div class="geo-card reveal">
+      <div class="geo-head" data-i18n="geo_head">📍 Géographie</div>
+      <div class="geo-row"><span class="geo-flag">🇫🇷</span><span class="geo-name" data-i18n="c_fr">France</span><div class="geo-bar"><div class="geo-bar-fill" style="width:100%"></div></div><span class="geo-pct">88%</span></div>
+      <div class="geo-row"><span class="geo-flag">🇨🇦</span><span class="geo-name" data-i18n="c_ca">Canada</span><div class="geo-bar"><div class="geo-bar-fill" style="width:9%"></div></div><span class="geo-pct">8%</span></div>
+      <div class="geo-row"><span class="geo-flag">🌴</span><span class="geo-name" data-i18n="c_re">Réunion</span><div class="geo-bar"><div class="geo-bar-fill" style="width:5%"></div></div><span class="geo-pct">4%</span></div>
+      <div class="geo-head" style="margin-top:24px;" data-i18n="cities_head">🏙 Top villes</div>
+      <div class="geo-row"><span class="geo-name">Lille</span><div class="geo-bar"><div class="geo-bar-fill" style="width:100%"></div></div><span class="geo-pct">18%</span></div>
+      <div class="geo-row"><span class="geo-name">Bouguenais</span><div class="geo-bar"><div class="geo-bar-fill" style="width:50%"></div></div><span class="geo-pct">9%</span></div>
+      <div class="geo-row"><span class="geo-name">Brissac-Quincé</span><div class="geo-bar"><div class="geo-bar-fill" style="width:50%"></div></div><span class="geo-pct">9%</span></div>
+      <div class="geo-row"><span class="geo-name">Nîmes · Passy</span><div class="geo-bar"><div class="geo-bar-fill" style="width:50%"></div></div><span class="geo-pct">9%</span></div>
+    </div>
+  </div>
+  <div class="perf-grid">
+    <div class="perf reveal"><div class="perf-v">82%</div><div class="perf-l" data-i18n="perf_real">Audience réelle</div><div class="perf-d" data-i18n="perf_real_d">Très peu de faux comptes</div></div>
+    <div class="perf reveal"><div class="perf-v">5,32%</div><div class="perf-l" data-i18n="perf_eng">Engagement IG</div><div class="perf-d" data-i18n="perf_eng_d">vs benchmark FR 1-3%</div></div>
+    <div class="perf reveal"><div class="perf-v">0,27 €</div><div class="perf-l" data-i18n="perf_cpe">CPE moyen</div><div class="perf-d" data-i18n="perf_cpe_d">Coût par engagement bas</div></div>
+    <div class="perf reveal"><div class="perf-v">65,8%</div><div class="perf-l" data-i18n="perf_eff">Effectiveness</div><div class="perf-d" data-i18n="perf_eff_d">Sur contenu affilié</div></div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="sec-head reveal">
+    <div class="sec-eye" data-i18n="s3_eye">03 · Pourquoi Elisa</div>
+    <h2 class="sec-title" data-i18n="s3_title">Quatre <span class="el">avantages clés</span> pour la marque</h2>
+  </div>
+  <div class="why-grid">
+    <div class="why-card reveal">
+      <div class="why-num" data-i18n="adv1_num">→ AVANTAGE 01</div>
+      <div class="why-h" data-i18n="adv1_h">Audience 35-54 CSP+</div>
+      <div class="why-p" data-i18n="adv1_p">58% de la communauté entre 35 et 54 ans. Pouvoir d'achat élevé, idéal pour équipement premium, nutrition sport, services santé et services payants.</div>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-num" data-i18n="adv2_num">→ AVANTAGE 02</div>
+      <div class="why-h" data-i18n="adv2_h">Engagement 2,75x au-dessus du marché</div>
+      <div class="why-p" data-i18n="adv2_p">5,32% IG vs benchmark France 1-3%. Comments thoughtful, communauté active. Pas une audience scrolling passive.</div>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-num" data-i18n="adv3_num">→ AVANTAGE 03</div>
+      <div class="why-h" data-i18n="adv3_h">Compte vérifié + 100% recommandé</div>
+      <div class="why-p" data-i18n="adv3_p">Verified IG ✓. 15 avis Facebook 100% positifs. Crédibilité immédiate, aucun risque réputationnel pour la marque.</div>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-num" data-i18n="adv4_num">→ AVANTAGE 04</div>
+      <div class="why-h" data-i18n="adv4_h">Niche claire & viral cap prouvé</div>
+      <div class="why-p" data-i18n="adv4_p">Running français pur — ciblage marketing simple. 1 vidéo TikTok à 3,7M vues prouve qu'un contenu sponsorisé peut scaler bien au-delà du nominal.</div>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="sec-head reveal">
+    <div class="sec-eye" data-i18n="s4_eye">04 · Verticales pertinentes</div>
+    <h2 class="sec-title" data-i18n="s4_title">Marques <span class="el">naturellement compatibles</span></h2>
+    <p class="sec-desc" data-i18n="s4_desc">Ces secteurs résonnent directement avec la communauté d'Elisa et garantissent un ROI optimal.</p>
+  </div>
+  <div class="pills reveal">
+    <span class="pill" data-i18n="v1">Chaussures running</span>
+    <span class="pill" data-i18n="v2">Apparel technique</span>
+    <span class="pill" data-i18n="v3">Nutrition sport</span>
+    <span class="pill" data-i18n="v4">Récupération</span>
+    <span class="pill" data-i18n="v5">Apps fitness/GPS</span>
+    <span class="pill" data-i18n="v6">Montres connectées</span>
+    <span class="pill" data-i18n="v7">Santé · bien-être 35+</span>
+    <span class="pill" data-i18n="v8">Évènements / dossards</span>
+    <span class="pill" data-i18n="v9">Ostéo · kiné · physio</span>
+    <span class="pill" data-i18n="v10">Compléments magnésium</span>
+    <span class="pill" data-i18n="v11">Hydratation isotonique</span>
+    <span class="pill" data-i18n="v12">Coaching sportif</span>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="sec-head reveal">
+    <div class="sec-eye" data-i18n="s5_eye">05 · Formats partenariat</div>
+    <h2 class="sec-title" data-i18n="s5_title">Quatre façons <span class="el">d'intégrer la marque</span></h2>
+  </div>
+  <div class="why-grid">
+    <div class="why-card reveal"><div class="why-num">▶ YOUTUBE</div><div class="why-h" data-i18n="f1_h">Intégration vidéo native</div><div class="why-p" data-i18n="f1_p">Mention sponsor 30-60s en début ou fin de vidéo · code promo dédié · review équipement intégrée à un récit de course (marathon, trail, semi). Format long, engagement profond.</div></div>
+    <div class="why-card reveal"><div class="why-num">📷 INSTAGRAM</div><div class="why-h" data-i18n="f2_h">Post + Reel + Stories</div><div class="why-p" data-i18n="f2_p">Post feed dédié · carrousel produit · Reel test produit · série Stories 3-5 slides · tag marque permanent. Format court, viralité maximale.</div></div>
+    <div class="why-card reveal"><div class="why-num">♪ TIKTOK</div><div class="why-h" data-i18n="f3_h">Vidéo native testimoniale</div><div class="why-p" data-i18n="f3_p">Format viral 15-30s · trend running · review produit en situation réelle. Idéal pour atteindre une audience plus jeune et capturer du viral spike.</div></div>
+    <div class="why-card reveal"><div class="why-num">f FACEBOOK</div><div class="why-h" data-i18n="f4_h">Page + relais communauté</div><div class="why-p" data-i18n="f4_p">Post page dédié · idéal pour évènements locaux, dossards de course, lancement régional. Audience FB 35-54 = exposition complémentaire IG.</div></div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="sec-head reveal">
+    <div class="sec-eye" data-i18n="s6_eye">06 · Tarifs indicatifs</div>
+    <h2 class="sec-title" data-i18n="s6_title">Une base <span class="el">transparente</span> de négociation</h2>
+    <p class="sec-desc" data-i18n="s6_desc">Fourchettes alignées sur plateforme tierce (Instagram) + standards marché FR. Tarif final selon brief, durée, exclusivité et complexité de production.</p>
+  </div>
+  <div class="rates">
+    <div class="rate reveal"><div class="rate-p">YouTube</div><div class="rate-v">100–150 €</div><div class="rate-u" data-i18n="r_yt">par contenu</div></div>
+    <div class="rate reveal"><div class="rate-p">Instagram ✓</div><div class="rate-v">167–203 €</div><div class="rate-u" data-i18n="r_ig">par publication</div></div>
+    <div class="rate reveal"><div class="rate-p">TikTok</div><div class="rate-v">30–50 €</div><div class="rate-u" data-i18n="r_tt">par vidéo</div></div>
+    <div class="rate reveal"><div class="rate-p">Facebook</div><div class="rate-v">80–120 €</div><div class="rate-u" data-i18n="r_fb">par publication</div></div>
+  </div>
+  <div class="bundle reveal">
+    <div class="bundle-l" data-i18n="bundle_l">⚡ Bundle 4 plateformes · Campagne intégrée</div>
+    <div class="bundle-v">380–520 €</div>
+    <div class="bundle-d" data-i18n="bundle_d">Reach unique <strong>~24 000 personnes</strong> · briefing · production coordonnée · publication synchronisée multi-canal · reporting J+30</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="sec-head reveal">
+    <div class="sec-eye" data-i18n="s7_eye">07 · Benchmark</div>
+    <h2 class="sec-title" data-i18n="s7_title">Elisa <span class="el">vs marché FR</span></h2>
+    <p class="sec-desc" data-i18n="s7_desc">Comment Elisa se positionne face aux standards du marché créateurs français.</p>
+  </div>
+  <div class="compare reveal">
+    <table>
+      <thead><tr><th data-i18n="bm_metric">Métrique</th><th>Elisa</th><th data-i18n="bm_bench">Benchmark FR</th><th data-i18n="bm_verdict">Verdict</th></tr></thead>
+      <tbody>
+        <tr><td data-i18n="bm_eng_ig">Engagement Instagram</td><td class="num">5,32%</td><td class="num">1-3%</td><td style="color:var(--el-warm);" data-i18n="bm_eng_ig_v">🔥 +75% au-dessus</td></tr>
+        <tr><td data-i18n="bm_real">Audience réelle</td><td class="num">82%</td><td class="num">~70%</td><td style="color:var(--el-warm);" data-i18n="bm_real_v">✓ Premium</td></tr>
+        <tr><td data-i18n="bm_cpe">CPE Instagram</td><td class="num">0,27 €</td><td class="num">1-2 €</td><td style="color:var(--el-warm);" data-i18n="bm_cpe_v">🔥 4-7x moins cher</td></tr>
+        <tr><td data-i18n="bm_ver">Verified status</td><td class="num" data-i18n="yes">✓ Oui</td><td class="num" data-i18n="bm_ver_b">~5% créateurs</td><td style="color:var(--el-warm);" data-i18n="bm_ver_v">✓ Top 5%</td></tr>
+        <tr><td data-i18n="bm_eng_yt">Engagement YouTube</td><td class="num">5,04%</td><td class="num">2-3%</td><td style="color:var(--el-warm);" data-i18n="bm_eng_yt_v">🔥 +68% au-dessus</td></tr>
+        <tr><td data-i18n="bm_fr">Audience FR pure</td><td class="num">88%</td><td class="num" data-i18n="bm_fr_b">variable</td><td style="color:var(--el-warm);" data-i18n="bm_fr_v">✓ Ciblage clair</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="sec-head reveal">
+    <div class="sec-eye" data-i18n="s8_eye">08 · Process</div>
+    <h2 class="sec-title" data-i18n="s8_title">De la prise de contact <span class="el">au reporting</span></h2>
+  </div>
+  <div class="process">
+    <div class="step reveal"><div class="step-n">1</div><div class="step-h" data-i18n="step1_h">Brief</div><div class="step-p" data-i18n="step1_p">Brief campagne reçu par mail. Objectifs, KPIs, dates clés. Échange écrit ou call 30 min pour aligner attentes.</div></div>
+    <div class="step reveal"><div class="step-n">2</div><div class="step-h" data-i18n="step2_h">Devis & contrat</div><div class="step-p" data-i18n="step2_p">Devis sous 48h ouvrées. Contrat type Elisa Is Running Club (livrables, droits image, exclusivité, calendrier).</div></div>
+    <div class="step reveal"><div class="step-n">3</div><div class="step-h" data-i18n="step3_h">Production</div><div class="step-p" data-i18n="step3_p">Réception produit/asset. Tournage et montage par Elisa. Validation marque avant publication finale.</div></div>
+    <div class="step reveal"><div class="step-n">4</div><div class="step-h" data-i18n="step4_h">Reporting</div><div class="step-p" data-i18n="step4_p">Stats J+7 et J+30 : reach, engagement, clics, code promo. Capture screenshots et données fournies.</div></div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <h2 class="cta-h" data-i18n="cta_h">Prêt·e à collaborer ?</h2>
+  <p class="cta-p" data-i18n="cta_p">Brief, calendrier, budget ou simple question — réponse personnalisée sous 24h ouvrées.</p>
+  <a href="mailto:partnerships@elisaisrunningclub.com?subject=Partenariat%20Elisa%20is%20running" class="cta-btn" data-i18n="cta_btn">→ Démarrer la conversation</a>
+  <span class="cta-mail">partnerships@elisaisrunningclub.com · Elisa Is Running Club · France</span>
+</section>
+
+<footer class="foot">
+  <span class="stamp" data-i18n="foot_stamp">DOC CONFIDENTIEL · ELISA IS RUNNING CLUB</span><br>
+  <span data-i18n="foot_t">Données mises à jour automatiquement · v1.0 · Juin 2026 · Tous droits réservés</span>
+</footer>
+
+</main>
+
+<script>
+const T={
+fr:{badge:"Brand Kit · Confidentiel",hero_eye:"Brand Partnership Kit · Juin 2026",hero_t1:"Elisa is running",hero_t2:"votre marque",hero_sub:"Créatrice running française · audience CSP+ 35-54 ans · 88% France · engagement 5,32% IG (au-dessus moyenne marché). Compte vérifié, communauté ultra-engagée, viral cap prouvé à 3,7M de vues.",pill1:"🏃 Running · Marathon · Trail",pill2:"🇫🇷 Niche FR pure",pill3:"✓ Verified IG",pill4:"82% audience réelle",hs_reach:"Reach unique estimé",hs_eng:"Engagement IG",hs_fr:"Audience France",hs_videos:"Vidéos publiées",s1_eye:"01 · Snapshot 4 plateformes",s1_title:'Une présence <span class="el">multi-canal</span> cohérente',s1_desc:"Données synchronisées automatiquement chaque jour via API. Dernière mise à jour juin 2026.",p_subs:"abonnés",p_subs_v:"abonnés vérifiés",yt_r1:"<b>4,4 M</b> vues totales",yt_r2:"<b>569</b> vidéos · <b>7 716</b> vues moy.",yt_r3:"Engagement <b>5,04%</b>",ig_r1:"<b>660</b> likes + <b>22</b> com / post",ig_r2:"Audience <b>82%</b> réelle",ig_r3:"CPE <b>0,27 €</b> · Eng <b>5,32%</b>",tt_r1:"<b>142k</b> likes cumulés",tt_r2:"<b>137</b> vidéos publiées",tt_r3:"1 viral à <b>3,7 M</b> vues",fb_r1:"Recommandé <b>100%</b> (15 avis)",fb_r2:"<b>~181</b> likes / post",fb_r3:"Engagement <b>~3%</b>",s2_eye:"02 · Audience qualité",s2_title:'Une communauté <span class="el">française & engagée</span>',s2_desc:"Source plateforme tierce d'analyse créateurs (donnée Instagram).",demo_head:"Démographie",gender_mix:"Mix genre",men:"Hommes",women:"Femmes",gender_note:"Mix atypique pour le running féminin — ouvre simultanément le marché homme et femme.",geo_head:"📍 Géographie",c_fr:"France",c_ca:"Canada",c_re:"Réunion",cities_head:"🏙 Top villes",perf_real:"Audience réelle",perf_real_d:"Très peu de faux comptes",perf_eng:"Engagement IG",perf_eng_d:"vs benchmark FR 1-3%",perf_cpe:"CPE moyen",perf_cpe_d:"Coût par engagement bas",perf_eff:"Effectiveness",perf_eff_d:"Sur contenu affilié",s3_eye:"03 · Pourquoi Elisa",s3_title:'Quatre <span class="el">avantages clés</span> pour la marque',adv1_num:"→ AVANTAGE 01",adv1_h:"Audience 35-54 CSP+",adv1_p:"58% de la communauté entre 35 et 54 ans. Pouvoir d'achat élevé, idéal pour équipement premium, nutrition sport, services santé et services payants.",adv2_num:"→ AVANTAGE 02",adv2_h:"Engagement 2,75x au-dessus du marché",adv2_p:"5,32% IG vs benchmark France 1-3%. Comments thoughtful, communauté active. Pas une audience scrolling passive.",adv3_num:"→ AVANTAGE 03",adv3_h:"Compte vérifié + 100% recommandé",adv3_p:"Verified IG ✓. 15 avis Facebook 100% positifs. Crédibilité immédiate, aucun risque réputationnel pour la marque.",adv4_num:"→ AVANTAGE 04",adv4_h:"Niche claire & viral cap prouvé",adv4_p:"Running français pur — ciblage marketing simple. 1 vidéo TikTok à 3,7M vues prouve qu'un contenu sponsorisé peut scaler bien au-delà du nominal.",s4_eye:"04 · Verticales pertinentes",s4_title:'Marques <span class="el">naturellement compatibles</span>',s4_desc:"Ces secteurs résonnent directement avec la communauté d'Elisa et garantissent un ROI optimal.",v1:"Chaussures running",v2:"Apparel technique",v3:"Nutrition sport",v4:"Récupération",v5:"Apps fitness/GPS",v6:"Montres connectées",v7:"Santé · bien-être 35+",v8:"Évènements / dossards",v9:"Ostéo · kiné · physio",v10:"Compléments magnésium",v11:"Hydratation isotonique",v12:"Coaching sportif",s5_eye:"05 · Formats partenariat",s5_title:'Quatre façons <span class="el">d\'intégrer la marque</span>',f1_h:"Intégration vidéo native",f1_p:"Mention sponsor 30-60s en début ou fin de vidéo · code promo dédié · review équipement intégrée à un récit de course (marathon, trail, semi). Format long, engagement profond.",f2_h:"Post + Reel + Stories",f2_p:"Post feed dédié · carrousel produit · Reel test produit · série Stories 3-5 slides · tag marque permanent. Format court, viralité maximale.",f3_h:"Vidéo native testimoniale",f3_p:"Format viral 15-30s · trend running · review produit en situation réelle. Idéal pour atteindre une audience plus jeune et capturer du viral spike.",f4_h:"Page + relais communauté",f4_p:"Post page dédié · idéal pour évènements locaux, dossards de course, lancement régional. Audience FB 35-54 = exposition complémentaire IG.",s6_eye:"06 · Tarifs indicatifs",s6_title:'Une base <span class="el">transparente</span> de négociation',s6_desc:"Fourchettes alignées sur plateforme tierce (Instagram) + standards marché FR. Tarif final selon brief, durée, exclusivité et complexité de production.",r_yt:"par contenu",r_ig:"par publication",r_tt:"par vidéo",r_fb:"par publication",bundle_l:"⚡ Bundle 4 plateformes · Campagne intégrée",bundle_d:"Reach unique <strong>~24 000 personnes</strong> · briefing · production coordonnée · publication synchronisée multi-canal · reporting J+30",s7_eye:"07 · Benchmark",s7_title:'Elisa <span class="el">vs marché FR</span>',s7_desc:"Comment Elisa se positionne face aux standards du marché créateurs français.",bm_metric:"Métrique",bm_bench:"Benchmark FR",bm_verdict:"Verdict",bm_eng_ig:"Engagement Instagram",bm_eng_ig_v:"🔥 +75% au-dessus",bm_real:"Audience réelle",bm_real_v:"✓ Premium",bm_cpe:"CPE Instagram",bm_cpe_v:"🔥 4-7x moins cher",bm_ver:"Statut vérifié",yes:"✓ Oui",bm_ver_b:"~5% des créateurs",bm_ver_v:"✓ Top 5%",bm_eng_yt:"Engagement YouTube",bm_eng_yt_v:"🔥 +68% au-dessus",bm_fr:"Audience FR pure",bm_fr_b:"variable",bm_fr_v:"✓ Ciblage clair",s8_eye:"08 · Process",s8_title:'De la prise de contact <span class="el">au reporting</span>',step1_h:"Brief",step1_p:"Brief campagne reçu par mail. Objectifs, KPIs, dates clés. Échange écrit ou call 30 min pour aligner attentes.",step2_h:"Devis & contrat",step2_p:"Devis sous 48h ouvrées. Contrat type Elisa Is Running Club (livrables, droits image, exclusivité, calendrier).",step3_h:"Production",step3_p:"Réception produit/asset. Tournage et montage par Elisa. Validation marque avant publication finale.",step4_h:"Reporting",step4_p:"Stats J+7 et J+30 : reach, engagement, clics, code promo. Capture screenshots et données fournies.",cta_h:"Prêt·e à collaborer ?",cta_p:"Brief, calendrier, budget ou simple question — réponse personnalisée sous 24h ouvrées.",cta_btn:"→ Démarrer la conversation",foot_stamp:"DOC CONFIDENTIEL · ELISA IS RUNNING CLUB",foot_t:"Données mises à jour automatiquement · v1.0 · Juin 2026 · Tous droits réservés"},
+en:{badge:"Brand Kit · Confidential",hero_eye:"Brand Partnership Kit · June 2026",hero_t1:"Elisa is running",hero_t2:"your brand",hero_sub:"French running creator · upscale audience aged 35-54 · 88% France · 5.32% IG engagement (above market average). Verified account, ultra-engaged community, viral cap proven at 3.7M views.",pill1:"🏃 Running · Marathon · Trail",pill2:"🇫🇷 Pure FR niche",pill3:"✓ Verified IG",pill4:"82% real audience",hs_reach:"Estimated unique reach",hs_eng:"IG Engagement",hs_fr:"France Audience",hs_videos:"Videos published",s1_eye:"01 · 4-platform snapshot",s1_title:'A consistent <span class="el">multi-channel</span> presence',s1_desc:"Data synchronized automatically every day via API. Last update June 2026.",p_subs:"subscribers",p_subs_v:"verified subscribers",yt_r1:"<b>4.4 M</b> total views",yt_r2:"<b>569</b> videos · <b>7,716</b> avg views",yt_r3:"Engagement <b>5.04%</b>",ig_r1:"<b>660</b> likes + <b>22</b> comments / post",ig_r2:"Audience <b>82%</b> real",ig_r3:"CPE <b>€0.27</b> · Eng <b>5.32%</b>",tt_r1:"<b>142k</b> total likes",tt_r2:"<b>137</b> videos posted",tt_r3:"1 viral at <b>3.7 M</b> views",fb_r1:"Recommended <b>100%</b> (15 reviews)",fb_r2:"<b>~181</b> likes / post",fb_r3:"Engagement <b>~3%</b>",s2_eye:"02 · Audience quality",s2_title:'A <span class="el">French & engaged</span> community',s2_desc:"Source: third-party creator analysis platform (Instagram data).",demo_head:"Demographics",gender_mix:"Gender mix",men:"Men",women:"Women",gender_note:"Atypical mix for women's running — opens both male and female markets simultaneously.",geo_head:"📍 Geography",c_fr:"France",c_ca:"Canada",c_re:"Réunion Island",cities_head:"🏙 Top cities",perf_real:"Real audience",perf_real_d:"Very few fake accounts",perf_eng:"IG Engagement",perf_eng_d:"vs FR benchmark 1-3%",perf_cpe:"Avg. CPE",perf_cpe_d:"Low cost per engagement",perf_eff:"Effectiveness",perf_eff_d:"On affiliate content",s3_eye:"03 · Why Elisa",s3_title:'Four <span class="el">key advantages</span> for the brand',adv1_num:"→ ADVANTAGE 01",adv1_h:"Upscale audience aged 35-54",adv1_p:"58% of the community is aged 35-54. High purchasing power, ideal for premium gear, sports nutrition, health services and paid services.",adv2_num:"→ ADVANTAGE 02",adv2_h:"Engagement 2.75x above market",adv2_p:"5.32% IG vs France benchmark 1-3%. Thoughtful comments, active community. Not a passive scrolling audience.",adv3_num:"→ ADVANTAGE 03",adv3_h:"Verified account + 100% recommended",adv3_p:"Verified IG ✓. 15 Facebook reviews 100% positive. Immediate credibility, zero reputational risk for the brand.",adv4_num:"→ ADVANTAGE 04",adv4_h:"Clear niche & proven viral cap",adv4_p:"Pure French running — simple marketing targeting. 1 TikTok video at 3.7M views proves sponsored content can scale far beyond nominal.",s4_eye:"04 · Relevant verticals",s4_title:'<span class="el">Naturally compatible</span> brands',s4_desc:"These sectors resonate directly with Elisa's community and guarantee optimal ROI.",v1:"Running shoes",v2:"Technical apparel",v3:"Sports nutrition",v4:"Recovery",v5:"Fitness/GPS apps",v6:"Smart watches",v7:"Health · wellness 35+",v8:"Events / race bibs",v9:"Osteo · physio · kinesio",v10:"Magnesium supplements",v11:"Isotonic hydration",v12:"Sports coaching",s5_eye:"05 · Partnership formats",s5_title:'Four ways <span class="el">to integrate the brand</span>',f1_h:"Native video integration",f1_p:"30-60s sponsor mention at start or end of video · dedicated promo code · gear review integrated into a race story (marathon, trail, half). Long format, deep engagement.",f2_h:"Post + Reel + Stories",f2_p:"Dedicated feed post · product carousel · Reel product test · 3-5 slide Stories series · permanent brand tag. Short format, maximum virality.",f3_h:"Native testimonial video",f3_p:"15-30s viral format · running trend · product review in real situation. Ideal to reach younger audience and capture viral spike.",f4_h:"Page + community relay",f4_p:"Dedicated page post · ideal for local events, race bibs, regional launch. FB 35-54 audience = complementary IG exposure.",s6_eye:"06 · Indicative rates",s6_title:'A <span class="el">transparent</span> negotiation base',s6_desc:"Ranges aligned with third-party platform (Instagram) + French market standards. Final rate based on brief, duration, exclusivity and production complexity.",r_yt:"per content",r_ig:"per post",r_tt:"per video",r_fb:"per post",bundle_l:"⚡ 4-platform bundle · Integrated campaign",bundle_d:"Unique reach <strong>~24,000 people</strong> · briefing · coordinated production · synchronized multi-channel publication · D+30 reporting",s7_eye:"07 · Benchmark",s7_title:'Elisa <span class="el">vs FR market</span>',s7_desc:"How Elisa stands against French creator market standards.",bm_metric:"Metric",bm_bench:"FR Benchmark",bm_verdict:"Verdict",bm_eng_ig:"Instagram Engagement",bm_eng_ig_v:"🔥 +75% above",bm_real:"Real audience",bm_real_v:"✓ Premium",bm_cpe:"Instagram CPE",bm_cpe_v:"🔥 4-7x cheaper",bm_ver:"Verified status",yes:"✓ Yes",bm_ver_b:"~5% creators",bm_ver_v:"✓ Top 5%",bm_eng_yt:"YouTube Engagement",bm_eng_yt_v:"🔥 +68% above",bm_fr:"Pure FR audience",bm_fr_b:"variable",bm_fr_v:"✓ Clear targeting",s8_eye:"08 · Process",s8_title:'From first contact <span class="el">to reporting</span>',step1_h:"Brief",step1_p:"Campaign brief by email. Objectives, KPIs, key dates. Written exchange or 30-min call to align expectations.",step2_h:"Quote & contract",step2_p:"Quote within 48 business hours. Elisa Is Running Club standard contract (deliverables, image rights, exclusivity, schedule).",step3_h:"Production",step3_p:"Product/asset received. Filming and editing by Elisa. Brand validation before final publication.",step4_h:"Reporting",step4_p:"D+7 and D+30 stats: reach, engagement, clicks, promo code. Screenshots and data provided.",cta_h:"Ready to collaborate?",cta_p:"Brief, calendar, budget or simple question — personalized response within 24 business hours.",cta_btn:"→ Start the conversation",foot_stamp:"CONFIDENTIAL DOC · ELISA IS RUNNING CLUB",foot_t:"Auto-updated data · v1.0 · June 2026 · All rights reserved"},
+ja:{badge:"ブランドキット · 機密",hero_eye:"ブランド・パートナーシップキット · 2026年6月",hero_t1:"Elisa is running",hero_t2:"あなたのブランド",hero_sub:"フランスのランニングクリエイター · 35-54歳の高所得層 · フランス88% · IG エンゲージメント5.32%（市場平均超）。認証済みアカウント、超エンゲージドなコミュニティ、370万再生のバイラル実績。",pill1:"🏃 ランニング · マラソン · トレイル",pill2:"🇫🇷 純FRニッチ",pill3:"✓ Verified IG",pill4:"リアル82%",hs_reach:"推定ユニークリーチ",hs_eng:"IG エンゲージメント",hs_fr:"フランス国内",hs_videos:"投稿動画数",s1_eye:"01 · 4プラットフォーム概要",s1_title:'一貫した<span class="el">マルチチャネル</span>プレゼンス',s1_desc:"APIで毎日自動同期。最終更新2026年6月。",p_subs:"フォロワー",p_subs_v:"認証フォロワー",yt_r1:"<b>440万</b>総再生回数",yt_r2:"<b>569</b>動画 · 平均<b>7,716</b>再生",yt_r3:"エンゲージメント<b>5.04%</b>",ig_r1:"<b>660</b>いいね + <b>22</b>コメント/投稿",ig_r2:"リアル<b>82%</b>",ig_r3:"CPE <b>€0.27</b> · Eng <b>5.32%</b>",tt_r1:"累計<b>142k</b>いいね",tt_r2:"<b>137</b>動画投稿",tt_r3:"1本<b>370万</b>再生のバイラル",fb_r1:"100%推奨（15件）",fb_r2:"<b>~181</b>いいね/投稿",fb_r3:"エンゲージメント<b>~3%</b>",s2_eye:"02 · オーディエンス品質",s2_title:'<span class="el">フランス&エンゲージド</span>コミュニティ',s2_desc:"出典：サードパーティクリエイター分析プラットフォーム（Instagramデータ）。",demo_head:"デモグラフィック",gender_mix:"性別構成",men:"男性",women:"女性",gender_note:"女性ランニングとしては異例の構成 — 男女両市場を同時に開拓。",geo_head:"📍 地理",c_fr:"フランス",c_ca:"カナダ",c_re:"レユニオン",cities_head:"🏙 トップ都市",perf_real:"リアルオーディエンス",perf_real_d:"フェイクアカウントほぼなし",perf_eng:"IG エンゲージメント",perf_eng_d:"FRベンチマーク1-3%との比較",perf_cpe:"平均CPE",perf_cpe_d:"エンゲージメントあたり低コスト",perf_eff:"効果率",perf_eff_d:"アフィリエイトコンテンツ",s3_eye:"03 · なぜElisa",s3_title:'ブランド向け<span class="el">4つの主要メリット</span>',adv1_num:"→ メリット 01",adv1_h:"35-54歳CSP+オーディエンス",adv1_p:"コミュニティの58%が35-54歳。高い購買力、プレミアム機材、スポーツ栄養、ヘルスサービス、有料サービスに最適。",adv2_num:"→ メリット 02",adv2_h:"市場平均比2.75倍のエンゲージメント",adv2_p:"IG 5.32% vs フランスベンチマーク1-3%。考え抜かれたコメント、アクティブなコミュニティ。受動的なスクロールオーディエンスではない。",adv3_num:"→ メリット 03",adv3_h:"認証済み+100%推奨",adv3_p:"Verified IG ✓。Facebook 15レビュー100%ポジティブ。即時の信頼性、ブランドへのレピュテーションリスクゼロ。",adv4_num:"→ メリット 04",adv4_h:"明確なニッチ&証明済みバイラルキャップ",adv4_p:"純粋なフランスランニング — シンプルなマーケティングターゲティング。TikTok動画1本370万再生はスポンサードコンテンツが額面を大きく超えてスケールできることを証明。",s4_eye:"04 · 関連バーティカル",s4_title:'<span class="el">自然に親和性のある</span>ブランド',s4_desc:"これらのセクターはElisaのコミュニティに直接響き、最適なROIを保証します。",v1:"ランニングシューズ",v2:"テクニカルアパレル",v3:"スポーツ栄養",v4:"リカバリー",v5:"フィットネス/GPSアプリ",v6:"スマートウォッチ",v7:"健康・35+ウェルネス",v8:"イベント/ゼッケン",v9:"オステオ・理学・キネシオ",v10:"マグネシウムサプリ",v11:"等張性水分補給",v12:"スポーツコーチング",s5_eye:"05 · パートナーシップフォーマット",s5_title:'<span class="el">ブランドを統合する</span>4つの方法',f1_h:"ネイティブ動画統合",f1_p:"動画開始または終了に30-60秒のスポンサー言及・専用プロモコード・レース物語（マラソン、トレイル、ハーフ）に統合された機材レビュー。長尺フォーマット、深いエンゲージメント。",f2_h:"投稿 + Reel + ストーリーズ",f2_p:"専用フィード投稿・商品カルーセル・Reel商品テスト・3-5スライドのストーリーズシリーズ・常設ブランドタグ。短尺フォーマット、最大バイラル。",f3_h:"ネイティブ証言動画",f3_p:"15-30秒のバイラルフォーマット・ランニングトレンド・実際の状況での商品レビュー。若いオーディエンスへのリーチとバイラルスパイクの捕捉に最適。",f4_h:"ページ+コミュニティリレー",f4_p:"専用ページ投稿・ローカルイベント、レースゼッケン、地域ローンチに最適。FB 35-54オーディエンス=IG補完エクスポージャー。",s6_eye:"06 · 参考料金",s6_title:'<span class="el">透明な</span>交渉ベース',s6_desc:"サードパーティプラットフォーム（Instagram）+フランス市場標準に整合した範囲。最終料金はブリーフ、期間、独占性、制作複雑性による。",r_yt:"コンテンツ単位",r_ig:"投稿単位",r_tt:"動画単位",r_fb:"投稿単位",bundle_l:"⚡ 4プラットフォームバンドル · 統合キャンペーン",bundle_d:"ユニークリーチ<strong>約24,000人</strong> · ブリーフィング · 連携制作 · 同期マルチチャネル公開 · D+30レポーティング",s7_eye:"07 · ベンチマーク",s7_title:'Elisa <span class="el">vs FR市場</span>',s7_desc:"Elisaはフランスのクリエイター市場標準にどう位置するか。",bm_metric:"指標",bm_bench:"FRベンチマーク",bm_verdict:"判定",bm_eng_ig:"Instagramエンゲージメント",bm_eng_ig_v:"🔥 +75%上",bm_real:"リアルオーディエンス",bm_real_v:"✓ プレミアム",bm_cpe:"Instagram CPE",bm_cpe_v:"🔥 4-7倍安価",bm_ver:"認証ステータス",yes:"✓ はい",bm_ver_b:"クリエイター約5%",bm_ver_v:"✓ トップ5%",bm_eng_yt:"YouTubeエンゲージメント",bm_eng_yt_v:"🔥 +68%上",bm_fr:"純FRオーディエンス",bm_fr_b:"変動",bm_fr_v:"✓ 明確なターゲティング",s8_eye:"08 · プロセス",s8_title:'初回コンタクトから<span class="el">レポーティングまで</span>',step1_h:"ブリーフ",step1_p:"メールでキャンペーンブリーフ。目標、KPI、重要日。期待値の調整のための書面交換または30分コール。",step2_h:"見積もり&契約",step2_p:"営業時間48時間以内の見積もり。Elisa Is Running Club 標準契約（成果物、画像権利、独占性、スケジュール）。",step3_h:"制作",step3_p:"商品/アセット受領。Elisaによる撮影・編集。最終公開前のブランド検証。",step4_h:"レポーティング",step4_p:"D+7およびD+30統計：リーチ、エンゲージメント、クリック、プロモコード。スクリーンショットとデータ提供。",cta_h:"コラボレーションの準備はOK?",cta_p:"ブリーフ、カレンダー、予算、または簡単な質問 — 営業時間24時間以内のパーソナライズされた回答。",cta_btn:"→ 会話を開始",foot_stamp:"機密文書 · ELISA IS RUNNING CLUB",foot_t:"自動更新データ · v1.0 · 2026年6月 · 全権利留保"},
+zh:{badge:"品牌套件 · 机密",hero_eye:"品牌合作套件 · 2026年6月",hero_t1:"Elisa is running",hero_t2:"您的品牌",hero_sub:"法国跑步内容创作者 · 35-54岁高净值受众 · 法国88% · IG 互动率5.32%（高于市场平均）。认证账户、超高互动社区、370万播放量的爆款记录。",pill1:"🏃 跑步 · 马拉松 · 越野",pill2:"🇫🇷 纯FR细分",pill3:"✓ Verified IG",pill4:"真实82%",hs_reach:"预估独立触达",hs_eng:"IG 互动率",hs_fr:"法国受众",hs_videos:"已发布视频",s1_eye:"01 · 四平台快照",s1_title:'一致的<span class="el">多渠道</span>存在',s1_desc:"通过API每日自动同步数据。最后更新2026年6月。",p_subs:"订阅者",p_subs_v:"认证订阅者",yt_r1:"<b>440万</b>总观看",yt_r2:"<b>569</b>视频 · 平均<b>7,716</b>观看",yt_r3:"互动率<b>5.04%</b>",ig_r1:"<b>660</b>赞 + <b>22</b>评论/帖",ig_r2:"受众<b>82%</b>真实",ig_r3:"CPE <b>€0.27</b> · 互动 <b>5.32%</b>",tt_r1:"累计<b>14.2万</b>赞",tt_r2:"已发布<b>137</b>视频",tt_r3:"1条爆款达<b>370万</b>观看",fb_r1:"100%推荐（15条评价）",fb_r2:"<b>~181</b>赞/帖",fb_r3:"互动率<b>~3%</b>",s2_eye:"02 · 受众质量",s2_title:'<span class="el">法国&高互动</span>社区',s2_desc:"来源：第三方创作者分析平台（Instagram数据）。",demo_head:"人口统计",gender_mix:"性别比例",men:"男性",women:"女性",gender_note:"女性跑步领域少见的构成 — 同时打开男女市场。",geo_head:"📍 地理",c_fr:"法国",c_ca:"加拿大",c_re:"留尼汪",cities_head:"🏙 主要城市",perf_real:"真实受众",perf_real_d:"假账户极少",perf_eng:"IG 互动率",perf_eng_d:"vs FR基准1-3%",perf_cpe:"平均CPE",perf_cpe_d:"低互动成本",perf_eff:"效果率",perf_eff_d:"联盟内容",s3_eye:"03 · 为什么选Elisa",s3_title:'品牌的<span class="el">四大核心优势</span>',adv1_num:"→ 优势 01",adv1_h:"35-54岁高净值受众",adv1_p:"58%的社区在35-54岁。高购买力，适合高端装备、运动营养、健康服务和付费服务。",adv2_num:"→ 优势 02",adv2_h:"互动率高于市场2.75倍",adv2_p:"IG 5.32% vs 法国基准1-3%。深度评论、活跃社区。不是被动浏览受众。",adv3_num:"→ 优势 03",adv3_h:"认证账户+100%推荐",adv3_p:"Verified IG ✓。15条Facebook评价100%正面。即时可信度、零品牌声誉风险。",adv4_num:"→ 优势 04",adv4_h:"明确细分&已验证爆款能力",adv4_p:"纯粹法国跑步 — 简单营销定位。1条TikTok视频370万播放证明赞助内容可大幅超过名义。",s4_eye:"04 · 相关垂直领域",s4_title:'<span class="el">天然兼容</span>的品牌',s4_desc:"这些行业直接与Elisa的社区共鸣，保证最佳ROI。",v1:"跑步鞋",v2:"专业服装",v3:"运动营养",v4:"恢复",v5:"健身/GPS应用",v6:"智能手表",v7:"健康·35+健康",v8:"赛事/号码布",v9:"骨疗·物理治疗·运动疗法",v10:"镁补充剂",v11:"等渗补水",v12:"运动指导",s5_eye:"05 · 合作形式",s5_title:'<span class="el">整合品牌的</span>四种方式',f1_h:"原生视频整合",f1_p:"视频开头或结尾30-60秒赞助提及·专属促销码·整合到比赛叙事的装备测评（马拉松、越野、半马）。长格式、深度互动。",f2_h:"帖子 + Reel + 故事",f2_p:"专用feed帖子·产品轮播·Reel产品测试·3-5幻灯片故事系列·永久品牌标签。短格式、最大病毒性。",f3_h:"原生证言视频",f3_p:"15-30秒病毒格式·跑步趋势·真实情境产品测评。理想触达年轻受众和捕获病毒尖峰。",f4_h:"页面+社区中继",f4_p:"专用页面帖子·适合本地活动、赛事号码布、区域发布。FB 35-54受众=IG互补曝光。",s6_eye:"06 · 参考价格",s6_title:'<span class="el">透明的</span>谈判基础',s6_desc:"与第三方平台（Instagram）+法国市场标准对齐的区间。最终价格视简报、时长、独占性和制作复杂度而定。",r_yt:"按内容",r_ig:"按帖",r_tt:"按视频",r_fb:"按帖",bundle_l:"⚡ 4平台套餐 · 整合活动",bundle_d:"独立触达<strong>约24,000人</strong>·简报·协调制作·同步多渠道发布·D+30报告",s7_eye:"07 · 基准",s7_title:'Elisa <span class="el">vs FR市场</span>',s7_desc:"Elisa如何在法国创作者市场标准中定位。",bm_metric:"指标",bm_bench:"FR基准",bm_verdict:"判定",bm_eng_ig:"Instagram互动率",bm_eng_ig_v:"🔥 +75%以上",bm_real:"真实受众",bm_real_v:"✓ 优质",bm_cpe:"Instagram CPE",bm_cpe_v:"🔥 便宜4-7倍",bm_ver:"认证状态",yes:"✓ 是",bm_ver_b:"约5%创作者",bm_ver_v:"✓ 前5%",bm_eng_yt:"YouTube互动率",bm_eng_yt_v:"🔥 +68%以上",bm_fr:"纯FR受众",bm_fr_b:"可变",bm_fr_v:"✓ 明确定位",s8_eye:"08 · 流程",s8_title:'从初次联系<span class="el">到报告</span>',step1_h:"简报",step1_p:"邮件接收活动简报。目标、KPI、关键日期。书面交流或30分钟通话以对齐期望。",step2_h:"报价&合同",step2_p:"48工作小时内报价。Elisa Is Running Club 标准合同（交付物、肖像权、独占性、时间表）。",step3_h:"制作",step3_p:"接收产品/资产。Elisa拍摄和剪辑。最终发布前品牌验证。",step4_h:"报告",step4_p:"D+7和D+30统计：触达、互动、点击、促销码。提供截图和数据。",cta_h:"准备合作?",cta_p:"简报、日历、预算或简单问题 — 24工作小时内个性化回复。",cta_btn:"→ 开始对话",foot_stamp:"机密文档 · ELISA IS RUNNING CLUB",foot_t:"自动更新数据 · v1.0 · 2026年6月 · 版权所有"},
+es:{badge:"Brand Kit · Confidencial",hero_eye:"Brand Partnership Kit · Junio 2026",hero_t1:"Elisa is running",hero_t2:"tu marca",hero_sub:"Creadora francesa de contenido running · audiencia CSP+ 35-54 años · 88% Francia · engagement IG 5,32% (por encima de la media). Cuenta verificada, comunidad ultra-comprometida, viral cap probado a 3,7M de vistas.",pill1:"🏃 Running · Maratón · Trail",pill2:"🇫🇷 Nicho FR puro",pill3:"✓ Verified IG",pill4:"82% audiencia real",hs_reach:"Reach único estimado",hs_eng:"Engagement IG",hs_fr:"Audiencia Francia",hs_videos:"Vídeos publicados",s1_eye:"01 · Snapshot 4 plataformas",s1_title:'Una presencia <span class="el">multi-canal</span> coherente',s1_desc:"Datos sincronizados automáticamente cada día via API. Última actualización junio 2026.",p_subs:"suscriptores",p_subs_v:"suscriptores verificados",yt_r1:"<b>4,4 M</b> vistas totales",yt_r2:"<b>569</b> vídeos · <b>7.716</b> vistas medias",yt_r3:"Engagement <b>5,04%</b>",ig_r1:"<b>660</b> likes + <b>22</b> com / post",ig_r2:"Audiencia <b>82%</b> real",ig_r3:"CPE <b>0,27 €</b> · Eng <b>5,32%</b>",tt_r1:"<b>142k</b> likes acumulados",tt_r2:"<b>137</b> vídeos publicados",tt_r3:"1 viral a <b>3,7 M</b> vistas",fb_r1:"Recomendado <b>100%</b> (15 reseñas)",fb_r2:"<b>~181</b> likes / post",fb_r3:"Engagement <b>~3%</b>",s2_eye:"02 · Calidad de audiencia",s2_title:'Una comunidad <span class="el">francesa & comprometida</span>',s2_desc:"Fuente: plataforma tercera de análisis de creadores (datos Instagram).",demo_head:"Demografía",gender_mix:"Mix género",men:"Hombres",women:"Mujeres",gender_note:"Mix atípico para running femenino — abre simultáneamente el mercado masculino y femenino.",geo_head:"📍 Geografía",c_fr:"Francia",c_ca:"Canadá",c_re:"Reunión",cities_head:"🏙 Ciudades top",perf_real:"Audiencia real",perf_real_d:"Muy pocas cuentas falsas",perf_eng:"Engagement IG",perf_eng_d:"vs benchmark FR 1-3%",perf_cpe:"CPE medio",perf_cpe_d:"Coste por engagement bajo",perf_eff:"Effectiveness",perf_eff_d:"En contenido afiliado",s3_eye:"03 · Por qué Elisa",s3_title:'Cuatro <span class="el">ventajas clave</span> para la marca',adv1_num:"→ VENTAJA 01",adv1_h:"Audiencia 35-54 CSP+",adv1_p:"58% de la comunidad entre 35 y 54 años. Alto poder adquisitivo, ideal para equipamiento premium, nutrición deportiva, servicios de salud y servicios de pago.",adv2_num:"→ VENTAJA 02",adv2_h:"Engagement 2,75x por encima del mercado",adv2_p:"5,32% IG vs benchmark Francia 1-3%. Comentarios reflexivos, comunidad activa. No es una audiencia que solo hace scroll.",adv3_num:"→ VENTAJA 03",adv3_h:"Cuenta verificada + 100% recomendada",adv3_p:"Verified IG ✓. 15 reseñas Facebook 100% positivas. Credibilidad inmediata, riesgo reputacional cero para la marca.",adv4_num:"→ VENTAJA 04",adv4_h:"Nicho claro & viral cap probado",adv4_p:"Running francés puro — segmentación marketing simple. 1 vídeo TikTok a 3,7M vistas prueba que un contenido patrocinado puede escalar mucho más allá del nominal.",s4_eye:"04 · Verticales relevantes",s4_title:'Marcas <span class="el">naturalmente compatibles</span>',s4_desc:"Estos sectores resuenan directamente con la comunidad de Elisa y garantizan un ROI óptimo.",v1:"Zapatillas running",v2:"Apparel técnico",v3:"Nutrición deportiva",v4:"Recuperación",v5:"Apps fitness/GPS",v6:"Smartwatches",v7:"Salud · bienestar 35+",v8:"Eventos / dorsales",v9:"Osteo · fisio · kinesio",v10:"Suplementos magnesio",v11:"Hidratación isotónica",v12:"Coaching deportivo",s5_eye:"05 · Formatos de partnership",s5_title:'Cuatro maneras <span class="el">de integrar la marca</span>',f1_h:"Integración vídeo nativa",f1_p:"Mención sponsor 30-60s al inicio o final de vídeo · código promocional dedicado · review de equipamiento integrada en relato de carrera (maratón, trail, semi). Formato largo, engagement profundo.",f2_h:"Post + Reel + Stories",f2_p:"Post feed dedicado · carrusel producto · Reel test producto · serie Stories 3-5 slides · tag marca permanente. Formato corto, viralidad máxima.",f3_h:"Vídeo nativo testimonial",f3_p:"Formato viral 15-30s · trend running · review producto en situación real. Ideal para alcanzar audiencia más joven y capturar viral spike.",f4_h:"Página + relé comunidad",f4_p:"Post página dedicado · ideal para eventos locales, dorsales de carrera, lanzamiento regional. Audiencia FB 35-54 = exposición complementaria IG.",s6_eye:"06 · Tarifas indicativas",s6_title:'Una base <span class="el">transparente</span> de negociación',s6_desc:"Rangos alineados con plataforma tercera (Instagram) + estándares mercado FR. Tarifa final según brief, duración, exclusividad y complejidad de producción.",r_yt:"por contenido",r_ig:"por publicación",r_tt:"por vídeo",r_fb:"por publicación",bundle_l:"⚡ Bundle 4 plataformas · Campaña integrada",bundle_d:"Reach único <strong>~24.000 personas</strong> · briefing · producción coordinada · publicación sincronizada multi-canal · reporting D+30",s7_eye:"07 · Benchmark",s7_title:'Elisa <span class="el">vs mercado FR</span>',s7_desc:"Cómo se posiciona Elisa frente a los estándares del mercado de creadores francés.",bm_metric:"Métrica",bm_bench:"Benchmark FR",bm_verdict:"Veredicto",bm_eng_ig:"Engagement Instagram",bm_eng_ig_v:"🔥 +75% por encima",bm_real:"Audiencia real",bm_real_v:"✓ Premium",bm_cpe:"CPE Instagram",bm_cpe_v:"🔥 4-7x más barato",bm_ver:"Estatus verificado",yes:"✓ Sí",bm_ver_b:"~5% creadores",bm_ver_v:"✓ Top 5%",bm_eng_yt:"Engagement YouTube",bm_eng_yt_v:"🔥 +68% por encima",bm_fr:"Audiencia FR pura",bm_fr_b:"variable",bm_fr_v:"✓ Segmentación clara",s8_eye:"08 · Proceso",s8_title:'De la toma de contacto <span class="el">al reporting</span>',step1_h:"Brief",step1_p:"Brief campaña recibido por mail. Objetivos, KPIs, fechas clave. Intercambio escrito o call 30 min para alinear expectativas.",step2_h:"Presupuesto & contrato",step2_p:"Presupuesto en 48h laborables. Contrato tipo Elisa Is Running Club (entregables, derechos de imagen, exclusividad, calendario).",step3_h:"Producción",step3_p:"Recepción producto/asset. Rodaje y montaje por Elisa. Validación marca antes de publicación final.",step4_h:"Reporting",step4_p:"Stats D+7 y D+30: reach, engagement, clics, código promo. Capturas y datos proporcionados.",cta_h:"¿Listo·a para colaborar?",cta_p:"Brief, calendario, presupuesto o simple pregunta — respuesta personalizada en 24h laborables.",cta_btn:"→ Iniciar la conversación",foot_stamp:"DOC CONFIDENCIAL · ELISA IS RUNNING CLUB",foot_t:"Datos actualizados automáticamente · v1.0 · Junio 2026 · Todos los derechos reservados"},
+pt:{badge:"Brand Kit · Confidencial",hero_eye:"Brand Partnership Kit · Junho 2026",hero_t1:"Elisa is running",hero_t2:"a tua marca",hero_sub:"Criadora francesa de conteúdo running · audiência CSP+ 35-54 anos · 88% França · engagement IG 5,32% (acima da média do mercado). Conta verificada, comunidade ultra-engajada, viral cap comprovado a 3,7M de visualizações.",pill1:"🏃 Running · Maratona · Trail",pill2:"🇫🇷 Nicho FR puro",pill3:"✓ Verified IG",pill4:"82% audiência real",hs_reach:"Reach único estimado",hs_eng:"Engagement IG",hs_fr:"Audiência França",hs_videos:"Vídeos publicados",s1_eye:"01 · Snapshot 4 plataformas",s1_title:'Uma presença <span class="el">multi-canal</span> coerente',s1_desc:"Dados sincronizados automaticamente todos os dias via API. Última atualização junho 2026.",p_subs:"subscritores",p_subs_v:"subscritores verificados",yt_r1:"<b>4,4 M</b> visualizações totais",yt_r2:"<b>569</b> vídeos · <b>7.716</b> visualizações médias",yt_r3:"Engagement <b>5,04%</b>",ig_r1:"<b>660</b> likes + <b>22</b> com / post",ig_r2:"Audiência <b>82%</b> real",ig_r3:"CPE <b>0,27 €</b> · Eng <b>5,32%</b>",tt_r1:"<b>142k</b> likes acumulados",tt_r2:"<b>137</b> vídeos publicados",tt_r3:"1 viral a <b>3,7 M</b> visualizações",fb_r1:"Recomendado <b>100%</b> (15 avaliações)",fb_r2:"<b>~181</b> likes / post",fb_r3:"Engagement <b>~3%</b>",s2_eye:"02 · Qualidade de audiência",s2_title:'Uma comunidade <span class="el">francesa & engajada</span>',s2_desc:"Fonte: plataforma terceira de análise de criadores (dados Instagram).",demo_head:"Demografia",gender_mix:"Mix género",men:"Homens",women:"Mulheres",gender_note:"Mix atípico para running feminino — abre simultaneamente o mercado masculino e feminino.",geo_head:"📍 Geografia",c_fr:"França",c_ca:"Canadá",c_re:"Reunião",cities_head:"🏙 Cidades top",perf_real:"Audiência real",perf_real_d:"Muito poucas contas falsas",perf_eng:"Engagement IG",perf_eng_d:"vs benchmark FR 1-3%",perf_cpe:"CPE médio",perf_cpe_d:"Custo por engagement baixo",perf_eff:"Effectiveness",perf_eff_d:"Em conteúdo afiliado",s3_eye:"03 · Porquê Elisa",s3_title:'Quatro <span class="el">vantagens chave</span> para a marca',adv1_num:"→ VANTAGEM 01",adv1_h:"Audiência 35-54 CSP+",adv1_p:"58% da comunidade entre 35 e 54 anos. Alto poder de compra, ideal para equipamento premium, nutrição desportiva, serviços de saúde e serviços pagos.",adv2_num:"→ VANTAGEM 02",adv2_h:"Engagement 2,75x acima do mercado",adv2_p:"5,32% IG vs benchmark França 1-3%. Comentários ponderados, comunidade ativa. Não é uma audiência scrolling passiva.",adv3_num:"→ VANTAGEM 03",adv3_h:"Conta verificada + 100% recomendada",adv3_p:"Verified IG ✓. 15 avaliações Facebook 100% positivas. Credibilidade imediata, risco reputacional zero para a marca.",adv4_num:"→ VANTAGEM 04",adv4_h:"Nicho claro & viral cap comprovado",adv4_p:"Running francês puro — segmentação marketing simples. 1 vídeo TikTok a 3,7M visualizações prova que conteúdo patrocinado pode escalar muito além do nominal.",s4_eye:"04 · Verticais relevantes",s4_title:'Marcas <span class="el">naturalmente compatíveis</span>',s4_desc:"Estes setores ressoam diretamente com a comunidade de Elisa e garantem um ROI ótimo.",v1:"Sapatilhas running",v2:"Apparel técnico",v3:"Nutrição desportiva",v4:"Recuperação",v5:"Apps fitness/GPS",v6:"Smartwatches",v7:"Saúde · bem-estar 35+",v8:"Eventos / dorsais",v9:"Osteo · fisio · cinesio",v10:"Suplementos magnésio",v11:"Hidratação isotónica",v12:"Coaching desportivo",s5_eye:"05 · Formatos de parceria",s5_title:'Quatro maneiras <span class="el">de integrar a marca</span>',f1_h:"Integração vídeo nativa",f1_p:"Menção sponsor 30-60s no início ou fim do vídeo · código promocional dedicado · review equipamento integrada em narrativa de corrida (maratona, trail, meia). Formato longo, engagement profundo.",f2_h:"Post + Reel + Stories",f2_p:"Post feed dedicado · carrossel produto · Reel teste produto · série Stories 3-5 slides · tag marca permanente. Formato curto, viralidade máxima.",f3_h:"Vídeo nativo testemunhal",f3_p:"Formato viral 15-30s · trend running · review produto em situação real. Ideal para alcançar audiência mais jovem e capturar viral spike.",f4_h:"Página + relé comunidade",f4_p:"Post página dedicado · ideal para eventos locais, dorsais de corrida, lançamento regional. Audiência FB 35-54 = exposição complementar IG.",s6_eye:"06 · Tarifas indicativas",s6_title:'Uma base <span class="el">transparente</span> de negociação',s6_desc:"Intervalos alinhados com plataforma terceira (Instagram) + standards mercado FR. Tarifa final segundo brief, duração, exclusividade e complexidade de produção.",r_yt:"por conteúdo",r_ig:"por publicação",r_tt:"por vídeo",r_fb:"por publicação",bundle_l:"⚡ Bundle 4 plataformas · Campanha integrada",bundle_d:"Reach único <strong>~24.000 pessoas</strong> · briefing · produção coordenada · publicação sincronizada multi-canal · reporting D+30",s7_eye:"07 · Benchmark",s7_title:'Elisa <span class="el">vs mercado FR</span>',s7_desc:"Como Elisa se posiciona face aos standards do mercado de criadores francês.",bm_metric:"Métrica",bm_bench:"Benchmark FR",bm_verdict:"Veredicto",bm_eng_ig:"Engagement Instagram",bm_eng_ig_v:"🔥 +75% acima",bm_real:"Audiência real",bm_real_v:"✓ Premium",bm_cpe:"CPE Instagram",bm_cpe_v:"🔥 4-7x mais barato",bm_ver:"Estatuto verificado",yes:"✓ Sim",bm_ver_b:"~5% criadores",bm_ver_v:"✓ Top 5%",bm_eng_yt:"Engagement YouTube",bm_eng_yt_v:"🔥 +68% acima",bm_fr:"Audiência FR pura",bm_fr_b:"variável",bm_fr_v:"✓ Segmentação clara",s8_eye:"08 · Processo",s8_title:'Do primeiro contacto <span class="el">ao reporting</span>',step1_h:"Brief",step1_p:"Brief campanha recebido por mail. Objetivos, KPIs, datas chave. Troca escrita ou call 30 min para alinhar expectativas.",step2_h:"Orçamento & contrato",step2_p:"Orçamento em 48h úteis. Contrato tipo Elisa Is Running Club (entregáveis, direitos de imagem, exclusividade, calendário).",step3_h:"Produção",step3_p:"Receção produto/asset. Filmagem e edição por Elisa. Validação marca antes de publicação final.",step4_h:"Reporting",step4_p:"Stats D+7 e D+30: reach, engagement, clicks, código promo. Capturas e dados fornecidos.",cta_h:"Pronto·a para colaborar?",cta_p:"Brief, calendário, orçamento ou simples pergunta — resposta personalizada em 24h úteis.",cta_btn:"→ Iniciar a conversa",foot_stamp:"DOC CONFIDENCIAL · ELISA IS RUNNING CLUB",foot_t:"Dados atualizados automaticamente · v1.0 · Junho 2026 · Todos os direitos reservados"}
+};
+function setLang(l){
+  localStorage.setItem('okalam_lang',l);
+  document.documentElement.lang=l;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const k=el.getAttribute('data-i18n');
+    if(T[l]&&T[l][k])el.innerHTML=T[l][k];
+  });
+  document.querySelectorAll('.lb').forEach(b=>b.classList.toggle('active',b.dataset.lang===l));
+}
+document.querySelectorAll('.lb').forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.lang)));
+setLang(localStorage.getItem('okalam_lang')||'en');
+const obs=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');});},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+<script defer src="live-stats.js"></script>
+
+</body>
+</html>
