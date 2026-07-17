@@ -1,9 +1,9 @@
 {
-  "updated_at": "2026-07-16T08:10:24.142Z",
+  "updated_at": "2026-07-17T08:07:12.085Z",
   "elisa": {
     "youtube": {
       "subscribers": 14200,
-      "views": 4444494,
+      "views": 4445115,
       "noxScore": 5,
       "engagement": 5.04,
       "avgViewsPerVideo": 7716
@@ -15,7 +15,7 @@
       "engagement": 54.38
     },
     "tiktok": {
-      "followers": 1568,
+      "followers": 1566,
       "likes": 141700,
       "videos": 140,
       "engagement": 4.27,
@@ -26,21 +26,21 @@
   "pierre": {
     "youtube": {
       "subscribers": 13500,
-      "views": 20275321,
+      "views": 20301612,
       "noxScore": 7,
       "engagement": 1.83,
       "avgViewsPerVideo": 39071
     },
     "instagram": {
-      "followers": 17016,
+      "followers": 17024,
       "posts": 412,
       "verified": false,
-      "engagement": 99.21,
+      "engagement": 99.29,
       "avgViewsPerPost": 81240
     },
     "tiktok": {
-      "followers": 5433,
-      "likes": 474100,
+      "followers": 5444,
+      "likes": 474800,
       "videos": 193,
       "engagement": 4.78,
       "avgViewsPerVideo": 19570
