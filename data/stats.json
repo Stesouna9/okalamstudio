@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-01T08:17:28.856Z",
+  "updated_at": "2026-08-02T08:21:18.669Z",
   "elisa": {
     "youtube": {
       "subscribers": 14200,
@@ -15,7 +15,7 @@
       "engagement": 54.47
     },
     "tiktok": {
-      "followers": 1566,
+      "followers": 1565,
       "likes": 141300,
       "videos": 140,
       "engagement": 4.27,
@@ -32,16 +32,16 @@
       "avgViewsPerVideo": 39071
     },
     "instagram": {
-      "followers": 17251,
-      "posts": 417,
+      "followers": 17264,
+      "posts": 419,
       "verified": false,
-      "engagement": 99.88,
+      "engagement": 99.64,
       "avgViewsPerPost": 81240
     },
     "tiktok": {
-      "followers": 5676,
-      "likes": 484800,
-      "videos": 199,
+      "followers": 5686,
+      "likes": 485300,
+      "videos": 200,
       "engagement": 4.78,
       "avgViewsPerVideo": 19570
     }
