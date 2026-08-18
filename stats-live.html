@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Compteur Elisa</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>">
+<style>
+  :root{
+    --bg:#0B0D10; --card:#14171C; --line:#242932; --txt:#F1EDE4;
+    --dim:rgba(241,237,228,.45); --gold:#D4A017; --up:#4ADE80;
+    --yt:#FF0033; --ig:#E1306C; --fb:#1877F2; --tt:#25F4EE;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-user-select:none;user-select:none}
+  body{
+    background:var(--bg);color:var(--txt);
+    font:14px/1.4 -apple-system,BlinkMacSystemFont,"SF Pro Text",system-ui,sans-serif;
+    padding:14px;min-height:100vh;-webkit-font-smoothing:antialiased;
+  }
+  .head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:12px;padding:0 2px}
+  .title{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);font-weight:600}
+  .total{font-size:11px;color:var(--gold);font-variant-numeric:tabular-nums;font-weight:600}
+  .row{
+    display:flex;align-items:center;gap:11px;background:var(--card);
+    border:1px solid var(--line);border-left:3px solid var(--c);
+    border-radius:11px;padding:11px 13px;margin-bottom:7px;transition:border-color .3s;
+  }
+  .row.flash{border-color:var(--up)}
+  .ic{width:26px;height:26px;flex:0 0 26px;fill:var(--c)}
+  .mid{flex:1;min-width:0}
+  .name{font-size:12.5px;font-weight:600;letter-spacing:-.01em}
+  .sub{font-size:10.5px;color:var(--dim);margin-top:2px;font-variant-numeric:tabular-nums}
+  .num{font-size:21px;font-weight:700;font-variant-numeric:tabular-nums;letter-spacing:-.02em;text-align:right;line-height:1}
+  .delta{font-size:10px;color:var(--up);text-align:right;margin-top:3px;height:12px;font-variant-numeric:tabular-nums}
+  .foot{margin-top:11px;display:flex;justify-content:space-between;align-items:center;font-size:10px;color:var(--dim);padding:0 3px}
+  .dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--up);margin-right:5px;animation:p 2s infinite}
+  @keyframes p{0%,100%{opacity:1}50%{opacity:.25}}
+  .btn{background:none;border:1px solid var(--line);color:var(--dim);border-radius:6px;padding:3px 9px;font-size:10px;cursor:pointer;font-family:inherit}
+  .btn:hover{color:var(--txt);border-color:var(--gold)}
+  .edit{cursor:pointer}
+  .edit:hover .num{color:var(--gold)}
+</style>
+</head>
+<body>
+
+<div class="head">
+  <div class="title">Elisa · audience</div>
+  <div class="total" id="total">&middot;&middot;&middot;</div>
+</div>
+
+<div id="rows"></div>
+
+<div class="foot">
+  <span><span class="dot"></span><span id="stamp">connexion…</span></span>
+  <button class="btn" id="refresh">Actualiser</button>
+</div>
+
+<script>
+const YT_MAIN = 'UChxg0VY4KoLmvsMqvuE4Xfw';   // @elisaisrunning
+const YT_ALT  = 'UCcRG-Be3ewPk8GJUzSgiZlw';   // @Elisa_bernard
+const STATS_URL = 'https://raw.githubusercontent.com/Stesouna9/okalamstudio/main/data/stats.json';
+
+const ICONS = {
+  yt:'<path d="M23 12s0-3.9-.5-5.8a3 3 0 0 0-2.1-2.1C18.5 3.5 12 3.5 12 3.5s-6.5 0-8.4.6A3 3 0 0 0 1.5 6.2C1 8.1 1 12 1 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.6 8.4.6 8.4.6s6.5 0 8.4-.6a3 3 0 0 0 2.1-2.1C23 15.9 23 12 23 12zM9.8 15.6V8.4l6.2 3.6-6.2 3.6z"/>',
+  ig:'<path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.05 1.8.25 2.2.42.6.2 1 .5 1.4 1 .5.4.8.8 1 1.4.2.4.4 1 .4 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c0 1.2-.2 1.8-.4 2.2-.2.6-.5 1-1 1.4-.4.5-.8.8-1.4 1-.4.2-1 .4-2.2.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2 0-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-1-.5-.4-.8-.8-1-1.4-.2-.4-.4-1-.4-2.2-.1-1.3-.1-1.7-.1-4.9s0-3.6.1-4.9c0-1.2.2-1.8.4-2.2.2-.6.5-1 1-1.4.4-.5.8-.8 1.4-1 .4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2zm0 3.2a6.6 6.6 0 1 0 0 13.2 6.6 6.6 0 0 0 0-13.2zm0 10.9a4.3 4.3 0 1 1 0-8.6 4.3 4.3 0 0 1 0 8.6zm8.4-11.2a1.55 1.55 0 1 1-3.1 0 1.55 1.55 0 0 1 3.1 0z"/>',
+  fb:'<path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.3v7A10 10 0 0 0 22 12z"/>',
+  tt:'<path d="M16.6 5.8a4.8 4.8 0 0 1-1-3.1h-3.4v13.6a2.9 2.9 0 1 1-2-2.8V10a6.3 6.3 0 1 0 5.4 6.2V9.1a8.2 8.2 0 0 0 4.8 1.5V7.2a4.8 4.8 0 0 1-3.8-1.4z"/>'
+};
+
+const CH = [
+  {k:'yt1', name:'YouTube principale', tag:'@elisaisrunning', c:'var(--yt)', ic:'yt', live:true},
+  {k:'yt2', name:'YouTube seconde',    tag:'@Elisa_bernard',  c:'var(--yt)', ic:'yt', live:true},
+  {k:'ig',  name:'Instagram',          tag:'@elisa_is_running', c:'var(--ig)', ic:'ig'},
+  {k:'fb',  name:'Facebook',           tag:'elisa.is.running',  c:'var(--fb)', ic:'fb', manual:true},
+  {k:'tt',  name:'TikTok',             tag:'@elisa.is.running', c:'var(--tt)', ic:'tt'}
+];
+
+const state = {};
+const fmt = n => n == null ? '···' : n.toLocaleString('fr-FR');
+
+document.getElementById('rows').innerHTML = CH.map(c => `
+  <div class="row${c.manual?' edit':''}" id="r-${c.k}" style="--c:${c.c}"${c.manual?` title="Cliquer pour saisir"`:''}>
+    <svg class="ic" viewBox="0 0 24 24">${ICONS[c.ic]}</svg>
+    <div class="mid">
+      <div class="name">${c.name}</div>
+      <div class="sub" id="s-${c.k}">${c.tag}</div>
+    </div>
+    <div>
+      <div class="num" id="n-${c.k}">&middot;&middot;&middot;</div>
+      <div class="delta" id="d-${c.k}"></div>
+    </div>
+  </div>`).join('');
+
+function setVal(k, val, sub){
+  const el = document.getElementById('n-'+k);
+  const prev = state[k]?.val;
+  state[k] = {...state[k], val};
+  el.textContent = fmt(val);
+  if (sub) document.getElementById('s-'+k).textContent = sub;
+  if (prev != null && val != null && val !== prev){
+    const diff = val - prev;
+    const d = document.getElementById('d-'+k);
+    d.textContent = (diff>0?'+':'') + diff;
+    d.style.color = diff>0 ? 'var(--up)' : '#F87171';
+    const row = document.getElementById('r-'+k);
+    row.classList.add('flash');
+    setTimeout(()=>row.classList.remove('flash'), 2200);
+  }
+  updateTotal();
+}
+
+function updateTotal(){
+  const vals = CH.map(c=>state[c.k]?.val).filter(v=>typeof v === 'number');
+  if (!vals.length) return;
+  document.getElementById('total').textContent = fmt(vals.reduce((a,b)=>a+b,0)) + ' abonnés';
+}
+
+async function ytLive(id, key){
+  try {
+    const r = await fetch(`https://mixerno.space/api/youtube-channel-counter/user/${id}`, {cache:'no-store'});
+    if (!r.ok) throw 0;
+    const j = await r.json();
+    const get = v => j.counts.find(c=>c.value===v)?.count;
+    setVal(key, get('subscribers'), `${fmt(get('views'))} vues · ${fmt(get('videos'))} vidéos`);
+    return true;
+  } catch {
+    try {
+      const r = await fetch(`https://api.socialcounts.org/youtube-live-subscriber-count/${id}`, {cache:'no-store'});
+      const c = (await r.json()).counters.estimation;
+      setVal(key, c.subscriberCount, `${fmt(c.viewCount)} vues · ${fmt(c.videoCount)} vidéos`);
+      return true;
+    } catch { return false; }
+  }
+}
+
+async function daily(){
+  try {
+    const r = await fetch(STATS_URL + '?t=' + Date.now(), {cache:'no-store'});
+    const j = await r.json();
+    const e = j.elisa || {};
+    if (e.instagram) setVal('ig', e.instagram.followers, `${fmt(e.instagram.posts)} publications`);
+    if (e.tiktok)    setVal('tt', e.tiktok.followers, `${fmt(e.tiktok.likes)} j'aime`);
+    if (e.facebook)  setVal('fb', e.facebook.followers, 'abonnés page');
+  } catch {}
+}
+
+// Facebook saisi à la main (pas d'API publique), mémorisé sur la machine
+const FB_KEY = 'okalam.fb.elisa';
+function loadFB(){
+  const v = localStorage.getItem(FB_KEY);
+  if (v) setVal('fb', parseInt(v,10), 'saisie manuelle');
+}
+document.getElementById('r-fb').addEventListener('click', ()=>{
+  const cur = state.fb?.val ?? '';
+  const v = prompt('Nombre d\'abonnés Facebook :', cur);
+  if (v && !isNaN(parseInt(v,10))){
+    localStorage.setItem(FB_KEY, parseInt(v,10));
+    setVal('fb', parseInt(v,10), 'saisie manuelle');
+  }
+});
+
+async function tick(){
+  await Promise.all([ytLive(YT_MAIN,'yt1'), ytLive(YT_ALT,'yt2')]);
+  document.getElementById('stamp').textContent = 'mis à jour à ' +
+    new Date().toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit',second:'2-digit'});
+}
+
+document.getElementById('refresh').addEventListener('click', ()=>{ tick(); daily(); });
+loadFB(); daily(); tick();
+setInterval(tick, 45000);      // YouTube toutes les 45 s
+setInterval(daily, 900000);    // réseaux quotidiens toutes les 15 min
+</script>
+</body>
+</html>
