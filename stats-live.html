@@ -53,11 +53,11 @@ function digits(n){ return n==null?'·····':n.toLocaleString('fr-FR').split(
 function render(k,val){
   const box=document.getElementById('f-'+k), chars=digits(val), prev=S[k]?.chars||[];
   if(box.children.length!==chars.length){
-    box.innerHTML=chars.map(c=>c===' '||c===' '?'<div class="sep"></div>':`<div class="d"><span>${c}</span></div>`).join('');
+    box.innerHTML=chars.map(c=>(/[\s\u202f\u00a0]/.test(c))?'<div class="sep"></div>':`<div class="d"><span>${c}</span></div>`).join('');
   }else{
     let idx=0;
     chars.forEach((c,i)=>{
-      if(c===' '||c===' ')return;
+      if(/[\s\u202f\u00a0]/.test(c))return;
       const cell=box.children[i]; if(!cell||!cell.classList.contains('d'))return;
       const cur=cell.querySelector('span:not(.old)');
       if(cur && cur.textContent!==c){
@@ -97,38 +97,46 @@ const YT1='UChxg0VY4KoLmvsMqvuE4Xfw', YT2='UCcRG-Be3ewPk8GJUzSgiZlw';
 const STATS='https://raw.githubusercontent.com/Stesouna9/okalamstudio/main/data/stats.json';
 async function yt(id,key){
   try{
-    const r=await fetch(`https://mixerno.space/api/youtube-channel-counter/user/${id}`,{cache:'no-store'});
+    const r=await fetch('https://mixerno.space/api/youtube-channel-counter/user/'+id,{cache:'no-store'});
     const j=await r.json(), g=v=>j.counts.find(c=>c.value===v)?.count;
+    if(!g('subscribers'))throw 0;
     return {[key]:{subs:g('subscribers'),views:g('views'),videos:g('videos')}};
-  }catch{
+  }catch(e){
     try{
-      const r=await fetch(`https://api.socialcounts.org/youtube-live-subscriber-count/${id}`,{cache:'no-store'});
+      const r=await fetch('https://api.socialcounts.org/youtube-live-subscriber-count/'+id,{cache:'no-store'});
       const c=(await r.json()).counters.estimation;
       return {[key]:{subs:c.subscriberCount,views:c.viewCount,videos:c.videoCount}};
-    }catch{return {}}
+    }catch(e2){return {};}
   }
 }
 async function loop(){
-  const [a,b]=await Promise.all([yt(YT1,'yt1'),yt(YT2,'yt2')]);
-  window.push({...a,...b});
+  try{
+    const [a,b]=await Promise.all([yt(YT1,'yt1'),yt(YT2,'yt2')]);
+    window.push(Object.assign({},a,b));
+  }catch(e){}
 }
 async function slow(){
   try{
-    const j=await (await fetch(STATS+'?t='+Date.now(),{cache:'no-store'})).json(), e=j.elisa||{};
-    const o={};
+    const j=await (await fetch(STATS+'?t='+Date.now(),{cache:'no-store'})).json(), e=j.elisa||{}, o={};
     if(e.instagram)o.ig={subs:e.instagram.followers,posts:e.instagram.posts};
     if(e.tiktok)o.tt={subs:e.tiktok.followers,likes:e.tiktok.likes,videos:e.tiktok.videos};
     if(e.facebook)o.fb={subs:e.facebook.followers,note:'page'};
     const fb=localStorage.getItem('okalam.fb');
     if(fb&&!o.fb)o.fb={subs:parseInt(fb,10),note:'saisie manuelle'};
     window.push(o);
-  }catch{}
+  }catch(e){}
 }
-document.querySelectorAll('.r')[3].style.cursor='pointer';
-document.querySelectorAll('.r')[3].onclick=()=>{
-  const v=prompt("Nombre d'abonnes Facebook :", localStorage.getItem('okalam.fb')||'');
-  if(v&&!isNaN(parseInt(v,10))){localStorage.setItem('okalam.fb',parseInt(v,10));slow();}
-};
-loop(); slow(); setInterval(loop,45000); setInterval(slow,900000);
+try{
+  const rowFb=document.querySelectorAll('.r')[3];
+  if(rowFb){ rowFb.style.cursor='pointer'; rowFb.title='Cliquer pour saisir';
+    rowFb.onclick=function(){
+      const v=prompt("Nombre d'abonnes Facebook :", localStorage.getItem('okalam.fb')||'');
+      if(v&&!isNaN(parseInt(v,10))){localStorage.setItem('okalam.fb',parseInt(v,10));slow();}
+    };
+  }
+}catch(e){}
+loop(); slow();
+setInterval(loop,45000); setInterval(slow,900000);
+
 
 </script></body></html>
