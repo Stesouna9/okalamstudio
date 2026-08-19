@@ -49,7 +49,7 @@ document.getElementById('rows').innerHTML=CH.map(c=>`<div class="r" style="--c:$
 <div class="lb"><div class="n">${c.n}${c.live?' <span class="lv">live</span>':''}</div><div class="s" id="s-${c.k}">…</div></div>
 <div class="flap" id="f-${c.k}"></div><div class="dl" id="d-${c.k}"></div></div>`).join('');
 
-function digits(n){ return n==null?'·····':n.toLocaleString('fr-FR').split(''); }
+function digits(n){ return n==null?'·····'.split(''):n.toLocaleString('fr-FR').split(''); }
 function render(k,val){
   const box=document.getElementById('f-'+k), chars=digits(val), prev=S[k]?.chars||[];
   if(box.children.length!==chars.length){
