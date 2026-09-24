@@ -128,6 +128,47 @@ body{background:var(--vb-night);}
 
 @media(max-width:900px){.vb-phones{grid-template-columns:repeat(2,1fr);gap:14px;}.vb-phone:nth-child(2),.vb-phone:nth-child(3){transform:none;}.vb-phone{border-radius:22px;}.vb-sil-grid{grid-template-columns:repeat(2,1fr);}.vb-dist{grid-template-columns:repeat(3,1fr);}.vb-radio{grid-template-columns:repeat(3,1fr);}.vb-feats{grid-template-columns:1fr;}}
 @media(max-width:560px){.vb-phones{grid-template-columns:1fr 1fr;}.vb-dist{grid-template-columns:repeat(2,1fr);}.vb-radio{grid-template-columns:repeat(2,1fr);}.vb-hero{min-height:88vh;}}
+
+/* RADIO WIDGET */
+.vbr{position:fixed;left:18px;bottom:18px;z-index:60;width:300px;border-radius:18px;overflow:hidden;background:linear-gradient(180deg,#14103a,#0B0A1E);border:1px solid rgba(34,229,255,.28);box-shadow:0 20px 60px rgba(0,0,0,.6),0 0 30px rgba(255,46,136,.12);font-family:'DM Sans',sans-serif;--acc:#F5E3C3;}
+.vbr-top{display:flex;align-items:center;gap:10px;padding:9px 12px;background:rgba(0,0,0,.35);border-bottom:1px solid rgba(255,255,255,.06);}
+.vbr-brand{font-family:'Orbitron',sans-serif;font-weight:900;font-size:.62rem;letter-spacing:.3em;color:var(--vb-sand);}
+.vbr-onair{margin-left:auto;font-family:'Orbitron',sans-serif;font-size:.5rem;font-weight:700;letter-spacing:.18em;padding:3px 8px;border-radius:20px;color:var(--acc);border:1px solid var(--acc);opacity:.7;}
+.vbr.on .vbr-onair{background:var(--acc);color:#0B0A1E;opacity:1;box-shadow:0 0 12px var(--acc);}
+.vbr-min{background:none;border:1px solid rgba(255,255,255,.15);color:var(--vb-sand);width:22px;height:22px;border-radius:6px;cursor:pointer;font-size:.9rem;line-height:1;}
+.vbr.min .vbr-body{display:none;}
+.vbr-body{padding:12px 14px 12px;}
+.vbr-readout{display:flex;align-items:center;gap:12px;margin-bottom:10px;}
+.vbr-freq{font-family:'Orbitron',sans-serif;font-weight:900;font-size:2.1rem;line-height:1;color:var(--acc);text-shadow:0 0 16px var(--acc);font-variant-numeric:tabular-nums;min-width:96px;}
+.vbr-meta b{display:block;font-family:'Orbitron',sans-serif;font-size:.62rem;letter-spacing:.2em;color:var(--vb-sand);}
+.vbr-meta small{display:block;font-size:.58rem;letter-spacing:.12em;color:rgba(245,227,195,.5);margin-top:3px;text-transform:uppercase;}
+.vbr-scale{position:relative;height:52px;margin:6px 0 10px;cursor:pointer;touch-action:none;}
+.vbr-ticks{position:absolute;inset:0;background:repeating-linear-gradient(90deg,rgba(245,227,195,.22) 0 1px,transparent 1px 8.4px);background-size:100% 10px;background-repeat:no-repeat;background-position:0 100%;}
+.vbr-ticks::after{content:'';position:absolute;left:0;right:0;bottom:0;height:16px;background:repeating-linear-gradient(90deg,rgba(245,227,195,.12) 0 1px,transparent 1px 16.8px);}
+.vbr-stations{position:absolute;inset:0;}
+.vbr-stations div{position:absolute;bottom:0;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:3px;pointer-events:none;}
+.vbr-stations div i{display:block;width:2px;height:22px;background:var(--c);opacity:.55;}
+.vbr-stations div.lower i{height:32px;}
+.vbr-stations div span{font-family:'Orbitron',sans-serif;font-size:.42rem;font-weight:900;color:var(--c);opacity:.6;letter-spacing:.02em;}
+.vbr-stations div.on i{width:3px;opacity:1;box-shadow:0 0 8px var(--c);}
+.vbr-stations div.on span{opacity:1;}
+.vbr-needle{position:absolute;top:0;bottom:0;width:2px;background:var(--vb-sand);box-shadow:0 0 6px var(--vb-sand);transform:translateX(-50%);transition:left .35s cubic-bezier(.2,.8,.2,1);left:0;}
+.vbr-needle::before{content:'';position:absolute;top:-2px;left:50%;transform:translateX(-50%);border:5px solid transparent;border-top:6px solid var(--vb-sand);}
+.vbr-track{display:flex;justify-content:space-between;gap:10px;font-size:.68rem;color:rgba(245,227,195,.75);}
+.vbr-track span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.vbr-track em{font-style:normal;font-family:'Space Mono',monospace;font-size:.55rem;color:rgba(245,227,195,.45);flex-shrink:0;}
+.vbr-bar{height:3px;background:rgba(255,255,255,.08);border-radius:2px;margin:6px 0 10px;overflow:hidden;}
+.vbr-bar i{display:block;height:100%;width:0;background:var(--acc);box-shadow:0 0 8px var(--acc);}
+.vbr-ctl{display:flex;align-items:center;justify-content:center;gap:8px;}
+.vbr-ctl button{width:34px;height:34px;border-radius:50%;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04);color:var(--acc);font-size:.8rem;cursor:pointer;transition:all .2s;}
+.vbr-ctl button:hover{background:rgba(255,255,255,.1);}
+.vbr-ctl button.big{width:46px;height:46px;background:var(--acc);color:#0B0A1E;border:none;box-shadow:0 0 18px var(--acc);font-size:1rem;}
+.vbr-ctl button.dim{opacity:.55;}
+.vbr-ctl button.danger{color:var(--vb-mag);border-color:rgba(255,46,136,.4);}
+.vbr-credit{margin-top:8px;text-align:center;font-size:.5rem;letter-spacing:.1em;color:rgba(245,227,195,.35);text-transform:uppercase;}
+.vbr-hint{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;}
+@media(max-width:700px){.vbr{right:0;left:0;bottom:0;width:auto;border-radius:16px 16px 0 0;}.vbr-freq{font-size:1.7rem;min-width:80px;}}
+/* keep flag picker above widget on desktop */
 </style>
 </head>
 <body>
@@ -173,6 +214,30 @@ body{background:var(--vb-night);}
 
 
 <div class="vb">
+<aside class="vbr" id="vbr" aria-label="Radio Vice Bay">
+  <div class="vbr-top"><span class="vbr-brand">VICE BAY FM</span><span class="vbr-onair" id="vbr-onair">RADIO COUPÉE</span><button class="vbr-min" id="vbr-min" type="button" aria-label="Réduire">–</button></div>
+  <div class="vbr-body">
+    <div class="vbr-readout">
+      <div class="vbr-freq" id="vbr-freq">—</div>
+      <div class="vbr-meta"><b id="vbr-name">CHOISIS UNE STATION</b><small id="vbr-genre">Touche le cadran</small></div>
+    </div>
+    <div class="vbr-scale" id="vbr-scale">
+      <div class="vbr-ticks"></div>
+      <div class="vbr-stations"></div>
+      <div class="vbr-needle" id="vbr-needle"></div>
+    </div>
+    <div class="vbr-track"><span id="vbr-title">—</span><em id="vbr-time">0:00 / 0:00</em></div>
+    <div class="vbr-bar"><i id="vbr-prog"></i></div>
+    <div class="vbr-ctl">
+      <button type="button" data-act="prev" aria-label="Station précédente">⏮</button>
+      <button type="button" data-act="toggle" class="big" id="vbr-toggle" aria-label="Lecture / pause">▶</button>
+      <button type="button" data-act="next" aria-label="Station suivante">⏭</button>
+      <button type="button" data-act="skip" aria-label="Titre suivant" class="dim">⏩</button>
+      <button type="button" data-act="power" aria-label="Éteindre" class="danger">⏻</button>
+    </div>
+    <div class="vbr-credit">Kevin MacLeod · CC BY 4.0</div>
+  </div>
+</aside>
 <section class="vb-hero">
   <div class="vb-stars"></div>
   <div class="vb-sun"></div>
@@ -199,6 +264,7 @@ body{background:var(--vb-night);}
     <div class="vb-ctas">
       <a class="vb-btn primary" href="contact.html" data-i18n="vb_cta_notify">Être prévenu de la sortie</a>
       <a class="vb-btn ghost" href="#jeu" data-i18n="vb_cta_discover">Découvrir le jeu</a>
+      <a class="vb-btn ghost" href="#radio" data-radio-cta data-i18n="vb_cta_radio">📻 Allumer la radio</a>
     </div>
   </div>
 </section>
@@ -250,7 +316,7 @@ body{background:var(--vb-night);}
   </div>
 </section>
 
-<section class="vb-section" style="background:linear-gradient(180deg,var(--vb-night),#160a2a 50%,var(--vb-night));">
+<section class="vb-section" id="radio" style="background:linear-gradient(180deg,var(--vb-night),#160a2a 50%,var(--vb-night));">
   <div class="vb-inner">
     <div class="vb-label"><span data-i18n="vb_radio_label">Radio embarquée</span><span class="vb-eq"><i></i><i></i><i></i><i></i></span></div>
     <h2 class="vb-h2 reveal" data-i18n="vb_radio_title">Cinq stations, <em>toute la nuit</em></h2>
@@ -262,11 +328,6 @@ body{background:var(--vb-night);}
       <button class="vb-st" type="button" data-station="neon" aria-label="Écouter Neon 103.5"><img src="imgs/vb_radio_neon.png" alt="Neon 103.5 FM" loading="lazy"/><div>Neon 103.5</div><span class="vb-play">▶</span></button>
       <button class="vb-st" type="button" data-station="volt" aria-label="Écouter Volt 107.3"><img src="imgs/vb_radio_volt.png" alt="Volt 107.3 FM" loading="lazy"/><div>Volt 107.3</div><span class="vb-play">▶</span></button>
     </div>
-    <div class="vb-player" id="vb-player">
-      <div class="vb-player-eq"><i></i><i></i><i></i><i></i><i></i></div>
-      <div class="vb-player-meta"><b id="vbp-station" data-i18n="vb_player_idle">Choisis une station</b><span id="vbp-track"></span></div>
-      <button class="vb-player-btn" id="vbp-toggle" type="button" aria-label="Lecture / pause">▶</button>
-    </div>
     <p class="vb-credits" data-i18n="vb_credits">Musique : Kevin MacLeod (incompetech.com), licence Creative Commons BY 4.0. Extraits de la radio du jeu.</p>
   </div>
 </section>
@@ -277,7 +338,7 @@ body{background:var(--vb-night);}
     <div class="vb-feats">
       <div class="vb-f reveal"><div class="ic">⚡</div><h3 data-i18n="vb_f1_t">Power-ups</h3><p data-i18n="vb_f1_p">Paddle élargi, balle de feu, multiballe, aimant. Ramasse, enchaîne, monte le HEAT.</p></div>
       <div class="vb-f reveal r1"><div class="ic">☁️</div><h3 data-i18n="vb_f2_t">Sauvegarde cloud</h3><p data-i18n="vb_f2_p">Ta progression, tes étoiles et tes scores te suivent d'un appareil à l'autre.</p></div>
-      <div class="vb-f reveal r2"><div class="ic">🚫</div><h3 data-i18n="vb_f3_t">Sans pub interstitielle</h3><p data-i18n="vb_f3_p">Jamais coupé en pleine partie. Une session dure 90 secondes, on te les laisse.</p></div>
+      <div class="vb-f reveal r2"><div class="ic">🎟️</div><h3 data-i18n="vb_f3_t">Gratuit</h3><p data-i18n="vb_f3_p">Gratuit avec pubs, option sans pub. Jamais coupé en pleine partie : une session dure 90 secondes, on te les laisse.</p></div>
     </div>
   </div>
 </section>
@@ -374,20 +435,57 @@ body{background:var(--vb-night);}
 })();
 </script>
 
+
 <script>
 (function(){
-  const ST={"volt": [{"src": "audio/vb_volt_fantasia_fantasia.m4a", "title": "Fantasia Fantasia", "artist": "Kevin MacLeod", "license": "CC BY 4.0", "seconds": 151}, {"src": "audio/vb_volt_metalmania.m4a", "title": "Metalmania", "artist": "Kevin MacLeod", "license": "CC BY 4.0", "seconds": 190}], "emotion": [{"src": "audio/vb_emotion_morning.m4a", "title": "Morning", "artist": "Kevin MacLeod", "license": "CC BY 4.0", "seconds": 153}, {"src": "audio/vb_emotion_aquarium.m4a", "title": "Aquarium", "artist": "Kevin MacLeod", "license": "CC BY 4.0", "seconds": 143}], "sunset": [{"src": "audio/vb_sunset_loopster.m4a", "title": "Loopster", "artist": "Kevin MacLeod", "license": "CC BY 4.0", "seconds": 182}, {"src": "audio/vb_sunset_shaving_mirror.m4a", "title": "Shaving Mirror", "artist": "Kevin MacLeod", "license": "CC BY 4.0", "seconds": 206}], "tropicana": [{"src": "audio/vb_tropicana_arroz_con_pollo.m4a", "title": "Arroz Con Pollo", "artist": "Kevin MacLeod", "license": "CC BY 4.0", "seconds": 162}, {"src": "audio/vb_tropicana_bossabossa.m4a", "title": "BossaBossa", "artist": "Kevin MacLeod", "license": "CC BY 4.0", "seconds": 167}], "neon": [{"src": "audio/vb_neon_galactic_rap.m4a", "title": "Galactic Rap", "artist": "Kevin MacLeod", "license": "CC BY 4.0", "seconds": 142}, {"src": "audio/vb_neon_voxel_revolution.m4a", "title": "Voxel Revolution", "artist": "Kevin MacLeod", "license": "CC BY 4.0", "seconds": 129}]};
-  const NAMES={tropicana:'Tropicana 88.5',emotion:'Emotion 98.3',sunset:'Sunset Drive 102.7',neon:'Neon 103.5',volt:'Volt 107.3'};
-  const audio=new Audio(); audio.preload='none'; let cur=null, idx=0;
-  const player=document.getElementById('vb-player'), stEl=document.getElementById('vbp-station'), trEl=document.getElementById('vbp-track'), btn=document.getElementById('vbp-toggle');
-  function ui(){ document.querySelectorAll('.vb-st').forEach(b=>b.classList.toggle('playing', b.dataset.station===cur && !audio.paused));
-    player.classList.toggle('on', !audio.paused && !!cur); btn.textContent=(!audio.paused&&cur)?'\u275A\u275A':'\u25B6'; }
-  function load(st,i){ cur=st; idx=i%ST[st].length; const t=ST[st][idx]; audio.src=t.src; stEl.textContent=NAMES[st]; trEl.textContent=t.title+' \u2014 '+t.artist+' ('+t.license+')'; }
-  function play(st){ if(cur!==st){ load(st, Math.floor(Math.random()*ST[st].length)); audio.play().catch(()=>{}); } else if(audio.paused) audio.play().catch(()=>{}); else audio.pause(); ui(); }
-  document.querySelectorAll('.vb-st').forEach(b=>b.addEventListener('click',()=>play(b.dataset.station)));
-  btn.addEventListener('click',()=>{ if(!cur) play('tropicana'); else if(audio.paused) audio.play().catch(()=>{}); else audio.pause(); ui(); });
-  audio.addEventListener('ended',()=>{ load(cur, idx+1); audio.play().catch(()=>{}); ui(); });
+  const ST={"volt": [{"src": "audio/vb_volt_fantasia_fantasia.m4a", "title": "Fantasia Fantasia", "artist": "Kevin MacLeod", "license": "CC BY 4.0", "seconds": 151, "type": "track"}, {"src": "audio/vb_volt_metalmania.m4a", "title": "Metalmania", "artist": "Kevin MacLeod", "license": "CC BY 4.0", "seconds": 190, "type": "track"}], "emotion": [{"type": "track", "src": "audio/vb_conservatory_grand_dark_waltz_trio_allegro.m4a", "title": "Grand Dark Waltz Trio Allegro", "artist": "Kevin MacLeod", "license": "CC BY 4.0", "seconds": 194}, {"type": "link", "src": "audio/vb_emotion_link_grand_dark_waltz_trio_allegro_grand_dark_waltz_trio_vivace.m4a", "title": "Vice Bay DJ", "artist": "", "license": ""}, {"type": "track", "src": "audio/vb_conservatory_grand_dark_waltz_trio_vivace.m4a", "title": "Grand Dark Waltz Trio Vivace", "artist": "Kevin MacLeod", "license": "CC BY 4.0", "seconds": 172}, {"type": "link", "src": "audio/vb_emotion_link_grand_dark_waltz_trio_vivace_guzheng_city.m4a", "title": "Vice Bay DJ", "artist": "", "license": ""}, {"type": "track", "src": "audio/vb_emotion_more_guzheng_city.m4a", "title": "Guzheng City", "artist": "Kevin MacLeod", "license": "CC BY 4.0", "seconds": 114}], "sunset": [{"src": "audio/vb_sunset_loopster.m4a", "title": "Loopster", "artist": "Kevin MacLeod", "license": "CC BY 4.0", "seconds": 182, "type": "track"}, {"src": "audio/vb_sunset_shaving_mirror.m4a", "title": "Shaving Mirror", "artist": "Kevin MacLeod", "license": "CC BY 4.0", "seconds": 206, "type": "track"}], "tropicana": [{"type": "track", "src": "audio/vb_tropicana_more_beachfront_celebration.m4a", "title": "Beachfront Celebration", "artist": "Kevin MacLeod", "license": "CC BY 4.0", "seconds": 187}, {"type": "link", "src": "audio/vb_tropicana_link_beachfront_celebration_blue_ska.m4a", "title": "Vice Bay DJ", "artist": "", "license": ""}, {"type": "track", "src": "audio/vb_dubwise_blue_ska.m4a", "title": "Blue Ska", "artist": "Kevin MacLeod", "license": "CC BY 4.0", "seconds": 146}, {"type": "link", "src": "audio/vb_tropicana_link_blue_ska_bossabossa.m4a", "title": "Vice Bay DJ", "artist": "", "license": ""}, {"type": "track", "src": "audio/vb_tropicana_bossabossa.m4a", "title": "BossaBossa", "artist": "Kevin MacLeod", "license": "CC BY 4.0", "seconds": 167}], "neon": [{"src": "audio/vb_neon_galactic_rap.m4a", "title": "Galactic Rap", "artist": "Kevin MacLeod", "license": "CC BY 4.0", "seconds": 142, "type": "track"}, {"src": "audio/vb_neon_voxel_revolution.m4a", "title": "Voxel Revolution", "artist": "Kevin MacLeod", "license": "CC BY 4.0", "seconds": 129, "type": "track"}]};
+  const S=[{id:'tropicana',f:88.5,name:'TROPICANA',genre:'LATIN · REGGAE · WORLD',tag:'Todo el mundo baila.',c:'#1FB7A6'},
+           {id:'emotion',f:98.3,name:'EMOTION',genre:'LOUNGE · JAZZ · STRINGS',tag:'For the ones who drove away.',c:'#22E5FF'},
+           {id:'sunset',f:102.7,name:'SUNSET DRIVE',genre:'FUNK · DISCO · SOUL',tag:'Roll the windows down.',c:'#E5B84B'},
+           {id:'neon',f:103.5,name:'NEON',genre:'SYNTHWAVE · ELECTRO',tag:'The city after dark.',c:'#FF2E88'},
+           {id:'volt',f:107.3,name:'VOLT',genre:'ROCK · BLUES',tag:'Turn it up until something breaks.',c:'#FFA630'}];
+  const LOW=87.5, HIGH=108;
+  const $=id=>document.getElementById(id);
+  const root=$('vbr'), scale=$('vbr-scale'), needle=$('vbr-needle'), stWrap=root.querySelector('.vbr-stations');
+  const audio=new Audio(); audio.preload='none';
+  let cur=null, idx=0, offsets={};
+  const x=f=>((f-LOW)/(HIGH-LOW)*100)+'%';
+  S.forEach((s,i)=>{ const d=document.createElement('div'); d.style.left=x(s.f); d.style.setProperty('--c',s.c); if(i%2) d.classList.add('lower'); d.dataset.id=s.id; d.innerHTML='<i></i><span>'+s.f+'</span>'; stWrap.appendChild(d); });
+  function station(){ return S.find(s=>s.id===cur); }
+  function fmt(t){ t=Math.max(0,Math.floor(t||0)); return Math.floor(t/60)+':'+String(t%60).padStart(2,'0'); }
+  function ui(){ const s=station(); const on=s&&!audio.paused;
+    root.classList.toggle('on',!!on); root.style.setProperty('--acc', s?s.c:'#F5E3C3');
+    $('vbr-freq').textContent=s?s.f.toFixed(1):'—'; $('vbr-name').textContent=s?s.name:'CHOISIS UNE STATION'; $('vbr-genre').textContent=s?s.genre:'Touche le cadran';
+    $('vbr-onair').textContent=on?"À L'ANTENNE":(s?'EN PAUSE':'RADIO COUPÉE'); $('vbr-toggle').textContent=on?'❚❚':'▶';
+    stWrap.querySelectorAll('div').forEach(d=>d.classList.toggle('on',d.dataset.id===cur));
+    needle.style.left=x(s?s.f:LOW);
+    const it=s?ST[cur][idx]:null; $('vbr-title').textContent=it?(it.type==='link'?'🎙 '+it.title:it.title+' · '+it.artist):'—';
+    document.querySelectorAll('.vb-st').forEach(b=>b.classList.toggle('playing',on&&b.dataset.station===cur)); }
+  function load(id,i){ cur=id; idx=((i%ST[id].length)+ST[id].length)%ST[id].length; audio.src=ST[id][idx].src; }
+  function tune(id,autoplay){ if(cur===id){ if(audio.paused) audio.play().catch(()=>{}); ui(); return; }
+    if(cur) offsets[cur]={i:idx,t:audio.currentTime};
+    const o=offsets[id]; load(id,o?o.i:Math.floor(Math.random()*ST[id].length)); if(o) audio.currentTime=o.t;
+    if(autoplay!==false) audio.play().catch(()=>{}); ui(); }
+  function pos(ev){ const r=scale.getBoundingClientRect(); const px=(ev.touches?ev.touches[0].clientX:ev.clientX)-r.left; const f=LOW+Math.min(1,Math.max(0,px/r.width))*(HIGH-LOW);
+    return S.reduce((a,b)=>Math.abs(b.f-f)<Math.abs(a.f-f)?b:a); }
+  let drag=false;
+  scale.addEventListener('pointerdown',e=>{drag=true; needle.style.transition='none'; const r=scale.getBoundingClientRect(); needle.style.left=Math.min(100,Math.max(0,(e.clientX-r.left)/r.width*100))+'%';});
+  window.addEventListener('pointermove',e=>{ if(!drag) return; const r=scale.getBoundingClientRect(); needle.style.left=Math.min(100,Math.max(0,(e.clientX-r.left)/r.width*100))+'%'; });
+  window.addEventListener('pointerup',e=>{ if(!drag) return; drag=false; needle.style.transition=''; tune(pos(e).id); });
+  root.querySelector('.vbr-ctl').addEventListener('click',e=>{ const b=e.target.closest('button'); if(!b) return; const a=b.dataset.act; const i=S.findIndex(s=>s.id===cur);
+    if(a==='toggle'){ if(!cur) tune('tropicana'); else if(audio.paused) audio.play().catch(()=>{}); else audio.pause(); }
+    else if(a==='prev'){ tune(S[(i-1+S.length)%S.length].id); }
+    else if(a==='next'){ tune(S[(i+1)%S.length].id); }
+    else if(a==='skip'){ if(cur){ load(cur,idx+1); audio.play().catch(()=>{}); } }
+    else if(a==='power'){ audio.pause(); audio.removeAttribute('src'); cur=null; }
+    ui(); });
+  $('vbr-min').addEventListener('click',()=>{ root.classList.toggle('min'); $('vbr-min').textContent=root.classList.contains('min')?'+':'–'; });
+  audio.addEventListener('ended',()=>{ load(cur,idx+1); audio.play().catch(()=>{}); ui(); });
+  audio.addEventListener('timeupdate',()=>{ $('vbr-time').textContent=fmt(audio.currentTime)+' / '+fmt(audio.duration); $('vbr-prog').style.width=(audio.duration?audio.currentTime/audio.duration*100:0)+'%'; });
   audio.addEventListener('play',ui); audio.addEventListener('pause',ui);
+  document.querySelectorAll('.vb-st').forEach(b=>b.addEventListener('click',()=>{ root.classList.remove('min'); tune(b.dataset.station); }));
+  document.querySelectorAll('[data-radio-cta]').forEach(b=>b.addEventListener('click',e=>{e.preventDefault(); tune('neon');}));
+  ui();
 })();
 </script>
 </body>

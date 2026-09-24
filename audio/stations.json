@@ -5,30 +5,56 @@
    "title": "Fantasia Fantasia",
    "artist": "Kevin MacLeod",
    "license": "CC BY 4.0",
-   "seconds": 151
+   "seconds": 151,
+   "type": "track"
   },
   {
    "src": "audio/vb_volt_metalmania.m4a",
    "title": "Metalmania",
    "artist": "Kevin MacLeod",
    "license": "CC BY 4.0",
-   "seconds": 190
+   "seconds": 190,
+   "type": "track"
   }
  ],
  "emotion": [
   {
-   "src": "audio/vb_emotion_morning.m4a",
-   "title": "Morning",
+   "type": "track",
+   "src": "audio/vb_conservatory_grand_dark_waltz_trio_allegro.m4a",
+   "title": "Grand Dark Waltz Trio Allegro",
    "artist": "Kevin MacLeod",
    "license": "CC BY 4.0",
-   "seconds": 153
+   "seconds": 194
   },
   {
-   "src": "audio/vb_emotion_aquarium.m4a",
-   "title": "Aquarium",
+   "type": "link",
+   "src": "audio/vb_emotion_link_grand_dark_waltz_trio_allegro_grand_dark_waltz_trio_vivace.m4a",
+   "title": "Vice Bay DJ",
+   "artist": "",
+   "license": ""
+  },
+  {
+   "type": "track",
+   "src": "audio/vb_conservatory_grand_dark_waltz_trio_vivace.m4a",
+   "title": "Grand Dark Waltz Trio Vivace",
    "artist": "Kevin MacLeod",
    "license": "CC BY 4.0",
-   "seconds": 143
+   "seconds": 172
+  },
+  {
+   "type": "link",
+   "src": "audio/vb_emotion_link_grand_dark_waltz_trio_vivace_guzheng_city.m4a",
+   "title": "Vice Bay DJ",
+   "artist": "",
+   "license": ""
+  },
+  {
+   "type": "track",
+   "src": "audio/vb_emotion_more_guzheng_city.m4a",
+   "title": "Guzheng City",
+   "artist": "Kevin MacLeod",
+   "license": "CC BY 4.0",
+   "seconds": 114
   }
  ],
  "sunset": [
@@ -37,25 +63,51 @@
    "title": "Loopster",
    "artist": "Kevin MacLeod",
    "license": "CC BY 4.0",
-   "seconds": 182
+   "seconds": 182,
+   "type": "track"
   },
   {
    "src": "audio/vb_sunset_shaving_mirror.m4a",
    "title": "Shaving Mirror",
    "artist": "Kevin MacLeod",
    "license": "CC BY 4.0",
-   "seconds": 206
+   "seconds": 206,
+   "type": "track"
   }
  ],
  "tropicana": [
   {
-   "src": "audio/vb_tropicana_arroz_con_pollo.m4a",
-   "title": "Arroz Con Pollo",
+   "type": "track",
+   "src": "audio/vb_tropicana_more_beachfront_celebration.m4a",
+   "title": "Beachfront Celebration",
    "artist": "Kevin MacLeod",
    "license": "CC BY 4.0",
-   "seconds": 162
+   "seconds": 187
   },
   {
+   "type": "link",
+   "src": "audio/vb_tropicana_link_beachfront_celebration_blue_ska.m4a",
+   "title": "Vice Bay DJ",
+   "artist": "",
+   "license": ""
+  },
+  {
+   "type": "track",
+   "src": "audio/vb_dubwise_blue_ska.m4a",
+   "title": "Blue Ska",
+   "artist": "Kevin MacLeod",
+   "license": "CC BY 4.0",
+   "seconds": 146
+  },
+  {
+   "type": "link",
+   "src": "audio/vb_tropicana_link_blue_ska_bossabossa.m4a",
+   "title": "Vice Bay DJ",
+   "artist": "",
+   "license": ""
+  },
+  {
+   "type": "track",
    "src": "audio/vb_tropicana_bossabossa.m4a",
    "title": "BossaBossa",
    "artist": "Kevin MacLeod",
@@ -69,14 +121,16 @@
    "title": "Galactic Rap",
    "artist": "Kevin MacLeod",
    "license": "CC BY 4.0",
-   "seconds": 142
+   "seconds": 142,
+   "type": "track"
   },
   {
    "src": "audio/vb_neon_voxel_revolution.m4a",
    "title": "Voxel Revolution",
    "artist": "Kevin MacLeod",
    "license": "CC BY 4.0",
-   "seconds": 129
+   "seconds": 129,
+   "type": "track"
   }
  ]
 }
