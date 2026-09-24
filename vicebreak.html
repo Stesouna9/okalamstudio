@@ -142,7 +142,7 @@ body{background:var(--vb-night);}
 .vb-rule i{font-style:normal;color:var(--vb-sand);opacity:.6;}
 .vb-cab-rules ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:12px;}
 .vb-cab-rules li{position:relative;padding-left:26px;color:rgba(245,227,195,.8);font-size:.92rem;line-height:1.5;}
-.vb-cab-rules li::before{content:'🪙';position:absolute;left:0;top:0;font-size:.9rem;}
+.vb-cab-rules li::before{content:'▸';color:var(--vb-cyan);position:absolute;left:0;top:0;font-size:.9rem;}
 .vb-cab-rules li strong{color:#fff;}
 @media(max-width:800px){.vb-cab{grid-template-columns:1fr;}}
 
@@ -377,7 +377,7 @@ body{background:var(--vb-night);}
   <div class="vb-inner">
     <div class="vb-label" data-i18n="vb_arc_label">La borne</div>
     <h2 class="vb-h2 reveal" data-i18n="vb_arc_title">Une borne d'arcade de 1986, <em>dans ta poche</em></h2>
-    <p class="vb-p reveal r1" data-i18n="vb_arc_p">Pas de vies, pas de boutique. Une fente à jetons. Tu mets un jeton, tu as trois balles. Tu les perds toutes, la borne affiche GAME OVER. Tu remets un jeton, tu repars au niveau où tu es tombé.</p>
+    <p class="vb-p reveal r1" data-i18n="vb_arc_p">Le ton d'une salle d'arcade de 1986 : l'écran GAME OVER, le HIGH SCORE à battre, les crédits qui clignotent. Et une différence avec la borne : c'est gratuit, sans limite de parties. Chaque niveau démarre avec trois balles, tu recommences autant que tu veux.</p>
     <div class="vb-cab reveal r2">
       <div class="vb-cab-screen">
         <div class="vb-cab-hs"><span>HIGH SCORE</span><b>12 345</b></div>
@@ -386,12 +386,11 @@ body{background:var(--vb-night);}
         <div class="vb-cab-credits"><span data-i18n="vb_arc_credits">CRÉDITS</span><b>04</b></div>
       </div>
       <div class="vb-cab-rules">
-        <div class="vb-rule"><b>1 JETON</b><i>=</i><b>1 CRÉDIT</b><i>=</i><b data-i18n="vb_arc_3balls">3 BALLES</b></div>
+        <div class="vb-rule"><b data-i18n="vb_arc_free">GRATUIT · SANS LIMITE DE PARTIES</b></div>
         <ul>
-          <li data-i18n="vb_arc_r1"><strong>5 jetons offerts</strong> à l'installation</li>
-          <li data-i18n="vb_arc_r2"><strong>1 jeton</strong> par niveau terminé sans perdre une balle</li>
-          <li data-i18n="vb_arc_r3"><strong>1 jeton</strong> par pub regardée, 3 fois par jour maximum</li>
-          <li data-i18n="vb_arc_r4"><strong>Rejouer un niveau</strong> depuis le début : toujours gratuit</li>
+          <li data-i18n="vb_arc_r1"><strong>3 balles</strong> à chaque niveau</li>
+          <li data-i18n="vb_arc_r2"><strong>GAME OVER ?</strong> Tu recommences tout de suite, sans attente</li>
+          <li data-i18n="vb_arc_r3"><strong>HIGH SCORE</strong> par niveau, classement entre amis</li>
         </ul>
       </div>
     </div>
@@ -404,7 +403,7 @@ body{background:var(--vb-night);}
     <div class="vb-feats">
       <div class="vb-f reveal"><div class="ic">⚡</div><h3 data-i18n="vb_f1_t">Power-ups</h3><p data-i18n="vb_f1_p">Paddle élargi, balle de feu, multiballe, aimant. Ramasse, enchaîne, monte le HEAT.</p></div>
       <div class="vb-f reveal r1"><div class="ic">☁️</div><h3 data-i18n="vb_f2_t">Sauvegarde cloud</h3><p data-i18n="vb_f2_p">Ta progression, tes étoiles et tes scores te suivent d'un appareil à l'autre.</p></div>
-      <div class="vb-f reveal r2"><div class="ic">🪙</div><h3 data-i18n="vb_f3_t">Jetons, pas de vies</h3><p data-i18n="vb_f3_p">Comme sur la borne : un jeton, trois balles, GAME OVER, on remet un jeton. Jamais coupé en pleine partie.</p></div>
+      <div class="vb-f reveal r2"><div class="ic">🕹️</div><h3 data-i18n="vb_f3_t">Gratuit, sans limite</h3><p data-i18n="vb_f3_p">Autant de parties que tu veux, sans attente. Jamais coupé en pleine partie : une session dure 90 secondes, on te les laisse.</p></div>
     </div>
   </div>
 </section>
