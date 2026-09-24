@@ -4,6 +4,7 @@
 <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Projets — OKALAM Studio</title>
 <meta name="description" content="VoteDay et Little ToT — les projets en cours d'OKALAM Studio. Applications iOS indépendantes, construites avec soin."/>
+<link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="shared.css"/>
 <style>
 canvas{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;opacity:.5;}
@@ -124,6 +125,21 @@ canvas{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-
 .vb-bricks span{width:34px;height:12px;border-radius:3px;background:linear-gradient(90deg,#ff3cac,#784ba0);box-shadow:0 0 10px rgba(255,60,172,.8);}
 .vb-bricks span:nth-child(2){background:linear-gradient(90deg,#00e5ff,#2b86c5);box-shadow:0 0 10px rgba(0,229,255,.8);}
 .vb-bricks span:nth-child(3){background:linear-gradient(90deg,#ffd166,#ff7b00);box-shadow:0 0 10px rgba(255,180,0,.8);}
+
+/* VICE BREAK TEASER */
+.vb-teaser{display:block;position:relative;border-radius:28px;overflow:hidden;text-decoration:none;color:inherit;border:1px solid rgba(255,46,136,.3);margin-bottom:80px;background:#0B0A1E;transition:transform .35s,box-shadow .35s;}
+.vb-teaser:hover{transform:translateY(-6px);box-shadow:0 30px 70px rgba(255,46,136,.25);}
+.vb-teaser-sky{position:relative;height:300px;overflow:hidden;background:linear-gradient(180deg,#0B0A1E 0%,#1C1650 35%,#5A2A83 62%,#FF6F59 90%,#FF2E88 100%);}
+.vb-teaser-sky svg{position:absolute;left:0;bottom:0;width:100%;height:120px;}
+.vb-teaser-sun{position:absolute;left:50%;bottom:60px;width:260px;height:260px;transform:translateX(-50%);border-radius:50%;background:linear-gradient(180deg,#FFE29A,#F2B33D 40%,#FF6F59 75%,#FF2E88);
+  -webkit-mask:linear-gradient(#000 0 0) top/100% 58%,repeating-linear-gradient(180deg,#000 0 10px,transparent 10px 17px) bottom/100% 42%;-webkit-mask-repeat:no-repeat;mask:linear-gradient(#000 0 0) top/100% 58%,repeating-linear-gradient(180deg,#000 0 10px,transparent 10px 17px) bottom/100% 42%;mask-repeat:no-repeat;filter:drop-shadow(0 0 30px rgba(255,111,89,.6));}
+.vb-teaser-grid{position:absolute;left:0;right:0;bottom:0;height:90px;background:linear-gradient(rgba(34,229,255,.4) 1px,transparent 1px),linear-gradient(90deg,rgba(34,229,255,.4) 1px,transparent 1px);background-size:100% 22px,50px 100%;transform:perspective(300px) rotateX(55deg);transform-origin:top;opacity:.5;}
+.vb-teaser-body{position:relative;text-align:center;padding:36px 24px 44px;background:linear-gradient(180deg,#0B0A1E,#120c30);}
+.vb-teaser-kicker{font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.4em;text-transform:uppercase;color:#22E5FF;text-shadow:0 0 10px rgba(34,229,255,.8);margin-bottom:8px;}
+.vb-teaser-logo{font-family:'Monoton',cursive;font-size:clamp(2.4rem,7vw,5rem);letter-spacing:.06em;color:#fff;line-height:1;text-shadow:0 0 6px #fff,0 0 18px #FF2E88,0 0 42px #FF2E88;}
+.vb-teaser-cta{display:inline-block;margin-top:26px;padding:12px 22px;border-radius:10px;background:#FF2E88;color:#fff;font-family:'Syne',sans-serif;font-weight:800;font-size:.85rem;letter-spacing:.04em;box-shadow:0 0 22px rgba(255,46,136,.6);}
+.vb-teaser .project-status{margin-bottom:14px;}
+@media(max-width:600px){.vb-teaser-sky{height:200px;}.vb-teaser-sun{width:170px;height:170px;bottom:40px;}}
 
 @media(max-width:900px){
   .project-block,.project-block.reverse{grid-template-columns:1fr;direction:ltr;gap:32px;}
@@ -246,26 +262,19 @@ canvas{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-
   <div class="ok-section-inner">
 
     <!-- Vice Break -->
-    <div class="project-block reveal" id="vicebreak">
-      <div class="project-visual vb" style="position:relative;overflow:hidden;padding:0;">
-        <div class="vb-grid"></div>
-        <div class="vb-art"><img src="imgs/vicebreak_icon.png" alt="" style="width:96px;height:96px;border-radius:22px;box-shadow:0 0 30px rgba(255,60,172,.7);" onerror="this.remove()"/><div class="vb-sub">Vice Bay · 1986</div><div class="vb-title">VICE BREAK</div><div class="vb-bricks"><span></span><span></span><span></span></div></div>
+    <a class="vb-teaser reveal" id="vicebreak" href="vicebreak.html">
+      <div class="vb-teaser-sky"><div class="vb-teaser-sun"></div><div class="vb-teaser-grid"></div>
+        <svg viewBox="0 0 1440 260" preserveAspectRatio="none" aria-hidden="true"><g fill="#0B0A1E"><rect x="0" y="200" width="1440" height="60"/><rect x="30" y="150" width="60" height="110"/><rect x="110" y="110" width="40" height="150"/><rect x="170" y="170" width="90" height="90"/><rect x="280" y="80" width="50" height="180"/><rect x="350" y="140" width="70" height="120"/><rect x="440" y="100" width="45" height="160"/><rect x="505" y="160" width="110" height="100"/><rect x="640" y="60" width="60" height="200"/><rect x="720" y="120" width="40" height="140"/><rect x="780" y="90" width="80" height="170"/><rect x="880" y="150" width="50" height="110"/><rect x="950" y="70" width="55" height="190"/><rect x="1025" y="130" width="90" height="130"/><rect x="1135" y="100" width="45" height="160"/><rect x="1200" y="160" width="70" height="100"/><rect x="1290" y="120" width="50" height="140"/><rect x="1360" y="170" width="60" height="90"/><path d="M120 200 c-30-20-60-70-40-110 c30 20 40 60 40 110z M100 200 c-20-30-70-40-95-30 c30 10 60 20 95 30z M105 200 c10-40 40-80 90-85 c-30 20-60 50-90 85z"/><path d="M1330 200 c-30-25-70-60-50-115 c35 25 45 70 50 115z M1315 200 c-25-30-80-30-105-20 c35 5 70 10 105 20z M1320 200 c5-45 45-85 95-80 c-30 15-70 45-95 80z"/></g></svg>
       </div>
-      <div class="project-content">
+      <div class="vb-teaser-body">
         <div class="project-status" data-i18n="proj_status">En développement</div>
-        <div class="project-head"><img class="project-icon" src="imgs/vicebreak_icon.png" alt="" onerror="this.remove()"/><h2 class="project-name">Vice Break</h2></div>
-        <p class="project-desc" data-i18n="proj_vb_desc">Casse-briques néon de 1986. Bienvenue à Vice Bay : chrome, palmiers et sessions de 90 secondes.</p>
-        <div class="project-tags"><span class="ptag">Arcade</span><span class="ptag">iOS</span><span class="ptag">SpriteKit</span><span class="ptag">Néon</span></div>
-        <div class="project-features">
-          <div class="feature"><div class="feature-dot"></div><div class="feature-text" data-i18n="proj_vb_f1"><strong>100 tableaux-silhouettes</strong> — chaque niveau raconte une scène</div></div>
-          <div class="feature"><div class="feature-dot"></div><div class="feature-text" data-i18n="proj_vb_f2"><strong>Radio embarquée</strong> — l'ambiance d'une ville de nuit</div></div>
-          <div class="feature"><div class="feature-dot"></div><div class="feature-text" data-i18n="proj_vb_f3"><strong>Power-ups & sauvegarde cloud</strong> — reprends où tu t'es arrêté</div></div>
-          <div class="feature"><div class="feature-dot"></div><div class="feature-text" data-i18n="proj_vb_f4"><strong>Sans pub interstitielle</strong> — jamais coupé en pleine partie</div></div>
-        </div>
-        <div class="inprogress"><div class="inprogress-icon">🕹️</div><div data-i18n="proj_vb_inprogress">Jeu jouable en interne. Sortie App Store en préparation.</div></div>
-        <div class="store-row"><a class="store-btn soon" href="support-vicebreak.html" style="cursor:pointer;"><span class="sb-logo">💬</span><span><small data-i18n="proj_vb_support_small">Page</small>Support Vice Break</span></a></div>
+        <div class="vb-teaser-kicker">Vice Bay · 1986</div>
+        <div class="vb-teaser-logo">VICE BREAK</div>
+        <p class="project-desc" style="max-width:560px;margin:14px auto 0;" data-i18n="proj_vb_desc">Casse-briques néon de 1986. Bienvenue à Vice Bay : chrome, palmiers et sessions de 90 secondes.</p>
+        <div class="project-tags" style="justify-content:center;margin-top:20px;"><span class="ptag">100 silhouettes</span><span class="ptag">5 quartiers</span><span class="ptag">Radio</span><span class="ptag" data-i18n="proj_vb_noads">Sans pub interstitielle</span></div>
+        <div class="vb-teaser-cta" data-i18n="proj_vb_cta">Découvrir Vice Break →</div>
       </div>
-    </div>
+    </a>
 
     <!-- Little ToT -->
     <div class="project-block reverse reveal" id="littletot">

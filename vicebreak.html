@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>VICE BREAK — Casse-briques néon de 1986 | OKALAM Studio</title>
+<meta name="description" content="VICE BREAK : le casse-briques néon de 1986 par OKALAM Studio. 100 silhouettes, 5 quartiers de Vice Bay, radio embarquée. Bientôt sur iPhone."/>
+<link href="https://fonts.googleapis.com/css2?family=Monoton&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="shared.css"/>
+<style>
+:root{--vb-night:#0B0A1E;--vb-indigo:#1C1650;--vb-dusk:#5A2A83;--vb-mag:#FF2E88;--vb-cyan:#22E5FF;--vb-coral:#FF6F59;--vb-sand:#F5E3C3;--vb-chrome:#C9CED6;--vb-gold:#E5B84B;--vb-sodium:#FFA630;--vb-teal:#1FB7A6;--vb-marsh:#3E7C4F;}
+body{background:var(--vb-night);}
+#ok-particles{display:none;}
+.vb *{box-sizing:border-box;}
+.vb-hero{position:relative;min-height:100vh;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding:120px 24px 0;
+  background:linear-gradient(180deg,var(--vb-night) 0%,var(--vb-indigo) 38%,var(--vb-dusk) 62%,var(--vb-coral) 88%,var(--vb-mag) 100%);}
+.vb-stars{position:absolute;inset:0;background-image:radial-gradient(1px 1px at 12% 18%,#fff 60%,transparent),radial-gradient(1px 1px at 30% 8%,#fff 60%,transparent),radial-gradient(1.5px 1.5px at 55% 22%,#fff 60%,transparent),radial-gradient(1px 1px at 72% 12%,#fff 60%,transparent),radial-gradient(1px 1px at 88% 28%,#fff 60%,transparent),radial-gradient(1px 1px at 40% 30%,#fff 60%,transparent),radial-gradient(1.5px 1.5px at 80% 5%,#fff 60%,transparent),radial-gradient(1px 1px at 5% 35%,#fff 60%,transparent);opacity:.7;}
+.vb-sun{position:absolute;left:50%;bottom:26%;width:min(52vw,420px);aspect-ratio:1;transform:translateX(-50%);border-radius:50%;
+  background:linear-gradient(180deg,#FFE29A 0%,#F2B33D 40%,var(--vb-coral) 75%,var(--vb-mag) 100%);
+  -webkit-mask:linear-gradient(#000 0 0) top/100% 58%,repeating-linear-gradient(180deg,#000 0 12px,transparent 12px 20px) bottom/100% 42%;-webkit-mask-repeat:no-repeat;
+  mask:linear-gradient(#000 0 0) top/100% 58%,repeating-linear-gradient(180deg,#000 0 12px,transparent 12px 20px) bottom/100% 42%;mask-repeat:no-repeat;
+  filter:drop-shadow(0 0 40px rgba(255,111,89,.6));}
+.vb-sky svg{position:absolute;left:0;bottom:0;width:100%;height:auto;display:block;}
+.vb-floor{position:absolute;left:0;right:0;bottom:0;height:26%;
+  background:linear-gradient(180deg,rgba(11,10,30,1),rgba(11,10,30,.85)),
+  linear-gradient(rgba(34,229,255,.45) 1px,transparent 1px),linear-gradient(90deg,rgba(34,229,255,.45) 1px,transparent 1px);
+  background-size:100% 100%,100% 34px,60px 100%;background-blend-mode:normal;
+  transform:perspective(420px) rotateX(58deg);transform-origin:top;opacity:.85;}
+.vb-floor::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent,var(--vb-night) 90%);}
+.vb-hero-content{position:relative;z-index:2;text-align:center;padding-bottom:22vh;}
+.vb-kicker{font-family:'Orbitron',sans-serif;font-weight:700;font-size:.72rem;letter-spacing:.42em;text-transform:uppercase;color:var(--vb-cyan);text-shadow:0 0 12px rgba(34,229,255,.9);margin-bottom:14px;}
+.vb-logo{font-family:'Monoton',cursive;font-weight:400;font-size:clamp(3rem,11vw,8.5rem);line-height:.95;letter-spacing:.06em;color:#fff;
+  text-shadow:0 0 6px #fff,0 0 18px var(--vb-mag),0 0 42px var(--vb-mag),0 0 90px rgba(255,46,136,.6);animation:vbflicker 6s infinite;}
+@keyframes vbflicker{0%,94%,100%{opacity:1}95%{opacity:.55}96%{opacity:1}97.5%{opacity:.7}98%{opacity:1}}
+.vb-tag{font-family:'Orbitron',sans-serif;font-weight:500;font-size:clamp(.8rem,1.8vw,1.05rem);letter-spacing:.2em;text-transform:uppercase;color:var(--vb-sand);margin-top:18px;}
+.vb-ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:30px;}
+.vb-btn{display:inline-flex;align-items:center;gap:10px;padding:13px 24px;border-radius:12px;font-family:'Orbitron',sans-serif;font-weight:700;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;transition:transform .2s,box-shadow .2s;}
+.vb-btn.primary{background:var(--vb-mag);color:#fff;box-shadow:0 0 24px rgba(255,46,136,.7);}
+.vb-btn.ghost{border:1px solid rgba(34,229,255,.6);color:var(--vb-cyan);background:rgba(11,10,30,.5);backdrop-filter:blur(6px);}
+.vb-btn:hover{transform:translateY(-2px);box-shadow:0 0 34px rgba(255,46,136,.8);}
+.vb-btn.ghost:hover{box-shadow:0 0 24px rgba(34,229,255,.5);}
+.vb-badge{display:inline-flex;align-items:center;gap:8px;font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--vb-sand);border:1px solid rgba(245,227,195,.35);padding:5px 12px;border-radius:20px;margin-bottom:22px;background:rgba(11,10,30,.45);}
+.vb-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--vb-gold);box-shadow:0 0 8px var(--vb-gold);animation:blink 2s infinite;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+
+.vb-section{position:relative;padding:100px 24px;}
+.vb-inner{max-width:1100px;margin:0 auto;}
+.vb-label{font-family:'Orbitron',sans-serif;font-size:.62rem;letter-spacing:.35em;text-transform:uppercase;color:var(--vb-cyan);margin-bottom:12px;display:flex;align-items:center;gap:12px;}
+.vb-label::before{content:'';width:28px;height:2px;background:var(--vb-cyan);box-shadow:0 0 8px var(--vb-cyan);}
+.vb-h2{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(1.9rem,4.5vw,3.2rem);letter-spacing:-.02em;color:#fff;margin-bottom:14px;}
+.vb-h2 em{font-style:normal;color:var(--vb-mag);text-shadow:0 0 18px rgba(255,46,136,.6);}
+.vb-p{color:rgba(245,227,195,.72);font-size:1rem;line-height:1.8;max-width:620px;}
+
+/* PHONES */
+.vb-phones{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;align-items:end;margin-top:56px;}
+.vb-phone{position:relative;aspect-ratio:9/19.4;border-radius:38px;background:#05040f;border:2px solid #2a2650;box-shadow:0 30px 60px rgba(0,0,0,.6),0 0 0 6px #0d0b24,0 0 40px rgba(34,229,255,.12);overflow:hidden;transition:transform .35s;}
+.vb-phone:nth-child(2){transform:translateY(-28px) scale(1.04);}
+.vb-phone:hover{transform:translateY(-10px) scale(1.03);}
+.vb-phone img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;display:block;}
+.vb-phone canvas{position:absolute;inset:0;width:100%;height:100%;display:block;}
+.vb-phone .cap{position:absolute;left:0;right:0;bottom:0;padding:14px 16px 18px;background:linear-gradient(180deg,transparent,rgba(11,10,30,.95));font-family:'Orbitron',sans-serif;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--vb-sand);text-align:center;}
+
+/* SILHOUETTES */
+.vb-sil-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:48px;}
+.vb-sil{background:linear-gradient(180deg,#120f33,#0B0A1E);border:1px solid rgba(34,229,255,.15);border-radius:18px;padding:18px;text-align:center;transition:transform .3s,border-color .3s;}
+.vb-sil:hover{transform:translateY(-6px);border-color:rgba(255,46,136,.5);}
+.vb-sil canvas{width:100%;aspect-ratio:12/10;display:block;}
+.vb-sil span{display:block;margin-top:12px;font-family:'Orbitron',sans-serif;font-size:.58rem;letter-spacing:.25em;text-transform:uppercase;color:var(--vb-sand);opacity:.8;}
+.vb-counter{font-family:'Orbitron',sans-serif;font-weight:900;font-size:clamp(3rem,9vw,6rem);line-height:1;color:var(--vb-cyan);text-shadow:0 0 22px rgba(34,229,255,.7);}
+
+/* DISTRICTS */
+.vb-dist{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:48px;}
+.vb-d{position:relative;aspect-ratio:3/4;border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,.08);display:flex;align-items:flex-end;padding:16px;transition:transform .3s;}
+.vb-d:hover{transform:translateY(-6px);}
+.vb-d::after{content:'';position:absolute;left:0;right:0;bottom:0;height:34%;background:linear-gradient(180deg,transparent,rgba(11,10,30,.9));}
+.vb-d .sk{position:absolute;left:0;right:0;bottom:0;height:40%;background:var(--vb-night);-webkit-mask:var(--m);mask:var(--m);}
+.vb-d b{display:block;position:relative;z-index:1;font-family:'Orbitron',sans-serif;font-weight:700;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:#fff;}
+.vb-d small{position:relative;z-index:1;display:block;font-size:.65rem;color:rgba(255,255,255,.65);margin-top:4px;font-family:'DM Sans',sans-serif;letter-spacing:.02em;}
+.vb-d .sun{position:absolute;left:50%;top:30%;width:38%;aspect-ratio:1;border-radius:50%;transform:translateX(-50%);filter:blur(1px);}
+
+/* RADIO */
+.vb-radio{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:48px;}
+.vb-st{border-radius:16px;overflow:hidden;background:#120f33;border:1px solid rgba(255,255,255,.06);transition:transform .3s;}
+.vb-st:hover{transform:rotate(-1.5deg) scale(1.04);}
+.vb-st img{width:100%;aspect-ratio:3/4;object-fit:cover;display:block;}
+.vb-st div{padding:10px 12px;font-family:'Orbitron',sans-serif;font-size:.55rem;letter-spacing:.18em;text-transform:uppercase;color:var(--vb-sand);text-align:center;}
+.vb-eq{display:flex;gap:4px;align-items:flex-end;height:22px;margin-left:12px;}
+.vb-eq i{width:4px;background:var(--vb-mag);box-shadow:0 0 6px var(--vb-mag);animation:eq 1s infinite ease-in-out;}
+.vb-eq i:nth-child(2){animation-delay:.15s;background:var(--vb-cyan);box-shadow:0 0 6px var(--vb-cyan);}
+.vb-eq i:nth-child(3){animation-delay:.3s;}.vb-eq i:nth-child(4){animation-delay:.45s;background:var(--vb-cyan);box-shadow:0 0 6px var(--vb-cyan);}
+@keyframes eq{0%,100%{height:6px}50%{height:22px}}
+
+/* FEATURES */
+.vb-feats{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:48px;}
+.vb-f{background:rgba(28,22,80,.35);border:1px solid rgba(34,229,255,.14);border-radius:18px;padding:26px;}
+.vb-f .ic{font-size:1.6rem;margin-bottom:12px;}
+.vb-f h3{font-family:'Syne',sans-serif;font-weight:800;font-size:1.05rem;color:#fff;margin-bottom:8px;}
+.vb-f p{color:rgba(245,227,195,.65);font-size:.85rem;line-height:1.65;}
+
+/* PADDLE divider */
+.vb-paddle{height:10px;width:min(220px,50%);margin:0 auto;border-radius:5px;background:linear-gradient(90deg,#F2F4F7 0 25%,#8A93A3 25% 50%,#E7EAF0 50% 75%,#4A5262 75% 100%);box-shadow:0 0 18px rgba(201,206,214,.5);}
+.vb-ball{width:12px;height:12px;border-radius:50%;background:var(--vb-cyan);box-shadow:0 0 14px var(--vb-cyan);margin:0 auto 10px;animation:bounce 1.2s infinite ease-in-out;}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-26px)}}
+
+/* CTA */
+.vb-cta{text-align:center;background:linear-gradient(180deg,var(--vb-night),#1a0d3a 60%,var(--vb-night));}
+.vb-cta .vb-logo{font-size:clamp(2rem,6vw,4rem);}
+.vb-legal{font-size:.7rem;color:rgba(245,227,195,.4);margin-top:40px;max-width:640px;margin-left:auto;margin-right:auto;line-height:1.6;}
+
+@media(max-width:900px){.vb-phones{grid-template-columns:repeat(3,1fr);gap:12px;}.vb-phone{border-radius:22px;}.vb-sil-grid{grid-template-columns:repeat(2,1fr);}.vb-dist{grid-template-columns:repeat(3,1fr);}.vb-radio{grid-template-columns:repeat(3,1fr);}.vb-feats{grid-template-columns:1fr;}}
+@media(max-width:560px){.vb-phones{grid-template-columns:1fr 1fr;}.vb-phone:nth-child(3){display:none;}.vb-dist{grid-template-columns:repeat(2,1fr);}.vb-radio{grid-template-columns:repeat(2,1fr);}.vb-hero{min-height:88vh;}}
+</style>
+</head>
+<body>
+<canvas id="ok-particles"></canvas>
+
+<nav class="ok-nav">
+  <a href="index.html" class="ok-nav-logo">OKALAM</a>
+  <div class="ok-nav-right">
+    <div class="flag-picker">
+      <button class="flag-btn" data-lang="en" onclick="sharedSetLang('en')" title="English">🇬🇧</button>
+      <button class="flag-btn" data-lang="fr" onclick="sharedSetLang('fr')" title="Français">🇫🇷</button>
+      <button class="flag-btn" data-lang="ja" onclick="sharedSetLang('ja')" title="日本語">🇯🇵</button>
+      <button class="flag-btn" data-lang="zh" onclick="sharedSetLang('zh')" title="中文">🇨🇳</button>
+      <button class="flag-btn" data-lang="es" onclick="sharedSetLang('es')" title="Español">🇪🇸</button>
+      <button class="flag-btn" data-lang="pt" onclick="sharedSetLang('pt')" title="Português">🇵🇹</button>
+    </div>
+    <button class="ok-nav-menu-btn" aria-label="Menu">
+      <div class="ok-nav-menu-icon"><span></span><span></span><span></span></div>
+      <span>Menu</span>
+    </button>
+  </div>
+</nav>
+<div class="ok-nav-overlay"></div>
+<nav class="ok-nav-dropdown">
+  <div class="ok-nav-items">
+    <a href="index.html" class="ok-nav-link" data-i18n="nav_home">Accueil</a>
+    <a href="studio.html" class="ok-nav-link" data-i18n="nav_studio">Studio</a>
+    <a href="projets.html" class="ok-nav-link active" data-i18n="nav_projects">Projets</a>
+    <a href="collaborations.html" class="ok-nav-link" data-i18n="nav_collabs">Collaborations</a>
+    <a href="contact.html" class="ok-nav-link" data-i18n="nav_contact">Contact</a>
+    <a href="mediakit-elisa.html" class="ok-nav-link ok-nav-link--private" data-i18n="nav_elisa">🔒 Elisa</a>
+    <a href="mediakit-pierre.html" class="ok-nav-link ok-nav-link--private" data-i18n="nav_pierre">🔒 Pierre</a>
+  </div>
+  <div class="flag-picker">
+    <button class="flag-btn" data-lang="en" onclick="sharedSetLang('en')" title="English">🇬🇧</button>
+    <button class="flag-btn" data-lang="fr" onclick="sharedSetLang('fr')" title="Français">🇫🇷</button>
+    <button class="flag-btn" data-lang="ja" onclick="sharedSetLang('ja')" title="日本語">🇯🇵</button>
+    <button class="flag-btn" data-lang="zh" onclick="sharedSetLang('zh')" title="中文">🇨🇳</button>
+    <button class="flag-btn" data-lang="es" onclick="sharedSetLang('es')" title="Español">🇪🇸</button>
+    <button class="flag-btn" data-lang="pt" onclick="sharedSetLang('pt')" title="Português">🇵🇹</button>
+  </div>
+</nav>
+
+
+<div class="vb">
+<section class="vb-hero">
+  <div class="vb-stars"></div>
+  <div class="vb-sun"></div>
+  <div class="vb-sky"><svg viewBox="0 0 1440 260" preserveAspectRatio="none" aria-hidden="true">
+<g fill="#0B0A1E"><rect x="0" y="200" width="1440" height="60"/>
+<rect x="30" y="150" width="60" height="110"/><rect x="110" y="110" width="40" height="150"/><rect x="170" y="170" width="90" height="90"/><rect x="280" y="80" width="50" height="180"/><rect x="300" y="50" width="10" height="40"/><rect x="350" y="140" width="70" height="120"/><rect x="440" y="100" width="45" height="160"/><rect x="505" y="160" width="110" height="100"/><rect x="640" y="60" width="60" height="200"/><rect x="665" y="30" width="10" height="30"/><rect x="720" y="120" width="40" height="140"/><rect x="780" y="90" width="80" height="170"/><rect x="880" y="150" width="50" height="110"/><rect x="950" y="70" width="55" height="190"/><rect x="1025" y="130" width="90" height="130"/><rect x="1135" y="100" width="45" height="160"/><rect x="1200" y="160" width="70" height="100"/><rect x="1290" y="120" width="50" height="140"/><rect x="1360" y="170" width="60" height="90"/>
+<path d="M120 200 c-30-20-60-70-40-110 c30 20 40 60 40 110z M100 200 c-20-30-70-40-95-30 c30 10 60 20 95 30z M105 200 c10-40 40-80 90-85 c-30 20-60 50-90 85z"/>
+<path d="M1330 200 c-30-25-70-60-50-115 c35 25 45 70 50 115z M1315 200 c-25-30-80-30-105-20 c35 5 70 10 105 20z M1320 200 c5-45 45-85 95-80 c-30 15-70 45-95 80z"/></g>
+<g fill="#1C1650"><rect x="60" y="120" width="10" height="20"/><rect x="290" y="95" width="6" height="8" fill="#FFA630"/><rect x="655" y="80" width="6" height="8" fill="#22E5FF"/><rect x="800" y="110" width="6" height="8" fill="#FF2E88"/><rect x="965" y="90" width="6" height="8" fill="#FFA630"/><rect x="1150" y="120" width="6" height="8" fill="#22E5FF"/><rect x="450" y="120" width="6" height="8" fill="#FF2E88"/></g>
+</svg></div>
+  <div class="vb-floor"></div>
+  <div class="vb-hero-content">
+    <div class="vb-badge" data-i18n="vb_badge">En développement · bientôt sur iPhone</div>
+    <div class="vb-kicker">Vice Bay · 1986</div>
+    <h1 class="vb-logo">VICE<br/>BREAK</h1>
+    <div class="vb-tag" data-i18n="vb_tagline">Casse-briques néon de 1986</div>
+    <div class="vb-ctas">
+      <a class="vb-btn primary" href="contact.html" data-i18n="vb_cta_notify">Être prévenu de la sortie</a>
+      <a class="vb-btn ghost" href="#jeu" data-i18n="vb_cta_discover">Découvrir le jeu</a>
+    </div>
+  </div>
+</section>
+
+<section class="vb-section" id="jeu">
+  <div class="vb-inner">
+    <div class="vb-label" data-i18n="vb_game_label">Le jeu</div>
+    <h2 class="vb-h2 reveal" data-i18n="vb_game_title">Une balle, un paddle chrome, <em>90 secondes</em> de nuit</h2>
+    <p class="vb-p reveal r1" data-i18n="vb_game_p">Chaque tableau est une silhouette de Vice Bay dessinée en briques éteintes. Elle s'allume en néon quand la balle la frappe. Tu devines ce que c'est, tu casses tout, tu sors avant que le soleil se couche.</p>
+    <div class="vb-phones reveal r2">
+      <div class="vb-phone"><canvas data-level="palm" data-district="beach"></canvas><img src="imgs/vicebreak_1.png" alt="" onerror="this.remove()"/><div class="cap" data-i18n="vb_cap1">Menu · Ocean Drive</div></div>
+      <div class="vb-phone"><canvas data-level="flamingo" data-district="skyline"></canvas><img src="imgs/vicebreak_2.png" alt="" onerror="this.remove()"/><div class="cap" data-i18n="vb_cap2">Partie · Niveau 5</div></div>
+      <div class="vb-phone"><canvas data-level="convertible" data-district="highway"></canvas><img src="imgs/vicebreak_3.png" alt="" onerror="this.remove()"/><div class="cap" data-i18n="vb_cap3">Fin de niveau · Freeze</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="vb-section" style="background:linear-gradient(180deg,var(--vb-night),#100c2e);">
+  <div class="vb-inner">
+    <div class="vb-label" data-i18n="vb_sil_label">Les tableaux</div>
+    <div style="display:flex;align-items:baseline;gap:20px;flex-wrap:wrap;"><div class="vb-counter reveal">100</div><h2 class="vb-h2 reveal r1" style="margin:0;" data-i18n="vb_sil_title">silhouettes à <em>révéler</em></h2></div>
+    <p class="vb-p reveal r1" data-i18n="vb_sil_p">Palmier, flamant, cabriolet, phare, cocktail… chaque niveau raconte une scène de la ville. Vingt tableaux par quartier, dessinés brique par brique.</p>
+    <div class="vb-sil-grid reveal r2">
+      <div class="vb-sil"><canvas data-level="palm" data-district="beach"></canvas><span>001 · Palmier</span></div>
+      <div class="vb-sil"><canvas data-level="flamingo" data-district="beach"></canvas><span>005 · Flamant</span></div>
+      <div class="vb-sil"><canvas data-level="cocktail" data-district="beach"></canvas><span>006 · Cocktail</span></div>
+      <div class="vb-sil"><canvas data-level="sunglasses" data-district="skyline"></canvas><span>007 · Lunettes</span></div>
+      <div class="vb-sil"><canvas data-level="sailboat" data-district="beach"></canvas><span>009 · Voilier</span></div>
+      <div class="vb-sil"><canvas data-level="convertible" data-district="highway"></canvas><span>010 · Cabriolet</span></div>
+      <div class="vb-sil"><canvas data-level="lighthouse" data-district="downtown"></canvas><span>013 · Phare</span></div>
+      <div class="vb-sil"><canvas data-level="parasol" data-district="beach"></canvas><span>003 · Parasol</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="vb-section">
+  <div class="vb-inner">
+    <div class="vb-label" data-i18n="vb_dist_label">La ville</div>
+    <h2 class="vb-h2 reveal" data-i18n="vb_dist_title">Cinq quartiers, <em>une seule</em> source de lumière</h2>
+    <p class="vb-p reveal r1" data-i18n="vb_dist_p">Chaque quartier a sa palette, sa météo et son heure. Le ciel descend au fil des niveaux : tu commences au crépuscule, tu finis en pleine nuit.</p>
+    <div class="vb-dist reveal r2">
+      <div class="vb-d" style="background:linear-gradient(180deg,#0B0A1E 0%,#5A2A83 55%,#FF6F59 100%);--m:radial-gradient(circle at 20% 100%,#000 30%,transparent 31%),linear-gradient(#000,#000) 0 100%/20% 60% no-repeat,linear-gradient(#000,#000) 30% 100%/12% 90% no-repeat,linear-gradient(#000,#000) 50% 100%/18% 45% no-repeat,linear-gradient(#000,#000) 75% 100%/10% 75% no-repeat,linear-gradient(#000,#000) 100% 100%/14% 55% no-repeat;"><div class="sun" style="background:radial-gradient(circle,#FFE29A,#F2B33D 60%,transparent 70%);"></div><div class="sk"></div><b>Ocean Drive</b><small>Plage · crépuscule</small></div>
+      <div class="vb-d" style="background:linear-gradient(180deg,#0B0A1E 0%,#1C1650 55%,#5A2A83 100%);--m:radial-gradient(circle at 20% 100%,#000 30%,transparent 31%),linear-gradient(#000,#000) 0 100%/20% 60% no-repeat,linear-gradient(#000,#000) 30% 100%/12% 90% no-repeat,linear-gradient(#000,#000) 50% 100%/18% 45% no-repeat,linear-gradient(#000,#000) 75% 100%/10% 75% no-repeat,linear-gradient(#000,#000) 100% 100%/14% 55% no-repeat;"><div class="sun" style="background:radial-gradient(circle,#E5B84B,#E5B84B 55%,transparent 62%);"></div><div class="sk"></div><b>Downtown</b><small>Art déco · or</small></div>
+      <div class="vb-d" style="background:linear-gradient(180deg,#0B0A1E 0%,#0B0A1E 55%,#1C1650 100%);--m:radial-gradient(circle at 20% 100%,#000 30%,transparent 31%),linear-gradient(#000,#000) 0 100%/20% 60% no-repeat,linear-gradient(#000,#000) 30% 100%/12% 90% no-repeat,linear-gradient(#000,#000) 50% 100%/18% 45% no-repeat,linear-gradient(#000,#000) 75% 100%/10% 75% no-repeat,linear-gradient(#000,#000) 100% 100%/14% 55% no-repeat;"><div class="sun" style="background:radial-gradient(circle,#3E7C4F,#3E7C4F 50%,transparent 60%);"></div><div class="sk"></div><b>Everglades</b><small>Marais · brume</small></div>
+      <div class="vb-d" style="background:linear-gradient(180deg,#0B0A1E 0%,#1C1650 55%,#FFA630 100%);--m:radial-gradient(circle at 20% 100%,#000 30%,transparent 31%),linear-gradient(#000,#000) 0 100%/20% 60% no-repeat,linear-gradient(#000,#000) 30% 100%/12% 90% no-repeat,linear-gradient(#000,#000) 50% 100%/18% 45% no-repeat,linear-gradient(#000,#000) 75% 100%/10% 75% no-repeat,linear-gradient(#000,#000) 100% 100%/14% 55% no-repeat;"><div class="sun" style="background:radial-gradient(circle,#FFA630,#FF6F59 55%,transparent 64%);"></div><div class="sk"></div><b>Night Highway</b><small>Autoroute · sodium</small></div>
+      <div class="vb-d" style="background:linear-gradient(180deg,#0B0A1E 0%,#5A2A83 55%,#FF2E88 100%);--m:radial-gradient(circle at 20% 100%,#000 30%,transparent 31%),linear-gradient(#000,#000) 0 100%/20% 60% no-repeat,linear-gradient(#000,#000) 30% 100%/12% 90% no-repeat,linear-gradient(#000,#000) 50% 100%/18% 45% no-repeat,linear-gradient(#000,#000) 75% 100%/10% 75% no-repeat,linear-gradient(#000,#000) 100% 100%/14% 55% no-repeat;"><div class="sun" style="background:radial-gradient(circle,#FF2E88,#FF2E88 55%,transparent 64%);"></div><div class="sk"></div><b>Skyline</b><small>Ville · magenta</small></div>
+    </div>
+  </div>
+</section>
+
+<section class="vb-section" style="background:linear-gradient(180deg,var(--vb-night),#160a2a 50%,var(--vb-night));">
+  <div class="vb-inner">
+    <div class="vb-label"><span data-i18n="vb_radio_label">Radio embarquée</span><span class="vb-eq"><i></i><i></i><i></i><i></i></span></div>
+    <h2 class="vb-h2 reveal" data-i18n="vb_radio_title">Cinq stations, <em>toute la nuit</em></h2>
+    <p class="vb-p reveal r1" data-i18n="vb_radio_p">Tourne la molette entre deux niveaux. Latino, lounge, synth, rock, tropical : la ville a une voix, et elle ne s'arrête jamais.</p>
+    <div class="vb-radio reveal r2">
+      <div class="vb-st"><img src="imgs/vb_radio_tropicana.png" alt="Tropicana 88.5 FM" loading="lazy"/><div>Tropicana 88.5</div></div>
+      <div class="vb-st"><img src="imgs/vb_radio_emotion.png" alt="Emotion 98.3 FM" loading="lazy"/><div>Emotion 98.3</div></div>
+      <div class="vb-st"><img src="imgs/vb_radio_sunset.png" alt="Sunset Drive 102.7 FM" loading="lazy"/><div>Sunset Drive 102.7</div></div>
+      <div class="vb-st"><img src="imgs/vb_radio_neon.png" alt="Neon 103.5 FM" loading="lazy"/><div>Neon 103.5</div></div>
+      <div class="vb-st"><img src="imgs/vb_radio_volt.png" alt="Volt 107.3 FM" loading="lazy"/><div>Volt 107.3</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="vb-section">
+  <div class="vb-inner">
+    <div class="vb-ball"></div><div class="vb-paddle"></div>
+    <div class="vb-feats">
+      <div class="vb-f reveal"><div class="ic">⚡</div><h3 data-i18n="vb_f1_t">Power-ups</h3><p data-i18n="vb_f1_p">Paddle élargi, balle de feu, multiballe, aimant. Ramasse, enchaîne, monte le HEAT.</p></div>
+      <div class="vb-f reveal r1"><div class="ic">☁️</div><h3 data-i18n="vb_f2_t">Sauvegarde cloud</h3><p data-i18n="vb_f2_p">Ta progression, tes étoiles et tes scores te suivent d'un appareil à l'autre.</p></div>
+      <div class="vb-f reveal r2"><div class="ic">🚫</div><h3 data-i18n="vb_f3_t">Sans pub interstitielle</h3><p data-i18n="vb_f3_p">Jamais coupé en pleine partie. Une session dure 90 secondes, on te les laisse.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="vb-section vb-cta">
+  <div class="vb-inner">
+    <div class="vb-logo">VICE BREAK</div>
+    <p class="vb-p reveal" style="margin:18px auto 0;" data-i18n="vb_cta_p">Sortie App Store en préparation. Laisse-nous ton adresse, on te prévient le jour J.</p>
+    <div class="vb-ctas"><a class="vb-btn primary" href="contact.html" data-i18n="vb_cta_notify">Être prévenu de la sortie</a><a class="vb-btn ghost" href="support-vicebreak.html" data-i18n="vb_cta_support">Support</a><a class="vb-btn ghost" href="privacy-vicebreak.html" data-i18n="vb_cta_privacy">Confidentialité</a></div>
+    <p class="vb-legal" data-i18n="vb_legal">VICE BREAK est une création originale d'OKALAM Studio. Vice Bay est une ville fictive.</p>
+  </div>
+</section>
+</div>
+
+<script>
+(function(){
+  const L={
+    palm:"...pp..qq...|..ppppqqqq..|.pppppqqqqq.|..ppppqqqq..|...pp..qq...|.....rr.....|.....rr.....|.....rr.....",
+    flamingo:".....qq.....|....qbqq....|....qq......|.....q......|.....qq.....|......qqpp..|.....qqpppp.|....qqppppp.|....qqppppp.|.....ppppp..|......ppp...|.......r....|.......r....|......rr....",
+    convertible:"....qqqq....|...qqrrqq...|..pqqrrqqp..|pppppppppppp|pppppppppppp|.sxs....sxs.|..r......r..",
+    lighthouse:"....nnnn....|....sbbs....|....nnnn....|....pppp....|....pqqp....|...ppqqpp...|...pqqqqp...|..pppqqppp..|..CCCCCCCC..",
+    cocktail:"qqqqqqqqqqqq|.pppppppppp.|..pppppppp..|...pbbbbp...|....pppp....|.....rr.....|.....rr.....|....rrrr....",
+    sailboat:".....r......|.....rq.....|.....rqq....|.....rqqq...|.....rqqqq..|.....rppppp.|.bb..r......|ssssssssssss|.ssssssss...",
+    parasol:".....pp.....|...ppqqpp...|..pqqrrqqp..|.ppqqrrqqpp.|ppqqrrrrqqpp|.....rr.....|.....rr.....|.....rr.....",
+    sunglasses:"..rrrrrrrr..|.pp..rr..pp.|pbbp.rr.pbbp|pbbppppppbbp|.qqqq..qqqq.|..qq....qq.."
+  };
+  const D={
+    beach:{p:'#FF6F59',q:'#1FB7A6',sky:['#0B0A1E','#5A2A83','#FF6F59']},
+    skyline:{p:'#FF2E88',q:'#22E5FF',sky:['#0B0A1E','#5A2A83','#FF2E88']},
+    highway:{p:'#FFA630',q:'#22E5FF',sky:['#0B0A1E','#1C1650','#FFA630']},
+    downtown:{p:'#E5B84B',q:'#F5E3C3',sky:['#0B0A1E','#1C1650','#5A2A83']}
+  };
+  const fixed={r:'#F5E3C3',b:'#0B0A1E',s:'#C9CED6',x:'#FF2E88',C:'#C9CED6',n:'#22E5FF'};
+  function draw(c){
+    const rows=(L[c.dataset.level]||L.palm).split('|'); const d=D[c.dataset.district]||D.beach;
+    const full=c.parentElement.classList.contains('vb-phone');
+    const W=c.clientWidth||300, H=c.clientHeight||(W*10/12); c.width=W*2; c.height=H*2;
+    const g=c.getContext('2d'); g.scale(2,2);
+    const grad=g.createLinearGradient(0,0,0,H); grad.addColorStop(0,d.sky[0]); grad.addColorStop(.55,d.sky[1]); grad.addColorStop(1,d.sky[2]); g.fillStyle=grad; g.fillRect(0,0,W,H);
+    if(full){ g.fillStyle='rgba(255,226,154,.9)'; g.beginPath(); g.arc(W/2,H*.62,W*.28,0,Math.PI*2); g.fill();
+      g.fillStyle=d.sky[0]; for(let y=H*.62;y<H*.9;y+=10) g.fillRect(0,y,W,4);
+      g.fillStyle='#0B0A1E'; g.fillRect(0,H*.72,W,H*.28); }
+    const cols=12, pad=full?W*.06:8, top=full?H*.08:8, bw=(W-pad*2)/cols, bh=bw*.55;
+    rows.forEach((row,ri)=>{ [...row].forEach((ch,ci)=>{ if(ch==='.')return; const col=ch==='p'?d.p:ch==='q'?d.q:(fixed[ch]||d.p);
+      const x=pad+ci*bw, y=top+ri*(bh+3); g.shadowColor=col; g.shadowBlur=10; g.fillStyle=col; g.fillRect(x+1,y,bw-2,bh); g.shadowBlur=0; g.fillStyle='rgba(255,255,255,.18)'; g.fillRect(x+1,y,bw-2,2); }); });
+    if(full){ const py=H*.86; const pg=g.createLinearGradient(W*.35,0,W*.65,0); pg.addColorStop(0,'#F2F4F7');pg.addColorStop(.25,'#F2F4F7');pg.addColorStop(.25,'#8A93A3');pg.addColorStop(.5,'#8A93A3');pg.addColorStop(.5,'#E7EAF0');pg.addColorStop(.75,'#E7EAF0');pg.addColorStop(.75,'#4A5262');pg.addColorStop(1,'#4A5262');
+      g.fillStyle=pg; g.fillRect(W*.35,py,W*.3,7); g.shadowColor='#22E5FF'; g.shadowBlur=12; g.fillStyle='#22E5FF'; g.beginPath(); g.arc(W*.5,py-14,5,0,Math.PI*2); g.fill(); g.shadowBlur=0; }
+  }
+  function all(){ document.querySelectorAll('canvas[data-level]').forEach(draw); }
+  window.addEventListener('load',all); window.addEventListener('resize',all); document.fonts&&document.fonts.ready.then(all);
+})();
+</script>
+<footer class="ok-footer">
+  <div class="ok-footer-inner">
+    <div>
+      <div class="ok-footer-brand">OKALAM Studio</div>
+      <p class="ok-footer-tagline" data-i18n="footer_tagline">Studio créatif indépendant. Toujours en mouvement.</p>
+    </div>
+    <div class="ok-footer-cols">
+      <div class="ok-footer-col">
+        <h4 data-i18n="footer_nav">Navigation</h4>
+        <a href="index.html" data-i18n="footer_home">Accueil</a>
+        <a href="studio.html" data-i18n="footer_studio">Studio</a>
+        <a href="projets.html" data-i18n="footer_projects">Projets</a>
+        <a href="collaborations.html" data-i18n="footer_collabs">Collaborations</a>
+      </div>
+      <div class="ok-footer-col">
+        <h4>Contact</h4>
+        <a href="contact.html" data-i18n="footer_contact">Nous contacter</a>
+        <a href="mailto:support@okalamstudio.com">support@okalamstudio.com</a>
+      </div>
+    </div>
+  </div>
+  <div class="ok-footer-bottom">
+    <span class="ok-footer-copy" data-i18n="footer_copy">© 2026 OKALAM Studio. Tous droits réservés.</span>
+    <div class="ok-social-links">
+      <a href="https://www.instagram.com/okalamstudio.com" target="_blank" class="ok-social" title="Instagram">📷</a>
+      <a href="https://github.com/Stesouna9" target="_blank" class="ok-social">⌥</a>
+      <a href="mailto:support@okalamstudio.com" class="ok-social">✉</a>
+    </div>
+  </div>
+</footer>
+<script src="shared-i18n.js"></script>
+<script src="shared.js"></script>
+</body>
+</html>
