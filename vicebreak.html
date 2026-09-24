@@ -89,6 +89,20 @@ body{background:var(--vb-night);}
 .vb-st:hover{transform:rotate(-1.5deg) scale(1.04);}
 .vb-st img{width:100%;aspect-ratio:3/4;object-fit:cover;display:block;}
 .vb-st div{padding:10px 12px;font-family:'Orbitron',sans-serif;font-size:.55rem;letter-spacing:.18em;text-transform:uppercase;color:var(--vb-sand);text-align:center;}
+.vb-st{position:relative;cursor:pointer;padding:0;font:inherit;text-align:left;color:inherit;}
+.vb-st .vb-play{position:absolute;top:10px;right:10px;width:30px;height:30px;border-radius:50%;background:rgba(11,10,30,.7);border:1px solid rgba(34,229,255,.5);color:var(--vb-cyan);font-size:.65rem;display:flex;align-items:center;justify-content:center;transition:all .2s;}
+.vb-st.playing{border-color:var(--vb-mag);box-shadow:0 0 24px rgba(255,46,136,.5);transform:scale(1.04);}
+.vb-st.playing .vb-play{background:var(--vb-mag);border-color:var(--vb-mag);color:#fff;}
+.vb-player{display:flex;align-items:center;gap:18px;margin-top:28px;padding:16px 20px;border-radius:16px;background:rgba(28,22,80,.45);border:1px solid rgba(34,229,255,.2);}
+.vb-player-eq{display:flex;gap:3px;align-items:flex-end;height:26px;width:30px;}
+.vb-player-eq i{flex:1;background:var(--vb-cyan);box-shadow:0 0 6px var(--vb-cyan);height:4px;}
+.vb-player.on .vb-player-eq i{animation:eq .9s infinite ease-in-out;}
+.vb-player.on .vb-player-eq i:nth-child(2){animation-delay:.12s}.vb-player.on .vb-player-eq i:nth-child(3){animation-delay:.24s}.vb-player.on .vb-player-eq i:nth-child(4){animation-delay:.36s}.vb-player.on .vb-player-eq i:nth-child(5){animation-delay:.48s}
+.vb-player-meta{flex:1;min-width:0;}
+.vb-player-meta b{display:block;font-family:'Orbitron',sans-serif;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:#fff;}
+.vb-player-meta span{display:block;font-size:.8rem;color:rgba(245,227,195,.7);margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.vb-player-btn{width:46px;height:46px;border-radius:50%;border:none;background:var(--vb-mag);color:#fff;font-size:.9rem;cursor:pointer;box-shadow:0 0 18px rgba(255,46,136,.6);flex-shrink:0;}
+.vb-credits{margin-top:14px;font-size:.68rem;color:rgba(245,227,195,.45);}
 .vb-eq{display:flex;gap:4px;align-items:flex-end;height:22px;margin-left:12px;}
 .vb-eq i{width:4px;background:var(--vb-mag);box-shadow:0 0 6px var(--vb-mag);animation:eq 1s infinite ease-in-out;}
 .vb-eq i:nth-child(2){animation-delay:.15s;background:var(--vb-cyan);box-shadow:0 0 6px var(--vb-cyan);}
@@ -240,14 +254,20 @@ body{background:var(--vb-night);}
   <div class="vb-inner">
     <div class="vb-label"><span data-i18n="vb_radio_label">Radio embarquée</span><span class="vb-eq"><i></i><i></i><i></i><i></i></span></div>
     <h2 class="vb-h2 reveal" data-i18n="vb_radio_title">Cinq stations, <em>toute la nuit</em></h2>
-    <p class="vb-p reveal r1" data-i18n="vb_radio_p">Tourne la molette entre deux niveaux. Latino, lounge, synth, rock, tropical : la ville a une voix, et elle ne s'arrête jamais.</p>
+    <p class="vb-p reveal r1" data-i18n="vb_radio_p">Touche une station pour l'écouter ici. Latino, lounge, synth, rock, tropical : la ville a une voix, et elle ne s'arrête jamais.</p>
     <div class="vb-radio reveal r2">
-      <div class="vb-st"><img src="imgs/vb_radio_tropicana.png" alt="Tropicana 88.5 FM" loading="lazy"/><div>Tropicana 88.5</div></div>
-      <div class="vb-st"><img src="imgs/vb_radio_emotion.png" alt="Emotion 98.3 FM" loading="lazy"/><div>Emotion 98.3</div></div>
-      <div class="vb-st"><img src="imgs/vb_radio_sunset.png" alt="Sunset Drive 102.7 FM" loading="lazy"/><div>Sunset Drive 102.7</div></div>
-      <div class="vb-st"><img src="imgs/vb_radio_neon.png" alt="Neon 103.5 FM" loading="lazy"/><div>Neon 103.5</div></div>
-      <div class="vb-st"><img src="imgs/vb_radio_volt.png" alt="Volt 107.3 FM" loading="lazy"/><div>Volt 107.3</div></div>
+      <button class="vb-st" type="button" data-station="tropicana" aria-label="Écouter Tropicana 88.5"><img src="imgs/vb_radio_tropicana.png" alt="Tropicana 88.5 FM" loading="lazy"/><div>Tropicana 88.5</div><span class="vb-play">▶</span></button>
+      <button class="vb-st" type="button" data-station="emotion" aria-label="Écouter Emotion 98.3"><img src="imgs/vb_radio_emotion.png" alt="Emotion 98.3 FM" loading="lazy"/><div>Emotion 98.3</div><span class="vb-play">▶</span></button>
+      <button class="vb-st" type="button" data-station="sunset" aria-label="Écouter Sunset Drive 102.7"><img src="imgs/vb_radio_sunset.png" alt="Sunset Drive 102.7 FM" loading="lazy"/><div>Sunset Drive 102.7</div><span class="vb-play">▶</span></button>
+      <button class="vb-st" type="button" data-station="neon" aria-label="Écouter Neon 103.5"><img src="imgs/vb_radio_neon.png" alt="Neon 103.5 FM" loading="lazy"/><div>Neon 103.5</div><span class="vb-play">▶</span></button>
+      <button class="vb-st" type="button" data-station="volt" aria-label="Écouter Volt 107.3"><img src="imgs/vb_radio_volt.png" alt="Volt 107.3 FM" loading="lazy"/><div>Volt 107.3</div><span class="vb-play">▶</span></button>
     </div>
+    <div class="vb-player" id="vb-player">
+      <div class="vb-player-eq"><i></i><i></i><i></i><i></i><i></i></div>
+      <div class="vb-player-meta"><b id="vbp-station" data-i18n="vb_player_idle">Choisis une station</b><span id="vbp-track"></span></div>
+      <button class="vb-player-btn" id="vbp-toggle" type="button" aria-label="Lecture / pause">▶</button>
+    </div>
+    <p class="vb-credits" data-i18n="vb_credits">Musique : Kevin MacLeod (incompetech.com), licence Creative Commons BY 4.0. Extraits de la radio du jeu.</p>
   </div>
 </section>
 
@@ -351,6 +371,23 @@ body{background:var(--vb-night);}
   function tick(){ let diff=Math.max(0,target-Date.now()); const d=Math.floor(diff/864e5); diff-=d*864e5; const h=Math.floor(diff/36e5); diff-=h*36e5; const m=Math.floor(diff/6e4); const sec=Math.floor((diff-m*6e4)/1e3);
     els.d.textContent=d; els.h.textContent=String(h).padStart(2,'0'); els.m.textContent=String(m).padStart(2,'0'); els.s.textContent=String(sec).padStart(2,'0'); }
   tick(); setInterval(tick,1000);
+})();
+</script>
+
+<script>
+(function(){
+  const ST={"volt": [{"src": "audio/vb_volt_fantasia_fantasia.m4a", "title": "Fantasia Fantasia", "artist": "Kevin MacLeod", "license": "CC BY 4.0", "seconds": 151}, {"src": "audio/vb_volt_metalmania.m4a", "title": "Metalmania", "artist": "Kevin MacLeod", "license": "CC BY 4.0", "seconds": 190}], "emotion": [{"src": "audio/vb_emotion_morning.m4a", "title": "Morning", "artist": "Kevin MacLeod", "license": "CC BY 4.0", "seconds": 153}, {"src": "audio/vb_emotion_aquarium.m4a", "title": "Aquarium", "artist": "Kevin MacLeod", "license": "CC BY 4.0", "seconds": 143}], "sunset": [{"src": "audio/vb_sunset_loopster.m4a", "title": "Loopster", "artist": "Kevin MacLeod", "license": "CC BY 4.0", "seconds": 182}, {"src": "audio/vb_sunset_shaving_mirror.m4a", "title": "Shaving Mirror", "artist": "Kevin MacLeod", "license": "CC BY 4.0", "seconds": 206}], "tropicana": [{"src": "audio/vb_tropicana_arroz_con_pollo.m4a", "title": "Arroz Con Pollo", "artist": "Kevin MacLeod", "license": "CC BY 4.0", "seconds": 162}, {"src": "audio/vb_tropicana_bossabossa.m4a", "title": "BossaBossa", "artist": "Kevin MacLeod", "license": "CC BY 4.0", "seconds": 167}], "neon": [{"src": "audio/vb_neon_galactic_rap.m4a", "title": "Galactic Rap", "artist": "Kevin MacLeod", "license": "CC BY 4.0", "seconds": 142}, {"src": "audio/vb_neon_voxel_revolution.m4a", "title": "Voxel Revolution", "artist": "Kevin MacLeod", "license": "CC BY 4.0", "seconds": 129}]};
+  const NAMES={tropicana:'Tropicana 88.5',emotion:'Emotion 98.3',sunset:'Sunset Drive 102.7',neon:'Neon 103.5',volt:'Volt 107.3'};
+  const audio=new Audio(); audio.preload='none'; let cur=null, idx=0;
+  const player=document.getElementById('vb-player'), stEl=document.getElementById('vbp-station'), trEl=document.getElementById('vbp-track'), btn=document.getElementById('vbp-toggle');
+  function ui(){ document.querySelectorAll('.vb-st').forEach(b=>b.classList.toggle('playing', b.dataset.station===cur && !audio.paused));
+    player.classList.toggle('on', !audio.paused && !!cur); btn.textContent=(!audio.paused&&cur)?'\u275A\u275A':'\u25B6'; }
+  function load(st,i){ cur=st; idx=i%ST[st].length; const t=ST[st][idx]; audio.src=t.src; stEl.textContent=NAMES[st]; trEl.textContent=t.title+' \u2014 '+t.artist+' ('+t.license+')'; }
+  function play(st){ if(cur!==st){ load(st, Math.floor(Math.random()*ST[st].length)); audio.play().catch(()=>{}); } else if(audio.paused) audio.play().catch(()=>{}); else audio.pause(); ui(); }
+  document.querySelectorAll('.vb-st').forEach(b=>b.addEventListener('click',()=>play(b.dataset.station)));
+  btn.addEventListener('click',()=>{ if(!cur) play('tropicana'); else if(audio.paused) audio.play().catch(()=>{}); else audio.pause(); ui(); });
+  audio.addEventListener('ended',()=>{ load(cur, idx+1); audio.play().catch(()=>{}); ui(); });
+  audio.addEventListener('play',ui); audio.addEventListener('pause',ui);
 })();
 </script>
 </body>

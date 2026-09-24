@@ -1,6 +1,9 @@
 // ── OKALAM Shared i18n — all pages ──
 const PAGE_T = {
   en: {
+    vb_player_idle:'Pick a station',
+    vb_credits:'Music: Kevin MacLeod (incompetech.com), Creative Commons BY 4.0 licence. Excerpts from the in-game radio.',
+    vb_radio_p:'Tap a station to listen right here. Latin, lounge, synth, rock, tropical: the city has a voice, and it never stops.',
     vb_badge:'iPhone release · November 19, 2026',
     vb_cd_d:'days',
     vb_cd_h:'hours',
@@ -30,7 +33,6 @@ const PAGE_T = {
     vb_dist_p:'Each district has its palette, its weather and its hour. The sky sinks as levels go by: you start at dusk, you finish deep in the night.',
     vb_radio_label:'Built-in radio',
     vb_radio_title:'Five stations, <em>all night long</em>',
-    vb_radio_p:'Turn the dial between two levels. Latin, lounge, synth, rock, tropical: the city has a voice, and it never stops.',
     vb_f1_t:'Power-ups',
     vb_f1_p:'Wide paddle, fireball, multiball, magnet. Grab, chain, raise the HEAT.',
     vb_f2_t:'Cloud saves',
@@ -170,6 +172,9 @@ const PAGE_T = {
   },
 
   fr: {
+    vb_player_idle:'Choisis une station',
+    vb_credits:'Musique : Kevin MacLeod (incompetech.com), licence Creative Commons BY 4.0. Extraits de la radio du jeu.',
+    vb_radio_p:'Touche une station pour l\'écouter ici. Latino, lounge, synth, rock, tropical : la ville a une voix, et elle ne s\'arrête jamais.',
     vb_badge:'Sortie iPhone · 19 novembre 2026',
     vb_cd_d:'jours',
     vb_cd_h:'heures',
@@ -199,7 +204,6 @@ const PAGE_T = {
     vb_dist_p:'Chaque quartier a sa palette, sa météo et son heure. Le ciel descend au fil des niveaux : tu commences au crépuscule, tu finis en pleine nuit.',
     vb_radio_label:'Radio embarquée',
     vb_radio_title:'Cinq stations, <em>toute la nuit</em>',
-    vb_radio_p:'Tourne la molette entre deux niveaux. Latino, lounge, synth, rock, tropical : la ville a une voix, et elle ne s\'arrête jamais.',
     vb_f1_t:'Power-ups',
     vb_f1_p:'Paddle élargi, balle de feu, multiballe, aimant. Ramasse, enchaîne, monte le HEAT.',
     vb_f2_t:'Sauvegarde cloud',

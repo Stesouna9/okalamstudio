@@ -1,0 +1,82 @@
+{
+ "volt": [
+  {
+   "src": "audio/vb_volt_fantasia_fantasia.m4a",
+   "title": "Fantasia Fantasia",
+   "artist": "Kevin MacLeod",
+   "license": "CC BY 4.0",
+   "seconds": 151
+  },
+  {
+   "src": "audio/vb_volt_metalmania.m4a",
+   "title": "Metalmania",
+   "artist": "Kevin MacLeod",
+   "license": "CC BY 4.0",
+   "seconds": 190
+  }
+ ],
+ "emotion": [
+  {
+   "src": "audio/vb_emotion_morning.m4a",
+   "title": "Morning",
+   "artist": "Kevin MacLeod",
+   "license": "CC BY 4.0",
+   "seconds": 153
+  },
+  {
+   "src": "audio/vb_emotion_aquarium.m4a",
+   "title": "Aquarium",
+   "artist": "Kevin MacLeod",
+   "license": "CC BY 4.0",
+   "seconds": 143
+  }
+ ],
+ "sunset": [
+  {
+   "src": "audio/vb_sunset_loopster.m4a",
+   "title": "Loopster",
+   "artist": "Kevin MacLeod",
+   "license": "CC BY 4.0",
+   "seconds": 182
+  },
+  {
+   "src": "audio/vb_sunset_shaving_mirror.m4a",
+   "title": "Shaving Mirror",
+   "artist": "Kevin MacLeod",
+   "license": "CC BY 4.0",
+   "seconds": 206
+  }
+ ],
+ "tropicana": [
+  {
+   "src": "audio/vb_tropicana_arroz_con_pollo.m4a",
+   "title": "Arroz Con Pollo",
+   "artist": "Kevin MacLeod",
+   "license": "CC BY 4.0",
+   "seconds": 162
+  },
+  {
+   "src": "audio/vb_tropicana_bossabossa.m4a",
+   "title": "BossaBossa",
+   "artist": "Kevin MacLeod",
+   "license": "CC BY 4.0",
+   "seconds": 167
+  }
+ ],
+ "neon": [
+  {
+   "src": "audio/vb_neon_galactic_rap.m4a",
+   "title": "Galactic Rap",
+   "artist": "Kevin MacLeod",
+   "license": "CC BY 4.0",
+   "seconds": 142
+  },
+  {
+   "src": "audio/vb_neon_voxel_revolution.m4a",
+   "title": "Voxel Revolution",
+   "artist": "Kevin MacLeod",
+   "license": "CC BY 4.0",
+   "seconds": 129
+  }
+ ]
+}
