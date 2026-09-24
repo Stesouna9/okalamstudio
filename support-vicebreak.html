@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Support – VICE BREAK | OKALAM Studio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root{--accent:#8deaff;--accent2:#4da3ff;--bg:#080a0f;--card-bg:rgba(15,18,28,0.95);--text:#e8eaf0;--muted:#666c80;--border:rgba(255,255,255,0.06)}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;min-height:100vh}
+    canvas{position:fixed;top:0;left:0;z-index:0;pointer-events:none}
+    .glow{position:fixed;border-radius:50%;filter:blur(120px);pointer-events:none;z-index:0}
+    .glow.t{width:500px;height:500px;top:-150px;left:50%;transform:translateX(-50%);background:radial-gradient(circle,rgba(141,234,255,0.06),transparent 70%);animation:pulse 8s ease-in-out infinite}
+    @keyframes pulse{0%,100%{opacity:.4}50%{opacity:1}}
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:16px 28px;background:rgba(8,10,15,0.75);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+    .nav-logo{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;letter-spacing:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+    .nav-right{display:flex;align-items:center;gap:8px}
+    .lang-wrap{position:relative}
+    .lang-wrap select{appearance:none;background:rgba(255,255,255,0.06);color:var(--text);border:1px solid var(--border);padding:6px 28px 6px 12px;border-radius:20px;cursor:pointer;font-size:13px;outline:none;transition:.2s}
+    .lang-wrap::after{content:'▾';position:absolute;right:10px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none;font-size:11px}
+    .back-btn{display:inline-flex;align-items:center;gap:6px;padding:6px 16px;background:rgba(255,255,255,0.06);border:1px solid var(--border);border-radius:20px;color:var(--muted);text-decoration:none;font-size:13px;transition:.2s}
+    .wrapper{position:relative;z-index:1;padding:110px 24px 80px;max-width:760px;margin:0 auto}
+    .page-header{text-align:center;margin-bottom:52px}
+    .lock-icon{font-size:44px;display:block;margin-bottom:18px}
+    .page-header h1{font-family:'Syne',sans-serif;font-size:clamp(30px,6vw,50px);font-weight:800;letter-spacing:-1px;margin-bottom:10px;background:linear-gradient(160deg,#fff 30%,rgba(141,234,255,0.7));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    .app-name{font-size:12px;letter-spacing:4px;color:var(--accent);text-transform:uppercase;margin-bottom:10px}
+    .update-date{font-size:13px;color:var(--muted);letter-spacing:1px}
+    .card{background:var(--card-bg);border:1px solid var(--border);border-radius:20px;padding:26px 30px;margin-bottom:14px;transition:.3s}
+    .card:hover{border-color:rgba(141,234,255,0.12);box-shadow:0 12px 40px rgba(0,0,0,.5)}
+    .card.hl{background:linear-gradient(135deg,rgba(141,234,255,0.06),rgba(77,163,255,0.03));border-color:rgba(141,234,255,0.15)}
+    .card.hl .card-title{color:var(--accent)}
+    .card-title{font-family:'Syne',sans-serif;font-size:16px;font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:10px}
+    .ci{font-size:20px}
+    .card p{font-size:15px;line-height:1.8;color:var(--muted);margin-bottom:6px}
+    .card p:last-child{margin-bottom:0}
+    .card p strong{color:var(--text)}
+    .card p a{color:var(--accent);text-decoration:none}
+    .card ul{list-style:none;margin-top:8px}
+    .card li{font-size:15px;line-height:1.8;color:var(--muted);padding:6px 0 6px 26px;position:relative}
+    .card li::before{content:'';position:absolute;left:0;top:16px;width:7px;height:7px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2))}
+    .card li strong{color:var(--text)}
+    .contact-card{text-align:center}
+    .contact-email{font-size:18px;font-family:monospace;letter-spacing:1px;margin-top:10px}
+    .contact-email a{color:var(--accent2);text-decoration:none;border-bottom:1px solid rgba(77,163,255,0.3);padding-bottom:2px;transition:.2s}
+    .back-wrap{text-align:center;margin-top:44px;margin-bottom:14px}
+    .back-link{display:inline-flex;align-items:center;gap:10px;padding:13px 26px;background:rgba(255,255,255,0.05);border:1px solid var(--border);border-radius:14px;color:var(--text);text-decoration:none;font-size:14px;transition:.2s}
+    .back-link:hover{background:rgba(141,234,255,0.08);border-color:rgba(141,234,255,0.2);color:var(--accent)}
+    .footer-copy{text-align:center;margin-top:28px;font-size:12px;color:rgba(102,108,128,0.4);padding-bottom:40px}
+    @media(max-width:600px){nav{padding:14px 18px}.card{padding:20px 18px}}
+  </style>
+</head>
+<body>
+<canvas id="particles"></canvas>
+<div class="glow t"></div>
+<nav>
+  <a href="index.html" class="nav-logo">OKALAM</a>
+  <div class="nav-right">
+    <div class="lang-wrap">
+      
+    </div>
+    <a href="index.html" class="back-btn">← Accueil</a>
+  </div>
+</nav>
+<div class="wrapper">
+  <div class="page-header">
+    <span class="lock-icon">🎮</span>
+    <h1>Support</h1>
+    <div class="app-name">VICE BREAK</div>
+    <div class="update-date">Dernière mise à jour : 24 septembre 2026</div>
+  </div>
+  <div class="card hl">
+    <div class="card-title"><span class="ci">🎮</span><span>VICE BREAK</span></div>
+    <p>Casse-briques néon, Vice Bay, 1986. Casse les briques, fais monter la jauge RUSH, et <strong>glisse le pouce vers le haut pour encaisser</strong> avant de perdre une balle — tant que tu n'as pas encaissé, les points ne sont pas à toi.</p>
+  </div>
+  <div class="card">
+    <div class="card-title"><span class="ci">🕹️</span><span>Comment on joue</span></div>
+    <ul>
+      <li><strong>Placer la raquette</strong> — glisse le doigt n'importe où sur l'écran.</li>
+      <li><strong>Lancer la balle</strong> — une touche brève. Touche à gauche ou à droite de la raquette pour incliner le départ.</li>
+      <li><strong>Encaisser</strong> — glisse vers le haut. Le multiplicateur s'applique, la jauge repart à zéro.</li>
+      <li><strong>Bonus et malus</strong> — chaque effet affiche le temps qu'il lui reste ; les bonus durent plus longtemps que les malus.</li>
+    </ul>
+  </div>
+  <div class="card">
+    <div class="card-title"><span class="ci">👥</span><span>Jouer avec des amis</span></div>
+    <p>Dans <strong>AMIS</strong>, choisis un pseudo : tu reçois un code à six caractères. Partage-le, ton ami le tape chez lui, et vous vous voyez tous les deux — pas besoin qu'il t'envoie le sien en retour. Les classements se filtrent ensuite sur « MES AMIS », niveau par niveau, du jour à toujours.</p>
+  </div>
+  <div class="card">
+    <div class="card-title"><span class="ci">📻</span><span>La radio</span></div>
+    <p>Cinq stations diffusent en continu, même quand tu ne les écoutes pas : revenir sur une station, c'est tomber au milieu d'un morceau. Coupe-la ou change de station depuis le menu ou les réglages.</p>
+  </div>
+  <div class="card">
+    <div class="card-title"><span class="ci">🐞</span><span>Un bug ?</span></div>
+    <p>Dans le jeu : <strong>Réglages → Aide → Signaler un bug</strong>. Décris ce qui s'est passé, joins une capture si tu veux, c'est lu par une personne. Tu peux aussi écrire directement au studio.</p>
+  </div>
+  <div class="card">
+    <div class="card-title"><span class="ci">🔒</span><span>Confidentialité</span></div>
+    <p>Pas de compte, pas d'e-mail, pas de publicité. Le détail est sur la <a href="privacy-vicebreak.html">politique de confidentialité</a>.</p>
+  </div>
+  <div class="card contact-card">
+    <div class="card-title" style="justify-content:center"><span class="ci">💬</span><span>Nous écrire</span></div>
+    <p>Une question, un bug, une idée :</p>
+    <div class="contact-email"><a href="mailto:support@okalamstudio.com">support@okalamstudio.com</a></div>
+  </div>
+<div class="back-wrap"><a href="index.html" class="back-link">← Retour à l'accueil</a></div>
+  <div class="footer-copy">© 2026 OKALAM Studio. Tous droits réservés.</div>
+</div>
+<script>
+const cv=document.getElementById('particles'),cx=cv.getContext('2d');function rsz(){cv.width=innerWidth;cv.height=innerHeight;}rsz();window.addEventListener('resize',rsz);
+const pts=Array.from({length:80},()=>({x:Math.random()*innerWidth,y:Math.random()*innerHeight,r:Math.random()*1.4+.2,vx:(Math.random()-.5)*.1,vy:-Math.random()*.25-.05,o:Math.random()*.3+.08}));
+(function a(){cx.clearRect(0,0,cv.width,cv.height);pts.forEach(p=>{cx.beginPath();cx.arc(p.x,p.y,p.r,0,Math.PI*2);cx.fillStyle='rgba(141,234,255,'+p.o+')';cx.fill();p.x+=p.vx;p.y+=p.vy;if(p.y<-10){p.y=cv.height+10;p.x=Math.random()*cv.width;}if(p.x<-10)p.x=cv.width+10;if(p.x>cv.width+10)p.x=-10;});requestAnimationFrame(a);})();
+</script>
+</body>
+</html>

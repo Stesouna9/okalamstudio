@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Politique de confidentialité – VICE BREAK | OKALAM Studio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root{--accent:#8deaff;--accent2:#4da3ff;--bg:#080a0f;--card-bg:rgba(15,18,28,0.95);--text:#e8eaf0;--muted:#666c80;--border:rgba(255,255,255,0.06)}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;min-height:100vh}
+    canvas{position:fixed;top:0;left:0;z-index:0;pointer-events:none}
+    .glow{position:fixed;border-radius:50%;filter:blur(120px);pointer-events:none;z-index:0}
+    .glow.t{width:500px;height:500px;top:-150px;left:50%;transform:translateX(-50%);background:radial-gradient(circle,rgba(141,234,255,0.06),transparent 70%);animation:pulse 8s ease-in-out infinite}
+    @keyframes pulse{0%,100%{opacity:.4}50%{opacity:1}}
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:16px 28px;background:rgba(8,10,15,0.75);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+    .nav-logo{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;letter-spacing:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+    .nav-right{display:flex;align-items:center;gap:8px}
+    .lang-wrap{position:relative}
+    .lang-wrap select{appearance:none;background:rgba(255,255,255,0.06);color:var(--text);border:1px solid var(--border);padding:6px 28px 6px 12px;border-radius:20px;cursor:pointer;font-size:13px;outline:none;transition:.2s}
+    .lang-wrap::after{content:'▾';position:absolute;right:10px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none;font-size:11px}
+    .back-btn{display:inline-flex;align-items:center;gap:6px;padding:6px 16px;background:rgba(255,255,255,0.06);border:1px solid var(--border);border-radius:20px;color:var(--muted);text-decoration:none;font-size:13px;transition:.2s}
+    .wrapper{position:relative;z-index:1;padding:110px 24px 80px;max-width:760px;margin:0 auto}
+    .page-header{text-align:center;margin-bottom:52px}
+    .lock-icon{font-size:44px;display:block;margin-bottom:18px}
+    .page-header h1{font-family:'Syne',sans-serif;font-size:clamp(30px,6vw,50px);font-weight:800;letter-spacing:-1px;margin-bottom:10px;background:linear-gradient(160deg,#fff 30%,rgba(141,234,255,0.7));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    .app-name{font-size:12px;letter-spacing:4px;color:var(--accent);text-transform:uppercase;margin-bottom:10px}
+    .update-date{font-size:13px;color:var(--muted);letter-spacing:1px}
+    .card{background:var(--card-bg);border:1px solid var(--border);border-radius:20px;padding:26px 30px;margin-bottom:14px;transition:.3s}
+    .card:hover{border-color:rgba(141,234,255,0.12);box-shadow:0 12px 40px rgba(0,0,0,.5)}
+    .card.hl{background:linear-gradient(135deg,rgba(141,234,255,0.06),rgba(77,163,255,0.03));border-color:rgba(141,234,255,0.15)}
+    .card.hl .card-title{color:var(--accent)}
+    .card-title{font-family:'Syne',sans-serif;font-size:16px;font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:10px}
+    .ci{font-size:20px}
+    .card p{font-size:15px;line-height:1.8;color:var(--muted);margin-bottom:6px}
+    .card p:last-child{margin-bottom:0}
+    .card p strong{color:var(--text)}
+    .card p a{color:var(--accent);text-decoration:none}
+    .card ul{list-style:none;margin-top:8px}
+    .card li{font-size:15px;line-height:1.8;color:var(--muted);padding:6px 0 6px 26px;position:relative}
+    .card li::before{content:'';position:absolute;left:0;top:16px;width:7px;height:7px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2))}
+    .card li strong{color:var(--text)}
+    .contact-card{text-align:center}
+    .contact-email{font-size:18px;font-family:monospace;letter-spacing:1px;margin-top:10px}
+    .contact-email a{color:var(--accent2);text-decoration:none;border-bottom:1px solid rgba(77,163,255,0.3);padding-bottom:2px;transition:.2s}
+    .back-wrap{text-align:center;margin-top:44px;margin-bottom:14px}
+    .back-link{display:inline-flex;align-items:center;gap:10px;padding:13px 26px;background:rgba(255,255,255,0.05);border:1px solid var(--border);border-radius:14px;color:var(--text);text-decoration:none;font-size:14px;transition:.2s}
+    .back-link:hover{background:rgba(141,234,255,0.08);border-color:rgba(141,234,255,0.2);color:var(--accent)}
+    .footer-copy{text-align:center;margin-top:28px;font-size:12px;color:rgba(102,108,128,0.4);padding-bottom:40px}
+    @media(max-width:600px){nav{padding:14px 18px}.card{padding:20px 18px}}
+  </style>
+</head>
+<body>
+<canvas id="particles"></canvas>
+<div class="glow t"></div>
+<nav>
+  <a href="index.html" class="nav-logo">OKALAM</a>
+  <div class="nav-right">
+    <div class="lang-wrap">
+      
+    </div>
+    <a href="index.html" class="back-btn">← Accueil</a>
+  </div>
+</nav>
+<div class="wrapper">
+  <div class="page-header">
+    <span class="lock-icon">🔒</span>
+    <h1>Politique de confidentialité</h1>
+    <div class="app-name">VICE BREAK</div>
+    <div class="update-date">Dernière mise à jour : 24 septembre 2026</div>
+  </div>
+  <div class="card hl">
+    <div class="card-title"><span class="ci">🛡️</span><span>Pas de compte, pas d'e-mail</span></div>
+    <p>OKALAM Studio développe et publie VICE BREAK, un casse-briques pour iPhone. Le jeu ne demande <strong>ni compte, ni e-mail, ni numéro de téléphone</strong>, et n'affiche aucune publicité. Cette page dit exactement ce qui quitte votre appareil, et pourquoi.</p>
+  </div>
+  <div class="card">
+    <div class="card-title"><span class="ci">📱</span><span>Ce qui reste sur votre appareil</span></div>
+    <ul>
+      <li><strong>Progression</strong> — niveaux débloqués, étoiles, meilleurs scores.</li>
+      <li><strong>Réglages</strong> — volumes, vibrations, station de radio préférée.</li>
+      <li><strong>Radio</strong> — où en était chaque station, pour la reprendre au bon endroit.</li>
+    </ul>
+    <p>Désinstaller l'application supprime tout cela.</p>
+  </div>
+  <div class="card">
+    <div class="card-title"><span class="ci">🏆</span><span>Classements et amis</span></div>
+    <p>Au premier lancement, l'application ouvre une <strong>session anonyme</strong> : un identifiant aléatoire, rattaché à aucune identité. Si vous choisissez un pseudo, sont alors enregistrés sur notre serveur :</p>
+    <ul>
+      <li>le <strong>pseudo</strong> que vous avez choisi, visible par les autres joueurs dans les classements ;</li>
+      <li>vos <strong>scores</strong> : niveau, points, étoiles, multiplicateur, date, plateforme ;</li>
+      <li>votre <strong>code ami</strong> et la liste des joueurs que vous avez ajoutés. Votre code n'est lisible que par vous : il n'apparaît dans aucune liste publique.</li>
+    </ul>
+    <p>Sans pseudo, rien de tout cela n'est créé : le jeu se joue entièrement hors ligne.</p>
+  </div>
+  <div class="card">
+    <div class="card-title"><span class="ci">🌦️</span><span>Météo du menu</span></div>
+    <p>Le ciel du menu peut suivre le temps qu'il fait chez vous. Si — et seulement si — vous l'acceptez, votre position est <strong>arrondie au centième de degré (environ un kilomètre)</strong> et envoyée à <a href="https://open-meteo.com/" target="_blank">Open-Meteo</a> pour obtenir la météo. Elle n'est ni enregistrée, ni transmise à OKALAM Studio. Si vous refusez, le menu prend le ciel de Miami et rien n'est envoyé.</p>
+  </div>
+  <div class="card">
+    <div class="card-title"><span class="ci">🐞</span><span>Signalement de bug</span></div>
+    <p>Si vous envoyez un rapport depuis les réglages du jeu, il contient votre texte, la capture d'écran que vous avez choisi d'y joindre, la version de l'application, le modèle d'iPhone et la version d'iOS. Rien n'est joint à votre insu, et seul le studio peut lire ces rapports.</p>
+  </div>
+  <div class="card hl">
+    <div class="card-title"><span class="ci">🇪🇺</span><span>Où sont les données</span></div>
+    <p>Sur un serveur loué par OKALAM Studio en <strong>Allemagne (Nuremberg)</strong>, administré par nous seuls. Aucune donnée n'est vendue, louée ni partagée. Il n'y a ni publicité, ni traceur, ni analyse tierce dans l'application.</p>
+  </div>
+  <div class="card">
+    <div class="card-title"><span class="ci">🧒</span><span>Enfants</span></div>
+    <p>VICE BREAK convient à tous. Aucune donnée personnelle n'est demandée, quel que soit l'âge du joueur. Un pseudo choisi par un enfant reste visible des autres joueurs : choisissez-le comme un pseudo, pas comme un nom.</p>
+  </div>
+  <div class="card">
+    <div class="card-title"><span class="ci">✅</span><span>Vos droits</span></div>
+    <ul>
+      <li>Jouer sans jamais créer de pseudo, donc sans qu'aucune donnée ne quitte l'appareil.</li>
+      <li>Demander la suppression de votre pseudo, de vos scores et de vos amis : un e-mail suffit, indiquez votre code ami.</li>
+      <li>Demander une copie de ce qui vous concerne (RGPD).</li>
+    </ul>
+  </div>
+  <div class="card contact-card">
+    <div class="card-title" style="justify-content:center"><span class="ci">💬</span><span>Contact</span></div>
+    <p>Pour toute question sur cette politique :</p>
+    <div class="contact-email"><a href="mailto:support@okalamstudio.com">support@okalamstudio.com</a></div>
+  </div>
+<div class="back-wrap"><a href="index.html" class="back-link">← Retour à l'accueil</a></div>
+  <div class="footer-copy">© 2026 OKALAM Studio. Tous droits réservés.</div>
+</div>
+<script>
+const cv=document.getElementById('particles'),cx=cv.getContext('2d');function rsz(){cv.width=innerWidth;cv.height=innerHeight;}rsz();window.addEventListener('resize',rsz);
+const pts=Array.from({length:80},()=>({x:Math.random()*innerWidth,y:Math.random()*innerHeight,r:Math.random()*1.4+.2,vx:(Math.random()-.5)*.1,vy:-Math.random()*.25-.05,o:Math.random()*.3+.08}));
+(function a(){cx.clearRect(0,0,cv.width,cv.height);pts.forEach(p=>{cx.beginPath();cx.arc(p.x,p.y,p.r,0,Math.PI*2);cx.fillStyle='rgba(141,234,255,'+p.o+')';cx.fill();p.x+=p.vx;p.y+=p.vy;if(p.y<-10){p.y=cv.height+10;p.x=Math.random()*cv.width;}if(p.x<-10)p.x=cv.width+10;if(p.x>cv.width+10)p.x=-10;});requestAnimationFrame(a);})();
+</script>
+</body>
+</html>
