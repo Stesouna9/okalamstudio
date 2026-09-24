@@ -131,6 +131,32 @@ footer{border-top:1px solid var(--border2);padding:56px 48px;position:relative;z
 @media(max-width:480px){
   .stats-grid{grid-template-columns:1fr 1fr;}
 }
+
+/* APPS */
+.apps-section{padding:90px 24px;position:relative;z-index:1;}
+.apps-inner{max-width:1100px;margin:0 auto;}
+.apps-head{text-align:center;margin-bottom:44px;}
+.apps-head .ok-label{justify-content:center;margin-bottom:10px;}
+.apps-head h2{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(1.8rem,4vw,2.8rem);letter-spacing:-.02em;margin-bottom:10px;}
+.apps-head p{color:var(--muted);font-size:.95rem;}
+.apps-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+.app-card{display:grid;grid-template-columns:150px 1fr;gap:22px;align-items:center;background:var(--card);border:1px solid var(--border);border-radius:20px;padding:24px;text-decoration:none;color:inherit;transition:transform .25s,border-color .25s;overflow:hidden;position:relative;}
+.app-card:hover{transform:translateY(-4px);border-color:rgba(255,255,255,.25);}
+.app-shot{width:150px;height:230px;border-radius:14px;overflow:hidden;background:#000;}
+.app-shot img{width:100%;height:100%;object-fit:cover;object-position:top;display:block;}
+.app-meta{min-width:0;}
+.app-live{display:inline-flex;align-items:center;gap:6px;font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:#4ade80;background:rgba(34,197,94,.12);border:1px solid rgba(34,197,94,.3);padding:3px 10px;border-radius:20px;margin-bottom:12px;}
+.app-live::before{content:'';width:6px;height:6px;border-radius:50%;background:#4ade80;}
+.app-title{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
+.app-title img{width:40px;height:40px;border-radius:10px;}
+.app-title h3{font-family:'Syne',sans-serif;font-weight:800;font-size:1.5rem;letter-spacing:-.02em;}
+.app-desc{color:var(--muted);font-size:.85rem;line-height:1.6;margin-bottom:16px;}
+.app-store{display:inline-flex;align-items:center;gap:8px;background:#fff;color:#000;border-radius:9px;padding:7px 14px 7px 10px;font-weight:600;font-size:.8rem;line-height:1.1;}
+.app-store span{font-size:1.3rem;line-height:1;}
+.app-store small{display:block;font-size:.55rem;font-weight:400;opacity:.7;}
+.apps-more{display:flex;justify-content:center;margin-top:32px;}
+@media(max-width:900px){.apps-grid{grid-template-columns:1fr;}}
+@media(max-width:520px){.app-card{grid-template-columns:1fr;}.app-shot{width:100%;height:200px;}}
 </style>
 </head>
 <body>
@@ -187,6 +213,38 @@ footer{border-top:1px solid var(--border2);padding:56px 48px;position:relative;z
   </div>
 </div>
 
+
+<!-- APPS -->
+<section class="apps-section" id="apps">
+  <div class="apps-inner">
+    <div class="apps-head">
+      <div class="ok-label" data-i18n="home_apps_label">Nos applications</div>
+      <h2 class="reveal" data-i18n="home_apps_title">Déjà sur l'App Store</h2>
+      <p class="reveal r1" data-i18n="home_apps_sub">Deux apps conçues et publiées par le studio. Gratuites, sans compte obligatoire.</p>
+    </div>
+    <div class="apps-grid">
+      <a class="app-card reveal" href="projets.html#voteday">
+        <div class="app-shot"><img src="imgs/voteday_island.png" alt="VoteDay" loading="lazy"/></div>
+        <div class="app-meta">
+          <div class="app-live" data-i18n="home_apps_live">Disponible</div>
+          <div class="app-title"><img src="imgs/voteday_icon.png" alt=""/><h3>VoteDay</h3></div>
+          <p class="app-desc" data-i18n="home_vd_desc">Une question par jour à 17h. Vote A ou B, compare avec tes amis et le monde.</p>
+          <span class="app-store" onclick="event.preventDefault();window.open('https://apps.apple.com/fr/app/voteday/id6760981728','_blank')"><span></span><span><small data-i18n="proj_dl_on">Télécharger sur l'</small>App Store</span></span>
+        </div>
+      </a>
+      <a class="app-card reveal r1" href="projets.html#kotoba">
+        <div class="app-shot"><img src="imgs/kotoba_game.png" alt="Kotoba" loading="lazy"/></div>
+        <div class="app-meta">
+          <div class="app-live" data-i18n="home_apps_live">Disponible</div>
+          <div class="app-title"><img src="imgs/kotoba_icon.png" alt=""/><h3>Kotoba</h3></div>
+          <p class="app-desc" data-i18n="home_kb_desc">Trouve le mot caché. Mot du jour, mode Aventure de 240 niveaux, 5 modes de jeu.</p>
+          <span class="app-store" onclick="event.preventDefault();window.open('https://apps.apple.com/fr/app/kotoba-mot-du-jour/id6761341663','_blank')"><span></span><span><small data-i18n="proj_dl_on">Télécharger sur l'</small>App Store</span></span>
+        </div>
+      </a>
+    </div>
+    <div class="apps-more reveal r2"><a href="projets.html#a-venir" class="btn-g" data-i18n="home_apps_more">Voir les projets à venir : Vice Break, Little ToT →</a></div>
+  </div>
+</section>
 
 <!-- WHY WORK WITH US -->
 <section class="why-section">

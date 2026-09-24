@@ -86,6 +86,45 @@ canvas{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-
   background:var(--card);
 }
 
+/* AVAILABLE */
+.project-status.live{background:rgba(34,197,94,.12);color:#4ade80;border-color:rgba(34,197,94,.3);}
+.project-status.live::before{background:#4ade80;animation:none;}
+.project-status.soon{background:rgba(148,163,184,.1);color:var(--muted);border-color:var(--border);}
+.project-status.soon::before{background:var(--muted);}
+.project-head{display:flex;align-items:center;gap:14px;margin-bottom:16px;}
+.project-icon{width:56px;height:56px;border-radius:14px;box-shadow:0 6px 18px rgba(0,0,0,.35);flex-shrink:0;}
+.project-head .project-name{margin-bottom:0;}
+.store-row{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:24px;}
+.store-btn{
+  display:inline-flex;align-items:center;gap:10px;
+  background:#fff;color:#000;border-radius:10px;padding:9px 16px 9px 12px;
+  font-family:'DM Sans',sans-serif;font-weight:600;font-size:.85rem;line-height:1.1;
+  text-decoration:none;transition:transform .2s,box-shadow .2s;
+}
+.store-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(255,255,255,.15);}
+.store-btn .sb-logo{font-size:1.5rem;line-height:1;}
+.store-btn small{display:block;font-size:.6rem;font-weight:400;opacity:.7;letter-spacing:.04em;}
+.store-btn.soon{background:var(--bg2);color:var(--muted);border:1px dashed var(--border);cursor:default;}
+.store-btn.soon:hover{transform:none;box-shadow:none;}
+.section-split{max-width:1100px;margin:0 auto;padding:60px 24px 0;}
+.section-split .ok-label{margin-bottom:8px;}
+.section-split h2{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(1.6rem,3.5vw,2.4rem);letter-spacing:-.02em;}
+.project-visual.vb{background:linear-gradient(135deg,#1a0a2a,#2a0a1a);}
+.vb-art{width:100%;height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;
+  background:
+    radial-gradient(ellipse at 50% 110%,rgba(255,60,172,.45),transparent 60%),
+    linear-gradient(180deg,#0b0620 0%,#2b0b3f 55%,#ff5f6d 100%);}
+.vb-title{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(2rem,5vw,3.2rem);letter-spacing:.08em;
+  color:#fff;text-shadow:0 0 18px rgba(255,80,200,.9),0 0 40px rgba(0,229,255,.5);}
+.vb-sub{font-family:'Space Mono',monospace;font-size:.65rem;letter-spacing:.3em;color:#7ff6ff;text-transform:uppercase;}
+.vb-grid{position:absolute;inset:auto 0 0 0;height:45%;
+  background-image:linear-gradient(rgba(0,229,255,.35) 1px,transparent 1px),linear-gradient(90deg,rgba(0,229,255,.35) 1px,transparent 1px);
+  background-size:40px 40px;transform:perspective(300px) rotateX(60deg);transform-origin:bottom;opacity:.6;}
+.vb-bricks{display:flex;gap:6px;margin-top:8px;}
+.vb-bricks span{width:34px;height:12px;border-radius:3px;background:linear-gradient(90deg,#ff3cac,#784ba0);box-shadow:0 0 10px rgba(255,60,172,.8);}
+.vb-bricks span:nth-child(2){background:linear-gradient(90deg,#00e5ff,#2b86c5);box-shadow:0 0 10px rgba(0,229,255,.8);}
+.vb-bricks span:nth-child(3){background:linear-gradient(90deg,#ffd166,#ff7b00);box-shadow:0 0 10px rgba(255,180,0,.8);}
+
 @media(max-width:900px){
   .project-block,.project-block.reverse{grid-template-columns:1fr;direction:ltr;gap:32px;}
 }
@@ -133,78 +172,120 @@ canvas{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-
 </nav>
 
 <div class="page-hero">
-  <div class="page-hero-label" data-i18n="proj_hero_label">Nos projets</div>
+  <div class="page-hero-label" data-i18n="proj_hero_label">Nos applications</div>
   <div class="page-hero-divider"></div>
-  <h1 class="page-hero-title" data-i18n="proj_hero_title">Ce qu'on <span class="accent-word">construit</span></h1>
-  <p class="page-hero-sub" data-i18n="proj_hero_sub">Deux idées en cours de développement — construites avec soin, publiées quand elles sont prêtes.</p>
+  <h1 class="page-hero-title" data-i18n="proj_hero_title">Nos apps sont <span class="accent-word">disponibles</span></h1>
+  <p class="page-hero-sub" data-i18n="proj_hero_sub">Deux applications déjà sur l'App Store. Deux autres en route.</p>
 </div>
 
-<section class="ok-section projects-section">
+<section class="ok-section projects-section" id="disponibles">
+  <div class="section-split">
+    <div class="ok-label" data-i18n="proj_live_label">Disponibles maintenant</div>
+    <h2 class="reveal" data-i18n="proj_live_title">Sorties sur l'App Store</h2>
+  </div>
   <div class="ok-section-inner">
 
     <!-- VoteDay -->
-    <div class="project-block reveal">
+    <div class="project-block reveal" id="voteday">
       <div class="project-visual vd" style="position:relative;overflow:hidden;display:flex;gap:0;padding:0;">
-        <img src="imgs/voteday_home.png" alt="VoteDay" style="width:33%;height:100%;object-fit:cover;object-position:top;" onerror="this.parentElement.innerHTML='🗳️'"/>
-        <img src="imgs/voteday_vote.png" alt="VoteDay vote" style="width:34%;height:100%;object-fit:cover;object-position:top;border-left:1px solid rgba(0,0,0,.3);border-right:1px solid rgba(0,0,0,.3);" onerror="this.style.display='none'"/>
-        <img src="imgs/voteday_results.png" alt="VoteDay results" style="width:33%;height:100%;object-fit:cover;object-position:top;" onerror="this.style.display='none'"/>
+        <img src="imgs/voteday_menu.png" alt="VoteDay — accueil" loading="lazy" style="width:33%;height:100%;object-fit:cover;object-position:top;" onerror="this.parentElement.innerHTML='🗳️'"/>
+        <img src="imgs/voteday_island.png" alt="VoteDay — île" loading="lazy" style="width:34%;height:100%;object-fit:cover;object-position:top;border-left:1px solid rgba(0,0,0,.3);border-right:1px solid rgba(0,0,0,.3);" onerror="this.style.display='none'"/>
+        <img src="imgs/voteday_bubl.png" alt="VoteDay — avatar Bubl" loading="lazy" style="width:33%;height:100%;object-fit:cover;object-position:top;" onerror="this.style.display='none'"/>
       </div>
       <div class="project-content">
-        <div class="project-status" data-i18n="proj_status">En développement</div>
-        <h2 class="project-name">VoteDay</h2>
-        <p class="project-desc" data-i18n="proj_vd_desc">Une question. Chaque jour. Pour tout le monde.</p>
-        <div class="project-tags"><span class="ptag">Social</span><span class="ptag">iOS</span><span class="ptag">Community</span><span class="ptag">Daily</span></div>
+        <div class="project-status live" data-i18n="proj_status_live">Disponible sur l'App Store</div>
+        <div class="project-head"><img class="project-icon" src="imgs/voteday_icon.png" alt="" onerror="this.remove()"/><h2 class="project-name">VoteDay</h2></div>
+        <p class="project-desc" data-i18n="proj_vd_desc">Une question. Chaque jour à 17h. Tu votes A ou B, puis tu compares avec tes amis et le monde entier.</p>
+        <div class="project-tags"><span class="ptag">Social</span><span class="ptag">iOS</span><span class="ptag">Gratuit</span><span class="ptag">v2.0</span></div>
         <div class="project-features">
-          <div class="feature"><div class="feature-dot"></div><div class="feature-text" data-i18n="proj_vd_f1"><strong>Une question quotidienne</strong> — soigneusement choisie</div></div>
-          <div class="feature"><div class="feature-dot"></div><div class="feature-text" data-i18n="proj_vd_f2"><strong>Découverte d'opinions</strong> — voir comment le monde répond</div></div>
-          <div class="feature"><div class="feature-dot"></div><div class="feature-text" data-i18n="proj_vd_f3"><strong>Communauté authentique</strong> — pas d'algorithme, pas de toxicité</div></div>
-          <div class="feature"><div class="feature-dot"></div><div class="feature-text" data-i18n="proj_vd_f4"><strong>Multilingue dès le départ</strong> — conçu pour une audience mondiale</div></div>
+          <div class="feature"><div class="feature-dot"></div><div class="feature-text" data-i18n="proj_vd_f1"><strong>Un vote quotidien A / B</strong> — une question, une décision, tous ensemble</div></div>
+          <div class="feature"><div class="feature-dot"></div><div class="feature-text" data-i18n="proj_vd_f2"><strong>Bubl, ton avatar</strong> — personnalisable, studio photo inclus</div></div>
+          <div class="feature"><div class="feature-dot"></div><div class="feature-text" data-i18n="proj_vd_f3"><strong>Une île à explorer</strong> — 7 bâtiments, cartes à collectionner</div></div>
+          <div class="feature"><div class="feature-dot"></div><div class="feature-text" data-i18n="proj_vd_f4"><strong>Le Café</strong> — discuter entre amis, sans algorithme ni toxicité</div></div>
         </div>
-        <div class="inprogress"><div class="inprogress-icon">🛠️</div><div data-i18n="proj_vd_inprogress">Projet en cours de développement. Pas encore disponible.</div></div>
-      </div>
-    </div>
-
-    <!-- Little ToT -->
-    <div class="project-block reverse reveal">
-      <div class="project-visual lt" style="position:relative;overflow:hidden;display:flex;gap:0;padding:0;background:var(--card);">
-        <img src="imgs/ltot_menu.png" alt="Little ToT menu" style="width:33%;height:100%;object-fit:cover;object-position:top;" onerror="this.parentElement.innerHTML='⚔️'"/>
-        <img src="imgs/ltot_desert.png" alt="Little ToT désert" style="width:34%;height:100%;object-fit:cover;object-position:top;border-left:1px solid rgba(0,0,0,.3);border-right:1px solid rgba(0,0,0,.3);" onerror="this.style.display='none'"/>
-        <img src="imgs/ltot_mountain.png" alt="Little ToT montagne" style="width:33%;height:100%;object-fit:cover;object-position:top;" onerror="this.style.display='none'"/>
-      </div>
-      <div class="project-content">
-        <div class="project-status" data-i18n="proj_status">En développement</div>
-        <h2 class="project-name">Little ToT</h2>
-        <p class="project-desc" data-i18n="proj_lt_desc">Un RPG de poche en temps réel. Le temps qui passe dans ta vie est le temps qui passe dans le jeu.</p>
-        <div class="project-tags"><span class="ptag">RPG</span><span class="ptag">iOS</span><span class="ptag">Temps réel</span><span class="ptag">Aventure</span></div>
-        <div class="project-features">
-          <div class="feature"><div class="feature-dot"></div><div class="feature-text" data-i18n="proj_lt_f1"><strong>Temps réel</strong> — le jeu tourne en permanence</div></div>
-          <div class="feature"><div class="feature-dot"></div><div class="feature-text" data-i18n="proj_lt_f2"><strong>Biomes & exploration</strong> — désert, montagne...</div></div>
-          <div class="feature"><div class="feature-dot"></div><div class="feature-text" data-i18n="proj_lt_f3"><strong>Système RPG complet</strong> — Endurance, Combat, Chance, XP</div></div>
-          <div class="feature"><div class="feature-dot"></div><div class="feature-text" data-i18n="proj_lt_f4"><strong>Rythme naturel</strong> — le sommeil fait partie du gameplay</div></div>
+        <div class="store-row">
+          <a class="store-btn" href="https://apps.apple.com/fr/app/voteday/id6760981728" target="_blank" rel="noopener"><span class="sb-logo"></span><span><small data-i18n="proj_dl_on">Télécharger sur l'</small>App Store</span></a>
+          <span class="store-btn soon"><span class="sb-logo">🤖</span><span><small data-i18n="proj_soon_on">Bientôt sur</small>Google Play</span></span>
         </div>
-        <div class="inprogress"><div class="inprogress-icon">🎮</div><div data-i18n="proj_lt_inprogress">Prototype fonctionnel en cours de finition.</div></div>
       </div>
     </div>
 
     <!-- Kotoba -->
-    <div class="project-block reveal">
+    <div class="project-block reverse reveal" id="kotoba">
       <div class="project-visual kb" style="position:relative;overflow:hidden;display:flex;gap:0;padding:0;">
-        <img src="imgs/kotoba_jp.png" alt="Kotoba japonais" style="width:33%;height:100%;object-fit:cover;object-position:top;" onerror="this.parentElement.innerHTML='コ'"/>
-        <img src="imgs/kotoba_fr.png" alt="Kotoba français" style="width:34%;height:100%;object-fit:cover;object-position:top;border-left:1px solid rgba(0,0,0,.3);border-right:1px solid rgba(0,0,0,.3);" onerror="this.style.display='none'"/>
-        <img src="imgs/kotoba_play.png" alt="Kotoba play" style="width:33%;height:100%;object-fit:cover;object-position:top;" onerror="this.style.display='none'"/>
+        <img src="imgs/kotoba_home.png" alt="Kotoba — accueil" loading="lazy" style="width:33%;height:100%;object-fit:cover;object-position:top;" onerror="this.parentElement.innerHTML='🔤'"/>
+        <img src="imgs/kotoba_game.png" alt="Kotoba — partie" loading="lazy" style="width:34%;height:100%;object-fit:cover;object-position:top;border-left:1px solid rgba(0,0,0,.3);border-right:1px solid rgba(0,0,0,.3);" onerror="this.style.display='none'"/>
+        <img src="imgs/kotoba_adventure.png" alt="Kotoba — aventure" loading="lazy" style="width:33%;height:100%;object-fit:cover;object-position:top;" onerror="this.style.display='none'"/>
       </div>
       <div class="project-content">
-        <div class="project-status">En développement</div>
-        <h2 class="project-name">Kotoba</h2>
-        <p class="project-desc">Trouve le mot caché. Chaque jour, dans ta langue. Un jeu de devinette de mots inspiré de Motus et Wordle — disponible en 12 langues.</p>
-        <div class="project-tags"><span class="ptag">Word Game</span><span class="ptag">iOS</span><span class="ptag">12 langues</span><span class="ptag">SwiftUI</span></div>
+        <div class="project-status live" data-i18n="proj_status_live">Disponible sur l'App Store</div>
+        <div class="project-head"><img class="project-icon" src="imgs/kotoba_icon.png" alt="" onerror="this.remove()"/><h2 class="project-name">Kotoba</h2></div>
+        <p class="project-desc" data-i18n="proj_kb_desc">Trouve le mot caché. Un jeu de mots façon Motus, avec un mot du jour partagé par tous et un mode Aventure de 240 niveaux.</p>
+        <div class="project-tags"><span class="ptag">Word Game</span><span class="ptag">iOS · iPad</span><span class="ptag">Gratuit</span><span class="ptag">FR · JP</span><span class="ptag">v2.0</span></div>
         <div class="project-features">
-          <div class="feature"><div class="feature-dot"></div><div class="feature-text"><strong>12 langues</strong> — FR, EN, ES, PT, DE, IT, NL, TR, PL, SV, RU, JA</div></div>
-          <div class="feature"><div class="feature-dot"></div><div class="feature-text"><strong>Mots de 4 à 11 lettres</strong> — clavier adaptatif (AZERTY, QWERTY, Cyrillique…)</div></div>
-          <div class="feature"><div class="feature-dot"></div><div class="feature-text"><strong>Bonus lettres</strong> — indices débloqués, packs d'achat, 1 gratuit par jour</div></div>
-          <div class="feature"><div class="feature-dot"></div><div class="feature-text"><strong>6 tentatives</strong> — la première lettre est révélée dès le départ</div></div>
+          <div class="feature"><div class="feature-dot"></div><div class="feature-text" data-i18n="proj_kb_f1"><strong>Mot du jour</strong> — le même pour tout le monde, chaque jour</div></div>
+          <div class="feature"><div class="feature-dot"></div><div class="feature-text" data-i18n="proj_kb_f2"><strong>Mode Aventure</strong> — 240 niveaux, 10 mondes, coffres et étoiles</div></div>
+          <div class="feature"><div class="feature-dot"></div><div class="feature-text" data-i18n="proj_kb_f3"><strong>5 modes</strong> — Blitz, Infini, Aveugle, Contretemps, Tournoi</div></div>
+          <div class="feature"><div class="feature-dot"></div><div class="feature-text" data-i18n="proj_kb_f4"><strong>Classement</strong> — compare-toi aux autres joueurs</div></div>
         </div>
-        <div class="inprogress"><div class="inprogress-icon">📱</div><div>Application iOS native en cours de développement. Bientôt disponible sur l'App Store.</div></div>
+        <div class="store-row">
+          <a class="store-btn" href="https://apps.apple.com/fr/app/kotoba-mot-du-jour/id6761341663" target="_blank" rel="noopener"><span class="sb-logo"></span><span><small data-i18n="proj_dl_on">Télécharger sur l'</small>App Store</span></a>
+          <span class="store-btn soon"><span class="sb-logo">🤖</span><span><small data-i18n="proj_soon_on">Bientôt sur</small>Google Play</span></span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="ok-section projects-section" id="a-venir" style="background:var(--bg2);">
+  <div class="section-split">
+    <div class="ok-label" data-i18n="proj_next_label">En préparation</div>
+    <h2 class="reveal" data-i18n="proj_next_title">Ce qui arrive ensuite</h2>
+  </div>
+  <div class="ok-section-inner">
+
+    <!-- Vice Break -->
+    <div class="project-block reveal" id="vicebreak">
+      <div class="project-visual vb" style="position:relative;overflow:hidden;padding:0;">
+        <div class="vb-grid"></div>
+        <div class="vb-art"><div class="vb-sub">Vice Bay · 1986</div><div class="vb-title">VICE BREAK</div><div class="vb-bricks"><span></span><span></span><span></span></div></div>
+      </div>
+      <div class="project-content">
+        <div class="project-status" data-i18n="proj_status">En développement</div>
+        <h2 class="project-name">Vice Break</h2>
+        <p class="project-desc" data-i18n="proj_vb_desc">Casse-briques néon de 1986. Bienvenue à Vice Bay : chrome, palmiers et sessions de 90 secondes.</p>
+        <div class="project-tags"><span class="ptag">Arcade</span><span class="ptag">iOS</span><span class="ptag">SpriteKit</span><span class="ptag">Néon</span></div>
+        <div class="project-features">
+          <div class="feature"><div class="feature-dot"></div><div class="feature-text" data-i18n="proj_vb_f1"><strong>100 tableaux-silhouettes</strong> — chaque niveau raconte une scène</div></div>
+          <div class="feature"><div class="feature-dot"></div><div class="feature-text" data-i18n="proj_vb_f2"><strong>Radio embarquée</strong> — l'ambiance d'une ville de nuit</div></div>
+          <div class="feature"><div class="feature-dot"></div><div class="feature-text" data-i18n="proj_vb_f3"><strong>Power-ups & sauvegarde cloud</strong> — reprends où tu t'es arrêté</div></div>
+          <div class="feature"><div class="feature-dot"></div><div class="feature-text" data-i18n="proj_vb_f4"><strong>Sans pub interstitielle</strong> — jamais coupé en pleine partie</div></div>
+        </div>
+        <div class="inprogress"><div class="inprogress-icon">🕹️</div><div data-i18n="proj_vb_inprogress">Jeu jouable en interne. Sortie App Store en préparation.</div></div>
+        <div class="store-row"><a class="store-btn soon" href="support-vicebreak.html" style="cursor:pointer;"><span class="sb-logo">💬</span><span><small data-i18n="proj_vb_support_small">Page</small>Support Vice Break</span></a></div>
+      </div>
+    </div>
+
+    <!-- Little ToT -->
+    <div class="project-block reverse reveal" id="littletot">
+      <div class="project-visual lt" style="position:relative;overflow:hidden;display:flex;gap:0;padding:0;">
+        <img src="imgs/ltot_menu.png" alt="Little ToT — menu" loading="lazy" style="width:33%;height:100%;object-fit:cover;object-position:top;" onerror="this.parentElement.innerHTML='🌱'"/>
+        <img src="imgs/ltot_desert.png" alt="Little ToT — désert" loading="lazy" style="width:34%;height:100%;object-fit:cover;object-position:top;border-left:1px solid rgba(0,0,0,.3);border-right:1px solid rgba(0,0,0,.3);" onerror="this.style.display='none'"/>
+        <img src="imgs/ltot_mountain.png" alt="Little ToT — montagne" loading="lazy" style="width:33%;height:100%;object-fit:cover;object-position:top;" onerror="this.style.display='none'"/>
+      </div>
+      <div class="project-content">
+        <div class="project-status" data-i18n="proj_status">En développement</div>
+        <div class="project-head"><img class="project-icon" src="imgs/ltot_icon.png" alt="" onerror="this.remove()"/><h2 class="project-name">Little ToT</h2></div>
+        <p class="project-desc" data-i18n="proj_lt_desc">Un RPG de poche en temps réel. Une aventure de 7 jours qui avance pendant que tu vis ta vie.</p>
+        <div class="project-tags"><span class="ptag">RPG</span><span class="ptag">iOS</span><span class="ptag">Apple Watch</span><span class="ptag">Temps réel</span></div>
+        <div class="project-features">
+          <div class="feature"><div class="feature-dot"></div><div class="feature-text" data-i18n="proj_lt_f1"><strong>7 jours réels</strong> — le jeu avance même quand tu ne joues pas</div></div>
+          <div class="feature"><div class="feature-dot"></div><div class="feature-text" data-i18n="proj_lt_f2"><strong>Biomes & exploration</strong> — désert, montagnes…</div></div>
+          <div class="feature"><div class="feature-dot"></div><div class="feature-text" data-i18n="proj_lt_f3"><strong>Force & Cœurs</strong> — des choix simples, des conséquences réelles</div></div>
+          <div class="feature"><div class="feature-dot"></div><div class="feature-text" data-i18n="proj_lt_f4"><strong>Sur ta montre</strong> — décide au poignet, reçois les étapes en notification</div></div>
+        </div>
+        <div class="inprogress"><div class="inprogress-icon">⌚</div><div data-i18n="proj_lt_inprogress">Prototype fonctionnel, app Apple Watch en cours de finition.</div></div>
       </div>
     </div>
 
@@ -216,7 +297,7 @@ canvas{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-
   <div class="ok-section-inner more-inner">
     <div class="ok-label" data-i18n="proj_more_label" style="justify-content:center;">Et après ?</div>
     <h2 class="ok-title reveal" data-i18n="proj_more_title" style="margin-bottom:12px;">D'autres idées en gestation</h2>
-    <p class="ok-desc reveal r1" data-i18n="proj_more_desc" style="max-width:500px;margin:0 auto 36px;">Le studio ne dort jamais. VoteDay et Little ToT ne sont que le début.</p>
+    <p class="ok-desc reveal r1" data-i18n="proj_more_desc" style="max-width:500px;margin:0 auto 36px;">Le studio ne dort jamais. VoteDay et Kotoba ne sont que le début.</p>
     <div class="more-dots reveal r2"><div class="more-dot">?</div><div class="more-dot">?</div><div class="more-dot">?</div></div>
     <a href="contact.html" class="btn-primary reveal r3" data-i18n="proj_more_cta">Vous avez une idée ? Parlons-en</a>
   </div>
