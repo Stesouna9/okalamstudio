@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Vice Bay Studio">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>Vice Bay Studio — notes</title>
+<style>
+  :root { --bg:#0b0714; --panel:#17102a; --panel-2:#1f1638; --line:#2e2350; --ink:#f3e9d8; --dim:#9e90b8; --accent:#ff2e88; --ok:#2bb3a3; --warn:#f2b33d; --cut:#ff5a5a; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink); font:15px/1.45 -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif; }
+  nav { display:flex; flex-wrap:wrap; align-items:center; gap:4px; padding:12px 16px; border-bottom:1px solid var(--line); background:var(--panel); position:sticky; top:0; z-index:5; }
+  nav .brand { font-weight:800; letter-spacing:3px; font-size:12px; color:var(--dim); margin-right:12px; }
+  nav a { color:var(--dim); text-decoration:none; padding:6px 10px; border-radius:8px; font-size:12px; letter-spacing:1px; font-weight:700; }
+  nav a:hover, nav a.on { color:var(--ink); background:var(--panel-2); }
+  main { padding:16px; max-width:760px; margin:0 auto; }
+  h1 { font-size:22px; margin:0 0 4px; } .sub { color:var(--dim); margin-bottom:14px; font-size:13px; }
+  .new { background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:12px; margin-bottom:18px; }
+  textarea { width:100%; min-height:90px; background:var(--panel-2); color:var(--ink); border:1px solid var(--line); border-radius:10px; padding:10px; font:16px/1.4 inherit; resize:vertical; }
+  .row { display:flex; gap:8px; margin-top:8px; align-items:center; flex-wrap:wrap; }
+  select, button { font:15px inherit; border-radius:10px; border:1px solid var(--line); background:var(--panel-2); color:var(--ink); padding:10px 12px; }
+  button.go { background:var(--accent); border-color:var(--accent); color:#fff; font-weight:800; flex:1; }
+  .n { background:var(--panel); border:1px solid var(--line); border-left:4px solid var(--c, var(--dim)); border-radius:12px; padding:10px 12px; margin-bottom:10px; }
+  .n.fait { opacity:.5; }
+  .n .meta { display:flex; gap:8px; align-items:center; font-size:12px; color:var(--dim); margin-bottom:6px; flex-wrap:wrap; }
+  .n .tag { font-weight:800; letter-spacing:1px; color:var(--c, var(--dim)); }
+  label.ph { font:15px inherit; border-radius:10px; border:1px solid var(--line); background:var(--panel-2); color:var(--ink); padding:10px 12px; cursor:pointer; }
+  label.ph.has { border-color:var(--ok); color:var(--ok); }
+  .n img { max-width:100%; border-radius:8px; margin-top:8px; display:block; }
+  .n .st { font-weight:700; margin-left:auto; }
+  .n .kind { color:var(--ink); font-weight:700; }
+  .n .txt { white-space:pre-wrap; word-break:break-word; }
+  .n .rep { margin-top:8px; padding:8px 10px; background:var(--panel-2); border-radius:8px; font-size:13px; color:var(--ok); white-space:pre-wrap; }
+  .n .rep::before { content:"↩ Claude · "; color:var(--dim); font-weight:700; }
+  .n .act { display:flex; gap:6px; margin-top:8px; }
+  .n .act button { padding:6px 10px; font-size:12px; }
+  .radio { --c:#4DD0E1; } .jeu { --c:#9E9E9E; } .site { --c:#2bb3a3; } .pub { --c:#B388FF; } .studio { --c:#F2B33D; } .autre { --c:#9e90b8; }
+  .toast { position:fixed; bottom:24px; left:50%; transform:translateX(-50%); background:var(--ok); color:#000; padding:8px 14px; border-radius:20px; font-weight:700; opacity:0; transition:.3s; }
+  .toast.on { opacity:1; }
+  h2 { font-size:13px; letter-spacing:2px; color:var(--dim); margin:18px 0 8px; }
+</style>
+<style>
+  /* iPhone en mode écran d'accueil : dégager la barre d'état, menu sur une ligne défilante */
+  nav, nav.topnav { padding-top: calc(10px + env(safe-area-inset-top)) !important; }
+  @media (max-width: 760px) {
+    nav, nav.topnav { flex-wrap: nowrap !important; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; padding-left: 12px !important; padding-right: 12px !important; }
+    nav::-webkit-scrollbar { display: none; }
+    nav a, nav .brand { flex: none; white-space: nowrap; }
+    nav .brand { margin-right: 8px !important; }
+  }
+</style>
+</head>
+<body>
+<nav><span class="brand">VICE BAY STUDIO</span>
+  <a href="/">TABLEAU DE BORD</a><a href="/inbox">MUSIQUE</a><a href="/jingles">JINGLES</a><a href="/pubs">PUBS</a><a href="/studio">ANTENNE & VOIX</a><a href="/prod">PRODUCTION</a><a href="/marketing">📣 PUB</a><a href="/notes" class="on">📝 NOTES</a>
+</nav>
+<main>
+  <h1>Notes, correctifs & suggestions</h1>
+  <div class="sub">Tu notes ici ce qui cloche ou ce que tu veux changer, depuis l'iPhone ou le Mac. Chaque note part chez Claude : « Garder pour moi » = brouillon que Claude ne lit pas ; « Envoyer à Claude » : statut « envoyée » → « vue » → « en cours » (ou « transmise » à la session jeu iOS/Android ou site) → « fait », avec sa réponse sous la note. Une routine passe toutes les heures de 8 h à 23 h, plus en direct quand une session est ouverte.</div>
+  <div class="new">
+    <textarea id="txt" placeholder="Ex. : le slogan de SUNSET déborde sur iPhone · la pub Big Lou est trop longue · idée : …"></textarea>
+    <div class="row">
+      <select id="kind">
+        <option value="correctif">🔧 correctif</option>
+        <option value="suggestion">💡 suggestion</option>
+        <option value="changement">🔁 changement</option>
+        <option value="question">❓ question</option>
+      </select>
+      <select id="cat">
+        <option value="radio">📻 radio / musique</option>
+        <option value="studio">🖥 Vice Bay Studio (cette appli)</option>
+        <option value="jeu">🎮 jeu VICE BREAK</option>
+        <option value="site">🌐 site okalamstudio</option>
+        <option value="pub">📣 pub / com</option>
+        <option value="autre">autre</option>
+      </select>
+      <label class="ph" for="photo">📷 photo</label><input type="file" id="photo" accept="image/*" style="display:none">
+      <button id="keep">💾 Garder pour moi</button>
+      <button class="go" id="go">📨 Envoyer à Claude</button>
+    </div>
+  </div>
+  <h2>À TRAITER</h2><div id="todo"></div>
+  <h2>FAIT</h2><div id="done"></div>
+</main>
+<div class="toast" id="toast">Enregistré</div>
+<script>
+let N = [];
+let PHOTO = null;
+document.getElementById('photo').addEventListener('change', e => { PHOTO = e.target.files[0] || null; document.querySelector('label.ph').classList.toggle('has', !!PHOTO); document.querySelector('label.ph').textContent = PHOTO ? '📷 photo prête' : '📷 photo'; });
+async function shrink(file) { const img = await createImageBitmap(file); const k = Math.min(1, 1600 / Math.max(img.width, img.height)); const c = document.createElement('canvas'); c.width = Math.round(img.width * k); c.height = Math.round(img.height * k); c.getContext('2d').drawImage(img, 0, 0, c.width, c.height); return new Promise(r => c.toBlob(r, 'image/jpeg', 0.82)); }
+const ST = { brouillon: ['💾 brouillon (pas envoyé)', 'var(--dim)'], envoyée: ['📨 envoyée à Claude', 'var(--warn)'], vue: ['👀 vue par Claude', 'var(--dim)'], 'en cours': ['⚙️ en cours', '#4DD0E1'], transmise: ['➡️ transmise (jeu/site)', '#B388FF'], fait: ['✓ fait', 'var(--ok)'] };
+const KIND = { correctif: '🔧 correctif', suggestion: '💡 suggestion', changement: '🔁 changement', question: '❓ question' };
+const esc = s => (s || '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const fmt = d => { const x = new Date(d); return x.toLocaleDateString('fr-FR', { day: '2-digit', month: '2-digit' }) + ' ' + x.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' }); };
+function toast(m) { const t = document.getElementById('toast'); t.textContent = m; t.classList.add('on'); setTimeout(() => t.classList.remove('on'), 1400); }
+async function save() { await fetch('/api/notes', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(N) }); toast('Enregistré'); }
+function card(n) {
+  return `<div class="n ${n.cat} ${n.fait ? 'fait' : ''}" data-id="${n.id}">
+    <div class="meta"><span class="kind">${KIND[n.kind] || n.kind || ''}</span><span class="tag">${esc(n.cat).toUpperCase()}</span><span>${fmt(n.date)}</span><span class="st" style="color:${(ST[n.fait ? 'fait' : (n.statut || 'envoyée')] || ST['envoyée'])[1]}">${(ST[n.fait ? 'fait' : (n.statut || 'envoyée')] || ST['envoyée'])[0]}${n.vu && !n.fait ? ' ' + fmt(n.vu) : ''}</span></div>
+    <div class="txt">${esc(n.txt)}</div>${n.photo ? `<a href="${n.photo}" target="_blank"><img src="${n.photo}" alt="photo"></a>` : ''}
+    ${n.reponse ? `<div class="rep">${esc(n.reponse)}</div>` : ''}
+    <div class="act">${n.statut === 'brouillon' ? '<button data-a="send">📨 envoyer à Claude</button>' : ''}<button data-a="fait">${n.fait ? 'rouvrir' : '✓ fait'}</button><button data-a="del">supprimer</button></div>
+  </div>`;
+}
+function render() {
+  const s = [...N].sort((a, b) => b.date.localeCompare(a.date));
+  document.getElementById('todo').innerHTML = s.filter(n => !n.fait).map(card).join('') || '<div class="sub">Rien en attente.</div>';
+  document.getElementById('done').innerHTML = s.filter(n => n.fait).map(card).join('') || '<div class="sub">—</div>';
+}
+async function submit(statut) {
+  const t = document.getElementById('txt').value.trim(); if (!t && !PHOTO) return;
+  const id = Date.now().toString(36); let photo = '';
+  if (PHOTO) { try { const r = await (await fetch('/api/notes/photo?id=' + id, { method: 'POST', body: await shrink(PHOTO) })).json(); photo = r.url || ''; } catch (e) { toast('photo non envoyée'); } PHOTO = null; document.getElementById('photo').value = ''; document.querySelector('label.ph').classList.remove('has'); document.querySelector('label.ph').textContent = '📷 photo'; }
+  N.push({ id, photo, date: new Date().toISOString(), kind: document.getElementById('kind').value, cat: document.getElementById('cat').value, txt: t, fait: false, statut, vu: '', reponse: '' });
+  document.getElementById('txt').value = ''; render(); await save(); toast(statut === 'envoyée' ? '📨 Envoyée à Claude' : '💾 Gardée, pas envoyée');
+}
+document.getElementById('go').onclick = () => submit('envoyée');
+document.getElementById('keep').onclick = () => submit('brouillon');
+document.body.addEventListener('click', async e => {
+  const b = e.target.closest('button[data-a]'); if (!b) return;
+  const id = b.closest('.n').dataset.id, n = N.find(x => x.id === id);
+  if (b.dataset.a === 'send') { n.statut = 'envoyée'; n.date = new Date().toISOString(); toast('📨 Envoyée à Claude'); }
+  if (b.dataset.a === 'fait') { n.fait = !n.fait; n.statut = n.fait ? 'fait' : 'envoyée'; }
+  if (b.dataset.a === 'del') { if (!confirm('Supprimer cette note ?')) return; N = N.filter(x => x.id !== id); }
+  render(); await save();
+});
+(async () => { N = await (await fetch('/api/notes')).json(); render(); setInterval(async () => { try { const m = await (await fetch('/api/notes')).json(); if (JSON.stringify(m) !== JSON.stringify(N)) { N = m; render(); } } catch (e) {} }, 15000); })();
+</script>
+</body>
+</html>
