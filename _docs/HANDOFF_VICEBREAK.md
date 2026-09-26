@@ -19,7 +19,7 @@ Cinq stations FM fictives de la ville de Vice Bay, musique 100 % libre (CC0 / CC
 | EMOTION | 98.3 | SLOWS · BALLADES · SAXO | « Éteignez la lumière. Le cœur passe en fréquence modulée. » | #4DD0E1 | img/radio_emotion.png |
 | SUNSET DRIVE | 102.7 | SYNTHWAVE · ROUTE · ARPÈGES | « 102.7, le soleil tombe, pas vous. » | #F2B33D | img/radio_sunset.png |
 | NEON | 103.5 | CHIPTUNE · 8-BIT · MUSIQUE DE JEU | « Insérez une pièce et ça repart. » | #FF2E88 | img/radio_neon.png |
-| VOLT | 107.3 | FUNK · HIP-HOP · SOUL | « Le groove n'attend pas. Big Lou non plus. » | #FF7A3D | img/radio_volt.png |
+| VOLT | 107.3 | JAZZ · SOUL · CLASSIQUES NOIRS AMÉRICAINS | « Le groove n'attend pas. Big Lou non plus. » | #FF7A3D | img/radio_volt.png |
 
 ## Logo Vice Bay Radio
 `img/vicebay_radio.png` (1347×1168, fond noir, triangle synthwave, texte chrome). Déclinaisons pub prêtes : `img/vicebay_radio_1x1.png` (1080×1080) et `img/vicebay_radio_9x16.png` (1080×1920), fond noir #000310. Transparent / mono blanc encore chez Gabriel via ChatGPT.
