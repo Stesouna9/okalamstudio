@@ -84,15 +84,6 @@ body{background:var(--vb-night);}
 .vb-d .sun{position:absolute;left:50%;top:30%;width:38%;aspect-ratio:1;border-radius:50%;transform:translateX(-50%);filter:blur(1px);}
 
 /* RADIO */
-.vb-radio{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:48px;}
-.vb-st{border-radius:16px;overflow:hidden;background:#120f33;border:1px solid rgba(255,255,255,.06);transition:transform .3s;}
-.vb-st:hover{transform:rotate(-1.5deg) scale(1.04);}
-.vb-st img{width:100%;aspect-ratio:3/4;object-fit:cover;display:block;}
-.vb-st div{padding:10px 12px;font-family:'Orbitron',sans-serif;font-size:.55rem;letter-spacing:.18em;text-transform:uppercase;color:var(--vb-sand);text-align:center;}
-.vb-st{position:relative;cursor:pointer;padding:0;font:inherit;text-align:left;color:inherit;}
-.vb-st .vb-play{position:absolute;top:10px;right:10px;width:30px;height:30px;border-radius:50%;background:rgba(11,10,30,.7);border:1px solid rgba(34,229,255,.5);color:var(--vb-cyan);font-size:.65rem;display:flex;align-items:center;justify-content:center;transition:all .2s;}
-.vb-st.playing{border-color:var(--vb-mag);box-shadow:0 0 24px rgba(255,46,136,.5);transform:scale(1.04);}
-.vb-st.playing .vb-play{background:var(--vb-mag);border-color:var(--vb-mag);color:#fff;}
 .vb-player{display:flex;align-items:center;gap:18px;margin-top:28px;padding:16px 20px;border-radius:16px;background:rgba(28,22,80,.45);border:1px solid rgba(34,229,255,.2);}
 .vb-player-eq{display:flex;gap:3px;align-items:flex-end;height:26px;width:30px;}
 .vb-player-eq i{flex:1;background:var(--vb-cyan);box-shadow:0 0 6px var(--vb-cyan);height:4px;}
@@ -145,6 +136,24 @@ body{background:var(--vb-night);}
 .vb-cab-rules li::before{content:'🪙';position:absolute;left:0;top:0;font-size:.9rem;}
 .vb-cab-rules li strong{color:#fff;}
 @media(max-width:800px){.vb-cab{grid-template-columns:1fr;}}
+
+/* VICE BAY RADIO */
+.vb-radio-head{display:grid;grid-template-columns:260px 1fr;gap:36px;align-items:center;}
+.vb-radio-logo{width:100%;border-radius:20px;border:1px solid rgba(255,255,255,.08);box-shadow:0 20px 60px rgba(0,0,0,.6),0 0 40px rgba(255,46,136,.15);}
+.vb-radio{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:48px;}
+.vb-st{position:relative;display:flex;flex-direction:column;border-radius:18px;overflow:hidden;background:#120f33;border:1px solid rgba(255,255,255,.08);cursor:pointer;padding:0;font:inherit;text-align:left;color:inherit;transition:transform .3s,border-color .3s,box-shadow .3s;}
+.vb-st:hover{transform:translateY(-6px);border-color:var(--c);box-shadow:0 0 24px color-mix(in srgb,var(--c) 40%,transparent);}
+.vb-st img{width:100%;aspect-ratio:1;object-fit:cover;display:block;}
+.vb-st-body{padding:12px 14px 16px;display:flex;flex-direction:column;gap:4px;border-top:2px solid var(--c);}
+.vb-st-freq{font-family:'Orbitron',sans-serif;font-weight:900;font-size:1.3rem;color:var(--c);text-shadow:0 0 12px var(--c);line-height:1;}
+.vb-st-body b{font-family:'Orbitron',sans-serif;font-size:.68rem;letter-spacing:.18em;color:#fff;}
+.vb-st-body small{font-size:.55rem;letter-spacing:.12em;color:rgba(245,227,195,.55);text-transform:uppercase;}
+.vb-st-body em{font-style:italic;font-size:.74rem;color:rgba(245,227,195,.85);margin-top:6px;line-height:1.4;}
+.vb-st .vb-play{position:absolute;top:10px;right:10px;width:32px;height:32px;border-radius:50%;background:rgba(11,10,30,.75);border:1px solid var(--c);color:var(--c);font-size:.65rem;display:flex;align-items:center;justify-content:center;transition:all .2s;}
+.vb-st.playing{border-color:var(--c);box-shadow:0 0 28px color-mix(in srgb,var(--c) 55%,transparent);transform:scale(1.03);}
+.vb-st.playing .vb-play{background:var(--c);color:#0B0A1E;}
+@media(max-width:900px){.vb-radio-head{grid-template-columns:1fr;}.vb-radio-logo{max-width:320px;}.vb-radio{grid-template-columns:repeat(3,1fr);}}
+@media(max-width:560px){.vb-radio{grid-template-columns:repeat(2,1fr);}}
 
 @media(max-width:900px){.vb-phones{grid-template-columns:repeat(2,1fr);gap:14px;}.vb-phone:nth-child(2),.vb-phone:nth-child(3){transform:none;}.vb-phone{border-radius:22px;}.vb-sil-grid{grid-template-columns:repeat(2,1fr);}.vb-dist{grid-template-columns:repeat(3,1fr);}.vb-radio{grid-template-columns:repeat(3,1fr);}.vb-feats{grid-template-columns:1fr;}}
 @media(max-width:560px){.vb-phones{grid-template-columns:1fr 1fr;}.vb-dist{grid-template-columns:repeat(2,1fr);}.vb-radio{grid-template-columns:repeat(2,1fr);}.vb-hero{min-height:88vh;}}
@@ -248,7 +257,7 @@ body{background:var(--vb-night);}
 <div class="vb">
 <aside class="vbr" id="vbr" aria-label="Radio Vice Bay">
   <div class="vbr-top">
-    <span class="vbr-brand">📻 VICE BAY FM</span>
+    <span class="vbr-brand">📻 VICE BAY RADIO</span>
     <span class="vbr-onair" id="vbr-onair">RADIO COUPÉE</span>
     <button class="vbr-min" id="vbr-min" type="button" aria-label="Réduire la radio">▾</button>
   </div>
@@ -276,7 +285,7 @@ body{background:var(--vb-night);}
       <input type="range" id="vbr-volume" min="0" max="100" value="30" aria-label="Volume"/>
       <span id="vbr-volpct">30 %</span>
     </div>
-    <div class="vbr-credit">Musique Kevin MacLeod · CC BY 4.0 · jingles Vice Bay</div>
+    <div class="vbr-credit">Vice Bay Radio · musique libre · Kevin MacLeod CC BY 4.0</div>
   </div>
 </aside>
 <section class="vb-hero">
@@ -291,7 +300,7 @@ body{background:var(--vb-night);}
 </svg></div>
   <div class="vb-floor"></div>
   <div class="vb-hero-content">
-    <div class="vb-badge" data-i18n="vb_badge">Sortie iPhone · 19 novembre 2026</div>
+    <div class="vb-badge" data-i18n="vb_badge">Sortie iOS + Android · 19 novembre 2026</div>
     <div class="vb-kicker">Vice Bay · 1986</div>
     <h1 class="vb-logo">VICE<br/>BREAK</h1>
     <div class="vb-tag" data-i18n="vb_tagline">Borne d'arcade de 1986 · casse-briques néon</div>
@@ -359,17 +368,42 @@ body{background:var(--vb-night);}
 
 <section class="vb-section" id="radio" style="background:linear-gradient(180deg,var(--vb-night),#160a2a 50%,var(--vb-night));">
   <div class="vb-inner">
-    <div class="vb-label"><span data-i18n="vb_radio_label">Radio embarquée</span><span class="vb-eq"><i></i><i></i><i></i><i></i></span></div>
-    <h2 class="vb-h2 reveal" data-i18n="vb_radio_title">Cinq stations, <em>toute la nuit</em></h2>
-    <p class="vb-p reveal r1" data-i18n="vb_radio_p">Touche une station pour l'écouter ici. Latino, lounge, synth, rock, tropical : la ville a une voix, et elle ne s'arrête jamais.</p>
-    <div class="vb-radio reveal r2">
-      <button class="vb-st" type="button" data-station="tropicana" aria-label="Écouter Tropicana 88.5"><img src="imgs/vb_radio_tropicana.png" alt="Tropicana 88.5 FM" loading="lazy"/><div>Tropicana 88.5</div><span class="vb-play">▶</span></button>
-      <button class="vb-st" type="button" data-station="emotion" aria-label="Écouter Emotion 98.3"><img src="imgs/vb_radio_emotion.png" alt="Emotion 98.3 FM" loading="lazy"/><div>Emotion 98.3</div><span class="vb-play">▶</span></button>
-      <button class="vb-st" type="button" data-station="sunset" aria-label="Écouter Sunset Drive 102.7"><img src="imgs/vb_radio_sunset.png" alt="Sunset Drive 102.7 FM" loading="lazy"/><div>Sunset Drive 102.7</div><span class="vb-play">▶</span></button>
-      <button class="vb-st" type="button" data-station="neon" aria-label="Écouter Neon 103.5"><img src="imgs/vb_radio_neon.png" alt="Neon 103.5 FM" loading="lazy"/><div>Neon 103.5</div><span class="vb-play">▶</span></button>
-      <button class="vb-st" type="button" data-station="volt" aria-label="Écouter Volt 107.3"><img src="imgs/vb_radio_volt.png" alt="Volt 107.3 FM" loading="lazy"/><div>Volt 107.3</div><span class="vb-play">▶</span></button>
+    <div class="vb-radio-head reveal">
+      <img class="vb-radio-logo" src="img/vicebay_radio_web.jpg" alt="Vice Bay Radio"/>
+      <div>
+        <div class="vb-label"><span data-i18n="vb_radio_label">Vice Bay Radio</span><span class="vb-eq"><i></i><i></i><i></i><i></i></span></div>
+        <h2 class="vb-h2" data-i18n="vb_radio_title">Cinq stations FM, <em>toute la nuit</em></h2>
+        <p class="vb-p" data-i18n="vb_radio_intro">Les cinq radios fictives de Vice Bay. Musique 100 % libre, voix d'animateurs, jingles et pubs de la ville. À écouter ici, tout de suite : touche une station.</p>
+      </div>
     </div>
-    <p class="vb-credits" data-i18n="vb_credits">Musique : Kevin MacLeod (incompetech.com), licence Creative Commons BY 4.0. Extraits de la radio du jeu.</p>
+    <div class="vb-radio reveal r2">
+      <button class="vb-st" type="button" data-station="tropicana" style="--c:#2BB3A3" aria-label="Écouter TROPICANA 88.5">
+        <img src="img/radio_tropicana.png" alt="TROPICANA 88.5 FM" loading="lazy"/>
+        <div class="vb-st-body"><span class="vb-st-freq">88.5</span><b>TROPICANA</b><small>LATIN · SALSA · CUIVRES</small><em>« Le soleil se lève sur 88.5. »</em></div>
+        <span class="vb-play">▶</span>
+      </button>
+      <button class="vb-st" type="button" data-station="emotion" style="--c:#4DD0E1" aria-label="Écouter EMOTION 98.3">
+        <img src="img/radio_emotion.png" alt="EMOTION 98.3 FM" loading="lazy"/>
+        <div class="vb-st-body"><span class="vb-st-freq">98.3</span><b>EMOTION</b><small>SLOWS · BALLADES · SAXO</small><em>« Éteignez la lumière. Le cœur passe en fréquence modulée. »</em></div>
+        <span class="vb-play">▶</span>
+      </button>
+      <button class="vb-st" type="button" data-station="sunset" style="--c:#F2B33D" aria-label="Écouter SUNSET DRIVE 102.7">
+        <img src="img/radio_sunset.png" alt="SUNSET DRIVE 102.7 FM" loading="lazy"/>
+        <div class="vb-st-body"><span class="vb-st-freq">102.7</span><b>SUNSET DRIVE</b><small>SYNTHWAVE · ROUTE · ARPÈGES</small><em>« 102.7, le soleil tombe, pas vous. »</em></div>
+        <span class="vb-play">▶</span>
+      </button>
+      <button class="vb-st" type="button" data-station="neon" style="--c:#FF2E88" aria-label="Écouter NEON 103.5">
+        <img src="img/radio_neon.png" alt="NEON 103.5 FM" loading="lazy"/>
+        <div class="vb-st-body"><span class="vb-st-freq">103.5</span><b>NEON</b><small>CHIPTUNE · 8-BIT · MUSIQUE DE JEU</small><em>« Insérez une pièce et ça repart. »</em></div>
+        <span class="vb-play">▶</span>
+      </button>
+      <button class="vb-st" type="button" data-station="volt" style="--c:#FF7A3D" aria-label="Écouter VOLT 107.3">
+        <img src="img/radio_volt.png" alt="VOLT 107.3 FM" loading="lazy"/>
+        <div class="vb-st-body"><span class="vb-st-freq">107.3</span><b>VOLT</b><small>FUNK · HIP-HOP · SOUL</small><em>« Le groove n'attend pas. Big Lou non plus. »</em></div>
+        <span class="vb-play">▶</span>
+      </button>
+    </div>
+    <p class="vb-credits" data-i18n="vb_credits">Vice Bay Radio · musique libre (CC0 / CC BY), crédits complets affichés dans le lecteur. Extraits : Kevin MacLeod (incompetech.com), CC BY 4.0.</p>
   </div>
 </section>
 
@@ -505,11 +539,11 @@ body{background:var(--vb-night);}
 <script>
 (function(){
   const ST={"volt": [{"src": "audio/vb_volt_fantasia_fantasia.m4a", "title": "Fantasia Fantasia", "artist": "Kevin MacLeod", "license": "CC BY 4.0", "seconds": 151, "type": "track"}, {"src": "audio/vb_volt_metalmania.m4a", "title": "Metalmania", "artist": "Kevin MacLeod", "license": "CC BY 4.0", "seconds": 190, "type": "track"}], "emotion": [{"type": "track", "src": "audio/vb_conservatory_grand_dark_waltz_trio_allegro.m4a", "title": "Grand Dark Waltz Trio Allegro", "artist": "Kevin MacLeod", "license": "CC BY 4.0", "seconds": 194}, {"type": "link", "src": "audio/vb_emotion_link_grand_dark_waltz_trio_allegro_grand_dark_waltz_trio_vivace.m4a", "title": "Vice Bay DJ", "artist": "", "license": ""}, {"type": "track", "src": "audio/vb_conservatory_grand_dark_waltz_trio_vivace.m4a", "title": "Grand Dark Waltz Trio Vivace", "artist": "Kevin MacLeod", "license": "CC BY 4.0", "seconds": 172}, {"type": "link", "src": "audio/vb_emotion_link_grand_dark_waltz_trio_vivace_guzheng_city.m4a", "title": "Vice Bay DJ", "artist": "", "license": ""}, {"type": "track", "src": "audio/vb_emotion_more_guzheng_city.m4a", "title": "Guzheng City", "artist": "Kevin MacLeod", "license": "CC BY 4.0", "seconds": 114}], "sunset": [{"src": "audio/vb_sunset_loopster.m4a", "title": "Loopster", "artist": "Kevin MacLeod", "license": "CC BY 4.0", "seconds": 182, "type": "track"}, {"src": "audio/vb_sunset_shaving_mirror.m4a", "title": "Shaving Mirror", "artist": "Kevin MacLeod", "license": "CC BY 4.0", "seconds": 206, "type": "track"}], "tropicana": [{"type": "track", "src": "audio/vb_tropicana_more_beachfront_celebration.m4a", "title": "Beachfront Celebration", "artist": "Kevin MacLeod", "license": "CC BY 4.0", "seconds": 187}, {"type": "link", "src": "audio/vb_tropicana_link_beachfront_celebration_blue_ska.m4a", "title": "Vice Bay DJ", "artist": "", "license": ""}, {"type": "track", "src": "audio/vb_dubwise_blue_ska.m4a", "title": "Blue Ska", "artist": "Kevin MacLeod", "license": "CC BY 4.0", "seconds": 146}, {"type": "link", "src": "audio/vb_tropicana_link_blue_ska_bossabossa.m4a", "title": "Vice Bay DJ", "artist": "", "license": ""}, {"type": "track", "src": "audio/vb_tropicana_bossabossa.m4a", "title": "BossaBossa", "artist": "Kevin MacLeod", "license": "CC BY 4.0", "seconds": 167}], "neon": [{"src": "audio/vb_neon_galactic_rap.m4a", "title": "Galactic Rap", "artist": "Kevin MacLeod", "license": "CC BY 4.0", "seconds": 142, "type": "track"}, {"src": "audio/vb_neon_voxel_revolution.m4a", "title": "Voxel Revolution", "artist": "Kevin MacLeod", "license": "CC BY 4.0", "seconds": 129, "type": "track"}]};
-  const S=[{id:'tropicana',f:88.5,name:'TROPICANA',genre:'Latin · Reggae · World',c:'#1FB7A6'},
-           {id:'emotion',f:98.3,name:'EMOTION',genre:'Lounge · Jazz · Strings',c:'#22E5FF'},
-           {id:'sunset',f:102.7,name:'SUNSET DRIVE',genre:'Funk · Disco · Soul',c:'#E5B84B'},
-           {id:'neon',f:103.5,name:'NEON',genre:'Synthwave · Electro',c:'#FF2E88'},
-           {id:'volt',f:107.3,name:'VOLT',genre:'Rock · Blues',c:'#FFA630'}];
+  const S=[{id:'tropicana',f:88.5,name:'TROPICANA',genre:'Latin · Salsa · Cuivres',c:'#2BB3A3'},
+           {id:'emotion',f:98.3,name:'EMOTION',genre:'Slows · Ballades · Saxo',c:'#4DD0E1'},
+           {id:'sunset',f:102.7,name:'SUNSET DRIVE',genre:'Synthwave · Route · Arpèges',c:'#F2B33D'},
+           {id:'neon',f:103.5,name:'NEON',genre:'Chiptune · 8-bit · Musique de jeu',c:'#FF2E88'},
+           {id:'volt',f:107.3,name:'VOLT',genre:'Funk · Hip-hop · Soul',c:'#FF7A3D'}];
   const LOW=87.5, HIGH=108;
   const $=id=>document.getElementById(id);
   const root=$('vbr'), scale=$('vbr-scale'), needle=$('vbr-needle'), stWrap=root.querySelector('.vbr-stations'), chips=$('vbr-chips'), vol=$('vbr-volume');
