@@ -356,6 +356,10 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;fon
 /* Hide old nav flag-picker everywhere */
 .flag-picker, .flag-sep { display: none !important; }
 @media(max-width:768px){
-  .flag-picker-sidebar { right: 6px; padding: 7px 5px; }
-  .flag-btn-s { width: 27px; height: 27px; font-size: 1rem; }
+  .flag-picker-sidebar { right: 10px; top: 70px; transform: none; padding: 4px; gap: 3px; border-radius: 10px; }
+  .flag-btn-s { width: 30px; height: 30px; font-size: 1.05rem; }
+  .flag-picker-sidebar:not(.open) .flag-btn-s:not(.active) { display: none; }
+  .flag-picker-sidebar:not(.open) .flag-btn-s.active { border-color: transparent; background: transparent; }
+  .flag-picker-sidebar:not(.open) .flag-btn-s.active::after { content:'▾'; font-size:.55rem; color:var(--muted); margin-left:1px; }
+}
 }

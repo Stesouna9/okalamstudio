@@ -696,7 +696,11 @@ const T = {
     <button class="flag-btn-s" data-lang="pt" title="Português">🇵🇹</button>
   `;
   picker.querySelectorAll('.flag-btn-s').forEach(btn => {
-    btn.addEventListener('click', () => applyLang(btn.getAttribute('data-lang')));
+    btn.addEventListener('click', () => {
+      if (btn.classList.contains('active') && window.innerWidth <= 768) { picker.classList.toggle('open'); return; }
+      picker.classList.remove('open');
+      applyLang(btn.getAttribute('data-lang'));
+    });
   });
   document.body.appendChild(picker);
 })();
@@ -735,6 +739,7 @@ function applyLang(l) {
   if (typeof setLang === 'function') setLang(l);
   // Apply page-specific translations (studio, projets, collabs, contact)
   if (typeof applyPageTranslations === 'function') applyPageTranslations(l);
+  document.dispatchEvent(new CustomEvent('okalam:lang', {detail:l}));
 }
 
 // Init on page load

@@ -5,7 +5,7 @@
 <title>VICE BREAK — Casse-briques néon de 1986 | OKALAM Studio</title>
 <meta name="description" content="VICE BREAK : le casse-briques néon de 1986 par OKALAM Studio. 500 silhouettes, 5 quartiers de Vice Bay, radio embarquée. Bientôt sur iPhone."/>
 <link href="https://fonts.googleapis.com/css2?family=Monoton&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="shared.css"/>
+<link rel="stylesheet" href="shared.css?v=20260926"/>
 <style>
 :root{--vb-night:#0B0A1E;--vb-indigo:#1C1650;--vb-dusk:#5A2A83;--vb-mag:#FF2E88;--vb-cyan:#22E5FF;--vb-coral:#FF6F59;--vb-sand:#F5E3C3;--vb-chrome:#C9CED6;--vb-gold:#E5B84B;--vb-sodium:#FFA630;--vb-teal:#1FB7A6;--vb-marsh:#3E7C4F;}
 body{background:var(--vb-night);}
@@ -26,7 +26,7 @@ body{background:var(--vb-night);}
   background-size:100% 100%,100% 34px,60px 100%;background-blend-mode:normal;
   transform:perspective(420px) rotateX(58deg);transform-origin:top;opacity:.85;}
 .vb-floor::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent,var(--vb-night) 90%);}
-.vb-hero-content{position:relative;z-index:2;text-align:center;padding-bottom:22vh;}
+.vb-hero-content{position:relative;z-index:2;text-align:center;padding-bottom:22vh;width:100%;max-width:900px;}
 .vb-kicker{font-family:'Orbitron',sans-serif;font-weight:700;font-size:.72rem;letter-spacing:.42em;text-transform:uppercase;color:var(--vb-cyan);text-shadow:0 0 12px rgba(34,229,255,.9);margin-bottom:14px;}
 .vb-logo{font-family:'Monoton',cursive;font-weight:400;font-size:clamp(3rem,11vw,8.5rem);line-height:.95;letter-spacing:.06em;color:#fff;
   text-shadow:0 0 6px #fff,0 0 18px var(--vb-mag),0 0 42px var(--vb-mag),0 0 90px rgba(255,46,136,.6);animation:vbflicker 6s infinite;}
@@ -37,7 +37,7 @@ body{background:var(--vb-night);}
 .vb-countdown b{font-family:'Orbitron',sans-serif;font-weight:900;font-size:clamp(1.4rem,3.4vw,2.2rem);color:#fff;text-shadow:0 0 14px rgba(34,229,255,.8);font-variant-numeric:tabular-nums;line-height:1;}
 .vb-countdown span{font-family:'Space Mono',monospace;font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:var(--vb-cyan);margin-top:6px;}
 .vb-countdown i{font-style:normal;font-family:'Orbitron',sans-serif;color:var(--vb-mag);font-size:1.4rem;text-shadow:0 0 10px var(--vb-mag);animation:blink 1s infinite;}
-.vb-date-line{max-width:560px;margin:18px auto 0;color:var(--vb-sand);font-size:.92rem;line-height:1.6;opacity:.9;}
+.vb-date-line{max-width:min(560px,100%);margin:18px auto 0;padding:10px 14px;border-radius:12px;background:rgba(11,10,30,.45);backdrop-filter:blur(4px);color:var(--vb-sand);font-size:.92rem;line-height:1.6;opacity:.9;}
 .vb-ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:30px;}
 .vb-btn{display:inline-flex;align-items:center;gap:10px;padding:13px 24px;border-radius:12px;font-family:'Orbitron',sans-serif;font-weight:700;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;transition:transform .2s,box-shadow .2s;}
 .vb-btn.primary{background:var(--vb-mag);color:#fff;box-shadow:0 0 24px rgba(255,46,136,.7);}
@@ -158,23 +158,30 @@ body{background:var(--vb-night);}
 @media(max-width:560px){.vb-radio{grid-template-columns:repeat(2,1fr);}}
 
 @media(max-width:900px){.vb-phones{grid-template-columns:repeat(2,1fr);gap:14px;}.vb-phone:nth-child(2),.vb-phone:nth-child(3){transform:none;}.vb-phone{border-radius:22px;}.vb-sil-grid{grid-template-columns:repeat(2,1fr);}.vb-dist{grid-template-columns:repeat(3,1fr);}.vb-radio{grid-template-columns:repeat(3,1fr);}.vb-feats{grid-template-columns:1fr;}}
-@media(max-width:560px){.vb-phones{grid-template-columns:1fr 1fr;}.vb-dist{grid-template-columns:repeat(2,1fr);}.vb-radio{grid-template-columns:repeat(2,1fr);}.vb-hero{min-height:88vh;}}
+@media(max-width:560px){.vb-hero{padding:104px 16px 0;}.vb-hero-content{padding-bottom:12vh;}.vb-countdown{gap:5px;margin-top:20px;}.vb-countdown div{min-width:0;flex:1;padding:8px 2px;}.vb-countdown b{font-size:1.5rem;}.vb-countdown span{font-size:.48rem;letter-spacing:.12em;}.vb-countdown i{font-size:1rem;}.vb-tag{font-size:.72rem;letter-spacing:.12em;}.vb-phones{grid-template-columns:1fr 1fr;}.vb-dist{grid-template-columns:repeat(2,1fr);}.vb-radio{grid-template-columns:repeat(2,1fr);}.vb-hero{min-height:88vh;}}
 
 /* RADIO WIDGET */
-.vbr{position:fixed;left:18px;bottom:18px;z-index:60;width:360px;border-radius:20px;overflow:hidden;background:linear-gradient(180deg,#1a1548,#0d0b26 70%,#0B0A1E);border:1px solid rgba(34,229,255,.3);box-shadow:0 24px 70px rgba(0,0,0,.65),0 0 40px rgba(255,46,136,.12);font-family:'DM Sans',sans-serif;--acc:#F5E3C3;color:var(--vb-sand);}
-.vbr-top{display:flex;align-items:center;gap:10px;padding:12px 14px;background:rgba(0,0,0,.4);border-bottom:1px solid rgba(255,255,255,.07);}
+.vbr{position:fixed;left:0;right:0;bottom:0;z-index:60;background:linear-gradient(180deg,#171340,#0d0b26 60%,#0B0A1E);border-top:1px solid rgba(34,229,255,.3);box-shadow:0 -14px 50px rgba(0,0,0,.6),0 0 40px rgba(255,46,136,.1);font-family:'DM Sans',sans-serif;--acc:#F5E3C3;color:var(--vb-sand);}
+.vbr-top{display:flex;align-items:center;gap:14px;padding:9px 20px;max-width:1240px;margin:0 auto;}
+.vbr-tbtn{flex-shrink:0;width:44px;height:44px;border-radius:50%;border:none;background:var(--acc);color:#0B0A1E;font-size:1rem;cursor:pointer;box-shadow:0 0 18px var(--acc);transition:transform .2s;}
+.vbr-tbtn:hover{transform:scale(1.06);}
+.vbr-now{min-width:0;flex:1 1 200px;display:flex;flex-direction:column;gap:2px;}
+.vbr-now b{font-family:'Orbitron',sans-serif;font-size:.72rem;letter-spacing:.18em;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.vbr-now span{font-size:.78rem;color:rgba(245,227,195,.75);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .vbr-brand{font-family:'Orbitron',sans-serif;font-weight:900;font-size:.72rem;letter-spacing:.22em;color:#fff;}
-.vbr-onair{margin-left:auto;font-family:'Orbitron',sans-serif;font-size:.55rem;font-weight:700;letter-spacing:.16em;padding:4px 10px;border-radius:20px;color:var(--acc);border:1px solid var(--acc);opacity:.7;white-space:nowrap;}
+.vbr-onair{font-family:'Orbitron',sans-serif;font-size:.55rem;font-weight:700;letter-spacing:.16em;padding:5px 10px;border-radius:20px;color:var(--acc);border:1px solid var(--acc);opacity:.7;white-space:nowrap;flex-shrink:0;}
 .vbr.on .vbr-onair{background:var(--acc);color:#0B0A1E;opacity:1;box-shadow:0 0 14px var(--acc);}
-.vbr-min{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);color:#fff;width:28px;height:28px;border-radius:8px;cursor:pointer;font-size:.95rem;line-height:1;}
+.vbr-min{flex-shrink:0;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);color:#fff;width:34px;height:34px;border-radius:10px;cursor:pointer;font-size:1rem;line-height:1;}
 .vbr.min .vbr-body{display:none;}
-.vbr-body{padding:14px 16px 14px;}
-.vbr-chips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px;}
-.vbr-chips button{flex:1 1 auto;display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:7px 10px;border-radius:20px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.04);color:#fff;font-family:'Orbitron',sans-serif;font-size:.58rem;font-weight:700;letter-spacing:.12em;cursor:pointer;transition:all .2s;}
+.vbr-body{max-width:760px;margin:0 auto;padding:4px 20px 16px;border-top:1px solid rgba(255,255,255,.06);}
+.vbr-chips{display:flex;gap:6px;flex-wrap:wrap;margin:12px 0 14px;}
+.vbr-chips button{flex:1 1 auto;display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:7px 10px;border-radius:20px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.04);color:#fff;font-family:'Orbitron',sans-serif;font-size:.58rem;font-weight:700;letter-spacing:.1em;cursor:pointer;transition:all .2s;}
 .vbr-chips button i{width:8px;height:8px;border-radius:50%;background:var(--c);box-shadow:0 0 6px var(--c);}
 .vbr-chips button:hover{border-color:var(--c);}
 .vbr-chips button.on{background:var(--c);border-color:var(--c);color:#0B0A1E;box-shadow:0 0 16px var(--c);}
 .vbr-chips button.on i{background:#0B0A1E;box-shadow:none;}
+.vbr-chips-top{flex:0 0 auto;margin:0;flex-wrap:nowrap;}
+.vbr-chips-top button{flex:0 0 auto;padding:6px 10px;font-size:.52rem;}
 .vbr-readout{display:flex;align-items:center;gap:14px;margin-bottom:8px;}
 .vbr-freq{font-family:'Orbitron',sans-serif;font-weight:900;font-size:2.4rem;line-height:1;color:var(--acc);text-shadow:0 0 18px var(--acc);font-variant-numeric:tabular-nums;min-width:120px;display:flex;align-items:baseline;gap:6px;}
 .vbr-freq small{font-size:.7rem;letter-spacing:.2em;opacity:.7;}
@@ -199,18 +206,21 @@ body{background:var(--vb-night);}
 .vbr-bar{height:4px;background:rgba(255,255,255,.1);border-radius:2px;margin:8px 0 14px;overflow:hidden;}
 .vbr-bar i{display:block;height:100%;width:0;background:var(--acc);box-shadow:0 0 8px var(--acc);}
 .vbr-ctl{display:flex;align-items:center;justify-content:center;gap:12px;}
-.vbr-ctl button{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;width:52px;height:52px;border-radius:14px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.05);color:#fff;font-size:1rem;cursor:pointer;transition:all .2s;}
+.vbr-ctl button{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;width:52px;height:52px;border-radius:14px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.05);color:#fff;font-size:1rem;cursor:pointer;transition:background .2s;}
 .vbr-ctl button small{font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(245,227,195,.6);}
 .vbr-ctl button:hover{background:rgba(255,255,255,.12);}
 .vbr-ctl button.big{width:64px;height:64px;border-radius:50%;background:var(--acc);color:#0B0A1E;border:none;box-shadow:0 0 22px var(--acc);font-size:1.3rem;}
 .vbr-vol{display:flex;align-items:center;gap:10px;margin-top:14px;padding:10px 12px;border-radius:12px;background:rgba(0,0,0,.3);}
+.vbr-vol-top{flex:0 0 190px;margin:0;padding:6px 10px;}
 .vbr-vol button{background:none;border:none;color:#fff;font-size:1rem;cursor:pointer;width:26px;}
-.vbr-vol input{flex:1;-webkit-appearance:none;appearance:none;height:4px;border-radius:2px;background:linear-gradient(90deg,var(--acc) var(--v,30%),rgba(255,255,255,.15) var(--v,30%));outline:none;}
-.vbr-vol input::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:#fff;box-shadow:0 0 10px var(--acc);cursor:pointer;}
-.vbr-vol input::-moz-range-thumb{width:18px;height:18px;border-radius:50%;background:#fff;border:none;box-shadow:0 0 10px var(--acc);cursor:pointer;}
+.vbr-vol input{flex:1;min-width:0;-webkit-appearance:none;appearance:none;height:4px;border-radius:2px;background:linear-gradient(90deg,var(--acc) var(--v,30%),rgba(255,255,255,.15) var(--v,30%));outline:none;}
+.vbr-vol input::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;border-radius:50%;background:#fff;box-shadow:0 0 10px var(--acc);cursor:pointer;}
+.vbr-vol input::-moz-range-thumb{width:16px;height:16px;border-radius:50%;background:#fff;border:none;box-shadow:0 0 10px var(--acc);cursor:pointer;}
 .vbr-vol span{font-family:'Space Mono',monospace;font-size:.62rem;color:rgba(245,227,195,.7);min-width:36px;text-align:right;}
 .vbr-credit{margin-top:10px;text-align:center;font-size:.55rem;letter-spacing:.08em;color:rgba(245,227,195,.4);text-transform:uppercase;}
-@media(max-width:700px){.vbr{right:0;left:0;bottom:0;width:auto;border-radius:18px 18px 0 0;}.vbr-freq{font-size:1.9rem;min-width:100px;}.vbr-chips button{font-size:.52rem;padding:6px 8px;}.vbr-ctl button{width:46px;height:46px;}.vbr-ctl button.big{width:58px;height:58px;}}
+body{padding-bottom:64px;}
+@media(max-width:1000px){.vbr-chips-top{display:none;}}
+@media(max-width:700px){.vbr-vol-top{display:none;}.vbr-top{padding:8px 14px;gap:10px;}.vbr-onair{display:none;}.vbr.on .vbr-onair{display:inline-block;}.vbr-freq{font-size:1.9rem;min-width:100px;}.vbr-ctl button{width:46px;height:46px;}.vbr-ctl button.big{width:58px;height:58px;}}
 /* keep flag picker above widget on desktop */
 </style>
 </head>
@@ -259,15 +269,18 @@ body{background:var(--vb-night);}
 <div class="vb">
 <aside class="vbr" id="vbr" aria-label="Radio Vice Bay">
   <div class="vbr-top">
-    <span class="vbr-brand">📻 VICE BAY RADIO</span>
-    <span class="vbr-onair" id="vbr-onair">RADIO COUPÉE</span>
-    <button class="vbr-min" id="vbr-min" type="button" aria-label="Réduire la radio">▾</button>
+    <button class="vbr-tbtn" data-act="toggle" type="button" aria-label="Lecture / pause">▶</button>
+    <div class="vbr-now"><b id="vbr-now-name">📻 VICE BAY RADIO</b><span id="vbr-now-title" data-i18n="vbr_pick">Choisis une station</span></div>
+    <div class="vbr-chips vbr-chips-top" id="vbr-chips-top"></div>
+    <div class="vbr-vol vbr-vol-top"><button type="button" class="vbr-mute" aria-label="Couper le son">🔉</button><input type="range" class="vbr-volume" min="0" max="100" value="30" aria-label="Volume"/><span class="vbr-volpct">30 %</span></div>
+    <span class="vbr-onair" id="vbr-onair" data-i18n="vbr_off">RADIO COUPÉE</span>
+    <button class="vbr-min" id="vbr-min" type="button" aria-label="Ouvrir la radio">▴</button>
   </div>
   <div class="vbr-body">
     <div class="vbr-chips" id="vbr-chips"></div>
     <div class="vbr-readout">
       <div class="vbr-freq"><span id="vbr-freq">—</span><small>FM</small></div>
-      <div class="vbr-meta"><b id="vbr-name">Choisis une station</b><small id="vbr-genre">ou glisse l'aiguille sur le cadran</small></div>
+      <div class="vbr-meta"><b id="vbr-name" data-i18n="vbr_pick">Choisis une station</b><small id="vbr-genre" data-i18n="vbr_hint">ou glisse l'aiguille sur le cadran</small></div>
     </div>
     <div class="vbr-scale" id="vbr-scale" title="Glisse pour changer de station">
       <div class="vbr-ticks"></div>
@@ -277,15 +290,15 @@ body{background:var(--vb-night);}
     <div class="vbr-track"><span id="vbr-title">—</span><em id="vbr-time">0:00 / 0:00</em></div>
     <div class="vbr-bar"><i id="vbr-prog"></i></div>
     <div class="vbr-ctl">
-      <button type="button" data-act="prev" title="Station précédente"><span>⏮</span><small>Station</small></button>
+      <button type="button" data-act="prev" title="Station précédente"><span>⏮</span><small data-i18n="vbr_station">Station</small></button>
       <button type="button" data-act="toggle" class="big" id="vbr-toggle" title="Lecture / pause">▶</button>
-      <button type="button" data-act="next" title="Station suivante"><span>⏭</span><small>Station</small></button>
-      <button type="button" data-act="skip" title="Titre suivant"><span>⏩</span><small>Titre</small></button>
+      <button type="button" data-act="next" title="Station suivante"><span>⏭</span><small data-i18n="vbr_station">Station</small></button>
+      <button type="button" data-act="skip" title="Titre suivant"><span>⏩</span><small data-i18n="vbr_track">Titre</small></button>
     </div>
     <div class="vbr-vol">
-      <button type="button" id="vbr-mute" aria-label="Couper le son">🔉</button>
-      <input type="range" id="vbr-volume" min="0" max="100" value="30" aria-label="Volume"/>
-      <span id="vbr-volpct">30 %</span>
+      <button type="button" class="vbr-mute" aria-label="Couper le son">🔉</button>
+      <input type="range" class="vbr-volume" min="0" max="100" value="30" aria-label="Volume"/>
+      <span class="vbr-volpct">30 %</span>
     </div>
     <div class="vbr-credit">Musique : Kevin MacLeod (incompetech.com) · CC BY 4.0</div>
   </div>
@@ -303,7 +316,7 @@ body{background:var(--vb-night);}
   <div class="vb-floor"></div>
   <div class="vb-hero-content">
     <div class="vb-badge" data-i18n="vb_badge">Sortie iOS + Android · 19 novembre 2026</div>
-    <div class="vb-kicker">Vice Bay · 1986</div>
+    <div class="vb-kicker" data-i18n="vb_year">Vice Bay · 1986</div>
     <h1 class="vb-logo">VICE<br/>BREAK</h1>
     <div class="vb-tag" data-i18n="vb_tagline">Borne d'arcade de 1986 · casse-briques néon</div>
     <div class="vb-countdown" id="vb-countdown" aria-live="polite">
@@ -341,14 +354,14 @@ body{background:var(--vb-night);}
     <div style="display:flex;align-items:baseline;gap:20px;flex-wrap:wrap;"><div class="vb-counter reveal">500</div><h2 class="vb-h2 reveal r1" style="margin:0;" data-i18n="vb_sil_title">silhouettes à <em>révéler</em></h2></div>
     <p class="vb-p reveal r1" data-i18n="vb_sil_p">Palmier, flamant, cabriolet, phare, pont, gratte-ciel… chaque niveau est une silhouette de la ville dessinée à la main, brique par brique. Cinq saisons de cent niveaux, et chaque saison ajoute ses briques : miroir et mèche, puis tourelle, virus et portail, puis aimant, coffre et givre, et enfin brique fantôme, mur qui descend et brique-cœur qui ne s'ouvre qu'en dernier. Le niveau 500 : « dernier coucher de soleil sur Miami ».</p>
     <div class="vb-sil-grid reveal r2">
-      <div class="vb-sil"><canvas data-level="palm" data-district="beach"></canvas><span>001 · Palmier</span></div>
-      <div class="vb-sil"><canvas data-level="flamingo" data-district="beach"></canvas><span>005 · Flamant</span></div>
-      <div class="vb-sil"><canvas data-level="cocktail" data-district="beach"></canvas><span>006 · Cocktail</span></div>
-      <div class="vb-sil"><canvas data-level="sunglasses" data-district="skyline"></canvas><span>007 · Lunettes</span></div>
-      <div class="vb-sil"><canvas data-level="sailboat" data-district="beach"></canvas><span>009 · Voilier</span></div>
-      <div class="vb-sil"><canvas data-level="convertible" data-district="highway"></canvas><span>010 · Cabriolet</span></div>
-      <div class="vb-sil"><canvas data-level="lighthouse" data-district="downtown"></canvas><span>013 · Phare</span></div>
-      <div class="vb-sil"><canvas data-level="parasol" data-district="beach"></canvas><span>003 · Parasol</span></div>
+      <div class="vb-sil"><canvas data-level="palm" data-district="beach"></canvas><span data-i18n="lv_001">001 · Palmier</span></div>
+      <div class="vb-sil"><canvas data-level="flamingo" data-district="beach"></canvas><span data-i18n="lv_005">005 · Flamant</span></div>
+      <div class="vb-sil"><canvas data-level="cocktail" data-district="beach"></canvas><span data-i18n="lv_006">006 · Cocktail</span></div>
+      <div class="vb-sil"><canvas data-level="sunglasses" data-district="skyline"></canvas><span data-i18n="lv_007">007 · Lunettes</span></div>
+      <div class="vb-sil"><canvas data-level="sailboat" data-district="beach"></canvas><span data-i18n="lv_009">009 · Voilier</span></div>
+      <div class="vb-sil"><canvas data-level="convertible" data-district="highway"></canvas><span data-i18n="lv_010">010 · Cabriolet</span></div>
+      <div class="vb-sil"><canvas data-level="lighthouse" data-district="downtown"></canvas><span data-i18n="lv_013">013 · Phare</span></div>
+      <div class="vb-sil"><canvas data-level="parasol" data-district="beach"></canvas><span data-i18n="lv_003">003 · Parasol</span></div>
     </div>
   </div>
 </section>
@@ -359,11 +372,11 @@ body{background:var(--vb-night);}
     <h2 class="vb-h2 reveal" data-i18n="vb_dist_title">Cinq quartiers, <em>une seule</em> source de lumière</h2>
     <p class="vb-p reveal r1" data-i18n="vb_dist_p">Chaque quartier a sa palette et sa météo : aube, midi, orage, nuit, brume. Le ciel change au fil des niveaux : tu commences au crépuscule, tu finis en pleine nuit.</p>
     <div class="vb-dist reveal r2">
-      <div class="vb-d" style="background:linear-gradient(180deg,#0B0A1E 0%,#5A2A83 55%,#FF6F59 100%);--m:radial-gradient(circle at 20% 100%,#000 30%,transparent 31%),linear-gradient(#000,#000) 0 100%/20% 60% no-repeat,linear-gradient(#000,#000) 30% 100%/12% 90% no-repeat,linear-gradient(#000,#000) 50% 100%/18% 45% no-repeat,linear-gradient(#000,#000) 75% 100%/10% 75% no-repeat,linear-gradient(#000,#000) 100% 100%/14% 55% no-repeat;"><div class="sun" style="background:radial-gradient(circle,#FFE29A,#F2B33D 60%,transparent 70%);"></div><div class="sk"></div><b>Ocean Drive</b><small>Plage · crépuscule</small></div>
-      <div class="vb-d" style="background:linear-gradient(180deg,#0B0A1E 0%,#1C1650 55%,#5A2A83 100%);--m:radial-gradient(circle at 20% 100%,#000 30%,transparent 31%),linear-gradient(#000,#000) 0 100%/20% 60% no-repeat,linear-gradient(#000,#000) 30% 100%/12% 90% no-repeat,linear-gradient(#000,#000) 50% 100%/18% 45% no-repeat,linear-gradient(#000,#000) 75% 100%/10% 75% no-repeat,linear-gradient(#000,#000) 100% 100%/14% 55% no-repeat;"><div class="sun" style="background:radial-gradient(circle,#E5B84B,#E5B84B 55%,transparent 62%);"></div><div class="sk"></div><b>Downtown</b><small>Art déco · or</small></div>
-      <div class="vb-d" style="background:linear-gradient(180deg,#0B0A1E 0%,#0B0A1E 55%,#1C1650 100%);--m:radial-gradient(circle at 20% 100%,#000 30%,transparent 31%),linear-gradient(#000,#000) 0 100%/20% 60% no-repeat,linear-gradient(#000,#000) 30% 100%/12% 90% no-repeat,linear-gradient(#000,#000) 50% 100%/18% 45% no-repeat,linear-gradient(#000,#000) 75% 100%/10% 75% no-repeat,linear-gradient(#000,#000) 100% 100%/14% 55% no-repeat;"><div class="sun" style="background:radial-gradient(circle,#3E7C4F,#3E7C4F 50%,transparent 60%);"></div><div class="sk"></div><b>Everglades</b><small>Marais · brume</small></div>
-      <div class="vb-d" style="background:linear-gradient(180deg,#0B0A1E 0%,#1C1650 55%,#FFA630 100%);--m:radial-gradient(circle at 20% 100%,#000 30%,transparent 31%),linear-gradient(#000,#000) 0 100%/20% 60% no-repeat,linear-gradient(#000,#000) 30% 100%/12% 90% no-repeat,linear-gradient(#000,#000) 50% 100%/18% 45% no-repeat,linear-gradient(#000,#000) 75% 100%/10% 75% no-repeat,linear-gradient(#000,#000) 100% 100%/14% 55% no-repeat;"><div class="sun" style="background:radial-gradient(circle,#FFA630,#FF6F59 55%,transparent 64%);"></div><div class="sk"></div><b>Night Highway</b><small>Autoroute · sodium</small></div>
-      <div class="vb-d" style="background:linear-gradient(180deg,#0B0A1E 0%,#5A2A83 55%,#FF2E88 100%);--m:radial-gradient(circle at 20% 100%,#000 30%,transparent 31%),linear-gradient(#000,#000) 0 100%/20% 60% no-repeat,linear-gradient(#000,#000) 30% 100%/12% 90% no-repeat,linear-gradient(#000,#000) 50% 100%/18% 45% no-repeat,linear-gradient(#000,#000) 75% 100%/10% 75% no-repeat,linear-gradient(#000,#000) 100% 100%/14% 55% no-repeat;"><div class="sun" style="background:radial-gradient(circle,#FF2E88,#FF2E88 55%,transparent 64%);"></div><div class="sk"></div><b>Skyline</b><small>Ville · magenta</small></div>
+      <div class="vb-d" style="background:linear-gradient(180deg,#0B0A1E 0%,#5A2A83 55%,#FF6F59 100%);--m:radial-gradient(circle at 20% 100%,#000 30%,transparent 31%),linear-gradient(#000,#000) 0 100%/20% 60% no-repeat,linear-gradient(#000,#000) 30% 100%/12% 90% no-repeat,linear-gradient(#000,#000) 50% 100%/18% 45% no-repeat,linear-gradient(#000,#000) 75% 100%/10% 75% no-repeat,linear-gradient(#000,#000) 100% 100%/14% 55% no-repeat;"><div class="sun" style="background:radial-gradient(circle,#FFE29A,#F2B33D 60%,transparent 70%);"></div><div class="sk"></div><b>Ocean Drive</b><small data-i18n="d_ocean">Plage · crépuscule</small></div>
+      <div class="vb-d" style="background:linear-gradient(180deg,#0B0A1E 0%,#1C1650 55%,#5A2A83 100%);--m:radial-gradient(circle at 20% 100%,#000 30%,transparent 31%),linear-gradient(#000,#000) 0 100%/20% 60% no-repeat,linear-gradient(#000,#000) 30% 100%/12% 90% no-repeat,linear-gradient(#000,#000) 50% 100%/18% 45% no-repeat,linear-gradient(#000,#000) 75% 100%/10% 75% no-repeat,linear-gradient(#000,#000) 100% 100%/14% 55% no-repeat;"><div class="sun" style="background:radial-gradient(circle,#E5B84B,#E5B84B 55%,transparent 62%);"></div><div class="sk"></div><b>Downtown</b><small data-i18n="d_down">Art déco · or</small></div>
+      <div class="vb-d" style="background:linear-gradient(180deg,#0B0A1E 0%,#0B0A1E 55%,#1C1650 100%);--m:radial-gradient(circle at 20% 100%,#000 30%,transparent 31%),linear-gradient(#000,#000) 0 100%/20% 60% no-repeat,linear-gradient(#000,#000) 30% 100%/12% 90% no-repeat,linear-gradient(#000,#000) 50% 100%/18% 45% no-repeat,linear-gradient(#000,#000) 75% 100%/10% 75% no-repeat,linear-gradient(#000,#000) 100% 100%/14% 55% no-repeat;"><div class="sun" style="background:radial-gradient(circle,#3E7C4F,#3E7C4F 50%,transparent 60%);"></div><div class="sk"></div><b>Everglades</b><small data-i18n="d_ever">Marais · brume</small></div>
+      <div class="vb-d" style="background:linear-gradient(180deg,#0B0A1E 0%,#1C1650 55%,#FFA630 100%);--m:radial-gradient(circle at 20% 100%,#000 30%,transparent 31%),linear-gradient(#000,#000) 0 100%/20% 60% no-repeat,linear-gradient(#000,#000) 30% 100%/12% 90% no-repeat,linear-gradient(#000,#000) 50% 100%/18% 45% no-repeat,linear-gradient(#000,#000) 75% 100%/10% 75% no-repeat,linear-gradient(#000,#000) 100% 100%/14% 55% no-repeat;"><div class="sun" style="background:radial-gradient(circle,#FFA630,#FF6F59 55%,transparent 64%);"></div><div class="sk"></div><b>Night Highway</b><small data-i18n="d_night">Autoroute · sodium</small></div>
+      <div class="vb-d" style="background:linear-gradient(180deg,#0B0A1E 0%,#5A2A83 55%,#FF2E88 100%);--m:radial-gradient(circle at 20% 100%,#000 30%,transparent 31%),linear-gradient(#000,#000) 0 100%/20% 60% no-repeat,linear-gradient(#000,#000) 30% 100%/12% 90% no-repeat,linear-gradient(#000,#000) 50% 100%/18% 45% no-repeat,linear-gradient(#000,#000) 75% 100%/10% 75% no-repeat,linear-gradient(#000,#000) 100% 100%/14% 55% no-repeat;"><div class="sun" style="background:radial-gradient(circle,#FF2E88,#FF2E88 55%,transparent 64%);"></div><div class="sk"></div><b>Skyline</b><small data-i18n="d_sky">Ville · magenta</small></div>
     </div>
   </div>
 </section>
@@ -381,27 +394,27 @@ body{background:var(--vb-night);}
     <div class="vb-radio reveal r2">
       <button class="vb-st" type="button" data-station="tropicana" style="--c:#2BB3A3" aria-label="Écouter TROPICANA 88.5">
         <img src="img/radio_tropicana.png" alt="TROPICANA 88.5 FM" loading="lazy"/>
-        <div class="vb-st-body"><span class="vb-st-freq">88.5</span><b>TROPICANA</b><small>LATIN · SALSA · CUIVRES</small><em>« Le soleil se lève sur 88.5. »</em></div>
+        <div class="vb-st-body"><span class="vb-st-freq">88.5</span><b>TROPICANA</b><small data-i18n="st_tropicana_g">LATIN · SALSA · CUIVRES</small><em data-i18n="st_tropicana_s">« Le soleil se lève sur 88.5. »</em></div>
         <span class="vb-play">▶</span>
       </button>
       <button class="vb-st" type="button" data-station="emotion" style="--c:#4DD0E1" aria-label="Écouter EMOTION 98.3">
         <img src="img/radio_emotion.png" alt="EMOTION 98.3 FM" loading="lazy"/>
-        <div class="vb-st-body"><span class="vb-st-freq">98.3</span><b>EMOTION</b><small>SLOWS · BALLADES · SAXO</small><em>« Éteignez la lumière. Le cœur passe en fréquence modulée. »</em></div>
+        <div class="vb-st-body"><span class="vb-st-freq">98.3</span><b>EMOTION</b><small data-i18n="st_emotion_g">SLOWS · BALLADES · SAXO</small><em data-i18n="st_emotion_s">« Éteignez la lumière. Le cœur passe en fréquence modulée. »</em></div>
         <span class="vb-play">▶</span>
       </button>
       <button class="vb-st" type="button" data-station="sunset" style="--c:#F2B33D" aria-label="Écouter SUNSET DRIVE 102.7">
         <img src="img/radio_sunset.png" alt="SUNSET DRIVE 102.7 FM" loading="lazy"/>
-        <div class="vb-st-body"><span class="vb-st-freq">102.7</span><b>SUNSET DRIVE</b><small>SYNTHWAVE · ROUTE · ARPÈGES</small><em>« 102.7, le soleil tombe, pas vous. »</em></div>
+        <div class="vb-st-body"><span class="vb-st-freq">102.7</span><b>SUNSET DRIVE</b><small data-i18n="st_sunset_g">SYNTHWAVE · ROUTE · ARPÈGES</small><em data-i18n="st_sunset_s">« 102.7, le soleil tombe, pas vous. »</em></div>
         <span class="vb-play">▶</span>
       </button>
       <button class="vb-st soon" type="button" data-station="neon" style="--c:#FF2E88" aria-label="NEON 103.5, bientôt à l'antenne">
         <img src="img/radio_neon.png" alt="NEON 103.5 FM" loading="lazy"/>
-        <div class="vb-st-body"><span class="vb-st-freq">103.5</span><b>NEON</b><small>CHIPTUNE · 8-BIT · MUSIQUE DE JEU</small><em>« Insérez une pièce et ça repart. »</em></div>
+        <div class="vb-st-body"><span class="vb-st-freq">103.5</span><b>NEON</b><small data-i18n="st_neon_g">CHIPTUNE · 8-BIT · MUSIQUE DE JEU</small><em data-i18n="st_neon_s">« Insérez une pièce et ça repart. »</em></div>
         <span class="vb-play" data-i18n="vb_soon">Bientôt</span>
       </button>
       <button class="vb-st" type="button" data-station="volt" style="--c:#FF7A3D" aria-label="Écouter VOLT 107.3">
         <img src="img/radio_volt.png" alt="VOLT 107.3 FM" loading="lazy"/>
-        <div class="vb-st-body"><span class="vb-st-freq">107.3</span><b>VOLT</b><small>FUNK · HIP-HOP · SOUL</small><em>« Le groove n'attend pas. Big Lou non plus. »</em></div>
+        <div class="vb-st-body"><span class="vb-st-freq">107.3</span><b>VOLT</b><small data-i18n="st_volt_g">FUNK · HIP-HOP · SOUL</small><em data-i18n="st_volt_s">« Le groove n'attend pas. Big Lou non plus. »</em></div>
         <span class="vb-play">▶</span>
       </button>
     </div>
@@ -524,8 +537,8 @@ body{background:var(--vb-night);}
     </div>
   </div>
 </footer>
-<script src="shared-i18n.js"></script>
-<script src="shared.js"></script>
+<script src="shared-i18n.js?v=20260926"></script>
+<script src="shared.js?v=20260926"></script>
 
 <script>
 (function(){
@@ -548,32 +561,34 @@ body{background:var(--vb-night);}
            {id:'volt',f:107.3,name:'VOLT',genre:'Funk · Hip-hop · Soul',c:'#FF7A3D'}];
   const LOW=87.5, HIGH=108;
   const $=id=>document.getElementById(id);
-  const root=$('vbr'), scale=$('vbr-scale'), needle=$('vbr-needle'), stWrap=root.querySelector('.vbr-stations'), chips=$('vbr-chips'), vol=$('vbr-volume');
+  const root=$('vbr'), scale=$('vbr-scale'), needle=$('vbr-needle'), stWrap=root.querySelector('.vbr-stations'), chips=$('vbr-chips'), chipsTop=$('vbr-chips-top'), vols=[...root.querySelectorAll('.vbr-volume')], mutes=[...root.querySelectorAll('.vbr-mute')], pcts=[...root.querySelectorAll('.vbr-volpct')];
+  const FR={vbr_pick:'Choisis une station',vbr_hint:"ou glisse l'aiguille sur le cadran",vbr_off:'RADIO COUPÉE',vbr_onair:"À L'ANTENNE",vbr_pause:'EN PAUSE',vbr_soon_prog:'Nouvelle programmation · bientôt à l\'antenne',vbr_soon_badge:'BIENTÔT',vbr_jingle:'🎙 Jingle Vice Bay'};
+  const tr=k=>(((window.PAGE_T||{})[document.documentElement.lang]||{})[k])||FR[k];
   const audio=new Audio(); audio.preload='none';
   let cur=null, idx=0, offsets={}, fade=null, muted=false;
   let volume=30; try{ const v=localStorage.getItem('vbr-vol'); if(v!==null) volume=+v; }catch(e){}
-  vol.value=volume; applyVol();
-  function applyVol(){ audio.volume=muted?0:volume/100; vol.style.setProperty('--v',volume+'%'); $('vbr-volpct').textContent=(muted?0:volume)+' %'; $('vbr-mute').textContent=muted||volume===0?'🔇':volume<50?'🔉':'🔊'; }
-  vol.addEventListener('input',()=>{ volume=+vol.value; muted=false; try{localStorage.setItem('vbr-vol',volume);}catch(e){} applyVol(); });
-  $('vbr-mute').addEventListener('click',()=>{ muted=!muted; applyVol(); });
+  applyVol();
+  function applyVol(){ audio.volume=muted?0:volume/100; vols.forEach(v=>{v.value=volume; v.style.setProperty('--v',volume+'%');}); pcts.forEach(p=>p.textContent=(muted?0:volume)+' %'); mutes.forEach(m=>m.textContent=muted||volume===0?'🔇':volume<50?'🔉':'🔊'); }
+  vols.forEach(vol=>vol.addEventListener('input',()=>{ volume=+vol.value; muted=false; try{localStorage.setItem('vbr-vol',volume);}catch(e){} applyVol(); }));
+  mutes.forEach(m=>m.addEventListener('click',()=>{ muted=!muted; applyVol(); }));
   const x=f=>((f-LOW)/(HIGH-LOW)*100)+'%';
   S.forEach((s,i)=>{ const d=document.createElement('div'); d.style.left=x(s.f); d.style.setProperty('--c',s.c); if(i%2) d.classList.add('lower'); d.dataset.id=s.id; d.innerHTML='<i></i><span>'+s.f+'</span>'; stWrap.appendChild(d);
-    const b=document.createElement('button'); b.type='button'; b.dataset.id=s.id; b.style.setProperty('--c',s.c); b.innerHTML='<i></i>'+s.name; b.addEventListener('click',()=>tune(s.id)); chips.appendChild(b); });
+    const b=document.createElement('button'); b.type='button'; b.dataset.id=s.id; b.style.setProperty('--c',s.c); b.innerHTML='<i></i>'+s.name; b.addEventListener('click',()=>tune(s.id)); chips.appendChild(b); const b2=b.cloneNode(true); b2.addEventListener('click',()=>tune(s.id)); chipsTop.appendChild(b2); });
   function station(){ return S.find(s=>s.id===cur); }
   function fmt(t){ t=Math.max(0,Math.floor(t||0)); return Math.floor(t/60)+':'+String(t%60).padStart(2,'0'); }
   function ui(){ const s=station(); const on=s&&!audio.paused;
     root.classList.toggle('on',!!on); root.style.setProperty('--acc', s?s.c:'#F5E3C3');
-    $('vbr-freq').textContent=s?s.f.toFixed(1):'—'; $('vbr-name').textContent=s?s.name:'Choisis une station'; $('vbr-genre').textContent=s?s.genre:"ou glisse l'aiguille sur le cadran";
-    $('vbr-onair').textContent=on?"À L'ANTENNE":(s?'EN PAUSE':'RADIO COUPÉE'); $('vbr-toggle').textContent=on?'❚❚':'▶';
+    $('vbr-freq').textContent=s?s.f.toFixed(1):'—'; $('vbr-name').textContent=s?s.name:tr('vbr_pick'); $('vbr-genre').textContent=s?s.genre:tr('vbr_hint'); $('vbr-now-name').textContent=s?('📻 '+s.name+' · '+s.f.toFixed(1)):'📻 VICE BAY RADIO';
+    $('vbr-onair').textContent=on?tr('vbr_onair'):(s?tr('vbr_pause'):tr('vbr_off')); root.querySelectorAll('[data-act=toggle]').forEach(b=>b.textContent=on?'❚❚':'▶');
     stWrap.querySelectorAll('div').forEach(d=>d.classList.toggle('on',d.dataset.id===cur));
-    chips.querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.id===cur));
+    root.querySelectorAll('.vbr-chips button').forEach(b=>b.classList.toggle('on',b.dataset.id===cur));
     needle.style.left=x(s?s.f:LOW);
-    const it=s&&ST[cur].length?ST[cur][idx]:null; $('vbr-title').textContent=it?(it.type==='link'?'🎙 Jingle Vice Bay':it.title+' · '+it.artist):(s&&!ST[cur].length?'Nouvelle programmation · bientôt à l\'antenne':'—');
-    if(s&&!ST[cur].length){ $('vbr-onair').textContent='BIENTÔT'; $('vbr-time').textContent='—'; $('vbr-prog').style.width='0'; }
+    const it=s&&ST[cur].length?ST[cur][idx]:null; const tt=it?(it.type==='link'?tr('vbr_jingle'):it.title+' · '+it.artist):(s&&!ST[cur].length?tr('vbr_soon_prog'):'—'); $('vbr-title').textContent=tt; $('vbr-now-title').textContent=s?(s.genre+(tt!=='—'?' — '+tt:'')):tr('vbr_pick');
+    if(s&&!ST[cur].length){ $('vbr-onair').textContent=tr('vbr_soon_badge'); $('vbr-time').textContent='—'; $('vbr-prog').style.width='0'; }
     document.querySelectorAll('.vb-st').forEach(b=>b.classList.toggle('playing',on&&b.dataset.station===cur)); }
   function playSoft(){ if(cur&&!ST[cur].length){ ui(); return; } clearInterval(fade); const target=muted?0:volume/100; audio.volume=0; audio.play().catch(()=>{}); let k=0; fade=setInterval(()=>{ k++; audio.volume=Math.min(target,target*k/15); if(k>=15) clearInterval(fade); },100); }
   function load(id,i){ cur=id; if(!ST[id].length){ idx=0; audio.pause(); audio.removeAttribute('src'); return; } idx=((i%ST[id].length)+ST[id].length)%ST[id].length; audio.src=ST[id][idx].src; }
-  function tune(id){ root.classList.remove('min'); if(cur===id){ if(audio.paused) playSoft(); ui(); return; }
+  function tune(id){ if(cur===id){ if(audio.paused) playSoft(); ui(); return; }
     if(cur) offsets[cur]={i:idx,t:audio.currentTime};
     const o=offsets[id]; load(id,o?o.i:Math.floor(Math.random()*ST[id].length)); if(o) audio.currentTime=o.t; playSoft(); ui(); }
   function pos(clientX){ const r=scale.getBoundingClientRect(); const f=LOW+Math.min(1,Math.max(0,(clientX-r.left)/r.width))*(HIGH-LOW); return S.reduce((a,b)=>Math.abs(b.f-f)<Math.abs(a.f-f)?b:a); }
@@ -581,19 +596,20 @@ body{background:var(--vb-night);}
   scale.addEventListener('pointerdown',e=>{drag=true; scale.setPointerCapture(e.pointerId); needle.style.transition='none'; const r=scale.getBoundingClientRect(); needle.style.left=Math.min(100,Math.max(0,(e.clientX-r.left)/r.width*100))+'%';});
   scale.addEventListener('pointermove',e=>{ if(!drag) return; const r=scale.getBoundingClientRect(); needle.style.left=Math.min(100,Math.max(0,(e.clientX-r.left)/r.width*100))+'%'; });
   scale.addEventListener('pointerup',e=>{ if(!drag) return; drag=false; needle.style.transition=''; tune(pos(e.clientX).id); });
-  root.querySelector('.vbr-ctl').addEventListener('click',e=>{ const b=e.target.closest('button'); if(!b) return; const a=b.dataset.act; const i=S.findIndex(s=>s.id===cur);
+  root.addEventListener('click',e=>{ const b=e.target.closest('button[data-act]'); if(!b) return; const a=b.dataset.act; const i=S.findIndex(s=>s.id===cur);
     if(a==='toggle'){ if(!cur) tune('tropicana'); else if(audio.paused) playSoft(); else audio.pause(); }
     else if(a==='prev'){ tune(S[(i-1+S.length)%S.length].id); }
     else if(a==='next'){ tune(S[(i+1)%S.length].id); }
     else if(a==='skip'){ if(cur){ load(cur,idx+1); playSoft(); } }
     ui(); });
   $('vbr-min').addEventListener('click',()=>{ root.classList.toggle('min'); $('vbr-min').textContent=root.classList.contains('min')?'▴':'▾'; });
+  document.addEventListener('okalam:lang',ui);
   audio.addEventListener('ended',()=>{ if(!ST[cur].length) return; load(cur,idx+1); audio.play().catch(()=>{}); ui(); });
   audio.addEventListener('timeupdate',()=>{ $('vbr-time').textContent=fmt(audio.currentTime)+' / '+fmt(audio.duration); $('vbr-prog').style.width=(audio.duration?audio.currentTime/audio.duration*100:0)+'%'; });
   audio.addEventListener('play',ui); audio.addEventListener('pause',ui);
   document.querySelectorAll('.vb-st').forEach(b=>b.addEventListener('click',()=>tune(b.dataset.station)));
   document.querySelectorAll('[data-radio-cta]').forEach(b=>b.addEventListener('click',e=>{e.preventDefault(); tune('tropicana');}));
-  if(window.innerWidth<1100){ root.classList.add('min'); $('vbr-min').textContent='▴'; }
+  root.classList.add('min');
   ui();
 })();
 </script>

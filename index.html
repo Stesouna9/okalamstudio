@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="shared.css"/>
+<link rel="stylesheet" href="shared.css?v=20260926"/>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
@@ -39,6 +39,15 @@ canvas{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-
 .sarrow{width:1px;height:44px;background:linear-gradient(to bottom,var(--accent),transparent);animation:scrollLine 2s ease-in-out infinite;}
 @keyframes scrollLine{0%{transform:scaleY(0);transform-origin:top;}50%{transform:scaleY(1);transform-origin:top;}51%{transform:scaleY(1);transform-origin:bottom;}100%{transform:scaleY(0);transform-origin:bottom;}}
 
+.btn-vb{background:linear-gradient(135deg,#FF2E88,#FF6F59);color:#fff;box-shadow:0 10px 30px rgba(255,46,136,.35);border-radius:30px;}
+.btn-vb:hover{background:linear-gradient(135deg,#ff4d9c,#ff8a76);color:#fff;}
+.hero-apps{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:48px;animation:fadeUp .8s .5s ease both;}
+.hero-app{display:flex;align-items:center;gap:10px;padding:8px 16px 8px 8px;border-radius:40px;background:rgba(255,255,255,.04);border:1px solid var(--border);text-decoration:none;color:#fff;font-family:'Syne',sans-serif;font-weight:700;font-size:.85rem;transition:transform .25s,border-color .25s,background .25s;}
+.hero-app:hover{transform:translateY(-3px);border-color:var(--accent);background:rgba(141,234,255,.06);}
+.hero-app img{width:38px;height:38px;border-radius:10px;object-fit:cover;}
+.hero-app small{font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:#7CE0A6;padding:3px 8px;border-radius:20px;border:1px solid rgba(124,224,166,.4);}
+.hero-app small.soon{color:#FF2E88;border-color:rgba(255,46,136,.5);}
+@media(max-width:480px){.hero{padding:104px 18px 70px;}.hero-title{font-size:2.6rem;letter-spacing:-.01em;}.hero-badge{font-size:.6rem;padding:6px 14px;margin-bottom:26px;}.hero-cta{margin-top:32px;}.hero-apps{margin-top:36px;gap:8px;}.hero-app{padding:6px 12px 6px 6px;font-size:.78rem;}.hero-app img{width:32px;height:32px;}}
 /* ── TICKER ── */
 .ticker-wrap{position:relative;z-index:1;background:var(--accent);padding:11px 0;overflow:hidden;}
 .ticker{display:flex;white-space:nowrap;animation:ticker 28s linear infinite;}
@@ -212,17 +221,20 @@ footer{border-top:1px solid var(--border2);padding:56px 48px;position:relative;z
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-badge" id="h_badge">Creator Partnership Studio</div>
+  <div class="hero-badge" data-i18n="home_hero_badge">Studio indépendant · Nantes</div>
   <h1 class="hero-title">
     <span class="l1">OKALAM</span>
     <span class="l2">Studio</span>
   </h1>
-  <p class="hero-sub" id="h_sub">We connect brands with independent creators.</p>
+  <p class="hero-sub" data-i18n="home_hero_sub">On fabrique des jeux et des apps mobiles. Deux sont déjà sur l'App Store, le troisième arrive le 19 novembre.</p>
   <div class="hero-cta">
-    <a href="studio.html" class="btn-g" data-i18n="nav_studio">Studio</a>
-    <a href="projets.html" class="btn-g" data-i18n="nav_projects">Projets</a>
-    <a href="collaborations.html" class="btn-g" data-i18n="nav_collabs">Nos Créateurs</a>
-    <a href="contact.html" class="btn-g" data-i18n="nav_contact">Contact</a>
+    <a href="vicebreak.html" class="btn-p btn-vb" data-i18n="home_hero_cta1">Découvrir Vice Break</a>
+    <a href="#apps" class="btn-g" data-i18n="home_hero_cta2">Nos apps</a>
+  </div>
+  <div class="hero-apps">
+    <a href="vicebreak.html" class="hero-app"><img src="imgs/vicebreak_icon.png" alt=""/><span>Vice Break</span><small class="soon" data-i18n="home_hero_pill_vb">Bientôt · 19 nov.</small></a>
+    <a href="projets.html#voteday" class="hero-app"><img src="imgs/voteday_icon.png" alt=""/><span>VoteDay</span><small data-i18n="home_hero_pill_live">Disponible</small></a>
+    <a href="projets.html#kotoba" class="hero-app"><img src="imgs/kotoba_icon.png" alt=""/><span>Kotoba</span><small data-i18n="home_hero_pill_live">Disponible</small></a>
   </div>
   <div class="scroll-arrow"><div class="sarrow"></div></div>
 </section>
