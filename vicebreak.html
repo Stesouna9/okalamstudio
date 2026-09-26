@@ -563,7 +563,7 @@ body{padding-bottom:64px;}
   const $=id=>document.getElementById(id);
   const root=$('vbr'), scale=$('vbr-scale'), needle=$('vbr-needle'), stWrap=root.querySelector('.vbr-stations'), chips=$('vbr-chips'), chipsTop=$('vbr-chips-top'), vols=[...root.querySelectorAll('.vbr-volume')], mutes=[...root.querySelectorAll('.vbr-mute')], pcts=[...root.querySelectorAll('.vbr-volpct')];
   const FR={vbr_pick:'Choisis une station',vbr_hint:"ou glisse l'aiguille sur le cadran",vbr_off:'RADIO COUPÉE',vbr_onair:"À L'ANTENNE",vbr_pause:'EN PAUSE',vbr_soon_prog:'Nouvelle programmation · bientôt à l\'antenne',vbr_soon_badge:'BIENTÔT',vbr_jingle:'🎙 Jingle Vice Bay'};
-  const tr=k=>(((window.PAGE_T||{})[document.documentElement.lang]||{})[k])||FR[k];
+  const tr=k=>((((typeof PAGE_T!=='undefined'?PAGE_T:{})[document.documentElement.lang])||{})[k])||FR[k];
   const audio=new Audio(); audio.preload='none';
   let cur=null, idx=0, offsets={}, fade=null, muted=false;
   let volume=30; try{ const v=localStorage.getItem('vbr-vol'); if(v!==null) volume=+v; }catch(e){}

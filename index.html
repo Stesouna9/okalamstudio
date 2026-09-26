@@ -393,6 +393,7 @@ footer{border-top:1px solid var(--border2);padding:56px 48px;position:relative;z
   </div>
 </footer>
 
+<script src="shared-i18n.js?v=20260926"></script>
 <script>
 // ── TRANSLATIONS ─────────────────────────────────────────────────
 const T={
@@ -549,6 +550,7 @@ function setLang(l){
     b.classList.toggle('active',b.getAttribute('data-lang')===l)
   );
   document.documentElement.lang=l;
+  if(typeof applyPageTranslations==='function') applyPageTranslations(l);
 }
 
 // ── INJECT FLAG SIDEBAR (same as shared.js) ──────────────────────
@@ -564,7 +566,11 @@ function setLang(l){
     <button class="flag-btn-s" data-lang="pt" title="Portugu\u00eas">\ud83c\uddf5\ud83c\uddf9</button>
   `;
   picker.querySelectorAll('.flag-btn-s').forEach(btn=>{
-    btn.addEventListener('click',()=>setLang(btn.getAttribute('data-lang')));
+    btn.addEventListener('click',()=>{
+      if(btn.classList.contains('active')&&window.innerWidth<=768){picker.classList.toggle('open');return;}
+      picker.classList.remove('open');
+      setLang(btn.getAttribute('data-lang'));
+    });
   });
   document.body.appendChild(picker);
 })();
