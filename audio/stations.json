@@ -115,22 +115,5 @@
    "seconds": 167
   }
  ],
- "neon": [
-  {
-   "src": "audio/vb_neon_galactic_rap.m4a",
-   "title": "Galactic Rap",
-   "artist": "Kevin MacLeod",
-   "license": "CC BY 4.0",
-   "seconds": 142,
-   "type": "track"
-  },
-  {
-   "src": "audio/vb_neon_voxel_revolution.m4a",
-   "title": "Voxel Revolution",
-   "artist": "Kevin MacLeod",
-   "license": "CC BY 4.0",
-   "seconds": 129,
-   "type": "track"
-  }
- ]
+ "neon": []
 }
