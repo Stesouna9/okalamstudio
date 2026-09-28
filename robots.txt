@@ -8,4 +8,4 @@ Disallow: /partenaires.html
 Disallow: /_src/
 Disallow: /scripts/
 
-Sitemap: https://stesouna9.github.io/okalamstudio/sitemap.xml
+Sitemap: https://okalamstudio.com/sitemap.xml
