@@ -57,6 +57,7 @@ body{background:var(--vb-night);}
 .vb-p{color:rgba(245,227,195,.72);font-size:1rem;line-height:1.8;max-width:620px;}
 
 /* PHONES */
+.vb-art{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:34px;}.vb-art figure{margin:0;border-radius:16px;overflow:hidden;border:1px solid rgba(255,46,136,.25);background:#100c2e;box-shadow:0 0 30px rgba(255,46,136,.12);}.vb-art img{display:block;width:100%;aspect-ratio:3/2;object-fit:cover;transition:transform .5s;}.vb-art figure:hover img{transform:scale(1.04);}.vb-art figcaption{padding:10px 14px;font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.1em;color:var(--vb-cyan);text-transform:uppercase;}@media(max-width:760px){.vb-art{grid-template-columns:1fr;}}
 .vb-platform{display:flex;justify-content:center;gap:8px;margin-top:34px;}.vb-platform button{padding:9px 18px;border-radius:999px;border:1px solid rgba(34,229,255,.4);background:rgba(11,10,30,.5);color:var(--vb-cyan);font-family:'Orbitron',sans-serif;font-size:.62rem;letter-spacing:.14em;cursor:pointer;}.vb-platform button.on{background:var(--vb-cyan);color:#0B0A1E;box-shadow:0 0 18px rgba(34,229,255,.5);}
 .vb-phones{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;align-items:end;margin-top:26px;}
 .vb-phone{position:relative;aspect-ratio:9/19.4;border-radius:38px;background:#05040f;border:2px solid #2a2650;box-shadow:0 30px 60px rgba(0,0,0,.6),0 0 0 6px #0d0b24,0 0 40px rgba(34,229,255,.12);overflow:hidden;transition:transform .35s;}
@@ -348,6 +349,19 @@ body{padding-bottom:64px;}
       <div class="vb-phone"><canvas data-level="flamingo" data-district="skyline"></canvas><img src="imgs/vicebreak_2_web.jpg" data-ios="imgs/vicebreak_2_web.jpg" data-android="imgs/vicebreak_android_2_web.jpg" alt="Vice Break — partie en cours" onerror="this.remove()"/><div class="cap" data-i18n="vb_cap2">Partie en cours · Palm Tree</div></div>
       <div class="vb-phone"><canvas data-level="convertible" data-district="highway"></canvas><img src="imgs/vicebreak_3_web.jpg" data-ios="imgs/vicebreak_3_web.jpg" data-android="imgs/vicebreak_android_3_web.jpg" alt="Vice Break — niveau réussi" onerror="this.remove()"/><div class="cap" data-i18n="vb_cap3">Niveau réussi · Ocean Drive</div></div>
       <div class="vb-phone"><canvas data-level="lighthouse" data-district="downtown"></canvas><img src="imgs/vicebreak_4_web.jpg" data-ios="imgs/vicebreak_4_web.jpg" data-android="imgs/vicebreak_android_4_web.jpg" alt="Vice Break — choix du niveau" onerror="this.remove()"/><div class="cap" data-i18n="vb_cap4">Choix du niveau · Ocean Drive</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="vb-section" id="vicebay">
+  <div class="vb-inner">
+    <div class="vb-label" data-i18n="vb_art_label">Vice Bay</div>
+    <h2 class="vb-h2 reveal" data-i18n="vb_art_title">Une ville de 1986, <em>trois quartiers</em>, une radio qui ne s'arrête jamais</h2>
+    <p class="vb-p reveal r1" data-i18n="vb_art_p">La plage et le Coconut Palace. Le centre-ville et le Laser Lounge. L'autoroute, le Last Stop Motel et les marais. Chaque niveau se joue quelque part dans la ville, et la radio commente.</p>
+    <div class="vb-art reveal r2">
+      <figure><img src="imgs/vicebay_art_1_coconut.jpg" alt="Vice Bay — la plage et le Coconut Palace" loading="lazy"/><figcaption data-i18n="vb_art_c1">La plage · Coconut Palace</figcaption></figure>
+      <figure><img src="imgs/vicebay_art_2_downtown.jpg" alt="Vice Bay — le centre-ville et le Laser Lounge" loading="lazy"/><figcaption data-i18n="vb_art_c2">Centre-ville · Laser Lounge</figcaption></figure>
+      <figure><img src="imgs/vicebay_art_3_motel.jpg" alt="Vice Bay — l'autoroute et le Last Stop Motel" loading="lazy"/><figcaption data-i18n="vb_art_c3">Autoroute · Last Stop Motel</figcaption></figure>
     </div>
   </div>
 </section>
