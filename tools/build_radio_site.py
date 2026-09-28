@@ -78,8 +78,8 @@ for ad in ads:
     img(os.path.join(A, 'logos', ad['id'] + '_logo.png'), 'logo_%s.webp' % ad['id'], 420)
     ad['logo'] = 'img/logo_%s.webp' % ad['id']
 
-for src, dst in [('vicebay_artwork_1_boulevard', 'art_beach'), ('vicebay_artwork_2_downtown_rain', 'art_downtown'),
-                 ('vicebay_artwork_3_motel_marais', 'art_highway')]:
+for src, dst in [('vicebay_flat_1_coconut', 'art_beach'), ('vicebay_flat_2_downtown', 'art_downtown'),
+                 ('vicebay_flat_3_motel', 'art_highway')]:
     img(os.path.join(A, 'artworks', src + '.png'), dst + '.jpg', 1600, 'JPEG', 78)
     img(os.path.join(A, 'artworks', src + '.png'), dst + '_s.jpg', 800, 'JPEG', 74)
 img(os.path.join(ROOT, 'img', 'vicebay_radio.png'), 'vicebay_radio.webp', 720)
