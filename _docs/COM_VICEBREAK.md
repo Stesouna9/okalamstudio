@@ -290,3 +290,25 @@ Note : dans un email privé, « le gros jeu que tout le monde attend » suffit e
 ---
 
 _Créé le 2026-09-26. Prochaine révision : 12/10 (décision radio) puis 15/10 (fiches stores)._
+
+---
+
+## 13. Point du 28/09/2026 — qui fait quoi d'ici le 1er novembre
+
+Gabriel ne peut pas ouvrir de comptes pour l'instant (captchas, vérifications d'identité : seul lui peut le faire). Claude fait tout le reste.
+
+**Gabriel (≈ 1 h au total, à étaler, avant le 25/10)** :
+1. Meta Business + compte publicitaire + carte (business.facebook.com). 15 min. Vérification 48 h.
+2. Reddit Ads (ads.reddit.com), même carte. 10 min. Approbation 1 à 3 jours.
+3. TikTok : compte @vicebayradio (organique seulement, pas de pub). 5 min.
+4. Brevo (formulaire email du site). 10 min.
+5. Répondre aux 7 décisions de la section 11 (un message suffit).
+
+**Claude (sans compte, tout de suite)** :
+- Créas 1 à 6 (vidéos 9:16 15 s montées par script depuis captures + musique CC + voix radio), images 1:1 / 4:5, GIF Reddit.
+- Textes : posts (3/semaine du 15/10 au 19/11, calendrier daté), annonces Meta (3 variantes par créa), post Reddit, email presse FR/EN, fiche store ASO.
+- Site : pixel Meta prêt à coller, UTM sur tous les liens, kit presse (page + zip), boutons pré-inscription dès que les liens existent.
+- Discord : salon #annonces alimenté, événement « sortie » planifié, rôle Auditeur automatique.
+- Mesure : tableau de bord (journal section 12), seuils d'arrêt (CPI pré-inscription > 2 €).
+
+**Le 1er novembre** : Gabriel a les comptes ouverts et la carte validée ; Claude a les créas et les textes ; on lance le test Meta 30 € le 3/11 (section 5.2 inchangée : 30 test + 40 pré-inscription + 15 Reddit + 15 jour J).
