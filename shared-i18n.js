@@ -1,6 +1,7 @@
 // ── OKALAM Shared i18n — all pages ──
 const PAGE_T = {
   en: {
+    disc_pill:'💬 Join the VICE BREAK Discord · beta + radio',
     vbr_off:'RADIO OFF',
     vbr_pick:'Pick a station',
     vbr_hint:'or drag the needle across the dial',
@@ -243,6 +244,7 @@ const PAGE_T = {
   },
 
   fr: {
+    disc_pill:'💬 Rejoindre le Discord VICE BREAK · bêta + radio',
     vbr_off:'RADIO COUPÉE',
     vbr_pick:'Choisis une station',
     vbr_hint:'ou glisse l\'aiguille sur le cadran',
@@ -475,6 +477,7 @@ const PAGE_T = {
   },
 
   ja: {
+    disc_pill:'💬 VICE BREAK Discordに参加 · ベータ + ラジオ',
     vb_badge:'iOS + Android 配信 · 2026年11月19日',
     vb_radio_label:'Vice Bay Radio',
     vb_radio_title:'5局のFMラジオ、<em>一晩中</em>',
@@ -698,6 +701,7 @@ const PAGE_T = {
   },
 
   zh: {
+    disc_pill:'💬 加入 VICE BREAK Discord · 测试版 + 电台',
     vb_badge:'iOS + Android 上线 · 2026年11月19日',
     vb_radio_label:'Vice Bay Radio',
     vb_radio_title:'五个FM电台，<em>整夜陪伴</em>',
@@ -921,6 +925,7 @@ const PAGE_T = {
   },
 
   es: {
+    disc_pill:'💬 Únete al Discord de VICE BREAK · beta + radio',
     vb_badge:'Lanzamiento iOS + Android · 19 de noviembre de 2026',
     vb_radio_label:'Vice Bay Radio',
     vb_radio_title:'Cinco emisoras FM, <em>toda la noche</em>',
@@ -1144,6 +1149,7 @@ const PAGE_T = {
   },
 
   pt: {
+    disc_pill:'💬 Entre no Discord do VICE BREAK · beta + rádio',
     vb_badge:'Lançamento iOS + Android · 19 de novembro de 2026',
     vb_radio_label:'Vice Bay Radio',
     vb_radio_title:'Cinco estações FM, <em>a noite toda</em>',
@@ -1370,6 +1376,20 @@ const PAGE_T = {
 // ── Apply page translations ──
 function applyPageTranslations(l) {
   const t = PAGE_T[l] || PAGE_T.en;
+
+  // Discord pill (all pages) — invite VICE BREAK
+  let pill = document.getElementById('ok-disc-pill');
+  if (!pill && !document.querySelector('.vbr')) {
+    pill = document.createElement('a');
+    pill.id = 'ok-disc-pill';
+    pill.href = 'https://discord.gg/TSaxEnt2dG';
+    pill.target = '_blank'; pill.rel = 'noopener';
+    pill.style.cssText = 'position:fixed;left:50%;bottom:14px;transform:translateX(-50%);z-index:9998;padding:10px 18px;border-radius:999px;background:#5865F2;color:#fff;font:600 14px/1.2 "DM Sans",system-ui,sans-serif;text-decoration:none;box-shadow:0 6px 24px rgba(0,0,0,.35);white-space:nowrap;max-width:calc(100vw - 32px);overflow:hidden;text-overflow:ellipsis;transition:transform .15s';
+    pill.onmouseenter = () => pill.style.transform = 'translateX(-50%) scale(1.04)';
+    pill.onmouseleave = () => pill.style.transform = 'translateX(-50%)';
+    document.body.appendChild(pill);
+  }
+  if (pill) pill.textContent = t.disc_pill || PAGE_T.en.disc_pill;
 
   // data-i18n attributes (innerHTML for those with HTML tags)
   document.querySelectorAll('[data-i18n]').forEach(el => {
