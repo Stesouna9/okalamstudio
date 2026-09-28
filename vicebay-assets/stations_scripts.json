@@ -1,0 +1,2858 @@
+{
+ "neon": {
+  "title": "NEON 103.5",
+  "color": "#ff2e88",
+  "intro": "<p>Radio fictive dans un jeu vidéo (casse-briques iOS/Android, OKALAM Studio, sortie novembre 2026). Ville imaginaire : <b>Vice Bay</b>, années 80, néons, plage. Cinq stations, chacune avec son animateur. Tu fais <b>NEON 103.5</b> : chiptune, 8-bit, musique de jeu vidéo.</p><p>L'animateur s'appelle <b>Gérard</b>, gérant de la salle d'arcade Pixel Palace (41 machines, minuit, personne devant). Il parle aux machines autant qu'aux auditeurs. Slogan : « Insérez une pièce et ça repart. »</p>",
+  "ton": "<p>Détaché, factuel, légèrement inquiétant parce qu'il ne commente jamais.</p><p>['il répète la fréquence au lieu du nom', 'phrases de trois mots', 'il laisse tomber la fin', \"annonce parfois un score au lieu de l'heure\"]</p><p>Voix calme, un peu cristalline, geek sans le forcer, poétique malgré lui. Pas de voix « animateur radio commercial ». Débit posé, phrases courtes, on laisse respirer les points. Sourire discret.</p>",
+  "rules": [
+   "Voix seule, <b>aucune musique, aucun effet</b>, pièce sans écho.",
+   "<b>WAV 48 kHz, 24 bits, mono</b> de préférence (AIFF, M4A, FLAC acceptés). Un fichier par texte. Ou enregistre directement ici, avec le bouton rouge.",
+   "0,5 s de silence avant, 1 s après. Pas de normalisation, pas de compression, pas de réduction de bruit : on traite tout de notre côté.",
+   "En jaune entre parenthèses = <b>didascalie</b>, à jouer, pas à lire. (pause) = un vrai silence d'une seconde.",
+   "Les titres de morceaux sont <b>en rose</b> : ce sont de vrais titres, souvent en anglais. Dis-les naturellement, comme un animateur français qui lit une pochette, sans forcer l'accent.",
+   "Les chiffres se disent : 103.5 = « cent-trois point cinq ».",
+   "Une bonne prise par texte suffit. La durée indicative est là pour le rythme, pas pour te presser.",
+   "Droits : usage commercial, diffusion illimitée dans le jeu et ses bandes-annonces, cession définitive, sans crédit obligatoire (crédit au générique si tu veux)."
+  ],
+  "sections": {
+   "A": "Jingles de station",
+   "B": "Enchaînements entre deux morceaux",
+   "C": "Pages de pub"
+  },
+  "who": "Melvin",
+  "texts": [
+   {
+    "n": 1,
+    "section": "A",
+    "label": "jingle de station",
+    "text": "Cent-trois point cinq. NEON. Vous n'êtes plus tout à fait à Vice Bay.",
+    "from": null,
+    "to": null,
+    "target": 6
+   },
+   {
+    "n": 2,
+    "section": "A",
+    "label": "jingle de station",
+    "text": "NEON, cent-trois point cinq. Émission depuis l'orbite basse. Le signal met une seconde à vous trouver.",
+    "from": null,
+    "to": null,
+    "target": 6
+   },
+   {
+    "n": 3,
+    "section": "A",
+    "label": "jingle de station",
+    "text": "Cent-trois point cinq. Ici NEON. Fermez les yeux, la ville continue sans vous.",
+    "from": null,
+    "to": null,
+    "target": 6
+   },
+   {
+    "n": 4,
+    "section": "A",
+    "label": "jingle de station",
+    "text": "NEON. Des machines qui rêvent, cent-trois point cinq. Ne réglez rien, c'est déjà réglé.",
+    "from": null,
+    "to": null,
+    "target": 6
+   },
+   {
+    "n": 5,
+    "section": "A",
+    "label": "jingle de station",
+    "text": "Cent-trois point cinq, NEON. Cristal, lumière, et un synthétiseur qui respire à votre place.",
+    "from": null,
+    "to": null,
+    "target": 6
+   },
+   {
+    "n": 6,
+    "section": "A",
+    "label": "jingle de station",
+    "text": "Ici NEON. Il est tard, il est tôt, c'est pareil. Cent-trois point cinq.",
+    "from": null,
+    "to": null,
+    "target": 6
+   },
+   {
+    "n": 7,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "« Night Escape » vient de s'éteindre. Vous avez entendu l'arpège ? Une seule note, répétée, qui monte comme un ascenseur de verre. Ce n'est pas une main, c'est un arpégiateur : la machine joue, l'homme écoute. « A Million Light Years Between Us » maintenant. Il y a de la place là-dedans. Entrez.",
+    "from": "neon_picks/agecaf_night_escape.m4a",
+    "to": "neon_picks/alexandr_zhelanov_a_million_light_years_between_us_a_million_light_yea.m4a",
+    "target": 12
+   },
+   {
+    "n": 8,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "C'était « A Million Light Years Between Us ». Le son qui scintille au-dessus, c'est un oscillateur, une onde qui a la forme d'un escalier. On l'appelle carrée, elle n'a pourtant aucun angle quand on l'écoute de loin. « Be Not Put Out From A Window During A Hyperspatial Jump ». On l'écoute de loin.",
+    "from": "neon_picks/alexandr_zhelanov_a_million_light_years_between_us_a_million_light_yea.m4a",
+    "to": "neon_picks/alexandr_zhelanov_be_not_put_out_from_a_window_during_a_hyperspatial_j.m4a",
+    "target": 12
+   },
+   {
+    "n": 9,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "« Be Not Put Out From A Window During A Hyperspatial Jump ». Cette nappe derrière, qui ne bouge presque pas : c'est un accord tenu pendant trois minutes, avec un filtre qui s'ouvre comme un œil. « Pushing Ahead » va ouvrir l'autre œil. Cent-trois point cinq.",
+    "from": "neon_picks/alexandr_zhelanov_be_not_put_out_from_a_window_during_a_hyperspatial_j.m4a",
+    "to": "neon_picks/centurion_of_war_pushing_ahead.m4a",
+    "target": 12
+   },
+   {
+    "n": 10,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "On quitte « Pushing Ahead ». La voix que vous avez entendue n'était pas une voix, c'était un vocodeur : une machine qui prête sa gorge à un clavier. Elle ne respire pas. Elle n'a pas besoin. « The Machine Has Become Self Aware », sans paroles, et c'est mieux.",
+    "from": "neon_picks/centurion_of_war_pushing_ahead.m4a",
+    "to": "neon_picks/hitctrl_the_machine_has_become_self_aware_the_machine_has_become_self_.m4a",
+    "target": 12
+   },
+   {
+    "n": 11,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "« The Machine Has Become Self Aware » est parti vers le large. La basse qui pulsait, tic, tic, tic, c'est un séquenceur : seize pas, toujours les mêmes, et pourtant on ne s'ennuie jamais. C'est la lumière qui change, pas la route. « Intro (Silent loneliness) ». Même route, autre lumière.",
+    "from": "neon_picks/hitctrl_the_machine_has_become_self_aware_the_machine_has_become_self_.m4a",
+    "to": "neon_picks/ihor_troyanov_intro_silent_loneliness.m4a",
+    "target": 12
+   },
+   {
+    "n": 12,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "Vous étiez dans « Intro (Silent loneliness) ». Le cristal, ce petit tintement, c'est une onde sinusoïdale pure, la note la plus simple qui existe, celle qu'aucun instrument en bois ne sait faire. « Inconnu 05 Grass » en a plein. Ne clignez pas.",
+    "from": "neon_picks/ihor_troyanov_intro_silent_loneliness.m4a",
+    "to": "neon_picks/inconnu_05_grass.m4a",
+    "target": 12
+   },
+   {
+    "n": 13,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "« Inconnu 05 Grass ». L'écho, là, qui répond en retard, c'est un délai : le son se souvient de lui-même et revient, un peu plus faible, un peu plus loin. Comme Vice Bay vue d'un avion. « Transmutation », et l'avion redescend.",
+    "from": "neon_picks/inconnu_05_grass.m4a",
+    "to": "neon_picks/kara_square_transmutation.m4a",
+    "target": 12
+   },
+   {
+    "n": 14,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "C'était « Transmutation », enregistré, dit-on, dans une pièce sans fenêtre avec un seul néon rose. « Lullaby » vient de la même pièce, une autre nuit. Le néon est toujours allumé. Cent-trois point cinq.",
+    "from": "neon_picks/kara_square_transmutation.m4a",
+    "to": "neon_picks/kly_lullaby.m4a",
+    "target": 12
+   },
+   {
+    "n": 15,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "« Lullaby ». Trente-neuf machines allumées, deux en panne, zéro joueur. Le Pixel Palace est à vous. « The Arplands ».",
+    "from": "neon_picks/kly_lullaby.m4a",
+    "to": "neon_picks/lordzintick_the_arplands.m4a",
+    "target": 12
+   },
+   {
+    "n": 16,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "C'était « The Arplands ». Le satellite Marcel a fait sa note à la fin, vous avez entendu ? Un la. Il approuve. « Hey Boss! ».",
+    "from": "neon_picks/lordzintick_the_arplands.m4a",
+    "to": "neon_picks/megupets_hey_boss.m4a",
+    "target": 12
+   },
+   {
+    "n": 17,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "« Hey Boss! » vient de s'éteindre. Le petit bruit qui reste, c'est la borne douze qui redémarre. Elle fait ça la nuit. « Vaulty ».",
+    "from": "neon_picks/megupets_hey_boss.m4a",
+    "to": "neon_picks/megupets_vaulty.m4a",
+    "target": 12
+   },
+   {
+    "n": 18,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "Vous écoutiez « Vaulty ». Ce n'est pas un instrument, c'est une puce, huit bits, quatre voix. Et elle chante mieux que moi. « Space City ».",
+    "from": "neon_picks/megupets_vaulty.m4a",
+    "to": "neon_picks/mintodog_space_city_space_city_bpm115_0.m4a",
+    "target": 12
+   },
+   {
+    "n": 19,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "« Space City ». La mélodie que vous avez dans la tête maintenant, gardez-la, c'est un bonus. « Railgun Rain ».",
+    "from": "neon_picks/mintodog_space_city_space_city_bpm115_0.m4a",
+    "to": "neon_picks/northivanastan_railgun_rain.m4a",
+    "target": 12
+   },
+   {
+    "n": 20,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "On quitte « Railgun Rain ». Un joueur a laissé son score sans initiales. On l'a nommé AAA, comme tout le monde. « Kawaii Girl Scatter Her StarWinks ».",
+    "from": "neon_picks/northivanastan_railgun_rain.m4a",
+    "to": "neon_picks/pavel_kingdom_graff_kawaii_girl_scatter_her_starwinks.m4a",
+    "target": 12
+   },
+   {
+    "n": 21,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "« Kawaii Girl Scatter Her StarWinks », et un gamin vient de finir un jeu avec une seule pièce. Il est parti sans rien dire. Respect. « Pixel Nya Poofodeibohr ».",
+    "from": "neon_picks/pavel_kingdom_graff_kawaii_girl_scatter_her_starwinks.m4a",
+    "to": "neon_picks/pixel_nya_poofodeibohr.m4a",
+    "target": 12
+   },
+   {
+    "n": 22,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "C'était « Pixel Nya Poofodeibohr ». La borne du fond affiche un niveau que personne ne connaît. On attend. « Catch Me If You Can! ».",
+    "from": "neon_picks/pixel_nya_poofodeibohr.m4a",
+    "to": "neon_picks/poinl_catch_me_if_you_can.m4a",
+    "target": 12
+   },
+   {
+    "n": 23,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "« Catch Me If You Can! ». Le son qui tombe à la fin, comme une pièce dans un puits, c'est le bruit d'une vie qu'on perd. Dans le jeu. « Theme Of The Masked Man ».",
+    "from": "neon_picks/poinl_catch_me_if_you_can.m4a",
+    "to": "neon_picks/request_theme_of_the_masked_man_loopable_chiptune_slow_broody_adventur.m4a",
+    "target": 12
+   },
+   {
+    "n": 24,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "Vous étiez dans « Theme Of The Masked Man ». L'ordinateur qui a joué ça avait moins de mémoire que votre grille-pain. Il avait plus de cœur. « Spell ».",
+    "from": "neon_picks/request_theme_of_the_masked_man_loopable_chiptune_slow_broody_adventur.m4a",
+    "to": "neon_picks/rolemusic_spell.m4a",
+    "target": 12
+   },
+   {
+    "n": 25,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "« Spell » est terminé. Insérez une pièce. « Summer Gift ».",
+    "from": "neon_picks/rolemusic_spell.m4a",
+    "to": "neon_picks/snabisch_summer_gift.m4a",
+    "target": 12
+   },
+   {
+    "n": 26,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "C'était « Summer Gift ». Gérard a réparé la machine à monnaie. Elle rend la monnaie. C'est nouveau. « The Pattern ».",
+    "from": "neon_picks/snabisch_summer_gift.m4a",
+    "to": "neon_picks/snabisch_the_pattern_psg_version.m4a",
+    "target": 12
+   },
+   {
+    "n": 27,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "« The Pattern », et la boule à facettes du Pixel Palace tourne toujours, même quand la salle est vide. Surtout quand elle est vide. « The Village ».",
+    "from": "neon_picks/snabisch_the_pattern_psg_version.m4a",
+    "to": "neon_picks/snabisch_the_village_nes_version.m4a",
+    "target": 12
+   },
+   {
+    "n": 28,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "On sortait de « The Village ». Il y a un joueur, ZAP, qui n'existe pas, et qui a le record sur six machines. « Deadly Dance ».",
+    "from": "neon_picks/snabisch_the_village_nes_version.m4a",
+    "to": "neon_picks/spring_spring_deadly_dance.m4a",
+    "target": 12
+   },
+   {
+    "n": 29,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "« Deadly Dance ». Le tapis de la salle est collant depuis 1986. On ne le change pas. C'est un monument. « Dragon's Village ».",
+    "from": "neon_picks/spring_spring_deadly_dance.m4a",
+    "to": "neon_picks/spring_spring_dragon_s_village.m4a",
+    "target": 12
+   },
+   {
+    "n": 30,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "Vous écoutiez « Dragon's Village ». Chaque note dure un seizième de seconde. Le bonheur aussi, parfois. « Goat 145 ».",
+    "from": "neon_picks/spring_spring_dragon_s_village.m4a",
+    "to": "neon_picks/stellarartwars_goat_145_stems.m4a",
+    "target": 12
+   },
+   {
+    "n": 31,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "« Goat 145 » vient de finir. Le distributeur de sodas a avalé une pièce. Il la garde. C'est son score à lui. « 8 Bit Lofi - Cactu Sama 2 ».",
+    "from": "neon_picks/stellarartwars_goat_145_stems.m4a",
+    "to": "neon_picks/tad_8_bit_lofi_cactu_sama_2.m4a",
+    "target": 12
+   },
+   {
+    "n": 32,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "C'était « 8 Bit Lofi - Cactu Sama 2 ». Musique d'un jeu où on ne gagne jamais. On y rejoue quand même. « Trailer Music ».",
+    "from": "neon_picks/tad_8_bit_lofi_cactu_sama_2.m4a",
+    "to": "neon_picks/tad_trailer_music_epic_orchestra_music.m4a",
+    "target": 12
+   },
+   {
+    "n": 33,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "« Trailer Music ». Marcel a changé de note. Si bémol. Ça change tout, ça ne change rien. « The Last Parsec ».",
+    "from": "neon_picks/tad_trailer_music_epic_orchestra_music.m4a",
+    "to": "neon_picks/tausdei_the_last_parsec_the_last_parsec.m4a",
+    "target": 12
+   },
+   {
+    "n": 34,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "Vous étiez dans « The Last Parsec ». La borne huit a un bouton qui colle, tout le monde le sait, personne ne le répare, tout le monde gagne quand même. « The Britons ».",
+    "from": "neon_picks/tausdei_the_last_parsec_the_last_parsec.m4a",
+    "to": "neon_picks/the_britons.m4a",
+    "target": 12
+   },
+   {
+    "n": 35,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "« The Britons », et Voltaire Pinsky a rebranché un câble. Une machine s'est allumée. Elle n'était pas branchée avant. « Beautiful ».",
+    "from": "neon_picks/the_britons.m4a",
+    "to": "neon_picks/thepixel_beautiful.m4a",
+    "target": 12
+   },
+   {
+    "n": 36,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "On quitte « Beautiful ». Trois pièces posées sur le rebord de la borne : ça veut dire « je joue après ». Trois pièces, et personne. « Village Consort ».",
+    "from": "neon_picks/thepixel_beautiful.m4a",
+    "to": "neon_picks/village_consort.m4a",
+    "target": 12
+   },
+   {
+    "n": 37,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "« Village Consort ». Le bip que vous avez entendu, c'est un vrai bip. On ne fait pas mieux depuis. « Hyperspace ».",
+    "from": "neon_picks/village_consort.m4a",
+    "to": "neon_picks/vitalezzz_hyperspace.m4a",
+    "target": 12
+   },
+   {
+    "n": 38,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "C'était « Hyperspace ». La salle sent le plastique chaud et le sucre. C'est l'odeur du futur, version 1985. « Outworld ».",
+    "from": "neon_picks/vitalezzz_hyperspace.m4a",
+    "to": "neon_picks/vitalezzz_outworld.m4a",
+    "target": 12
+   },
+   {
+    "n": 39,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "« Outworld » est parti. Le néon rose du plafond clignote en rythme, on n'a jamais compris comment. « The Call For Unity ».",
+    "from": "neon_picks/vitalezzz_outworld.m4a",
+    "to": "neon_picks/vitalezzz_the_call_for_unity.m4a",
+    "target": 12
+   },
+   {
+    "n": 40,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "Vous écoutiez « The Call For Unity ». Minuit et quart. Le Pixel Palace ne ferme jamais parce qu'on a perdu la clé. « Ocean Theme ».",
+    "from": "neon_picks/vitalezzz_the_call_for_unity.m4a",
+    "to": "neon_picks/wolfgang_ocean_theme.m4a",
+    "target": 12
+   },
+   {
+    "n": 41,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "« Ocean Theme ». Un pixel mort sur l'écran de la borne cinq, depuis toujours, en haut à gauche. On l'appelle Bernard. « A Million Light Years Between Us ».",
+    "from": "neon_picks/wolfgang_ocean_theme.m4a",
+    "to": "neon_picks/alexandr_zhelanov_a_million_light_years_between_us_a_million_light_yea.m4a",
+    "target": 12
+   },
+   {
+    "n": 42,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "C'était « Night Escape ». Quatre voix, un canal de bruit, et tout un monde. « Be Not Put Out From A Window During A Hyperspatial Jump » en a autant.",
+    "from": "neon_picks/agecaf_night_escape.m4a",
+    "to": "neon_picks/alexandr_zhelanov_be_not_put_out_from_a_window_during_a_hyperspatial_j.m4a",
+    "target": 12
+   },
+   {
+    "n": 43,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "« A Million Light Years Between Us », et la voix synthétique de la borne de course vient de dire « bonne nuit ». Elle ne dit jamais ça. « Pushing Ahead ».",
+    "from": "neon_picks/alexandr_zhelanov_a_million_light_years_between_us_a_million_light_yea.m4a",
+    "to": "neon_picks/centurion_of_war_pushing_ahead.m4a",
+    "target": 12
+   },
+   {
+    "n": 44,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "On sortait de « Be Not Put Out From A Window During A Hyperspatial Jump ». Le high score du mois est tenu par quelqu'un qui s'appelle MAMAN. On ne pose pas de questions. « The Machine Has Become Self Aware ».",
+    "from": "neon_picks/alexandr_zhelanov_be_not_put_out_from_a_window_during_a_hyperspatial_j.m4a",
+    "to": "neon_picks/hitctrl_the_machine_has_become_self_aware_the_machine_has_become_self_.m4a",
+    "target": 12
+   },
+   {
+    "n": 45,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "« Pushing Ahead ». Si vous entendez un la tous les onze secondes sous la musique, ce n'est pas votre poste. C'est Marcel. « Intro (Silent loneliness) ».",
+    "from": "neon_picks/centurion_of_war_pushing_ahead.m4a",
+    "to": "neon_picks/ihor_troyanov_intro_silent_loneliness.m4a",
+    "target": 12
+   },
+   {
+    "n": 46,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "C'était « The Machine Has Become Self Aware ». Continue ? Dix, neuf, huit… « Inconnu 05 Grass ».",
+    "from": "neon_picks/hitctrl_the_machine_has_become_self_aware_the_machine_has_become_self_.m4a",
+    "to": "neon_picks/inconnu_05_grass.m4a",
+    "target": 12
+   },
+   {
+    "n": 47,
+    "section": "C",
+    "label": "AVANT · Golden Pawn",
+    "text": "(voix calme)\nC'était « Intro (Silent loneliness) ». Transmission interrompue. Une page de pub, puis retour en orbite.",
+    "from": "neon_picks/ihor_troyanov_intro_silent_loneliness.m4a",
+    "to": "neon_picks/kara_square_transmutation.m4a",
+    "target": 8
+   },
+   {
+    "n": 48,
+    "section": "C",
+    "label": "LA PUB · Golden Pawn",
+    "text": "(voix surexcitée)\nVOUS AVEZ UN OBJET !\nVOUS AVEZ BESOIN D'ARGENT !\nVOUS AVEZ CINQ MINUTES !\nGOLDEN PAWN, DOWNTOWN !\nMontres !\nRadios !\nAppareils photo !\nChaînes stéréo !\nEt objets dont même votre grand-mère a oublié l'utilité !\nEstimation rapide !\nPrix immédiat !\nEt si vous apportez une lampe de poche qui fonctionne encore…\n(ralentir)\nle vendeur la regardera avec respect pendant au moins dix secondes.\n(pause)\nGOLDEN PAWN !\nVotre grenier vient peut-être de devenir RENTABLE !\nEt si ce n'est pas le cas…\n(accélérer)\nrevenez avec autre chose !",
+    "from": null,
+    "to": null,
+    "target": 25
+   },
+   {
+    "n": 49,
+    "section": "C",
+    "label": "APRÈS · Golden Pawn",
+    "text": "Retour en orbite. NEON 103.5. « Transmutation ».",
+    "from": "neon_picks/ihor_troyanov_intro_silent_loneliness.m4a",
+    "to": "neon_picks/kara_square_transmutation.m4a",
+    "target": 6
+   },
+   {
+    "n": 50,
+    "section": "C",
+    "label": "AVANT · Night Owl Market",
+    "text": "« Inconnu 05 Grass ». Pause. Insérez une pièce, les machines ont quelque chose à vous dire.",
+    "from": "neon_picks/inconnu_05_grass.m4a",
+    "to": "neon_picks/kly_lullaby.m4a",
+    "target": 8
+   },
+   {
+    "n": 51,
+    "section": "C",
+    "label": "LA PUB · Night Owl Market",
+    "text": "(voix extrêmement rapide)\nMINUIT !\nUNE HEURE !\nDEUX HEURES !\nVOUS ÊTES TOUJOURS RÉVEILLÉ !\nNIGHT OWL MARKET !\nSnacks !\nSoda !\nPiles !\nJournaux !\nGlaces !\nEt un rayon entier consacré aux choses dont vous avez besoin UNIQUEMENT après minuit !\nLe magasin ferme à quatre heures trente.\nPourquoi quatre heures trente ?\n(pause)\nParce qu'à quatre heures trente…\n(plus bas)\nle patron commence à avoir sommeil.\n(accélérer)\nNIGHT OWL MARKET !\nOuvert quand Vice Bay dort !\nEnfin…\n(pause)\nquand presque tout le monde dort !",
+    "from": null,
+    "to": null,
+    "target": 25
+   },
+   {
+    "n": 52,
+    "section": "C",
+    "label": "APRÈS · Night Owl Market",
+    "text": "Pièce acceptée. On continue. « Lullaby ».",
+    "from": "neon_picks/inconnu_05_grass.m4a",
+    "to": "neon_picks/kly_lullaby.m4a",
+    "target": 6
+   },
+   {
+    "n": 53,
+    "section": "C",
+    "label": "AVANT · Laser Lounge",
+    "text": "(voix calme)\nOn quitte « Transmutation » deux minutes. Le Pixel Palace a des factures, lui aussi.",
+    "from": "neon_picks/kara_square_transmutation.m4a",
+    "to": "neon_picks/lordzintick_the_arplands.m4a",
+    "target": 8
+   },
+   {
+    "n": 54,
+    "section": "C",
+    "label": "LA PUB · Laser Lounge",
+    "text": "VOUS PENSEZ QUE LA NUIT EST SOMBRE ?\nPLUS POUR LONGTEMPS !\nLASER LOUNGE, SKYLINE !\nLumières !\nMusique !\nÉcrans !\nEt une piste tellement brillante que vos chaussures ont presque l'impression de flotter !\nLe nouveau système laser vient d'être installé.\nPersonne ne sait exactement ce que fait le bouton rouge.\n(pause)\nLe patron conseille de ne pas y toucher.\n(pause)\nAlors évidemment…\n(accélérer)\nTOUT LE MONDE VEUT Y TOUCHER !\nLaser Lounge.\nLe futur a ouvert ses portes.\n(pause)\nLe futur n'a pas demandé la permission.",
+    "from": null,
+    "to": null,
+    "target": 25
+   },
+   {
+    "n": 55,
+    "section": "C",
+    "label": "APRÈS · Laser Lounge",
+    "text": "Factures payées. Le néon est rallumé. « The Arplands ».",
+    "from": "neon_picks/kara_square_transmutation.m4a",
+    "to": "neon_picks/lordzintick_the_arplands.m4a",
+    "target": 6
+   },
+   {
+    "n": 56,
+    "section": "C",
+    "label": "AVANT · Pixel Pier Arcade",
+    "text": "« Lullaby » vient de finir. Niveau bonus : de la réclame. Ne partez pas, ça compte dans le score.",
+    "from": "neon_picks/kly_lullaby.m4a",
+    "to": "neon_picks/megupets_hey_boss.m4a",
+    "target": 8
+   },
+   {
+    "n": 57,
+    "section": "C",
+    "label": "LA PUB · Pixel Pier Arcade",
+    "text": "(voix arcade)\nPIXEL PIER !\nBEACH !\nARCADE !\nVous avez une pièce ?\nVous avez une chance !\nMachines de course !\nJeux spatiaux !\nCasse-briques !\nEt trois bornes dont personne ne connaît encore le meilleur score !\nLe record de la machine numéro huit est détenu par un joueur appelé ZAP.\n(pause)\nAucun employé ne connaît ZAP.\nAucun client ne connaît ZAP.\n(plus bas)\nMais ZAP a fait…\n(longue pause)\nNEUF CENT MILLE POINTS.\n(accélérer)\nPIXEL PIER ARCADE !\nVenez battre ZAP !\nOu au moins comprendre comment il a fait !\n(pause)\nNous avons demandé à ZAP.\nIl a refusé.",
+    "from": null,
+    "to": null,
+    "target": 25
+   },
+   {
+    "n": 58,
+    "section": "C",
+    "label": "APRÈS · Pixel Pier Arcade",
+    "text": "Niveau bonus terminé. Score inchangé. « Hey Boss! ».",
+    "from": "neon_picks/kly_lullaby.m4a",
+    "to": "neon_picks/megupets_hey_boss.m4a",
+    "target": 6
+   },
+   {
+    "n": 59,
+    "section": "C",
+    "label": "AVANT · Future Phone",
+    "text": "(voix calme)\nC'était « The Arplands ». Marcel fait sa note, et pendant ce temps, une page de pub.",
+    "from": "neon_picks/lordzintick_the_arplands.m4a",
+    "to": "neon_picks/megupets_vaulty.m4a",
+    "target": 8
+   },
+   {
+    "n": 60,
+    "section": "C",
+    "label": "LA PUB · Future Phone",
+    "text": "(voix techno)\nVOTRE TÉLÉPHONE EST VIEUX !\nTRÈS VIEUX !\nIl possède encore une antenne !\nFUTURE PHONE, DOWNTOWN !\nPlus petits !\nPlus légers !\nPlus de boutons !\nEt certains ont même des fonctions que personne ne comprend encore !\nCelui avec l'écran vert est officiellement le plus moderne de Vice Bay.\n(pause)\nEnfin…\nJusqu'à mardi.\nCette semaine : 99 dollars.\n(pause)\nPlus la batterie.\n(pause)\nPlus le chargeur.\n(pause)\nPlus le téléphone.\n(se reprend)\nOui.\nFuture Phone.\nLa technologie avance.\nVotre portefeuille essaie de suivre.\n---\n# VOLT 107.3\n## VOLT 107.3",
+    "from": null,
+    "to": null,
+    "target": 25
+   },
+   {
+    "n": 61,
+    "section": "C",
+    "label": "APRÈS · Future Phone",
+    "text": "Marcel a fini. Nous aussi. NEON 103.5, « Vaulty ».",
+    "from": "neon_picks/lordzintick_the_arplands.m4a",
+    "to": "neon_picks/megupets_vaulty.m4a",
+    "target": 6
+   }
+  ]
+ },
+ "tropicana": {
+  "title": "TROPICANA 88.5",
+  "color": "#2bb3a3",
+  "intro": "<p>Radio fictive dans un jeu vidéo (casse-briques iOS/Android, OKALAM Studio, sortie novembre 2026). Ville imaginaire : <b>Vice Bay</b>, années 80, néons, plage. Cinq stations, chacune avec son animateur. Tu fais <b>TROPICANA 88.5</b> : latin, salsa, cuivres, la radio de la plage et de la famille.</p><p>L'animateur s'appelle <b>Léo</b>, soixante ans, à l'antenne depuis midi, toujours faim, un sandwich jamais loin. Son ennemi juré : le pélican de la jetée, qui lui vole tout. Slogan : « Le soleil se lève sur 88.5. »</p>",
+  "ton": "<p>Chaud, sans se presser, un peu graveleux. Il s'amuse plus que les auditeurs.</p><p>['il parle de la chaleur, de la plage, des gens croisés', 'la bouche parfois pleine, jamais pressé', 'le pélican revient sans prévenir', 'il dit la fréquence en la chantant presque']</p><p>Voix de soixante ans qui a fumé et rigolé. Pas de voix « animateur commercial » : un type derrière un comptoir, qui parle à des gens qu'il connaît. Débit tranquille, sourire audible.</p>",
+  "rules": [
+   "Voix seule, <b>aucune musique, aucun effet</b>, pièce sans écho.",
+   "<b>WAV 48 kHz, 24 bits, mono</b> de préférence (AIFF, M4A, FLAC acceptés). Un fichier par texte. Ou enregistre directement ici, avec le bouton rouge.",
+   "0,5 s de silence avant, 1 s après. Pas de normalisation, pas de compression, pas de réduction de bruit : on traite tout de notre côté.",
+   "En jaune entre parenthèses = <b>didascalie</b>, à jouer, pas à lire. (pause) = un vrai silence d'une seconde.",
+   "Les titres de morceaux sont <b>en rose</b> : ce sont de vrais titres, souvent en anglais. Dis-les naturellement, comme un animateur français qui lit une pochette, sans forcer l'accent.",
+   "Les chiffres se disent : 88.5 = « quatre-vingt-huit virgule cinq » (ou « point cinq », comme ça te vient).",
+   "Une bonne prise par texte suffit. La durée indicative est là pour le rythme, pas pour te presser.",
+   "Droits : usage commercial, diffusion illimitée dans le jeu et ses bandes-annonces, cession définitive, sans crédit obligatoire (crédit au générique si tu veux)."
+  ],
+  "sections": {
+   "A": "Jingles de station",
+   "B": "Enchaînements entre deux morceaux",
+   "C": "Pages de pub"
+  },
+  "who": "",
+  "texts": [
+   {
+    "n": 1,
+    "section": "A",
+    "label": "jingle de station",
+    "text": "Quatre-vingt-huit virgule cinq, Tropicana. Il fait trente-quatre degrés, j'ai un sandwich, tout va bien.",
+    "from": null,
+    "to": null,
+    "target": 6
+   },
+   {
+    "n": 2,
+    "section": "A",
+    "label": "jingle de station",
+    "text": "Tropicana, Vice Bay. La radio de la famille. Si vous n'êtes pas de la famille, restez quand même.",
+    "from": null,
+    "to": null,
+    "target": 6
+   },
+   {
+    "n": 3,
+    "section": "A",
+    "label": "jingle de station",
+    "text": "C'est Tropicana. Le soleil est gratuit, la glace non. Tonton Glaçon, Beach, 31 parfums.",
+    "from": null,
+    "to": null,
+    "target": 6
+   },
+   {
+    "n": 4,
+    "section": "A",
+    "label": "jingle de station",
+    "text": "Quatre-vingt-huit cinq. Bon. On est là. Vous êtes là. Le pélican est là aussi, surveillez vos sandwiches.",
+    "from": null,
+    "to": null,
+    "target": 6
+   },
+   {
+    "n": 5,
+    "section": "A",
+    "label": "jingle de station",
+    "text": "Tropicana. Je vais être honnête avec vous : je ne sais plus quelle heure il est et ça me va.",
+    "from": null,
+    "to": null,
+    "target": 6
+   },
+   {
+    "n": 6,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "Ça, c'était « Arroz Con Pollo ». Bon. Ça m'a donné faim. Tout me donne faim. On enchaîne avec « Blue Ska », et moi avec le deuxième sandwich.",
+    "from": "tropicana/arroz_con_pollo.m4a",
+    "to": "dubwise/blue_ska.m4a",
+    "target": 12
+   },
+   {
+    "n": 7,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "« Blue Ska », pour la famille qui travaille encore. Courage. Nous, on ne travaille pas, on passe « BossaBossa ».",
+    "from": "dubwise/blue_ska.m4a",
+    "to": "tropicana/bossabossa.m4a",
+    "target": 12
+   },
+   {
+    "n": 8,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "Je vais être honnête avec vous : « BossaBossa », je l'ai mis parce que la pochette est jaune. Celui-là aussi. « Bumba Crossing ».",
+    "from": "tropicana/bossabossa.m4a",
+    "to": "tambor/bumba_crossing.m4a",
+    "target": 12
+   },
+   {
+    "n": 9,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "Le vent vient de la mer, la mer vient de loin, et « Carnivale Intrigue » vient tout de suite. Avant ça, c'était « Bumba Crossing », merci à lui.",
+    "from": "tambor/bumba_crossing.m4a",
+    "to": "tropicana_more/carnivale_intrigue.m4a",
+    "target": 12
+   },
+   {
+    "n": 10,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "Petit moment pour vous dire que « Carnivale Intrigue » est fini et que j'ai vu le pélican passer devant la fenêtre. Il a mon regard. « Casa Bossa Nova ».",
+    "from": "tropicana_more/carnivale_intrigue.m4a",
+    "to": "tropicana_more/casa_bossa_nova.m4a",
+    "target": 12
+   },
+   {
+    "n": 11,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "« Casa Bossa Nova ». Bon. Ma femme dit que je répète toujours la fin de mes phrases. La fin de mes phrases. « Kali Ghata Chhaye ».",
+    "from": "tropicana_more/casa_bossa_nova.m4a",
+    "to": "tropicana_picks/chenard_walcker_kali_ghata_chhaye.m4a",
+    "target": 12
+   },
+   {
+    "n": 12,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "On sort de « Kali Ghata Chhaye », on entre dans « Cuban Sandwich », et entre les deux il y a moi, avec une pastèque. C'est Léo, c'est Tropicana.",
+    "from": "tropicana_picks/chenard_walcker_kali_ghata_chhaye.m4a",
+    "to": "tropicana_more/cuban_sandwich.m4a",
+    "target": 12
+   },
+   {
+    "n": 13,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "Trente-quatre degrés à la jetée, trente-six au studio, trente-huit dans mon short. « Del Rio Bravo ».",
+    "from": "tropicana_more/cuban_sandwich.m4a",
+    "to": "tropicana/del_rio_bravo.m4a",
+    "target": 12
+   },
+   {
+    "n": 14,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "C'était « Del Rio Bravo ». Il fait chaud, j'ai enlevé une chaussette. Une seule. « Devonshire Waltz Allegretto ».",
+    "from": "tropicana/del_rio_bravo.m4a",
+    "to": "faire/devonshire_waltz_allegretto.m4a",
+    "target": 12
+   },
+   {
+    "n": 15,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "« Devonshire Waltz Allegretto », et le pélican est revenu sur la rambarde. Il attend la suite comme vous. « Digya ».",
+    "from": "faire/devonshire_waltz_allegretto.m4a",
+    "to": "tambor/digya.m4a",
+    "target": 12
+   },
+   {
+    "n": 16,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "Ça, c'était « Digya ». Ma mère l'écoutait en épluchant les mangues. Moi j'écoute, j'épluche rien. « Dubakupado ».",
+    "from": "tambor/digya.m4a",
+    "to": "tropicana_more/dubakupado.m4a",
+    "target": 12
+   },
+   {
+    "n": 17,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "« Dubakupado ». Bon. Quelqu'un a laissé un ventilateur devant le studio. Merci, inconnu. « No Flowers, No Cry », et de l'air.",
+    "from": "tropicana_more/dubakupado.m4a",
+    "to": "tropicana_picks/duckett_no_flowers_no_cry.m4a",
+    "target": 12
+   },
+   {
+    "n": 18,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "On quitte « No Flowers, No Cry », on prend « Energizing », et si vous êtes sur la plage sud, faites-moi signe, je vois la plage sud d'ici. Enfin, je vois un bout.",
+    "from": "tropicana_picks/duckett_no_flowers_no_cry.m4a",
+    "to": "tambor/energizing.m4a",
+    "target": 12
+   },
+   {
+    "n": 19,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "« Energizing », pour ceux qui font la sieste. Chut. « Gonna Start », pour ceux qui font semblant.",
+    "from": "tambor/energizing.m4a",
+    "to": "dubwise/gonna_start.m4a",
+    "target": 12
+   },
+   {
+    "n": 20,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "Il est l'heure du deuxième café glacé, celui qu'on ne dit pas à la femme. « Gonna Start » c'était le premier. « Hackbeat », le deuxième.",
+    "from": "dubwise/gonna_start.m4a",
+    "to": "tropicana_more/hackbeat.m4a",
+    "target": 12
+   },
+   {
+    "n": 21,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "C'était « Hackbeat ». Le marchand de glaces est passé, il a klaxonné trois fois, ça veut dire qu'il reste de la pistache. « Conquistador ».",
+    "from": "tropicana_more/hackbeat.m4a",
+    "to": "tropicana_picks/jeris_conquistador.m4a",
+    "target": 12
+   },
+   {
+    "n": 22,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "« Conquistador » vient de finir, et mon voisin de studio vient de rentrer avec un poisson. Je ne pose pas de questions. « Ol' Man Clothes ».",
+    "from": "tropicana_picks/jeris_conquistador.m4a",
+    "to": "tropicana_picks/jeris_ol_man_clothes.m4a",
+    "target": 12
+   },
+   {
+    "n": 23,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "Ça sentait le citron vert pendant « Ol' Man Clothes », vous avez senti ? Non ? Moi si. « Journey To Ascend » sent la noix de coco. Je vous jure.",
+    "from": "tropicana_picks/jeris_ol_man_clothes.m4a",
+    "to": "tropicana_picks/journey_to_ascend.m4a",
+    "target": 12
+   },
+   {
+    "n": 24,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "« Journey To Ascend ». Ma femme dit que je parle trop entre les chansons. Alors. « Tanto Ruido (Bossa Nova Remix) ».",
+    "from": "tropicana_picks/journey_to_ascend.m4a",
+    "to": "tropicana_picks/klaus_n_tanto_ruido_bossa_nova_remix.m4a",
+    "target": 12
+   },
+   {
+    "n": 25,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "C'était « Tanto Ruido (Bossa Nova Remix) », dédiée au gamin qui vend des beignets sur la jetée et qui chante faux dessus. Continue, petit. « Maccary Bay ».",
+    "from": "tropicana_picks/klaus_n_tanto_ruido_bossa_nova_remix.m4a",
+    "to": "dubwise/maccary_bay.m4a",
+    "target": 12
+   },
+   {
+    "n": 26,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "« Maccary Bay », et on a trente-cinq degrés à l'ombre, sauf qu'il n'y a pas d'ombre. « Mandeville ».",
+    "from": "dubwise/maccary_bay.m4a",
+    "to": "tropicana_more/mandeville.m4a",
+    "target": 12
+   },
+   {
+    "n": 27,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "On sortait de « Mandeville ». Le bus quatorze vient de passer plein, avec des gens qui dansaient dedans. Le chauffeur aussi. « tangos-rhythm-in-e-phrygian ».",
+    "from": "tropicana_more/mandeville.m4a",
+    "to": "tropicana_picks/megamuse_tangos_rhythm_in_e_phrygian.m4a",
+    "target": 12
+   },
+   {
+    "n": 28,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "« tangos-rhythm-in-e-phrygian ». Bon. J'ai un aveu : j'ai mangé le sandwich du technicien. Il ne le sait pas encore. « Penso...Logo Desisto », vite.",
+    "from": "tropicana_picks/megamuse_tangos_rhythm_in_e_phrygian.m4a",
+    "to": "tropicana_picks/nethis_penso_logo_desisto.m4a",
+    "target": 12
+   },
+   {
+    "n": 29,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "C'était « Penso...Logo Desisto ». Le soleil descend sur le port, les bateaux rentrent, les mouettes crient, et moi j'ai faim. Tout ça en même temps. « Myxtery ».",
+    "from": "tropicana_picks/nethis_penso_logo_desisto.m4a",
+    "to": "tropicana_picks/pitx_myxtery.m4a",
+    "target": 12
+   },
+   {
+    "n": 30,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "« Myxtery », et si vous êtes coincés sur la corniche derrière le camion de bananes, c'est mon cousin. Klaxonnez pas, il accélère pas. « Slow Heat ».",
+    "from": "tropicana_picks/pitx_myxtery.m4a",
+    "to": "tropicana_more/slow_heat.m4a",
+    "target": 12
+   },
+   {
+    "n": 31,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "Là, c'était « Slow Heat ». Une chanson pour danser en cuisine avec une cuillère en bois. Je le sais, je l'ai fait. « Estoy Nervioso ».",
+    "from": "tropicana_more/slow_heat.m4a",
+    "to": "tropicana_picks/sr_privado_estoy_nervioso.m4a",
+    "target": 12
+   },
+   {
+    "n": 32,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "« Estoy Nervioso ». Le pélican a volé le chapeau d'un touriste. Le touriste rit. C'est un bon touriste. « Tafi Maradi no voice ».",
+    "from": "tropicana_picks/sr_privado_estoy_nervioso.m4a",
+    "to": "tropicana_more/tafi_maradi_no_voice.m4a",
+    "target": 12
+   },
+   {
+    "n": 33,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "On enchaîne avec « Tiki Bar Mixer ». Avant, c'était « Tafi Maradi no voice », et avant ça, j'avais encore mes deux chaussettes.",
+    "from": "tropicana_more/tafi_maradi_no_voice.m4a",
+    "to": "tropicana_picks/tiki_bar_mixer.m4a",
+    "target": 12
+   },
+   {
+    "n": 34,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "C'était « Tiki Bar Mixer ». Il y a une fête sur la plage nord ce soir, je ne suis pas invité, je le dis sans amertume. « Trouble with Tribals ». Avec un peu d'amertume.",
+    "from": "tropicana_picks/tiki_bar_mixer.m4a",
+    "to": "tambor/trouble_with_tribals.m4a",
+    "target": 12
+   },
+   {
+    "n": 35,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "« Trouble with Tribals », et j'ai la fenêtre ouverte, alors si vous entendez un bateau, c'est un vrai. « Upbeat Forever ».",
+    "from": "tambor/trouble_with_tribals.m4a",
+    "to": "dubwise/upbeat_forever.m4a",
+    "target": 12
+   },
+   {
+    "n": 36,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "« Upbeat Forever » pour la dame du kiosque qui met toujours trop de sucre. On ne change rien, madame. « Verano Sensual ».",
+    "from": "dubwise/upbeat_forever.m4a",
+    "to": "tropicana/verano_sensual.m4a",
+    "target": 12
+   },
+   {
+    "n": 37,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "C'était « Verano Sensual ». J'ai le short jaune aujourd'hui, celui de la chance. Aucune chance depuis midi, mais il est jaune. « Wepa ».",
+    "from": "tropicana/verano_sensual.m4a",
+    "to": "tropicana/wepa.m4a",
+    "target": 12
+   },
+   {
+    "n": 38,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "« Arroz Con Pollo ». Le glacier et le poissonnier se disputent la place devant la jetée, comme tous les jours. Je suis pour le glacier. « Blue Ska ».",
+    "from": "tropicana/arroz_con_pollo.m4a",
+    "to": "dubwise/blue_ska.m4a",
+    "target": 12
+   },
+   {
+    "n": 39,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "On sortait de « Blue Ska », on entre dans « BossaBossa », et Vice Bay entre dans la meilleure heure, celle où tout le monde a un verre et personne ne travaille.",
+    "from": "dubwise/blue_ska.m4a",
+    "to": "tropicana/bossabossa.m4a",
+    "target": 12
+   },
+   {
+    "n": 40,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "« BossaBossa », et ma grand-mère disait que cette chanson faisait pousser les tomates. Je ne suis pas d'accord, mais je la passe. « Bumba Crossing ».",
+    "from": "tropicana/bossabossa.m4a",
+    "to": "tambor/bumba_crossing.m4a",
+    "target": 12
+   },
+   {
+    "n": 41,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "C'était « Bumba Crossing ». Le type qui loue les pédalos s'est endormi dans un pédalo. Il dérive doucement. On le surveille. « Carnivale Intrigue ».",
+    "from": "tambor/bumba_crossing.m4a",
+    "to": "tropicana_more/carnivale_intrigue.m4a",
+    "target": 12
+   },
+   {
+    "n": 42,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "« Carnivale Intrigue ». Une cuillère de rhum dans le café, ce n'est pas boire, c'est cuisiner. « Casa Bossa Nova ».",
+    "from": "tropicana_more/carnivale_intrigue.m4a",
+    "to": "tropicana_more/casa_bossa_nova.m4a",
+    "target": 12
+   },
+   {
+    "n": 43,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "Là, c'était « Casa Bossa Nova », et dehors il y a un orage qui hésite. Moi je n'hésite jamais. « Kali Ghata Chhaye ».",
+    "from": "tropicana_more/casa_bossa_nova.m4a",
+    "to": "tropicana_picks/chenard_walcker_kali_ghata_chhaye.m4a",
+    "target": 12
+   },
+   {
+    "n": 44,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "« Kali Ghata Chhaye » est finie, et le pédalo est revenu tout seul. Sans le type. On cherche le type. « Cuban Sandwich ».",
+    "from": "tropicana_picks/chenard_walcker_kali_ghata_chhaye.m4a",
+    "to": "tropicana_more/cuban_sandwich.m4a",
+    "target": 12
+   },
+   {
+    "n": 45,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "C'était « Cuban Sandwich ». Si vous n'avez pas dansé, c'est pas grave, la suivante est plus facile. « Del Rio Bravo ».",
+    "from": "tropicana_more/cuban_sandwich.m4a",
+    "to": "tropicana/del_rio_bravo.m4a",
+    "target": 12
+   },
+   {
+    "n": 46,
+    "section": "C",
+    "label": "AVANT · Sunshine Motors",
+    "text": "(la bouche un peu pleine)\nC'était « Del Rio Bravo ». Bon. Je vous laisse deux minutes, j'ai un sandwich et une pub. Dans cet ordre.",
+    "from": "tropicana/del_rio_bravo.m4a",
+    "to": "faire/devonshire_waltz_allegretto.m4a",
+    "target": 8
+   },
+   {
+    "n": 47,
+    "section": "C",
+    "label": "LA PUB · Sunshine Motors",
+    "text": "(voix commerciale)\nVous voulez une voiture qui brille tellement au soleil? ... Que vos voisins pensent que vous avez gagné au loto ?\n(pause)\nDirection Sunshine Motors, sur Highway 4 !\nBerlines, cabriolets, familiales et voitures dont le coffre est assez grand pour transporter toute la famille, les bagages et probablement un petit palmier.\nEt cette semaine : contrôle GRATUIT de la climatisation !\n(pause)\nEt pour seulement 4 995 dollars, nous vous offrons une voiture, quatre roues et…\n(plus bas)\nune chance raisonnable de rentrer chez vous.\n(petit rire)\nSunshine Motors, Highway 4.\nDes voitures. Des prix. Des décisions.",
+    "from": null,
+    "to": null,
+    "target": 30
+   },
+   {
+    "n": 48,
+    "section": "C",
+    "label": "APRÈS · Sunshine Motors",
+    "text": "Voilà. Le sandwich est fini, la pub aussi. Tropicana, quatre-vingt-huit virgule cinq. « Devonshire Waltz Allegretto ».",
+    "from": "tropicana/del_rio_bravo.m4a",
+    "to": "faire/devonshire_waltz_allegretto.m4a",
+    "target": 6
+   },
+   {
+    "n": 49,
+    "section": "C",
+    "label": "AVANT · Coconut Palace",
+    "text": "« Devonshire Waltz Allegretto ». Le pélican a bougé. Il regarde la pub arriver, il regarde tout ce qui arrive. On y va.",
+    "from": "faire/devonshire_waltz_allegretto.m4a",
+    "to": "tambor/digya.m4a",
+    "target": 8
+   },
+   {
+    "n": 50,
+    "section": "C",
+    "label": "LA PUB · Coconut Palace",
+    "text": "(voix souriante)\nVous êtes sur la plage, le soleil descend et votre dîner vient de tomber sur le sable.\nPas de panique !\nCoconut Palace vous attend juste derrière la promenade.\nSandwichs tropicaux, salades, jus glacés et noix de coco fraîches.\n(pause)\nEnfin…\nFraîches selon le propriétaire.\nCertaines sont là depuis tellement longtemps qu'elles ont presque leur propre permis de conduire.\nCette semaine : deux noix de coco pour le prix d'une !\n(pause)\nLa deuxième est plus petite.\nCoconut Palace.\nLe goût des vacances.\nEt parfois le goût de la noix de coco.",
+    "from": null,
+    "to": null,
+    "target": 30
+   },
+   {
+    "n": 51,
+    "section": "C",
+    "label": "APRÈS · Coconut Palace",
+    "text": "Il n'a rien eu. Quatre-vingt-huit virgule cinq, Tropicana. « Digya », et lui, il attend toujours.",
+    "from": "faire/devonshire_waltz_allegretto.m4a",
+    "to": "tambor/digya.m4a",
+    "target": 6
+   },
+   {
+    "n": 52,
+    "section": "C",
+    "label": "AVANT · Bluewave Rentals",
+    "text": "(pause)\nÇa, c'était « Digya ». Il fait trente-quatre degrés dans le studio. Une petite pub, le temps que le ventilateur reparte.",
+    "from": "tambor/digya.m4a",
+    "to": "tropicana_more/dubakupado.m4a",
+    "target": 8
+   },
+   {
+    "n": 53,
+    "section": "C",
+    "label": "LA PUB · Bluewave Rentals",
+    "text": "Aujourd'hui, vous pourriez rester sur la plage à regarder l'océan.\n(pause)\nOu vous pourriez monter sur un scooter des mers Bluewave Rentals et faire exactement l'inverse !\nLocation à l'heure sur la marina de Vice Bay.\nGilet, casque et briefing compris.\nLe briefing dure trois minutes.\n(sourire)\nLe sourire, lui, dure toute la journée.\nEt si vous revenez avec un poisson dans le panier arrière…\n(longue pause)\nce n'est pas prévu dans le contrat.\nBluewave Rentals.\nPrenez le large.\nEt laissez les problèmes sur la plage.",
+    "from": null,
+    "to": null,
+    "target": 25
+   },
+   {
+    "n": 54,
+    "section": "C",
+    "label": "APRÈS · Bluewave Rentals",
+    "text": "Le ventilateur est reparti. Pas moi. Tropicana. « Dubakupado ».",
+    "from": "tambor/digya.m4a",
+    "to": "tropicana_more/dubakupado.m4a",
+    "target": 6
+   },
+   {
+    "n": 55,
+    "section": "C",
+    "label": "AVANT · Palmside Barber Shop",
+    "text": "« Dubakupado », pour la famille. Et maintenant, une pub, parce que la famille, ça mange.",
+    "from": "tropicana_more/dubakupado.m4a",
+    "to": "tropicana_picks/duckett_no_flowers_no_cry.m4a",
+    "target": 8
+   },
+   {
+    "n": 56,
+    "section": "C",
+    "label": "LA PUB · Palmside Barber Shop",
+    "text": "Il fait chaud.\nTrès chaud.\nEt vos cheveux viennent de décider de vivre leur propre vie.\nPalmside Barber Shop peut encore sauver la situation.\nCoupe classique, brushing, barbe et coiffure du dimanche matin, même si nous sommes mardi.\nCette semaine, coupe + barbe : 12 dollars 99.\n(pause)\nLa barbe est obligatoire.\n(pause)\nPour le coiffeur aussi.\nPalmside Barber Shop.\nVous entrez avec une coiffure.\nVous repartez avec une réputation.",
+    "from": null,
+    "to": null,
+    "target": 20
+   },
+   {
+    "n": 57,
+    "section": "C",
+    "label": "APRÈS · Palmside Barber Shop",
+    "text": "On reprend, la bouche vide, cette fois. Quatre-vingt-huit virgule cinq. « No Flowers, No Cry ».",
+    "from": "tropicana_more/dubakupado.m4a",
+    "to": "tropicana_picks/duckett_no_flowers_no_cry.m4a",
+    "target": 6
+   },
+   {
+    "n": 58,
+    "section": "C",
+    "label": "AVANT · Marina Moon",
+    "text": "(il rit)\nC'était « No Flowers, No Cry ». Restez là, y a une pub, et après y a mieux. Je vous le promets, moi.",
+    "from": "tropicana_picks/duckett_no_flowers_no_cry.m4a",
+    "to": "tambor/energizing.m4a",
+    "target": 8
+   },
+   {
+    "n": 59,
+    "section": "C",
+    "label": "LA PUB · Marina Moon",
+    "text": "(voix chaleureuse)\nQuand le soleil descend sur Vice Bay, Marina Moon allume ses enseignes sur le front de mer.\nPoissons grillés, crevettes, riz tropical et limonade glacée.\nLa terrasse donne directement sur les bateaux.\nEnfin…\n(pause)\nquand aucun bateau n'est garé devant.\nLe capitaine du petit bateau bleu affirme que sa place est réservée depuis 1981.\nPersonne n'a retrouvé le contrat.\nCette semaine, dîner pour deux : 29 dollars.\n(pause)\nLa bouteille d'eau est en supplément.\nMarina Moon.\nLa mer est toujours incluse dans l'addition.\n---\n# EMOTION 98.3\n## EMOTION 98.3",
+    "from": null,
+    "to": null,
+    "target": 25
+   },
+   {
+    "n": 60,
+    "section": "C",
+    "label": "APRÈS · Marina Moon",
+    "text": "Vous voyez ? Mieux. Tropicana, Vice Bay. « Energizing ».",
+    "from": "tropicana_picks/duckett_no_flowers_no_cry.m4a",
+    "to": "tambor/energizing.m4a",
+    "target": 6
+   }
+  ]
+ },
+ "emotion": {
+  "title": "EMOTION 98.3",
+  "color": "#4dd0e1",
+  "intro": "<p>Radio fictive dans un jeu vidéo (casse-briques iOS/Android, OKALAM Studio, sortie novembre 2026). Ville imaginaire : <b>Vice Bay</b>, années 80, néons, plage. Cinq stations, chacune avec son animateur. Tu fais <b>EMOTION 98.3</b> : slows, ballades, saxo, la radio de trois heures du matin.</p><p>L'animatrice s'appelle <b>Lara</b>. Elle parle bas, à une seule personne, celle qui rentre seule en voiture sous la pluie. Motel, promenade mouillée, dédicaces sans nom. Slogan : « Éteignez la lumière. Le cœur passe en fréquence modulée. »</p>",
+  "ton": "<p>Basse, proche, murmurée, lasse et tendre. Des silences longs.</p><p>['elle parle à une seule personne, jamais à un public', 'elle ne hausse jamais la voix, même dans les pubs', 'la pluie, le motel, la route mouillée reviennent souvent', 'elle laisse tomber la fin des phrases']</p><p>Micro très proche, presque un souffle. On doit avoir l'impression qu'il est trois heures du matin. Chaque (pause) est un vrai silence, plus long qu'on croit.</p>",
+  "rules": [
+   "Voix seule, <b>aucune musique, aucun effet</b>, pièce sans écho.",
+   "<b>WAV 48 kHz, 24 bits, mono</b> de préférence (AIFF, M4A, FLAC acceptés). Un fichier par texte. Ou enregistre directement ici, avec le bouton rouge.",
+   "0,5 s de silence avant, 1 s après. Pas de normalisation, pas de compression, pas de réduction de bruit : on traite tout de notre côté.",
+   "En jaune entre parenthèses = <b>didascalie</b>, à jouer, pas à lire. (pause) = un vrai silence d'une seconde.",
+   "Les titres de morceaux sont <b>en rose</b> : ce sont de vrais titres, souvent en anglais. Dis-les naturellement, comme un animateur français qui lit une pochette, sans forcer l'accent.",
+   "Les chiffres se disent : 98.3 = « quatre-vingt-dix-huit trois », tout bas.",
+   "Une bonne prise par texte suffit. La durée indicative est là pour le rythme, pas pour te presser.",
+   "Droits : usage commercial, diffusion illimitée dans le jeu et ses bandes-annonces, cession définitive, sans crédit obligatoire (crédit au générique si tu veux)."
+  ],
+  "sections": {
+   "A": "Jingles de station",
+   "B": "Enchaînements entre deux morceaux",
+   "C": "Pages de pub"
+  },
+  "who": "",
+  "texts": [
+   {
+    "n": 1,
+    "section": "A",
+    "label": "jingle de station",
+    "text": "Quatre-vingt-dix-huit trois. EMOTION. C'est Lara. Vous ne dormez pas non plus.",
+    "from": null,
+    "to": null,
+    "target": 6
+   },
+   {
+    "n": 2,
+    "section": "A",
+    "label": "jingle de station",
+    "text": "EMOTION, quatre-vingt-dix-huit trois. Il pleut sur la promenade. Restez encore un peu.",
+    "from": null,
+    "to": null,
+    "target": 6
+   },
+   {
+    "n": 3,
+    "section": "A",
+    "label": "jingle de station",
+    "text": "Ici Lara, EMOTION. Je parle bas parce qu'il est tard, pas parce que j'ai peur.",
+    "from": null,
+    "to": null,
+    "target": 6
+   },
+   {
+    "n": 4,
+    "section": "A",
+    "label": "jingle de station",
+    "text": "Quatre-vingt-dix-huit trois. EMOTION. Une chanson pour quelqu'un qui ne l'entendra pas.",
+    "from": null,
+    "to": null,
+    "target": 6
+   },
+   {
+    "n": 5,
+    "section": "A",
+    "label": "jingle de station",
+    "text": "EMOTION. Le motel a laissé une lumière. Quatre-vingt-dix-huit trois.",
+    "from": null,
+    "to": null,
+    "target": 6
+   },
+   {
+    "n": 6,
+    "section": "A",
+    "label": "jingle de station",
+    "text": "C'est Lara. Il est trois heures. Tout ce qu'on n'a pas dit tient dans une chanson. Quatre-vingt-dix-huit trois.",
+    "from": null,
+    "to": null,
+    "target": 6
+   },
+   {
+    "n": 7,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "« Adding the Sun ». Vous l'avez déjà entendue avec quelqu'un, cette chanson. Je le sais parce que moi aussi. « Just Foolish », maintenant. Celle-là, on l'écoute seul. C'est mieux.",
+    "from": "emotion_picks/adding_the_sun.m4a",
+    "to": "emotion_picks/admiral_bob_just_foolish.m4a",
+    "target": 12
+   },
+   {
+    "n": 8,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "C'était « Just Foolish ». Je l'ai passée pour la fille du dernier bus, celui de minuit dix, qui regardait son téléphone sans le voir. « Photo theme: Window like ». Si c'est vous, il n'a pas écrit. Mais moi je suis là.",
+    "from": "emotion_picks/admiral_bob_just_foolish.m4a",
+    "to": "emotion_picks/antony_raijekov_photo_theme_window_like.m4a",
+    "target": 12
+   },
+   {
+    "n": 9,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "« Photo theme: Window like » vient de finir, et la pluie n'a pas fini, elle. Elle tape sur la vitre du studio comme quelqu'un qui n'ose pas frapper. « Aquarium ». Ouvrez-lui, ça ne coûte rien.",
+    "from": "emotion_picks/antony_raijekov_photo_theme_window_like.m4a",
+    "to": "canon/aquarium.m4a",
+    "target": 12
+   },
+   {
+    "n": 10,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "Vous écoutiez « Aquarium ». Il y a une note, vers la fin, qu'il tient trop longtemps. C'est là que la chanson dit la vérité. « Ambient Guitar Samples ». Elle la dit dès le début, celle-là.",
+    "from": "canon/aquarium.m4a",
+    "to": "emotion_picks/aussens_iter_ambient_guitar_samples.m4a",
+    "target": 12
+   },
+   {
+    "n": 11,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "« Ambient Guitar Samples ». Une dédicace, sans nom : « à celle qui a laissé la clé sous le pot. » Je ne sais pas ce que ça veut dire. Je crois qu'elle, oui. « Guitar Instrumental Stem Pack ». Quatre-vingt-dix-huit trois.",
+    "from": "emotion_picks/aussens_iter_ambient_guitar_samples.m4a",
+    "to": "emotion_picks/aussens_iter_guitar_instrumental_stem_pack.m4a",
+    "target": 12
+   },
+   {
+    "n": 12,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "C'était « Guitar Instrumental Stem Pack », et je me suis tue pendant, vous avez remarqué. Il y a des chansons qu'on ne commente pas. « The Parting Glass (Instrumental) » est de la même famille. Je me tais encore.",
+    "from": "emotion_picks/aussens_iter_guitar_instrumental_stem_pack.m4a",
+    "to": "emotion_picks/aussens_iter_the_parting_glass_instrumental.m4a",
+    "target": 12
+   },
+   {
+    "n": 13,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "« The Parting Glass (Instrumental) » se termine comme les soirées : un peu avant qu'on soit prêt. « My Life » commence pareil. Entre les deux, il y a moi, et je ne vais nulle part.",
+    "from": "emotion_picks/aussens_iter_the_parting_glass_instrumental.m4a",
+    "to": "emotion_picks/colin_mutchler_my_life.m4a",
+    "target": 12
+   },
+   {
+    "n": 14,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "Vous étiez dans « My Life ». Le piano était enregistré dans une chambre du Flamingo Royale, chambre douze, celle qui donne sur le parking. On entend un camion, vers le milieu. On l'a gardé. « Pompeii ». Chambre treize, celle-là.",
+    "from": "emotion_picks/colin_mutchler_my_life.m4a",
+    "to": "emotion_picks/copperhead_pompeii.m4a",
+    "target": 12
+   },
+   {
+    "n": 15,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "« Pompeii ». Il est tard, et vous êtes encore là. Moi aussi. « Despair and Triumph ».",
+    "from": "emotion_picks/copperhead_pompeii.m4a",
+    "to": "emotion_picks/despair_and_triumph.m4a",
+    "target": 12
+   },
+   {
+    "n": 16,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "C'était « Despair and Triumph ». Quelqu'un a appelé pendant, il n'a rien dit, il a raccroché. Ça compte quand même. « Old Forms Must Die ».",
+    "from": "emotion_picks/despair_and_triumph.m4a",
+    "to": "emotion_picks/dmitriy_samoylenko_old_forms_must_die.m4a",
+    "target": 12
+   },
+   {
+    "n": 17,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "« Old Forms Must Die » vient de finir. Dehors, un taxi attend devant le studio depuis vingt minutes. Personne ne monte. « Memory ».",
+    "from": "emotion_picks/dmitriy_samoylenko_old_forms_must_die.m4a",
+    "to": "emotion_picks/doxent_zsigmond_memory.m4a",
+    "target": 12
+   },
+   {
+    "n": 18,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "Vous écoutiez « Memory ». Il y a un mot, dans le deuxième couplet, que je n'arrive pas à dire à voix haute. Vous savez lequel. « Evening ».",
+    "from": "emotion_picks/doxent_zsigmond_memory.m4a",
+    "to": "twilight/evening.m4a",
+    "target": 12
+   },
+   {
+    "n": 19,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "« Evening ». Une dédicace, de Paul à Paul. Il n'a pas expliqué. Je n'ai pas demandé. « Broken Orient ».",
+    "from": "twilight/evening.m4a",
+    "to": "emotion_picks/fluffy_broken_orient.m4a",
+    "target": 12
+   },
+   {
+    "n": 20,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "C'était « Broken Orient ». Si vous avez éteint la lumière, ne la rallumez pas. « Rpg - A Long Way From Home » se passe dans le noir.",
+    "from": "emotion_picks/fluffy_broken_orient.m4a",
+    "to": "emotion_picks/hitctrl_rpg_a_long_way_from_home_rpg_a_long_way_from_home.m4a",
+    "target": 12
+   },
+   {
+    "n": 21,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "« Rpg - A Long Way From Home », et il pleut sur la marina. Les bateaux ont l'air de dormir. Vous devriez, un peu. Après celle-là. « Rpg Ambient 4 (The Dark Woods) ».",
+    "from": "emotion_picks/hitctrl_rpg_a_long_way_from_home_rpg_a_long_way_from_home.m4a",
+    "to": "emotion_picks/hitctrl_rpg_ambient_4_the_dark_woods_rpg_ambient_4_the_dark_wood.m4a",
+    "target": 12
+   },
+   {
+    "n": 22,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "On sortait de « Rpg Ambient 4 (The Dark Woods) ». Vous n'êtes pas obligés de comprendre pourquoi ça vous fait ça. « Failure Song ».",
+    "from": "emotion_picks/hitctrl_rpg_ambient_4_the_dark_woods_rpg_ambient_4_the_dark_wood.m4a",
+    "to": "emotion_picks/jaspertine_failure_song.m4a",
+    "target": 12
+   },
+   {
+    "n": 23,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "« Failure Song ». Il y a une fenêtre allumée au sixième, en face. Elle s'allume toujours à cette chanson. Bonsoir, sixième. « Heart On Redial ».",
+    "from": "emotion_picks/jaspertine_failure_song.m4a",
+    "to": "emotion_picks/loveshadow_heart_on_redial.m4a",
+    "target": 12
+   },
+   {
+    "n": 24,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "C'était « Heart On Redial », pour l'homme qui promène son chien à minuit rue des Palmiers. Le chien n'a pas envie. L'homme non plus. Ils y vont quand même. « I wonder what I'll do today ».",
+    "from": "emotion_picks/loveshadow_heart_on_redial.m4a",
+    "to": "emotion_picks/olddog_i_wonder_what_i_ll_do_today.m4a",
+    "target": 12
+   },
+   {
+    "n": 25,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "« I wonder what I'll do today » se termine. Je ne vais pas parler longtemps, la nuit fait ça mieux que moi. « It's Not Allowed ».",
+    "from": "emotion_picks/olddog_i_wonder_what_i_ll_do_today.m4a",
+    "to": "emotion_picks/stefan_kartenberg_it_s_not_allowed.m4a",
+    "target": 12
+   },
+   {
+    "n": 26,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "Vous étiez dans « It's Not Allowed ». Ma mère l'écoutait en repassant, la nuit, quand elle ne dormait pas. Je ne repasse pas. Je ne dors pas non plus. « Deflated & Alone (acoustic) ».",
+    "from": "emotion_picks/stefan_kartenberg_it_s_not_allowed.m4a",
+    "to": "emotion_picks/the_spirit_of_light_deflated_alone_acoustic.m4a",
+    "target": 12
+   },
+   {
+    "n": 27,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "« Deflated & Alone (acoustic) ». Si vous attendez un message, posez le téléphone face contre la table. Ça marche mieux. « Slippin' & Slidin ».",
+    "from": "emotion_picks/the_spirit_of_light_deflated_alone_acoustic.m4a",
+    "to": "emotion_picks/unreal_dm_slippin_slidin.m4a",
+    "target": 12
+   },
+   {
+    "n": 28,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "C'était « Slippin' & Slidin ». Dédicace de quelqu'un qui n'a pas laissé de nom à quelqu'un qui reconnaîtra. C'est tout ce que j'ai. « Valse Gymnopedie ».",
+    "from": "emotion_picks/unreal_dm_slippin_slidin.m4a",
+    "to": "canon/valse_gymnopedie.m4a",
+    "target": 12
+   },
+   {
+    "n": 29,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "« Valse Gymnopedie », et le veilleur de l'hôtel d'en face vient de faire son signe par la fenêtre. Il fait ça à chaque fois. Bonsoir, Marcel. « A Robot's Way To Heaven ».",
+    "from": "canon/valse_gymnopedie.m4a",
+    "to": "emotion_picks/viktor_kraus_a_robot_s_way_to_heaven.m4a",
+    "target": 12
+   },
+   {
+    "n": 30,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "On quitte « Adding the Sun ». Il y a des chansons qu'on n'écoute qu'une fois par an. Je crois que c'est ce soir. « Just Foolish ».",
+    "from": "emotion_picks/adding_the_sun.m4a",
+    "to": "emotion_picks/admiral_bob_just_foolish.m4a",
+    "target": 12
+   },
+   {
+    "n": 31,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "« Just Foolish ». Le dernier tramway vient de passer, vide, tout éclairé. Un salon qui roule. « Photo theme: Window like ».",
+    "from": "emotion_picks/admiral_bob_just_foolish.m4a",
+    "to": "emotion_picks/antony_raijekov_photo_theme_window_like.m4a",
+    "target": 12
+   },
+   {
+    "n": 32,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "C'était « Photo theme: Window like ». Vous pouvez pleurer, c'est de la radio, personne ne voit. « Aquarium ».",
+    "from": "emotion_picks/antony_raijekov_photo_theme_window_like.m4a",
+    "to": "canon/aquarium.m4a",
+    "target": 12
+   },
+   {
+    "n": 33,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "« Aquarium » pour la femme du 4B, si elle écoute encore. Je crois que oui. « Ambient Guitar Samples ».",
+    "from": "canon/aquarium.m4a",
+    "to": "emotion_picks/aussens_iter_ambient_guitar_samples.m4a",
+    "target": 12
+   },
+   {
+    "n": 34,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "Vous écoutiez « Ambient Guitar Samples ». La ville est en sourdine, comme si quelqu'un avait baissé le son de tout. Sauf ici. « Guitar Instrumental Stem Pack ».",
+    "from": "emotion_picks/aussens_iter_ambient_guitar_samples.m4a",
+    "to": "emotion_picks/aussens_iter_guitar_instrumental_stem_pack.m4a",
+    "target": 12
+   },
+   {
+    "n": 35,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "« Guitar Instrumental Stem Pack ». Il y a une lettre sur mon bureau que je ne poste pas depuis mardi. Elle attendra encore une chanson. « The Parting Glass (Instrumental) ».",
+    "from": "emotion_picks/aussens_iter_guitar_instrumental_stem_pack.m4a",
+    "to": "emotion_picks/aussens_iter_the_parting_glass_instrumental.m4a",
+    "target": 12
+   },
+   {
+    "n": 36,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "C'était « The Parting Glass (Instrumental) ». Je l'ai passée trois fois cette semaine. Personne ne s'est plaint. « My Life ».",
+    "from": "emotion_picks/aussens_iter_the_parting_glass_instrumental.m4a",
+    "to": "emotion_picks/colin_mutchler_my_life.m4a",
+    "target": 12
+   },
+   {
+    "n": 37,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "« My Life », et une voiture ralentit sous la fenêtre, à chaque fois, à ce moment de la chanson. Je ne sais pas qui. Je laisse la lumière. « Pompeii ».",
+    "from": "emotion_picks/colin_mutchler_my_life.m4a",
+    "to": "emotion_picks/copperhead_pompeii.m4a",
+    "target": 12
+   },
+   {
+    "n": 38,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "On sortait de « Pompeii ». Vous avez le droit de ne pas aller bien. Vous avez juste pas le droit d'éteindre la radio. « Despair and Triumph ».",
+    "from": "emotion_picks/copperhead_pompeii.m4a",
+    "to": "emotion_picks/despair_and_triumph.m4a",
+    "target": 12
+   },
+   {
+    "n": 39,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "« Despair and Triumph ». Le port est calme, la mer fait le bruit d'une respiration. Calez-vous dessus. « Old Forms Must Die ».",
+    "from": "emotion_picks/despair_and_triumph.m4a",
+    "to": "emotion_picks/dmitriy_samoylenko_old_forms_must_die.m4a",
+    "target": 12
+   },
+   {
+    "n": 40,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "C'était « Old Forms Must Die ». Une chanson qu'on n'offre pas, on la laisse trouver. « Memory ».",
+    "from": "emotion_picks/dmitriy_samoylenko_old_forms_must_die.m4a",
+    "to": "emotion_picks/doxent_zsigmond_memory.m4a",
+    "target": 12
+   },
+   {
+    "n": 41,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "« Memory » vient de finir. Le saxo, à la fin, c'est quelqu'un qui part sans claquer la porte. « Evening ».",
+    "from": "emotion_picks/doxent_zsigmond_memory.m4a",
+    "to": "twilight/evening.m4a",
+    "target": 12
+   },
+   {
+    "n": 42,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "Vous étiez dans « Evening ». Si vous êtes deux, ne dites rien. Si vous êtes seul, non plus. « Broken Orient ».",
+    "from": "twilight/evening.m4a",
+    "to": "emotion_picks/fluffy_broken_orient.m4a",
+    "target": 12
+   },
+   {
+    "n": 43,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "« Broken Orient ». Il y a une cabine téléphonique sur la plage nord qui sonne, parfois, la nuit. Je n'ai jamais décroché. « Rpg - A Long Way From Home ».",
+    "from": "emotion_picks/fluffy_broken_orient.m4a",
+    "to": "emotion_picks/hitctrl_rpg_a_long_way_from_home_rpg_a_long_way_from_home.m4a",
+    "target": 12
+   },
+   {
+    "n": 44,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "C'était « Rpg - A Long Way From Home ». Je vais me taire un peu, ce n'est pas contre vous. « Rpg Ambient 4 (The Dark Woods) ».",
+    "from": "emotion_picks/hitctrl_rpg_a_long_way_from_home_rpg_a_long_way_from_home.m4a",
+    "to": "emotion_picks/hitctrl_rpg_ambient_4_the_dark_woods_rpg_ambient_4_the_dark_wood.m4a",
+    "target": 12
+   },
+   {
+    "n": 45,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "« Rpg Ambient 4 (The Dark Woods) », et le vent a tourné. Ça sent la pluie et le café. Je ne sais pas ce qui est le plus triste. « Failure Song ».",
+    "from": "emotion_picks/hitctrl_rpg_ambient_4_the_dark_woods_rpg_ambient_4_the_dark_wood.m4a",
+    "to": "emotion_picks/jaspertine_failure_song.m4a",
+    "target": 12
+   },
+   {
+    "n": 46,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "On sortait de « Failure Song ». Bonne nuit à ceux qui dorment, tenez bon à ceux qui font semblant. « Heart On Redial ».",
+    "from": "emotion_picks/jaspertine_failure_song.m4a",
+    "to": "emotion_picks/loveshadow_heart_on_redial.m4a",
+    "target": 12
+   },
+   {
+    "n": 47,
+    "section": "C",
+    "label": "AVANT · Last Stop Motel",
+    "text": "(très bas)\nC'était « Heart On Redial ». Restez encore un peu. Une page de pub, je ne bouge pas.",
+    "from": "emotion_picks/loveshadow_heart_on_redial.m4a",
+    "to": "emotion_picks/olddog_i_wonder_what_i_ll_do_today.m4a",
+    "target": 8
+   },
+   {
+    "n": 48,
+    "section": "C",
+    "label": "LA PUB · Last Stop Motel",
+    "text": "(voix basse, lente)\nIl est deux heures quarante du matin.\nVous avez roulé toute la journée.\nLes néons passent derrière le pare-brise et vous commencez à vous demander pourquoi vous êtes encore sur cette route.\n(longue pause)\nPuis apparaît le Last Stop Motel.\nParking éclairé.\nPiscine vide.\nRéception ouverte.\nLa chambre 18 donne sur le parking.\nLa chambre 19 donne sur un palmier.\n(pause)\nPersonne ne sait pourquoi.\nCette semaine, chambre à 19 dollars.\n(pause)\nSans petit-déjeuner.\n(pause)\nIl n'y a pas de petit-déjeuner.\nLast Stop Motel.\nUne chambre propre, un lit et demain, vous verrez bien.",
+    "from": null,
+    "to": null,
+    "target": 25
+   },
+   {
+    "n": 49,
+    "section": "C",
+    "label": "APRÈS · Last Stop Motel",
+    "text": "Je suis toujours là. Quatre-vingt-dix-huit trois. « I wonder what I'll do today ».",
+    "from": "emotion_picks/loveshadow_heart_on_redial.m4a",
+    "to": "emotion_picks/olddog_i_wonder_what_i_ll_do_today.m4a",
+    "target": 6
+   },
+   {
+    "n": 50,
+    "section": "C",
+    "label": "AVANT · Moonlight Cleaners",
+    "text": "« I wonder what I'll do today ».\n(pause)\nOn coupe une minute. Pas vous. Moi.",
+    "from": "emotion_picks/olddog_i_wonder_what_i_ll_do_today.m4a",
+    "to": "emotion_picks/stefan_kartenberg_it_s_not_allowed.m4a",
+    "target": 8
+   },
+   {
+    "n": 51,
+    "section": "C",
+    "label": "LA PUB · Moonlight Cleaners",
+    "text": "(voix lasse)\nVous avez renversé quelque chose sur votre veste.\nVous ne savez pas quoi.\n(pause)\nVous ne voulez pas savoir.\nMoonlight Cleaners, Downtown, ouvre jusqu'à minuit.\nChemises, costumes, robes et cette veste beige que vous portez depuis tellement longtemps qu'elle a maintenant une personnalité.\nNettoyage express : 8 dollars 50.\nRetrouvez votre vêtement propre le lendemain matin.\n(pause)\nLa tache, elle, sera toujours là.\n(pause)\nNon.\nJe plaisante.\n(se reprend)\nNormalement.\nMoonlight Cleaners.\nVos vêtements oublient les soirées que vous préférez oublier.",
+    "from": null,
+    "to": null,
+    "target": 20
+   },
+   {
+    "n": 52,
+    "section": "C",
+    "label": "APRÈS · Moonlight Cleaners",
+    "text": "Pardon. EMOTION, quatre-vingt-dix-huit trois. « It's Not Allowed », pour celui qui roule encore.",
+    "from": "emotion_picks/olddog_i_wonder_what_i_ll_do_today.m4a",
+    "to": "emotion_picks/stefan_kartenberg_it_s_not_allowed.m4a",
+    "target": 6
+   },
+   {
+    "n": 53,
+    "section": "C",
+    "label": "AVANT · Blue Roses Florist",
+    "text": "(pause)\nÇa, c'était « It's Not Allowed ». Il pleut sur la promenade. Une pub, et on rentre.",
+    "from": "emotion_picks/stefan_kartenberg_it_s_not_allowed.m4a",
+    "to": "emotion_picks/the_spirit_of_light_deflated_alone_acoustic.m4a",
+    "target": 8
+   },
+   {
+    "n": 54,
+    "section": "C",
+    "label": "LA PUB · Blue Roses Florist",
+    "text": "(voix douce)\nCertaines personnes offrent des fleurs parce qu'elles sont amoureuses.\nD'autres parce qu'elles ont oublié quelque chose.\nBlue Roses Florist ne pose pas de questions.\nRoses, lys, orchidées et bouquets préparés jusqu'à onze heures du soir.\nLivraison dans tout Downtown.\nCette semaine : bouquet romantique à 14 dollars 99.\n(pause)\nCarte incluse.\n(pause)\nLe message est à écrire vous-même.\nNous avons essayé une fois.\nLe client n'a pas apprécié.\nBlue Roses Florist.\nDites-le avec des fleurs.",
+    "from": null,
+    "to": null,
+    "target": 20
+   },
+   {
+    "n": 55,
+    "section": "C",
+    "label": "APRÈS · Blue Roses Florist",
+    "text": "On rentre. « Deflated & Alone (acoustic) ». Baissez la lumière.",
+    "from": "emotion_picks/stefan_kartenberg_it_s_not_allowed.m4a",
+    "to": "emotion_picks/the_spirit_of_light_deflated_alone_acoustic.m4a",
+    "target": 6
+   },
+   {
+    "n": 56,
+    "section": "C",
+    "label": "AVANT · Quiet Wash Laundry",
+    "text": "« Deflated & Alone (acoustic) ». Vous ne dormez pas non plus. Une page de pub, et je vous garde.",
+    "from": "emotion_picks/the_spirit_of_light_deflated_alone_acoustic.m4a",
+    "to": "emotion_picks/unreal_dm_slippin_slidin.m4a",
+    "target": 8
+   },
+   {
+    "n": 57,
+    "section": "C",
+    "label": "LA PUB · Quiet Wash Laundry",
+    "text": "(voix très calme)\nLa nuit, Vice Bay devient silencieuse.\n(pause)\nEnfin, presque.\nÀ Quiet Wash Laundry, les machines tournent jusqu'au matin.\nVous pouvez vous asseoir.\nRegarder vos vêtements tourner.\nEt écouter le distributeur automatique faire son petit bruit de moteur.\nUne chaussette solitaire est toujours affichée sur le mur depuis mars.\nPersonne ne l'a réclamée.\nPersonne ne sait à qui elle appartient.\n(pause)\nNous avons arrêté de chercher.\nQuiet Wash.\nVotre linge tourne.\n(longue pause)\nLe monde aussi.",
+    "from": null,
+    "to": null,
+    "target": 20
+   },
+   {
+    "n": 58,
+    "section": "C",
+    "label": "APRÈS · Quiet Wash Laundry",
+    "text": "Je vous garde. Quatre-vingt-dix-huit trois, EMOTION. « Slippin' & Slidin ».",
+    "from": "emotion_picks/the_spirit_of_light_deflated_alone_acoustic.m4a",
+    "to": "emotion_picks/unreal_dm_slippin_slidin.m4a",
+    "target": 6
+   },
+   {
+    "n": 59,
+    "section": "C",
+    "label": "AVANT · Silver Cab Service",
+    "text": "(à peine audible)\nC'était « Slippin' & Slidin ». Quelqu'un doit payer la lumière du studio. Une pub.",
+    "from": "emotion_picks/unreal_dm_slippin_slidin.m4a",
+    "to": "canon/valse_gymnopedie.m4a",
+    "target": 8
+   },
+   {
+    "n": 60,
+    "section": "C",
+    "label": "LA PUB · Silver Cab Service",
+    "text": "(voix mélancolique)\nIl pleut.\nVous n'avez pas de parapluie.\nVotre appartement est à vingt minutes à pied.\nEt vos chaussures viennent de prendre l'eau.\nSilver Cab passe dans cinq minutes.\n(pause)\nPeut-être quatre.\n(pause)\nPeut-être trois si le chauffeur connaît le raccourci par Palm Avenue.\nIl le connaît toujours.\nCourse Downtown : à partir de 6 dollars.\n(pause)\nLes bagages sont gratuits.\n(pause)\nLes émotions aussi.\nSilver Cab.\nLaissez la ville conduire pour vous.\n---\n# SUNSET DRIVE 102.7\n## SUNSET DRIVE 102.7",
+    "from": null,
+    "to": null,
+    "target": 20
+   },
+   {
+    "n": 61,
+    "section": "C",
+    "label": "APRÈS · Silver Cab Service",
+    "text": "Voilà. La lumière reste allumée. « Valse Gymnopedie », maintenant. Pour vous.",
+    "from": "emotion_picks/unreal_dm_slippin_slidin.m4a",
+    "to": "canon/valse_gymnopedie.m4a",
+    "target": 6
+   }
+  ]
+ },
+ "sunset": {
+  "title": "SUNSET DRIVE 102.7",
+  "color": "#f2b33d",
+  "intro": "<p>Radio fictive dans un jeu vidéo (casse-briques iOS/Android, OKALAM Studio, sortie novembre 2026). Ville imaginaire : <b>Vice Bay</b>, années 80, néons, plage. Cinq stations, chacune avec son animateur. Tu fais <b>SUNSET DRIVE 102.7</b> : synthwave, arpèges, la radio de la corniche, vitres baissées.</p><p>L'animateur s'appelle <b>Johnny Sunset</b>. Coude à la portière, sourire dans la voix, jamais pressé. Il n'a jamais vérifié une info de sa vie et ça ne l'a jamais gêné. Slogan : « 102.7, le soleil tombe, pas vous. »</p>",
+  "ton": "<p>Chaud, tranquille, sourire dans la voix, coude à la portière.</p><p>['il commente la route, la plage, le soleil qui tombe', 'il affirme des choses fausses avec un aplomb total', 'jamais pressé, même quand il annonce une pub', 'il tutoie la ville entière']</p><p>Voix de trente-cinq ans, bronzée, lunettes de soleil audibles. Pas de cri, pas de grosse voix FM : quelqu'un qui conduit doucement et vous parle par la vitre.</p>",
+  "rules": [
+   "Voix seule, <b>aucune musique, aucun effet</b>, pièce sans écho.",
+   "<b>WAV 48 kHz, 24 bits, mono</b> de préférence (AIFF, M4A, FLAC acceptés). Un fichier par texte. Ou enregistre directement ici, avec le bouton rouge.",
+   "0,5 s de silence avant, 1 s après. Pas de normalisation, pas de compression, pas de réduction de bruit : on traite tout de notre côté.",
+   "En jaune entre parenthèses = <b>didascalie</b>, à jouer, pas à lire. (pause) = un vrai silence d'une seconde.",
+   "Les titres de morceaux sont <b>en rose</b> : ce sont de vrais titres, souvent en anglais. Dis-les naturellement, comme un animateur français qui lit une pochette, sans forcer l'accent.",
+   "Les chiffres se disent : 102.7 = « cent-deux point sept ».",
+   "Une bonne prise par texte suffit. La durée indicative est là pour le rythme, pas pour te presser.",
+   "Droits : usage commercial, diffusion illimitée dans le jeu et ses bandes-annonces, cession définitive, sans crédit obligatoire (crédit au générique si tu veux)."
+  ],
+  "sections": {
+   "A": "Jingles de station",
+   "B": "Enchaînements entre deux morceaux",
+   "C": "Pages de pub"
+  },
+  "who": "",
+  "texts": [
+   {
+    "n": 1,
+    "section": "A",
+    "label": "jingle de station",
+    "text": "Cent-deux sept, SUNSET DRIVE. Vitres baissées, coude à la portière, la plage à droite.",
+    "from": null,
+    "to": null,
+    "target": 6
+   },
+   {
+    "n": 2,
+    "section": "A",
+    "label": "jingle de station",
+    "text": "SUNSET DRIVE, cent-deux sept. La radio qui longe la mer. Ne tournez pas, continuez.",
+    "from": null,
+    "to": null,
+    "target": 6
+   },
+   {
+    "n": 3,
+    "section": "A",
+    "label": "jingle de station",
+    "text": "Cent-deux sept. SUNSET DRIVE. Le soleil descend, la vitesse aussi. Parfait.",
+    "from": null,
+    "to": null,
+    "target": 6
+   },
+   {
+    "n": 4,
+    "section": "A",
+    "label": "jingle de station",
+    "text": "SUNSET DRIVE. Sable dans le tapis de sol, sel sur le pare-brise, cent-deux sept.",
+    "from": null,
+    "to": null,
+    "target": 6
+   },
+   {
+    "n": 5,
+    "section": "A",
+    "label": "jingle de station",
+    "text": "Cent-deux sept, SUNSET DRIVE. On roule au pas parce que c'est beau, pas parce que c'est bouché.",
+    "from": null,
+    "to": null,
+    "target": 6
+   },
+   {
+    "n": 6,
+    "section": "A",
+    "label": "jingle de station",
+    "text": "SUNSET DRIVE. Le bord de mer en ligne droite, quatorze kilomètres de palmiers. Cent-deux sept.",
+    "from": null,
+    "to": null,
+    "target": 6
+   },
+   {
+    "n": 7,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "« Wanderer (Take 2) ». Ça, c'est la chanson qu'on entend par la fenêtre du cabriolet d'à côté, au feu de la plage, et on se dit : lui, il a compris. « Aurea Carmina », maintenant. Vous êtes le cabriolet d'à côté.",
+    "from": "sunset_picks/admiral_bob_wanderer_take_2.m4a",
+    "to": "disco/aurea_carmina.m4a",
+    "target": 12
+   },
+   {
+    "n": 8,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "C'était « Aurea Carmina ». Si vous êtes sur la corniche, vous venez de passer le kiosque à noix de coco. Le gars s'appelle Ray. Klaxonnez, il lève le bras. « Up 2 Us ». Ray adore celle-là.",
+    "from": "disco/aurea_carmina.m4a",
+    "to": "sunset_picks/aussens_iter_up_2_us.m4a",
+    "target": 12
+   },
+   {
+    "n": 9,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "« Up 2 Us », et le soleil est exactement au-dessus de la jetée, comme tous les soirs à cette heure. Ce n'est pas un hasard, on programme en fonction. « HUMAN WORLD » dure jusqu'à ce qu'il touche l'eau. Regardez.",
+    "from": "sunset_picks/aussens_iter_up_2_us.m4a",
+    "to": "sunset_picks/bocrew_human_world.m4a",
+    "target": 12
+   },
+   {
+    "n": 10,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "Vous rouliez sur « HUMAN WORLD ». Une guitare comme ça, ça se joue les pieds dans le sable, la fin de la plage vous le confirmera. « SOUL CONTROL ». Même guitare, un peu plus de vent.",
+    "from": "sunset_picks/bocrew_human_world.m4a",
+    "to": "sunset_picks/bocrew_soul_control.m4a",
+    "target": 12
+   },
+   {
+    "n": 11,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "« SOUL CONTROL ». Il y a un ralentisseur après le pont de la marina, je vous le dis à chaque fois, et à chaque fois quelqu'un décolle. « Boogie Party ». Levez le pied, gardez le sourire.",
+    "from": "sunset_picks/bocrew_soul_control.m4a",
+    "to": "sunset_picks/boogie_party.m4a",
+    "target": 12
+   },
+   {
+    "n": 12,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "C'était « Boogie Party ». Dédicace à la vieille décapotable rouge qui fait la corniche tous les soirs, toit ouvert, même sous la pluie. Madame, on vous voit. « Celebration », c'est pour vous.",
+    "from": "sunset_picks/boogie_party.m4a",
+    "to": "sunset/celebration.m4a",
+    "target": 12
+   },
+   {
+    "n": 13,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "« Celebration » vient de finir, et la file au drive-in Étoile Filante commence déjà. Films à la tombée de la nuit, hot-dogs à toute heure, son par la radio de la voiture, la nôtre. « Disco Medusae ». Prenez la voie de droite.",
+    "from": "sunset/celebration.m4a",
+    "to": "disco/disco_medusae.m4a",
+    "target": 12
+   },
+   {
+    "n": 14,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "On sortait de « Disco Medusae ». Rappel utile : la plage nord est à gauche, la plage sud est à droite, la mer est des deux côtés si vous roulez assez longtemps. « Funky Chunk ». Roulez assez longtemps.",
+    "from": "disco/disco_medusae.m4a",
+    "to": "sunset_more/funky_chunk.m4a",
+    "target": 12
+   },
+   {
+    "n": 15,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "« Funky Chunk ». Le soleil touche l'eau, là, maintenant. Ne freinez pas. « Ophelia's Song ».",
+    "from": "sunset_more/funky_chunk.m4a",
+    "to": "sunset_picks/grapes_ophelia_s_song.m4a",
+    "target": 12
+   },
+   {
+    "n": 16,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "C'était « Ophelia's Song ». Si vous montez vers la corniche, la deuxième épingle est mouillée, un camion de glace a fui. « Give It Up-Urban Mix ».",
+    "from": "sunset_picks/grapes_ophelia_s_song.m4a",
+    "to": "sunset_picks/j_lang_give_it_up_urban_mix.m4a",
+    "target": 12
+   },
+   {
+    "n": 17,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "« Give It Up-Urban Mix » vient de finir, et Ray a fermé son kiosque. Il a laissé une noix de coco sur le comptoir. Servez-vous. « Perpetual Motion ».",
+    "from": "sunset_picks/j_lang_give_it_up_urban_mix.m4a",
+    "to": "sunset_picks/jeris_perpetual_motion.m4a",
+    "target": 12
+   },
+   {
+    "n": 18,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "Vous rouliez sur « Perpetual Motion ». Le ciel est orange, la route est violette, et personne ne me croit jamais. « Soul sister ».",
+    "from": "sunset_picks/jeris_perpetual_motion.m4a",
+    "to": "sunset_picks/robbero_soul_sister.m4a",
+    "target": 12
+   },
+   {
+    "n": 19,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "« Soul sister ». Dédicace au motel des Hirondelles, chambre sept, qui a laissé la radio allumée toute la nuit. On a entendu. « Dove ».",
+    "from": "sunset_picks/robbero_soul_sister.m4a",
+    "to": "sunset_picks/sackjo22_dove.m4a",
+    "target": 12
+   },
+   {
+    "n": 20,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "On quitte « Dove ». Le pont de la marina s'ouvre dans dix minutes. Si vous êtes derrière, vous avez le temps pour deux chansons. Celle-ci d'abord. « Melody Lane ».",
+    "from": "sunset_picks/sackjo22_dove.m4a",
+    "to": "sunset_picks/samfeminomusic_melody_lane.m4a",
+    "target": 12
+   },
+   {
+    "n": 21,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "« Melody Lane », et une décapotable blanche vient de doubler le studio, toit ouvert, une main dehors. Bonne route, la main. « Stretch At The Grave ».",
+    "from": "sunset_picks/samfeminomusic_melody_lane.m4a",
+    "to": "sunset_picks/scott_altham_stretch_at_the_grave.m4a",
+    "target": 12
+   },
+   {
+    "n": 22,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "C'était « Stretch At The Grave ». La station-service du kilomètre douze a rallumé son enseigne. Elle grésille en fa. « I walk down Whispering Roads ».",
+    "from": "sunset_picks/scott_altham_stretch_at_the_grave.m4a",
+    "to": "sunset_picks/sp_i_walk_down_whispering_roads.m4a",
+    "target": 12
+   },
+   {
+    "n": 23,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "« I walk down Whispering Roads ». Les palmiers de la corniche font tous le même angle. Le vent les a peignés. « Smokey Eyes ».",
+    "from": "sunset_picks/sp_i_walk_down_whispering_roads.m4a",
+    "to": "sunset_picks/stefan_kartenberg_smokey_eyes.m4a",
+    "target": 12
+   },
+   {
+    "n": 24,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "Vous écoutiez « Smokey Eyes ». Le drive-in Étoile Filante projette un film sans titre ce soir. Personne ne sait lequel. Tout le monde y va. « Surf Shimmy ».",
+    "from": "sunset_picks/stefan_kartenberg_smokey_eyes.m4a",
+    "to": "sunset_picks/surf_shimmy.m4a",
+    "target": 12
+   },
+   {
+    "n": 25,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "« Surf Shimmy » s'éloigne dans le rétroviseur. « Freedom to Share » arrive en face, plein phares.",
+    "from": "sunset_picks/surf_shimmy.m4a",
+    "to": "sunset_picks/thedice_freedom_to_share_stems.m4a",
+    "target": 12
+   },
+   {
+    "n": 26,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "C'était « Freedom to Share ». Une chanson pour la sortie quatorze, celle qu'on rate toujours parce qu'on regarde la mer. « Slide Guitar @ 120 BPM ».",
+    "from": "sunset_picks/thedice_freedom_to_share_stems.m4a",
+    "to": "sunset_picks/unreal_dm_slide_guitar_120_bpm.m4a",
+    "target": 12
+   },
+   {
+    "n": 27,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "« Slide Guitar @ 120 BPM », et il y a un chien qui court le long de la route depuis le pont. Il ne poursuit rien. Il aime ça. « Sliding to a New Year ».",
+    "from": "sunset_picks/unreal_dm_slide_guitar_120_bpm.m4a",
+    "to": "sunset_picks/unreal_dm_sliding_to_a_new_year.m4a",
+    "target": 12
+   },
+   {
+    "n": 28,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "On sortait de « Sliding to a New Year ». Le radar de la corniche est en panne depuis mars. Je le dis, je ne le conseille pas. « Whitewolf Toronto Is My Beat ».",
+    "from": "sunset_picks/unreal_dm_sliding_to_a_new_year.m4a",
+    "to": "sunset_picks/whitewolf_toronto_is_my_beat.m4a",
+    "target": 12
+   },
+   {
+    "n": 29,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "« Wanderer (Take 2) ». Bob Fondant a garé son camion de glaces au belvédère. Il en reste pour dix voitures. « Aurea Carmina ».",
+    "from": "sunset_picks/admiral_bob_wanderer_take_2.m4a",
+    "to": "disco/aurea_carmina.m4a",
+    "target": 12
+   },
+   {
+    "n": 30,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "Vous rouliez sur « Aurea Carmina ». Fenêtre ouverte, coude dehors, c'est comme ça qu'on l'écoute. « Up 2 Us » pareil.",
+    "from": "disco/aurea_carmina.m4a",
+    "to": "sunset_picks/aussens_iter_up_2_us.m4a",
+    "target": 12
+   },
+   {
+    "n": 31,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "« Up 2 Us » vient de finir, et les lampadaires viennent de s'allumer, tous d'un coup, comme s'ils s'étaient donné le mot. « HUMAN WORLD ».",
+    "from": "sunset_picks/aussens_iter_up_2_us.m4a",
+    "to": "sunset_picks/bocrew_human_world.m4a",
+    "target": 12
+   },
+   {
+    "n": 32,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "C'était « HUMAN WORLD ». Si vous voyez une valise sur le bord de la route au kilomètre vingt, elle est là depuis lundi. Personne n'ose. « SOUL CONTROL ».",
+    "from": "sunset_picks/bocrew_human_world.m4a",
+    "to": "sunset_picks/bocrew_soul_control.m4a",
+    "target": 12
+   },
+   {
+    "n": 33,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "« SOUL CONTROL ». Le dernier ferry vient de partir avec deux voitures et un vélo. Bon voyage, le vélo. « Boogie Party ».",
+    "from": "sunset_picks/bocrew_soul_control.m4a",
+    "to": "sunset_picks/boogie_party.m4a",
+    "target": 12
+   },
+   {
+    "n": 34,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "Vous étiez dans « Boogie Party ». Une chanson qui fait cent kilomètres sans qu'on s'en aperçoive. « Celebration » fait le retour.",
+    "from": "sunset_picks/boogie_party.m4a",
+    "to": "sunset/celebration.m4a",
+    "target": 12
+   },
+   {
+    "n": 35,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "« Celebration », et un panneau dit « plage » avec une flèche dans les deux sens. Il a raison. « Disco Medusae ».",
+    "from": "sunset/celebration.m4a",
+    "to": "disco/disco_medusae.m4a",
+    "target": 12
+   },
+   {
+    "n": 36,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "On quitte « Disco Medusae ». L'aire de repos du vieux phare a un banc qui regarde la mer. Il est libre. « Funky Chunk ».",
+    "from": "disco/disco_medusae.m4a",
+    "to": "sunset_more/funky_chunk.m4a",
+    "target": 12
+   },
+   {
+    "n": 37,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "« Funky Chunk ». Le ciel a cette couleur qui n'a pas de nom, entre le rose et l'essence. « Ophelia's Song ».",
+    "from": "sunset_more/funky_chunk.m4a",
+    "to": "sunset_picks/grapes_ophelia_s_song.m4a",
+    "target": 12
+   },
+   {
+    "n": 38,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "C'était « Ophelia's Song ». Dédicace à la voiture qui clignote depuis le tunnel sans jamais tourner. On est tous un peu comme ça. « Give It Up-Urban Mix ».",
+    "from": "sunset_picks/grapes_ophelia_s_song.m4a",
+    "to": "sunset_picks/j_lang_give_it_up_urban_mix.m4a",
+    "target": 12
+   },
+   {
+    "n": 39,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "« Give It Up-Urban Mix » pour ceux qui rentrent, « Perpetual Motion » pour ceux qui ne savent pas encore.",
+    "from": "sunset_picks/j_lang_give_it_up_urban_mix.m4a",
+    "to": "sunset_picks/jeris_perpetual_motion.m4a",
+    "target": 12
+   },
+   {
+    "n": 40,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "Vous rouliez sur « Perpetual Motion ». La ligne blanche, la nuit, ça hypnotise. Regardez les néons plutôt. « Soul sister ».",
+    "from": "sunset_picks/jeris_perpetual_motion.m4a",
+    "to": "sunset_picks/robbero_soul_sister.m4a",
+    "target": 12
+   },
+   {
+    "n": 41,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "« Soul sister », et le vent est chaud sur la corniche. Le vent de mer, le vrai, celui qui sent le sel et le carburant. « Dove ».",
+    "from": "sunset_picks/robbero_soul_sister.m4a",
+    "to": "sunset_picks/sackjo22_dove.m4a",
+    "target": 12
+   },
+   {
+    "n": 42,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "On sortait de « Dove ». Le péage est ouvert, la barrière est cassée, personne ne paie, personne ne demande. « Melody Lane ».",
+    "from": "sunset_picks/sackjo22_dove.m4a",
+    "to": "sunset_picks/samfeminomusic_melody_lane.m4a",
+    "target": 12
+   },
+   {
+    "n": 43,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "« Melody Lane ». Un pick-up rempli d'ananas a perdu un ananas au rond-point. Il est encore là. Il roule. « Stretch At The Grave ».",
+    "from": "sunset_picks/samfeminomusic_melody_lane.m4a",
+    "to": "sunset_picks/scott_altham_stretch_at_the_grave.m4a",
+    "target": 12
+   },
+   {
+    "n": 44,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "C'était « Stretch At The Grave ». Le motel a une chambre libre, la douze, celle avec la lampe qui clignote. On s'y habitue. « I walk down Whispering Roads ».",
+    "from": "sunset_picks/scott_altham_stretch_at_the_grave.m4a",
+    "to": "sunset_picks/sp_i_walk_down_whispering_roads.m4a",
+    "target": 12
+   },
+   {
+    "n": 45,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "« I walk down Whispering Roads » vient de finir. La nuit tombe sur la corniche par le côté, comme une couverture. « Smokey Eyes ».",
+    "from": "sunset_picks/sp_i_walk_down_whispering_roads.m4a",
+    "to": "sunset_picks/stefan_kartenberg_smokey_eyes.m4a",
+    "target": 12
+   },
+   {
+    "n": 46,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "Vous écoutiez « Smokey Eyes ». Si vous n'allez nulle part, continuez. C'est la bonne direction. « Surf Shimmy ».",
+    "from": "sunset_picks/stefan_kartenberg_smokey_eyes.m4a",
+    "to": "sunset_picks/surf_shimmy.m4a",
+    "target": 12
+   },
+   {
+    "n": 47,
+    "section": "C",
+    "label": "AVANT · Sunset Garage",
+    "text": "(coude à la portière)\nC'était « Surf Shimmy ». Le soleil tombe, on met le clignotant, une pub, on repart.",
+    "from": "sunset_picks/surf_shimmy.m4a",
+    "to": "sunset_picks/thedice_freedom_to_share_stems.m4a",
+    "target": 8
+   },
+   {
+    "n": 48,
+    "section": "C",
+    "label": "LA PUB · Sunset Garage",
+    "text": "(voix naturelle)\nVotre voiture fait un bruit étrange.\nPas un petit bruit.\nUn bruit qui semble avoir une opinion.\nSunset Garage, Highway, répare moteurs, freins, batteries et climatisations.\nLe patron dit qu'il peut identifier une panne les yeux fermés.\n(pause)\nIl ne le fait pas.\nParce que ce serait dangereux.\nDiagnostic gratuit.\nRéparation à partir de 29 dollars.\n(pause)\nEnfin…\nÀ partir de 29 dollars pour le diagnostic.\n(petit rire)\nSunset Garage.\nQuand votre voiture parle, nous savons l'écouter.",
+    "from": null,
+    "to": null,
+    "target": 20
+   },
+   {
+    "n": 49,
+    "section": "C",
+    "label": "APRÈS · Sunset Garage",
+    "text": "On repart. Cent-deux point sept, Sunset Drive. « Freedom to Share », vitres baissées.",
+    "from": "sunset_picks/surf_shimmy.m4a",
+    "to": "sunset_picks/thedice_freedom_to_share_stems.m4a",
+    "target": 6
+   },
+   {
+    "n": 50,
+    "section": "C",
+    "label": "AVANT · Palmetto Drive-In",
+    "text": "« Freedom to Share ». Il paraît que c'est le morceau le plus écouté de la corniche. Je ne l'ai pas vérifié. Une pub.",
+    "from": "sunset_picks/thedice_freedom_to_share_stems.m4a",
+    "to": "sunset_picks/unreal_dm_slide_guitar_120_bpm.m4a",
+    "target": 8
+   },
+   {
+    "n": 51,
+    "section": "C",
+    "label": "LA PUB · Palmetto Drive-In",
+    "text": "Vous prenez votre voiture.\nVous prenez quelqu'un que vous aimez bien.\nVous prenez deux gros sodas.\n(pause)\nEnsuite, vous allez au Palmetto Drive-In.\nDeux écrans.\nBurgers.\nFrites.\nFilms jusqu'à minuit.\nEt un parking suffisamment grand pour que personne ne sache exactement où il s'est garé.\nLe personnel a commencé à numéroter les rangées en 1986.\nPersonne ne les a jamais suivies.\nCette semaine : deux places de parking pour le prix d'une.\n(pause)\nLe film est en supplément.\nPalmetto Drive-In.\nSouvenez-vous juste où vous avez garé la voiture.",
+    "from": null,
+    "to": null,
+    "target": 25
+   },
+   {
+    "n": 52,
+    "section": "C",
+    "label": "APRÈS · Palmetto Drive-In",
+    "text": "C'est vérifié. Non. Sunset Drive. « Slide Guitar @ 120 BPM ».",
+    "from": "sunset_picks/thedice_freedom_to_share_stems.m4a",
+    "to": "sunset_picks/unreal_dm_slide_guitar_120_bpm.m4a",
+    "target": 6
+   },
+   {
+    "n": 53,
+    "section": "C",
+    "label": "AVANT · Seabreeze Terrace",
+    "text": "(sourire)\nÇa, c'était « Slide Guitar @ 120 BPM ». Feu rouge, page de pub, personne ne klaxonne.",
+    "from": "sunset_picks/unreal_dm_slide_guitar_120_bpm.m4a",
+    "to": "sunset_picks/unreal_dm_sliding_to_a_new_year.m4a",
+    "target": 8
+   },
+   {
+    "n": 54,
+    "section": "C",
+    "label": "LA PUB · Seabreeze Terrace",
+    "text": "(voix posée)\nAu trente-deuxième étage, les voitures ressemblent à des jouets.\nEt les problèmes de la journée paraissent un peu plus petits.\nSeabreeze Terrace, Skyline.\nTables en plein air.\nMusique douce.\nVue sur toute la baie.\nLes jours de grand vent, les serviettes s'envolent.\nLe personnel les récupère.\nLes clients applaudissent.\n(petit sourire)\nOn appelle ça l'animation gratuite.\nEntrée : 10 dollars.\nLa vue : gratuite.\n(pause)\nLe parking : 27 dollars.\nSeabreeze Terrace.\nPrenez de la hauteur.",
+    "from": null,
+    "to": null,
+    "target": 20
+   },
+   {
+    "n": 55,
+    "section": "C",
+    "label": "APRÈS · Seabreeze Terrace",
+    "text": "Vert. Cent-deux point sept. « Sliding to a New Year », et on longe la plage.",
+    "from": "sunset_picks/unreal_dm_slide_guitar_120_bpm.m4a",
+    "to": "sunset_picks/unreal_dm_sliding_to_a_new_year.m4a",
+    "target": 6
+   },
+   {
+    "n": 56,
+    "section": "C",
+    "label": "AVANT · Coral Motors",
+    "text": "« Sliding to a New Year ». Vous êtes le cabriolet d'à côté, maintenant. Une pub, gardez la main sur le volant.",
+    "from": "sunset_picks/unreal_dm_sliding_to_a_new_year.m4a",
+    "to": "sunset_picks/whitewolf_toronto_is_my_beat.m4a",
+    "target": 8
+   },
+   {
+    "n": 57,
+    "section": "C",
+    "label": "LA PUB · Coral Motors",
+    "text": "(voix commerciale tranquille)\nChez Coral Motors, on vend des voitures pour les gens qui aiment conduire.\nBerlines confortables.\nCoupés sportifs.\nFamiliales avec assez de coffre pour une semaine à la plage.\nEt un modèle rouge qui attire tellement les regards qu'on conseille de porter des lunettes.\nEssais tous les jours sur Highway.\nLe vendeur vous laisse conduire sans parler.\n(pause)\nEnfin, pendant les trois premières minutes.\nCette semaine : financement facile.\n(pause)\nLe mot « facile » est sujet à interprétation.\nCoral Motors.\nCertaines voitures ne demandent qu'une chose :\nprendre la route.",
+    "from": null,
+    "to": null,
+    "target": 25
+   },
+   {
+    "n": 58,
+    "section": "C",
+    "label": "APRÈS · Coral Motors",
+    "text": "Sunset Drive, cent-deux point sept. « Whitewolf Toronto Is My Beat ». Le soleil tombe, pas vous.",
+    "from": "sunset_picks/unreal_dm_sliding_to_a_new_year.m4a",
+    "to": "sunset_picks/whitewolf_toronto_is_my_beat.m4a",
+    "target": 6
+   },
+   {
+    "n": 59,
+    "section": "C",
+    "label": "AVANT · Highway Diner",
+    "text": "C'était « Wanderer (Take 2) ». On fait le plein, une pub, deux minutes, la route est encore longue et c'est tant mieux.",
+    "from": "sunset_picks/admiral_bob_wanderer_take_2.m4a",
+    "to": "disco/aurea_carmina.m4a",
+    "target": 8
+   },
+   {
+    "n": 60,
+    "section": "C",
+    "label": "LA PUB · Highway Diner",
+    "text": "Vous conduisez depuis deux heures.\nVous avez faim depuis une heure cinquante-huit.\nHighway Diner est ouvert.\nCafé chaud.\nPancakes.\nBurgers.\nFrites.\nEt tarte maison.\nLa tarte arrive toujours après le café, sauf le mardi.\nPersonne ne sait pourquoi.\nLe serveur dit que c'est une tradition.\nMenu complet : 7 dollars 99.\n(pause)\nLe café coûte 8 dollars.\n(petit rire)\nHighway Diner.\nLa route peut bien patienter.\n---\n# NEON 103.5\n## NEON 103.5",
+    "from": null,
+    "to": null,
+    "target": 20
+   },
+   {
+    "n": 61,
+    "section": "C",
+    "label": "APRÈS · Highway Diner",
+    "text": "Le plein est fait. « Aurea Carmina ». Sunset Drive, Vice Bay.",
+    "from": "sunset_picks/admiral_bob_wanderer_take_2.m4a",
+    "to": "disco/aurea_carmina.m4a",
+    "target": 6
+   }
+  ]
+ },
+ "volt": {
+  "title": "VOLT 107.3",
+  "color": "#ff7a3d",
+  "intro": "<p>Radio fictive dans un jeu vidéo (casse-briques iOS/Android, OKALAM Studio, sortie novembre 2026). Ville imaginaire : <b>Vice Bay</b>, années 80, néons, plage. Cinq stations, chacune avec son animateur. Tu fais <b>VOLT 107.3</b> : soft jazz, soul, classiques américains, un club feutré à onze heures du soir.</p><p>L'animateur s'appelle <b>Big Lou</b>. Quarante ans de clubs, voix rauque, perpétuellement énervé. Il insulte les morceaux, jamais les gens, et menace toujours d'en passer un pire. Slogan : « Le groove n'attend pas. Big Lou non plus. »</p>",
+  "ton": "<p>Fort, rauque, perpétuellement énervé. Il insulte le morceau qui vient de passer.</p><p>['il gueule mais il aime ça', 'il menace d\\'en passer un pire, et il le fait', 'il dit « Big Lou » en parlant de lui', 'il respecte les musiciens, jamais les disques']</p><p>Voix de club, usée, grave, qui a trop parlé au-dessus des cuivres. L'énervement est un jeu : on entend qu'il s'amuse. Débit rapide, phrases qui claquent.</p>",
+  "rules": [
+   "Voix seule, <b>aucune musique, aucun effet</b>, pièce sans écho.",
+   "<b>WAV 48 kHz, 24 bits, mono</b> de préférence (AIFF, M4A, FLAC acceptés). Un fichier par texte. Ou enregistre directement ici, avec le bouton rouge.",
+   "0,5 s de silence avant, 1 s après. Pas de normalisation, pas de compression, pas de réduction de bruit : on traite tout de notre côté.",
+   "En jaune entre parenthèses = <b>didascalie</b>, à jouer, pas à lire. (pause) = un vrai silence d'une seconde.",
+   "Les titres de morceaux sont <b>en rose</b> : ce sont de vrais titres, souvent en anglais. Dis-les naturellement, comme un animateur français qui lit une pochette, sans forcer l'accent.",
+   "Les chiffres se disent : 107.3 = « cent-sept point trois », et fort.",
+   "Une bonne prise par texte suffit. La durée indicative est là pour le rythme, pas pour te presser.",
+   "Droits : usage commercial, diffusion illimitée dans le jeu et ses bandes-annonces, cession définitive, sans crédit obligatoire (crédit au générique si tu veux)."
+  ],
+  "sections": {
+   "A": "Jingles de station",
+   "B": "Enchaînements entre deux morceaux",
+   "C": "Pages de pub"
+  },
+  "who": "",
+  "texts": [
+   {
+    "n": 1,
+    "section": "A",
+    "label": "jingle de station",
+    "text": "Cent-sept trois, VOLT. Lumière basse, verre posé, on ne parle pas fort ici.",
+    "from": null,
+    "to": null,
+    "target": 6
+   },
+   {
+    "n": 2,
+    "section": "A",
+    "label": "jingle de station",
+    "text": "VOLT, cent-sept trois. Le club est ouvert, la porte est lourde, le son est doux.",
+    "from": null,
+    "to": null,
+    "target": 6
+   },
+   {
+    "n": 3,
+    "section": "A",
+    "label": "jingle de station",
+    "text": "Ici Big Lou, VOLT cent-sept trois. Du jazz, de la soul, et un saxo qui traîne jusqu'à minuit.",
+    "from": null,
+    "to": null,
+    "target": 6
+   },
+   {
+    "n": 4,
+    "section": "A",
+    "label": "jingle de station",
+    "text": "Cent-sept trois. VOLT. Si vous entendez le disque craquer, c'est qu'on l'aime.",
+    "from": null,
+    "to": null,
+    "target": 6
+   },
+   {
+    "n": 5,
+    "section": "A",
+    "label": "jingle de station",
+    "text": "VOLT, la seule fréquence de Vice Bay où le batteur joue aux balais. Cent-sept trois.",
+    "from": null,
+    "to": null,
+    "target": 6
+   },
+   {
+    "n": 6,
+    "section": "A",
+    "label": "jingle de station",
+    "text": "Onze heures du soir, cent-sept trois, VOLT. Asseyez-vous au fond, c'est là qu'on entend le mieux.",
+    "from": null,
+    "to": null,
+    "target": 6
+   },
+   {
+    "n": 7,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "« Into the J ». Vous avez entendu la contrebasse ? Pas la note, le bois. Les doigts qui glissent sur la touche. Ça, on ne le programme pas. « Light Me On Fire », maintenant, et écoutez la main gauche du pianiste, elle ne fait presque rien, et c'est ça le métier.",
+    "from": "volt_picks/admiral_bob_into_the_j.m4a",
+    "to": "volt_picks/admiral_bob_light_me_on_fire.m4a",
+    "target": 12
+   },
+   {
+    "n": 8,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "Ça, c'était « Light Me On Fire ». Le saxo ténor, là-dedans, c'est un son qui vient du ventre, pas de la gorge. Un ténor, ça pèse, ça se porte en bandoulière, et ça vous change une soirée. On enchaîne sur « Walden Pond Blues ». Ne montez pas le son, penchez-vous.",
+    "from": "volt_picks/admiral_bob_light_me_on_fire.m4a",
+    "to": "volt_picks/admiral_bob_walden_pond_blues.m4a",
+    "target": 12
+   },
+   {
+    "n": 9,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "« Walden Pond Blues », et cette cymbale ride qui ne s'arrête jamais, comme la pluie sur la promenade. Un batteur de jazz, ça ne frappe pas, ça caresse. « bluenotes » tout de suite, enregistré d'une traite, une seule prise, à ce qu'on m'a dit. On y croit.",
+    "from": "volt_picks/admiral_bob_walden_pond_blues.m4a",
+    "to": "volt_picks/airtone_bluenotes.m4a",
+    "target": 12
+   },
+   {
+    "n": 10,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "On sortait de « bluenotes ». Les cuivres sont doux parce qu'ils sont bouchés : une sourdine, un petit chapeau de métal sur le pavillon, et la trompette se met à chuchoter. « Age Of AI » maintenant. Baissez la lampe, ça ira mieux.",
+    "from": "volt_picks/airtone_bluenotes.m4a",
+    "to": "volt_picks/aussens_iter_age_of_ai.m4a",
+    "target": 12
+   },
+   {
+    "n": 11,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "« Age Of AI ». Ce grain, ce petit souffle derrière la voix, c'est le micro à ruban. Un ruban d'aluminium, fin comme un cheveu, qui tremble quand on chante. On ne crie pas dedans, on lui parle. « Guitar & Saxophone (Instrumental) », et là, on lui parle de près.",
+    "from": "volt_picks/aussens_iter_age_of_ai.m4a",
+    "to": "volt_picks/aussens_iter_guitar_saxophone_instrumental.m4a",
+    "target": 12
+   },
+   {
+    "n": 12,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "Vous écoutiez « Guitar & Saxophone (Instrumental) ». Le piano était un peu désaccordé, vous avez remarqué ? Moi j'appelle ça de l'humidité de Vice Bay. Un piano, ici, il vit au bord de la mer, il gonfle, il respire. « Cool Blue (Instrumental) », sur le même piano. Il va bien.",
+    "from": "volt_picks/aussens_iter_guitar_saxophone_instrumental.m4a",
+    "to": "volt_picks/caschubert_cool_blue_instrumental.m4a",
+    "target": 12
+   },
+   {
+    "n": 13,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "« Cool Blue (Instrumental) », et une walking bass qui fait exactement ce qu'elle dit : elle marche. Quatre pas par mesure, jamais pressée, jamais en retard. « PeaceLoveSoul » va la suivre. Marchez avec.",
+    "from": "volt_picks/caschubert_cool_blue_instrumental.m4a",
+    "to": "volt_picks/jeris_peacelovesoul.m4a",
+    "target": 12
+   },
+   {
+    "n": 14,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "C'était « PeaceLoveSoul ». L'orgue, là, c'est un vieux Hammond avec sa cabine tournante, un haut-parleur qui tourne dans une armoire en bois. Le son vous tourne autour parce qu'il tourne vraiment. « Get Out to Vote ». Laissez tourner.",
+    "from": "volt_picks/jeris_peacelovesoul.m4a",
+    "to": "volt_picks/kara_square_get_out_to_vote.m4a",
+    "target": 12
+   },
+   {
+    "n": 15,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "« Get Out to Vote ». Kevin a claqué des mâchoires une fois à la fin. Approuvé. « OctoBlues ».",
+    "from": "volt_picks/kara_square_get_out_to_vote.m4a",
+    "to": "bayou/octoblues.m4a",
+    "target": 12
+   },
+   {
+    "n": 16,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "C'était « OctoBlues ». Il reste une table au Marsh Club, celle près du fauteuil vert. Personne ne la prend. On sait pourquoi. « Ophelia (dogmix) ».",
+    "from": "bayou/octoblues.m4a",
+    "to": "volt_picks/olddog_ophelia_dogmix.m4a",
+    "target": 12
+   },
+   {
+    "n": 17,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "« Ophelia (dogmix) » vient de finir, et le barman a essuyé le même verre pendant toute la chanson. C'est sa façon d'écouter. « On Hold for You ».",
+    "from": "volt_picks/olddog_ophelia_dogmix.m4a",
+    "to": "volt_picks/on_hold_for_you.m4a",
+    "target": 12
+   },
+   {
+    "n": 18,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "Vous écoutiez « On Hold for You ». Ce solo, il ne l'a joué qu'une fois comme ça. On l'a enregistré. Il ne l'a jamais retrouvé. « Falling ».",
+    "from": "volt_picks/on_hold_for_you.m4a",
+    "to": "volt_picks/siobhan_dakay_falling.m4a",
+    "target": 12
+   },
+   {
+    "n": 19,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "« Falling ». Onze heures du soir, lumière basse, glaçons qui fondent. Il ne manque rien. « Klaus ».",
+    "from": "volt_picks/siobhan_dakay_falling.m4a",
+    "to": "volt_picks/skill_borrower_klaus.m4a",
+    "target": 12
+   },
+   {
+    "n": 20,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "On quitte « Klaus ». Le pianiste du Marsh Club a un doigt en moins et deux idées en plus. « Probably Shouldn T ».",
+    "from": "volt_picks/skill_borrower_klaus.m4a",
+    "to": "volt_picks/stefan_kartenberg_probably_shouldn_t.m4a",
+    "target": 12
+   },
+   {
+    "n": 21,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "« Probably Shouldn T », et une femme en robe verte vient d'entrer, elle a commandé sans regarder la carte. Elle connaît. « Study And Relax ».",
+    "from": "volt_picks/stefan_kartenberg_probably_shouldn_t.m4a",
+    "to": "volt_picks/study_and_relax.m4a",
+    "target": 12
+   },
+   {
+    "n": 22,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "C'était « Study And Relax ». Le saxo a été trouvé dans une vente de garage. Le type demandait dix dollars. On lui en a donné quinze, par respect. « Motherless Child ».",
+    "from": "volt_picks/study_and_relax.m4a",
+    "to": "volt_picks/the_spirit_of_light_motherless_child.m4a",
+    "target": 12
+   },
+   {
+    "n": 23,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "« Motherless Child ». Ce n'est pas du jazz si on n'a pas l'impression que ça va se casser la figure. Ça ne se casse jamais la figure. « On the 131   Jazz/Rock Mix ».",
+    "from": "volt_picks/the_spirit_of_light_motherless_child.m4a",
+    "to": "volt_picks/unreal_dm_on_the_131_jazz_rock_mix.m4a",
+    "target": 12
+   },
+   {
+    "n": 24,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "Vous étiez dans « On the 131   Jazz/Rock Mix ». La contrebasse a un nom. Elle s'appelle Dolores. Elle est plus vieille que moi. « Too Late Blues Rock Mix ».",
+    "from": "volt_picks/unreal_dm_on_the_131_jazz_rock_mix.m4a",
+    "to": "volt_picks/unreal_dm_too_late_blues_rock_mix.m4a",
+    "target": 12
+   },
+   {
+    "n": 25,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "« Into the J » est terminé. Big Lou, le verre est vide, le club est plein. « Light Me On Fire ».",
+    "from": "volt_picks/admiral_bob_into_the_j.m4a",
+    "to": "volt_picks/admiral_bob_light_me_on_fire.m4a",
+    "target": 12
+   },
+   {
+    "n": 26,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "C'était « Light Me On Fire ». Un trompettiste de passage a demandé s'il pouvait faire un morceau. On a dit oui. C'était ce morceau. « Walden Pond Blues ».",
+    "from": "volt_picks/admiral_bob_light_me_on_fire.m4a",
+    "to": "volt_picks/admiral_bob_walden_pond_blues.m4a",
+    "target": 12
+   },
+   {
+    "n": 27,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "« Walden Pond Blues », et la pluie tape sur le toit du club comme une caisse claire mal réglée. On laisse. Ça groove. « bluenotes ».",
+    "from": "volt_picks/admiral_bob_walden_pond_blues.m4a",
+    "to": "volt_picks/airtone_bluenotes.m4a",
+    "target": 12
+   },
+   {
+    "n": 28,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "On sortait de « bluenotes ». Chester Deux-Doigts est au bar. Il dit que c'était mieux avant. Il dit ça depuis avant. « Age Of AI ».",
+    "from": "volt_picks/airtone_bluenotes.m4a",
+    "to": "volt_picks/aussens_iter_age_of_ai.m4a",
+    "target": 12
+   },
+   {
+    "n": 29,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "« Age Of AI ». Une chanson qu'on chante mal à deux heures du matin, avec le bras d'un ami autour du cou. « Guitar & Saxophone (Instrumental) ».",
+    "from": "volt_picks/aussens_iter_age_of_ai.m4a",
+    "to": "volt_picks/aussens_iter_guitar_saxophone_instrumental.m4a",
+    "target": 12
+   },
+   {
+    "n": 30,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "Vous écoutiez « Guitar & Saxophone (Instrumental) ». Le batteur a joué aux balais. Un balai, ça ne frappe pas, ça chuchote. « Cool Blue (Instrumental) ».",
+    "from": "volt_picks/aussens_iter_guitar_saxophone_instrumental.m4a",
+    "to": "volt_picks/caschubert_cool_blue_instrumental.m4a",
+    "target": 12
+   },
+   {
+    "n": 31,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "« Cool Blue (Instrumental) » vient de finir. Il y a une photo derrière le bar, tout le monde dessus est mort, tout le monde dessus sourit. « PeaceLoveSoul ».",
+    "from": "volt_picks/caschubert_cool_blue_instrumental.m4a",
+    "to": "volt_picks/jeris_peacelovesoul.m4a",
+    "target": 12
+   },
+   {
+    "n": 32,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "C'était « PeaceLoveSoul ». Marina Sound, un seul micro, un seul soir, une seule prise. Ça s'entend. « Get Out to Vote ».",
+    "from": "volt_picks/jeris_peacelovesoul.m4a",
+    "to": "volt_picks/kara_square_get_out_to_vote.m4a",
+    "target": 12
+   },
+   {
+    "n": 33,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "« Get Out to Vote ». Si vous n'avez pas fermé les yeux à la fin, vous n'écoutiez pas. Deuxième chance. « OctoBlues ».",
+    "from": "volt_picks/kara_square_get_out_to_vote.m4a",
+    "to": "bayou/octoblues.m4a",
+    "target": 12
+   },
+   {
+    "n": 34,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "Vous étiez dans « OctoBlues ». Le club a une règle : on n'applaudit pas avant la dernière note. La dernière note dure. « Ophelia (dogmix) ».",
+    "from": "bayou/octoblues.m4a",
+    "to": "volt_picks/olddog_ophelia_dogmix.m4a",
+    "target": 12
+   },
+   {
+    "n": 35,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "« Ophelia (dogmix) », et le cuisinier est sorti de sa cuisine pour écouter la fin. Il fait ça pour trois morceaux dans l'année. « On Hold for You ».",
+    "from": "volt_picks/olddog_ophelia_dogmix.m4a",
+    "to": "volt_picks/on_hold_for_you.m4a",
+    "target": 12
+   },
+   {
+    "n": 36,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "On quitte « On Hold for You ». Le piano a une touche qui ne revient pas. Le pianiste dit qu'elle réfléchit. « Falling ».",
+    "from": "volt_picks/on_hold_for_you.m4a",
+    "to": "volt_picks/siobhan_dakay_falling.m4a",
+    "target": 12
+   },
+   {
+    "n": 37,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "« Falling ». Ce grain dans la voix, c'est trente ans de nuits. On ne l'achète pas. « Klaus ».",
+    "from": "volt_picks/siobhan_dakay_falling.m4a",
+    "to": "volt_picks/skill_borrower_klaus.m4a",
+    "target": 12
+   },
+   {
+    "n": 38,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "C'était « Klaus ». Le chat du Marsh Club dort sur l'ampli. Il choisit ses morceaux. Celui-là, il a dormi. C'est bon signe. « Probably Shouldn T ».",
+    "from": "volt_picks/skill_borrower_klaus.m4a",
+    "to": "volt_picks/stefan_kartenberg_probably_shouldn_t.m4a",
+    "target": 12
+   },
+   {
+    "n": 39,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "« Probably Shouldn T » est parti fumer dehors. « Study And Relax » prend la scène.",
+    "from": "volt_picks/stefan_kartenberg_probably_shouldn_t.m4a",
+    "to": "volt_picks/study_and_relax.m4a",
+    "target": 12
+   },
+   {
+    "n": 40,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "Vous écoutiez « Study And Relax ». Le type au fond a pleuré. Il dit que c'est le poivre. Il n'y a pas de poivre. « Motherless Child ».",
+    "from": "volt_picks/study_and_relax.m4a",
+    "to": "volt_picks/the_spirit_of_light_motherless_child.m4a",
+    "target": 12
+   },
+   {
+    "n": 41,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "« Motherless Child ». Une walking bass et un balai, et vous avez déjà envie de commander un autre verre. Je ne juge pas. « On the 131   Jazz/Rock Mix ».",
+    "from": "volt_picks/the_spirit_of_light_motherless_child.m4a",
+    "to": "volt_picks/unreal_dm_on_the_131_jazz_rock_mix.m4a",
+    "target": 12
+   },
+   {
+    "n": 42,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "C'était « On the 131   Jazz/Rock Mix ». Le soir où on l'a enregistrée, la clim était en panne. On entend la chaleur. « Too Late Blues Rock Mix ».",
+    "from": "volt_picks/unreal_dm_on_the_131_jazz_rock_mix.m4a",
+    "to": "volt_picks/unreal_dm_too_late_blues_rock_mix.m4a",
+    "target": 12
+   },
+   {
+    "n": 43,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "« Into the J », et un couple vient de danser entre les tables, serré, lent. Le club a fait comme s'il n'avait rien vu. « Light Me On Fire ».",
+    "from": "volt_picks/admiral_bob_into_the_j.m4a",
+    "to": "volt_picks/admiral_bob_light_me_on_fire.m4a",
+    "target": 12
+   },
+   {
+    "n": 44,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "On sortait de « Light Me On Fire ». Le Marsh Club ferme à trois heures, ou quand Kevin s'en va. Il n'est pas parti. « Walden Pond Blues ».",
+    "from": "volt_picks/admiral_bob_light_me_on_fire.m4a",
+    "to": "volt_picks/admiral_bob_walden_pond_blues.m4a",
+    "target": 12
+   },
+   {
+    "n": 45,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "« Walden Pond Blues ». Du velours, de la fumée, une trompette bouchée. Vous êtes bien. Restez. « bluenotes ».",
+    "from": "volt_picks/admiral_bob_walden_pond_blues.m4a",
+    "to": "volt_picks/airtone_bluenotes.m4a",
+    "target": 12
+   },
+   {
+    "n": 46,
+    "section": "B",
+    "label": "enchaînement",
+    "text": "C'était « bluenotes ». Big Lou, cent-sept trois, et une dernière tournée pour la route. « Age Of AI ».",
+    "from": "volt_picks/airtone_bluenotes.m4a",
+    "to": "volt_picks/aussens_iter_age_of_ai.m4a",
+    "target": 12
+   },
+   {
+    "n": 47,
+    "section": "C",
+    "label": "AVANT · Bayou Breakdown Garage",
+    "text": "(énervé)\nÇa, c'était « Age Of AI ». Bon. Une pub. Big Lou doit payer les cuivres. Bougez pas.",
+    "from": "volt_picks/aussens_iter_age_of_ai.m4a",
+    "to": "volt_picks/aussens_iter_guitar_saxophone_instrumental.m4a",
+    "target": 8
+   },
+   {
+    "n": 48,
+    "section": "C",
+    "label": "LA PUB · Bayou Breakdown Garage",
+    "text": "(voix grave, extrêmement sérieuse)\nDans les Everglades, une voiture peut tomber en panne pour beaucoup de raisons.\nLa chaleur.\nL'humidité.\nUn moteur fatigué.\nOu cette pièce qui fait clac depuis trois mois et que vous avez décidé d'ignorer.\n(pause)\nBayou Breakdown Garage connaît ces problèmes.\nRéparations.\nRemorquage.\nClimatisation.\nUne fois, ils ont retrouvé une chaussure dans un moteur.\n(longue pause)\nIls n'ont jamais retrouvé son propriétaire.\nDiagnostic à partir de 19 dollars.\n(pause)\nLa chaussure n'est pas incluse.\nBayou Breakdown.\nNous réparons les voitures.\nPour les chaussures, voyez ailleurs.",
+    "from": null,
+    "to": null,
+    "target": 25
+   },
+   {
+    "n": 49,
+    "section": "C",
+    "label": "APRÈS · Bayou Breakdown Garage",
+    "text": "Voilà, les cuivres sont payés. Cent-sept point trois, VOLT. « Guitar & Saxophone (Instrumental) », et celui-là, il est bien.",
+    "from": "volt_picks/aussens_iter_age_of_ai.m4a",
+    "to": "volt_picks/aussens_iter_guitar_saxophone_instrumental.m4a",
+    "target": 6
+   },
+   {
+    "n": 50,
+    "section": "C",
+    "label": "AVANT · Nightshift Finance",
+    "text": "« Guitar & Saxophone (Instrumental) ». Pas mal. Enfin. Une pub, et j'en passe un pire. Non. Un meilleur. Ça dépend de vous.",
+    "from": "volt_picks/aussens_iter_guitar_saxophone_instrumental.m4a",
+    "to": "volt_picks/caschubert_cool_blue_instrumental.m4a",
+    "target": 8
+   },
+   {
+    "n": 51,
+    "section": "C",
+    "label": "LA PUB · Nightshift Finance",
+    "text": "(voix grave, feutrée)\nIl est tard.\nVous avez besoin de parler chiffres.\nNightshift Finance, Downtown, reste ouvert jusqu'à minuit.\nPrêts.\nDossiers.\nConseils.\nEt petits caractères.\nBeaucoup de petits caractères.\nIci, personne ne vous presse.\nMême l'horloge du bureau avance lentement.\nElle a commencé à perdre cinq minutes par jour en 1988.\nLe patron refuse de la remplacer.\n(pause)\nIl dit qu'elle fait partie du décor.\nConsultation gratuite.\n(pause)\nLe café est à quatre dollars.\nNightshift Finance.\nPrenez votre temps.\nLes chiffres ne courent pas.",
+    "from": null,
+    "to": null,
+    "target": 25
+   },
+   {
+    "n": 52,
+    "section": "C",
+    "label": "APRÈS · Nightshift Finance",
+    "text": "VOLT, cent-sept point trois. « Cool Blue (Instrumental) ». Écoutez la main gauche.",
+    "from": "volt_picks/aussens_iter_guitar_saxophone_instrumental.m4a",
+    "to": "volt_picks/caschubert_cool_blue_instrumental.m4a",
+    "target": 6
+   },
+   {
+    "n": 53,
+    "section": "C",
+    "label": "AVANT · Marsh Runner Tours",
+    "text": "(il souffle)\nC'était « Cool Blue (Instrumental) ». Le groove n'attend pas, mais la pub, si. Une minute.",
+    "from": "volt_picks/caschubert_cool_blue_instrumental.m4a",
+    "to": "volt_picks/jeris_peacelovesoul.m4a",
+    "target": 8
+   },
+   {
+    "n": 54,
+    "section": "C",
+    "label": "LA PUB · Marsh Runner Tours",
+    "text": "(voix documentaire)\nLes Everglades sont calmes au coucher du soleil.\nEnfin…\nsuffisamment calmes pour entendre les oiseaux.\nMarsh Runner Tours propose des excursions en bateau dans les marais.\nLoin des routes.\nLoin des néons.\nOn y voit des oiseaux.\nDes poissons.\nDes tortues.\n(pause)\nEt parfois un gros reptile qui préfère rester anonyme.\nLe guide conseille de ne pas lui donner de prénom.\nLes clients le font quand même.\n(pause)\nLe dernier s'appelait Kevin.\nKevin n'a pas apprécié.\nMarsh Runner.\nCertains habitants préfèrent ne pas être présentés.",
+    "from": null,
+    "to": null,
+    "target": 25
+   },
+   {
+    "n": 55,
+    "section": "C",
+    "label": "APRÈS · Marsh Runner Tours",
+    "text": "Une minute, j'ai dit. Big Lou tient parole. « PeaceLoveSoul ».",
+    "from": "volt_picks/caschubert_cool_blue_instrumental.m4a",
+    "to": "volt_picks/jeris_peacelovesoul.m4a",
+    "target": 6
+   },
+   {
+    "n": 56,
+    "section": "C",
+    "label": "AVANT · Iron Coast Club",
+    "text": "« PeaceLoveSoul », et le saxo traîne encore dans le club. Une pub, le temps qu'il sorte.",
+    "from": "volt_picks/jeris_peacelovesoul.m4a",
+    "to": "volt_picks/kara_square_get_out_to_vote.m4a",
+    "target": 8
+   },
+   {
+    "n": 57,
+    "section": "C",
+    "label": "LA PUB · Iron Coast Club",
+    "text": "(voix grave)\nIron Coast Club.\nEverglades.\nSalle de sport ouverte avant le lever du soleil et après le coucher du soleil.\nPoids.\nRameurs.\nVélos.\nEt haltères.\nBeaucoup d'haltères.\nLe coach ne parle pas beaucoup.\nIl n'en a pas besoin.\nIl pointe un poids du doigt.\nVous comprenez.\nVous le soulevez.\n(pause)\nVous regrettez immédiatement votre décision.\nPuis vous recommencez.\nAbonnement : 19 dollars 99 par mois.\n(pause)\nLe canapé est interdit.\nIron Coast Club.\nPas de machines compliquées.\nJuste vous…\n(pause)\net la gravité.",
+    "from": null,
+    "to": null,
+    "target": 25
+   },
+   {
+    "n": 58,
+    "section": "C",
+    "label": "APRÈS · Iron Coast Club",
+    "text": "Il est sorti. Cent-sept point trois. « Get Out to Vote », et respectez le batteur.",
+    "from": "volt_picks/jeris_peacelovesoul.m4a",
+    "to": "volt_picks/kara_square_get_out_to_vote.m4a",
+    "target": 6
+   },
+   {
+    "n": 59,
+    "section": "C",
+    "label": "AVANT · Marshline Salvage",
+    "text": "(fort)\nÇa, c'était « Get Out to Vote ». Ça valait pas la pub qui arrive. Et pourtant.",
+    "from": "volt_picks/kara_square_get_out_to_vote.m4a",
+    "to": "bayou/octoblues.m4a",
+    "target": 8
+   },
+   {
+    "n": 60,
+    "section": "C",
+    "label": "LA PUB · Marshline Salvage",
+    "text": "(voix grave, mystérieuse)\nDans les Everglades, certaines voitures terminent leur carrière sous le soleil.\nD'autres sous un palmier.\nMarshline Salvage récupère les pièces encore utiles.\nMoteurs.\nPortières.\nRoues.\nSièges.\nRétroviseurs.\nEt cette radio qui fonctionne encore parfaitement malgré vingt ans dehors.\n(pause)\nPersonne ne sait comment.\nLe propriétaire refuse de la vendre.\nIl dit qu'elle connaît trop de secrets.\n(longue pause)\nIl a reçu une offre de 300 dollars.\nIl a refusé.\n(pause)\nLa radio jouait du jazz.\nMarshline Salvage.\nLes vieilles voitures ne meurent jamais complètement.",
+    "from": null,
+    "to": null,
+    "target": 25
+   },
+   {
+    "n": 61,
+    "section": "C",
+    "label": "APRÈS · Marshline Salvage",
+    "text": "Et pourtant. VOLT. « OctoBlues ». Le groove n'attend pas. Big Lou non plus.",
+    "from": "volt_picks/kara_square_get_out_to_vote.m4a",
+    "to": "bayou/octoblues.m4a",
+    "target": 6
+   }
+  ]
+ }
+}

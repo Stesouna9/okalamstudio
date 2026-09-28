@@ -1,0 +1,950 @@
+{
+ "volt": [
+  {
+   "file": "volt_picks/admiral_bob_into_the_j.m4a",
+   "title": "Into the J",
+   "artist": "Admiral Bob",
+   "license": "CC BY 3.0",
+   "seconds": 181.64
+  },
+  {
+   "file": "volt_picks/admiral_bob_light_me_on_fire.m4a",
+   "title": "Light Me On Fire",
+   "artist": "Admiral Bob",
+   "license": "CC BY 2.5",
+   "seconds": 208.27
+  },
+  {
+   "file": "volt_picks/admiral_bob_walden_pond_blues.m4a",
+   "title": "Walden Pond Blues",
+   "artist": "Admiral Bob",
+   "license": "CC BY 3.0",
+   "seconds": 351.94
+  },
+  {
+   "file": "volt_picks/airtone_bluenotes.m4a",
+   "title": "bluenotes",
+   "artist": "airtone",
+   "license": "CC BY 3.0",
+   "seconds": 227.36
+  },
+  {
+   "file": "volt_picks/aussens_iter_age_of_ai.m4a",
+   "title": "Age Of AI",
+   "artist": "Aussens@iter",
+   "license": "CC BY 3.0",
+   "seconds": 238.2
+  },
+  {
+   "file": "volt_picks/aussens_iter_guitar_saxophone_instrumental.m4a",
+   "title": "Guitar & Saxophone (Instrumental)",
+   "artist": "Aussens@iter",
+   "license": "CC BY 2.5",
+   "seconds": 128.25
+  },
+  {
+   "file": "volt_picks/caschubert_cool_blue_instrumental.m4a",
+   "title": "Cool Blue (Instrumental)",
+   "artist": "CASchubert",
+   "license": "CC BY 2.5",
+   "seconds": 226.72
+  },
+  {
+   "file": "volt_picks/jeris_peacelovesoul.m4a",
+   "title": "PeaceLoveSoul",
+   "artist": "Jeris",
+   "license": "CC BY 3.0",
+   "seconds": 276.76
+  },
+  {
+   "file": "volt_picks/kara_square_get_out_to_vote.m4a",
+   "title": "Get Out to Vote",
+   "artist": "Kara Square",
+   "license": "CC BY 3.0",
+   "seconds": 196.02
+  },
+  {
+   "file": "bayou/octoblues.m4a",
+   "title": "OctoBlues",
+   "artist": "Kevin MacLeod",
+   "license": "CC BY 4.0",
+   "seconds": 252.19
+  },
+  {
+   "file": "volt_picks/olddog_ophelia_dogmix.m4a",
+   "title": "Ophelia (dogmix)",
+   "artist": "oldDog",
+   "license": "CC BY 2.5",
+   "seconds": 213.96
+  },
+  {
+   "file": "volt_picks/on_hold_for_you.m4a",
+   "title": "On Hold for You",
+   "artist": "Kevin MacLeod",
+   "license": "CC BY 4.0",
+   "seconds": 217.14
+  },
+  {
+   "file": "volt_picks/siobhan_dakay_falling.m4a",
+   "title": "Falling",
+   "artist": "Siobhan Dakay",
+   "license": "CC BY 3.0",
+   "seconds": 262.2
+  },
+  {
+   "file": "volt_picks/skill_borrower_klaus.m4a",
+   "title": "Klaus",
+   "artist": "Skill_Borrower",
+   "license": "CC BY 3.0",
+   "seconds": 214.44
+  },
+  {
+   "file": "volt_picks/stefan_kartenberg_probably_shouldn_t.m4a",
+   "title": "Probably Shouldn T",
+   "artist": "Stefan Kartenberg",
+   "license": "CC (à vérifier)",
+   "seconds": 236.05
+  },
+  {
+   "file": "volt_picks/study_and_relax.m4a",
+   "title": "Study And Relax",
+   "artist": "Kevin MacLeod",
+   "license": "CC BY 4.0",
+   "seconds": 217.28
+  },
+  {
+   "file": "volt_picks/the_spirit_of_light_motherless_child.m4a",
+   "title": "Motherless Child",
+   "artist": "The Spirit Of Light",
+   "license": "CC (à vérifier)",
+   "seconds": 211.78
+  },
+  {
+   "file": "volt_picks/unreal_dm_on_the_131_jazz_rock_mix.m4a",
+   "title": "On the 131   Jazz/Rock Mix",
+   "artist": "unreal_dm",
+   "license": "CC BY 3.0",
+   "seconds": 238.69
+  },
+  {
+   "file": "volt_picks/unreal_dm_too_late_blues_rock_mix.m4a",
+   "title": "Too Late Blues Rock Mix",
+   "artist": "unreal_dm",
+   "license": "CC BY 3.0",
+   "seconds": 215.18
+  }
+ ],
+ "emotion": [
+  {
+   "file": "canon/aquarium.m4a",
+   "title": "Aquarium",
+   "artist": "Kevin MacLeod",
+   "license": "CC BY 4.0",
+   "seconds": 139.65
+  },
+  {
+   "file": "twilight/evening.m4a",
+   "title": "Evening",
+   "artist": "Kevin MacLeod",
+   "license": "CC BY 4.0",
+   "seconds": 185.03
+  },
+  {
+   "file": "emotion_picks/adding_the_sun.m4a",
+   "title": "Adding the Sun",
+   "artist": "Kevin MacLeod",
+   "license": "CC BY 4.0",
+   "seconds": 172.66
+  },
+  {
+   "file": "emotion_picks/admiral_bob_just_foolish.m4a",
+   "title": "Just Foolish",
+   "artist": "Admiral Bob",
+   "license": "CC BY 3.0",
+   "seconds": 96.81
+  },
+  {
+   "file": "emotion_picks/antony_raijekov_photo_theme_window_like.m4a",
+   "title": "Photo theme: Window like",
+   "artist": "Antony Raijekov",
+   "license": "CC BY 2.5",
+   "seconds": 195.97
+  },
+  {
+   "file": "emotion_picks/aussens_iter_ambient_guitar_samples.m4a",
+   "title": "Ambient Guitar Samples",
+   "artist": "Aussens@iter",
+   "license": "CC BY 3.0",
+   "seconds": 342.22
+  },
+  {
+   "file": "emotion_picks/aussens_iter_guitar_instrumental_stem_pack.m4a",
+   "title": "Guitar Instrumental Stem Pack",
+   "artist": "Aussens@iter",
+   "license": "CC BY 3.0",
+   "seconds": 202.87
+  },
+  {
+   "file": "emotion_picks/aussens_iter_the_parting_glass_instrumental.m4a",
+   "title": "The Parting Glass (Instrumental)",
+   "artist": "Aussens@iter",
+   "license": "CC BY 3.0",
+   "seconds": 184.88
+  },
+  {
+   "file": "emotion_picks/colin_mutchler_my_life.m4a",
+   "title": "My Life",
+   "artist": "Colin Mutchler",
+   "license": "CC BY 2.5",
+   "seconds": 162.47
+  },
+  {
+   "file": "emotion_picks/copperhead_pompeii.m4a",
+   "title": "Pompeii",
+   "artist": "copperhead",
+   "license": "CC BY 3.0",
+   "seconds": 219.39
+  },
+  {
+   "file": "emotion_picks/despair_and_triumph.m4a",
+   "title": "Despair and Triumph",
+   "artist": "Kevin MacLeod",
+   "license": "CC BY 4.0",
+   "seconds": 278.85
+  },
+  {
+   "file": "emotion_picks/dmitriy_samoylenko_old_forms_must_die.m4a",
+   "title": "Old Forms Must Die",
+   "artist": "Dmitriy Samoylenko",
+   "license": "CC BY-SA 3.0",
+   "seconds": 318.07
+  },
+  {
+   "file": "emotion_picks/doxent_zsigmond_memory.m4a",
+   "title": "Memory",
+   "artist": "Doxent Zsigmond",
+   "license": "CC BY 3.0",
+   "seconds": 173.18
+  },
+  {
+   "file": "emotion_picks/fluffy_broken_orient.m4a",
+   "title": "Broken Orient",
+   "artist": "fluffy",
+   "license": "CC BY 3.0",
+   "seconds": 220.8
+  },
+  {
+   "file": "emotion_picks/hitctrl_rpg_a_long_way_from_home_rpg_a_long_way_from_home.m4a",
+   "title": "Rpg - A Long Way From Home — RPG - A Long Way From Home",
+   "artist": "Hitctrl",
+   "license": "CC BY 3.0",
+   "seconds": 246.4
+  },
+  {
+   "file": "emotion_picks/hitctrl_rpg_ambient_4_the_dark_woods_rpg_ambient_4_the_dark_wood.m4a",
+   "title": "Rpg Ambient 4 (The Dark Woods) — RPG_Ambient_4_The_Dark_Wood_",
+   "artist": "Hitctrl",
+   "license": "CC BY 3.0",
+   "seconds": 144.07
+  },
+  {
+   "file": "emotion_picks/jaspertine_failure_song.m4a",
+   "title": "Failure Song",
+   "artist": "jaspertine",
+   "license": "CC BY 3.0",
+   "seconds": 266.02
+  },
+  {
+   "file": "emotion_picks/loveshadow_heart_on_redial.m4a",
+   "title": "Heart On Redial",
+   "artist": "loveshadow",
+   "license": "CC BY 3.0",
+   "seconds": 241.95
+  },
+  {
+   "file": "emotion_picks/olddog_i_wonder_what_i_ll_do_today.m4a",
+   "title": "I wonder what I'll do today",
+   "artist": "oldDog",
+   "license": "CC BY 2.5",
+   "seconds": 215.71
+  },
+  {
+   "file": "emotion_picks/stefan_kartenberg_it_s_not_allowed.m4a",
+   "title": "It's Not Allowed",
+   "artist": "Stefan Kartenberg",
+   "license": "CC BY 3.0",
+   "seconds": 213.27
+  },
+  {
+   "file": "emotion_picks/the_spirit_of_light_deflated_alone_acoustic.m4a",
+   "title": "Deflated & Alone (acoustic)",
+   "artist": "The.Spirit.Of.Light",
+   "license": "CC BY 3.0",
+   "seconds": 245.83
+  },
+  {
+   "file": "emotion_picks/unreal_dm_slippin_slidin.m4a",
+   "title": "Slippin' & Slidin",
+   "artist": "unreal_dm",
+   "license": "CC BY 3.0",
+   "seconds": 339.2
+  },
+  {
+   "file": "canon/valse_gymnopedie.m4a",
+   "title": "Valse Gymnopedie",
+   "artist": "Kevin MacLeod",
+   "license": "CC BY 4.0",
+   "seconds": 188.38
+  },
+  {
+   "file": "emotion_picks/viktor_kraus_a_robot_s_way_to_heaven.m4a",
+   "title": "A Robot'S Way To Heaven",
+   "artist": "Viktor Kraus",
+   "license": "CC BY 3.0",
+   "seconds": 122.17
+  }
+ ],
+ "sunset": [
+  {
+   "file": "sunset_picks/admiral_bob_wanderer_take_2.m4a",
+   "title": "Wanderer (Take 2)",
+   "artist": "Admiral Bob",
+   "license": "CC BY 3.0",
+   "seconds": 311.2
+  },
+  {
+   "file": "disco/aurea_carmina.m4a",
+   "title": "Aurea Carmina",
+   "artist": "Kevin MacLeod",
+   "license": "CC BY 4.0",
+   "seconds": 209.5
+  },
+  {
+   "file": "sunset_picks/bocrew_human_world.m4a",
+   "title": "HUMAN WORLD",
+   "artist": "Bocrew",
+   "license": "CC BY 3.0",
+   "seconds": 172.62
+  },
+  {
+   "file": "sunset_picks/aussens_iter_up_2_us.m4a",
+   "title": "Up 2 Us",
+   "artist": "Aussens Iter",
+   "license": "CC (à vérifier)",
+   "seconds": 299.07
+  },
+  {
+   "file": "sunset_picks/bocrew_soul_control.m4a",
+   "title": "SOUL CONTROL",
+   "artist": "Bocrew",
+   "license": "CC BY 3.0",
+   "seconds": 240.07
+  },
+  {
+   "file": "sunset_picks/boogie_party.m4a",
+   "title": "Boogie Party",
+   "artist": "Kevin MacLeod",
+   "license": "CC BY 4.0",
+   "seconds": 265.69
+  },
+  {
+   "file": "sunset/celebration.m4a",
+   "title": "Celebration",
+   "artist": "Kevin MacLeod",
+   "license": "CC BY 4.0",
+   "seconds": 273.16
+  },
+  {
+   "file": "disco/disco_medusae.m4a",
+   "title": "Disco Medusae",
+   "artist": "Kevin MacLeod",
+   "license": "CC BY 4.0",
+   "seconds": 220.65
+  },
+  {
+   "file": "sunset_more/funky_chunk.m4a",
+   "title": "Funky Chunk",
+   "artist": "Kevin MacLeod",
+   "license": "CC BY 4.0",
+   "seconds": 235.88
+  },
+  {
+   "file": "sunset_picks/grapes_ophelia_s_song.m4a",
+   "title": "Ophelia's Song",
+   "artist": "grapes",
+   "license": "CC BY 2.5",
+   "seconds": 188.6
+  },
+  {
+   "file": "sunset_picks/j_lang_give_it_up_urban_mix.m4a",
+   "title": "Give It Up-Urban Mix",
+   "artist": "J.Lang",
+   "license": "CC BY 3.0",
+   "seconds": 253.58
+  },
+  {
+   "file": "sunset_picks/jeris_perpetual_motion.m4a",
+   "title": "Perpetual Motion",
+   "artist": "Jeris",
+   "license": "CC BY 3.0",
+   "seconds": 186.19
+  },
+  {
+   "file": "sunset_picks/robbero_soul_sister.m4a",
+   "title": "Soul sister",
+   "artist": "Robbero",
+   "license": "CC BY 3.0",
+   "seconds": 196.37
+  },
+  {
+   "file": "sunset_picks/sackjo22_dove.m4a",
+   "title": "Dove",
+   "artist": "SackJo22",
+   "license": "CC BY 3.0",
+   "seconds": 191.32
+  },
+  {
+   "file": "sunset_picks/samfeminomusic_melody_lane.m4a",
+   "title": "Melody Lane",
+   "artist": "samfeminomusic",
+   "license": "CC BY 3.0",
+   "seconds": 123.45
+  },
+  {
+   "file": "sunset_picks/scott_altham_stretch_at_the_grave.m4a",
+   "title": "Stretch At The Grave",
+   "artist": "Scott Altham",
+   "license": "CC BY 3.0",
+   "seconds": 194.9
+  },
+  {
+   "file": "sunset_picks/sp_i_walk_down_whispering_roads.m4a",
+   "title": "I walk down Whispering Roads",
+   "artist": "SP",
+   "license": "CC BY-SA 3.0",
+   "seconds": 138.42
+  },
+  {
+   "file": "sunset_picks/stefan_kartenberg_smokey_eyes.m4a",
+   "title": "Smokey Eyes",
+   "artist": "Stefan Kartenberg",
+   "license": "CC BY 3.0",
+   "seconds": 154.41
+  },
+  {
+   "file": "sunset_picks/surf_shimmy.m4a",
+   "title": "Surf Shimmy",
+   "artist": "Kevin MacLeod",
+   "license": "CC BY 4.0",
+   "seconds": 117.72
+  },
+  {
+   "file": "sunset_picks/thedice_freedom_to_share_stems.m4a",
+   "title": "Freedom to Share (stems)",
+   "artist": "TheDICE",
+   "license": "CC BY 3.0",
+   "seconds": 134.09
+  },
+  {
+   "file": "sunset_picks/unreal_dm_slide_guitar_120_bpm.m4a",
+   "title": "Slide Guitar @ 120 BPM",
+   "artist": "unreal_dm",
+   "license": "CC BY 3.0",
+   "seconds": 153.47
+  },
+  {
+   "file": "sunset_picks/unreal_dm_sliding_to_a_new_year.m4a",
+   "title": "Sliding to a New Year",
+   "artist": "unreal_dm",
+   "license": "CC BY 3.0",
+   "seconds": 141.25
+  },
+  {
+   "file": "sunset_picks/whitewolf_toronto_is_my_beat.m4a",
+   "title": "Whitewolf Toronto Is My Beat",
+   "artist": "Kevin MacLeod",
+   "license": "CC BY 4.0",
+   "seconds": 198.63
+  }
+ ],
+ "tropicana": [
+  {
+   "file": "tropicana/arroz_con_pollo.m4a",
+   "title": "Arroz Con Pollo",
+   "artist": "Kevin MacLeod",
+   "license": "CC BY 4.0",
+   "seconds": 154.79
+  },
+  {
+   "file": "dubwise/blue_ska.m4a",
+   "title": "Blue Ska",
+   "artist": "Kevin MacLeod",
+   "license": "CC BY 4.0",
+   "seconds": 142.65
+  },
+  {
+   "file": "tropicana/bossabossa.m4a",
+   "title": "BossaBossa",
+   "artist": "Kevin MacLeod",
+   "license": "CC BY 4.0",
+   "seconds": 164.27
+  },
+  {
+   "file": "tambor/bumba_crossing.m4a",
+   "title": "Bumba Crossing",
+   "artist": "Kevin MacLeod",
+   "license": "CC BY 4.0",
+   "seconds": 273.27
+  },
+  {
+   "file": "tropicana_more/carnivale_intrigue.m4a",
+   "title": "Carnivale Intrigue",
+   "artist": "Kevin MacLeod",
+   "license": "CC BY 4.0",
+   "seconds": 197.61
+  },
+  {
+   "file": "tropicana_more/casa_bossa_nova.m4a",
+   "title": "Casa Bossa Nova",
+   "artist": "Kevin MacLeod",
+   "license": "CC BY 4.0",
+   "seconds": 239.04
+  },
+  {
+   "file": "tropicana_picks/chenard_walcker_kali_ghata_chhaye.m4a",
+   "title": "Kali Ghata Chhaye",
+   "artist": "Chenard Walcker",
+   "license": "CC BY 2.0",
+   "seconds": 112.6
+  },
+  {
+   "file": "tropicana_more/cuban_sandwich.m4a",
+   "title": "Cuban Sandwich",
+   "artist": "Kevin MacLeod",
+   "license": "CC BY 4.0",
+   "seconds": 192.57
+  },
+  {
+   "file": "tropicana/del_rio_bravo.m4a",
+   "title": "Del Rio Bravo",
+   "artist": "Kevin MacLeod",
+   "license": "CC BY 4.0",
+   "seconds": 200.08
+  },
+  {
+   "file": "faire/devonshire_waltz_allegretto.m4a",
+   "title": "Devonshire Waltz Allegretto",
+   "artist": "Kevin MacLeod",
+   "license": "CC BY 4.0",
+   "seconds": 310.63
+  },
+  {
+   "file": "tambor/digya.m4a",
+   "title": "Digya",
+   "artist": "Kevin MacLeod",
+   "license": "CC BY 4.0",
+   "seconds": 164.49
+  },
+  {
+   "file": "tropicana_more/dubakupado.m4a",
+   "title": "Dubakupado",
+   "artist": "Kevin MacLeod",
+   "license": "CC BY 4.0",
+   "seconds": 210.31
+  },
+  {
+   "file": "tropicana_picks/duckett_no_flowers_no_cry.m4a",
+   "title": "No Flowers, No Cry",
+   "artist": "duckett",
+   "license": "CC BY 3.0",
+   "seconds": 190.09
+  },
+  {
+   "file": "tambor/energizing.m4a",
+   "title": "Energizing",
+   "artist": "Kevin MacLeod",
+   "license": "CC BY 4.0",
+   "seconds": 126.5
+  },
+  {
+   "file": "dubwise/gonna_start.m4a",
+   "title": "Gonna Start",
+   "artist": "Kevin MacLeod",
+   "license": "CC BY 4.0",
+   "seconds": 185.08
+  },
+  {
+   "file": "tropicana_more/hackbeat.m4a",
+   "title": "Hackbeat",
+   "artist": "Kevin MacLeod",
+   "license": "CC BY 4.0",
+   "seconds": 239.22
+  },
+  {
+   "file": "dubwise/maccary_bay.m4a",
+   "title": "Maccary Bay",
+   "artist": "Kevin MacLeod",
+   "license": "CC BY 4.0",
+   "seconds": 234.42
+  },
+  {
+   "file": "tropicana_more/mandeville.m4a",
+   "title": "Mandeville",
+   "artist": "Kevin MacLeod",
+   "license": "CC BY 4.0",
+   "seconds": 214.64
+  },
+  {
+   "file": "tropicana_more/slow_heat.m4a",
+   "title": "Slow Heat",
+   "artist": "Kevin MacLeod",
+   "license": "CC BY 4.0",
+   "seconds": 219.8
+  },
+  {
+   "file": "tropicana_more/tafi_maradi_no_voice.m4a",
+   "title": "Tafi Maradi no voice",
+   "artist": "Kevin MacLeod",
+   "license": "CC BY 4.0",
+   "seconds": 156.7
+  },
+  {
+   "file": "tambor/trouble_with_tribals.m4a",
+   "title": "Trouble with Tribals",
+   "artist": "Kevin MacLeod",
+   "license": "CC BY 4.0",
+   "seconds": 163.98
+  },
+  {
+   "file": "dubwise/upbeat_forever.m4a",
+   "title": "Upbeat Forever",
+   "artist": "Kevin MacLeod",
+   "license": "CC BY 4.0",
+   "seconds": 191.85
+  },
+  {
+   "file": "tropicana/verano_sensual.m4a",
+   "title": "Verano Sensual",
+   "artist": "Kevin MacLeod",
+   "license": "CC BY 4.0",
+   "seconds": 299.18
+  },
+  {
+   "file": "tropicana/wepa.m4a",
+   "title": "Wepa",
+   "artist": "Kevin MacLeod",
+   "license": "CC BY 4.0",
+   "seconds": 193.75
+  },
+  {
+   "file": "tropicana_picks/jeris_conquistador.m4a",
+   "title": "Conquistador",
+   "artist": "Jeris",
+   "license": "CC BY 3.0",
+   "seconds": 174.62
+  },
+  {
+   "file": "tropicana_picks/jeris_ol_man_clothes.m4a",
+   "title": "Ol' Man Clothes",
+   "artist": "Jeris",
+   "license": "CC BY 3.0",
+   "seconds": 246.07
+  },
+  {
+   "file": "tropicana_picks/journey_to_ascend.m4a",
+   "title": "Journey To Ascend",
+   "artist": "Kevin MacLeod",
+   "license": "CC BY 4.0",
+   "seconds": 215.92
+  },
+  {
+   "file": "tropicana_picks/klaus_n_tanto_ruido_bossa_nova_remix.m4a",
+   "title": "Tanto Ruido (Bossa Nova Remix)",
+   "artist": "Klaus_N",
+   "license": "CC BY 2.5",
+   "seconds": 235.99
+  },
+  {
+   "file": "tropicana_picks/megamuse_tangos_rhythm_in_e_phrygian.m4a",
+   "title": "tangos-rhythm-in-e-phrygian",
+   "artist": "megamuse",
+   "license": "CC BY 3.0",
+   "seconds": 127.4
+  },
+  {
+   "file": "tropicana_picks/nethis_penso_logo_desisto.m4a",
+   "title": "Penso...Logo Desisto",
+   "artist": "Nethis",
+   "license": "CC BY 3.0",
+   "seconds": 130.95
+  },
+  {
+   "file": "tropicana_picks/pitx_myxtery.m4a",
+   "title": "Myxtery",
+   "artist": "Pitx",
+   "license": "CC BY 3.0",
+   "seconds": 120.06
+  },
+  {
+   "file": "tropicana_picks/sr_privado_estoy_nervioso.m4a",
+   "title": "Estoy Nervioso",
+   "artist": "Sr. Privado",
+   "license": "CC BY 2.5",
+   "seconds": 139.63
+  },
+  {
+   "file": "tropicana_picks/tiki_bar_mixer.m4a",
+   "title": "Tiki Bar Mixer",
+   "artist": "Kevin MacLeod",
+   "license": "CC BY 4.0",
+   "seconds": 208.5
+  }
+ ],
+ "neon": [
+  {
+   "file": "neon_picks/agecaf_night_escape.m4a",
+   "title": "Night Escape",
+   "artist": "Agecaf",
+   "license": "CC0 1.0",
+   "seconds": 118.15
+  },
+  {
+   "file": "neon_picks/alexandr_zhelanov_a_million_light_years_between_us_a_million_light_yea.m4a",
+   "title": "A Million Light Years Between Us",
+   "artist": "Alexandr Zhelanov",
+   "license": "CC BY 3.0",
+   "seconds": 99.66
+  },
+  {
+   "file": "neon_picks/alexandr_zhelanov_be_not_put_out_from_a_window_during_a_hyperspatial_j.m4a",
+   "title": "Be Not Put Out From A Window During A Hyperspatial Jump",
+   "artist": "Alexandr Zhelanov",
+   "license": "CC BY 3.0",
+   "seconds": 360.26
+  },
+  {
+   "file": "neon_picks/centurion_of_war_pushing_ahead.m4a",
+   "title": "Pushing Ahead",
+   "artist": "Centurion_of_war",
+   "license": "CC BY 4.0",
+   "seconds": 106.67
+  },
+  {
+   "file": "neon_picks/hitctrl_the_machine_has_become_self_aware_the_machine_has_become_self_.m4a",
+   "title": "The Machine Has Become Self Aware.. — The Machine Has Become Self Aware",
+   "artist": "Hitctrl",
+   "license": "CC BY 3.0",
+   "seconds": 169.88
+  },
+  {
+   "file": "neon_picks/ihor_troyanov_intro_silent_loneliness.m4a",
+   "title": "Intro (Silent loneliness)",
+   "artist": "Ihor Troyanov",
+   "license": "CC0 1.0",
+   "seconds": 143.08
+  },
+  {
+   "file": "neon_picks/inconnu_05_grass.m4a",
+   "title": "Inconnu 05 Grass",
+   "artist": "Kevin MacLeod",
+   "license": "CC BY 4.0",
+   "seconds": 159.78
+  },
+  {
+   "file": "neon_picks/kara_square_transmutation.m4a",
+   "title": "Transmutation",
+   "artist": "Kara Square",
+   "license": "CC BY 3.0",
+   "seconds": 173.32
+  },
+  {
+   "file": "neon_picks/kly_lullaby.m4a",
+   "title": "Lullaby",
+   "artist": "KLY",
+   "license": "CC BY 3.0",
+   "seconds": 123.42
+  },
+  {
+   "file": "neon_picks/lordzintick_the_arplands.m4a",
+   "title": "The Arplands",
+   "artist": "LordZintick",
+   "license": "CC0 1.0",
+   "seconds": 144.0
+  },
+  {
+   "file": "neon_picks/megupets_hey_boss.m4a",
+   "title": "Hey Boss!",
+   "artist": "megupets",
+   "license": "CC0 1.0",
+   "seconds": 102.45
+  },
+  {
+   "file": "neon_picks/megupets_vaulty.m4a",
+   "title": "Vaulty",
+   "artist": "megupets",
+   "license": "CC0 1.0",
+   "seconds": 238.57
+  },
+  {
+   "file": "neon_picks/mintodog_space_city_space_city_bpm115_0.m4a",
+   "title": "Space City — space_city_bpm115_0",
+   "artist": "MintoDog",
+   "license": "CC0 1.0",
+   "seconds": 116.87
+  },
+  {
+   "file": "neon_picks/northivanastan_railgun_rain.m4a",
+   "title": "Railgun Rain",
+   "artist": "northivanastan",
+   "license": "CC0 1.0",
+   "seconds": 111.99
+  },
+  {
+   "file": "neon_picks/pavel_kingdom_graff_kawaii_girl_scatter_her_starwinks.m4a",
+   "title": "Kawaii Girl Scatter Her StarWinks",
+   "artist": "Pavel Kingdom Graff",
+   "license": "CC BY-SA 3.0",
+   "seconds": 257.04
+  },
+  {
+   "file": "neon_picks/pixel_nya_poofodeibohr.m4a",
+   "title": "Pixel Nya Poofodeibohr",
+   "artist": "Kevin MacLeod",
+   "license": "CC BY 4.0",
+   "seconds": 258.48
+  },
+  {
+   "file": "neon_picks/poinl_catch_me_if_you_can.m4a",
+   "title": "Catch Me If You Can!",
+   "artist": "poinl",
+   "license": "CC0 1.0",
+   "seconds": 151.95
+  },
+  {
+   "file": "neon_picks/request_theme_of_the_masked_man_loopable_chiptune_slow_broody_adventur.m4a",
+   "title": "Theme Of The Masked Man (Loopable, Chiptune, Slow Broody Adventure) — theme-of-the-masked-man_full",
+   "artist": "request",
+   "license": "CC BY 4.0",
+   "seconds": 140.4
+  },
+  {
+   "file": "neon_picks/rolemusic_spell.m4a",
+   "title": "Spell",
+   "artist": "Rolemusic",
+   "license": "CC BY 4.0",
+   "seconds": 136.62
+  },
+  {
+   "file": "neon_picks/snabisch_summer_gift.m4a",
+   "title": "Summer Gift",
+   "artist": "Snabisch",
+   "license": "CC BY 4.0",
+   "seconds": 132.6
+  },
+  {
+   "file": "neon_picks/snabisch_the_pattern_psg_version.m4a",
+   "title": "The Pattern (Psg Version)",
+   "artist": "Snabisch",
+   "license": "CC BY 3.0",
+   "seconds": 236.12
+  },
+  {
+   "file": "neon_picks/snabisch_the_village_nes_version.m4a",
+   "title": "The Village (Nes Version)",
+   "artist": "Snabisch",
+   "license": "CC BY 3.0",
+   "seconds": 221.6
+  },
+  {
+   "file": "neon_picks/spring_spring_deadly_dance.m4a",
+   "title": "Deadly Dance",
+   "artist": "Spring Spring",
+   "license": "CC BY 3.0",
+   "seconds": 95.68
+  },
+  {
+   "file": "neon_picks/spring_spring_dragon_s_village.m4a",
+   "title": "Dragon'S Village",
+   "artist": "Spring Spring",
+   "license": "CC BY 3.0",
+   "seconds": 230.6
+  },
+  {
+   "file": "neon_picks/stellarartwars_goat_145_stems.m4a",
+   "title": "Goat 145 + stems",
+   "artist": "stellarartwars",
+   "license": "CC BY 3.0",
+   "seconds": 350.9
+  },
+  {
+   "file": "neon_picks/tad_8_bit_lofi_cactu_sama_2.m4a",
+   "title": "8 Bit Lofi - Cactu Sama 2",
+   "artist": "TAD",
+   "license": "CC BY 4.0",
+   "seconds": 225.0
+  },
+  {
+   "file": "neon_picks/tad_trailer_music_epic_orchestra_music.m4a",
+   "title": "Trailer Music (Epic Orchestra Music)",
+   "artist": "TAD",
+   "license": "CC BY 3.0",
+   "seconds": 89.89
+  },
+  {
+   "file": "neon_picks/tausdei_the_last_parsec_the_last_parsec.m4a",
+   "title": "The Last Parsec — the_last_parsec",
+   "artist": "Tausdei",
+   "license": "CC BY 4.0",
+   "seconds": 171.98
+  },
+  {
+   "file": "neon_picks/the_britons.m4a",
+   "title": "The Britons",
+   "artist": "Kevin MacLeod",
+   "license": "CC BY 4.0",
+   "seconds": 306.24
+  },
+  {
+   "file": "neon_picks/thepixel_beautiful.m4a",
+   "title": "Beautiful",
+   "artist": "ThePixel",
+   "license": "CC0 1.0",
+   "seconds": 132.47
+  },
+  {
+   "file": "neon_picks/village_consort.m4a",
+   "title": "Village Consort",
+   "artist": "Kevin MacLeod",
+   "license": "CC BY 4.0",
+   "seconds": 214.74
+  },
+  {
+   "file": "neon_picks/vitalezzz_hyperspace.m4a",
+   "title": "Hyperspace",
+   "artist": "vitalezzz",
+   "license": "CC0 1.0",
+   "seconds": 230.01
+  },
+  {
+   "file": "neon_picks/vitalezzz_outworld.m4a",
+   "title": "Outworld",
+   "artist": "vitalezzz",
+   "license": "CC0 1.0",
+   "seconds": 184.51
+  },
+  {
+   "file": "neon_picks/vitalezzz_the_call_for_unity.m4a",
+   "title": "The Call For Unity",
+   "artist": "vitalezzz",
+   "license": "CC0 1.0",
+   "seconds": 173.74
+  },
+  {
+   "file": "neon_picks/wolfgang_ocean_theme.m4a",
+   "title": "Ocean Theme",
+   "artist": "Wolfgang_",
+   "license": "CC BY 4.0",
+   "seconds": 301.71
+  }
+ ]
+}

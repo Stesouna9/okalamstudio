@@ -1,0 +1,378 @@
+{
+ "emotion": [
+  {
+   "file": "Drops/emotion/link_ancient_mystery_waltz_allegro_ancient_mystery_waltz_presto.m4a",
+   "seconds": 17.92,
+   "from": "emotion_more/ancient_mystery_waltz__allegro.m4a",
+   "to": "emotion_more/ancient_mystery_waltz__presto.m4a"
+  },
+  {
+   "file": "Drops/emotion/link_ancient_mystery_waltz_presto_ancient_mystery_waltz_vivace.m4a",
+   "seconds": 11.32,
+   "from": "emotion_more/ancient_mystery_waltz__presto.m4a",
+   "to": "emotion_more/ancient_mystery_waltz__vivace.m4a"
+  },
+  {
+   "file": "Drops/emotion/link_ancient_mystery_waltz_vivace_aquarium.m4a",
+   "seconds": 19.72,
+   "from": "emotion_more/ancient_mystery_waltz__vivace.m4a",
+   "to": "canon/aquarium.m4a"
+  },
+  {
+   "file": "Drops/emotion/link_aquarium_big_drumming.m4a",
+   "seconds": 12.43,
+   "from": "canon/aquarium.m4a",
+   "to": "emotion_more/big_drumming.m4a"
+  },
+  {
+   "file": "Drops/emotion/link_big_drumming_canon_in_d_for_8_bit_synths.m4a",
+   "seconds": 40.24,
+   "from": "emotion_more/big_drumming.m4a",
+   "to": "canon/canon_in_d_for_8_bit_synths.m4a"
+  },
+  {
+   "file": "Drops/emotion/link_canon_in_d_for_8_bit_synths_canon_in_d_interstellar_mix.m4a",
+   "seconds": 41.92,
+   "from": "canon/canon_in_d_for_8_bit_synths.m4a",
+   "to": "canon/canon_in_d_interstellar_mix.m4a"
+  },
+  {
+   "file": "Drops/emotion/link_canon_in_d_interstellar_mix_cold_sober.m4a",
+   "seconds": 37.39,
+   "from": "canon/canon_in_d_interstellar_mix.m4a",
+   "to": "conservatory/cold_sober.m4a"
+  },
+  {
+   "file": "Drops/emotion/link_cold_sober_cottages.m4a",
+   "seconds": 31.4,
+   "from": "conservatory/cold_sober.m4a",
+   "to": "glade/cottages.m4a"
+  },
+  {
+   "file": "Drops/emotion/link_cottages_ether_vox.m4a",
+   "seconds": 20.04,
+   "from": "glade/cottages.m4a",
+   "to": "emotion_more/ether_vox.m4a"
+  },
+  {
+   "file": "Drops/emotion/link_ether_vox_evening.m4a",
+   "seconds": 9.66,
+   "from": "emotion_more/ether_vox.m4a",
+   "to": "twilight/evening.m4a"
+  },
+  {
+   "file": "Drops/emotion/link_evening_farm.m4a",
+   "seconds": 18.58,
+   "from": "twilight/evening.m4a",
+   "to": "glade/farm.m4a"
+  },
+  {
+   "file": "Drops/emotion/link_farm_fuzzball_parade.m4a",
+   "seconds": 32.4,
+   "from": "glade/farm.m4a",
+   "to": "emotion/fuzzball_parade.m4a"
+  },
+  {
+   "file": "Drops/emotion/link_fuzzball_parade_grand_dark_waltz_trio_allegro.m4a",
+   "seconds": 35.58,
+   "from": "emotion/fuzzball_parade.m4a",
+   "to": "conservatory/grand_dark_waltz_trio_allegro.m4a"
+  },
+  {
+   "file": "Drops/emotion/link_grand_dark_waltz_trio_allegro_grand_dark_waltz_trio_vivace.m4a",
+   "seconds": 11.68,
+   "from": "conservatory/grand_dark_waltz_trio_allegro.m4a",
+   "to": "conservatory/grand_dark_waltz_trio_vivace.m4a"
+  },
+  {
+   "file": "Drops/emotion/link_grand_dark_waltz_trio_vivace_guzheng_city.m4a",
+   "seconds": 17.61,
+   "from": "conservatory/grand_dark_waltz_trio_vivace.m4a",
+   "to": "emotion_more/guzheng_city.m4a"
+  },
+  {
+   "file": "Drops/emotion/link_guzheng_city_joey_s_formal_waltz_scented.m4a",
+   "seconds": 13.89,
+   "from": "emotion_more/guzheng_city.m4a",
+   "to": "emotion_more/joey_s_formal_waltz___scented.m4a"
+  },
+  {
+   "file": "Drops/emotion/link_journey_to_ascend_late_night_radio.m4a",
+   "seconds": 6.36,
+   "from": "emotion_more/journey_to_ascend.m4a",
+   "to": "emotion_more/late_night_radio.m4a"
+  }
+ ],
+ "sunset": [
+  {
+   "file": "Drops/sunset/link_admiral_bob_wanderer_take_2_aurea_carmina.m4a",
+   "seconds": 18.12,
+   "from": "sunset_picks/admiral_bob_wanderer_take_2.m4a",
+   "to": "disco/aurea_carmina.m4a"
+  },
+  {
+   "file": "Drops/sunset/link_aurea_carmina_bocrew_human_world.m4a",
+   "seconds": 25.32,
+   "from": "disco/aurea_carmina.m4a",
+   "to": "sunset_picks/bocrew_human_world.m4a"
+  }
+ ],
+ "tropicana": [
+  {
+   "file": "Drops/tropicana/link_adding_the_sun_adventures_in_adventureland.m4a",
+   "seconds": 25.59,
+   "from": "tambor/adding_the_sun.m4a",
+   "to": "faire/adventures_in_adventureland.m4a"
+  },
+  {
+   "file": "Drops/tropicana/link_adventures_in_adventureland_arroz_con_pollo.m4a",
+   "seconds": 22.32,
+   "from": "faire/adventures_in_adventureland.m4a",
+   "to": "tropicana/arroz_con_pollo.m4a"
+  },
+  {
+   "file": "Drops/tropicana/link_arroz_con_pollo_beachfront_celebration.m4a",
+   "seconds": 15.34,
+   "from": "tropicana/arroz_con_pollo.m4a",
+   "to": "tropicana_more/beachfront_celebration.m4a"
+  },
+  {
+   "file": "Drops/tropicana/link_arroz_con_pollo_blue_ska.m4a",
+   "seconds": 13.39,
+   "from": "tropicana/arroz_con_pollo.m4a",
+   "to": "dubwise/blue_ska.m4a"
+  },
+  {
+   "file": "Drops/tropicana/link_beachfront_celebration_blue_ska.m4a",
+   "seconds": 34.39,
+   "from": "tropicana_more/beachfront_celebration.m4a",
+   "to": "dubwise/blue_ska.m4a"
+  },
+  {
+   "file": "Drops/tropicana/link_blue_ska_bossabossa.m4a",
+   "seconds": 14.98,
+   "from": "dubwise/blue_ska.m4a",
+   "to": "tropicana/bossabossa.m4a"
+  },
+  {
+   "file": "Drops/tropicana/link_bossabossa_bumba_crossing.m4a",
+   "seconds": 12.2,
+   "from": "tropicana/bossabossa.m4a",
+   "to": "tambor/bumba_crossing.m4a"
+  },
+  {
+   "file": "Drops/tropicana/link_bumba_crossing_carnivale_intrigue.m4a",
+   "seconds": 15.26,
+   "from": "tambor/bumba_crossing.m4a",
+   "to": "tropicana_more/carnivale_intrigue.m4a"
+  },
+  {
+   "file": "Drops/tropicana/link_carnivale_intrigue_casa_bossa_nova.m4a",
+   "seconds": 16.33,
+   "from": "tropicana_more/carnivale_intrigue.m4a",
+   "to": "tropicana_more/casa_bossa_nova.m4a"
+  },
+  {
+   "file": "Drops/tropicana/link_casa_bossa_nova_chenard_walcker_kali_ghata_chhaye.m4a",
+   "seconds": 14.58,
+   "from": "tropicana_more/casa_bossa_nova.m4a",
+   "to": "tropicana_picks/chenard_walcker_kali_ghata_chhaye.m4a"
+  },
+  {
+   "file": "Drops/tropicana/link_casa_bossa_nova_cuban_sandwich.m4a",
+   "seconds": 18.94,
+   "from": "tropicana_more/casa_bossa_nova.m4a",
+   "to": "tropicana_more/cuban_sandwich.m4a"
+  },
+  {
+   "file": "Drops/tropicana/link_chenard_walcker_kali_ghata_chhaye_cuban_sandwich.m4a",
+   "seconds": 49.63,
+   "from": "tropicana_picks/chenard_walcker_kali_ghata_chhaye.m4a",
+   "to": "tropicana_more/cuban_sandwich.m4a",
+   "page": true
+  },
+  {
+   "file": "Drops/tropicana/link_cuban_sandwich_del_rio_bravo.m4a",
+   "seconds": 15.95,
+   "from": "tropicana_more/cuban_sandwich.m4a",
+   "to": "tropicana/del_rio_bravo.m4a"
+  },
+  {
+   "file": "Drops/tropicana/link_del_rio_bravo_devonshire_waltz_allegretto.m4a",
+   "seconds": 27.68,
+   "from": "tropicana/del_rio_bravo.m4a",
+   "to": "faire/devonshire_waltz_allegretto.m4a"
+  },
+  {
+   "file": "Drops/tropicana/link_devonshire_waltz_allegretto_digya.m4a",
+   "seconds": 38.47,
+   "from": "faire/devonshire_waltz_allegretto.m4a",
+   "to": "tambor/digya.m4a"
+  },
+  {
+   "file": "Drops/tropicana/link_digya_dub_eastern.m4a",
+   "seconds": 31.46,
+   "from": "tambor/digya.m4a",
+   "to": "dubwise/dub_eastern.m4a"
+  },
+  {
+   "file": "Drops/tropicana/link_digya_dubakupado.m4a",
+   "seconds": 10.84,
+   "from": "tambor/digya.m4a",
+   "to": "tropicana_more/dubakupado.m4a"
+  },
+  {
+   "file": "Drops/tropicana/link_dub_eastern_dub_feral.m4a",
+   "seconds": 16.69,
+   "from": "dubwise/dub_eastern.m4a",
+   "to": "tropicana_more/dub_feral.m4a"
+  },
+  {
+   "file": "Drops/tropicana/link_dub_feral_dubakupado.m4a",
+   "seconds": 22.41,
+   "from": "tropicana_more/dub_feral.m4a",
+   "to": "tropicana_more/dubakupado.m4a"
+  },
+  {
+   "file": "Drops/tropicana/link_dubakupado_duckett_no_flowers_no_cry.m4a",
+   "seconds": 58.64,
+   "from": "tropicana_more/dubakupado.m4a",
+   "to": "tropicana_picks/duckett_no_flowers_no_cry.m4a",
+   "page": true
+  },
+  {
+   "file": "Drops/tropicana/link_dubakupado_energizing.m4a",
+   "seconds": 25.78,
+   "from": "tropicana_more/dubakupado.m4a",
+   "to": "tambor/energizing.m4a"
+  },
+  {
+   "file": "Drops/tropicana/link_duckett_no_flowers_no_cry_energizing.m4a",
+   "seconds": 16.69,
+   "from": "tropicana_picks/duckett_no_flowers_no_cry.m4a",
+   "to": "tambor/energizing.m4a"
+  },
+  {
+   "file": "Drops/tropicana/link_energizing_gonna_start.m4a",
+   "seconds": 19.55,
+   "from": "tambor/energizing.m4a",
+   "to": "dubwise/gonna_start.m4a"
+  },
+  {
+   "file": "Drops/tropicana/link_gonna_start_gonna_start_v2.m4a",
+   "seconds": 24.41,
+   "from": "dubwise/gonna_start.m4a",
+   "to": "dubwise/gonna_start_v2.m4a"
+  },
+  {
+   "file": "Drops/tropicana/link_gonna_start_v2_hackbeat.m4a",
+   "seconds": 46.11,
+   "from": "dubwise/gonna_start_v2.m4a",
+   "to": "tropicana_more/hackbeat.m4a"
+  },
+  {
+   "file": "Drops/tropicana/link_hackbeat_maccary_bay.m4a",
+   "seconds": 39.85,
+   "from": "tropicana_more/hackbeat.m4a",
+   "to": "dubwise/maccary_bay.m4a"
+  },
+  {
+   "file": "Drops/tropicana/link_maccary_bay_mana_two_part_1.m4a",
+   "seconds": 19.95,
+   "from": "dubwise/maccary_bay.m4a",
+   "to": "faire/mana_two___part_1.m4a"
+  },
+  {
+   "file": "Drops/tropicana/link_mana_two_part_1_mana_two_part_3.m4a",
+   "seconds": 31.48,
+   "from": "faire/mana_two___part_1.m4a",
+   "to": "faire/mana_two___part_3.m4a"
+  },
+  {
+   "file": "Drops/tropicana/link_mana_two_part_3_mandeville.m4a",
+   "seconds": 24.98,
+   "from": "faire/mana_two___part_3.m4a",
+   "to": "tropicana_more/mandeville.m4a"
+  },
+  {
+   "file": "Drops/tropicana/link_mandeville_montego.m4a",
+   "seconds": 37.79,
+   "from": "tropicana_more/mandeville.m4a",
+   "to": "tropicana_more/montego.m4a"
+  },
+  {
+   "file": "Drops/tropicana/link_montego_royal_coupling.m4a",
+   "seconds": 28.18,
+   "from": "tropicana_more/montego.m4a",
+   "to": "faire/royal_coupling.m4a"
+  },
+  {
+   "file": "Drops/tropicana/link_royal_coupling_slow_heat.m4a",
+   "seconds": 39.82,
+   "from": "faire/royal_coupling.m4a",
+   "to": "tropicana_more/slow_heat.m4a"
+  },
+  {
+   "file": "Drops/tropicana/link_slow_heat_sunday_dub.m4a",
+   "seconds": 41.19,
+   "from": "tropicana_more/slow_heat.m4a",
+   "to": "dubwise/sunday_dub.m4a"
+  },
+  {
+   "file": "Drops/tropicana/link_sunday_dub_tafi_maradi_no_voice.m4a",
+   "seconds": 49.85,
+   "from": "dubwise/sunday_dub.m4a",
+   "to": "tropicana_more/tafi_maradi_no_voice.m4a"
+  },
+  {
+   "file": "Drops/tropicana/link_tafi_maradi_no_voice_thief_in_the_night.m4a",
+   "seconds": 26.26,
+   "from": "tropicana_more/tafi_maradi_no_voice.m4a",
+   "to": "dubwise/thief_in_the_night.m4a"
+  },
+  {
+   "file": "Drops/tropicana/link_thief_in_the_night_trouble_with_tribals.m4a",
+   "seconds": 13.1,
+   "from": "dubwise/thief_in_the_night.m4a",
+   "to": "tambor/trouble_with_tribals.m4a"
+  },
+  {
+   "file": "Drops/tropicana/link_trouble_with_tribals_upbeat_forever.m4a",
+   "seconds": 20.5,
+   "from": "tambor/trouble_with_tribals.m4a",
+   "to": "dubwise/upbeat_forever.m4a"
+  },
+  {
+   "file": "Drops/tropicana/link_upbeat_forever_verano_sensual.m4a",
+   "seconds": 13.6,
+   "from": "dubwise/upbeat_forever.m4a",
+   "to": "tropicana/verano_sensual.m4a"
+  },
+  {
+   "file": "Drops/tropicana/link_verano_sensual_wepa.m4a",
+   "seconds": 15.51,
+   "from": "tropicana/verano_sensual.m4a",
+   "to": "tropicana/wepa.m4a"
+  },
+  {
+   "file": "Drops/tropicana/link_wepa_yallahs.m4a",
+   "seconds": 19.52,
+   "from": "tropicana/wepa.m4a",
+   "to": "tropicana_more/yallahs.m4a"
+  },
+  {
+   "file": "Drops/tropicana/link_yallahs_adding_the_sun.m4a",
+   "seconds": 16.35,
+   "from": "tropicana_more/yallahs.m4a",
+   "to": "tambor/adding_the_sun.m4a"
+  }
+ ],
+ "volt": [
+  {
+   "file": "Drops/volt/link_admiral_bob_into_the_j_admiral_bob_light_me_on_fire.m4a",
+   "seconds": 9.96,
+   "from": "volt_picks/admiral_bob_into_the_j.m4a",
+   "to": "volt_picks/admiral_bob_light_me_on_fire.m4a"
+  }
+ ]
+}
