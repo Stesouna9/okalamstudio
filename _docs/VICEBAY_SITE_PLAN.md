@@ -66,3 +66,12 @@ Statique (HTML/CSS/JS, pas de framework), lecteur `.vbr` réutilisé, data en JS
 | 1/11 | Site = page d'atterrissage des pubs |
 
 Effort : ~4 jours de Claude, ~2 h de Gabriel (décisions, relecture, achat domaine éventuel).
+
+## 8. État — v1 radio (28/09)
+En attendant le repo `okalamstudio/vicebay` et le choix d'adresse (décision 1), la v1 vit dans `vicebay/` de ce repo → `okalamstudio.com/vicebay/`, en `noindex`, non liée depuis le menu (relecture privée). Déplaçable telle quelle : les chemins passent par `data-base`.
+- `index.html` : héros « Office du tourisme 1986 », 5 cartes station jouables, 5 quartiers, carte postale, bloc VICE BREAK en bas.
+- `radio.html` : fiche par station (`#tropicana`…), playlist cliquable, crédits CC BY.
+- `quartiers.html` : 5 quartiers, chacun relié à une station.
+- `vicebay.js` : FR/EN, heure de Vice Bay (heure locale en 1986) + météo fictive, dock radio (dernière station mémorisée).
+- Données : `vicebay/data/stations.json` (fréquences, slogans FR/EN d'après HANDOFF, VOLT = soft jazz/soul) + playlists `audio/stations.json`.
+- Manque (sources pas dans ce repo) : annuaire des 25 commerces, pubs, bios animateurs, artworks, audio Hetzner.
