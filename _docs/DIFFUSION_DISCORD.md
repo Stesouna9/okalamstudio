@@ -33,6 +33,8 @@ Même texte que 2, remplacer TestFlight par « closed test on Google Play », im
 - Espacer : lundi r/outrun, mercredi r/iosgaming, vendredi r/jeuxvideo, semaine suivante les autres.
 - Répondre à chaque commentaire. Si un post prend, l'épingler sur le Discord (#annonces).
 
-## Annuaires (Claude)
-- disboard.org : fiche remplie le 28/09 (langue FR, tags casse-briques / synthwave / retro / indie-game / mobile, description). Bloquée sur le captcha Cloudflare → Gabriel clique, puis « bump » toutes les 2 h possible via le bot DISBOARD (à ajouter au serveur) : commande `/bump` dans un salon.
-- discord.me, top.gg (serveurs) : à faire après disboard.
+## Annuaires (état 28/09 soir)
+- **discord.me : fait.** Fiche https://discord.me/vicebreak (FR, Gaming/Music, tags indie·synthwave·retro·mobile·français), premier bump fait. Bump 4×/jour possible depuis https://discord.me/dashboard (bouton « Bump Server »), points remis à zéro le vendredi soir.
+- **disboard.org : bloqué.** Formulaire rempli 3 fois, le Save retombe sur la vérification Cloudflare (« Just a moment… ») et rien n'est enregistré. Gabriel, à la main, 2 minutes : https://disboard.org/server/new/1553736485038194729 → langue Français, tags casse-briques / synthwave / retro / indie-game / mobile, description (copier celle de discord.me), Save. Ensuite ajouter le bot DISBOARD au serveur et taper `/bump` toutes les 2 h.
+- **discadia.com : bloqué** (contrôle humain avant le login Discord). Optionnel.
+- **Site okalamstudio.com : pastille Discord** fixe en bas de toutes les pages (sauf vicebreak.html qui a déjà le dock radio + boutons), 6 langues.
