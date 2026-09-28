@@ -1,6 +1,7 @@
 // ── OKALAM Shared i18n — all pages ──
 const PAGE_T = {
   en: {
+    vb_radio_site:"🌴 The radio's own site: stations, hosts, the 25 fake ads → vicebayradio.com",
     disc_pill:'💬 Join the VICE BREAK Discord · beta + radio',
     vbr_off:'RADIO OFF',
     vbr_pick:'Pick a station',
@@ -244,6 +245,7 @@ const PAGE_T = {
   },
 
   fr: {
+    vb_radio_site:'🌴 Le site de la radio : stations, animateurs, les 25 fausses pubs → vicebayradio.com',
     disc_pill:'💬 Rejoindre le Discord VICE BREAK · bêta + radio',
     vbr_off:'RADIO COUPÉE',
     vbr_pick:'Choisis une station',
@@ -477,6 +479,7 @@ const PAGE_T = {
   },
 
   ja: {
+    vb_radio_site:'🌴 ラジオ専用サイト：局、DJ、25本の架空CM → vicebayradio.com',
     disc_pill:'💬 VICE BREAK Discordに参加 · ベータ + ラジオ',
     vb_badge:'iOS + Android 配信 · 2026年11月19日',
     vb_radio_label:'Vice Bay Radio',
@@ -701,6 +704,7 @@ const PAGE_T = {
   },
 
   zh: {
+    vb_radio_site:'🌴 电台官网：电台、主持人、25 条虚构广告 → vicebayradio.com',
     disc_pill:'💬 加入 VICE BREAK Discord · 测试版 + 电台',
     vb_badge:'iOS + Android 上线 · 2026年11月19日',
     vb_radio_label:'Vice Bay Radio',
@@ -925,6 +929,7 @@ const PAGE_T = {
   },
 
   es: {
+    vb_radio_site:'🌴 El sitio de la radio: emisoras, locutores, los 25 anuncios falsos → vicebayradio.com',
     disc_pill:'💬 Únete al Discord de VICE BREAK · beta + radio',
     vb_badge:'Lanzamiento iOS + Android · 19 de noviembre de 2026',
     vb_radio_label:'Vice Bay Radio',
@@ -1149,6 +1154,7 @@ const PAGE_T = {
   },
 
   pt: {
+    vb_radio_site:'🌴 O site da rádio: estações, locutores, os 25 anúncios falsos → vicebayradio.com',
     disc_pill:'💬 Entre no Discord do VICE BREAK · beta + rádio',
     vb_badge:'Lançamento iOS + Android · 19 de novembro de 2026',
     vb_radio_label:'Vice Bay Radio',
