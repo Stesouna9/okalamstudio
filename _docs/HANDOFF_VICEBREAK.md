@@ -46,3 +46,6 @@ Vice Bay Studio a intégré le plan (onglet 📣 PUB & ENGAGEMENT du studio, jal
 - Crédits musique : générés par `tools/build_radio.py` (CREDITS.txt) à chaque reconstruction, demander le fichier à la session Projet G.
 
 _Mis à jour le 2026-09-26 par Vice Bay Studio._
+## Discord communautaire (28/09/2026, décision de Gabriel)
+Serveur Discord « VICE BREAK · OKALAM Studio » ouvert, invitation permanente : **https://discord.gg/TSaxEnt2dG**.
+À mettre sur le site : bouton « 💬 Rejoindre le Discord » dans les CTA du hero de `vicebreak.html` (à côté de « Allumer la radio »), un lien dans le teaser Vice Break de `projets.html`, et dans le pied de page / contact si un bloc « communauté » existe. Texte court : « Bugs, suggestions, bêta iOS/Android, coulisses de Vice Bay Radio. » Pas de compteur de membres. Clés i18n à ajouter (FR/EN au minimum) : `vb_cta_discord` = « Rejoindre le Discord » / « Join the Discord ».
