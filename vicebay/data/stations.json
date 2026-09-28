@@ -1,0 +1,25 @@
+{
+  "_source": "_docs/HANDOFF_VICEBREAK.md (Vice Bay Studio, 26/09). Playlists : ../audio/stations.json.",
+  "stations": [
+    {"id":"tropicana","freq":88.5,"name":"TROPICANA","color":"#2BB3A3","logo":"../img/radio_tropicana.png",
+     "genre":{"fr":"Latin · Salsa · Cuivres","en":"Latin · Salsa · Brass"},
+     "slogan":{"fr":"« Le soleil se lève sur 88.5. »","en":"“The sun rises on 88.5.”"},
+     "hours":{"fr":"Le matin de Vice Bay, fenêtres ouvertes","en":"Vice Bay mornings, windows down"}},
+    {"id":"emotion","freq":98.3,"name":"EMOTION","color":"#4DD0E1","logo":"../img/radio_emotion.png",
+     "genre":{"fr":"Slows · Ballades · Saxo","en":"Slow dances · Ballads · Sax"},
+     "slogan":{"fr":"« Éteignez la lumière. Le cœur passe en fréquence modulée. »","en":"“Turn off the lights. Your heart is on frequency modulation.”"},
+     "hours":{"fr":"Pour les cœurs qui ne dorment pas","en":"For hearts that can't sleep"}},
+    {"id":"sunset","freq":102.7,"name":"SUNSET DRIVE","color":"#F2B33D","logo":"../img/radio_sunset.png",
+     "genre":{"fr":"Synthwave · Route · Arpèges","en":"Synthwave · Road · Arpeggios"},
+     "slogan":{"fr":"« 102.7, le soleil tombe, pas vous. »","en":"“102.7 — the sun goes down, you don't.”"},
+     "hours":{"fr":"La bande-son de l'autoroute côtière","en":"The coastal highway soundtrack"}},
+    {"id":"neon","freq":103.5,"name":"NEON","color":"#FF2E88","logo":"../img/radio_neon.png","soon":true,
+     "genre":{"fr":"Chiptune · 8-bit · Musique de jeu","en":"Chiptune · 8-bit · Game music"},
+     "slogan":{"fr":"« Insérez une pièce et ça repart. »","en":"“Insert a coin and off we go.”"},
+     "hours":{"fr":"Nouvelle programmation, bientôt à l'antenne","en":"New programming, on air soon"}},
+    {"id":"volt","freq":107.3,"name":"VOLT","color":"#FF7A3D","logo":"../img/radio_volt.png",
+     "genre":{"fr":"Soft jazz · Soul · Classiques américains","en":"Soft jazz · Soul · American classics"},
+     "slogan":{"fr":"« Le groove n'attend pas. Big Lou non plus. »","en":"“The groove won't wait. Neither will Big Lou.”"},
+     "hours":{"fr":"Big Lou, tard dans la nuit","en":"Big Lou, late into the night"}}
+  ]
+}

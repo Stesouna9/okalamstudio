@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Vice Bay — Office du tourisme · Vice Bay Radio</title>
+<meta name="description" content="Bienvenue à Vice Bay, 1986 : cinq quartiers, cinq radios FM à écouter en ligne, un seul coucher de soleil."/>
+<meta name="robots" content="noindex"/>
+<meta property="og:title" content="Vice Bay — Office du tourisme · Vice Bay Radio"/><meta property="og:description" content="Bienvenue à Vice Bay, 1986 : cinq quartiers, cinq radios FM à écouter en ligne, un seul coucher de soleil."/>
+<meta property="og:image" content="https://okalamstudio.com/img/vicebay_radio_1x1.png"/>
+<meta name="theme-color" content="#0B0A1E"/>
+<link rel="icon" href="../img/vicebay_radio_1x1.png"/>
+<link href="https://fonts.googleapis.com/css2?family=Monoton&family=Orbitron:wght@500;700;900&family=DM+Sans:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="vicebay.css?v=20260928"/>
+</head>
+<body data-base="../">
+<header class="vb-top">
+  <a class="vb-brand" href="index.html">VICE <span>BAY</span></a>
+  <nav class="vb-menu">
+    <a href="index.html" aria-current="page" data-t="nav_home">Accueil</a>
+    <a href="radio.html" data-t="nav_radio">La radio</a>
+    <a href="quartiers.html" data-t="nav_city">Quartiers</a>
+    <a href="../vicebreak.html" data-t="nav_game">Le jeu</a>
+  </nav>
+  <div class="vb-status"><span class="wx"></span><span class="clock"></span>
+    <div class="vb-lang"><button type="button" data-lang="fr">FR</button><button type="button" data-lang="en">EN</button></div>
+  </div>
+</header>
+<section class="vb-hero">
+  <div class="vb-stars"></div><div class="vb-sun"></div><div class="vb-palms"></div><div class="vb-floor"></div>
+  <div class="vb-hero-in">
+    <div class="vb-kicker" data-t="home_kicker"></div>
+    <h1 class="vb-title" data-t="home_title">Vice Bay</h1>
+    <p class="vb-sub" data-t="home_sub"></p>
+    <div class="vb-ctas"><a class="vb-btn primary" href="radio.html" data-tune="tropicana" data-t="cta_radio">📻 Allumer la radio</a><a class="vb-btn" href="quartiers.html" data-t="cta_city">Visiter les quartiers</a></div>
+  </div>
+</section>
+
+<section class="vb-sec" id="radio" style="background:linear-gradient(180deg,var(--night),#160a2a 50%,var(--night));">
+  <div class="vb-in">
+    <div class="vb-label" data-t="radio_label">Vice Bay Radio</div>
+    <h2 class="vb-h2" data-t="radio_title"></h2>
+    <p class="vb-p" data-t="radio_p"></p>
+    <div class="vb-grid5" data-stations></div>
+    <p style="margin-top:26px"><a class="vb-btn" href="radio.html" data-t="radio_all">Toutes les stations →</a></p>
+  </div>
+</section>
+
+<section class="vb-sec">
+  <div class="vb-in">
+    <div class="vb-label" data-t="city_label">La ville</div>
+    <h2 class="vb-h2" data-t="city_title"></h2>
+    <p class="vb-p" data-t="city_p"></p>
+    <div class="vb-districts"><a class="vb-d" href="quartiers.html#ocean" style="background:linear-gradient(180deg,#0B0A1E 0%,#5A2A83 50%,#FF6F59 100%);--sun:#F2B33D"><b>Ocean Drive</b><small data-t="q_ocean_tag"></small></a><a class="vb-d" href="quartiers.html#downtown" style="background:linear-gradient(180deg,#0B0A1E 0%,#1C1650 55%,#5A2A83 100%);--sun:#E5B84B"><b>Downtown</b><small data-t="q_down_tag"></small></a><a class="vb-d" href="quartiers.html#everglades" style="background:linear-gradient(180deg,#0B0A1E 0%,#0B0A1E 50%,#1d3a2a 100%);--sun:#3E7C4F"><b>Everglades</b><small data-t="q_ever_tag"></small></a><a class="vb-d" href="quartiers.html#highway" style="background:linear-gradient(180deg,#0B0A1E 0%,#1C1650 55%,#FFA630 100%);--sun:#FFA630"><b>Night Highway</b><small data-t="q_night_tag"></small></a><a class="vb-d" href="quartiers.html#skyline" style="background:linear-gradient(180deg,#0B0A1E 0%,#5A2A83 55%,#FF2E88 100%);--sun:#FF2E88"><b>Skyline</b><small data-t="q_sky_tag"></small></a></div>
+  </div>
+</section>
+
+<section class="vb-sec" style="padding-top:0">
+  <div class="vb-in">
+    <div class="vb-label" data-t="post_label">Carte postale</div>
+    <h2 class="vb-h2" data-t="post_title"></h2>
+    <div class="vb-post">
+      <div class="vb-card"><div class="ic">📻</div><big>5</big><h3 data-t="post1_t"></h3><p data-t="post1_p"></p></div>
+      <div class="vb-card"><div class="ic">🌇</div><big>1</big><h3 data-t="post2_t"></h3><p data-t="post2_p"></p></div>
+      <div class="vb-card"><div class="ic">🌴</div><big>1986</big><h3 data-t="post3_t"></h3><p data-t="post3_p"></p></div>
+    </div>
+  </div>
+</section>
+
+<section class="vb-game">
+  <div class="vb-kicker" data-t="game_kicker">Visitez Vice Bay dans</div>
+  <div class="logo">VICE BREAK</div>
+  <p data-t="game_p"></p>
+  <div class="vb-ctas"><a class="vb-btn primary" href="../vicebreak.html" data-t="game_cta">Découvrir VICE BREAK</a><a class="vb-btn" href="https://discord.gg/TSaxEnt2dG" target="_blank" rel="noopener" data-t="discord">💬 Rejoindre le Discord</a></div>
+</section>
+<footer class="vb-foot"><span data-t="foot"></span> · <a href="../index.html">okalamstudio.com</a> · © 2026</footer>
+
+<aside class="vbd" aria-label="Vice Bay Radio">
+  <div class="vbd-in">
+    <button class="vbd-tog" type="button" aria-label="Lecture / pause">▶</button>
+    <div class="vbd-now"><b>📻 VICE BAY RADIO</b><span></span><div class="vbd-bar"><i></i></div></div>
+    <div class="vbd-chips"></div>
+    <button class="vbd-skip" type="button" aria-label="Titre suivant">⏭</button>
+    <div class="vbd-vol"><button type="button" aria-label="Couper le son">🔉</button><input type="range" min="0" max="100" aria-label="Volume"/></div>
+    <span class="vbd-onair"></span>
+  </div>
+</aside>
+<script src="vicebay.js?v=20260928"></script>
+</body>
+</html>
