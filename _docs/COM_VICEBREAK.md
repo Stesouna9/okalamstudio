@@ -116,12 +116,12 @@ Hashtags : `#VICEBREAK #ViceBay #synthwave #outrun #retrogaming #casse-briques #
 
 - **Reddit** : r/jeuxvideo, r/AndroidGaming, r/iosgaming, r/IndieGaming, r/outrun, r/synthwave, r/Breakout (petit), r/gamedev (post-mortem après sortie). Un post honnête « je suis un dev solo, voilà mon jeu » avec une vidéo, en respectant les règles d'auto-promo de chaque sub. Poster 2 subs par jour maximum, répondre à tous les commentaires.
 - **Discord** : serveurs synthwave FR, serveurs jeu vidéo FR, serveur Rétro. Chercher les salons « vos projets ».
-- **Forums** : TouchArcade (thread « Upcoming iOS games »), jeuxvideo.com (forum Jeux mobiles).
+- **Forums** : jeuxvideo.com (forum Jeux mobiles).
 - **Itch / IndieDB** : fiche du jeu, c'est référencé par Google et repris par des newsletters.
 
 ### 4.5 Presse et créateurs (gratuit, envoi le 20/10 puis relance le 5/11)
 
-Cibles FR : Gamekult, jeuxvideo.com, Canard PC, JV Tech, Frandroid (rubrique apps), iPhon.fr, iGeneration, Pocket Gamer FR. Cibles EN : TouchArcade, Pocket Gamer, AppAdvice, Droid Gamers, Indie Games Plus, Rock Paper Shotgun (angle « la sortie dans l'ombre du 19 novembre »).
+Cibles FR : Gamekult, jeuxvideo.com, Canard PC, JV Tech, Frandroid (rubrique apps), iPhon.fr, iGeneration, Gamergen, ActuGaming, Journal du Geek. Cibles EN : Pocket Gamer, AppAdvice, Droid Gamers, Indie Games Plus, Rock Paper Shotgun (angle « la sortie dans l'ombre du 19 novembre »), Pocket Tactics, 148Apps, Android Police, 9to5Mac. TouchArcade a fermé en septembre 2024 et Pocket Gamer FR est en pause depuis novembre 2025 : ne plus les cibler. Contacts dans `COM_VICEBREAK_CONTACTS.md`.
 
 Créateurs : 20 chaînes YouTube et TikTok FR jeu vidéo / rétro / synthwave de 5 k à 100 k abonnés. On leur propose l'accès anticipé (TestFlight / test interne Play) et un **code créateur** dans le jeu (10 jetons) : ça donne quelque chose à offrir à leur audience.
 
