@@ -394,6 +394,15 @@ const PAGE_T = {
     home_port_go:'Discover →',
     home_crea_label:'Creators and brands',
     home_hero_cta2:'Everything we do',
+    home_hero_tag:'Games. Apps. Artists. Creators. Creation.',
+    home_hero_cta1:'Work with us',
+    home_s1:'games and apps designed and published by the studio',
+    home_s2:'crafts within a single team',
+    home_s3:'languages for every project',
+    home_s4:'creators supported day to day',
+    home_end_title:'A project, a brand, a talent?',
+    home_end_p:'Game, app, artist or creator support, production: we answer you directly, no middlemen.',
+    home_end_cta:'Write to us',
   },
 
   fr: {
@@ -780,6 +789,15 @@ const PAGE_T = {
     home_port_go:'Découvrir →',
     home_crea_label:'Créateurs et marques',
     home_hero_cta2:'Tout ce qu\'on fait',
+    home_hero_tag:'Jeux. Apps. Artistes. Créateurs. Création.',
+    home_hero_cta1:'Travailler avec nous',
+    home_s1:'jeux et apps conçus et publiés par le studio',
+    home_s2:'métiers réunis dans une seule équipe',
+    home_s3:'langues pour chaque projet',
+    home_s4:'créateurs accompagnés au quotidien',
+    home_end_title:'Un projet, une marque, un talent ?',
+    home_end_p:'Jeu, application, accompagnement d\'artiste ou de créateur, production : on vous répond directement, sans intermédiaire.',
+    home_end_cta:'Nous écrire',
   },
 
   ja: {
@@ -1164,6 +1182,15 @@ const PAGE_T = {
     home_port_go:'詳しく見る →',
     home_crea_label:'クリエイターとブランド',
     home_hero_cta2:'私たちの仕事',
+    home_hero_tag:'ゲーム。アプリ。アーティスト。クリエイター。制作。',
+    home_hero_cta1:'一緒に仕事をする',
+    home_s1:'スタジオが企画・配信するゲームとアプリ',
+    home_s2:'ひとつのチームに集まる仕事',
+    home_s3:'全プロジェクトの対応言語',
+    home_s4:'日々支援しているクリエイター',
+    home_end_title:'プロジェクト、ブランド、才能をお持ちですか？',
+    home_end_p:'ゲーム、アプリ、アーティストやクリエイターの支援、制作。仲介なしで直接お答えします。',
+    home_end_cta:'お問い合わせ',
   },
 
   zh: {
@@ -1548,6 +1575,15 @@ const PAGE_T = {
     home_port_go:'了解更多 →',
     home_crea_label:'创作者与品牌',
     home_hero_cta2:'我们的业务',
+    home_hero_tag:'游戏。应用。艺术家。创作者。创作。',
+    home_hero_cta1:'与我们合作',
+    home_s1:'款由工作室设计并发布的游戏与应用',
+    home_s2:'项业务，一个团队',
+    home_s3:'种语言，覆盖每个项目',
+    home_s4:'位长期陪伴的创作者',
+    home_end_title:'有项目、品牌或才华？',
+    home_end_p:'游戏、应用、艺术家或创作者陪伴、内容制作：我们直接回复，没有中间人。',
+    home_end_cta:'联系我们',
   },
 
   es: {
@@ -1932,6 +1968,15 @@ const PAGE_T = {
     home_port_go:'Descubrir →',
     home_crea_label:'Creadores y marcas',
     home_hero_cta2:'Todo lo que hacemos',
+    home_hero_tag:'Juegos. Apps. Artistas. Creadores. Creación.',
+    home_hero_cta1:'Trabajar con nosotros',
+    home_s1:'juegos y apps diseñados y publicados por el estudio',
+    home_s2:'oficios en un solo equipo',
+    home_s3:'idiomas en cada proyecto',
+    home_s4:'creadores acompañados a diario',
+    home_end_title:'¿Un proyecto, una marca, un talento?',
+    home_end_p:'Juego, aplicación, acompañamiento de artistas o creadores, producción: respondemos directamente, sin intermediarios.',
+    home_end_cta:'Escríbenos',
   },
 
   pt: {
@@ -2316,6 +2361,15 @@ const PAGE_T = {
     home_port_go:'Descobrir →',
     home_crea_label:'Criadores e marcas',
     home_hero_cta2:'Tudo o que fazemos',
+    home_hero_tag:'Jogos. Apps. Artistas. Criadores. Criação.',
+    home_hero_cta1:'Trabalhar connosco',
+    home_s1:'jogos e apps concebidos e publicados pelo estúdio',
+    home_s2:'ofícios numa só equipa',
+    home_s3:'línguas em cada projeto',
+    home_s4:'criadores acompanhados no dia a dia',
+    home_end_title:'Um projeto, uma marca, um talento?',
+    home_end_p:'Jogo, aplicação, acompanhamento de artistas ou criadores, produção: respondemos diretamente, sem intermediários.',
+    home_end_cta:'Escreve-nos',
   }
 };
 
