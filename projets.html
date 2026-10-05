@@ -5,7 +5,7 @@
 <title>Projets — OKALAM Studio</title>
 <meta name="description" content="VoteDay et Little ToT — les projets en cours d'OKALAM Studio. Applications iOS indépendantes, construites avec soin."/>
 <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="shared.css?v=20260926"/>
+<link rel="stylesheet" href="shared.css?v=20261005b"/>
 <style>
 canvas{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;opacity:.5;}
 .page-hero{z-index:1;position:relative;}
@@ -95,6 +95,9 @@ canvas{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-
 .project-head{display:flex;align-items:center;gap:14px;margin-bottom:16px;}
 .project-icon{width:56px;height:56px;border-radius:14px;box-shadow:0 6px 18px rgba(0,0,0,.35);flex-shrink:0;}
 .project-head .project-name{margin-bottom:0;}
+.proj-more{display:inline-block;margin-top:22px;font-family:'Syne',sans-serif;font-weight:700;font-size:.9rem;color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(141,234,255,.35);padding-bottom:3px;}
+.proj-more:hover{color:#fff;border-color:#fff;}
+.project-content .store-badges{margin-top:26px;}
 .store-row{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:24px;}
 .store-btn{
   display:inline-flex;align-items:center;gap:10px;
@@ -244,9 +247,9 @@ canvas{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-
           <div class="feature"><div class="feature-dot"></div><div class="feature-text" data-i18n="proj_vd_f3"><strong>Une île à explorer</strong> — 7 bâtiments, cartes à collectionner</div></div>
           <div class="feature"><div class="feature-dot"></div><div class="feature-text" data-i18n="proj_vd_f4"><strong>Le Café</strong> — discuter entre amis, sans algorithme ni toxicité</div></div>
         </div>
-        <div class="store-row">
-          <a class="store-btn" href="https://apps.apple.com/fr/app/voteday/id6760981728" target="_blank" rel="noopener"><span class="sb-logo"></span><span><small data-i18n="proj_dl_on">Télécharger sur l'</small>App Store</span></a>
-          <span class="store-btn soon"><span class="sb-logo">🤖</span><span><small data-i18n="proj_soon_on">Bientôt sur</small>Google Play</span></span>
+        <div class="store-badges">
+          <a class="sbadge" href="https://apps.apple.com/fr/app/voteday/id6760981728" target="_blank" rel="noopener" aria-label="App Store"><img data-badge="appstore" src="imgs/badges/appstore_fr.svg" alt="Télécharger dans l'App Store"/></a>
+          <span class="sbadge gp soon" aria-label="Google Play"><img data-badge="googleplay" src="imgs/badges/googleplay_fr.png" alt="Google Play"/><em data-i18n="badge_soon">Bientôt</em></span>
         </div>
       </div>
     </div>
@@ -271,10 +274,11 @@ canvas{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-
           <div class="feature"><div class="feature-dot"></div><div class="feature-text" data-i18n="proj_kb_f5"><strong>Mot du jour et Aventure</strong> — le même mot pour tous chaque jour, un monde par page et un cadeau à la fin</div></div>
           <div class="feature"><div class="feature-dot"></div><div class="feature-text" data-i18n="proj_kb_f6"><strong>Duel face à face</strong> — sur iPhone Duo, deux joueurs, même mot, le premier qui trouve gagne</div></div>
         </div>
-        <div class="store-row">
-          <a class="store-btn" href="https://apps.apple.com/fr/app/kotoba-mot-du-jour/id6761341663" target="_blank" rel="noopener"><span class="sb-logo"></span><span><small data-i18n="proj_dl_on">Télécharger sur l'</small>App Store</span></a>
-          <span class="store-btn soon"><span class="sb-logo">🤖</span><span><small data-i18n="proj_soon_on">Bientôt sur</small>Google Play</span></span>
+        <div class="store-badges">
+          <a class="sbadge" href="https://apps.apple.com/fr/app/kotoba-mot-du-jour/id6761341663" target="_blank" rel="noopener" aria-label="App Store"><img data-badge="appstore" src="imgs/badges/appstore_fr.svg" alt="Télécharger dans l'App Store"/></a>
+          <span class="sbadge gp soon" aria-label="Google Play"><img data-badge="googleplay" src="imgs/badges/googleplay_fr.png" alt="Google Play"/><em data-i18n="badge_soon">Bientôt</em></span>
         </div>
+        <a class="proj-more" href="kotoba.html" data-i18n="kb_discover">Découvrir Kotoba →</a>
       </div>
     </div>
 
@@ -355,6 +359,6 @@ canvas{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-
   </div>
 </footer>
 <script src="shared-i18n.js?v=20261005c"></script>
-<script src="shared.js?v=20260926"></script>
+<script src="shared.js?v=20261005"></script>
 </body>
 </html>

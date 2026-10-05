@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Kotoba — Le jeu de lettres en français et en japonais | OKALAM Studio</title>
+<meta name="description" content="Kotoba 2.0 : devine le mot caché en six essais. Mot du jour, Aventure de 240 niveaux, Kotodama, Kotonoha, en français et en japonais. Gratuit sur iPhone et iPad."/>
+<meta property="og:title" content="Kotoba — Le jeu de lettres en français et en japonais"/>
+<meta property="og:description" content="Version 2.0 : deux nouveaux jeux, l'app entièrement en japonais, un classement général. Gratuit sur iPhone et iPad."/>
+<meta property="og:image" content="https://okalamstudio.com/imgs/kotoba2_home.jpg"/>
+<meta name="apple-itunes-app" content="app-id=6761341663"/>
+<link rel="icon" href="imgs/kotoba_icon.png"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@700;900&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="shared.css?v=20261005b"/>
+<style>
+:root{--kb-bg:#0A1016;--kb-panel:#111A22;--kb-panel2:#16212B;--kb-red:#D9342B;--kb-red2:#B3241D;--kb-yel:#F2C21A;--kb-cyan:#7FDDF5;--kb-ink:#EAF0F5;--kb-mute:#8FA0AF;--kb-line:rgba(255,255,255,.09);}
+body{background:var(--kb-bg);}
+#ok-particles{display:none;}
+#ok-disc-pill{display:none !important;}
+.kb{color:var(--kb-ink);font-family:'DM Sans',sans-serif;overflow:hidden;}
+.kb em{font-style:normal;color:var(--kb-yel);}
+.kb-wrap{max-width:1160px;margin:0 auto;padding:0 28px;}
+.kb-label{font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--kb-cyan);display:flex;align-items:center;gap:12px;margin-bottom:18px;}
+.kb-label::before{content:'';width:28px;height:1px;background:var(--kb-cyan);}
+.kb h2{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(1.9rem,4.4vw,3.2rem);line-height:1.08;letter-spacing:-.01em;margin:0 0 18px;color:#fff;}
+.kb p{color:var(--kb-mute);font-size:1.02rem;line-height:1.7;}
+.kb section{padding:110px 0;position:relative;}
+.kb-row{display:flex;gap:8px;}
+.kb-t{width:var(--s,64px);height:var(--s,64px);border-radius:calc(var(--s,64px)*.16);display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,var(--kb-red),var(--kb-red2));color:#fff;font-family:'Syne','Noto Sans JP',sans-serif;font-weight:800;font-size:calc(var(--s,64px)*.52);box-shadow:inset 0 -4px 0 rgba(0,0,0,.22),0 10px 26px rgba(217,52,43,.28);animation:kbFlip .6s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--i)*90ms + var(--d,0ms));}
+.kb-row.kana .kb-t{font-family:'Noto Sans JP',sans-serif;font-weight:900;}
+@keyframes kbFlip{0%{transform:rotateX(90deg);opacity:0;}100%{transform:none;opacity:1;}}
+.kb-hero{padding:150px 0 90px !important;background:radial-gradient(900px 520px at 78% 30%,rgba(217,52,43,.20),transparent 62%),radial-gradient(700px 420px at 8% 80%,rgba(127,221,245,.10),transparent 60%),var(--kb-bg);}
+.kb-hero::before{content:'';position:absolute;inset:0;background:linear-gradient(var(--kb-line) 1px,transparent 1px),linear-gradient(90deg,var(--kb-line) 1px,transparent 1px);background-size:72px 72px;-webkit-mask:radial-gradient(ellipse at 50% 30%,#000 10%,transparent 70%);mask:radial-gradient(ellipse at 50% 30%,#000 10%,transparent 70%);opacity:.6;pointer-events:none;}
+.kb-ghost{position:absolute;right:-2%;top:6%;font-family:'Noto Sans JP',sans-serif;font-weight:900;font-size:clamp(14rem,34vw,30rem);line-height:.9;color:rgba(255,255,255,.028);pointer-events:none;user-select:none;writing-mode:vertical-rl;}
+.kb-hero-grid{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;}
+.kb-pill{display:inline-flex;align-items:center;gap:8px;font-family:'Space Mono',monospace;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:#0A1016;background:var(--kb-yel);padding:6px 14px;border-radius:30px;font-weight:700;margin-bottom:26px;}
+.kb-logo{display:flex;flex-direction:column;gap:8px;margin-bottom:14px;}
+.kb-logo .kana{--s:52px;--d:0ms;}
+.kb-logo .latin{--s:64px;--d:320ms;}
+.kb-sub{font-family:'Space Mono',monospace;font-size:.78rem;letter-spacing:.14em;color:var(--kb-mute);margin:6px 0 26px;}
+.kb h1{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(1.7rem,3.3vw,2.6rem);line-height:1.14;margin:0 0 16px;letter-spacing:-.01em;color:#fff;}
+.kb-lead{max-width:520px;margin:0 0 30px;}
+.kb-free{margin-top:16px;font-family:'Space Mono',monospace;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--kb-mute);}
+.kb-phone{border-radius:38px;padding:8px;background:#04070A;border:1px solid rgba(255,255,255,.16);box-shadow:0 40px 90px rgba(0,0,0,.6),0 0 0 1px rgba(0,0,0,.6);}
+.kb-phone img{display:block;width:100%;border-radius:30px;}
+.kb-hero-phones{position:relative;height:620px;}
+.kb-hero-phones .kb-phone{position:absolute;width:290px;}
+.kb-hero-phones .p1{left:50%;top:0;transform:translateX(-62%) rotate(-4deg);z-index:2;}
+.kb-hero-phones .p2{left:50%;top:70px;transform:translateX(-2%) rotate(6deg);opacity:.92;}
+.kb-how{background:linear-gradient(180deg,var(--kb-bg),#0D151C);}
+.kb-how-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;}
+.kb-rules{list-style:none;padding:0;margin:26px 0 18px;display:flex;flex-direction:column;gap:14px;}
+.kb-rules li{display:flex;align-items:center;gap:14px;color:var(--kb-ink);font-size:1rem;}
+.kb-rules strong{color:#fff;}
+.kb-sw{width:38px;height:38px;border-radius:8px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;color:#fff;box-shadow:inset 0 -3px 0 rgba(0,0,0,.22);}
+.kb-sw.r{background:var(--kb-red);}.kb-sw.y{background:var(--kb-yel);color:#1a1300;border-radius:50%;}.kb-sw.g{background:#2A3742;color:#8FA0AF;}
+.kb-board{background:var(--kb-panel);border:1px solid var(--kb-line);border-radius:26px;padding:26px;display:grid;gap:8px;justify-content:center;box-shadow:0 30px 70px rgba(0,0,0,.45);}
+.kb-brow{display:grid;grid-template-columns:repeat(6,var(--c,58px));gap:8px;}
+.kb-cell{width:var(--c,58px);height:var(--c,58px);border-radius:9px;background:#0C141B;border:1px solid rgba(255,255,255,.10);display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:calc(var(--c,58px)*.48);color:#fff;transition:background .25s,transform .25s,border-color .25s;}
+.kb-cell.r{background:var(--kb-red);border-color:transparent;box-shadow:inset 0 -3px 0 rgba(0,0,0,.22);}
+.kb-cell.y{background:var(--kb-yel);color:#1a1300;border-color:transparent;border-radius:50%;}
+.kb-cell.g{background:#22303B;border-color:transparent;color:#C7D2DC;}
+.kb-cell.pop{transform:scale(1.08);}
+.kb-cell.cur{border-color:var(--kb-cyan);box-shadow:0 0 0 2px rgba(127,221,245,.25);}
+.kb-new-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:44px;}
+.kb-card{position:relative;overflow:hidden;background:linear-gradient(180deg,var(--kb-panel2),var(--kb-panel));border:1px solid var(--kb-line);border-radius:28px;padding:38px 38px 0;display:flex;flex-direction:column;}
+.kb-card h3{font-family:'Syne',sans-serif;font-weight:800;font-size:1.7rem;margin:0 0 12px;color:#fff;}
+.kb-card h3 span{font-family:'Noto Sans JP',sans-serif;color:var(--kb-yel);margin-left:10px;font-size:.85em;}
+.kb-card .kb-phone{width:min(270px,78%);margin:30px auto -120px;}
+.kb-card::after{content:attr(data-k);position:absolute;right:-12px;top:-30px;font-family:'Noto Sans JP',sans-serif;font-weight:900;font-size:11rem;color:rgba(255,255,255,.035);pointer-events:none;}
+.kb-modes{background:#0D151C;}
+.kb-mode-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:40px;}
+.kb-mode{background:var(--kb-panel);border:1px solid var(--kb-line);border-radius:22px;padding:26px 22px;border-top:3px solid var(--c);}
+.kb-mode i{font-style:normal;font-size:1.7rem;display:block;margin-bottom:14px;}
+.kb-mode b{display:block;font-family:'Syne',sans-serif;font-weight:800;font-size:1.15rem;color:#fff;margin-bottom:8px;}
+.kb-mode p{font-size:.9rem;line-height:1.55;margin:0;}
+.kb-chips{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px;}
+.kb-chip{display:inline-flex;align-items:center;gap:10px;background:var(--kb-panel);border:1px solid var(--kb-line);border-radius:40px;padding:12px 20px;font-family:'Syne',sans-serif;font-weight:700;font-size:.95rem;color:#fff;}
+.kb-chip i{font-style:normal;}
+.kb-jp-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:64px;align-items:center;}
+.kb-jp-grid .kb-phone{width:min(300px,100%);margin:0 auto;transform:rotate(-3deg);}
+.kb-jp .kb-row{--s:54px;margin-bottom:26px;}
+.kb-rank{background:linear-gradient(180deg,#0D151C,var(--kb-bg));}
+.kb-rank-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:64px;align-items:center;}
+.kb-rank-grid .kb-phone{width:min(300px,100%);margin:0 auto;transform:rotate(3deg);}
+.kb-minis{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:30px;}
+.kb-mini{background:var(--kb-panel);border:1px solid var(--kb-line);border-radius:18px;padding:20px;}
+.kb-mini b{display:block;font-family:'Syne',sans-serif;font-weight:800;color:#fff;margin-bottom:6px;}
+.kb-mini p{font-size:.88rem;line-height:1.55;margin:0;}
+.kb-gal{padding-bottom:70px !important;}
+.kb-strip{display:flex;gap:22px;overflow-x:auto;scroll-snap-type:x mandatory;padding:36px 28px 30px;scrollbar-width:thin;scrollbar-color:#2A3742 transparent;}
+.kb-strip .kb-phone{flex:0 0 240px;scroll-snap-align:center;border-radius:32px;}
+.kb-strip .kb-phone img{border-radius:25px;}
+.kb-cta{text-align:center;padding:100px 0 120px !important;background:radial-gradient(700px 380px at 50% 40%,rgba(217,52,43,.18),transparent 65%);}
+.kb-cta .kb-row{--s:46px;justify-content:center;margin-bottom:30px;}
+.kb-cta .store-badges{justify-content:center;margin-top:30px;}
+.kb-cta p{max-width:460px;margin:0 auto;}
+.kb-legal{margin-top:34px;font-size:.78rem;color:var(--kb-mute);}
+.kb-legal a{color:var(--kb-mute);}
+@media(max-width:960px){
+.kb section{padding:76px 0;}
+.kb-hero{padding:120px 0 60px !important;}
+.kb-hero-grid,.kb-how-grid,.kb-jp-grid,.kb-rank-grid,.kb-new-grid{grid-template-columns:1fr;gap:44px;}
+.kb-hero-phones{height:520px;}.kb-hero-phones .kb-phone{width:240px;}
+.kb-mode-grid{grid-template-columns:1fr 1fr;}
+.kb-jp-grid .kb-phone{order:2;}
+.kb-ghost{display:none;}
+}
+@media(max-width:520px){
+.kb-wrap{padding:0 20px;}
+.kb-logo .kana{--s:40px;}.kb-logo .latin{--s:46px;}.kb-row{gap:6px;}
+.kb-hero-phones{height:440px;}.kb-hero-phones .kb-phone{width:200px;border-radius:30px;}.kb-hero-phones .kb-phone img{border-radius:23px;}
+.kb-board{padding:16px;gap:6px;}.kb-brow{--c:42px;gap:6px;}.kb-cell{--c:42px;}
+.kb-card{padding:28px 24px 0;}.kb-card h3{font-size:1.4rem;}
+.kb-mode-grid,.kb-minis{grid-template-columns:1fr;}
+.kb-jp .kb-row{--s:44px;}.kb-cta .kb-row{--s:36px;}
+.kb-strip .kb-phone{flex-basis:200px;}
+}
+@media(prefers-reduced-motion:reduce){.kb-t{animation:none;}}
+</style>
+</head>
+<body>
+<nav class="ok-nav">
+  <a href="index.html" class="ok-nav-logo">OKALAM</a>
+  <div class="ok-nav-right">
+    <div class="flag-picker">
+      <button class="flag-btn" data-lang="en" onclick="sharedSetLang('en')" title="English">🇬🇧</button>
+      <button class="flag-btn" data-lang="fr" onclick="sharedSetLang('fr')" title="Français">🇫🇷</button>
+      <button class="flag-btn" data-lang="ja" onclick="sharedSetLang('ja')" title="日本語">🇯🇵</button>
+      <button class="flag-btn" data-lang="zh" onclick="sharedSetLang('zh')" title="中文">🇨🇳</button>
+      <button class="flag-btn" data-lang="es" onclick="sharedSetLang('es')" title="Español">🇪🇸</button>
+      <button class="flag-btn" data-lang="pt" onclick="sharedSetLang('pt')" title="Português">🇵🇹</button>
+    </div>
+    <button class="ok-nav-menu-btn" aria-label="Menu">
+      <div class="ok-nav-menu-icon"><span></span><span></span><span></span></div>
+      <span>Menu</span>
+    </button>
+  </div>
+</nav>
+<div class="ok-nav-overlay"></div>
+<nav class="ok-nav-dropdown">
+  <div class="ok-nav-items">
+    <a href="index.html" class="ok-nav-link" data-i18n="nav_home">Accueil</a>
+    <a href="studio.html" class="ok-nav-link" data-i18n="nav_studio">Studio</a>
+    <a href="projets.html" class="ok-nav-link active" data-i18n="nav_projects">Projets</a>
+    <a href="collaborations.html" class="ok-nav-link" data-i18n="nav_collabs">Collaborations</a>
+    <a href="contact.html" class="ok-nav-link" data-i18n="nav_contact">Contact</a>
+    <a href="mediakit-elisa.html" class="ok-nav-link ok-nav-link--private" data-i18n="nav_elisa">🔒 Elisa</a>
+    <a href="mediakit-pierre.html" class="ok-nav-link ok-nav-link--private" data-i18n="nav_pierre">🔒 Pierre</a>
+  </div>
+  <div class="flag-picker">
+    <button class="flag-btn" data-lang="en" onclick="sharedSetLang('en')" title="English">🇬🇧</button>
+    <button class="flag-btn" data-lang="fr" onclick="sharedSetLang('fr')" title="Français">🇫🇷</button>
+    <button class="flag-btn" data-lang="ja" onclick="sharedSetLang('ja')" title="日本語">🇯🇵</button>
+    <button class="flag-btn" data-lang="zh" onclick="sharedSetLang('zh')" title="中文">🇨🇳</button>
+    <button class="flag-btn" data-lang="es" onclick="sharedSetLang('es')" title="Español">🇪🇸</button>
+    <button class="flag-btn" data-lang="pt" onclick="sharedSetLang('pt')" title="Português">🇵🇹</button>
+  </div>
+</nav>
+
+
+<div class="vb">
+
+<div class="kb">
+
+<section class="kb-hero">
+  <div class="kb-ghost" aria-hidden="true">言葉</div>
+  <div class="kb-wrap kb-hero-grid">
+    <div>
+      <div class="kb-pill" data-i18n="kb_pill">Nouveau · version 2.0</div>
+      <div class="kb-logo" aria-label="Kotoba"><div class="kb-row kana"><span class="kb-t" style="--i:0">コ</span><span class="kb-t" style="--i:1">ト</span><span class="kb-t" style="--i:2">バ</span></div><div class="kb-row latin"><span class="kb-t" style="--i:0">K</span><span class="kb-t" style="--i:1">O</span><span class="kb-t" style="--i:2">T</span><span class="kb-t" style="--i:3">O</span><span class="kb-t" style="--i:4">B</span><span class="kb-t" style="--i:5">A</span></div></div>
+      <div class="kb-sub" data-i18n="kb_sub">言葉 · « le mot » en japonais</div>
+      <h1 data-i18n="kb_h1">Le jeu de lettres qui se joue <em>en français et en japonais</em></h1>
+      <p class="kb-lead" data-i18n="kb_lead">Devine le mot caché en six essais. Un mot du jour pour tout le monde, une Aventure de 240 niveaux, et maintenant deux nouveaux jeux.</p>
+      <div class="store-badges">
+      <a class="sbadge" href="https://apps.apple.com/app/id6761341663" target="_blank" rel="noopener" aria-label="App Store"><img data-badge="appstore" src="imgs/badges/appstore_fr.svg" alt="Télécharger dans l'App Store"/></a>
+      <span class="sbadge gp soon" aria-label="Google Play"><img data-badge="googleplay" src="imgs/badges/googleplay_fr.png" alt="Google Play"/><em data-i18n="badge_soon">Bientôt</em></span>
+    </div>
+      <div class="kb-free" data-i18n="kb_free">Gratuit · iPhone et iPad</div>
+    </div>
+    <div class="kb-hero-phones"><div class="kb-phone p1"><img src="imgs/kotoba2_home.jpg" alt="Kotoba — accueil" loading="lazy"/></div><div class="kb-phone p2"><img src="imgs/kotoba2_kotodama.jpg" alt="Kotoba — Kotodama" loading="lazy"/></div></div>
+  </div>
+</section>
+
+<section class="kb-how" id="jouer">
+  <div class="kb-wrap kb-how-grid">
+    <div class="reveal">
+      <div class="kb-label" data-i18n="kb_how_label">Comment jouer</div>
+      <h2 data-i18n="kb_how_title">Six essais, <em>trois couleurs</em></h2>
+      <p data-i18n="kb_how_p">La première lettre est donnée. Tu proposes un mot, les cases te répondent.</p>
+      <ul class="kb-rules">
+        <li><span class="kb-sw r">M</span><span data-i18n="kb_r_red"><strong>Rouge</strong> : bonne lettre, bonne place</span></li>
+        <li><span class="kb-sw y">I</span><span data-i18n="kb_r_yel"><strong>Jaune</strong> : bonne lettre, mauvaise place</span></li>
+        <li><span class="kb-sw g">R</span><span data-i18n="kb_r_grey"><strong>Gris</strong> : lettre absente du mot</span></li>
+      </ul>
+      <p data-i18n="kb_len">Mots de 4 à 11 lettres, au choix.</p>
+    </div>
+    <div class="kb-board reveal r1" id="kb-board" aria-hidden="true"></div>
+  </div>
+</section>
+
+<section class="kb-new" id="nouveau">
+  <div class="kb-wrap">
+    <div class="kb-label" data-i18n="kb_new_label">Nouveau dans la 2.0</div>
+    <h2 class="reveal" data-i18n="kb_new_title">Deux nouveaux jeux <em>dans l'app</em></h2>
+    <div class="kb-new-grid">
+      <div class="kb-card reveal" data-k="言玉"><h3>Kotodama<span>言玉</span></h3><p data-i18n="kb_kd_p">Le plateau de boules, comme à la télé. Trouve un mot, tire deux boules, complète une ligne. Trois boules noires et la partie s'arrête.</p><div class="kb-phone "><img src="imgs/kotoba2_kotodama.jpg" alt="Kotodama" loading="lazy"/></div></div>
+      <div class="kb-card reveal r1" data-k="言の葉"><h3>Kotonoha<span>言の葉</span></h3><p data-i18n="kb_kn_p">Six manches. À chacune, tu choisis une carte qui change les règles : Voyelles d'or, Voie étroite, Voyante. Certaines rapportent gros, tant que tu ne rates pas un mot.</p><div class="kb-phone "><img src="imgs/kotoba2_kotonoha.jpg" alt="Kotonoha" loading="lazy"/></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="kb-modes" id="jeux">
+  <div class="kb-wrap">
+    <div class="kb-label" data-i18n="kb_modes_label">Tous les jeux</div>
+    <h2 class="reveal" data-i18n="kb_modes_title">Neuf façons <em>de jouer</em></h2>
+    <div class="kb-mode-grid"><div class="kb-mode reveal" style="--c:#F2C21A"><i>📅</i><b data-i18n="kb_m_daily">Défi du jour</b><p data-i18n="kb_m_daily_d">Un mot par jour, le même pour tout le monde</p></div><div class="kb-mode reveal" style="--c:#7FDDF5"><i>🌸</i><b data-i18n="kb_m_adv">Aventure</b><p data-i18n="kb_m_adv_d">240 niveaux, 10 mondes, un cadeau à la fin de chaque monde</p></div><div class="kb-mode reveal" style="--c:#D9342B"><i>🎱</i><b>Kotodama</b><p data-i18n="kb_m_kd_d">Le plateau de boules : aligne une ligne complète</p></div><div class="kb-mode reveal" style="--c:#6BCB8B"><i>🍃</i><b>Kotonoha</b><p data-i18n="kb_m_kn_d">Six manches, une carte qui change les règles à chaque fois</p></div></div>
+    <div class="kb-chips reveal"><div class="kb-chip"><i>⚡</i><span data-i18n="kb_m_blitz">Blitz</span></div><div class="kb-chip"><i>♾️</i><span data-i18n="kb_m_inf">Infini</span></div><div class="kb-chip"><i>🙈</i><span data-i18n="kb_m_blind">Aveugle</span></div><div class="kb-chip"><i>⏱️</i><span data-i18n="kb_m_count">Contretemps</span></div><div class="kb-chip"><i>🏆</i><span data-i18n="kb_m_tour">Tournoi</span></div></div>
+  </div>
+</section>
+
+<section class="kb-jp" id="japonais">
+  <div class="kb-wrap kb-jp-grid">
+    <div class="kb-phone reveal"><img src="imgs/kotoba2_japonais.jpg" alt="Kotoba en japonais" loading="lazy"/></div>
+    <div class="reveal r1">
+      <div class="kb-row kana"><span class="kb-t" style="--i:0">コ</span><span class="kb-t" style="--i:1">ト</span><span class="kb-t" style="--i:2">バ</span></div>
+      <div class="kb-label" data-i18n="kb_jp_label">Tout en japonais</div>
+      <h2 data-i18n="kb_jp_title">Le même jeu, <em>en かな</em></h2>
+      <p data-i18n="kb_jp_p">Dictionnaire japonais complet, clavier かな, menus traduits. Si ton téléphone est en japonais, l'app bascule toute seule.</p>
+    </div>
+  </div>
+</section>
+
+<section class="kb-rank" id="classements">
+  <div class="kb-wrap kb-rank-grid">
+    <div class="reveal">
+      <div class="kb-label" data-i18n="kb_rank_label">Classements</div>
+      <h2 data-i18n="kb_rank_title">Un classement <em>qui compte tout</em></h2>
+      <p data-i18n="kb_rank_p">Un seul écran : ton score général tous jeux réunis, le classement du jour et le détail jeu par jeu. Chaque jeu vaut autant que les autres.</p>
+      <div class="kb-minis">
+        <div class="kb-mini"><b data-i18n="kb_duo_t">Duel face à face</b><p data-i18n="kb_duo_p">Sur iPhone Duo, écran déplié : deux joueurs, le même mot, le premier qui trouve gagne.</p></div>
+        <div class="kb-mini"><b data-i18n="kb_more_t">Et aussi</b><p data-i18n="kb_more_p">Thème clair et sombre, tutoriels, échange de pièces contre des lettres bonus.</p></div>
+      </div>
+    </div>
+    <div class="kb-phone reveal r1"><img src="imgs/kotoba2_classement.jpg" alt="Kotoba — classements" loading="lazy"/></div>
+  </div>
+</section>
+
+<section class="kb-gal">
+  <div class="kb-wrap">
+    <div class="kb-label" data-i18n="kb_gal_label">En images</div>
+    <h2 class="reveal" data-i18n="kb_gal_title">L'app, <em>écran par écran</em></h2>
+  </div>
+  <div class="kb-strip"><div class="kb-phone "><img src="imgs/kotoba2_home.jpg" alt="Accueil" loading="lazy"/></div><div class="kb-phone "><img src="imgs/kotoba2_partie.jpg" alt="Partie" loading="lazy"/></div><div class="kb-phone "><img src="imgs/kotoba2_kotodama.jpg" alt="Kotodama" loading="lazy"/></div><div class="kb-phone "><img src="imgs/kotoba2_kotonoha.jpg" alt="Kotonoha" loading="lazy"/></div><div class="kb-phone "><img src="imgs/kotoba2_aventure.jpg" alt="Aventure" loading="lazy"/></div><div class="kb-phone "><img src="imgs/kotoba2_classement.jpg" alt="Classements" loading="lazy"/></div><div class="kb-phone "><img src="imgs/kotoba2_japonais.jpg" alt="Japonais" loading="lazy"/></div></div>
+</section>
+
+<section class="kb-cta">
+  <div class="kb-wrap">
+    <div class="kb-row latin"><span class="kb-t" style="--i:0">K</span><span class="kb-t" style="--i:1">O</span><span class="kb-t" style="--i:2">T</span><span class="kb-t" style="--i:3">O</span><span class="kb-t" style="--i:4">B</span><span class="kb-t" style="--i:5">A</span></div>
+    <h2 data-i18n="kb_cta_title">Le mot du jour <em>t'attend</em></h2>
+    <p data-i18n="kb_cta_p">Gratuit sur iPhone et iPad. La version Android arrive.</p>
+    <div class="store-badges">
+      <a class="sbadge" href="https://apps.apple.com/app/id6761341663" target="_blank" rel="noopener" aria-label="App Store"><img data-badge="appstore" src="imgs/badges/appstore_fr.svg" alt="Télécharger dans l'App Store"/></a>
+      <span class="sbadge gp soon" aria-label="Google Play"><img data-badge="googleplay" src="imgs/badges/googleplay_fr.png" alt="Google Play"/><em data-i18n="badge_soon">Bientôt</em></span>
+    </div>
+    <div class="kb-legal"><a href="privacy-kotoba.html" data-i18n="kb_privacy">Confidentialité</a> · <a href="mailto:support@okalamstudio.com">support@okalamstudio.com</a></div>
+  </div>
+</section>
+
+</div>
+<footer class="ok-footer">
+  <div class="ok-footer-inner">
+    <div>
+      <div class="ok-footer-brand">OKALAM Studio</div>
+      <p class="ok-footer-tagline" data-i18n="footer_tagline">Studio créatif indépendant. Toujours en mouvement.</p>
+    </div>
+    <div class="ok-footer-cols">
+      <div class="ok-footer-col">
+        <h4 data-i18n="footer_nav">Navigation</h4>
+        <a href="index.html" data-i18n="footer_home">Accueil</a>
+        <a href="studio.html" data-i18n="footer_studio">Studio</a>
+        <a href="projets.html" data-i18n="footer_projects">Projets</a>
+        <a href="collaborations.html" data-i18n="footer_collabs">Collaborations</a>
+      </div>
+      <div class="ok-footer-col">
+        <h4>Contact</h4>
+        <a href="contact.html" data-i18n="footer_contact">Nous contacter</a>
+        <a href="mailto:support@okalamstudio.com">support@okalamstudio.com</a>
+      </div>
+    </div>
+  </div>
+  <div class="ok-footer-bottom">
+    <span class="ok-footer-copy" data-i18n="footer_copy">© 2026 OKALAM Studio. Tous droits réservés.</span>
+    <div class="ok-social-links">
+      <a href="https://www.instagram.com/okalamstudio.com" target="_blank" class="ok-social" title="Instagram">📷</a>
+      <a href="https://github.com/Stesouna9" target="_blank" class="ok-social">⌥</a>
+      <a href="mailto:support@okalamstudio.com" class="ok-social">✉</a>
+    </div>
+  </div>
+</footer>
+<script src="shared-i18n.js?v=20261005"></script>
+<script src="shared.js?v=20261005"></script>
+<script>
+(function(){
+  const board=document.getElementById('kb-board'); if(!board) return;
+  const TARGET='MAISON', GUESSES=['MARINS','MOTEUR','MAISON'], ROWS=4;
+  const cells=[];
+  for(let r=0;r<ROWS;r++){ const row=document.createElement('div'); row.className='kb-brow'; cells.push([]); for(let c=0;c<6;c++){ const d=document.createElement('div'); d.className='kb-cell'; row.appendChild(d); cells[r].push(d); } board.appendChild(row); }
+  function score(g){ const res=Array(6).fill('g'), rest={}; for(let i=0;i<6;i++){ if(g[i]===TARGET[i]) res[i]='r'; else rest[TARGET[i]]=(rest[TARGET[i]]||0)+1; } for(let i=0;i<6;i++){ if(res[i]==='g'&&rest[g[i]]>0){ res[i]='y'; rest[g[i]]--; } } return res; }
+  const wait=ms=>new Promise(r=>setTimeout(r,ms));
+  function reset(){ cells.flat().forEach(d=>{d.className='kb-cell'; d.textContent='';}); cells.forEach(r=>{ r[0].textContent=TARGET[0]; r[0].classList.add('r'); }); }
+  function finalState(){ reset(); GUESSES.forEach((g,r)=>{ const s=score(g); for(let c=0;c<6;c++){ cells[r][c].textContent=g[c]; cells[r][c].className='kb-cell '+s[c]; } }); }
+  finalState();
+  if(matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+  async function play(){
+    while(true){ reset(); await wait(700);
+      for(let r=0;r<GUESSES.length;r++){ const g=GUESSES[r], s=score(g);
+        for(let c=1;c<6;c++){ cells[r][c].classList.add('cur'); await wait(170); cells[r][c].textContent=g[c]; cells[r][c].classList.remove('cur'); }
+        await wait(350);
+        for(let c=0;c<6;c++){ cells[r][c].className='kb-cell pop '+s[c]; await wait(140); cells[r][c].classList.remove('pop'); }
+        await wait(750); }
+      await wait(2600); } }
+  new IntersectionObserver((es,o)=>{ if(es[0].isIntersecting){ o.disconnect(); play(); } },{threshold:.35}).observe(board);
+})();
+</script>
+</body>
+</html>

@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="shared.css?v=20260926"/>
+<link rel="stylesheet" href="shared.css?v=20261005b"/>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
@@ -162,6 +162,7 @@ footer{border-top:1px solid var(--border2);padding:56px 48px;position:relative;z
 .app-title img{width:40px;height:40px;border-radius:10px;}
 .app-title h3{font-family:'Syne',sans-serif;font-weight:800;font-size:1.5rem;letter-spacing:-.02em;}
 .app-desc{color:var(--muted);font-size:.85rem;line-height:1.6;margin-bottom:16px;}
+.app-meta .store-badges{margin-top:14px;display:inline-flex;}
 .app-store{display:inline-flex;align-items:center;gap:8px;background:#fff;color:#000;border-radius:9px;padding:7px 14px 7px 10px;font-weight:600;font-size:.8rem;line-height:1.1;}
 .app-store span{font-size:1.3rem;line-height:1;}
 .app-store small{display:block;font-size:.55rem;font-weight:400;opacity:.7;}
@@ -235,7 +236,7 @@ footer{border-top:1px solid var(--border2);padding:56px 48px;position:relative;z
   <div class="hero-apps">
     <a href="vicebreak.html" class="hero-app"><img src="imgs/vicebreak_icon.png" alt=""/><span>Vice Break</span><small class="soon" data-i18n="home_hero_pill_vb">Bientôt · 19 nov.</small></a>
     <a href="projets.html#voteday" class="hero-app"><img src="imgs/voteday_icon.png" alt=""/><span>VoteDay</span><small data-i18n="home_hero_pill_live">Disponible</small></a>
-    <a href="projets.html#kotoba" class="hero-app"><img src="imgs/kotoba_icon.png" alt=""/><span>Kotoba</span><small class="new" data-i18n="home_new">Nouveau · 2.0</small></a>
+    <a href="kotoba.html" class="hero-app"><img src="imgs/kotoba_icon.png" alt=""/><span>Kotoba</span><small class="new" data-i18n="home_new">Nouveau · 2.0</small></a>
   </div>
   <div class="scroll-arrow"><div class="sarrow"></div></div>
 </section>
@@ -280,16 +281,16 @@ footer{border-top:1px solid var(--border2);padding:56px 48px;position:relative;z
           <div class="app-live" data-i18n="home_apps_live">Disponible</div>
           <div class="app-title"><img src="imgs/voteday_icon.png" alt=""/><h3>VoteDay</h3></div>
           <p class="app-desc" data-i18n="home_vd_desc">Une question par jour à 17h. Vote A ou B, compare avec tes amis et le monde.</p>
-          <span class="app-store" onclick="event.preventDefault();window.open('https://apps.apple.com/fr/app/voteday/id6760981728','_blank')"><span></span><span><small data-i18n="proj_dl_on">Télécharger sur l'</small>App Store</span></span>
+          <span class="store-badges sm"><span class="sbadge" onclick="event.preventDefault();window.open('https://apps.apple.com/fr/app/voteday/id6760981728','_blank')"><img data-badge="appstore" src="imgs/badges/appstore_fr.svg" alt="App Store"/></span><span class="sbadge gp soon"><img data-badge="googleplay" src="imgs/badges/googleplay_fr.png" alt="Google Play"/><em data-i18n="badge_soon">Bientôt</em></span></span>
         </div>
       </a>
-      <a class="app-card reveal r1" href="projets.html#kotoba">
+      <a class="app-card reveal r1" href="kotoba.html">
         <div class="app-shot"><img src="imgs/kotoba2_kotodama.jpg" alt="Kotoba" loading="lazy"/></div>
         <div class="app-meta">
           <div class="app-live" data-i18n="home_new">Nouveau · 2.0</div>
           <div class="app-title"><img src="imgs/kotoba_icon.png" alt=""/><h3>Kotoba</h3></div>
           <p class="app-desc" data-i18n="home_kb_desc">Version 2.0 : deux nouveaux jeux, Kotodama et Kotonoha, l'app entièrement en japonais et un classement général.</p>
-          <span class="app-store" onclick="event.preventDefault();window.open('https://apps.apple.com/fr/app/kotoba-mot-du-jour/id6761341663','_blank')"><span></span><span><small data-i18n="proj_dl_on">Télécharger sur l'</small>App Store</span></span>
+          <span class="store-badges sm"><span class="sbadge" onclick="event.preventDefault();window.open('https://apps.apple.com/fr/app/kotoba-mot-du-jour/id6761341663','_blank')"><img data-badge="appstore" src="imgs/badges/appstore_fr.svg" alt="App Store"/></span><span class="sbadge gp soon"><img data-badge="googleplay" src="imgs/badges/googleplay_fr.png" alt="Google Play"/><em data-i18n="badge_soon">Bientôt</em></span></span>
         </div>
       </a>
     </div>

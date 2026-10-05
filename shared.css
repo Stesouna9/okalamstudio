@@ -363,3 +363,13 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;fon
   .flag-picker-sidebar:not(.open) .flag-btn-s.active::after { content:'▾'; font-size:.55rem; color:var(--muted); margin-left:1px; }
 }
 }
+
+/* ── Official store badges ── */
+.store-badges{display:flex;gap:16px;flex-wrap:wrap;align-items:center;}
+.sbadge{position:relative;display:inline-flex;height:52px;line-height:0;text-decoration:none;transition:transform .2s,filter .2s;cursor:pointer;}
+.sbadge img{height:100%;width:auto;display:block;}
+a.sbadge:hover,span.sbadge[onclick]:hover{transform:translateY(-2px);filter:brightness(1.12);}
+.sbadge.soon{cursor:default;}
+.sbadge.soon img{opacity:.42;filter:grayscale(1);}
+.sbadge.soon em{position:absolute;top:-9px;right:-8px;font-style:normal;font-family:'Space Mono',monospace;font-size:.56rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;line-height:1;color:#0A1016 !important;background:#F2C21A;padding:4px 8px;border-radius:20px;box-shadow:0 4px 12px rgba(0,0,0,.4);}
+.store-badges.sm .sbadge{height:42px;}
