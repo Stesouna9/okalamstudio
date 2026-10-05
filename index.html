@@ -46,6 +46,7 @@ canvas{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-
 .hero-app:hover{transform:translateY(-3px);border-color:var(--accent);background:rgba(141,234,255,.06);}
 .hero-app img{width:38px;height:38px;border-radius:10px;object-fit:cover;}
 .hero-app small{font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:#7CE0A6;padding:3px 8px;border-radius:20px;border:1px solid rgba(124,224,166,.4);}
+.hero-app small.new{color:#8DEAFF;border-color:rgba(141,234,255,.5);}
 .hero-app small.soon{color:#FF2E88;border-color:rgba(255,46,136,.5);}
 @media(max-width:480px){.hero{padding:104px 18px 70px;}.hero-title{font-size:2.6rem;letter-spacing:-.01em;}.hero-badge{font-size:.6rem;padding:6px 14px;margin-bottom:26px;}.hero-cta{margin-top:32px;}.hero-apps{margin-top:36px;gap:8px;}.hero-app{padding:6px 12px 6px 6px;font-size:.78rem;}.hero-app img{width:32px;height:32px;}}
 /* ── TICKER ── */
@@ -234,7 +235,7 @@ footer{border-top:1px solid var(--border2);padding:56px 48px;position:relative;z
   <div class="hero-apps">
     <a href="vicebreak.html" class="hero-app"><img src="imgs/vicebreak_icon.png" alt=""/><span>Vice Break</span><small class="soon" data-i18n="home_hero_pill_vb">Bientôt · 19 nov.</small></a>
     <a href="projets.html#voteday" class="hero-app"><img src="imgs/voteday_icon.png" alt=""/><span>VoteDay</span><small data-i18n="home_hero_pill_live">Disponible</small></a>
-    <a href="projets.html#kotoba" class="hero-app"><img src="imgs/kotoba_icon.png" alt=""/><span>Kotoba</span><small data-i18n="home_hero_pill_live">Disponible</small></a>
+    <a href="projets.html#kotoba" class="hero-app"><img src="imgs/kotoba_icon.png" alt=""/><span>Kotoba</span><small class="new" data-i18n="home_new">Nouveau · 2.0</small></a>
   </div>
   <div class="scroll-arrow"><div class="sarrow"></div></div>
 </section>
@@ -283,11 +284,11 @@ footer{border-top:1px solid var(--border2);padding:56px 48px;position:relative;z
         </div>
       </a>
       <a class="app-card reveal r1" href="projets.html#kotoba">
-        <div class="app-shot"><img src="imgs/kotoba_game.png" alt="Kotoba" loading="lazy"/></div>
+        <div class="app-shot"><img src="imgs/kotoba2_kotodama.jpg" alt="Kotoba" loading="lazy"/></div>
         <div class="app-meta">
-          <div class="app-live" data-i18n="home_apps_live">Disponible</div>
+          <div class="app-live" data-i18n="home_new">Nouveau · 2.0</div>
           <div class="app-title"><img src="imgs/kotoba_icon.png" alt=""/><h3>Kotoba</h3></div>
-          <p class="app-desc" data-i18n="home_kb_desc">Trouve le mot caché. Mot du jour, mode Aventure de 240 niveaux, 5 modes de jeu.</p>
+          <p class="app-desc" data-i18n="home_kb_desc">Version 2.0 : deux nouveaux jeux, Kotodama et Kotonoha, l'app entièrement en japonais et un classement général.</p>
           <span class="app-store" onclick="event.preventDefault();window.open('https://apps.apple.com/fr/app/kotoba-mot-du-jour/id6761341663','_blank')"><span></span><span><small data-i18n="proj_dl_on">Télécharger sur l'</small>App Store</span></span>
         </div>
       </a>
@@ -393,7 +394,7 @@ footer{border-top:1px solid var(--border2);padding:56px 48px;position:relative;z
   </div>
 </footer>
 
-<script src="shared-i18n.js?v=20260928c"></script>
+<script src="shared-i18n.js?v=20261005c"></script>
 <script>
 // ── TRANSLATIONS ─────────────────────────────────────────────────
 const T={
