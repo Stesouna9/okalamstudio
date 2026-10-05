@@ -62,10 +62,11 @@ body{background:var(--kb-bg);}
 .kb-cell.pop{transform:scale(1.08);}
 .kb-cell.cur{border-color:var(--kb-cyan);box-shadow:0 0 0 2px rgba(127,221,245,.25);}
 .kb-new-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:44px;}
-.kb-card{position:relative;overflow:hidden;background:linear-gradient(180deg,var(--kb-panel2),var(--kb-panel));border:1px solid var(--kb-line);border-radius:28px;padding:38px 38px 0;display:flex;flex-direction:column;}
+.kb-card{position:relative;overflow:hidden;background:linear-gradient(180deg,var(--kb-panel2),var(--kb-panel));border:1px solid var(--kb-line);border-radius:28px;padding:38px 38px 0;display:block;}
 .kb-card h3{font-family:'Syne',sans-serif;font-weight:800;font-size:1.7rem;margin:0 0 12px;color:#fff;}
 .kb-card h3 span{font-family:'Noto Sans JP',sans-serif;color:var(--kb-yel);margin-left:10px;font-size:.85em;}
-.kb-card .kb-phone{width:min(270px,78%);margin:30px auto -120px;}
+.kb-shot{height:440px;overflow:hidden;margin-top:30px;}
+.kb-card .kb-phone{width:min(270px,78%);margin:0 auto;border-bottom-left-radius:0;border-bottom-right-radius:0;}
 .kb-card::after{content:attr(data-k);position:absolute;right:-12px;top:-30px;font-family:'Noto Sans JP',sans-serif;font-weight:900;font-size:11rem;color:rgba(255,255,255,.035);pointer-events:none;}
 .kb-modes{background:#0D151C;}
 .kb-mode-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:40px;}
@@ -110,7 +111,7 @@ body{background:var(--kb-bg);}
 .kb-logo .kana{--s:40px;}.kb-logo .latin{--s:46px;}.kb-row{gap:6px;}
 .kb-hero-phones{height:440px;}.kb-hero-phones .kb-phone{width:200px;border-radius:30px;}.kb-hero-phones .kb-phone img{border-radius:23px;}
 .kb-board{padding:16px;gap:6px;}.kb-brow{--c:42px;gap:6px;}.kb-cell{--c:42px;}
-.kb-card{padding:28px 24px 0;}.kb-card h3{font-size:1.4rem;}
+.kb-card{padding:28px 24px 0;}.kb-shot{height:360px;}.kb-card h3{font-size:1.4rem;}
 .kb-mode-grid,.kb-minis{grid-template-columns:1fr;}
 .kb-jp .kb-row{--s:44px;}.kb-cta .kb-row{--s:36px;}
 .kb-strip .kb-phone{flex-basis:200px;}
@@ -203,8 +204,8 @@ body{background:var(--kb-bg);}
     <div class="kb-label" data-i18n="kb_new_label">Nouveau dans la 2.0</div>
     <h2 class="reveal" data-i18n="kb_new_title">Deux nouveaux jeux <em>dans l'app</em></h2>
     <div class="kb-new-grid">
-      <div class="kb-card reveal" data-k="言玉"><h3>Kotodama<span>言玉</span></h3><p data-i18n="kb_kd_p">Le plateau de boules, comme à la télé. Trouve un mot, tire deux boules, complète une ligne. Trois boules noires et la partie s'arrête.</p><div class="kb-phone "><img src="imgs/kotoba2_kotodama.jpg" alt="Kotodama" loading="lazy"/></div></div>
-      <div class="kb-card reveal r1" data-k="言の葉"><h3>Kotonoha<span>言の葉</span></h3><p data-i18n="kb_kn_p">Six manches. À chacune, tu choisis une carte qui change les règles : Voyelles d'or, Voie étroite, Voyante. Certaines rapportent gros, tant que tu ne rates pas un mot.</p><div class="kb-phone "><img src="imgs/kotoba2_kotonoha.jpg" alt="Kotonoha" loading="lazy"/></div></div>
+      <div class="kb-card reveal" data-k="言玉"><h3>Kotodama<span>言玉</span></h3><p data-i18n="kb_kd_p">Le plateau de boules, comme à la télé. Trouve un mot, tire deux boules, complète une ligne. Trois boules noires et la partie s'arrête.</p><div class="kb-shot"><div class="kb-phone "><img src="imgs/kotoba2_kotodama.jpg" alt="Kotodama" loading="lazy"/></div></div></div>
+      <div class="kb-card reveal r1" data-k="言の葉"><h3>Kotonoha<span>言の葉</span></h3><p data-i18n="kb_kn_p">Six manches. À chacune, tu choisis une carte qui change les règles : Voyelles d'or, Voie étroite, Voyante. Certaines rapportent gros, tant que tu ne rates pas un mot.</p><div class="kb-shot"><div class="kb-phone "><img src="imgs/kotoba2_kotonoha.jpg" alt="Kotonoha" loading="lazy"/></div></div></div>
     </div>
   </div>
 </section>
