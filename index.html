@@ -278,6 +278,39 @@ footer{border-top:1px solid var(--border2);padding:56px 48px;position:relative;z
 .end-in .btn-p{display:inline-block;}
 @media(max-width:960px){.fact-strip{grid-template-columns:1fr 1fr;}.fact:nth-child(3){border-left:none;}.fact:nth-child(n+3){border-top:1px solid rgba(255,255,255,.12);}.fact{padding:22px 18px;}.fact b{font-size:2.2rem;}}
 @media(max-width:480px){.fact{flex-direction:column;align-items:flex-start;gap:8px;}.end-in{padding:44px 22px;}}
+
+/* ── HERO v4 : bloc studio centré, écrans dessous ── */
+.hero{padding:0 28px 80px;min-height:0;display:block;}
+.hero-in{display:block;max-width:1180px;margin:0 auto;text-align:center;}
+.hero-txt{min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:110px 0 60px;}
+.hero-title{font-size:clamp(3.4rem,12vw,10rem);line-height:.9;letter-spacing:-.03em;}
+.hero-title .l2{font-size:.6em;margin-top:.12em;letter-spacing:-.01em;}
+.hero-tag{margin-top:34px;font-size:clamp(1rem,1.9vw,1.45rem);}
+.hero-sub{max-width:620px;margin-left:auto;margin-right:auto;}
+.hero-cta,.hero-apps{justify-content:center;}
+.hero-glow.g1{opacity:.16;right:20%;top:8%;}.hero-glow.g2{opacity:.2;right:-6%;top:30%;bottom:auto;}.hero-glow.g3{opacity:.16;left:-6%;top:20%;bottom:auto;}
+.hero-fan{height:640px;max-width:900px;margin:0 auto;}
+.hf-phone{width:270px;margin:-290px 0 0 -135px;}
+.hf-l{transform:translateX(-250px) translateY(30px) rotate(-8deg) scale(.92);}
+.hf-r{transform:translateX(250px) translateY(30px) rotate(8deg) scale(.92);}
+.hero-fan:hover .hf-l{transform:translateX(-270px) translateY(20px) rotate(-10deg) scale(.94);}
+.hero-fan:hover .hf-r{transform:translateX(270px) translateY(20px) rotate(10deg) scale(.94);}
+.hero-apps{margin-top:30px;}
+@media(max-width:960px){
+.hero{padding:0 22px 56px;}
+.hero-txt{padding:100px 0 40px;}
+.hero-fan{height:440px;}
+.hf-phone{width:180px;margin:-195px 0 0 -90px;}
+.hf-l,.hero-fan:hover .hf-l{transform:translateX(-120px) translateY(20px) rotate(-9deg) scale(.9);}
+.hf-r,.hero-fan:hover .hf-r{transform:translateX(120px) translateY(20px) rotate(9deg) scale(.9);}
+}
+@media(max-width:480px){
+.hero-title{font-size:2.95rem;}
+.hero-fan{height:370px;}
+.hf-phone{width:150px;margin:-162px 0 0 -75px;}
+.hf-l,.hero-fan:hover .hf-l{transform:translateX(-86px) translateY(18px) rotate(-9deg) scale(.9);}
+.hf-r,.hero-fan:hover .hf-r{transform:translateX(86px) translateY(18px) rotate(9deg) scale(.9);}
+}
 </style>
 </head>
 <body>
@@ -322,17 +355,18 @@ footer{border-top:1px solid var(--border2);padding:56px 48px;position:relative;z
         <a href="contact.html" class="btn-p btn-main" data-i18n="home_hero_cta1">Travailler avec nous</a>
         <a href="#studio" class="btn-g" data-i18n="home_hero_cta2">Tout ce qu'on fait →</a>
       </div>
-      <div class="hero-apps">
-        <a href="vicebreak.html" class="hero-app"><img src="imgs/vicebreak_icon.png" alt=""/><span>Vice Break</span><small class="soon" data-i18n="home_hero_pill_vb">Bientôt · 19 nov.</small></a>
-        <a href="voteday.html" class="hero-app"><img src="imgs/voteday_icon.png" alt=""/><span>VoteDay</span><small data-i18n="home_hero_pill_live">Disponible</small></a>
-        <a href="kotoba.html" class="hero-app"><img src="imgs/kotoba_icon.png" alt=""/><span>Kotoba</span><small class="new" data-i18n="home_new">Nouveau · 2.0</small></a>
-      </div>
+      
     </div>
     <div class="hero-fan" aria-hidden="true">
       <a href="kotoba.html" class="hf-phone hf-l"><img src="imgs/kotoba2_home.jpg" alt=""/></a>
       <a href="voteday.html" class="hf-phone hf-r"><img src="imgs/vd_menu.jpg" alt=""/></a>
       <a href="vicebreak.html" class="hf-phone hf-c"><img src="imgs/vicebreak_1_web.jpg" alt=""/></a>
     </div>
+    <div class="hero-apps">
+        <a href="vicebreak.html" class="hero-app"><img src="imgs/vicebreak_icon.png" alt=""/><span>Vice Break</span><small class="soon" data-i18n="home_hero_pill_vb">Bientôt · 19 nov.</small></a>
+        <a href="voteday.html" class="hero-app"><img src="imgs/voteday_icon.png" alt=""/><span>VoteDay</span><small data-i18n="home_hero_pill_live">Disponible</small></a>
+        <a href="kotoba.html" class="hero-app"><img src="imgs/kotoba_icon.png" alt=""/><span>Kotoba</span><small class="new" data-i18n="home_new">Nouveau · 2.0</small></a>
+      </div>
   </div>
 </section>
 
