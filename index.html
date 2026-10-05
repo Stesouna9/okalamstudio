@@ -15,7 +15,7 @@
 <link rel="stylesheet" href="shared.css?v=20261005b"/>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
+html{scroll-behavior:smooth;overflow-x:hidden;}
 body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;line-height:1.6;overflow-x:hidden;}
 ::selection{background:rgba(141,234,255,.25);color:var(--accent);}
 canvas{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;opacity:.6;}
@@ -190,6 +190,60 @@ footer{border-top:1px solid var(--border2);padding:56px 48px;position:relative;z
 .vbf-cta{display:inline-block;padding:12px 20px;border-radius:10px;background:#FF2E88;color:#fff;font-family:'Syne',sans-serif;font-weight:800;font-size:.85rem;box-shadow:0 0 22px rgba(255,46,136,.6);}
 .vbf-radio{height:56px;border-radius:10px;border:1px solid rgba(255,255,255,.1);}
 @media(max-width:900px){.vbf-card{grid-template-columns:1fr;}.vbf-sky{min-height:220px;}.vbf-sun{width:170px;height:170px;bottom:50px;}}
+
+/* ── HERO v3 ── */
+.hero{align-items:stretch;text-align:left;overflow:hidden;padding:120px 28px 70px;}
+.hero-in{position:relative;width:100%;max-width:1180px;margin:auto;display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center;}
+.hero-cta,.hero-apps{justify-content:flex-start;}
+.hero-title{font-size:clamp(3.2rem,7.4vw,6.4rem);}
+.hero-title .l2{background:linear-gradient(90deg,#8DEAFF,#A98BFF 55%,#FF2E88);-webkit-background-clip:text;background-clip:text;color:transparent;}
+.hero-sub{max-width:480px;color:rgba(232,237,245,.72);letter-spacing:.01em;font-weight:400;line-height:1.6;}
+.hero-glow{position:absolute;border-radius:50%;filter:blur(100px);pointer-events:none;animation:glowF 16s ease-in-out infinite alternate;}
+.hero-glow.g1{width:520px;height:520px;background:#FF2E88;opacity:.3;right:6%;top:12%;}
+.hero-glow.g2{width:460px;height:460px;background:#8A5CF6;opacity:.34;right:-8%;bottom:0;animation-delay:-5s;}
+.hero-glow.g3{width:420px;height:420px;background:#1FB6D9;opacity:.22;left:-10%;bottom:-10%;animation-delay:-9s;}
+@keyframes glowF{from{transform:translate(0,0) scale(1);}to{transform:translate(-40px,30px) scale(1.15);}}
+.hero-fan{position:relative;height:600px;animation:fadeUp .9s .3s ease both;}
+.hf-phone{position:absolute;left:50%;top:50%;width:250px;margin:-270px 0 0 -125px;border-radius:34px;padding:7px;background:#05060c;border:1px solid rgba(255,255,255,.18);box-shadow:0 40px 90px rgba(0,0,0,.6);transition:transform .45s cubic-bezier(.2,.8,.2,1);}
+.hf-phone img{display:block;width:100%;border-radius:27px;}
+.hf-l{transform:translateX(-150px) translateY(26px) rotate(-11deg) scale(.9);}
+.hf-r{transform:translateX(150px) translateY(26px) rotate(11deg) scale(.9);}
+.hf-c{z-index:2;animation:hfBob 6s ease-in-out infinite alternate;box-shadow:0 40px 100px rgba(255,46,136,.3),0 40px 90px rgba(0,0,0,.6);}
+@keyframes hfBob{to{transform:translateY(-14px);}}
+.hero-fan:hover .hf-l{transform:translateX(-178px) translateY(14px) rotate(-14deg) scale(.92);}
+.hero-fan:hover .hf-r{transform:translateX(178px) translateY(14px) rotate(14deg) scale(.92);}
+/* ── UNIVERS ── */
+.apps-head h2 em{font-style:normal;background:linear-gradient(90deg,#8DEAFF,#A98BFF);-webkit-background-clip:text;background-clip:text;color:transparent;}
+.uni-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+.uni{position:relative;display:flex;flex-direction:column;border-radius:28px;overflow:hidden;text-decoration:none;color:#fff;border:1px solid rgba(255,255,255,.1);transition:transform .3s,box-shadow .3s,border-color .3s;}
+.uni:hover{transform:translateY(-8px);border-color:rgba(255,255,255,.3);}
+.uni-top{padding:30px 26px 0;display:flex;flex-direction:column;align-items:flex-start;flex:1;}
+.uni-tag{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;opacity:.8;margin-bottom:14px;}
+.uni-name{font-family:'Syne',sans-serif;font-weight:800;font-size:2.1rem;letter-spacing:-.02em;line-height:1;margin-bottom:12px;}
+.uni-desc{font-size:.9rem;line-height:1.6;color:rgba(255,255,255,.72);margin-bottom:18px;}
+.uni-see{margin-top:auto;padding-top:16px;font-family:'Syne',sans-serif;font-weight:700;font-size:.85rem;}
+.uni-soon{display:inline-flex;font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:#FF2E88;border:1px solid rgba(255,46,136,.6);padding:8px 14px;border-radius:30px;}
+.uni-shot{height:300px;margin:26px 26px 0;border-radius:26px 26px 0 0;overflow:hidden;border:6px solid #05060c;border-bottom:none;box-shadow:0 -10px 50px rgba(0,0,0,.35);transition:transform .4s;}
+.uni:hover .uni-shot{transform:translateY(-10px);}
+.uni-shot img{display:block;width:100%;}
+.u-vd{background:linear-gradient(170deg,#2A1D5C,#140F2A 70%);}.u-vd:hover{box-shadow:0 30px 70px rgba(138,92,246,.3);}
+.u-vd .uni-see{color:#5BD67A;}
+.u-kb{background:linear-gradient(170deg,#14283A,#0A1016 70%);}.u-kb:hover{box-shadow:0 30px 70px rgba(127,221,245,.2);}
+.u-kb .uni-name{color:#F2C21A;letter-spacing:.06em;}.u-kb .uni-see{color:#7FDDF5;}
+.u-vb{background:linear-gradient(170deg,#4A1247,#150A26 70%);}.u-vb:hover{box-shadow:0 30px 70px rgba(255,46,136,.3);}
+.u-vb .uni-name{background:linear-gradient(180deg,#FFD23F,#FF2E88);-webkit-background-clip:text;background-clip:text;color:transparent;}.u-vb .uni-see{color:#FF6FA8;}
+@media(max-width:960px){
+.hero{padding:110px 22px 50px;}
+.hero-in{grid-template-columns:minmax(0,1fr);gap:10px;text-align:center;}.hero-in>*{min-width:0;}.hero-cta,.hero-apps{flex-wrap:wrap;}
+.hero-cta,.hero-apps{justify-content:center;}.hero-sub{margin-left:auto;margin-right:auto;}
+.hero-fan{height:440px;}
+.hf-phone{width:180px;margin:-195px 0 0 -90px;border-radius:26px;padding:5px;}.hf-phone img{border-radius:21px;}
+.hf-l{transform:translateX(-100px) translateY(20px) rotate(-10deg) scale(.9);}.hf-r{transform:translateX(100px) translateY(20px) rotate(10deg) scale(.9);}
+.hero-fan:hover .hf-l{transform:translateX(-100px) translateY(20px) rotate(-10deg) scale(.9);}.hero-fan:hover .hf-r{transform:translateX(100px) translateY(20px) rotate(10deg) scale(.9);}
+.uni-grid{grid-template-columns:1fr;max-width:460px;margin:0 auto;}
+}
+@media(max-width:480px){.hero-title{font-size:2.5rem;}.hero-fan{height:380px;}.hf-phone{width:150px;margin:-162px 0 0 -75px;}.hf-l{transform:translateX(-84px) translateY(18px) rotate(-10deg) scale(.9);}.hf-r{transform:translateX(84px) translateY(18px) rotate(10deg) scale(.9);}.hero-fan:hover .hf-l{transform:translateX(-84px) translateY(18px) rotate(-10deg) scale(.9);}.hero-fan:hover .hf-r{transform:translateX(84px) translateY(18px) rotate(10deg) scale(.9);}}
+@media(prefers-reduced-motion:reduce){.hero-glow,.hf-c{animation:none;}}
 </style>
 </head>
 <body>
@@ -223,22 +277,28 @@ footer{border-top:1px solid var(--border2);padding:56px 48px;position:relative;z
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-badge" data-i18n="home_hero_badge">Studio indépendant · Nantes</div>
-  <h1 class="hero-title">
-    <span class="l1">OKALAM</span>
-    <span class="l2">Studio</span>
-  </h1>
-  <p class="hero-sub" data-i18n="home_hero_sub">On fabrique des jeux et des apps mobiles. Deux sont déjà sur l'App Store, le troisième arrive le 19 novembre.</p>
-  <div class="hero-cta">
-    <a href="vicebreak.html" class="btn-p btn-vb" data-i18n="home_hero_cta1">Découvrir Vice Break</a>
-    <a href="#apps" class="btn-g" data-i18n="home_hero_cta2">Nos apps</a>
+  <div class="hero-glow g1"></div><div class="hero-glow g2"></div><div class="hero-glow g3"></div>
+  <div class="hero-in">
+    <div class="hero-txt">
+      <div class="hero-badge" data-i18n="home_hero_badge">Studio indépendant · Nantes</div>
+      <h1 class="hero-title"><span class="l1">OKALAM</span><span class="l2">Studio</span></h1>
+      <p class="hero-sub" data-i18n="home_hero_sub">On fabrique des jeux et des apps mobiles. Kotoba et VoteDay sont sur l'App Store, Vice Break arrive le 19 novembre.</p>
+      <div class="hero-cta">
+        <a href="vicebreak.html" class="btn-p btn-vb" data-i18n="home_hero_cta1">Découvrir Vice Break</a>
+        <a href="#apps" class="btn-g" data-i18n="home_hero_cta2">Nos apps</a>
+      </div>
+      <div class="hero-apps">
+        <a href="vicebreak.html" class="hero-app"><img src="imgs/vicebreak_icon.png" alt=""/><span>Vice Break</span><small class="soon" data-i18n="home_hero_pill_vb">Bientôt · 19 nov.</small></a>
+        <a href="voteday.html" class="hero-app"><img src="imgs/voteday_icon.png" alt=""/><span>VoteDay</span><small data-i18n="home_hero_pill_live">Disponible</small></a>
+        <a href="kotoba.html" class="hero-app"><img src="imgs/kotoba_icon.png" alt=""/><span>Kotoba</span><small class="new" data-i18n="home_new">Nouveau · 2.0</small></a>
+      </div>
+    </div>
+    <div class="hero-fan" aria-hidden="true">
+      <a href="kotoba.html" class="hf-phone hf-l"><img src="imgs/kotoba2_home.jpg" alt=""/></a>
+      <a href="voteday.html" class="hf-phone hf-r"><img src="imgs/vd_menu.jpg" alt=""/></a>
+      <a href="vicebreak.html" class="hf-phone hf-c"><img src="imgs/vicebreak_1_web.jpg" alt=""/></a>
+    </div>
   </div>
-  <div class="hero-apps">
-    <a href="vicebreak.html" class="hero-app"><img src="imgs/vicebreak_icon.png" alt=""/><span>Vice Break</span><small class="soon" data-i18n="home_hero_pill_vb">Bientôt · 19 nov.</small></a>
-    <a href="projets.html#voteday" class="hero-app"><img src="imgs/voteday_icon.png" alt=""/><span>VoteDay</span><small data-i18n="home_hero_pill_live">Disponible</small></a>
-    <a href="kotoba.html" class="hero-app"><img src="imgs/kotoba_icon.png" alt=""/><span>Kotoba</span><small class="new" data-i18n="home_new">Nouveau · 2.0</small></a>
-  </div>
-  <div class="scroll-arrow"><div class="sarrow"></div></div>
 </section>
 
 <!-- TICKER -->
@@ -249,6 +309,49 @@ footer{border-top:1px solid var(--border2);padding:56px 48px;position:relative;z
   </div>
 </div>
 
+
+<!-- APPS -->
+<section class="apps-section" id="apps">
+  <div class="apps-inner">
+    <div class="apps-head">
+      <div class="ok-label" data-i18n="home_games_label">Nos jeux et apps</div>
+      <h2 class="reveal" data-i18n="home_games_title">Trois univers, <em>un studio</em></h2>
+    </div>
+    <div class="uni-grid">
+      <a class="uni u-vd reveal" href="voteday.html">
+        <div class="uni-top">
+          <div class="uni-tag" data-i18n="home_vd_tag">App sociale · une question par jour</div>
+          <h3 class="uni-name"><span style="color:#5BD67A">Vote</span><span style="color:#A98BFF">Day</span></h3>
+          <p class="uni-desc" data-i18n="home_vd_desc2">Vote A ou B, compare avec tes amis et le monde, fais grandir ton Bubl et ton île.</p>
+          <span class="store-badges sm"><span class="sbadge" onclick="event.preventDefault();window.open('https://apps.apple.com/app/id6760981728','_blank')"><img data-badge="appstore" src="imgs/badges/appstore_fr.svg" alt="App Store"/></span><span class="sbadge gp soon"><img data-badge="googleplay" src="imgs/badges/googleplay_fr.png" alt="Google Play"/><em data-i18n="badge_soon">Bientôt</em></span></span>
+          <span class="uni-see" data-i18n="home_see">Voir la page →</span>
+        </div>
+        <div class="uni-shot"><img src="imgs/vd_island.jpg" alt="" loading="lazy"/></div>
+      </a>
+      <a class="uni u-kb reveal r1" href="kotoba.html">
+        <div class="uni-top">
+          <div class="uni-tag" data-i18n="home_kb_tag">Jeu de lettres · français et japonais</div>
+          <h3 class="uni-name">KOTOBA</h3>
+          <p class="uni-desc" data-i18n="home_kb_desc">Version 2.0 : deux nouveaux jeux, Kotodama et Kotonoha, l'app entièrement en japonais et un classement général.</p>
+          <span class="store-badges sm"><span class="sbadge" onclick="event.preventDefault();window.open('https://apps.apple.com/app/id6761341663','_blank')"><img data-badge="appstore" src="imgs/badges/appstore_fr.svg" alt="App Store"/></span><span class="sbadge gp soon"><img data-badge="googleplay" src="imgs/badges/googleplay_fr.png" alt="Google Play"/><em data-i18n="badge_soon">Bientôt</em></span></span>
+          <span class="uni-see" data-i18n="home_see">Voir la page →</span>
+        </div>
+        <div class="uni-shot"><img src="imgs/kotoba2_kotodama.jpg" alt="" loading="lazy"/></div>
+      </a>
+      <a class="uni u-vb reveal r2" href="vicebreak.html">
+        <div class="uni-top">
+          <div class="uni-tag" data-i18n="home_vb_tag">Casse-briques néon · 19 novembre</div>
+          <h3 class="uni-name">VICE BREAK</h3>
+          <p class="uni-desc" data-i18n="home_vb_desc2">Une borne d'arcade de 1986, des centaines de niveaux dessinés à la main et cinq stations de radio.</p>
+          <span class="uni-soon" data-i18n="home_hero_pill_vb">Bientôt · 19 nov.</span>
+          <span class="uni-see" data-i18n="home_see">Voir la page →</span>
+        </div>
+        <div class="uni-shot"><img src="imgs/vicebreak_1_web.jpg" alt="" loading="lazy"/></div>
+      </a>
+    </div>
+    <div class="apps-more reveal r2"><a href="projets.html" class="btn-g" data-i18n="home_all">Tous les projets →</a></div>
+  </div>
+</section>
 
 <!-- VICE BREAK À LA UNE -->
 <section class="vbf" id="vicebreak">
@@ -266,37 +369,7 @@ footer{border-top:1px solid var(--border2);padding:56px 48px;position:relative;z
   </a>
 </section>
 
-<!-- APPS -->
-<section class="apps-section" id="apps">
-  <div class="apps-inner">
-    <div class="apps-head">
-      <div class="ok-label" data-i18n="home_apps_label">Nos applications</div>
-      <h2 class="reveal" data-i18n="home_apps_title">Déjà sur l'App Store</h2>
-      <p class="reveal r1" data-i18n="home_apps_sub">Deux apps conçues et publiées par le studio. Gratuites, sans compte obligatoire.</p>
-    </div>
-    <div class="apps-grid">
-      <a class="app-card reveal" href="projets.html#voteday">
-        <div class="app-shot"><img src="imgs/voteday_island.png" alt="VoteDay" loading="lazy"/></div>
-        <div class="app-meta">
-          <div class="app-live" data-i18n="home_apps_live">Disponible</div>
-          <div class="app-title"><img src="imgs/voteday_icon.png" alt=""/><h3>VoteDay</h3></div>
-          <p class="app-desc" data-i18n="home_vd_desc">Une question par jour à 17h. Vote A ou B, compare avec tes amis et le monde.</p>
-          <span class="store-badges sm"><span class="sbadge" onclick="event.preventDefault();window.open('https://apps.apple.com/fr/app/voteday/id6760981728','_blank')"><img data-badge="appstore" src="imgs/badges/appstore_fr.svg" alt="App Store"/></span><span class="sbadge gp soon"><img data-badge="googleplay" src="imgs/badges/googleplay_fr.png" alt="Google Play"/><em data-i18n="badge_soon">Bientôt</em></span></span>
-        </div>
-      </a>
-      <a class="app-card reveal r1" href="kotoba.html">
-        <div class="app-shot"><img src="imgs/kotoba2_kotodama.jpg" alt="Kotoba" loading="lazy"/></div>
-        <div class="app-meta">
-          <div class="app-live" data-i18n="home_new">Nouveau · 2.0</div>
-          <div class="app-title"><img src="imgs/kotoba_icon.png" alt=""/><h3>Kotoba</h3></div>
-          <p class="app-desc" data-i18n="home_kb_desc">Version 2.0 : deux nouveaux jeux, Kotodama et Kotonoha, l'app entièrement en japonais et un classement général.</p>
-          <span class="store-badges sm"><span class="sbadge" onclick="event.preventDefault();window.open('https://apps.apple.com/fr/app/kotoba-mot-du-jour/id6761341663','_blank')"><img data-badge="appstore" src="imgs/badges/appstore_fr.svg" alt="App Store"/></span><span class="sbadge gp soon"><img data-badge="googleplay" src="imgs/badges/googleplay_fr.png" alt="Google Play"/><em data-i18n="badge_soon">Bientôt</em></span></span>
-        </div>
-      </a>
-    </div>
-    <div class="apps-more reveal r2"><a href="projets.html#a-venir" class="btn-g" data-i18n="home_apps_more">Voir les projets à venir : Vice Break, Little ToT →</a></div>
-  </div>
-</section>
+
 
 <!-- WHY WORK WITH US -->
 <section class="why-section">
@@ -395,7 +468,7 @@ footer{border-top:1px solid var(--border2);padding:56px 48px;position:relative;z
   </div>
 </footer>
 
-<script src="shared-i18n.js?v=20261005c"></script>
+<script src="shared-i18n.js?v=20261005d"></script>
 <script>
 // ── TRANSLATIONS ─────────────────────────────────────────────────
 const T={
@@ -524,7 +597,7 @@ const T={
 };
 
 // ── TICKER ───────────────────────────────────────────────────────
-const TICKER_ITEMS='Running \u00b7 Tech \u00b7 EV \u00b7 Lifestyle \u00b7 France \u00b7 Creator Partnerships \u00b7 Brand Deals \u00b7 Europe \u00b7 OKALAM Studio \u00b7 25K+ abonnés \u00b7 22M+ vues \u00b7 Niche Audiences \u00b7';
+const TICKER_ITEMS='Vice Break \u00b7 VoteDay \u00b7 Kotoba \u00b7 Vice Bay Radio \u00b7 Kotodama \u00b7 Kotonoha \u00b7 Bubl \u00b7 iPhone \u00b7 Android \u00b7 Nantes \u00b7 OKALAM Studio';
 function buildTicker(){
   const content=TICKER_ITEMS.split('\u00b7').map(w=>`<span class="titem">${w.trim()} <span style="opacity:.3">\u00b7</span></span>`).join('');
   ['ticker1','ticker2'].forEach(id=>{const el=document.getElementById(id);if(el)el.innerHTML=content;});

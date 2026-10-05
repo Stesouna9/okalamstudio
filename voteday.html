@@ -1,158 +1,295 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VoteDay – OKALAM Studio</title>
-  <meta name="description" content="VoteDay — an iOS app by OKALAM Studio where friends vote on fun daily questions. Download on the App Store."/>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-  <style>
-    :root{--accent:#a78bff;--accent2:#7c3aed;--bg:#08060f;--card-bg:rgba(18,14,30,0.95);--text:#e8e4f0;--muted:#776c8a;--border:rgba(255,255,255,0.07)}
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
-    canvas{position:fixed;top:0;left:0;z-index:0;pointer-events:none}
-    .glow{position:fixed;border-radius:50%;filter:blur(130px);pointer-events:none;z-index:0}
-    .glow.t{width:700px;height:700px;top:-250px;left:50%;transform:translateX(-50%);background:radial-gradient(circle,rgba(167,139,255,0.08),transparent 70%);animation:pulse 9s ease-in-out infinite}
-    @keyframes pulse{0%,100%{opacity:.5}50%{opacity:1}}
-    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:16px 28px;background:rgba(8,6,15,0.8);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
-    .nav-logo{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;letter-spacing:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
-    .nav-right{display:flex;align-items:center;gap:8px}
-    .lang-wrap{position:relative}
-    .lang-wrap select{appearance:none;background:rgba(255,255,255,0.06);color:var(--text);border:1px solid var(--border);padding:6px 28px 6px 12px;border-radius:20px;cursor:pointer;font-size:13px;outline:none}
-    .lang-wrap::after{content:'▾';position:absolute;right:10px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none;font-size:11px}
-    .back-btn{display:inline-flex;align-items:center;gap:6px;padding:6px 16px;background:rgba(255,255,255,0.06);border:1px solid var(--border);border-radius:20px;color:var(--muted);text-decoration:none;font-size:13px}
-    .wrapper{position:relative;z-index:1}
-    .hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:60px;padding:120px 80px 80px;max-width:1100px;margin:0 auto}
-    .hero-left{display:flex;flex-direction:column;gap:24px}
-    .app-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(167,139,255,0.1);border:1px solid rgba(167,139,255,0.25);border-radius:20px;padding:6px 16px;font-size:11px;letter-spacing:2px;color:var(--accent);text-transform:uppercase;width:fit-content}
-    .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:blink 1.5s ease infinite}
-    @keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
-    h1{font-family:'Syne',sans-serif;font-size:clamp(40px,5vw,68px);font-weight:800;line-height:1.05;letter-spacing:-2px;background:linear-gradient(160deg,#fff 20%,rgba(167,139,255,0.8));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-    .hero-desc{font-size:17px;color:var(--muted);line-height:1.8;max-width:420px}
-    .hero-meta{display:flex;flex-wrap:wrap;gap:10px}
-    .meta-pill{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.05);border:1px solid var(--border);border-radius:12px;padding:6px 14px;font-size:13px;color:var(--muted)}
-    .cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:8px}
-    .cta-primary{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;background:linear-gradient(135deg,var(--accent2),#5b21b6);border-radius:14px;color:#fff;font-size:15px;font-weight:600;border:none;cursor:pointer}
-    .cta-secondary{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;background:rgba(255,255,255,0.05);border:1px solid var(--border);border-radius:14px;color:var(--text);text-decoration:none;font-size:15px}
-    .hero-right{display:flex;justify-content:center;align-items:center}
-    .phone-wrap{position:relative;animation:float 4s ease-in-out infinite}
-    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
-    .phone-frame{width:240px;border-radius:40px;border:2px solid rgba(167,139,255,0.2);box-shadow:0 40px 80px rgba(0,0,0,.8),0 0 60px rgba(167,139,255,0.1);overflow:hidden;background:#000}
-    .phone-frame img{width:100%;display:block}
-    .phone-glow{position:absolute;inset:-30px;background:radial-gradient(circle,rgba(167,139,255,0.12),transparent 70%);border-radius:50%;z-index:-1}
-    .features-section{padding:80px 40px 100px;max-width:900px;margin:0 auto}
-    .section-header{text-align:center;margin-bottom:56px}
-    .section-eyebrow{font-size:12px;letter-spacing:3px;color:var(--accent);text-transform:uppercase;margin-bottom:16px}
-    .section-title{font-family:'Syne',sans-serif;font-size:clamp(28px,4vw,42px);font-weight:800;letter-spacing:-1px;background:linear-gradient(160deg,#fff,rgba(167,139,255,0.7));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-    .features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
-    .feature-card{background:var(--card-bg);border:1px solid var(--border);border-radius:20px;padding:28px;transition:.3s}
-    .feature-card:hover{border-color:rgba(167,139,255,0.2);transform:translateY(-4px)}
-    .feature-icon{font-size:32px;margin-bottom:16px;display:block}
-    .feature-title{font-family:'Syne',sans-serif;font-size:17px;font-weight:700;margin-bottom:10px}
-    .feature-desc{font-size:14px;color:var(--muted);line-height:1.7}
-    .privacy-section{padding:0 40px 100px;max-width:900px;margin:0 auto}
-    .privacy-card{background:linear-gradient(135deg,rgba(167,139,255,0.07),rgba(124,58,237,0.04));border:1px solid rgba(167,139,255,0.15);border-radius:20px;padding:32px;display:flex;align-items:center;gap:24px}
-    .privacy-icon{font-size:40px;flex-shrink:0}
-    .privacy-text h3{font-family:'Syne',sans-serif;font-size:18px;font-weight:700;margin-bottom:8px}
-    .privacy-text p{font-size:14px;color:var(--muted);line-height:1.7}
-    .privacy-text a{color:var(--accent);text-decoration:none}
-    footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:40px 32px;text-align:center}
-    .footer-inner{display:flex;flex-direction:column;align-items:center;gap:14px}
-    .footer-logo{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;letter-spacing:4px;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-    .footer-links{display:flex;gap:20px;flex-wrap:wrap;justify-content:center}
-    .footer-links a{font-size:13px;color:var(--muted);text-decoration:none}
-    .footer-copy{font-size:12px;color:rgba(102,108,128,0.4)}
-    @media(max-width:768px){.hero{grid-template-columns:1fr;padding:100px 24px 60px;gap:40px;text-align:center}.hero-left{align-items:center}.cta-row{justify-content:center}.features-section,.privacy-section{padding-left:24px;padding-right:24px}.privacy-card{flex-direction:column;text-align:center}}
-  </style>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>VoteDay — Une question par jour, le monde entier répond | OKALAM Studio</title>
+<meta name="description" content="VoteDay 2.0 : chaque jour une question A ou B. Vote, compare avec tes amis et le monde, personnalise ton Bubl et explore l'île. Gratuit sur iPhone."/>
+<meta property="og:title" content="VoteDay — Une question par jour, le monde entier répond"/>
+<meta property="og:description" content="Chaque jour une question A ou B. Vote, compare avec tes amis et le monde. Gratuit sur iPhone."/>
+<meta property="og:image" content="https://okalamstudio.com/imgs/vd_menu.jpg"/>
+<meta name="apple-itunes-app" content="app-id=6760981728"/>
+<link rel="icon" href="imgs/voteday_icon.png"/>
+<link rel="stylesheet" href="shared.css?v=20261005b"/>
+<style>
+:root{--vd-bg:#110D20;--vd-panel:#1A1530;--vd-panel2:#221B3D;--vd-green:#5BD67A;--vd-purple:#8A5CF6;--vd-lav:#C9B8FF;--vd-ink:#F1EEFB;--vd-mute:#A79FC2;--vd-line:rgba(201,184,255,.14);}
+body{background:var(--vd-bg);}
+#ok-particles{display:none;}
+#ok-disc-pill{display:none !important;}
+.vd{color:var(--vd-ink);font-family:'DM Sans',sans-serif;overflow:hidden;}
+.vd em{font-style:normal;background:linear-gradient(90deg,var(--vd-green),#9BE8AE);-webkit-background-clip:text;background-clip:text;color:transparent;}
+.vd-wrap{max-width:1160px;margin:0 auto;padding:0 28px;}
+.vd-label{font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--vd-lav);display:flex;align-items:center;gap:12px;margin-bottom:18px;}
+.vd-label::before{content:'';width:28px;height:1px;background:var(--vd-lav);}
+.vd h2{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(1.9rem,4.4vw,3.2rem);line-height:1.08;letter-spacing:-.01em;margin:0 0 18px;color:#fff;}
+.vd p{color:var(--vd-mute);font-size:1.02rem;line-height:1.7;}
+.vd section{padding:110px 0;position:relative;}
+.vd-hero{padding:150px 0 90px !important;}
+.vd-blob{position:absolute;border-radius:50%;filter:blur(90px);opacity:.5;pointer-events:none;animation:vdFloat 14s ease-in-out infinite alternate;}
+.vd-blob.b1{width:520px;height:520px;background:var(--vd-purple);right:-80px;top:40px;}
+.vd-blob.b2{width:420px;height:420px;background:var(--vd-green);left:-120px;bottom:-80px;opacity:.28;animation-delay:-6s;}
+@keyframes vdFloat{from{transform:translate(0,0) scale(1);}to{transform:translate(40px,-30px) scale(1.12);}}
+.vd-hero-grid{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;}
+.vd-pill{display:inline-flex;font-family:'Space Mono',monospace;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:#0c1a10;background:var(--vd-green);padding:6px 14px;border-radius:30px;font-weight:700;margin-bottom:26px;}
+.vd-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(3.4rem,8vw,6rem);line-height:1;letter-spacing:-.03em;margin-bottom:22px;}
+.vd-logo span:first-child{color:var(--vd-green);}.vd-logo span:last-child{color:var(--vd-purple);}
+.vd h1{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(1.6rem,3.2vw,2.5rem);line-height:1.16;margin:0 0 16px;color:#fff;}
+.vd-lead{max-width:520px;margin:0 0 30px;}
+.vd-free{margin-top:16px;font-family:'Space Mono',monospace;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--vd-mute);}
+.vd-phone{border-radius:38px;padding:8px;background:#07050F;border:1px solid rgba(255,255,255,.16);box-shadow:0 40px 90px rgba(0,0,0,.55);}
+.vd-phone img{display:block;width:100%;border-radius:30px;}
+.vd-hero-phones{position:relative;height:620px;}
+.vd-hero-phones .vd-phone{position:absolute;width:290px;}
+.vd-hero-phones .p1{left:50%;top:0;transform:translateX(-62%) rotate(-4deg);z-index:2;animation:vdBob 6s ease-in-out infinite alternate;}
+.vd-hero-phones .p2{left:50%;top:70px;transform:translateX(-2%) rotate(6deg);animation:vdBob2 7s ease-in-out infinite alternate;}
+@keyframes vdBob{to{transform:translateX(-62%) rotate(-4deg) translateY(-14px);}}
+@keyframes vdBob2{to{transform:translateX(-2%) rotate(6deg) translateY(12px);}}
+/* try */
+.vd-try{background:linear-gradient(180deg,var(--vd-bg),#150F2A);}
+.vd-try-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:center;}
+.vd-card{background:linear-gradient(180deg,var(--vd-panel2),var(--vd-panel));border:1px solid var(--vd-line);border-radius:30px;padding:36px;box-shadow:0 30px 70px rgba(0,0,0,.4);}
+.vd-qhead{font-family:'Syne',sans-serif;font-weight:800;font-size:1.5rem;color:#fff;margin-bottom:22px;text-align:center;}
+.vd-qset{display:none;grid-template-columns:1fr auto 1fr;gap:14px;align-items:stretch;}
+.vd-qset.on{display:grid;}
+.vd-opt{min-height:130px;border-radius:22px;border:none;cursor:pointer;font-family:'Syne',sans-serif;font-weight:800;font-size:1.25rem;color:#fff;padding:18px;transition:transform .2s,opacity .3s,box-shadow .2s;}
+.vd-opt.a{background:linear-gradient(160deg,#9B73FF,var(--vd-purple));box-shadow:0 14px 34px rgba(138,92,246,.35);}
+.vd-opt.b{background:linear-gradient(160deg,#7BE596,#3DBE62);color:#0c1a10;box-shadow:0 14px 34px rgba(91,214,122,.3);}
+.vd-opt:hover{transform:translateY(-4px) scale(1.02);}
+.vd-or{align-self:center;font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--vd-mute);}
+.vd-qset.done .vd-opt{pointer-events:none;}
+.vd-qset.done .vd-opt:not(.picked){opacity:.28;transform:scale(.96);}
+.vd-qset.done .vd-opt.picked{transform:scale(1.03);box-shadow:0 0 0 3px #fff,0 18px 40px rgba(0,0,0,.4);}
+.vd-after{display:none;margin-top:22px;text-align:center;}
+.vd-after.on{display:block;animation:vdIn .4s ease both;}
+@keyframes vdIn{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:none;}}
+.vd-after b{display:block;color:var(--vd-green);font-family:'Syne',sans-serif;font-weight:700;margin-bottom:6px;}
+.vd-after p{font-size:.92rem;margin:0 0 16px;}
+.vd-nextbtn{background:rgba(255,255,255,.07);border:1px solid var(--vd-line);color:#fff;font-family:'Syne',sans-serif;font-weight:700;font-size:.85rem;padding:10px 20px;border-radius:30px;cursor:pointer;}
+.vd-nextbtn:hover{background:rgba(255,255,255,.14);}
+/* days */
+.vd-days{display:grid;grid-template-columns:repeat(7,1fr);gap:12px;margin-top:40px;}
+.vd-day{position:relative;background:var(--vd-panel);border:1px solid var(--vd-line);border-top:3px solid var(--c);border-radius:20px;padding:22px 12px 20px;text-align:center;}
+.vd-day i{font-style:normal;font-size:1.7rem;display:block;margin-bottom:10px;}
+.vd-day small{display:block;font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--vd-mute);margin-bottom:6px;}
+.vd-day b{font-family:'Syne',sans-serif;font-weight:800;font-size:1rem;color:#fff;}
+.vd-day em{display:none;position:absolute;top:-11px;left:50%;transform:translateX(-50%);font-family:'Space Mono',monospace;font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;background:var(--c);-webkit-background-clip:border-box;background-clip:border-box;color:#0c0a16;padding:3px 9px;border-radius:20px;font-weight:700;white-space:nowrap;}
+.vd-day.today{background:var(--vd-panel2);box-shadow:0 0 0 1px var(--c),0 16px 40px rgba(0,0,0,.4);}
+.vd-day.today em{display:block;}
+/* friends */
+.vd-friends{background:#150F2A;}
+.vd-fr-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:64px;align-items:center;}
+.vd-fr-grid .vd-phone{width:min(300px,100%);margin:0 auto;transform:rotate(3deg);}
+/* new */
+.vd-new-top{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;}
+.vd-duo{display:flex;gap:22px;justify-content:center;}
+.vd-duo .vd-phone{width:min(230px,46%);}
+.vd-duo .vd-phone:first-child{transform:rotate(-4deg);}.vd-duo .vd-phone:last-child{transform:rotate(4deg) translateY(26px);}
+.vd-feats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:64px;}
+.vd-feat{background:var(--vd-panel);border:1px solid var(--vd-line);border-radius:20px;padding:24px 20px;transition:transform .2s,border-color .2s;}
+.vd-feat:hover{transform:translateY(-4px);border-color:var(--vd-purple);}
+.vd-feat i{font-style:normal;font-size:1.8rem;display:block;margin-bottom:12px;}
+.vd-feat b{display:block;font-family:'Syne',sans-serif;font-weight:800;color:#fff;font-size:1.05rem;margin-bottom:6px;}
+.vd-feat p{font-size:.88rem;line-height:1.5;margin:0;}
+/* gallery */
+.vd-gal{padding-bottom:70px !important;background:#150F2A;}
+.vd-strip{display:flex;gap:22px;overflow-x:auto;scroll-snap-type:x mandatory;padding:36px 28px 30px;scrollbar-width:thin;scrollbar-color:#3a2f63 transparent;}
+.vd-strip .vd-phone{flex:0 0 240px;scroll-snap-align:center;border-radius:32px;}
+.vd-strip .vd-phone img{border-radius:25px;}
+.vd-cta{text-align:center;padding:100px 0 120px !important;}
+.vd-cta .vd-logo{font-size:clamp(2.6rem,6vw,4rem);}
+.vd-cta .store-badges{justify-content:center;margin-top:30px;}
+.vd-cta p{max-width:460px;margin:0 auto;}
+.vd-legal{margin-top:34px;font-size:.78rem;color:var(--vd-mute);}
+.vd-legal a{color:var(--vd-mute);}
+@media(max-width:960px){
+.vd section{padding:76px 0;}
+.vd-hero{padding:120px 0 60px !important;}
+.vd-hero-grid,.vd-try-grid,.vd-fr-grid,.vd-new-top{grid-template-columns:1fr;gap:44px;}
+.vd-hero-phones{height:520px;}.vd-hero-phones .vd-phone{width:240px;}
+.vd-days{grid-template-columns:repeat(4,1fr);}
+.vd-feats{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:520px){
+.vd-wrap{padding:0 20px;}.vd-hero .vd-logo{font-size:3.1rem;}.vd-hero-grid>*{min-width:0;}
+.vd-hero-phones{height:440px;}.vd-hero-phones .vd-phone{width:200px;border-radius:30px;}.vd-hero-phones .vd-phone img{border-radius:23px;}
+.vd-card{padding:24px 18px;}
+.vd-qset{grid-template-columns:1fr;gap:10px;}.vd-opt{min-height:84px;font-size:1.1rem;}.vd-or{justify-self:center;}
+.vd-days{grid-template-columns:repeat(2,1fr);}
+.vd-strip .vd-phone{flex-basis:200px;}
+}
+@media(prefers-reduced-motion:reduce){.vd-blob,.vd-hero-phones .vd-phone{animation:none;}}
+</style>
 </head>
 <body>
-<canvas id="particles"></canvas>
-<div class="glow t"></div>
-<nav>
-  <a href="index.html" class="nav-logo">OKALAM</a>
-  <div class="nav-right">
-    <div class="lang-wrap">
-      <select id="langSel" onchange="setLang(this.value)">
-        <option value="en">🇬🇧 EN</option><option value="fr">🇫🇷 FR</option>
-        <option value="ja">🇯🇵 JA</option><option value="zh">🇨🇳 ZH</option>
-        <option value="es">🇪🇸 ES</option><option value="pt">🇵🇹 PT</option>
-      </select>
+<nav class="ok-nav">
+  <a href="index.html" class="ok-nav-logo">OKALAM</a>
+  <div class="ok-nav-right">
+    <div class="flag-picker">
+      <button class="flag-btn" data-lang="en" onclick="sharedSetLang('en')" title="English">🇬🇧</button>
+      <button class="flag-btn" data-lang="fr" onclick="sharedSetLang('fr')" title="Français">🇫🇷</button>
+      <button class="flag-btn" data-lang="ja" onclick="sharedSetLang('ja')" title="日本語">🇯🇵</button>
+      <button class="flag-btn" data-lang="zh" onclick="sharedSetLang('zh')" title="中文">🇨🇳</button>
+      <button class="flag-btn" data-lang="es" onclick="sharedSetLang('es')" title="Español">🇪🇸</button>
+      <button class="flag-btn" data-lang="pt" onclick="sharedSetLang('pt')" title="Português">🇵🇹</button>
     </div>
-    <a href="index.html" class="back-btn">← <span id="nav_back">Accueil</span></a>
+    <button class="ok-nav-menu-btn" aria-label="Menu">
+      <div class="ok-nav-menu-icon"><span></span><span></span><span></span></div>
+      <span>Menu</span>
+    </button>
   </div>
 </nav>
-<div class="wrapper">
-  <section class="hero">
-    <div class="hero-left">
-      <div class="app-badge"><span class="dot"></span><span id="badge">Application sociale • iOS</span></div>
-      <h1>VoteDay</h1>
-      <p class="hero-desc" id="hero_desc">Une application sociale où le monde répond à la même question chaque jour.</p>
-      <div class="hero-meta">
-        <span class="meta-pill">📅 <span id="meta_release">Sortie 2026</span></span>
-        <span class="meta-pill">🍎 iOS</span>
-        <span class="meta-pill">🌍 <span id="meta_global">Mondial</span></span>
+<div class="ok-nav-overlay"></div>
+<nav class="ok-nav-dropdown">
+  <div class="ok-nav-items">
+    <a href="index.html" class="ok-nav-link" data-i18n="nav_home">Accueil</a>
+    <a href="studio.html" class="ok-nav-link" data-i18n="nav_studio">Studio</a>
+    <a href="projets.html" class="ok-nav-link active" data-i18n="nav_projects">Projets</a>
+    <a href="collaborations.html" class="ok-nav-link" data-i18n="nav_collabs">Collaborations</a>
+    <a href="contact.html" class="ok-nav-link" data-i18n="nav_contact">Contact</a>
+    <a href="mediakit-elisa.html" class="ok-nav-link ok-nav-link--private" data-i18n="nav_elisa">🔒 Elisa</a>
+    <a href="mediakit-pierre.html" class="ok-nav-link ok-nav-link--private" data-i18n="nav_pierre">🔒 Pierre</a>
+  </div>
+  <div class="flag-picker">
+    <button class="flag-btn" data-lang="en" onclick="sharedSetLang('en')" title="English">🇬🇧</button>
+    <button class="flag-btn" data-lang="fr" onclick="sharedSetLang('fr')" title="Français">🇫🇷</button>
+    <button class="flag-btn" data-lang="ja" onclick="sharedSetLang('ja')" title="日本語">🇯🇵</button>
+    <button class="flag-btn" data-lang="zh" onclick="sharedSetLang('zh')" title="中文">🇨🇳</button>
+    <button class="flag-btn" data-lang="es" onclick="sharedSetLang('es')" title="Español">🇪🇸</button>
+    <button class="flag-btn" data-lang="pt" onclick="sharedSetLang('pt')" title="Português">🇵🇹</button>
+  </div>
+</nav>
+
+
+<div class="vb">
+
+<div class="vd">
+
+<section class="vd-hero">
+  <div class="vd-blob b1"></div><div class="vd-blob b2"></div>
+  <div class="vd-wrap vd-hero-grid">
+    <div>
+      <div class="vd-pill" data-i18n="vd_pill">Version 2.0 · sur l'App Store</div>
+      <div class="vd-logo" aria-label="VoteDay"><span>Vote</span><span>Day</span></div>
+      <h1 data-i18n="vd_h1">Une question par jour. <em>Le monde entier répond.</em></h1>
+      <p class="vd-lead" data-i18n="vd_lead">Chocolat ou vanille ? Pizza ou sushi ? Chaque matin, une question A ou B. Tu votes, tes amis aussi, et le soir les résultats tombent.</p>
+      <div class="store-badges">
+      <a class="sbadge" href="https://apps.apple.com/app/id6760981728" target="_blank" rel="noopener" aria-label="App Store"><img data-badge="appstore" src="imgs/badges/appstore_fr.svg" alt="Télécharger dans l'App Store"/></a>
+      <span class="sbadge gp soon" aria-label="Google Play"><img data-badge="googleplay" src="imgs/badges/googleplay_fr.png" alt="Google Play"/><em data-i18n="badge_soon">Bientôt</em></span>
+    </div>
+      <div class="vd-free" data-i18n="vd_free">Gratuit · iPhone</div>
+    </div>
+    <div class="vd-hero-phones"><div class="vd-phone p1"><img src="imgs/vd_menu.jpg" alt="VoteDay — accueil"/></div><div class="vd-phone p2"><img src="imgs/voteday2_2.jpg" alt="VoteDay — résultats"/></div></div>
+  </div>
+</section>
+
+<section class="vd-try" id="voter">
+  <div class="vd-wrap vd-try-grid">
+    <div class="reveal">
+      <div class="vd-label" data-i18n="vd_try_label">Essaie</div>
+      <h2 data-i18n="vd_try_title">À toi de <em>voter</em></h2>
+      <p data-i18n="vd_try_p">Dans l'app, c'est une seule question par jour et un seul vote. Ici, tu peux t'entraîner.</p>
+    </div>
+    <div class="vd-card reveal r1" id="vd-vote">
+      <div class="vd-qhead" data-i18n="vd_q">Tu préfères quoi ?</div>
+      <div class="vd-qset on" data-q="1"><button type="button" class="vd-opt a" data-i18n="vd_q1a">Chocolat</button><span class="vd-or" data-i18n="vd_or">ou</span><button type="button" class="vd-opt b" data-i18n="vd_q1b">Vanille</button></div><div class="vd-qset" data-q="2"><button type="button" class="vd-opt a" data-i18n="vd_q2a">Pizza</button><span class="vd-or" data-i18n="vd_or">ou</span><button type="button" class="vd-opt b" data-i18n="vd_q2b">Sushi</button></div><div class="vd-qset" data-q="3"><button type="button" class="vd-opt a" data-i18n="vd_q3a">Voyager dans le passé</button><span class="vd-or" data-i18n="vd_or">ou</span><button type="button" class="vd-opt b" data-i18n="vd_q3b">Voyager dans le futur</button></div>
+      <div class="vd-after" id="vd-after"><b data-i18n="vd_voted">Vote enregistré : choix définitif.</b><p data-i18n="vd_reveal">Dans l'app, tu découvres le soir ce que le monde et tes amis ont choisi.</p><button type="button" class="vd-nextbtn" id="vd-next" data-i18n="vd_next">Question suivante →</button></div>
+    </div>
+  </div>
+</section>
+
+<section id="themes">
+  <div class="vd-wrap">
+    <div class="vd-label" data-i18n="vd_days_label">7 jours, 7 thèmes</div>
+    <h2 class="reveal" data-i18n="vd_days_title">Chaque jour <em>sa couleur</em></h2>
+    <div class="vd-days"><div class="vd-day reveal" data-dow="1" style="--c:#8A5CF6"><i>✨</i><small data-i18n="vd_d1">Lundi</small><b data-i18n="vd_t1">Lifestyle</b><em data-i18n="vd_today">Aujourd'hui</em></div><div class="vd-day reveal" data-dow="2" style="--c:#FF8A5B"><i>🍕</i><small data-i18n="vd_d2">Mardi</small><b data-i18n="vd_t2">Food</b><em data-i18n="vd_today">Aujourd'hui</em></div><div class="vd-day reveal" data-dow="3" style="--c:#F2C21A"><i>🎉</i><small data-i18n="vd_d3">Mercredi</small><b data-i18n="vd_t3">Fun</b><em data-i18n="vd_today">Aujourd'hui</em></div><div class="vd-day reveal" data-dow="4" style="--c:#5BD67A"><i>⚽</i><small data-i18n="vd_d4">Jeudi</small><b data-i18n="vd_t4">Sport</b><em data-i18n="vd_today">Aujourd'hui</em></div><div class="vd-day reveal" data-dow="5" style="--c:#4CC3FF"><i>🎬</i><small data-i18n="vd_d5">Vendredi</small><b data-i18n="vd_t5">Culture</b><em data-i18n="vd_today">Aujourd'hui</em></div><div class="vd-day reveal" data-dow="6" style="--c:#34C9A3"><i>🌿</i><small data-i18n="vd_d6">Samedi</small><b data-i18n="vd_t6">Nature</b><em data-i18n="vd_today">Aujourd'hui</em></div><div class="vd-day reveal" data-dow="0" style="--c:#FF7AB6"><i>🛋️</i><small data-i18n="vd_d7">Dimanche</small><b data-i18n="vd_t7">Détente</b><em data-i18n="vd_today">Aujourd'hui</em></div></div>
+  </div>
+</section>
+
+<section class="vd-friends" id="amis">
+  <div class="vd-wrap vd-fr-grid">
+    <div class="reveal">
+      <div class="vd-label" data-i18n="vd_friends_label">Entre amis</div>
+      <h2 data-i18n="vd_friends_title">Qui a voté quoi ? <em>Le débat est ouvert</em></h2>
+      <p data-i18n="vd_friends_p">Invite tes amis, vois qui a voté quoi et découvre votre taux de compatibilité. Garde ta série de votes quotidiens et débloque des badges.</p>
+    </div>
+    <div class="vd-phone reveal r1"><img src="imgs/vd_friends.jpg" alt="VoteDay — amis"/></div>
+  </div>
+</section>
+
+<section id="nouveau">
+  <div class="vd-wrap">
+    <div class="vd-new-top">
+      <div class="reveal">
+        <div class="vd-label" data-i18n="vd_new_label">Nouveau dans la 2.0</div>
+        <h2 data-i18n="vd_new_title">Ton Bubl, <em>ton île</em></h2>
+        <p data-i18n="vd_new_p">La version 2.0 ajoute un avatar à ton image, une île à explorer et sept bâtiments à visiter.</p>
       </div>
-      <div class="cta-row">
-        <span class="cta-primary" onclick="alert('Coming soon!')">🔔 <span id="cta_notify_text">Me notifier</span></span>
-        <a href="privacy.html" class="cta-secondary">🔒 <span id="cta_privacy">Confidentialité</span></a>
-      </div>
+      <div class="vd-duo"><div class="vd-phone reveal"><img src="imgs/vd_bubl.jpg" alt="VoteDay — Bubl"/></div><div class="vd-phone reveal r1"><img src="imgs/vd_island.jpg" alt="VoteDay — île"/></div></div>
     </div>
-    <div class="hero-right">
-      <div class="phone-wrap">
-        <div class="phone-glow"></div>
-        <div class="phone-frame"><img src="vd.png" alt="VoteDay screenshot"></div>
-      </div>
+    <div class="vd-feats"><div class="vd-feat reveal"><i>🫧</i><b>Bubl</b><p data-i18n="vd_f1d">Ton avatar, entièrement personnalisable.</p></div><div class="vd-feat reveal"><i>🏝️</i><b data-i18n="vd_f2">L'Île</b><p data-i18n="vd_f2d">Une île à explorer, sept bâtiments.</p></div><div class="vd-feat reveal"><i>📸</i><b data-i18n="vd_f3">Studio Photo</b><p data-i18n="vd_f3d">Des selfies avec ton Bubl.</p></div><div class="vd-feat reveal"><i>☕</i><b data-i18n="vd_f4">Café Bubl</b><p data-i18n="vd_f4d">Discute avec tes amis et tes groupes.</p></div><div class="vd-feat reveal"><i>⭐</i><b data-i18n="vd_f5">Bubl du Jour</b><p data-i18n="vd_f5d">Le vote de popularité quotidien.</p></div><div class="vd-feat reveal"><i>🃏</i><b data-i18n="vd_f6">Cartes Bubl</b><p data-i18n="vd_f6d">Plus de 100 cartes à collectionner.</p></div><div class="vd-feat reveal"><i>🔭</i><b data-i18n="vd_f7">Observatoire</b><p data-i18n="vd_f7d">Les stats de vote du monde entier.</p></div><div class="vd-feat reveal"><i>🎓</i><b data-i18n="vd_f8">École</b><p data-i18n="vd_f8d">Teste tes connaissances en quiz.</p></div></div>
+  </div>
+</section>
+
+<section class="vd-gal">
+  <div class="vd-wrap">
+    <div class="vd-label" data-i18n="vd_gal_label">En images</div>
+    <h2 class="reveal" data-i18n="vd_gal_title">L'app, <em>écran par écran</em></h2>
+  </div>
+  <div class="vd-strip"><div class="vd-phone "><img src="imgs/vd_menu.jpg" alt="Accueil"/></div><div class="vd-phone "><img src="imgs/vd_island.jpg" alt="Île"/></div><div class="vd-phone "><img src="imgs/vd_bubl.jpg" alt="Bubl"/></div><div class="vd-phone "><img src="imgs/voteday2_2.jpg" alt="Résultats"/></div><div class="vd-phone "><img src="imgs/vd_vote.jpg" alt="Vote du jour"/></div><div class="vd-phone "><img src="imgs/vd_friends.jpg" alt="Amis"/></div><div class="vd-phone "><img src="imgs/vd_home.jpg" alt="Accueil sombre"/></div><div class="vd-phone "><img src="imgs/voteday2_1.jpg" alt="Accueil clair"/></div></div>
+</section>
+
+<section class="vd-cta">
+  <div class="vd-wrap">
+    <div class="vd-logo" aria-label="VoteDay"><span>Vote</span><span>Day</span></div>
+    <h2 data-i18n="vd_cta_title">La question du jour <em>t'attend</em></h2>
+    <p data-i18n="vd_cta_p">Gratuit sur iPhone. La version Android arrive.</p>
+    <div class="store-badges">
+      <a class="sbadge" href="https://apps.apple.com/app/id6760981728" target="_blank" rel="noopener" aria-label="App Store"><img data-badge="appstore" src="imgs/badges/appstore_fr.svg" alt="Télécharger dans l'App Store"/></a>
+      <span class="sbadge gp soon" aria-label="Google Play"><img data-badge="googleplay" src="imgs/badges/googleplay_fr.png" alt="Google Play"/><em data-i18n="badge_soon">Bientôt</em></span>
     </div>
-  </section>
-  <section class="features-section">
-    <div class="section-header">
-      <p class="section-eyebrow" id="feat_eyebrow">Fonctionnalités</p>
-      <h2 class="section-title" id="feat_title">Une question. Chaque jour. Pour tous.</h2>
-    </div>
-    <div class="features-grid">
-      <div class="feature-card"><span class="feature-icon">🗳️</span><div class="feature-title" id="f1_title">Vote quotidien</div><div class="feature-desc" id="f1_desc">Une question unique chaque jour. Simple, binaire, percutante.</div></div>
-      <div class="feature-card"><span class="feature-icon">🌍</span><div class="feature-title" id="f2_title">Résultats mondiaux</div><div class="feature-desc" id="f2_desc">Résultats en direct du monde entier instantanément.</div></div>
-      <div class="feature-card"><span class="feature-icon">👥</span><div class="feature-title" id="f3_title">Amis</div><div class="feature-desc" id="f3_desc">Ajoutez des amis avec un code unique et comparez vos votes.</div></div>
-      <div class="feature-card"><span class="feature-icon">💬</span><div class="feature-title" id="f4_title">Chat entre amis</div><div class="feature-desc" id="f4_desc">Discutez directement avec vos amis dans l'application.</div></div>
-      <div class="feature-card"><span class="feature-icon">📖</span><div class="feature-title" id="f5_title">Historique</div><div class="feature-desc" id="f5_desc">Retrouvez toutes les questions passées et vos réponses.</div></div>
-      <div class="feature-card"><span class="feature-icon">☁️</span><div class="feature-title" id="f6_title">Sync iCloud</div><div class="feature-desc" id="f6_desc">Synchronisé en sécurité sur tous vos appareils Apple.</div></div>
-    </div>
-  </section>
-  <section class="privacy-section">
-    <div class="privacy-card">
-      <div class="privacy-icon">🔒</div>
-      <div class="privacy-text">
-        <h3 id="priv_title">Vos données, votre contrôle</h3>
-        <p id="priv_desc">Aucune publicité. Aucun suivi. Aucun partage tiers. <a href="privacy.html" id="priv_link">Lire la politique de confidentialité →</a></p>
-      </div>
-    </div>
-  </section>
+    <div class="vd-legal"><a href="privacy.html" data-i18n="vd_privacy">Confidentialité</a> · <a href="mailto:support@okalamstudio.com">support@okalamstudio.com</a></div>
+  </div>
+</section>
+
 </div>
-<footer>
-  <div class="footer-inner">
-    <div class="footer-logo">OKALAM STUDIO</div>
-    <div class="footer-links">
-      <a href="index.html" id="f_home">Accueil</a>
-      <a href="privacy.html" id="f_privacy">Confidentialité</a>
-      <a href="mailto:support@okalamstudio.com" id="f_contact">Contact</a>
+<footer class="ok-footer">
+  <div class="ok-footer-inner">
+    <div>
+      <div class="ok-footer-brand">OKALAM Studio</div>
+      <p class="ok-footer-tagline" data-i18n="footer_tagline">Studio créatif indépendant. Toujours en mouvement.</p>
     </div>
-    <div class="footer-copy" id="f_copy">© 2026 OKALAM Studio. Tous droits réservés.</div>
+    <div class="ok-footer-cols">
+      <div class="ok-footer-col">
+        <h4 data-i18n="footer_nav">Navigation</h4>
+        <a href="index.html" data-i18n="footer_home">Accueil</a>
+        <a href="studio.html" data-i18n="footer_studio">Studio</a>
+        <a href="projets.html" data-i18n="footer_projects">Projets</a>
+        <a href="collaborations.html" data-i18n="footer_collabs">Collaborations</a>
+      </div>
+      <div class="ok-footer-col">
+        <h4>Contact</h4>
+        <a href="contact.html" data-i18n="footer_contact">Nous contacter</a>
+        <a href="mailto:support@okalamstudio.com">support@okalamstudio.com</a>
+      </div>
+    </div>
+  </div>
+  <div class="ok-footer-bottom">
+    <span class="ok-footer-copy" data-i18n="footer_copy">© 2026 OKALAM Studio. Tous droits réservés.</span>
+    <div class="ok-social-links">
+      <a href="https://www.instagram.com/okalamstudio.com" target="_blank" class="ok-social" title="Instagram">📷</a>
+      <a href="https://github.com/Stesouna9" target="_blank" class="ok-social">⌥</a>
+      <a href="mailto:support@okalamstudio.com" class="ok-social">✉</a>
+    </div>
   </div>
 </footer>
+<script src="shared-i18n.js?v=20261005d"></script>
+<script src="shared.js?v=20261005"></script>
 <script>
-const T={
-  en:{nav_back:"Home",badge:"Social App • iOS",hero_desc:"A social app where the world answers the same question every day.",meta_release:"Release 2026",meta_global:"Global",cta_notify_text:"Notify me",cta_privacy:"Privacy",feat_eyebrow:"Features",feat_title:"One question. Every day. Everyone.",f1_title:"Daily Vote",f1_desc:"One unique question every day. Simple, binary, powerful.",f2_title:"Global Results",f2_desc:"Instantly see live results from around the world.",f3_title:"Friends",f3_desc:"Add friends with a unique code and compare votes.",f4_title:"Friend Chat",f4_desc:"Chat directly with your friends inside the app.",f5_title:"Vote History",f5_desc:"Revisit all past questions and your answers.",f6_title:"iCloud Sync",f6_desc:"Securely synced across all your Apple devices.",priv_title:"Your data, your control",priv_desc:"No advertising. No tracking. No third-party data sharing.",priv_link:"Read the full privacy policy →",f_home:"Home",f_privacy:"Privacy Policy",f_contact:"Contact",f_copy:"© 2026 OKALAM Studio. All rights reserved."},
-  fr:{nav_back:"Accueil",badge:"Application sociale • iOS",hero_desc:"Une application sociale où le monde répond à la même question chaque jour.",meta_release:"Sortie 2026",meta_global:"Mondial",cta_notify_text:"Me notifier",cta_privacy:"Confidentialité",feat_eyebrow:"Fonctionnalités",feat_title:"Une question. Chaque jour. Pour tous.",f1_title:"Vote quotidien",f1_desc:"Une question unique chaque jour. Simple, binaire, percutante.",f2_title:"Résultats mondiaux",f2_desc:"Résultats en direct du monde entier instantanément.",f3_title:"Amis",f3_desc:"Ajoutez des amis avec un code unique et comparez vos votes.",f4_title:"Chat entre amis",f4_desc:"Discutez directement avec vos amis dans l'application.",f5_title:"Historique",f5_desc:"Retrouvez toutes les questions passées et vos réponses.",f6_title:"Sync iCloud",f6_desc:"Synchronisé en sécurité sur tous vos appareils Apple.",priv_title:"Vos données, votre contrôle",priv_desc:"Aucune publicité. Aucun suivi. Aucun partage tiers.",priv_link:"Lire la politique de confidentialité →",f_home:"Accueil",f_privacy:"Confidentialité",f_contact:"Contact",f_copy:"© 2026 OKALAM Studio. Tous droits réservés."},
-  ja:{nav_back:"ホーム",badge:"ソーシャルアプリ • iOS",hero_desc:"世界中が毎日同じ質問に答えるソーシャルアプリ。",meta_release:"2026年リリース",meta_global:"グローバル",cta_notify_text:"通知を受け取る",cta_privacy:"プライバシー",feat_eyebrow:"機能",feat_title:"一つの質問。毎日。みんなで。",f1_title:"デイリー投票",f1_desc:"毎日ユニークな質問が一つ。シンプルで力強い。",f2_title:"グローバル結果",f2_desc:"世界中からのライブ結果を即座に確認。",f3_title:"フレンド",f3_desc:"ユニークなコードで友達を追加。",f4_title:"フレンドチャット",f4_desc:"アプリ内で友達と直接チャット。",f5_title:"投票履歴",f5_desc:"過去のすべての質問と回答を振り返る。",f6_title:"iCloud同期",f6_desc:"すべてのAppleデバイスで安全に同期。",priv_title:"あなたのデータ、あなたのコントロール",priv_desc:"広告なし。トラッキングなし。第三者への共有なし。",priv_link:"プライバシーポリシーを読む →",f_home:"ホーム",f_privacy:"プライバシーポリシー",f_contact:"お問い合わせ",f_copy:"© 2026 OKALAM Studio. 全著作権所有。"},
-  zh:{nav_back:"首页",badge:"社交应用 • iOS",hero_desc:"全球用户每天回答同一个问题的社交应用。",meta_release:"2026年发布",meta_global:"全球",cta_notify_text:"提醒我",cta_privacy:"隐私",feat_eyebrow:"功能",feat_title:"一个问题。每天。所有人。",f1_title:"每日投票",f1_desc:"每天一个独特问题。简单、二选一、有力量。",f2_title:"全球结果",f2_desc:"即时查看全球实时结果。",f3_title:"好友",f3_desc:"用唯一代码添加好友并比较投票。",f4_title:"好友聊天",f4_desc:"在应用内直接与好友聊天。",f5_title:"投票历史",f5_desc:"回顾所有过去的问题和您的答案。",f6_title:"iCloud同步",f6_desc:"在所有Apple设备上安全同步。",priv_title:"您的数据，您的控制",priv_desc:"无广告。无追踪。不与第三方共享。",priv_link:"阅读完整隐私政策 →",f_home:"首页",f_privacy:"隐私政策",f_contact:"联系我们",f_copy:"© 2026 OKALAM Studio. 保留所有权利。"},
-  es:{nav_back:"Inicio",badge:"App Social • iOS",hero_desc:"Una app social donde el mundo responde la misma pregunta cada día.",meta_release:"Lanzamiento 2026",meta_global:"Global",cta_notify_text:"Notificarme",cta_privacy:"Privacidad",feat_eyebrow:"Funcionalidades",feat_title:"Una pregunta. Cada día. Para todos.",f1_title:"Voto diario",f1_desc:"Una pregunta única cada día. Simple, binaria, poderosa.",f2_title:"Resultados globales",f2_desc:"Resultados en vivo de todo el mundo al instante.",f3_title:"Amigos",f3_desc:"Añade amigos con un código único y compara votos.",f4_title:"Chat con amigos",f4_desc:"Chatea directamente con tus amigos en la app.",f5_title:"Historial",f5_desc:"Revisa todas las preguntas pasadas y tus respuestas.",f6_title:"Sincronización iCloud",f6_desc:"Sincronizado de forma segura en todos tus dispositivos.",priv_title:"Tus datos, tu control",priv_desc:"Sin publicidad. Sin rastreo. Sin compartir con terceros.",priv_link:"Leer la política de privacidad →",f_home:"Inicio",f_privacy:"Política de privacidad",f_contact:"Contacto",f_copy:"© 2026 OKALAM Studio. Todos los derechos reservados."},
-  pt:{nav_back:"Início",badge:"App Social • iOS",hero_desc:"Um app social onde o mundo responde à mesma pergunta todos os dias.",meta_release:"Lançamento 2026",meta_global:"Global",cta_notify_text:"Me notificar",cta_privacy:"Privacidade",feat_eyebrow:"Funcionalidades",feat_title:"Uma pergunta. Todo dia. Para todos.",f1_title:"Voto diário",f1_desc:"Uma pergunta única todos os dias. Simples, binária, poderosa.",f2_title:"Resultados globais",f2_desc:"Veja resultados ao vivo do mundo inteiro instantaneamente.",f3_title:"Amigos",f3_desc:"Adicione amigos com um código único e compare votos.",f4_title:"Chat com amigos",f4_desc:"Converse diretamente com seus amigos no app.",f5_title:"Histórico",f5_desc:"Reveja todas as perguntas passadas e suas respostas.",f6_title:"Sincronização iCloud",f6_desc:"Sincronizado com segurança em todos os seus dispositivos.",priv_title:"Seus dados, seu controle",priv_desc:"Sem publicidade. Sem rastreamento. Sem compartilhamento.",priv_link:"Ler a política de privacidade →",f_home:"Início",f_privacy:"Confidentialité",f_contact:"Contato",f_copy:"© 2026 OKALAM Studio. Todos os direitos reservados."}
-};
-function setLang(l){localStorage.setItem('okalam_lang',l);document.getElementById('langSel').value=l;const t=T[l];Object.keys(t).forEach(id=>{const el=document.getElementById(id);if(el)el.textContent=t[id];});}
-const sv=localStorage.getItem('okalam_lang'),bl=navigator.language.slice(0,2);setLang(sv||(['en','fr','ja','zh','es','pt'].includes(bl)?bl:'en'));
-const cv=document.getElementById('particles'),cx=cv.getContext('2d');function rsz(){cv.width=innerWidth;cv.height=innerHeight;}rsz();window.addEventListener('resize',rsz);
-const pts=Array.from({length:80},()=>({x:Math.random()*innerWidth,y:Math.random()*innerHeight,r:Math.random()*1.4+.3,vx:(Math.random()-.5)*.1,vy:-Math.random()*.25-.05,o:Math.random()*.3+.08}));
-(function a(){cx.clearRect(0,0,cv.width,cv.height);pts.forEach(p=>{cx.beginPath();cx.arc(p.x,p.y,p.r,0,Math.PI*2);cx.fillStyle='rgba(167,139,255,'+p.o+')';cx.fill();p.x+=p.vx;p.y+=p.vy;if(p.y<-10){p.y=cv.height+10;p.x=Math.random()*cv.width;}if(p.x<-10)p.x=cv.width+10;if(p.x>cv.width+10)p.x=-10;});requestAnimationFrame(a);})();
+(function(){
+  const box=document.getElementById('vd-vote'), after=document.getElementById('vd-after'); let cur=1;
+  box.querySelectorAll('.vd-opt').forEach(b=>b.addEventListener('click',()=>{ const s=b.parentElement; if(s.classList.contains('done')) return; b.classList.add('picked'); s.classList.add('done'); after.classList.add('on'); }));
+  document.getElementById('vd-next').addEventListener('click',()=>{ cur=cur%3+1; after.classList.remove('on'); box.querySelectorAll('.vd-qset').forEach(s=>{ s.classList.remove('done'); s.querySelectorAll('.vd-opt').forEach(o=>o.classList.remove('picked')); s.classList.toggle('on',+s.dataset.q===cur); }); });
+  const dow=new Date().getDay(); document.querySelectorAll('.vd-day').forEach(d=>d.classList.toggle('today',+d.dataset.dow===dow));
+})();
 </script>
 </body>
 </html>
