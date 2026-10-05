@@ -69,14 +69,36 @@ body{background:var(--kb-bg);}
 .kb-card .kb-phone{width:min(270px,78%);margin:0 auto;border-bottom-left-radius:0;border-bottom-right-radius:0;}
 .kb-card::after{content:attr(data-k);position:absolute;right:-12px;top:-30px;font-family:'Noto Sans JP',sans-serif;font-weight:900;font-size:11rem;color:rgba(255,255,255,.035);pointer-events:none;}
 .kb-modes{background:#0D151C;}
-.kb-mode-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:40px;}
-.kb-mode{background:var(--kb-panel);border:1px solid var(--kb-line);border-radius:22px;padding:26px 22px;border-top:3px solid var(--c);}
-.kb-mode i{font-style:normal;font-size:1.7rem;display:block;margin-bottom:14px;}
-.kb-mode b{display:block;font-family:'Syne',sans-serif;font-weight:800;font-size:1.15rem;color:#fff;margin-bottom:8px;}
-.kb-mode p{font-size:.9rem;line-height:1.55;margin:0;}
-.kb-chips{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px;}
-.kb-chip{display:inline-flex;align-items:center;gap:10px;background:var(--kb-panel);border:1px solid var(--kb-line);border-radius:40px;padding:12px 20px;font-family:'Syne',sans-serif;font-weight:700;font-size:.95rem;color:#fff;}
-.kb-chip i{font-style:normal;}
+.kb-hint{margin:0 0 26px;}
+.kb-mtabs{display:grid;grid-template-columns:repeat(9,1fr);gap:10px;}
+.kb-mtab{display:flex;flex-direction:column;align-items:center;gap:8px;padding:16px 6px 14px;border-radius:18px;background:var(--kb-panel);border:1px solid var(--kb-line);color:#fff;font-family:'Syne',sans-serif;font-weight:700;font-size:.78rem;cursor:pointer;transition:transform .2s,border-color .2s,background .2s;}
+.kb-mtab i{font-style:normal;font-size:1.5rem;line-height:1;}
+.kb-mtab:hover{transform:translateY(-3px);border-color:var(--c);}
+.kb-mtab.on{background:var(--kb-panel2);border-color:var(--c);box-shadow:0 0 0 1px var(--c),0 14px 34px rgba(0,0,0,.4);}
+.kb-mpanel{margin-top:18px;background:linear-gradient(180deg,var(--kb-panel2),var(--kb-panel));border:1px solid var(--kb-line);border-radius:28px;overflow:hidden;}
+.kb-mitem{display:none;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding:44px 48px 0;min-height:460px;border-top:3px solid var(--c);}
+.kb-mitem.on{display:grid;animation:kbIn .35s ease both;}
+@keyframes kbIn{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:none;}}
+.kb-mtext{padding-bottom:44px;}
+.kb-mtext i{font-style:normal;font-size:2.6rem;display:block;margin-bottom:16px;}
+.kb-mtext h3{font-family:'Syne',sans-serif;font-weight:800;font-size:2rem;color:#fff;margin:0 0 14px;}
+.kb-mtext p{font-size:1.08rem;max-width:460px;margin:0;}
+.kb-mvis{align-self:end;display:flex;justify-content:center;}
+.kb-mvis .kb-shot{height:416px;margin-top:0;}
+.kb-mvis .kb-phone{width:250px;border-bottom-left-radius:0;border-bottom-right-radius:0;}
+.kb-ill{align-self:center;display:flex;flex-direction:column;align-items:center;gap:24px;padding-bottom:44px;}
+.kb-mstack{display:flex;flex-direction:column;gap:7px;--c:44px;}
+.kb-mrow{display:flex;gap:7px;}
+.kb-mrow .kb-cell{font-size:1.2rem;}
+.kb-ring,.kb-streak{width:120px;height:120px;border-radius:50%;display:flex;align-items:center;justify-content:center;gap:2px;border:5px solid var(--kb-yel);color:#fff;font-family:'Syne',sans-serif;box-shadow:0 0 34px rgba(242,194,26,.25);}
+.kb-ring b,.kb-streak b{font-size:2.3rem;font-weight:800;}
+.kb-streak{border-color:var(--kb-cyan);box-shadow:0 0 34px rgba(127,221,245,.25);flex-direction:column;gap:0;}
+.kb-timer{height:8px;border-radius:4px;background:rgba(255,255,255,.1);overflow:hidden;margin-top:8px;}
+.kb-timer i{display:block;height:100%;background:linear-gradient(90deg,#FF8A5B,var(--kb-red));animation:kbTimer 4s linear infinite;}
+@keyframes kbTimer{from{width:100%;}to{width:0;}}
+.kb-pips{display:flex;gap:10px;}
+.kb-pips span{width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;color:var(--kb-mute);background:var(--kb-bg);border:1px solid var(--kb-line);}
+.kb-pips span.on{background:var(--kb-yel);color:#1a1300;border-color:transparent;}
 .kb-jp-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:64px;align-items:center;}
 .kb-jp-grid .kb-phone{width:min(300px,100%);margin:0 auto;transform:rotate(-3deg);}
 .kb-jp .kb-row{--s:54px;margin-bottom:26px;}
@@ -102,7 +124,7 @@ body{background:var(--kb-bg);}
 .kb-hero{padding:120px 0 60px !important;}
 .kb-hero-grid,.kb-how-grid,.kb-jp-grid,.kb-rank-grid,.kb-new-grid{grid-template-columns:1fr;gap:44px;}
 .kb-hero-phones{height:520px;}.kb-hero-phones .kb-phone{width:240px;}
-.kb-mode-grid{grid-template-columns:1fr 1fr;}
+.kb-mtabs{grid-template-columns:repeat(5,1fr);}.kb-mitem{grid-template-columns:1fr;padding:34px 30px 0;gap:26px;min-height:0;}.kb-mtext{padding-bottom:0;}
 .kb-jp-grid .kb-phone{order:2;}
 .kb-ghost{display:none;}
 }
@@ -112,7 +134,7 @@ body{background:var(--kb-bg);}
 .kb-hero-phones{height:440px;}.kb-hero-phones .kb-phone{width:200px;border-radius:30px;}.kb-hero-phones .kb-phone img{border-radius:23px;}
 .kb-board{padding:16px;gap:6px;}.kb-brow{--c:42px;gap:6px;}.kb-cell{--c:42px;}
 .kb-card{padding:28px 24px 0;}.kb-shot{height:360px;}.kb-card h3{font-size:1.4rem;}
-.kb-mode-grid,.kb-minis{grid-template-columns:1fr;}
+.kb-minis{grid-template-columns:1fr;}.kb-mtabs{grid-template-columns:repeat(3,1fr);gap:8px;}.kb-mtab{font-size:.72rem;padding:12px 4px;}.kb-mtext h3{font-size:1.5rem;}.kb-mstack{--c:38px;}.kb-mvis .kb-shot{height:340px;}
 .kb-jp .kb-row{--s:44px;}.kb-cta .kb-row{--s:36px;}
 .kb-strip .kb-phone{flex-basis:200px;}
 }
@@ -178,7 +200,7 @@ body{background:var(--kb-bg);}
     </div>
       <div class="kb-free" data-i18n="kb_free">Gratuit · iPhone et iPad</div>
     </div>
-    <div class="kb-hero-phones"><div class="kb-phone p1"><img src="imgs/kotoba2_home.jpg" alt="Kotoba — accueil" loading="lazy"/></div><div class="kb-phone p2"><img src="imgs/kotoba2_kotodama.jpg" alt="Kotoba — Kotodama" loading="lazy"/></div></div>
+    <div class="kb-hero-phones"><div class="kb-phone p1"><img src="imgs/kotoba2_home.jpg" alt="Kotoba — accueil"/></div><div class="kb-phone p2"><img src="imgs/kotoba2_kotodama.jpg" alt="Kotoba — Kotodama"/></div></div>
   </div>
 </section>
 
@@ -204,8 +226,8 @@ body{background:var(--kb-bg);}
     <div class="kb-label" data-i18n="kb_new_label">Nouveau dans la 2.0</div>
     <h2 class="reveal" data-i18n="kb_new_title">Deux nouveaux jeux <em>dans l'app</em></h2>
     <div class="kb-new-grid">
-      <div class="kb-card reveal" data-k="言玉"><h3>Kotodama<span>言玉</span></h3><p data-i18n="kb_kd_p">Le plateau de boules, comme à la télé. Trouve un mot, tire deux boules, complète une ligne. Trois boules noires et la partie s'arrête.</p><div class="kb-shot"><div class="kb-phone "><img src="imgs/kotoba2_kotodama.jpg" alt="Kotodama" loading="lazy"/></div></div></div>
-      <div class="kb-card reveal r1" data-k="言の葉"><h3>Kotonoha<span>言の葉</span></h3><p data-i18n="kb_kn_p">Six manches. À chacune, tu choisis une carte qui change les règles : Voyelles d'or, Voie étroite, Voyante. Certaines rapportent gros, tant que tu ne rates pas un mot.</p><div class="kb-shot"><div class="kb-phone "><img src="imgs/kotoba2_kotonoha.jpg" alt="Kotonoha" loading="lazy"/></div></div></div>
+      <div class="kb-card reveal" data-k="言玉"><h3>Kotodama<span>言玉</span></h3><p data-i18n="kb_kd_p">Le plateau de boules, comme à la télé. Chaque mot trouvé tire deux boules : retourne une ligne entière en six mots maximum. Une boule noire verrouille sa case, il y en a trois au plus par partie.</p><div class="kb-shot"><div class="kb-phone "><img src="imgs/kotoba2_kotodama.jpg" alt="Kotodama"/></div></div></div>
+      <div class="kb-card reveal r1" data-k="言の葉"><h3>Kotonoha<span>言の葉</span></h3><p data-i18n="kb_kn_p">Neuf manches. Avant chacune, tu choisis une carte qui change les règles : Voyelles d'or, Voie étroite, Voyante. Certaines rapportent gros, tant que tu ne rates pas un mot.</p><div class="kb-shot"><div class="kb-phone "><img src="imgs/kotoba2_kotonoha.jpg" alt="Kotonoha"/></div></div></div>
     </div>
   </div>
 </section>
@@ -214,14 +236,14 @@ body{background:var(--kb-bg);}
   <div class="kb-wrap">
     <div class="kb-label" data-i18n="kb_modes_label">Tous les jeux</div>
     <h2 class="reveal" data-i18n="kb_modes_title">Neuf façons <em>de jouer</em></h2>
-    <div class="kb-mode-grid"><div class="kb-mode reveal" style="--c:#F2C21A"><i>📅</i><b data-i18n="kb_m_daily">Défi du jour</b><p data-i18n="kb_m_daily_d">Un mot par jour, le même pour tout le monde</p></div><div class="kb-mode reveal" style="--c:#7FDDF5"><i>🌸</i><b data-i18n="kb_m_adv">Aventure</b><p data-i18n="kb_m_adv_d">240 niveaux, 10 mondes, un cadeau à la fin de chaque monde</p></div><div class="kb-mode reveal" style="--c:#D9342B"><i>🎱</i><b>Kotodama</b><p data-i18n="kb_m_kd_d">Le plateau de boules : aligne une ligne complète</p></div><div class="kb-mode reveal" style="--c:#6BCB8B"><i>🍃</i><b>Kotonoha</b><p data-i18n="kb_m_kn_d">Six manches, une carte qui change les règles à chaque fois</p></div></div>
-    <div class="kb-chips reveal"><div class="kb-chip"><i>⚡</i><span data-i18n="kb_m_blitz">Blitz</span></div><div class="kb-chip"><i>♾️</i><span data-i18n="kb_m_inf">Infini</span></div><div class="kb-chip"><i>🙈</i><span data-i18n="kb_m_blind">Aveugle</span></div><div class="kb-chip"><i>⏱️</i><span data-i18n="kb_m_count">Contretemps</span></div><div class="kb-chip"><i>🏆</i><span data-i18n="kb_m_tour">Tournoi</span></div></div>
+    <p class="kb-hint" data-i18n="kb_modes_hint">Touche un jeu pour voir comment il se joue.</p>
+    <div class="kb-mtabs reveal" role="tablist"><button type="button" class="kb-mtab on" data-m="daily" style="--c:#F2C21A" role="tab"><i>📅</i><span data-i18n="kb_m_daily">Défi du jour</span></button><button type="button" class="kb-mtab" data-m="adv" style="--c:#7FDDF5" role="tab"><i>🌸</i><span data-i18n="kb_m_adv">Aventure</span></button><button type="button" class="kb-mtab" data-m="kd" style="--c:#D9342B" role="tab"><i>🎱</i><span>Kotodama</span></button><button type="button" class="kb-mtab" data-m="kn" style="--c:#6BCB8B" role="tab"><i>🎴</i><span>Kotonoha</span></button><button type="button" class="kb-mtab" data-m="blitz" style="--c:#F2C21A" role="tab"><i>⚡</i><span data-i18n="kb_m_blitz">Blitz</span></button><button type="button" class="kb-mtab" data-m="inf" style="--c:#7FDDF5" role="tab"><i>🔁</i><span data-i18n="kb_m_inf">Infini</span></button><button type="button" class="kb-mtab" data-m="blind" style="--c:#B79CFF" role="tab"><i>🎭</i><span data-i18n="kb_m_blind">Aveugle</span></button><button type="button" class="kb-mtab" data-m="count" style="--c:#FF8A5B" role="tab"><i>🧠</i><span data-i18n="kb_m_count">Contretemps</span></button><button type="button" class="kb-mtab" data-m="tour" style="--c:#F2C21A" role="tab"><i>🏆</i><span data-i18n="kb_m_tour">Tournoi</span></button></div><div class="kb-mpanel reveal"><div class="kb-mitem on" data-m="daily" style="--c:#F2C21A"><div class="kb-mtext"><i>📅</i><h3><span data-i18n="kb_m_daily">Défi du jour</span></h3><p data-i18n="kb_d_daily">Un mot par jour, le même pour tout le monde. Six essais, et ton résultat part au classement du jour.</p></div><div class="kb-mvis"><div class="kb-shot"><div class="kb-phone "><img src="imgs/kotoba2_partie.jpg" alt="Défi du jour"/></div></div></div></div><div class="kb-mitem" data-m="adv" style="--c:#7FDDF5"><div class="kb-mtext"><i>🌸</i><h3><span data-i18n="kb_m_adv">Aventure</span></h3><p data-i18n="kb_d_adv">240 niveaux répartis en 10 mondes. Un monde par page, un fond animé, et un cadeau à la fin de chaque monde.</p></div><div class="kb-mvis"><div class="kb-shot"><div class="kb-phone "><img src="imgs/kotoba2_aventure.jpg" alt="Aventure"/></div></div></div></div><div class="kb-mitem" data-m="kd" style="--c:#D9342B"><div class="kb-mtext"><i>🎱</i><h3><span>Kotodama</span></h3><p data-i18n="kb_d_kd">Chaque mot trouvé tire deux boules. Retourne une ligne entière, rangée, colonne ou diagonale, en six mots maximum. Une boule noire verrouille sa case.</p></div><div class="kb-mvis"><div class="kb-shot"><div class="kb-phone "><img src="imgs/kotoba2_kotodama.jpg" alt="Kotodama"/></div></div></div></div><div class="kb-mitem" data-m="kn" style="--c:#6BCB8B"><div class="kb-mtext"><i>🎴</i><h3><span>Kotonoha</span></h3><p data-i18n="kb_d_kn">Neuf manches. Avant chacune, tu choisis une carte qui change les règles. Certaines rapportent gros, tant que tu ne rates pas un mot.</p></div><div class="kb-mvis"><div class="kb-shot"><div class="kb-phone "><img src="imgs/kotoba2_kotonoha.jpg" alt="Kotonoha"/></div></div></div></div><div class="kb-mitem" data-m="blitz" style="--c:#F2C21A"><div class="kb-mtext"><i>⚡</i><h3><span data-i18n="kb_m_blitz">Blitz</span></h3><p data-i18n="kb_d_blitz">60 secondes au chrono. Trouve le plus de mots possible avant la fin.</p></div><div class="kb-mvis"><div class="kb-ill"><div class="kb-ring"><b>60</b><small>s</small></div><div class="kb-mstack"><div class="kb-mrow"><span class="kb-cell r">S</span><span class="kb-cell r">O</span><span class="kb-cell r">L</span><span class="kb-cell r">E</span><span class="kb-cell r">I</span><span class="kb-cell r">L</span></div><div class="kb-mrow"><span class="kb-cell r">J</span><span class="kb-cell r">A</span><span class="kb-cell r">R</span><span class="kb-cell r">D</span><span class="kb-cell r">I</span><span class="kb-cell r">N</span></div><div class="kb-mrow"><span class="kb-cell r">M</span></div></div></div></div></div><div class="kb-mitem" data-m="inf" style="--c:#7FDDF5"><div class="kb-mtext"><i>🔁</i><h3><span data-i18n="kb_m_inf">Infini</span></h3><p data-i18n="kb_d_inf">Les mots s'enchaînent sans pause. La série s'arrête au premier échec.</p></div><div class="kb-mvis"><div class="kb-ill"><div class="kb-streak"><b>×12</b><small>🔥</small></div><div class="kb-mstack"><div class="kb-mrow"><span class="kb-cell r">N</span><span class="kb-cell r">U</span><span class="kb-cell r">A</span><span class="kb-cell r">G</span><span class="kb-cell r">E</span></div><div class="kb-mrow"><span class="kb-cell r">P</span><span class="kb-cell r">L</span><span class="kb-cell r">U</span><span class="kb-cell r">M</span><span class="kb-cell r">E</span></div><div class="kb-mrow"><span class="kb-cell r">R</span><span class="kb-cell r">O</span><span class="kb-cell r">U</span><span class="kb-cell r">T</span><span class="kb-cell r">E</span></div></div></div></div></div><div class="kb-mitem" data-m="blind" style="--c:#B79CFF"><div class="kb-mtext"><i>🎭</i><h3><span data-i18n="kb_m_blind">Aveugle</span></h3><p data-i18n="kb_d_blind">Les cases ne se colorent pas. Aucun indice de couleur : tu joues de mémoire et de logique.</p></div><div class="kb-mvis"><div class="kb-ill"><div class="kb-mstack"><div class="kb-mrow"><span class="kb-cell ">M</span><span class="kb-cell ">A</span><span class="kb-cell ">R</span><span class="kb-cell ">I</span><span class="kb-cell ">N</span><span class="kb-cell ">S</span></div><div class="kb-mrow"><span class="kb-cell ">M</span><span class="kb-cell ">O</span><span class="kb-cell ">T</span><span class="kb-cell ">E</span><span class="kb-cell ">U</span><span class="kb-cell ">R</span></div><div class="kb-mrow"><span class="kb-cell ">M</span><span class="kb-cell ">A</span><span class="kb-cell ">I</span><span class="kb-cell ">S</span><span class="kb-cell ">O</span><span class="kb-cell ">N</span></div></div></div></div></div><div class="kb-mitem" data-m="count" style="--c:#FF8A5B"><div class="kb-mtext"><i>🧠</i><h3><span data-i18n="kb_m_count">Contretemps</span></h3><p data-i18n="kb_d_count">Chaque essai est chronométré, et le chrono accélère à chaque tentative.</p></div><div class="kb-mvis"><div class="kb-ill"><div class="kb-mstack"><div class="kb-mrow"><span class="kb-cell r">M</span><span class="kb-cell r">A</span><span class="kb-cell g">R</span><span class="kb-cell y">I</span><span class="kb-cell y">N</span><span class="kb-cell y">S</span></div><div class="kb-mrow"><span class="kb-cell r">M</span><span class="kb-cell ">O</span></div><div class="kb-timer"><i></i></div></div></div></div></div><div class="kb-mitem" data-m="tour" style="--c:#F2C21A"><div class="kb-mtext"><i>🏆</i><h3><span data-i18n="kb_m_tour">Tournoi</span></h3><p data-i18n="kb_d_tour">Une série de 5 mots. Les scores s'additionnent, seul le total compte.</p></div><div class="kb-mvis"><div class="kb-ill"><div class="kb-pips"><span class="on">1</span><span class="on">2</span><span class="on">3</span><span>4</span><span>5</span></div><div class="kb-mstack"><div class="kb-mrow"><span class="kb-cell r">T</span><span class="kb-cell r">R</span><span class="kb-cell y">O</span><span class="kb-cell r">U</span><span class="kb-cell g">P</span><span class="kb-cell g">E</span></div><div class="kb-mrow"><span class="kb-cell r">T</span><span class="kb-cell r">R</span><span class="kb-cell g">I</span><span class="kb-cell g">B</span><span class="kb-cell g">U</span><span class="kb-cell g">N</span></div></div></div></div></div></div>
   </div>
 </section>
 
 <section class="kb-jp" id="japonais">
   <div class="kb-wrap kb-jp-grid">
-    <div class="kb-phone reveal"><img src="imgs/kotoba2_japonais.jpg" alt="Kotoba en japonais" loading="lazy"/></div>
+    <div class="kb-phone reveal"><img src="imgs/kotoba2_japonais.jpg" alt="Kotoba en japonais"/></div>
     <div class="reveal r1">
       <div class="kb-row kana"><span class="kb-t" style="--i:0">コ</span><span class="kb-t" style="--i:1">ト</span><span class="kb-t" style="--i:2">バ</span></div>
       <div class="kb-label" data-i18n="kb_jp_label">Tout en japonais</div>
@@ -242,7 +264,7 @@ body{background:var(--kb-bg);}
         <div class="kb-mini"><b data-i18n="kb_more_t">Et aussi</b><p data-i18n="kb_more_p">Thème clair et sombre, tutoriels, échange de pièces contre des lettres bonus.</p></div>
       </div>
     </div>
-    <div class="kb-phone reveal r1"><img src="imgs/kotoba2_classement.jpg" alt="Kotoba — classements" loading="lazy"/></div>
+    <div class="kb-phone reveal r1"><img src="imgs/kotoba2_classement.jpg" alt="Kotoba — classements"/></div>
   </div>
 </section>
 
@@ -251,7 +273,7 @@ body{background:var(--kb-bg);}
     <div class="kb-label" data-i18n="kb_gal_label">En images</div>
     <h2 class="reveal" data-i18n="kb_gal_title">L'app, <em>écran par écran</em></h2>
   </div>
-  <div class="kb-strip"><div class="kb-phone "><img src="imgs/kotoba2_home.jpg" alt="Accueil" loading="lazy"/></div><div class="kb-phone "><img src="imgs/kotoba2_partie.jpg" alt="Partie" loading="lazy"/></div><div class="kb-phone "><img src="imgs/kotoba2_kotodama.jpg" alt="Kotodama" loading="lazy"/></div><div class="kb-phone "><img src="imgs/kotoba2_kotonoha.jpg" alt="Kotonoha" loading="lazy"/></div><div class="kb-phone "><img src="imgs/kotoba2_aventure.jpg" alt="Aventure" loading="lazy"/></div><div class="kb-phone "><img src="imgs/kotoba2_classement.jpg" alt="Classements" loading="lazy"/></div><div class="kb-phone "><img src="imgs/kotoba2_japonais.jpg" alt="Japonais" loading="lazy"/></div></div>
+  <div class="kb-strip"><div class="kb-phone "><img src="imgs/kotoba2_home.jpg" alt="Accueil"/></div><div class="kb-phone "><img src="imgs/kotoba2_partie.jpg" alt="Partie"/></div><div class="kb-phone "><img src="imgs/kotoba2_kotodama.jpg" alt="Kotodama"/></div><div class="kb-phone "><img src="imgs/kotoba2_kotonoha.jpg" alt="Kotonoha"/></div><div class="kb-phone "><img src="imgs/kotoba2_aventure.jpg" alt="Aventure"/></div><div class="kb-phone "><img src="imgs/kotoba2_classement.jpg" alt="Classements"/></div><div class="kb-phone "><img src="imgs/kotoba2_japonais.jpg" alt="Japonais"/></div></div>
 </section>
 
 <section class="kb-cta">
@@ -298,9 +320,12 @@ body{background:var(--kb-bg);}
     </div>
   </div>
 </footer>
-<script src="shared-i18n.js?v=20261005"></script>
+<script src="shared-i18n.js?v=20261005c"></script>
 <script src="shared.js?v=20261005"></script>
 <script>
+(function(){
+  document.querySelectorAll('.kb-mtab').forEach(b=>b.addEventListener('click',()=>{ const m=b.dataset.m; document.querySelectorAll('.kb-mtab,.kb-mitem').forEach(e=>e.classList.toggle('on',e.dataset.m===m)); }));
+})();
 (function(){
   const board=document.getElementById('kb-board'); if(!board) return;
   const TARGET='MAISON', GUESSES=['MARINS','MOTEUR','MAISON'], ROWS=4;
