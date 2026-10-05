@@ -244,6 +244,20 @@ footer{border-top:1px solid var(--border2);padding:56px 48px;position:relative;z
 }
 @media(max-width:480px){.hero-title{font-size:2.5rem;}.hero-fan{height:380px;}.hf-phone{width:150px;margin:-162px 0 0 -75px;}.hf-l{transform:translateX(-84px) translateY(18px) rotate(-10deg) scale(.9);}.hf-r{transform:translateX(84px) translateY(18px) rotate(10deg) scale(.9);}.hero-fan:hover .hf-l{transform:translateX(-84px) translateY(18px) rotate(-10deg) scale(.9);}.hero-fan:hover .hf-r{transform:translateX(84px) translateY(18px) rotate(10deg) scale(.9);}}
 @media(prefers-reduced-motion:reduce){.hero-glow,.hf-c{animation:none;}}
+
+/* ── PORTAIL ── */
+.port-section{padding:90px 24px 20px;position:relative;z-index:1;}
+.port-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
+.port{--c:#8DEAFF;position:relative;display:flex;flex-direction:column;padding:28px 24px 24px;border-radius:24px;background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.1);border-top:3px solid var(--c);text-decoration:none;color:#fff;overflow:hidden;transition:transform .3s,border-color .3s,box-shadow .3s;}
+.port::after{content:'';position:absolute;right:-60px;top:-60px;width:180px;height:180px;border-radius:50%;background:var(--c);filter:blur(70px);opacity:.22;transition:opacity .3s;}
+.port:hover{transform:translateY(-6px);box-shadow:0 24px 60px rgba(0,0,0,.4);}.port:hover::after{opacity:.45;}
+.port i{font-style:normal;font-size:2rem;margin-bottom:16px;}
+.port h3{font-family:'Syne',sans-serif;font-weight:800;font-size:1.25rem;letter-spacing:-.01em;line-height:1.15;margin-bottom:10px;}
+.port p{font-size:.88rem;line-height:1.6;color:rgba(255,255,255,.68);margin-bottom:18px;}
+.port span{margin-top:auto;font-family:'Syne',sans-serif;font-weight:700;font-size:.82rem;color:var(--c);}
+.port.p1{--c:#FF2E88;}.port.p2{--c:#F2C21A;}.port.p3{--c:#8DEAFF;}.port.p4{--c:#A98BFF;}
+@media(max-width:960px){.port-grid{grid-template-columns:1fr 1fr;}.port-section{padding:64px 20px 10px;}}
+@media(max-width:480px){.port-grid{grid-template-columns:1fr;}}
 </style>
 </head>
 <body>
@@ -282,10 +296,10 @@ footer{border-top:1px solid var(--border2);padding:56px 48px;position:relative;z
     <div class="hero-txt">
       <div class="hero-badge" data-i18n="home_hero_badge">Studio indépendant · Nantes</div>
       <h1 class="hero-title"><span class="l1">OKALAM</span><span class="l2">Studio</span></h1>
-      <p class="hero-sub" data-i18n="home_hero_sub">On fabrique des jeux et des apps mobiles. Kotoba et VoteDay sont sur l'App Store, Vice Break arrive le 19 novembre.</p>
+      <p class="hero-sub" data-i18n="home_hero_sub">Studio indépendant. On crée des jeux et des apps, on accompagne des artistes et des créateurs de contenu, et on produit musique, voix et images.</p>
       <div class="hero-cta">
         <a href="vicebreak.html" class="btn-p btn-vb" data-i18n="home_hero_cta1">Découvrir Vice Break</a>
-        <a href="#apps" class="btn-g" data-i18n="home_hero_cta2">Nos apps</a>
+        <a href="#studio" class="btn-g" data-i18n="home_hero_cta2">Tout ce qu'on fait</a>
       </div>
       <div class="hero-apps">
         <a href="vicebreak.html" class="hero-app"><img src="imgs/vicebreak_icon.png" alt=""/><span>Vice Break</span><small class="soon" data-i18n="home_hero_pill_vb">Bientôt · 19 nov.</small></a>
@@ -309,6 +323,22 @@ footer{border-top:1px solid var(--border2);padding:56px 48px;position:relative;z
   </div>
 </div>
 
+
+<!-- PORTAIL -->
+<section class="port-section" id="studio">
+  <div class="apps-inner">
+    <div class="apps-head">
+      <div class="ok-label" data-i18n="home_port_label">Le studio</div>
+      <h2 class="reveal" data-i18n="home_port_title">Un studio, <em>quatre métiers</em></h2>
+    </div>
+    <div class="port-grid">
+      <a class="port p1 reveal" href="#apps"><i>🎮</i><h3 data-i18n="home_p1t">Jeux et apps</h3><p data-i18n="home_p1d">Vice Break, Kotoba, VoteDay : conçus, développés et publiés par nous, sur iPhone et Android.</p><span data-i18n="home_port_go">Découvrir →</span></a>
+      <a class="port p2 reveal r1" href="collaborations.html"><i>🎤</i><h3 data-i18n="home_p2t">Artistes indépendants</h3><p data-i18n="home_p2d">On accompagne des artistes indépendants : structure, image, sorties, présence en ligne.</p><span data-i18n="home_port_go">Découvrir →</span></a>
+      <a class="port p3 reveal r2" href="collaborations.html"><i>📣</i><h3 data-i18n="home_p3t">Créateurs et influenceurs</h3><p data-i18n="home_p3d">Media kits, statistiques, partenariats avec les marques : un suivi sur mesure, en petit comité.</p><span data-i18n="home_port_go">Découvrir →</span></a>
+      <a class="port p4 reveal r3" href="studio.html"><i>🎛️</i><h3 data-i18n="home_p4t">Création</h3><p data-i18n="home_p4d">Musique, voix, radio, visuels, vidéo : tout ce qui donne une identité à un projet.</p><span data-i18n="home_port_go">Découvrir →</span></a>
+    </div>
+  </div>
+</section>
 
 <!-- APPS -->
 <section class="apps-section" id="apps">
@@ -468,7 +498,7 @@ footer{border-top:1px solid var(--border2);padding:56px 48px;position:relative;z
   </div>
 </footer>
 
-<script src="shared-i18n.js?v=20261005d"></script>
+<script src="shared-i18n.js?v=20261005e"></script>
 <script>
 // ── TRANSLATIONS ─────────────────────────────────────────────────
 const T={
