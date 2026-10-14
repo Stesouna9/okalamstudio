@@ -403,6 +403,8 @@ const PAGE_T = {
     home_end_title:'A project, a brand, a talent?',
     home_end_p:'Game, app, artist or creator support, production: we answer you directly, no middlemen.',
     home_end_cta:'Write to us',
+    kb_cta_p:'Free on iPhone, iPad and Android.',
+    kb_free:'Free · iPhone, iPad and Android',
   },
 
   fr: {
@@ -798,6 +800,8 @@ const PAGE_T = {
     home_end_title:'Un projet, une marque, un talent ?',
     home_end_p:'Jeu, application, accompagnement d\'artiste ou de créateur, production : on vous répond directement, sans intermédiaire.',
     home_end_cta:'Nous écrire',
+    kb_cta_p:'Gratuit sur iPhone, iPad et Android.',
+    kb_free:'Gratuit · iPhone, iPad et Android',
   },
 
   ja: {
@@ -1191,6 +1195,8 @@ const PAGE_T = {
     home_end_title:'プロジェクト、ブランド、才能をお持ちですか？',
     home_end_p:'ゲーム、アプリ、アーティストやクリエイターの支援、制作。仲介なしで直接お答えします。',
     home_end_cta:'お問い合わせ',
+    kb_cta_p:'iPhone、iPad、Androidで無料。',
+    kb_free:'無料 · iPhone / iPad / Android',
   },
 
   zh: {
@@ -1584,6 +1590,8 @@ const PAGE_T = {
     home_end_title:'有项目、品牌或才华？',
     home_end_p:'游戏、应用、艺术家或创作者陪伴、内容制作：我们直接回复，没有中间人。',
     home_end_cta:'联系我们',
+    kb_cta_p:'iPhone、iPad 和 Android 免费下载。',
+    kb_free:'免费 · iPhone、iPad 和 Android',
   },
 
   es: {
@@ -1977,6 +1985,8 @@ const PAGE_T = {
     home_end_title:'¿Un proyecto, una marca, un talento?',
     home_end_p:'Juego, aplicación, acompañamiento de artistas o creadores, producción: respondemos directamente, sin intermediarios.',
     home_end_cta:'Escríbenos',
+    kb_cta_p:'Gratis en iPhone, iPad y Android.',
+    kb_free:'Gratis · iPhone, iPad y Android',
   },
 
   pt: {
@@ -2370,6 +2380,8 @@ const PAGE_T = {
     home_end_title:'Um projeto, uma marca, um talento?',
     home_end_p:'Jogo, aplicação, acompanhamento de artistas ou criadores, produção: respondemos diretamente, sem intermediários.',
     home_end_cta:'Escreve-nos',
+    kb_cta_p:'Grátis no iPhone, iPad e Android.',
+    kb_free:'Grátis · iPhone, iPad e Android',
   }
 };
 
