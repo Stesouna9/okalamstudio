@@ -142,7 +142,8 @@ body{background:var(--vb-night);}
 /* VICE BAY RADIO */
 .vb-radio-head{display:grid;grid-template-columns:260px 1fr;gap:36px;align-items:center;}
 .vb-radio-logo{width:100%;border-radius:20px;border:1px solid rgba(255,255,255,.08);box-shadow:0 20px 60px rgba(0,0,0,.6),0 0 40px rgba(255,46,136,.15);}
-.vb-radio{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:48px;}
+.vb-radio{display:flex;flex-wrap:wrap;justify-content:center;gap:16px;margin-top:48px;}
+.vb-radio>.vb-st{flex:0 0 calc((100% - 16px*(var(--n,6) - 1))/var(--n,6));min-width:0;}
 .vb-st{position:relative;display:flex;flex-direction:column;border-radius:18px;overflow:hidden;background:#120f33;border:1px solid rgba(255,255,255,.08);cursor:pointer;padding:0;font:inherit;text-align:left;color:inherit;transition:transform .3s,border-color .3s,box-shadow .3s;}
 .vb-st:hover{transform:translateY(-6px);border-color:var(--c);box-shadow:0 0 24px color-mix(in srgb,var(--c) 40%,transparent);}
 .vb-st img{width:100%;aspect-ratio:1;object-fit:cover;display:block;}
@@ -156,8 +157,8 @@ body{background:var(--vb-night);}
 .vb-st.soon img{filter:saturate(.6) brightness(.8);}
 .vb-st.playing{border-color:var(--c);box-shadow:0 0 28px color-mix(in srgb,var(--c) 55%,transparent);transform:scale(1.03);}
 .vb-st.playing .vb-play{background:var(--c);color:#0B0A1E;}
-@media(max-width:900px){.vb-radio-head{grid-template-columns:1fr;}.vb-radio-logo{max-width:320px;}.vb-radio{grid-template-columns:repeat(3,1fr);}}
-@media(max-width:560px){.vb-radio{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:900px){.vb-radio-head{grid-template-columns:1fr;}.vb-radio-logo{max-width:320px;}.vb-radio>.vb-st{flex-basis:calc((100% - 32px)/3);}}
+@media(max-width:560px){.vb-radio{gap:12px;}.vb-radio>.vb-st{flex-basis:calc((100% - 12px)/2);}}
 
 @media(max-width:900px){.vb-phones{grid-template-columns:repeat(2,1fr);gap:14px;}.vb-phone:nth-child(2),.vb-phone:nth-child(3){transform:none;}.vb-phone{border-radius:22px;}.vb-sil-grid{grid-template-columns:repeat(2,1fr);}.vb-dist{grid-template-columns:repeat(3,1fr);}.vb-radio{grid-template-columns:repeat(3,1fr);}.vb-feats{grid-template-columns:1fr;}}
 @media(max-width:560px){.vb-hero{padding:104px 16px 0;}.vb-hero-content{padding-bottom:12vh;}.vb-countdown{gap:5px;margin-top:20px;}.vb-countdown div{min-width:0;flex:1;padding:8px 2px;}.vb-countdown b{font-size:1.5rem;}.vb-countdown span{font-size:.48rem;letter-spacing:.12em;}.vb-countdown i{font-size:1rem;}.vb-tag{font-size:.72rem;letter-spacing:.12em;}.vb-phones{grid-template-columns:1fr 1fr;}.vb-dist{grid-template-columns:repeat(2,1fr);}.vb-radio{grid-template-columns:repeat(2,1fr);}.vb-hero{min-height:88vh;}}
@@ -636,6 +637,7 @@ body{padding-bottom:64px;}
   audio.addEventListener('timeupdate',()=>{ $('vbr-time').textContent=fmt(audio.currentTime)+' / '+fmt(audio.duration); $('vbr-prog').style.width=(audio.duration?audio.currentTime/audio.duration*100:0)+'%'; });
   audio.addEventListener('play',ui); audio.addEventListener('pause',ui);
   document.querySelectorAll('.vb-st').forEach(b=>b.addEventListener('click',()=>tune(b.dataset.station)));
+  { const g=document.querySelector('.vb-radio'); if(g) g.style.setProperty('--n',g.querySelectorAll('.vb-st').length); }
   document.querySelectorAll('[data-radio-cta]').forEach(b=>b.addEventListener('click',e=>{e.preventDefault(); tune('tropicana');}));
   root.classList.add('min');
   ui();
