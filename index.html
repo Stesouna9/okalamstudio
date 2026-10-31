@@ -355,7 +355,9 @@ footer{border-top:1px solid var(--border2);padding:56px 48px;position:relative;z
   <div class="hero-in">
     <div class="hero-txt">
       <div class="hero-badge" data-i18n="home_hero_badge">Studio indépendant · Nantes</div>
-      <h1 class="hero-title"><img src="/brand/okalam-logo-grand.svg" alt="OKALAM Studio" class="hero-logo" style="display:block;width:min(680px,88vw);height:auto"></h1>
+      <h1 class="hero-title"><video class="hero-logo-anim" autoplay muted playsinline preload="auto" aria-label="OKALAM Studio"></video><img src="/brand/okalam-logo-grand.svg" alt="OKALAM Studio" class="hero-logo"></h1>
+      <style>.hero-logo,.hero-logo-anim{display:block;width:min(680px,88vw);height:auto;aspect-ratio:570/200}.hero-logo{display:none}.hero-title.static .hero-logo{display:block}.hero-title.static .hero-logo-anim{display:none}@media(prefers-reduced-motion:reduce){.hero-logo{display:block}.hero-logo-anim{display:none}}</style>
+      <script>(function(){var v=document.querySelector('.hero-logo-anim');if(!v)return;var fb=function(){v.parentNode.classList.add('static')};v.addEventListener('error',fb);var ua=navigator.userAgent,safari=/iP(hone|ad|od)/.test(ua)||/^((?!chrome|android).)*safari/i.test(ua);v.src=safari?'/brand/okalam-logo-anime-hevc.mov':'/brand/okalam-logo-anime.webm';if(!v.canPlayType(safari?'video/mp4; codecs="hvc1"':'video/webm; codecs="vp9"')){fb();return;}var p=v.play&&v.play();if(p&&p.catch)p.catch(fb);})();</script>
       <p class="hero-tag" data-i18n="home_hero_tag">Jeux. Apps. Artistes. Créateurs. Création.</p>
       <p class="hero-sub" data-i18n="home_hero_sub">Studio indépendant. On crée des jeux et des apps, on accompagne des artistes et des créateurs de contenu, et on produit musique, voix et images.</p>
       <div class="hero-cta">
