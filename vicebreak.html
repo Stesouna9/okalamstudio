@@ -320,7 +320,7 @@ body{padding-bottom:64px;}
 </svg></div>
   <div class="vb-floor"></div>
   <div class="vb-hero-content">
-    <div class="vb-badge" data-i18n="vb_badge">Sortie iOS + Android · 19 novembre 2026</div>
+    <div class="vb-badge" data-i18n="vb_badge">Sortie iOS le 12 novembre 2026 · déjà sur Android</div>
     <div class="vb-kicker" data-i18n="vb_year">Vice Bay · 1986</div>
     <h1 class="vb-logo">VICE<br/>BREAK</h1>
     <div class="vb-tag" data-i18n="vb_tagline">Borne d'arcade de 1986 · casse-briques néon</div>
@@ -330,7 +330,7 @@ body{padding-bottom:64px;}
       <div><b data-cd="m">--</b><span data-i18n="vb_cd_m">min</span></div><i>:</i>
       <div><b data-cd="s">--</b><span data-i18n="vb_cd_s">sec</span></div>
     </div>
-    <p class="vb-date-line" data-i18n="vb_date_line">Le 19 novembre 2026, le même jour que Grand Theft Auto VI. Le temps que ton téléchargement se termine, tu auras Vice Break.</p>
+    <p class="vb-date-line" data-i18n="vb_date_line">Le 12 novembre 2026, une semaine avant Grand Theft Auto VI. Le temps que ton téléchargement se termine, tu auras Vice Break.</p>
     <div class="vb-ctas">
       <a class="vb-btn primary" href="contact.html" data-i18n="vb_cta_notify">Être prévenu de la sortie</a>
       <a class="vb-btn ghost" href="#jeu" data-i18n="vb_cta_discover">Découvrir le jeu</a>
@@ -488,7 +488,7 @@ body{padding-bottom:64px;}
   <div class="vb-inner">
     <div class="vb-logo">VICE BREAK</div>
     <div class="vb-kicker" style="margin-top:14px;">19 · 11 · 2026</div>
-    <p class="vb-p reveal" style="margin:18px auto 0;" data-i18n="vb_cta_p">Sortie App Store le 19 novembre 2026. Laisse-nous ton adresse, on te prévient le jour J.</p>
+    <p class="vb-p reveal" style="margin:18px auto 0;" data-i18n="vb_cta_p">Sortie App Store le 12 novembre 2026. Laisse-nous ton adresse, on te prévient le jour J.</p>
     <div class="vb-ctas"><a class="vb-btn primary" href="contact.html" data-i18n="vb_cta_notify">Être prévenu de la sortie</a><a class="vb-btn ghost" href="support-vicebreak.html" data-i18n="vb_cta_support">Support</a><a class="vb-btn ghost" href="privacy-vicebreak.html" data-i18n="vb_cta_privacy">Confidentialité</a></div>
     <p class="vb-legal" data-i18n="vb_legal">VICE BREAK est une création originale d'OKALAM Studio, un hommage aux années 80. Vice Bay est une ville fictive. Grand Theft Auto est une marque de Take-Two Interactive ; Vice Break n'est ni affilié ni approuvé par Rockstar Games.</p>
   </div>
@@ -571,7 +571,7 @@ body{padding-bottom:64px;}
 
 <script>
 (function(){
-  const target=new Date('2026-11-19T00:00:00+01:00').getTime();
+  const target=new Date('2026-11-12T00:00:00+01:00').getTime();
   const els={};['d','h','m','s'].forEach(k=>els[k]=document.querySelector('[data-cd="'+k+'"]'));
   function tick(){ let diff=Math.max(0,target-Date.now()); const d=Math.floor(diff/864e5); diff-=d*864e5; const h=Math.floor(diff/36e5); diff-=h*36e5; const m=Math.floor(diff/6e4); const sec=Math.floor((diff-m*6e4)/1e3);
     els.d.textContent=d; els.h.textContent=String(h).padStart(2,'0'); els.m.textContent=String(m).padStart(2,'0'); els.s.textContent=String(sec).padStart(2,'0'); }
