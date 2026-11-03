@@ -1,7 +1,30 @@
+# Tous les robots, y compris ceux des assistants IA (GPTBot, ClaudeBot, PerplexityBot,
+# Google-Extended, xAI…), sont bienvenus. Les kits privés restent exclus.
 User-agent: *
+User-agent: Googlebot
+User-agent: Bingbot
+User-agent: GPTBot
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: ClaudeBot
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: Google-Extended
+User-agent: Applebot
+User-agent: Applebot-Extended
+User-agent: DuckAssistBot
+User-agent: xAI-SearchBot
+User-agent: GrokBot
+User-agent: Bravebot
+User-agent: Meta-ExternalAgent
+User-agent: MistralAI-User
+User-agent: CCBot
 Allow: /
-
 Disallow: /brandkit.html
+Disallow: /brandkit-elisa.html
+Disallow: /brandkit-elisa-eirc.html
 Disallow: /mediakit-elisa.html
 Disallow: /mediakit-pierre.html
 Disallow: /partenaires.html

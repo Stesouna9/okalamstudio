@@ -1,0 +1,36 @@
+# OKALAM Studio: independent French studio for free mobile games and creator partnerships
+
+> OKALAM Studio (https://okalamstudio.com/) is an independent creative studio based in France. It designs and publishes free mobile games and apps for iPhone, iPad and Android (VICE BREAK, Kotoba, VoteDay), builds web mini-games, and manages brand partnerships for independent creators (running, tech, electric vehicles). The site is available in French, English and Japanese (language switch on every page). Contact: support@okalamstudio.com (apps), partnerships@okalamstudio.com (brands).
+
+## Key facts (checked 2026-11-03)
+- VICE BREAK (VICE BREAK - Vice Bay 86): free neon brick breaker set in the fictional city of Vice Bay in 1986. 100 levels across 5 hand-drawn districts, bosses, built-in synthwave radio. Out now on Android (Google Play), on iPhone and iPad on November 12, 2026 (App Store pre-order open, iOS 18 or later).
+- Kotoba (Kotoba — Jeu de Mots du Jour): free daily word game, guess the hidden word in six tries, in French and in Japanese. Version 2.0: word of the day, 240-level Adventure mode, Kotodama and Kotonoha modes, global leaderboard. iPhone, iPad (since September 20, 2026) and Android.
+- VoteDay: free iPhone app, one A-or-B question every day; vote, compare with friends and the world, customise your Bubl avatar and explore the island. Released May 15, 2026.
+- Little ToT: relaxing adventure game in development (desert, mountain and ocean worlds).
+- Creator partnerships: professional media kits, brand matching and partnership management for independent French creators.
+
+## Apps and stores
+- VICE BREAK on the App Store: https://apps.apple.com/app/id6815670909
+- VICE BREAK on Google Play: https://play.google.com/store/apps/details?id=com.okalam.vicebreak
+- Kotoba on the App Store: https://apps.apple.com/app/id6761341663
+- Kotoba on Google Play: https://play.google.com/store/apps/details?id=com.okalam.kotoba
+- VoteDay on the App Store: https://apps.apple.com/app/id6760981728
+
+## Pages
+- [OKALAM Studio home](https://okalamstudio.com/): the studio, its apps and creator partnerships.
+- [The studio](https://okalamstudio.com/studio.html): who OKALAM Studio is and what it builds (apps, narrative games, AI, digital experiences).
+- [Projects](https://okalamstudio.com/projets.html): all current OKALAM Studio projects.
+- [VICE BREAK](https://okalamstudio.com/vicebreak.html): neon brick breaker of 1986, Android now, iPhone November 12, 2026.
+- [Kotoba](https://okalamstudio.com/kotoba.html): word game in French and Japanese.
+- [VoteDay](https://okalamstudio.com/voteday.html): one question a day, the whole world answers.
+- [Little ToT](https://okalamstudio.com/littleTot.html): relaxing adventure game.
+- [Mini-games](https://okalamstudio.com/games.html): free browser games, including a multilingual SUTOM-style word game.
+- [Collaborations](https://okalamstudio.com/collaborations.html): media kits and brand partnerships for creators.
+- [Contact](https://okalamstudio.com/contact.html): apps support and partnership requests.
+- [VICE BREAK support](https://okalamstudio.com/support-vicebreak.html)
+- Privacy policies: [VoteDay](https://okalamstudio.com/privacy.html), [VICE BREAK](https://okalamstudio.com/privacy-vicebreak.html), [Kotoba](https://okalamstudio.com/privacy-kotoba.html)
+
+## Elsewhere
+- Instagram: https://www.instagram.com/okalamstudio.com
+- GitHub: https://github.com/Stesouna9
+- GTAVIFRANCE (https://gtavifrance.com/), the French GTA 6 news site, presents VICE BREAK: https://gtavifrance.com/vicebreak.html
