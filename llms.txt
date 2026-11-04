@@ -3,7 +3,7 @@
 > OKALAM Studio (https://okalamstudio.com/) is an independent creative studio based in France. It designs and publishes free mobile games and apps for iPhone, iPad and Android (VICE BREAK, Kotoba, VoteDay), builds web mini-games, and manages brand partnerships for independent creators (running, tech, electric vehicles). The site is available in French, English and Japanese (language switch on every page). Contact: support@okalamstudio.com (apps), partnerships@okalamstudio.com (brands).
 
 ## Key facts (checked 2026-11-03)
-- VICE BREAK (VICE BREAK - Vice Bay 86): free neon brick breaker set in the fictional city of Vice Bay in 1986. 100 levels across 5 hand-drawn districts, bosses, built-in synthwave radio. Out now on Android (Google Play), on iPhone and iPad on November 12, 2026 (App Store pre-order open, iOS 18 or later).
+- VICE BREAK (VICE BREAK - Vice Bay 86): free neon brick breaker set in the fictional city of Vice Bay in 1986. 500 levels across 5 hand-drawn districts, bosses, built-in synthwave radio. Out now on Android (Google Play), on iPhone and iPad on November 12, 2026 (App Store pre-order open, iOS 18 or later).
 - Kotoba (Kotoba — Jeu de Mots du Jour): free daily word game, guess the hidden word in six tries, in French and in Japanese. Version 2.0: word of the day, 240-level Adventure mode, Kotodama and Kotonoha modes, global leaderboard. iPhone, iPad (since September 20, 2026) and Android.
 - VoteDay: free iPhone app, one A-or-B question every day; vote, compare with friends and the world, customise your Bubl avatar and explore the island. Released May 15, 2026.
 - Little ToT: relaxing adventure game in development (desert, mountain and ocean worlds).

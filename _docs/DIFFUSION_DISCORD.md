@@ -11,7 +11,7 @@ Liens : Discord https://discord.gg/TSaxEnt2dG · Sondage icône https://strawpol
 
 ## 2. r/iosgaming (EN) — TestFlight
 **Titre :** [TestFlight] VICE BREAK — neon brick-breaker, 1986, five radio stations that actually talk between songs
-**Texte :** 100 levels, each wall is a silhouette (palm tree, flamingo, convertible). Arcade rules: 1 coin = 1 game = 3 balls, 5 free coins a day, never interrupted mid-game. The radio has hosts recorded by friends, jingles and fake ads for the city's shops. Looking for testers before the Nov 19 release. Discord (TestFlight link inside): [invite]
+**Texte :** 500 levels, each wall is a silhouette (palm tree, flamingo, convertible). Arcade rules: 1 coin = 1 game = 3 balls, 5 free coins a day, never interrupted mid-game. The radio has hosts recorded by friends, jingles and fake ads for the city's shops. Looking for testers before the Nov 19 release. Discord (TestFlight link inside): [invite]
 **Images :** vicebreak_1_web.jpg + vicebreak_2_web.jpg + vicebay_art_1_coconut.jpg
 
 ## 3. r/AndroidGaming (EN) — bêta fermée
