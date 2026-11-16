@@ -257,7 +257,7 @@ h2.grand{font-family:Syne;font-size:1.6rem}
 const URL_SB = 'https://2-28-122-50.sslip.io';
 const CLE = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlzcyI6InN1cGFiYXNlIiwiaWF0IjoxNzkwMjUyMTI0LCJleHAiOjIxMDU2MTIxMjR9.5bJ5EvRKnV75jyRuMhzlVpkG5sIijlYTxLeHsZ-3erQ';
 const hashAuth = location.hash.includes('access_token') ? new URLSearchParams(location.hash.slice(1)) : null;
-const jeton = location.hash.match(/^#\/invitation\/([ir])_([\w-]+)$/);
+const jeton = (new URLSearchParams(location.search).get('invitation') || '').match(/^([ir])_([\w-]+)$/) || location.hash.match(/^#\/invitation\/([ir])_([\w-]+)$/);
 let typeLien = jeton ? (jeton[1] === 'i' ? 'invite' : 'recovery') : (hashAuth?.get('type') || (location.hash.includes('error_code') ? 'expire' : null));
 const sb = supabase.createClient(URL_SB, CLE, { auth: { persistSession: true, storageKey: 'okalam-atelier' } });
 const BUCKET = 'atelier';
@@ -306,7 +306,7 @@ async function demarrer(apresInvitation){
     history.replaceState(null, '', location.pathname);
     await sb.auth.signOut({ scope: 'local' });
     const { error } = await sb.auth.verifyOtp({ token_hash: jeton[2], type: typeLien === 'invite' ? 'invite' : 'recovery' });
-    if (error) typeLien = 'expire';
+    if (error) { typeLien = 'expire'; $('errCnx').textContent = 'Ce lien a déjà servi ou a expiré. Demande un nouveau lien à Gabriel.'; }
   }
   const { data: { session } } = await sb.auth.getSession();
   if (!session) { if (typeLien) $('errCnx').textContent = 'Ce lien a expiré ou a déjà servi. Demande un nouveau lien à Gabriel.'; montrer('ecranConnexion'); return; }
