@@ -142,7 +142,7 @@ h2.grand{font-family:Syne;font-size:1.6rem}
 <section id="ecranConnexion" class="ecran">
   <div class="boite">
     <h1>QG OKALAM</h1>
-    <p class="sous">Le quartier général d'OKALAM Studio et de ses graphistes : l'Atelier pour créer, la Passerelle pour s'échanger les fichiers.</p>
+    <p class="sous">Le quartier général d'OKALAM Studio et de ses graphistes : l'Atelier pour dessiner, l'espace de chaque projet, et la Passerelle pour s'échanger les fichiers.</p>
     <form id="formCnx">
       <label>Adresse email</label><input id="email" type="email" autocomplete="email" required/>
       <label>Mot de passe</label><input id="mdp" type="password" autocomplete="current-password" required/>
@@ -177,7 +177,8 @@ h2.grand{font-family:Syne;font-size:1.6rem}
   <div id="banniereAlertes"></div>
   <div class="dash">
     <div class="col">
-      <div class="carte"><h3>🎨 Projets en cours</h3><div id="listeProjets"></div></div>
+      <div class="carte" style="border-color:#3a2a63;background:linear-gradient(135deg,rgba(255,122,61,.10),rgba(176,58,214,.12))"><h3>🎨 L'Atelier</h3><p class="sous" style="font-size:.86rem">L'outil de dessin du studio, dans l'esprit d'Adobe : calques, pinceaux, export direct vers la Passerelle. <b>En construction</b>, il apparaîtra ici.</p></div>
+      <div class="carte"><h3>🕹 Projets en cours</h3><div id="listeProjets"></div></div>
       <div class="carte"><h3>🕘 Activité récente</h3><div id="activite"></div></div>
     </div>
     <div class="col">
@@ -206,7 +207,7 @@ h2.grand{font-family:Syne;font-size:1.6rem}
 <main id="vueProjet" class="cache">
   <div class="fil-ariane"><a class="btn petit" href="#/">← QG</a><span class="mono" id="appProjet" style="color:var(--accent)"></span></div>
   <h2 class="grand" id="nomProjet" style="margin-top:8px"></h2>
-  <div class="onglets"><a id="ongAtelier" class="ong">🎨 L'Atelier</a><a id="ongPasserelle" class="ong">🔁 La Passerelle</a></div>
+  <div class="onglets"><a id="ongAtelier" class="ong">🕹 Espace projet</a><a id="ongPasserelle" class="ong">🔁 La Passerelle</a></div>
   <div class="tab-atelier"><details class="brief" id="briefBloc" open><summary>Brief du projet</summary><div id="brief" style="margin-top:8px"></div></details></div>
   <div class="proj-grille">
     <div>
@@ -339,7 +340,7 @@ async function ouvrirAccueil(silencieux){
     const n = s => ds.filter(d => d.statut === s).length;
     const dernier = ds[0];
     const comp = Object.keys(STATUTS).filter(s => s !== 'reference' && n(s)).map(s => `<span class="statut s-${s}">${STATUTS[s]} · ${n(s)}</span>`).join('') || '<span class="sous" style="font-size:.8rem">Aucun envoi pour l\'instant</span>';
-    return `<div class="proj"><div class="l1"><div><span class="mono" style="color:var(--accent)">${echap(p.app||'')}</span><br/><b>${echap(p.nom)}</b></div><span style="display:flex;gap:6px;flex-wrap:wrap"><a class="btn" href="#/atelier/${encodeURIComponent(p.slug)}">🎨 Atelier</a><a class="btn prim" href="#/passerelle/${encodeURIComponent(p.slug)}">🔁 Passerelle →</a></span></div>
+    return `<div class="proj"><div class="l1"><div><span class="mono" style="color:var(--accent)">${echap(p.app||'')}</span><br/><b>${echap(p.nom)}</b></div><span style="display:flex;gap:6px;flex-wrap:wrap"><a class="btn" href="#/atelier/${encodeURIComponent(p.slug)}">🕹 Espace projet</a><a class="btn prim" href="#/passerelle/${encodeURIComponent(p.slug)}">🔁 Passerelle →</a></span></div>
       <div class="compteurs">${comp}</div>
       ${dernier ? `<div style="font-size:.8rem"><span class="sous">Dernier envoi : ${echap(dernier.nom_fichier)} · ${quand(dernier.cree_le)}</span>${pipeline(dernier)}</div>` : ''}</div>`;
   }).join('') || '<div class="vide">Aucun projet.</div>';
