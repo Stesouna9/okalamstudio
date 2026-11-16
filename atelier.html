@@ -178,8 +178,16 @@ h2.grand{font-family:Syne;font-size:1.6rem}
   <div id="banniereAlertes"></div>
   <div class="dash">
     <div class="col">
-      <div class="carte" style="border-color:#3a2a63;background:linear-gradient(135deg,rgba(255,122,61,.10),rgba(176,58,214,.12))"><h3>🎨 L'Atelier</h3><p class="sous" style="font-size:.86rem">Le logiciel de création du studio, dans l'esprit d'Adobe : Photo, Vecteur, Mise en page. Enregistre dans ton espace en ligne, puis dépose l'export dans la Passerelle du projet.</p><div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px"><a class="btn prim" href="https://atelier.2-29-41-109.sslip.io/" target="_blank" rel="noopener">Ouvrir l'Atelier ↗</a></div></div>
-      <div class="carte"><h3>🕹 Projets en cours</h3><div id="listeProjets"></div></div>
+      <div class="carte" style="border-color:#3a2a63;background:linear-gradient(135deg,rgba(255,122,61,.10),rgba(176,58,214,.12))"><h3>🎨 L'Atelier</h3><p class="sous" style="font-size:.86rem">Le logiciel de création du studio, dans l'esprit d'Adobe : Photo, Vecteur, Mise en page. Enregistre dans ton espace en ligne, puis dépose l'export dans la Passerelle du projet.</p><div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px"><a class="btn prim" href="#/atelier">Ouvrir l'Atelier</a><a class="btn" href="https://atelier.2-29-41-109.sslip.io/" target="_blank" rel="noopener">Plein écran ↗</a></div></div>
+      <div class="carte"><h3 style="justify-content:space-between">🕹 Projets en cours <button class="btn petit" id="btnNouveau">＋ Nouveau projet</button></h3>
+        <form id="formProjet" class="cache" style="border:1px solid var(--border);border-radius:12px;padding:12px;margin-bottom:12px;background:var(--bg2)">
+          <label style="margin-top:0">Nom du projet</label><input id="pNom" required maxlength="80" placeholder="Ex. : Nouveau logo VICE BREAK"/>
+          <label>Pour quelle app ou quelle marque</label><input id="pApp" maxlength="40" placeholder="Ex. : VICE BREAK, OKALAM Studio, Kotoba…"/>
+          <label>Brief : ce qu'on cherche, formats, échéance</label><textarea id="pBrief" rows="4" placeholder="Ex. : retravailler le logo, plus néon, lisible à 64 px. PNG 1024 + SVG."></textarea>
+          <div style="display:flex;gap:8px;margin-top:10px"><button class="btn prim">Créer le projet</button><button type="button" class="btn" id="pAnnuler">Annuler</button></div>
+          <div class="msgErr" id="pErr"></div>
+        </form>
+        <div id="listeProjets"></div></div>
       <div class="carte"><h3>🕘 Activité récente</h3><div id="activite"></div></div>
     </div>
     <div class="col">
@@ -240,6 +248,10 @@ h2.grand{font-family:Syne;font-size:1.6rem}
   </div>
 </main>
 
+<section id="vueLogiciel" class="cache" style="display:flex;flex-direction:column;height:calc(100vh - 56px)">
+  <div style="display:flex;gap:10px;align-items:center;padding:8px 16px;border-bottom:1px solid var(--border);background:var(--bg2)"><a class="btn petit" href="#/">← QG</a><b style="font-family:Syne">🎨 L'Atelier</b><span class="sous" style="font-size:.8rem">Exporte ton travail, puis dépose-le dans la Passerelle du projet.</span><span style="flex:1"></span><a class="btn petit" href="https://atelier.2-29-41-109.sslip.io/" target="_blank" rel="noopener">Plein écran ↗</a></div>
+  <iframe id="cadreAtelier" title="OKALAM Atelier" style="flex:1;width:100%;border:0;background:#0b0e14" allow="clipboard-read; clipboard-write; fullscreen"></iframe>
+</section>
 <div id="visionneuse" class="cache"><img alt=""/></div>
 <div id="apercu" class="cache">
   <div class="tel"><div class="ecranTel" id="apercuEcran"><div class="encoche"></div>
@@ -271,7 +283,7 @@ const echap = s => (s ?? '').toString().replace(/[&<>"']/g, c => ({'&':'&amp;','
 function quand(d){ const x = new Date(d), j = Math.round((Date.now() - x) / 60000); if (j < 1) return "à l'instant"; if (j < 60) return `il y a ${j} min`; if (j < 1440) return `il y a ${Math.round(j/60)} h`; return x.toLocaleDateString('fr-FR',{day:'2-digit',month:'2-digit'}) + ' ' + x.toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'}); }
 function taille(o){ if(!o) return ''; const u=['o','Ko','Mo','Go']; let i=0; while(o>=1024&&i<3){o/=1024;i++;} return o.toFixed(i?1:0)+' '+u[i]; }
 function toast(t){ const e = $('toast'); e.textContent = t; e.classList.remove('cache'); clearTimeout(e._t); e._t = setTimeout(() => e.classList.add('cache'), 3500); }
-function montrer(id){ ['ecranConnexion','ecranInvitation','ecranAttente','vueAccueil','vueProjet'].forEach(x => $(x).classList.toggle('cache', x !== id)); window.scrollTo(0,0); }
+function montrer(id){ ['ecranConnexion','ecranInvitation','ecranAttente','vueAccueil','vueProjet','vueLogiciel'].forEach(x => $(x).classList.toggle('cache', x !== id)); window.scrollTo(0,0); }
 const admin = () => membre?.role === 'admin';
 
 function pipeline(d){
@@ -329,7 +341,8 @@ async function demarrer(apresInvitation){
   router();
 }
 window.addEventListener('hashchange', () => membre && router());
-function router(){ const m = location.hash.match(/^#\/(atelier|passerelle)\/(.+)$/); m ? ouvrirProjet(decodeURIComponent(m[2]), m[1]) : ouvrirAccueil(); }
+function router(){ if (location.hash === '#/atelier') return ouvrirLogiciel(); const m = location.hash.match(/^#\/(projet|atelier|passerelle)\/(.+)$/); m ? ouvrirProjet(decodeURIComponent(m[2]), m[1] === 'passerelle' ? 'passerelle' : 'atelier') : ouvrirAccueil(); }
+function ouvrirLogiciel(){ projet = null; montrer('vueLogiciel'); const f = $('cadreAtelier'); if (!f.src) f.src = 'https://atelier.2-29-41-109.sslip.io/'; }
 let minuteur; function rafraichir(){ clearTimeout(minuteur); minuteur = setTimeout(() => { projet && !$('vueProjet').classList.contains('cache') ? (chargerDepots(), chargerMessages()) : ouvrirAccueil(true); }, 300); }
 
 // ----- Tableau de bord -----
@@ -348,7 +361,7 @@ async function ouvrirAccueil(silencieux){
     const n = s => ds.filter(d => d.statut === s).length;
     const dernier = ds[0];
     const comp = Object.keys(STATUTS).filter(s => s !== 'reference' && n(s)).map(s => `<span class="statut s-${s}">${STATUTS[s]} · ${n(s)}</span>`).join('') || '<span class="sous" style="font-size:.8rem">Aucun envoi pour l\'instant</span>';
-    return `<div class="proj"><div class="l1"><div><span class="mono" style="color:var(--accent)">${echap(p.app||'')}</span><br/><b>${echap(p.nom)}</b></div><span style="display:flex;gap:6px;flex-wrap:wrap"><a class="btn" href="#/atelier/${encodeURIComponent(p.slug)}">🕹 Espace projet</a><a class="btn prim" href="#/passerelle/${encodeURIComponent(p.slug)}">🔁 Passerelle →</a></span></div>
+    return `<div class="proj"><div class="l1"><div><span class="mono" style="color:var(--accent)">${echap(p.app||'')}</span><br/><b>${echap(p.nom)}</b></div><span style="display:flex;gap:6px;flex-wrap:wrap"><a class="btn" href="#/projet/${encodeURIComponent(p.slug)}">🕹 Espace ${echap(p.app || p.nom)}</a><a class="btn prim" href="#/passerelle/${encodeURIComponent(p.slug)}">🔁 Passerelle →</a></span></div>
       <div class="compteurs">${comp}</div>
       ${dernier ? `<div style="font-size:.8rem"><span class="sous">Dernier envoi : ${echap(dernier.nom_fichier)} · ${quand(dernier.cree_le)}</span>${pipeline(dernier)}</div>` : ''}</div>`;
   }).join('') || '<div class="vide">Aucun projet.</div>';
@@ -380,7 +393,7 @@ $('btnAlerte').onclick = async () => {
 async function ouvrirProjet(slug, onglet){
   projet = projets.find(p => p.slug === slug); if (!projet) { location.hash = '#/'; return; }
   montrer('vueProjet');
-  const e = encodeURIComponent(slug); $('ongAtelier').href = '#/atelier/' + e; $('ongPasserelle').href = '#/passerelle/' + e;
+  const e = encodeURIComponent(slug); $('ongAtelier').href = '#/projet/' + e; $('ongAtelier').textContent = '🕹 ' + (projet.app || projet.nom); $('ongPasserelle').href = '#/passerelle/' + e;
   $('ongAtelier').classList.toggle('on', onglet === 'atelier'); $('ongPasserelle').classList.toggle('on', onglet !== 'atelier');
   document.querySelectorAll('.tab-atelier').forEach(x => x.classList.toggle('cache', onglet !== 'atelier'));
   document.querySelectorAll('.tab-passerelle').forEach(x => x.classList.toggle('cache', onglet === 'atelier'));
@@ -498,6 +511,19 @@ document.querySelectorAll('input[type=password]').forEach(i => {
   b.onclick = () => { const v = i.type === 'password'; i.type = v ? 'text' : 'password'; b.textContent = v ? '🙈' : '👁'; b.title = v ? 'Masquer le mot de passe' : 'Afficher le mot de passe'; b.setAttribute('aria-label', b.title); i.focus(); };
   w.appendChild(b);
 });
+$('btnNouveau').onclick = () => { $('formProjet').classList.toggle('cache'); $('pNom').focus(); };
+$('pAnnuler').onclick = () => $('formProjet').classList.add('cache');
+$('formProjet').onsubmit = async e => {
+  e.preventDefault(); $('pErr').textContent = '';
+  const nom = $('pNom').value.trim(); if (!nom) return;
+  const base = nom.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 40) || 'projet';
+  const slug = base + '-' + Date.now().toString(36).slice(-4);
+  const { error } = await sb.from('atelier_projets').insert({ slug, nom, app: $('pApp').value.trim() || null, brief: $('pBrief').value.trim() || null, ordre: projets.length + 1, cree_par: membre.nom });
+  if (error) { $('pErr').textContent = error.message; return; }
+  await sb.from('atelier_messages').insert({ projet: slug, auteur_nom: membre.nom, texte: `Projet créé par ${membre.nom}.` });
+  const { data: p } = await sb.from('atelier_projets').select('*').order('ordre'); projets = p || [];
+  $('formProjet').reset(); $('formProjet').classList.add('cache'); toast('Projet créé ✓'); location.hash = '#/projet/' + encodeURIComponent(slug);
+};
 demarrer();
 </script>
 </body>
