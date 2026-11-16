@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta name="robots" content="noindex,nofollow"/>
+<title>Tutoriel de l'atelier</title>
+<link rel="icon" href="favicon-32.png"/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Space+Mono&family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
+<style>
+:root{--bg:#080c12;--bg2:#0d1220;--card:#111827;--border:#1f2a3d;--text:#e8edf5;--muted:#8a94a6;--accent:#8deaff;--o:#ff7a3d;--v:#b03ad6}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;line-height:1.6;font-size:15.5px}
+a{color:var(--accent)}
+header{display:flex;align-items:center;gap:14px;padding:14px 20px;border-bottom:1px solid var(--border);background:var(--bg2)}
+header img{height:24px}
+header b{font-family:Syne;letter-spacing:.04em}
+header .e{flex:1}
+.btn{background:linear-gradient(135deg,var(--o),var(--v));color:#fff;text-decoration:none;border-radius:10px;padding:8px 14px;font-weight:600;font-size:.88rem}
+.hero{padding:42px 20px 26px;text-align:center;background:radial-gradient(ellipse at 50% 120%,rgba(255,122,61,.22),transparent 60%)}
+.hero h1{font-family:Syne;font-size:clamp(1.6rem,4vw,2.3rem)}
+.hero p{color:var(--muted);max-width:620px;margin:8px auto 0}
+.sommaire{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:18px}
+.sommaire a{border:1px solid var(--border);border-radius:20px;padding:5px 12px;font-size:.82rem;text-decoration:none;color:var(--text);background:var(--card)}
+main{max-width:820px;margin:0 auto;padding:10px 16px 70px}
+section{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:22px;margin-top:18px}
+h2{font-family:Syne;font-size:1.2rem;margin-bottom:10px;display:flex;gap:10px;align-items:center}
+h2 .n{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--o),var(--v));font-size:.9rem;flex-shrink:0}
+h3{font-size:.95rem;margin:14px 0 6px}
+ol,ul{padding-left:22px}
+li{margin:5px 0}
+.pour{font-family:'Space Mono',monospace;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:4px}
+.astuce{background:var(--bg2);border-left:3px solid var(--o);border-radius:8px;padding:10px 14px;margin-top:12px;font-size:.9rem;color:#cfd6e2}
+table{width:100%;border-collapse:collapse;font-size:.88rem;margin-top:8px}
+td,th{border-bottom:1px solid var(--border);padding:8px 6px;text-align:left;vertical-align:top}
+th{color:var(--muted);font-weight:600}
+.st{display:inline-block;border-radius:20px;padding:1px 9px;font-size:.75rem;font-weight:600;white-space:nowrap}
+code{font-family:'Space Mono',monospace;font-size:.85em;background:var(--bg2);padding:1px 6px;border-radius:5px}
+</style>
+</head>
+<body>
+<header><a href="index.html"><img src="brand/okalam-logo-compact.svg" alt="OKALAM Studio"/></a><b>ATELIER · TUTORIEL</b><span class="e"></span><a class="btn" href="atelier.html">Ouvrir l'atelier</a></header>
+
+<div class="hero">
+  <h1>L'atelier OKALAM, mode d'emploi</h1>
+  <p>Un seul endroit pour déposer les créations, en parler et les voir tourner dans l'app quelques minutes plus tard.</p>
+  <div class="sommaire">
+    <a href="#compte">1 · Compte</a><a href="#deposer">2 · Déposer</a><a href="#formats">3 · Formats</a><a href="#suivre">4 · Suivre</a><a href="#voir">5 · Voir dans l'app</a><a href="#retours">6 · Faire des retours</a><a href="#coulisses">7 · En coulisses</a>
+  </div>
+</div>
+
+<main>
+<section id="compte">
+  <h2><span class="n">1</span>Créer son compte</h2>
+  <p class="pour">Florian et Gabriel, une seule fois</p>
+  <ol>
+    <li>Ouvrir <a href="atelier.html">okalamstudio.com/atelier.html</a> (ordinateur ou téléphone).</li>
+    <li>Onglet <b>Créer mon compte</b> : prénom, adresse email, mot de passe (8 caractères minimum).</li>
+    <li>On entre directement dans l'atelier. Les fois suivantes : <b>Se connecter</b>.</li>
+  </ol>
+  <div class="astuce">Il faut utiliser l'adresse que Gabriel a autorisée (pour Florian : celle de son compte Apple / TestFlight). Avec une autre adresse, le compte est créé mais l'atelier reste fermé : prévenir Gabriel, qui l'ajoute en une minute.</div>
+</section>
+
+<section id="deposer">
+  <h2><span class="n">2</span>Déposer des fichiers</h2>
+  <p class="pour">Surtout Florian</p>
+  <ol>
+    <li>Choisir le projet à gauche (ex. <i>VICE BREAK · fond du menu</i>) et relire le brief en haut.</li>
+    <li>Écrire une courte <b>note</b> (facultatif) : « crépuscule v2, grain plus léger ».</li>
+    <li>Glisser les fichiers dans la zone pointillée, ou cliquer dessus pour les choisir. Plusieurs à la fois, 300 Mo maximum chacun.</li>
+    <li>La barre se remplit, puis « Envoyé ✓ ». Le fichier apparaît dans la galerie avec le statut <span class="st" style="background:rgba(141,234,255,.12);color:#8deaff">Reçu</span>.</li>
+  </ol>
+  <div class="astuce">Les fichiers marqués <span class="st" style="background:rgba(138,148,166,.15);color:#8a94a6">Référence</span> sont le point de départ : les ciels actuels de l'app (aube, jour, crépuscule, pluie, nuit), au format de l'iPhone 13 mini. Bouton <b>Télécharger</b> pour les récupérer en pleine taille.</div>
+</section>
+
+<section id="formats">
+  <h2><span class="n">3</span>Les formats qui s'intègrent le plus vite</h2>
+  <p class="pour">Pour iPhone et Android, un seul jeu de fichiers suffit</p>
+  <table>
+    <tr><th>Quoi</th><th>Format</th><th>Pourquoi</th></tr>
+    <tr><td>Image finale</td><td>PNG, couleurs <b>sRGB</b>, portrait <b>1290 × 2796</b></td><td>Couvre le plus grand iPhone ; recadrée ensuite pour le 13 mini (1080 × 2340) et Android.</td></tr>
+    <tr><td>Calques pour l'animation</td><td>PNG <b>transparents séparés</b> : ciel, soleil/lune, ville, palmiers, grille</td><td>Permet de les faire bouger en profondeur (parallaxe) et de varier le ciel selon l'heure.</td></tr>
+    <tr><td>Grain</td><td>Texture PNG <b>512 × 512</b> qui se répète sans raccord</td><td>Appliquée par le code : plus légère et dosable.</td></tr>
+    <tr><td>Source</td><td>PSD aux calques nommés, ou AI / SVG pour les formes simples</td><td>Les silhouettes en vectoriel restent nettes sur tous les écrans.</td></tr>
+  </table>
+  <h3>Règles de cadrage</h3>
+  <ul>
+    <li>Horizon vers les <b>deux tiers de la hauteur</b> ; le logo VICE BREAK et le menu se posent par-dessus, au centre.</li>
+    <li>Rien d'important à moins de 150 px des bords haut et bas (encoche, barre de navigation).</li>
+    <li>Éviter le JPEG (pas de transparence) et le CMJN (couleurs ternes à l'écran).</li>
+  </ul>
+  <h3>Nommage conseillé</h3>
+  <p><code>ciel-crepuscule-v2.png</code>, <code>calque-palmiers-v1.png</code>, <code>grain-512.png</code></p>
+</section>
+
+<section id="suivre">
+  <h2><span class="n">4</span>Suivre son travail</h2>
+  <p>Chaque fichier affiche son étape. Chaque changement est aussi écrit dans la discussion, à droite.</p>
+  <table>
+    <tr><td><span class="st" style="background:rgba(141,234,255,.12);color:#8deaff">Reçu</span></td><td>Le fichier est arrivé ; Claude est prévenu.</td></tr>
+    <tr><td><span class="st" style="background:rgba(255,180,84,.14);color:#ffb454">En intégration</span></td><td>Il est en train d'être placé dans l'app.</td></tr>
+    <tr><td><span class="st" style="background:rgba(181,140,255,.16);color:#b58cff">Dans la version test</span></td><td>Une version test l'inclut (numéro de build indiqué) : à ouvrir dans TestFlight.</td></tr>
+    <tr><td><span class="st" style="background:rgba(94,230,160,.14);color:#5ee6a0">Validé</span></td><td>Gabriel le garde pour la prochaine mise à jour publique.</td></tr>
+    <tr><td><span class="st" style="background:rgba(255,111,174,.14);color:#ff6fae">À revoir</span></td><td>Un retour est écrit dans la discussion.</td></tr>
+  </table>
+</section>
+
+<section id="voir">
+  <h2><span class="n">5</span>Voir son travail dans l'app</h2>
+  <h3>Sur iPhone (TestFlight)</h3>
+  <ol>
+    <li>Installer l'app <b>TestFlight</b> depuis l'App Store.</li>
+    <li>Ouvrir l'email d'Apple « VICE BREAK – Vice Bay 86 is ready to test » (ou l'invitation dans TestFlight), puis <b>Accepter</b> avec le même compte Apple.</li>
+    <li>Dans TestFlight : <b>Installer</b> VICE BREAK. Les nouvelles versions test arrivent au même endroit : bouton <b>Mettre à jour</b>.</li>
+  </ol>
+  <h3>Sur Android</h3>
+  <p>VICE BREAK est sur <a href="https://play.google.com/store/apps/details?id=com.okalam.vicebreak" target="_blank" rel="noopener">Google Play</a> : la version publique sert de référence.</p>
+  <div class="astuce">La version test peut avoir quelques réglages de plus que la version publique : c'est normal, ce n'est pas un bug.</div>
+</section>
+
+<section id="retours">
+  <h2><span class="n">6</span>Faire des retours</h2>
+  <p class="pour">Pour Gabriel</p>
+  <ol>
+    <li>Ouvrir le fichier (clic sur la vignette pour l'agrandir).</li>
+    <li>Écrire le retour dans la <b>discussion</b> : ce qui plaît, ce qui change, en une ou deux phrases. Entrée pour envoyer, Maj + Entrée pour aller à la ligne.</li>
+    <li>Changer le statut sous la vignette : <b>À revoir</b>, <b>Validé</b>… Florian voit le changement tout de suite.</li>
+  </ol>
+  <h3>Demander à Claude</h3>
+  <ul>
+    <li>« Intègre le dernier dépôt de Florian dans une version test » : intégration, build TestFlight, statut mis à jour.</li>
+    <li>« Ajoute un projet à l'atelier : … » ou « Donne accès à l'atelier à telle adresse ».</li>
+  </ul>
+  <div class="astuce">Seul Gabriel (administrateur) peut changer les statuts et supprimer les fichiers des autres. Florian peut supprimer ses propres dépôts.</div>
+</section>
+
+<section id="coulisses">
+  <h2><span class="n">7</span>En coulisses</h2>
+  <ul>
+    <li>Fichiers et messages restent sur le serveur d'OKALAM Studio, accessibles seulement aux membres de l'atelier.</li>
+    <li>À chaque dépôt, une veille sur le Mac du studio prévient Claude, qui prépare l'intégration. Une fois la version test envoyée, compter <b>5 à 10 minutes</b> avant qu'elle apparaisse dans TestFlight.</li>
+    <li>Aucune version n'est publiée sur l'App Store ou Google Play sans l'accord de Gabriel.</li>
+  </ul>
+</section>
+</main>
+</body>
+</html>

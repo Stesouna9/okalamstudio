@@ -1,0 +1,430 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta name="robots" content="noindex,nofollow"/>
+<title>Atelier OKALAM</title>
+<link rel="icon" href="favicon-32.png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#080c12;--bg2:#0d1220;--card:#111827;--card2:#162036;--border:#1f2a3d;
+  --text:#e8edf5;--muted:#8a94a6;--accent:#8deaff;--red:#CD141B;
+  --ok:#5ee6a0;--warn:#ffb454;--vio:#b58cff;--pink:#ff6fae;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;font-size:15px;line-height:1.5}
+a{color:var(--accent)}
+button{font:inherit;cursor:pointer}
+.mono{font-family:'Space Mono',monospace;letter-spacing:.08em;text-transform:uppercase;font-size:.68rem}
+header{display:flex;align-items:center;gap:16px;padding:14px 20px;border-bottom:1px solid var(--border);background:var(--bg2);position:sticky;top:0;z-index:5}
+header img{height:26px}
+header .titre{font-family:Syne;font-weight:800;font-size:1.05rem;letter-spacing:.04em}
+header .esp{flex:1}
+header .moi{color:var(--muted);font-size:.85rem}
+.btn{background:var(--card2);color:var(--text);border:1px solid var(--border);border-radius:10px;padding:9px 14px;font-weight:600;font-size:.88rem}
+.btn:hover{border-color:var(--accent)}
+.btn.prim{background:linear-gradient(135deg,#ff7a3d,#b03ad6);border:0;color:#fff}
+.btn.petit{padding:5px 10px;font-size:.78rem}
+input,textarea,select{width:100%;background:var(--bg);color:var(--text);border:1px solid var(--border);border-radius:10px;padding:11px 12px;font:inherit}
+input:focus,textarea:focus,select:focus{outline:none;border-color:var(--accent)}
+label{display:block;margin:12px 0 6px;color:var(--muted);font-size:.85rem}
+.cache{display:none!important}
+
+/* Connexion */
+#ecranConnexion{min-height:calc(100vh - 60px);display:grid;place-items:center;padding:24px 16px;
+  background:radial-gradient(ellipse at 50% 110%,rgba(255,122,61,.25),transparent 60%),radial-gradient(ellipse at 50% 0%,rgba(176,58,214,.18),transparent 55%)}
+.boite{width:100%;max-width:420px;background:var(--card);border:1px solid var(--border);border-radius:18px;padding:28px}
+.boite h1{font-family:Syne;font-size:1.5rem;margin-bottom:6px}
+.boite p.sous{color:var(--muted);font-size:.9rem;margin-bottom:8px}
+.onglets{display:flex;gap:6px;background:var(--bg);border-radius:12px;padding:4px;margin:16px 0 4px}
+.onglets button{flex:1;background:none;border:0;color:var(--muted);padding:9px;border-radius:9px;font-weight:600}
+.onglets button.actif{background:var(--card2);color:var(--text)}
+.boite .btn.prim{width:100%;margin-top:18px;padding:12px}
+.msgErr{color:#ff8a8a;font-size:.85rem;margin-top:10px;min-height:1.2em}
+.msgOk{color:var(--ok);font-size:.85rem;margin-top:10px}
+
+/* Espace */
+#espace{display:grid;grid-template-columns:260px 1fr;min-height:calc(100vh - 60px)}
+aside{border-right:1px solid var(--border);padding:18px 14px;background:var(--bg2)}
+aside h3{margin:6px 6px 10px;color:var(--muted)}
+.projet{display:block;width:100%;text-align:left;background:none;border:1px solid transparent;color:var(--text);padding:10px 12px;border-radius:10px;margin-bottom:4px}
+.projet.actif{background:var(--card2);border-color:var(--border)}
+.projet small{display:block;color:var(--muted);font-size:.75rem}
+aside .liens{margin-top:22px;padding:0 6px}
+aside .liens a{display:block;font-size:.85rem;margin:8px 0;text-decoration:none}
+main{padding:22px 24px 60px;min-width:0}
+.entete h2{font-family:Syne;font-size:1.45rem}
+.brief{background:var(--card);border:1px solid var(--border);border-left:3px solid #ff7a3d;border-radius:12px;padding:14px 16px;margin:12px 0 18px;color:#cfd6e2;font-size:.9rem;white-space:pre-line}
+.grille2{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:20px}
+.carte{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px}
+.carte h3{font-family:Syne;font-size:1rem;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+#zone{border:2px dashed #2b3a55;border-radius:14px;padding:22px;text-align:center;color:var(--muted);transition:.2s;cursor:pointer}
+#zone.survol{border-color:var(--accent);background:rgba(141,234,255,.06);color:var(--text)}
+#zone strong{color:var(--text)}
+.attente{margin-top:10px}
+.attente .ligne{display:flex;justify-content:space-between;gap:8px;font-size:.82rem;padding:6px 0;border-bottom:1px solid var(--border)}
+.barre{height:5px;background:var(--bg);border-radius:4px;overflow:hidden;margin-top:4px}
+.barre i{display:block;height:100%;width:0;background:linear-gradient(90deg,#ff7a3d,#b03ad6);transition:width .2s}
+.filtres{display:flex;gap:6px;flex-wrap:wrap;margin:16px 0 10px}
+.filtres button{background:var(--card);border:1px solid var(--border);color:var(--muted);border-radius:20px;padding:5px 12px;font-size:.8rem}
+.filtres button.actif{color:var(--text);border-color:var(--accent)}
+#depots{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px}
+.depot{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}
+.depot .vign{aspect-ratio:9/16;background:#05080d center/cover no-repeat;display:grid;place-items:center;color:var(--muted);font-family:'Space Mono';font-size:.8rem;cursor:zoom-in}
+.depot .info{padding:10px;font-size:.8rem;display:flex;flex-direction:column;gap:5px;flex:1}
+.depot .nom{font-weight:600;word-break:break-all}
+.depot .meta{color:var(--muted);font-size:.74rem}
+.depot .note{color:#cfd6e2;font-size:.78rem}
+.depot .actions{display:flex;gap:6px;flex-wrap:wrap;margin-top:auto;padding-top:6px}
+.statut{display:inline-block;border-radius:20px;padding:2px 9px;font-size:.7rem;font-weight:600;width:fit-content}
+.s-recu{background:rgba(141,234,255,.12);color:var(--accent)}
+.s-en_integration{background:rgba(255,180,84,.14);color:var(--warn)}
+.s-en_test{background:rgba(181,140,255,.16);color:var(--vio)}
+.s-valide{background:rgba(94,230,160,.14);color:var(--ok)}
+.s-a_revoir{background:rgba(255,111,174,.14);color:var(--pink)}
+.s-reference{background:rgba(138,148,166,.15);color:var(--muted)}
+#fil{max-height:460px;overflow:auto;display:flex;flex-direction:column;gap:10px;padding-right:4px}
+.bulle{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:9px 12px;font-size:.88rem}
+.bulle.moi{background:#1a1530;border-color:#3a2a63}
+.bulle .qui{font-size:.72rem;color:var(--muted);margin-bottom:3px}
+.bulle .txt{white-space:pre-wrap;word-break:break-word}
+#formMsg{display:flex;gap:8px;margin-top:12px}
+#formMsg textarea{resize:none;height:44px}
+.voir{display:grid;gap:8px;margin-top:14px}
+.voir a{display:flex;gap:10px;align-items:center;background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:10px 12px;text-decoration:none;color:var(--text);font-size:.86rem}
+.voir a:hover{border-color:var(--accent)}
+.voir small{color:var(--muted);display:block;font-size:.74rem}
+#visionneuse{position:fixed;inset:0;background:rgba(0,0,0,.88);display:grid;place-items:center;z-index:20;padding:20px}
+#visionneuse img{max-width:100%;max-height:92vh;border-radius:10px}
+.vide{color:var(--muted);font-size:.88rem;padding:18px;text-align:center}
+@media (max-width:900px){
+  #espace{grid-template-columns:1fr}
+  aside{border-right:0;border-bottom:1px solid var(--border)}
+  .grille2{grid-template-columns:1fr}
+  main{padding:18px 16px 60px}
+  header .moi{display:none}
+}
+</style>
+</head>
+<body>
+<header>
+  <a href="index.html"><img src="brand/okalam-logo-compact.svg" alt="OKALAM Studio"/></a>
+  <span class="titre">ATELIER</span>
+  <span class="esp"></span>
+  <a class="btn petit" href="atelier-tutoriel.html">Tutoriel</a>
+  <span class="moi" id="moi"></span>
+  <button class="btn petit cache" id="btnSortir">Se déconnecter</button>
+</header>
+
+<!-- Connexion / création de compte -->
+<section id="ecranConnexion">
+  <div class="boite">
+    <h1>L'atelier OKALAM</h1>
+    <p class="sous">L'espace de travail partagé entre le studio et ses graphistes : dépôts de fichiers, retours, versions de test.</p>
+    <div class="onglets">
+      <button id="ongCnx" class="actif">Se connecter</button>
+      <button id="ongCre">Créer mon compte</button>
+    </div>
+    <form id="formCnx">
+      <div id="champNom" class="cache"><label>Ton prénom</label><input id="nom" autocomplete="given-name" placeholder="Florian"/></div>
+      <label>Adresse email</label><input id="email" type="email" autocomplete="email" required/>
+      <label>Mot de passe <span id="aideMdp" class="cache">(8 caractères minimum)</span></label><input id="mdp" type="password" autocomplete="current-password" required minlength="8"/>
+      <button class="btn prim" id="btnCnx">Entrer dans l'atelier</button>
+      <div class="msgErr" id="errCnx"></div>
+    </form>
+  </div>
+</section>
+
+<!-- Compte créé mais pas encore membre -->
+<section id="ecranAttente" class="cache" style="padding:60px 16px;display:grid;place-items:center">
+  <div class="boite">
+    <h1>Compte créé</h1>
+    <p class="sous" id="txtAttente">Ton compte existe, mais cette adresse n'a pas encore accès à l'atelier. Gabriel doit l'ajouter : préviens-le, puis recharge la page.</p>
+  </div>
+</section>
+
+<!-- Espace -->
+<section id="espace" class="cache">
+  <aside>
+    <h3 class="mono">Projets</h3>
+    <div id="projets"></div>
+    <div class="liens">
+      <h3 class="mono" style="margin:0 0 6px">Voir le rendu</h3>
+      <a href="https://testflight.apple.com/" target="_blank" rel="noopener">iPhone · TestFlight</a>
+      <a href="https://play.google.com/store/apps/details?id=com.okalam.vicebreak" target="_blank" rel="noopener">Android · Google Play</a>
+      <a href="atelier-tutoriel.html">Tutoriel de l'atelier</a>
+    </div>
+  </aside>
+  <main>
+    <div class="entete">
+      <span class="mono" id="appProjet" style="color:var(--accent)"></span>
+      <h2 id="nomProjet"></h2>
+    </div>
+    <div class="brief" id="brief"></div>
+    <div class="grille2">
+      <div>
+        <div class="carte">
+          <h3>Déposer des fichiers</h3>
+          <div id="zone">
+            <strong>Glisse tes fichiers ici</strong> ou clique pour choisir.<br/>
+            <span style="font-size:.8rem">PNG, PSD, AI, SVG, PDF, vidéos… jusqu'à 300 Mo par fichier.</span>
+          </div>
+          <input type="file" id="choix" multiple class="cache"/>
+          <label>Note pour ce dépôt (facultatif)</label>
+          <input id="noteDepot" placeholder="Ex. : crépuscule v2, grain plus léger, calques séparés dans le PSD"/>
+          <div class="attente" id="attente"></div>
+        </div>
+        <div class="filtres" id="filtres"></div>
+        <div id="depots"></div>
+      </div>
+      <div>
+        <div class="carte">
+          <h3>Discussion</h3>
+          <div id="fil"></div>
+          <form id="formMsg">
+            <textarea id="txtMsg" placeholder="Écrire un message…"></textarea>
+            <button class="btn prim">Envoyer</button>
+          </form>
+        </div>
+        <div class="carte" style="margin-top:16px">
+          <h3>Suivre son travail</h3>
+          <div style="font-size:.85rem;color:#cfd6e2">
+            Chaque dépôt passe par ces étapes :<br/>
+            <span class="statut s-recu">Reçu</span> → <span class="statut s-en_integration">En intégration</span> → <span class="statut s-en_test">Dans la version test</span> → <span class="statut s-valide">Validé</span>
+            <br/>ou <span class="statut s-a_revoir">À revoir</span> avec un message dans la discussion.
+          </div>
+          <div class="voir">
+            <a href="https://testflight.apple.com/" target="_blank" rel="noopener"><span>📱</span><span>Ouvrir TestFlight sur l'iPhone<small>La version test arrive quelques minutes après « Dans la version test ».</small></span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</section>
+
+<div id="visionneuse" class="cache"><img alt=""/></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script>
+const URL_SB = 'https://2-28-122-50.sslip.io';
+const CLE = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlzcyI6InN1cGFiYXNlIiwiaWF0IjoxNzkwMjUyMTI0LCJleHAiOjIxMDU2MTIxMjR9.5bJ5EvRKnV75jyRuMhzlVpkG5sIijlYTxLeHsZ-3erQ';
+const sb = supabase.createClient(URL_SB, CLE, { auth: { persistSession: true, storageKey: 'okalam-atelier' } });
+const BUCKET = 'atelier';
+const STATUTS = { recu:'Reçu', en_integration:'En intégration', en_test:'Dans la version test', valide:'Validé', a_revoir:'À revoir', reference:'Référence' };
+const $ = id => document.getElementById(id);
+let moi = null, membre = null, projets = [], projet = null, depots = [], filtre = 'tout', canal = null, mode = 'cnx';
+
+function echap(s){ return (s ?? '').toString().replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+function quand(d){ const x = new Date(d); return x.toLocaleDateString('fr-FR',{day:'2-digit',month:'2-digit'}) + ' ' + x.toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'}); }
+function taille(o){ if(!o) return ''; const u=['o','Ko','Mo','Go']; let i=0; while(o>=1024&&i<3){o/=1024;i++;} return o.toFixed(i?1:0)+' '+u[i]; }
+function montrer(id){ ['ecranConnexion','ecranAttente','espace'].forEach(x => $(x).classList.toggle('cache', x !== id)); }
+
+// ----- Connexion -----
+function choisirMode(m){
+  mode = m;
+  $('ongCnx').classList.toggle('actif', m==='cnx'); $('ongCre').classList.toggle('actif', m==='cre');
+  $('champNom').classList.toggle('cache', m!=='cre'); $('aideMdp').classList.toggle('cache', m!=='cre');
+  $('btnCnx').textContent = m==='cre' ? 'Créer mon compte' : "Entrer dans l'atelier";
+  $('mdp').autocomplete = m==='cre' ? 'new-password' : 'current-password';
+  $('errCnx').textContent = '';
+}
+$('ongCnx').onclick = () => choisirMode('cnx');
+$('ongCre').onclick = () => choisirMode('cre');
+$('formCnx').onsubmit = async e => {
+  e.preventDefault(); $('errCnx').textContent = '';
+  const email = $('email').value.trim(), password = $('mdp').value;
+  $('btnCnx').disabled = true;
+  try {
+    if (mode === 'cre') {
+      const nom = $('nom').value.trim();
+      if (!nom) throw new Error('Indique ton prénom.');
+      const { error } = await sb.auth.signUp({ email, password, options: { data: { nom } } });
+      if (error) throw error;
+      const r = await sb.auth.signInWithPassword({ email, password });
+      if (r.error) throw r.error;
+    } else {
+      const { error } = await sb.auth.signInWithPassword({ email, password });
+      if (error) throw error;
+    }
+    await demarrer();
+  } catch (err) {
+    const m = (err.message || '').toLowerCase();
+    $('errCnx').textContent = m.includes('invalid login') ? 'Email ou mot de passe incorrect.'
+      : m.includes('already registered') ? 'Ce compte existe déjà : utilise « Se connecter ».'
+      : m.includes('password') ? 'Mot de passe trop court (8 caractères minimum).'
+      : (err.message || 'Erreur, réessaie.');
+  } finally { $('btnCnx').disabled = false; }
+};
+$('btnSortir').onclick = async () => { await sb.auth.signOut(); location.reload(); };
+
+async function demarrer(){
+  const { data: { session } } = await sb.auth.getSession();
+  if (!session) { montrer('ecranConnexion'); return; }
+  moi = session.user;
+  $('btnSortir').classList.remove('cache');
+  const { data: m } = await sb.rpc('atelier_membre');
+  membre = (m && m.email) ? m : null;
+  $('moi').textContent = membre ? membre.nom : moi.email;
+  if (!membre) { $('txtAttente').textContent = `Ton compte (${moi.email}) existe, mais cette adresse n'a pas encore accès à l'atelier. Gabriel doit l'ajouter : préviens-le, puis recharge la page.`; montrer('ecranAttente'); return; }
+  montrer('espace');
+  const { data: p } = await sb.from('atelier_projets').select('*').order('ordre');
+  projets = p || [];
+  const voulu = new URLSearchParams(location.search).get('projet');
+  dessinerProjets();
+  ouvrirProjet((projets.find(x => x.slug === voulu) || projets[0])?.slug);
+}
+
+function dessinerProjets(){
+  $('projets').innerHTML = projets.map(p => `<button class="projet ${projet?.slug===p.slug?'actif':''}" data-s="${echap(p.slug)}">${echap(p.nom)}<small>${echap(p.app||'')}</small></button>`).join('') || '<div class="vide">Aucun projet.</div>';
+  document.querySelectorAll('.projet').forEach(b => b.onclick = () => ouvrirProjet(b.dataset.s));
+}
+
+async function ouvrirProjet(slug){
+  projet = projets.find(p => p.slug === slug); if (!projet) return;
+  history.replaceState(null, '', '?projet=' + encodeURIComponent(slug));
+  dessinerProjets();
+  $('appProjet').textContent = projet.app || ''; $('nomProjet').textContent = projet.nom; $('brief').textContent = projet.brief || '';
+  await Promise.all([chargerDepots(), chargerMessages()]);
+  if (canal) sb.removeChannel(canal);
+  canal = sb.channel('atelier-' + slug)
+    .on('postgres_changes', { event: '*', schema: 'public', table: 'atelier_depots', filter: 'projet=eq.' + slug }, chargerDepots)
+    .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'atelier_messages', filter: 'projet=eq.' + slug }, chargerMessages)
+    .subscribe();
+}
+
+// ----- Dépôts -----
+async function chargerDepots(){
+  const { data } = await sb.from('atelier_depots').select('*').eq('projet', projet.slug).order('cree_le', { ascending: false });
+  depots = data || [];
+  const images = depots.filter(d => (d.type_mime||'').startsWith('image/') && !/photoshop|psd/i.test(d.type_mime));
+  const urls = {};
+  if (images.length) {
+    const { data: s } = await sb.storage.from(BUCKET).createSignedUrls(images.map(d => d.chemin), 3600);
+    (s||[]).forEach(x => { if (x.signedUrl) urls[x.path] = x.signedUrl; });
+  }
+  depots.forEach(d => d._url = urls[d.chemin]);
+  dessinerFiltres(); dessinerDepots();
+}
+function dessinerFiltres(){
+  const n = s => depots.filter(d => s==='tout' || d.statut===s).length;
+  const f = ['tout', ...Object.keys(STATUTS)].filter(s => s==='tout' || n(s));
+  $('filtres').innerHTML = f.map(s => `<button data-f="${s}" class="${filtre===s?'actif':''}">${s==='tout'?'Tout':STATUTS[s]} · ${n(s)}</button>`).join('');
+  document.querySelectorAll('#filtres button').forEach(b => b.onclick = () => { filtre = b.dataset.f; dessinerFiltres(); dessinerDepots(); });
+}
+function dessinerDepots(){
+  const liste = depots.filter(d => filtre==='tout' || d.statut===filtre);
+  const admin = membre.role === 'admin';
+  $('depots').innerHTML = liste.map(d => {
+    const ext = (d.nom_fichier.split('.').pop() || '').toUpperCase();
+    const vign = d._url ? `<div class="vign" data-img="${echap(d._url)}" style="background-image:url('${echap(d._url)}')"></div>` : `<div class="vign">${echap(ext)}</div>`;
+    const choixStatut = admin ? `<select data-statut="${d.id}" style="padding:5px 8px;font-size:.75rem">${Object.entries(STATUTS).map(([k,v])=>`<option value="${k}" ${k===d.statut?'selected':''}>${v}</option>`).join('')}</select>` : '';
+    const peutSuppr = admin || d.auteur === moi.id;
+    return `<div class="depot">${vign}<div class="info">
+      <span class="statut s-${d.statut}">${STATUTS[d.statut]}${d.build?' · build '+echap(d.build):''}</span>
+      <span class="nom">${echap(d.nom_fichier)}</span>
+      <span class="meta">${echap(d.auteur_nom)} · ${quand(d.cree_le)} · ${taille(d.taille)}</span>
+      ${d.note?`<span class="note">${echap(d.note)}</span>`:''}
+      ${choixStatut}
+      <div class="actions"><button class="btn petit" data-dl="${d.id}">Télécharger</button>${peutSuppr?`<button class="btn petit" data-del="${d.id}">Supprimer</button>`:''}</div>
+    </div></div>`;
+  }).join('') || '<div class="vide">Aucun fichier pour l\'instant.</div>';
+  document.querySelectorAll('[data-img]').forEach(v => v.onclick = () => { const w = $('visionneuse'); w.querySelector('img').src = v.dataset.img; w.classList.remove('cache'); });
+  document.querySelectorAll('[data-dl]').forEach(b => b.onclick = () => telecharger(depots.find(d => d.id === b.dataset.dl)));
+  document.querySelectorAll('[data-del]').forEach(b => b.onclick = () => supprimer(depots.find(d => d.id === b.dataset.del)));
+  document.querySelectorAll('[data-statut]').forEach(s => s.onchange = () => changerStatut(s.dataset.statut, s.value));
+}
+$('visionneuse').onclick = () => $('visionneuse').classList.add('cache');
+
+async function telecharger(d){
+  const { data, error } = await sb.storage.from(BUCKET).createSignedUrl(d.chemin, 600, { download: d.nom_fichier });
+  if (error) return alert('Téléchargement impossible : ' + error.message);
+  location.href = data.signedUrl;
+}
+async function supprimer(d){
+  if (!confirm(`Supprimer « ${d.nom_fichier} » ? Le fichier sera effacé de l'atelier.`)) return;
+  await sb.storage.from(BUCKET).remove([d.chemin]);
+  await sb.from('atelier_depots').delete().eq('id', d.id);
+  chargerDepots();
+}
+async function changerStatut(id, statut){
+  let build = null;
+  if (statut === 'en_test') build = prompt('Numéro de build de la version test (facultatif) :') || null;
+  const maj = { statut, maj_le: new Date().toISOString() }; if (build) maj.build = build;
+  const { error } = await sb.from('atelier_depots').update(maj).eq('id', id);
+  if (error) alert(error.message);
+  const d = depots.find(x => x.id === id);
+  await sb.from('atelier_messages').insert({ projet: projet.slug, auteur_nom: membre.nom, depot: id,
+    texte: `« ${d.nom_fichier} » → ${STATUTS[statut]}${build ? ' (build ' + build + ')' : ''}` });
+}
+
+// Envoi avec barre de progression (XHR direct vers le stockage).
+const zone = $('zone');
+zone.onclick = () => $('choix').click();
+$('choix').onchange = e => envoyer([...e.target.files]);
+['dragenter','dragover'].forEach(t => zone.addEventListener(t, e => { e.preventDefault(); zone.classList.add('survol'); }));
+['dragleave','drop'].forEach(t => zone.addEventListener(t, e => { e.preventDefault(); zone.classList.remove('survol'); }));
+zone.addEventListener('drop', e => envoyer([...e.dataTransfer.files]));
+
+function typeDe(f){
+  if (f.type) return f.type;
+  const ext = f.name.split('.').pop().toLowerCase();
+  return ({psd:'image/vnd.adobe.photoshop', ai:'application/postscript', svg:'image/svg+xml', pdf:'application/pdf'})[ext] || 'application/octet-stream';
+}
+async function envoyer(fichiers){
+  if (!fichiers.length) return;
+  const note = $('noteDepot').value.trim();
+  const { data: { session } } = await sb.auth.getSession();
+  for (const f of fichiers) {
+    if (f.size > 300*1024*1024) { alert(`« ${f.name} » dépasse 300 Mo.`); continue; }
+    const ligne = document.createElement('div');
+    ligne.innerHTML = `<div class="ligne"><span>${echap(f.name)}</span><span class="pct">0 %</span></div><div class="barre"><i></i></div>`;
+    $('attente').prepend(ligne);
+    const propre = f.name.normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^\w.\-]+/g,'_');
+    const chemin = `${projet.slug}/${new Date().toISOString().slice(0,10)}/${Date.now()}-${propre}`;
+    const type = typeDe(f);
+    try {
+      await new Promise((ok, ko) => {
+        const x = new XMLHttpRequest();
+        x.open('POST', `${URL_SB}/storage/v1/object/${BUCKET}/${chemin}`);
+        x.setRequestHeader('Authorization', 'Bearer ' + session.access_token);
+        x.setRequestHeader('apikey', CLE);
+        x.setRequestHeader('Content-Type', type);
+        x.upload.onprogress = e => { if (e.lengthComputable) { const p = Math.round(e.loaded / e.total * 100); ligne.querySelector('i').style.width = p + '%'; ligne.querySelector('.pct').textContent = p + ' %'; } };
+        x.onload = () => x.status < 300 ? ok() : ko(new Error(x.responseText || ('HTTP ' + x.status)));
+        x.onerror = () => ko(new Error('Réseau'));
+        x.send(f);
+      });
+      const { error } = await sb.from('atelier_depots').insert({ projet: projet.slug, auteur_nom: membre.nom, chemin, nom_fichier: f.name, taille: f.size, type_mime: type, note: note || null });
+      if (error) throw error;
+      ligne.querySelector('.pct').textContent = 'Envoyé ✓';
+    } catch (err) {
+      ligne.querySelector('.pct').textContent = 'Échec';
+      ligne.title = err.message;
+    }
+  }
+  $('noteDepot').value = ''; $('choix').value = '';
+  chargerDepots();
+}
+
+// ----- Discussion -----
+async function chargerMessages(){
+  const { data } = await sb.from('atelier_messages').select('*').eq('projet', projet.slug).order('cree_le').limit(300);
+  $('fil').innerHTML = (data||[]).map(m => `<div class="bulle ${m.auteur===moi.id?'moi':''}"><div class="qui">${echap(m.auteur_nom)} · ${quand(m.cree_le)}</div><div class="txt">${echap(m.texte)}</div></div>`).join('') || '<div class="vide">Pas encore de message.</div>';
+  $('fil').scrollTop = $('fil').scrollHeight;
+}
+$('formMsg').onsubmit = async e => {
+  e.preventDefault();
+  const texte = $('txtMsg').value.trim(); if (!texte) return;
+  $('txtMsg').value = '';
+  const { error } = await sb.from('atelier_messages').insert({ projet: projet.slug, auteur_nom: membre.nom, texte });
+  if (error) { alert(error.message); $('txtMsg').value = texte; }
+};
+$('txtMsg').addEventListener('keydown', e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); $('formMsg').requestSubmit(); } });
+
+demarrer();
+</script>
+</body>
+</html>
