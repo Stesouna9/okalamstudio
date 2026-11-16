@@ -233,7 +233,7 @@ h2.grand{font-family:Syne;font-size:1.6rem}
       <div class="tab-passerelle">
       <div class="carte">
         <h3>⬆️ Envoyer des fichiers</h3>
-        <div id="zone"><strong>Glisse tes fichiers ici</strong> ou clique pour choisir.<br/><span style="font-size:.8rem">PNG, PSD, AI, SVG, PDF, vidéos… jusqu'à 300 Mo par fichier.</span></div>
+        <div id="zone"><strong>Glisse tes fichiers ici</strong> ou clique pour choisir.<br/><span style="font-size:.8rem">PNG, PSD, AI, SVG, PDF, vidéos… jusqu'à 500 Mo par fichier.</span></div>
         <input type="file" id="choix" multiple class="cache"/>
         <label>Note pour cet envoi (facultatif)</label>
         <input id="noteDepot" placeholder="Ex. : crépuscule v2, grain plus léger, calques séparés dans le PSD"/>
@@ -483,7 +483,7 @@ zone.addEventListener('drop', e => envoyer([...e.dataTransfer.files]));
 function typeDe(f){ if (f.type) return f.type; const ext = f.name.split('.').pop().toLowerCase(); return ({psd:'image/vnd.adobe.photoshop', ai:'application/postscript', svg:'image/svg+xml', pdf:'application/pdf'})[ext] || 'application/octet-stream'; }
 function envoyer(fichiers){ const note = $('noteDepot').value.trim(); $('noteDepot').value = ''; fichiers.forEach(f => envoyerUn(f, note)); }
 async function envoyerUn(f, note, ligne){
-  if (f.size > 300*1024*1024) { toast(`« ${f.name} » dépasse 300 Mo.`); return; }
+  if (f.size > 500*1024*1024) { toast(`« ${f.name} » dépasse 500 Mo.`); return; }
   if (!ligne) { ligne = document.createElement('div'); ligne.className = 'ligne'; $('envoi').prepend(ligne); }
   ligne.innerHTML = `<div class="l1"><span>${echap(f.name)} <span class="sous">· ${taille(f.size)}</span></span><span class="pct">0 %</span></div><div class="barre"><i></i></div>`;
   const { data: { session } } = await sb.auth.getSession();
