@@ -108,6 +108,13 @@ h2.grand{font-family:Syne;font-size:1.6rem}
 .bulle.sys{background:none;border-style:dashed;font-size:.78rem;color:var(--muted)}
 .bulle .qui{font-size:.72rem;color:var(--muted);margin-bottom:3px}
 .bulle .txt{white-space:pre-wrap;word-break:break-word}
+.reacs{display:flex;gap:4px;flex-wrap:wrap;margin-top:6px;align-items:center}
+.reac{background:var(--bg);border:1px solid var(--border);border-radius:14px;padding:1px 8px;font-size:.8rem;cursor:pointer;color:var(--text)}
+.reac.moi{border-color:var(--vio);background:rgba(181,140,255,.15)}
+.reac.plus{opacity:.55}.bulle:hover .reac.plus{opacity:1}
+.palette{display:flex;gap:2px;flex-wrap:wrap;background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:4px;margin-top:6px}
+.palette button{background:none;border:0;font-size:1.15rem;padding:3px 5px;border-radius:8px}.palette button:hover{background:var(--bg)}
+.ouvrirAvec{display:flex;gap:6px;flex-wrap:wrap}
 #formMsg{display:flex;gap:8px;margin-top:12px}
 #formMsg textarea{resize:none;height:44px}
 #visionneuse{position:fixed;inset:0;background:rgba(0,0,0,.88);display:grid;place-items:center;z-index:20;padding:20px}
@@ -242,7 +249,7 @@ h2.grand{font-family:Syne;font-size:1.6rem}
       <div class="carte" style="position:sticky;top:74px">
         <h3>💬 Discussion</h3>
         <div id="fil"></div>
-        <form id="formMsg"><textarea id="txtMsg" placeholder="Écrire un message…"></textarea><button class="btn prim">Envoyer</button></form>
+        <form id="formMsg"><button type="button" class="btn" id="btnEmoji" title="Ajouter un emoji">😀</button><textarea id="txtMsg" placeholder="Écrire un message…"></textarea><button class="btn prim">Envoyer</button></form><div id="paletteMsg" class="palette cache"></div>
       </div>
     </div>
   </div>
@@ -332,11 +339,11 @@ async function demarrer(apresInvitation){
   membre = (m && m.email) ? m : null;
   $('moi').textContent = membre ? membre.nom : moi.email;
   if (!membre) { $('txtAttente').textContent = `Le compte ${moi.email} n'a pas accès à l'espace. Préviens Gabriel.`; montrer('ecranAttente'); return; }
-  const { data: p } = await sb.from('atelier_projets').select('*').order('ordre');
-  projets = p || [];
+  await chargerProjets();
   sb.channel('espace').on('postgres_changes', { event: '*', schema: 'public', table: 'atelier_depots' }, rafraichir)
     .on('postgres_changes', { event: '*', schema: 'public', table: 'atelier_messages' }, rafraichir)
-    .on('postgres_changes', { event: '*', schema: 'public', table: 'atelier_alertes' }, rafraichir).subscribe();
+    .on('postgres_changes', { event: '*', schema: 'public', table: 'atelier_alertes' }, rafraichir)
+    .on('postgres_changes', { event: '*', schema: 'public', table: 'atelier_reactions' }, rafraichir).subscribe();
   if (!location.hash.startsWith('#/')) history.replaceState(null, '', location.pathname + '#/');
   router();
 }
@@ -356,15 +363,17 @@ async function ouvrirAccueil(silencieux){
     sb.from('atelier_messages').select('*').order('cree_le', { ascending: false }).limit(12),
     sb.from('atelier_alertes').select('*').order('cree_le', { ascending: false }).limit(30)]);
   tousDepots = dep || [];
-  $('listeProjets').innerHTML = projets.map(p => {
+  $('listeProjets').innerHTML = projets.map((p, k) => {
     const ds = tousDepots.filter(d => d.projet === p.slug && d.statut !== 'reference');
     const n = s => ds.filter(d => d.statut === s).length;
     const dernier = ds[0];
     const comp = Object.keys(STATUTS).filter(s => s !== 'reference' && n(s)).map(s => `<span class="statut s-${s}">${STATUTS[s]} · ${n(s)}</span>`).join('') || '<span class="sous" style="font-size:.8rem">Aucun envoi pour l\'instant</span>';
-    return `<div class="proj"><div class="l1"><div><span class="mono" style="color:var(--accent)">${echap(p.app||'')}</span><br/><b>${echap(p.nom)}</b></div><span style="display:flex;gap:6px;flex-wrap:wrap"><a class="btn" href="#/projet/${encodeURIComponent(p.slug)}">🕹 Espace ${echap(p.app || p.nom)}</a><a class="btn prim" href="#/passerelle/${encodeURIComponent(p.slug)}">🔁 Passerelle →</a></span></div>
+    return `<div class="proj"><div class="l1"><div style="display:flex;gap:10px;align-items:center"><span style="display:flex;flex-direction:column;gap:2px"><button class="btn petit" data-monter="${p.slug}" ${k ? '' : 'disabled'} title="Plus prioritaire">▲</button><button class="btn petit" data-descendre="${p.slug}" ${k < projets.length - 1 ? '' : 'disabled'} title="Moins prioritaire">▼</button></span><div><span class="mono" style="color:var(--accent)">Priorité ${k + 1} · ${echap(p.app||'')}</span><br/><b>${echap(p.nom)}</b></div></div><span style="display:flex;gap:6px;flex-wrap:wrap"><a class="btn" href="#/projet/${encodeURIComponent(p.slug)}">🕹 Espace ${echap(p.app || p.nom)}</a><a class="btn prim" href="#/passerelle/${encodeURIComponent(p.slug)}">🔁 Passerelle →</a></span></div>
       <div class="compteurs">${comp}</div>
       ${dernier ? `<div style="font-size:.8rem"><span class="sous">Dernier envoi : ${echap(dernier.nom_fichier)} · ${quand(dernier.cree_le)}</span>${pipeline(dernier)}</div>` : ''}</div>`;
   }).join('') || '<div class="vide">Aucun projet.</div>';
+  document.querySelectorAll('[data-monter]').forEach(b => b.onclick = () => deplacerProjet(b.dataset.monter, -1));
+  document.querySelectorAll('[data-descendre]').forEach(b => b.onclick = () => deplacerProjet(b.dataset.descendre, 1));
   const nomP = s => projets.find(p => p.slug === s)?.nom || s;
   const evts = [...tousDepots.slice(0, 12).map(d => ({ t: d.cree_le, ic: '📎', txt: `<b>${echap(d.auteur_nom)}</b> a envoyé ${echap(d.nom_fichier)}`, p: d.projet })),
                 ...(msg||[]).map(m => ({ t: m.cree_le, ic: '💬', txt: `<b>${echap(m.auteur_nom)}</b> : ${echap(m.texte.slice(0, 90))}${m.texte.length > 90 ? '…' : ''}`, p: m.projet }))]
@@ -416,6 +425,9 @@ async function chargerDepots(){
   document.querySelectorAll('[data-img]').forEach(v => v.onclick = () => { const w = $('visionneuse'); w.querySelector('img').src = v.dataset.img; w.classList.remove('cache'); });
   document.querySelectorAll('[data-ap]').forEach(b => b.onclick = () => { $('apercuEcran').style.backgroundImage = `url('${depots.find(x => x.id === b.dataset.ap)._url}')`; $('apercu').classList.remove('cache'); });
   document.querySelectorAll('[data-dl]').forEach(b => b.onclick = () => telecharger(depots.find(d => d.id === b.dataset.dl)));
+  document.querySelectorAll('[data-at]').forEach(b => b.onclick = () => ouvrirDansAtelier(depots.find(d => d.id === b.dataset.at)));
+  document.querySelectorAll('[data-ps]').forEach(b => b.onclick = () => { telecharger(depots.find(d => d.id === b.dataset.ps)); toast('Téléchargé : ouvre-le avec Photoshop (glisse-le sur Photoshop, ou clic droit › Ouvrir avec › Photoshop).'); });
+  document.querySelectorAll('[data-ai]').forEach(b => b.onclick = () => { telecharger(depots.find(d => d.id === b.dataset.ai)); toast('Téléchargé : ouvre-le avec Illustrator (glisse-le sur Illustrator, ou clic droit › Ouvrir avec › Illustrator).'); });
   document.querySelectorAll('[data-del]').forEach(b => b.onclick = () => supprimer(depots.find(d => d.id === b.dataset.del)));
   document.querySelectorAll('[data-statut]').forEach(s => s.onchange = () => changerStatut(s.dataset.statut, s.value));
 }
@@ -430,12 +442,20 @@ function carteDepot(d){
     ${pipeline(d)}
     ${d.note ? `<span class="note">${echap(d.note)}</span>` : ''}
     ${choix}
+    <div class="ouvrirAvec"><button class="btn petit" data-at="${d.id}" title="Ouvrir dans l'Atelier OKALAM (module Photo)">🎨 Atelier</button><button class="btn petit" data-ps="${d.id}" title="Télécharger pour l'ouvrir dans Photoshop">Ps Photoshop</button><button class="btn petit" data-ai="${d.id}" title="Télécharger pour l'ouvrir dans Illustrator">Ai Illustrator</button></div>
     <div class="actions">${d._url ? `<button class="btn petit" data-ap="${d.id}">Aperçu iPhone</button>` : ''}<button class="btn petit" data-dl="${d.id}">Télécharger</button>${suppr ? `<button class="btn petit" data-del="${d.id}">Suppr.</button>` : ''}</div>
   </div></div>`;
 }
 $('visionneuse').onclick = () => $('visionneuse').classList.add('cache');
 $('apercuFermer').onclick = () => $('apercu').classList.add('cache');
 $('apercuUI').onchange = e => document.querySelector('#apercu .ui').style.display = e.target.checked ? '' : 'none';
+async function ouvrirDansAtelier(d){
+  if (!/^image\/(png|jpe?g|webp|gif|svg\+xml)$/.test(d.type_mime || '')) { toast("L'Atelier ouvre les images PNG, JPG, WebP, GIF et SVG. Pour ce format, utilise Photoshop ou Illustrator."); return; }
+  const { data, error } = await sb.storage.from(BUCKET).createSignedUrl(d.chemin, 3600);
+  if (error) return toast(error.message);
+  location.hash = '#/atelier';
+  $('cadreAtelier').src = 'https://atelier.2-29-41-109.sslip.io/?t=' + Date.now() + '#ouvrir=' + encodeURIComponent(data.signedUrl) + '&nom=' + encodeURIComponent(d.nom_fichier.replace(/\.[^.]+$/, ''));
+}
 async function telecharger(d){
   const { data, error } = await sb.storage.from(BUCKET).createSignedUrl(d.chemin, 600, { download: d.nom_fichier });
   if (error) return toast('Téléchargement impossible : ' + error.message);
@@ -495,8 +515,16 @@ async function envoyerUn(f, note, ligne){
 // ----- Discussion -----
 async function chargerMessages(){
   const { data } = await sb.from('atelier_messages').select('*').eq('projet', projet.slug).order('cree_le').limit(300);
-  $('fil').innerHTML = (data||[]).map(m => `<div class="bulle ${m.depot ? 'sys' : (m.auteur===moi.id ? 'moi' : '')}"><div class="qui">${echap(m.auteur_nom)} · ${quand(m.cree_le)}</div><div class="txt">${echap(m.texte)}</div></div>`).join('') || '<div class="vide">Pas encore de message.</div>';
-  $('fil').scrollTop = $('fil').scrollHeight;
+  const ids = (data||[]).map(m => m.id);
+  const { data: rs } = ids.length ? await sb.from('atelier_reactions').select('*').in('message', ids) : { data: [] };
+  const parMsg = {}; (rs||[]).forEach(r => (parMsg[r.message] ||= []).push(r));
+  const reacs = m => { const g = {}; (parMsg[m.id]||[]).forEach(r => (g[r.emoji] ||= []).push(r));
+    return `<div class="reacs">${Object.entries(g).map(([e, l]) => `<button class="reac ${l.some(r => r.auteur === moi.id) ? 'moi' : ''}" data-reac="${m.id}" data-e="${echap(e)}" title="${echap(l.map(r => r.auteur_nom).join(', '))}">${e} ${l.length}</button>`).join('')}<button class="reac plus" data-pal="${m.id}" title="Réagir">＋🙂</button></div><div class="palette cache" id="pal-${m.id}">${EMOJIS.map(e => `<button data-reac="${m.id}" data-e="${e}">${e}</button>`).join('')}</div>`; };
+  const bas = $('fil').scrollHeight - $('fil').scrollTop - $('fil').clientHeight < 40;
+  $('fil').innerHTML = (data||[]).map(m => `<div class="bulle ${m.depot ? 'sys' : (m.auteur===moi.id ? 'moi' : '')}"><div class="qui">${echap(m.auteur_nom)} · ${quand(m.cree_le)}</div><div class="txt">${echap(m.texte)}</div>${m.depot ? '' : reacs(m)}</div>`).join('') || '<div class="vide">Pas encore de message.</div>';
+  if (bas || !chargerMessages._fait) $('fil').scrollTop = $('fil').scrollHeight; chargerMessages._fait = true;
+  $('fil').querySelectorAll('[data-pal]').forEach(b => b.onclick = () => $('pal-' + b.dataset.pal).classList.toggle('cache'));
+  $('fil').querySelectorAll('[data-reac]').forEach(b => b.onclick = () => basculerReaction(b.dataset.reac, b.dataset.e));
 }
 $('formMsg').onsubmit = async e => {
   e.preventDefault(); const texte = $('txtMsg').value.trim(); if (!texte) return; $('txtMsg').value = '';
@@ -511,6 +539,31 @@ document.querySelectorAll('input[type=password]').forEach(i => {
   b.onclick = () => { const v = i.type === 'password'; i.type = v ? 'text' : 'password'; b.textContent = v ? '🙈' : '👁'; b.title = v ? 'Masquer le mot de passe' : 'Afficher le mot de passe'; b.setAttribute('aria-label', b.title); i.focus(); };
   w.appendChild(b);
 });
+let monOrdre = [];
+async function chargerProjets(){
+  const [{ data: p }, { data: pref }] = await Promise.all([sb.from('atelier_projets').select('*').order('ordre'), sb.from('atelier_preferences').select('ordre_projets').eq('auteur', moi.id)]);
+  monOrdre = pref?.[0]?.ordre_projets || [];
+  const rang = x => { const i = monOrdre.indexOf(x.slug); return i < 0 ? 1000 + (x.ordre || 0) : i; };
+  projets = (p || []).sort((a, b) => rang(a) - rang(b));
+}
+async function deplacerProjet(slug, sens){
+  const i = projets.findIndex(x => x.slug === slug), j = i + sens; if (j < 0 || j >= projets.length) return;
+  [projets[i], projets[j]] = [projets[j], projets[i]];
+  monOrdre = projets.map(x => x.slug);
+  const { error } = await sb.from('atelier_preferences').upsert({ auteur: moi.id, ordre_projets: monOrdre, maj_le: new Date().toISOString() });
+  if (error) toast(error.message);
+  ouvrirAccueil(true);
+}
+const EMOJIS = ['❤️','👍','🔥','😍','😂','👏','🎨','🌅','💜','🧡','✅','👀','🤔','😮','🙏','🚀'];
+async function basculerReaction(message, emoji){
+  const { data: deja } = await sb.from('atelier_reactions').select('message').eq('message', message).eq('auteur', moi.id).eq('emoji', emoji);
+  const { error } = deja?.length ? await sb.from('atelier_reactions').delete().eq('message', message).eq('auteur', moi.id).eq('emoji', emoji)
+                                 : await sb.from('atelier_reactions').insert({ message, emoji, auteur_nom: membre.nom });
+  if (error) toast(error.message); else chargerMessages();
+}
+$('paletteMsg').innerHTML = EMOJIS.map(e => `<button type="button">${e}</button>`).join('');
+$('btnEmoji').onclick = () => $('paletteMsg').classList.toggle('cache');
+$('paletteMsg').querySelectorAll('button').forEach(b => b.onclick = () => { const t = $('txtMsg'), p = t.selectionStart ?? t.value.length; t.value = t.value.slice(0, p) + b.textContent + t.value.slice(t.selectionEnd ?? p); t.focus(); t.selectionStart = t.selectionEnd = p + b.textContent.length; });
 $('btnNouveau').onclick = () => { $('formProjet').classList.toggle('cache'); $('pNom').focus(); };
 $('pAnnuler').onclick = () => $('formProjet').classList.add('cache');
 $('formProjet').onsubmit = async e => {
@@ -521,7 +574,8 @@ $('formProjet').onsubmit = async e => {
   const { error } = await sb.from('atelier_projets').insert({ slug, nom, app: $('pApp').value.trim() || null, brief: $('pBrief').value.trim() || null, ordre: projets.length + 1, cree_par: membre.nom });
   if (error) { $('pErr').textContent = error.message; return; }
   await sb.from('atelier_messages').insert({ projet: slug, auteur_nom: membre.nom, texte: `Projet créé par ${membre.nom}.` });
-  const { data: p } = await sb.from('atelier_projets').select('*').order('ordre'); projets = p || [];
+  monOrdre = [slug, ...projets.map(x => x.slug)]; await sb.from('atelier_preferences').upsert({ auteur: moi.id, ordre_projets: monOrdre });
+  await chargerProjets();
   $('formProjet').reset(); $('formProjet').classList.add('cache'); toast('Projet créé ✓'); location.hash = '#/projet/' + encodeURIComponent(slug);
 };
 demarrer();
