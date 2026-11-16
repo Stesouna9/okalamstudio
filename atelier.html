@@ -186,6 +186,7 @@ h2.grand{font-family:Syne;font-size:1.6rem}
   <div class="dash">
     <div class="col">
       <div class="carte" style="border-color:#3a2a63;background:linear-gradient(135deg,rgba(255,122,61,.10),rgba(176,58,214,.12))"><h3>🎨 L'Atelier</h3><p class="sous" style="font-size:.86rem">Le logiciel de création du studio, dans l'esprit d'Adobe : Photo, Vecteur, Mise en page. Enregistre dans ton espace en ligne, puis dépose l'export dans la Passerelle du projet.</p><div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px"><a class="btn prim" href="#/atelier">Ouvrir l'Atelier</a><a class="btn" href="https://atelier.2-29-41-109.sslip.io/" target="_blank" rel="noopener">Plein écran ↗</a></div></div>
+      <div class="carte" style="border-color:#3a2a63;background:linear-gradient(135deg,rgba(255,61,154,.10),rgba(61,200,255,.10))"><h3>🎱 Bingo</h3><p class="sous" style="font-size:.86rem">Le coffre de la bande : espaces privés et espace commun pour se passer des gros fichiers (jusqu'à 10 Go). Même code qu'en direct.</p><div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px"><a class="btn prim" href="#/bingo">Ouvrir Bingo</a><a class="btn" id="bingoPlein" href="https://bingo.okalamstudio.com/?e=flo" target="_blank" rel="noopener">Plein écran ↗</a></div></div>
       <div class="carte"><h3 style="justify-content:space-between">🕹 Projets en cours <button class="btn petit" id="btnNouveau">＋ Nouveau projet</button></h3>
         <form id="formProjet" class="cache" style="border:1px solid var(--border);border-radius:12px;padding:12px;margin-bottom:12px;background:var(--bg2)">
           <label style="margin-top:0">Nom du projet</label><input id="pNom" required maxlength="80" placeholder="Ex. : Nouveau logo VICE BREAK"/>
@@ -255,6 +256,10 @@ h2.grand{font-family:Syne;font-size:1.6rem}
   </div>
 </main>
 
+<section id="vueBingo" class="cache" style="display:flex;flex-direction:column;height:calc(100vh - 56px)">
+  <div style="display:flex;gap:10px;align-items:center;padding:8px 16px;border-bottom:1px solid var(--border);background:var(--bg2)"><a class="btn petit" href="#/">← QG</a><b style="font-family:Syne">🎱 Bingo</b><span class="sous" style="font-size:.8rem">Miroir du coffre de la bande, même contenu, même code.</span><span style="flex:1"></span><a class="btn petit" id="bingoPlein2" href="https://bingo.okalamstudio.com/?e=flo" target="_blank" rel="noopener">Plein écran ↗</a></div>
+  <iframe id="cadreBingo" title="Bingo" style="flex:1;width:100%;border:0;background:#0B0A1E" allow="clipboard-read; clipboard-write; fullscreen"></iframe>
+</section>
 <section id="vueLogiciel" class="cache" style="display:flex;flex-direction:column;height:calc(100vh - 56px)">
   <div style="display:flex;gap:10px;align-items:center;padding:8px 16px;border-bottom:1px solid var(--border);background:var(--bg2)"><a class="btn petit" href="#/">← QG</a><b style="font-family:Syne">🎨 L'Atelier</b><span class="sous" style="font-size:.8rem">Exporte ton travail, puis dépose-le dans la Passerelle du projet.</span><span style="flex:1"></span><a class="btn petit" href="https://atelier.2-29-41-109.sslip.io/" target="_blank" rel="noopener">Plein écran ↗</a></div>
   <iframe id="cadreAtelier" title="OKALAM Atelier" style="flex:1;width:100%;border:0;background:#0b0e14" allow="clipboard-read; clipboard-write; fullscreen"></iframe>
@@ -290,7 +295,7 @@ const echap = s => (s ?? '').toString().replace(/[&<>"']/g, c => ({'&':'&amp;','
 function quand(d){ const x = new Date(d), j = Math.round((Date.now() - x) / 60000); if (j < 1) return "à l'instant"; if (j < 60) return `il y a ${j} min`; if (j < 1440) return `il y a ${Math.round(j/60)} h`; return x.toLocaleDateString('fr-FR',{day:'2-digit',month:'2-digit'}) + ' ' + x.toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'}); }
 function taille(o){ if(!o) return ''; const u=['o','Ko','Mo','Go']; let i=0; while(o>=1024&&i<3){o/=1024;i++;} return o.toFixed(i?1:0)+' '+u[i]; }
 function toast(t){ const e = $('toast'); e.textContent = t; e.classList.remove('cache'); clearTimeout(e._t); e._t = setTimeout(() => e.classList.add('cache'), 3500); }
-function montrer(id){ ['ecranConnexion','ecranInvitation','ecranAttente','vueAccueil','vueProjet','vueLogiciel'].forEach(x => $(x).classList.toggle('cache', x !== id)); window.scrollTo(0,0); }
+function montrer(id){ ['ecranConnexion','ecranInvitation','ecranAttente','vueAccueil','vueProjet','vueLogiciel','vueBingo'].forEach(x => $(x).classList.toggle('cache', x !== id)); window.scrollTo(0,0); }
 const admin = () => membre?.role === 'admin';
 
 function pipeline(d){
@@ -348,7 +353,11 @@ async function demarrer(apresInvitation){
   router();
 }
 window.addEventListener('hashchange', () => membre && router());
-function router(){ if (location.hash === '#/atelier') return ouvrirLogiciel(); const m = location.hash.match(/^#\/(projet|atelier|passerelle)\/(.+)$/); m ? ouvrirProjet(decodeURIComponent(m[2]), m[1] === 'passerelle' ? 'passerelle' : 'atelier') : ouvrirAccueil(); }
+function router(){ if (location.hash === '#/atelier') return ouvrirLogiciel(); if (location.hash === '#/bingo') return ouvrirBingo(); const m = location.hash.match(/^#\/(projet|atelier|passerelle)\/(.+)$/); m ? ouvrirProjet(decodeURIComponent(m[2]), m[1] === 'passerelle' ? 'passerelle' : 'atelier') : ouvrirAccueil(); }
+// Bingo : miroir sur bingo.okalamstudio.com (même site que le QG, donc la connexion tient dans le cadre) ; secours sslip tant que le DNS n'existe pas.
+const BINGO_OK = 'https://bingo.okalamstudio.com', BINGO_SECOURS = 'https://bingo.2-29-41-109.sslip.io';
+async function baseBingo(){ try { await fetch(BINGO_OK + '/bingo.css', { mode: 'no-cors', cache: 'no-store' }); return BINGO_OK; } catch (e) { return BINGO_SECOURS; } }
+async function ouvrirBingo(){ projet = null; montrer('vueBingo'); const f = $('cadreBingo'); if (f.src) return; const b = await baseBingo(); f.src = b + '/?e=flo'; ['bingoPlein','bingoPlein2'].forEach(id => { const l = $(id); if (l) l.href = b + '/?e=flo'; }); }
 function ouvrirLogiciel(){ projet = null; montrer('vueLogiciel'); const f = $('cadreAtelier'); if (!f.src) f.src = 'https://atelier.2-29-41-109.sslip.io/'; }
 let minuteur; function rafraichir(){ clearTimeout(minuteur); minuteur = setTimeout(() => { projet && !$('vueProjet').classList.contains('cache') ? (chargerDepots(), chargerMessages()) : ouvrirAccueil(true); }, 300); }
 
