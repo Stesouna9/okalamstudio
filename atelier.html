@@ -99,6 +99,19 @@ main{padding:22px 24px 60px;min-width:0}
 .voir small{color:var(--muted);display:block;font-size:.74rem}
 #visionneuse{position:fixed;inset:0;background:rgba(0,0,0,.88);display:grid;place-items:center;z-index:20;padding:20px}
 #visionneuse img{max-width:100%;max-height:92vh;border-radius:10px}
+#apercu{position:fixed;inset:0;background:rgba(3,5,9,.94);z-index:25;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:16px}
+.tel{background:#000;border-radius:46px;padding:11px;box-shadow:0 0 0 2px #2a2f3a,0 30px 80px rgba(0,0,0,.6);height:min(84vh,812px);aspect-ratio:375/812}
+.ecran{position:relative;width:100%;height:100%;border-radius:36px;overflow:hidden;background:#111 center/cover no-repeat;container-type:size}
+.encoche{position:absolute;top:0;left:50%;transform:translateX(-50%);width:42%;height:3.6%;background:#000;border-radius:0 0 16px 16px;z-index:2}
+.ui{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;padding:7% 7% 5%;color:#fff;font-family:Syne}
+.ui .haut{width:100%;display:flex;justify-content:space-between;font:600 2.6cqw 'Space Mono',monospace;opacity:.9;margin-top:2%}
+.ui .logo{margin-top:16%;text-align:center;line-height:.9}
+.ui .logo b{display:block;font-size:15cqw;font-weight:800;letter-spacing:.02em;color:#ffd2f0;text-shadow:0 0 3cqw #ff3ea5,0 0 7cqw #b03ad6}
+.ui .logo small{display:block;margin-top:2cqw;font:700 3cqw 'Space Mono',monospace;letter-spacing:.4em;color:#8deaff}
+.ui .menu{margin-top:auto;width:78%;display:flex;flex-direction:column;gap:2.4cqw}
+.ui .menu i{font-style:normal;text-align:center;padding:3cqw;border:1.5px solid rgba(255,255,255,.55);border-radius:3cqw;background:rgba(8,6,20,.35);font:700 4cqw Syne;letter-spacing:.1em;backdrop-filter:blur(2px)}
+.ui .radio{margin-top:5%;font:500 3cqw Inter;opacity:.85}
+.apercuBarre{display:flex;gap:14px;align-items:center;flex-wrap:wrap;justify-content:center}
 .vide{color:var(--muted);font-size:.88rem;padding:18px;text-align:center}
 @media (max-width:900px){
   #espace{grid-template-columns:1fr}
@@ -124,24 +137,34 @@ main{padding:22px 24px 60px;min-width:0}
   <div class="boite">
     <h1>L'atelier OKALAM</h1>
     <p class="sous">L'espace de travail partagé entre le studio et ses graphistes : dépôts de fichiers, retours, versions de test.</p>
-    <div class="onglets">
-      <button id="ongCnx" class="actif">Se connecter</button>
-      <button id="ongCre">Créer mon compte</button>
-    </div>
     <form id="formCnx">
-      <div id="champNom" class="cache"><label>Ton prénom</label><input id="nom" autocomplete="given-name" placeholder="Florian"/></div>
       <label>Adresse email</label><input id="email" type="email" autocomplete="email" required/>
-      <label>Mot de passe <span id="aideMdp" class="cache">(8 caractères minimum)</span></label><input id="mdp" type="password" autocomplete="current-password" required minlength="8"/>
+      <label>Mot de passe</label><input id="mdp" type="password" autocomplete="current-password" required/>
       <button class="btn prim" id="btnCnx">Entrer dans l'atelier</button>
       <div class="msgErr" id="errCnx"></div>
+      <p class="sous" style="margin-top:14px;font-size:.8rem">Accès sur invitation uniquement. Mot de passe oublié : demande un nouveau lien à Gabriel.</p>
     </form>
   </div>
 </section>
 
-<!-- Compte créé mais pas encore membre -->
+<!-- Arrivée par lien d'invitation : choix du mot de passe -->
+<section id="ecranInvitation" class="cache" style="min-height:calc(100vh - 60px);padding:24px 16px;display:grid;place-items:center">
+  <div class="boite">
+    <h1>Bienvenue dans l'atelier</h1>
+    <p class="sous" id="txtInvit">Choisis ton mot de passe pour les prochaines connexions.</p>
+    <form id="formInvit">
+      <label>Mot de passe (8 caractères minimum)</label><input id="mdp1" type="password" autocomplete="new-password" required minlength="8"/>
+      <label>Le même, une seconde fois</label><input id="mdp2" type="password" autocomplete="new-password" required minlength="8"/>
+      <button class="btn prim">Enregistrer et entrer</button>
+      <div class="msgErr" id="errInvit"></div>
+    </form>
+  </div>
+</section>
+
+<!-- Compte sans accès -->
 <section id="ecranAttente" class="cache" style="padding:60px 16px;display:grid;place-items:center">
   <div class="boite">
-    <h1>Compte créé</h1>
+    <h1>Accès non ouvert</h1>
     <p class="sous" id="txtAttente">Ton compte existe, mais cette adresse n'a pas encore accès à l'atelier. Gabriel doit l'ajouter : préviens-le, puis recharge la page.</p>
   </div>
 </section>
@@ -206,6 +229,24 @@ main{padding:22px 24px 60px;min-width:0}
 </section>
 
 <div id="visionneuse" class="cache"><img alt=""/></div>
+<div id="apercu" class="cache">
+  <div class="tel">
+    <div class="ecran" id="apercuEcran">
+      <div class="encoche"></div>
+      <div class="ui">
+        <div class="haut"><span>☀ 28° VICE BAY</span><span>◆ 120</span></div>
+        <div class="logo"><b>VICE</b><b>BREAK</b><small>VICE BAY 86</small></div>
+        <div class="menu"><i>JOUER</i><i>NIVEAUX</i><i>RADIO</i><i>BOUTIQUE</i></div>
+        <div class="radio">♪ Vice Bay Radio · Sunset FM</div>
+      </div>
+    </div>
+  </div>
+  <div class="apercuBarre">
+    <span class="mono">Aperçu iPhone 13 mini · 375 × 812</span>
+    <label style="margin:0;display:flex;gap:6px;align-items:center;color:var(--text)"><input type="checkbox" id="apercuUI" checked style="width:auto"/> Menu par-dessus</label>
+    <button class="btn petit" id="apercuFermer">Fermer</button>
+  </div>
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
 <script>
@@ -220,49 +261,43 @@ let moi = null, membre = null, projets = [], projet = null, depots = [], filtre 
 function echap(s){ return (s ?? '').toString().replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
 function quand(d){ const x = new Date(d); return x.toLocaleDateString('fr-FR',{day:'2-digit',month:'2-digit'}) + ' ' + x.toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'}); }
 function taille(o){ if(!o) return ''; const u=['o','Ko','Mo','Go']; let i=0; while(o>=1024&&i<3){o/=1024;i++;} return o.toFixed(i?1:0)+' '+u[i]; }
-function montrer(id){ ['ecranConnexion','ecranAttente','espace'].forEach(x => $(x).classList.toggle('cache', x !== id)); }
+function montrer(id){ ['ecranConnexion','ecranInvitation','ecranAttente','espace'].forEach(x => $(x).classList.toggle('cache', x !== id)); }
 
 // ----- Connexion -----
-function choisirMode(m){
-  mode = m;
-  $('ongCnx').classList.toggle('actif', m==='cnx'); $('ongCre').classList.toggle('actif', m==='cre');
-  $('champNom').classList.toggle('cache', m!=='cre'); $('aideMdp').classList.toggle('cache', m!=='cre');
-  $('btnCnx').textContent = m==='cre' ? 'Créer mon compte' : "Entrer dans l'atelier";
-  $('mdp').autocomplete = m==='cre' ? 'new-password' : 'current-password';
-  $('errCnx').textContent = '';
-}
-$('ongCnx').onclick = () => choisirMode('cnx');
-$('ongCre').onclick = () => choisirMode('cre');
+// Lien d'invitation ou de nouveau mot de passe : #access_token=…&type=invite|recovery
+const typeLien = new URLSearchParams(location.hash.slice(1)).get('type');
 $('formCnx').onsubmit = async e => {
   e.preventDefault(); $('errCnx').textContent = '';
-  const email = $('email').value.trim(), password = $('mdp').value;
   $('btnCnx').disabled = true;
   try {
-    if (mode === 'cre') {
-      const nom = $('nom').value.trim();
-      if (!nom) throw new Error('Indique ton prénom.');
-      const { error } = await sb.auth.signUp({ email, password, options: { data: { nom } } });
-      if (error) throw error;
-      const r = await sb.auth.signInWithPassword({ email, password });
-      if (r.error) throw r.error;
-    } else {
-      const { error } = await sb.auth.signInWithPassword({ email, password });
-      if (error) throw error;
-    }
+    const { error } = await sb.auth.signInWithPassword({ email: $('email').value.trim(), password: $('mdp').value });
+    if (error) throw error;
     await demarrer();
   } catch (err) {
-    const m = (err.message || '').toLowerCase();
-    $('errCnx').textContent = m.includes('invalid login') ? 'Email ou mot de passe incorrect.'
-      : m.includes('already registered') ? 'Ce compte existe déjà : utilise « Se connecter ».'
-      : m.includes('password') ? 'Mot de passe trop court (8 caractères minimum).'
-      : (err.message || 'Erreur, réessaie.');
+    $('errCnx').textContent = /invalid login/i.test(err.message||'') ? 'Email ou mot de passe incorrect.' : (err.message || 'Erreur, réessaie.');
   } finally { $('btnCnx').disabled = false; }
+};
+$('formInvit').onsubmit = async e => {
+  e.preventDefault(); $('errInvit').textContent = '';
+  if ($('mdp1').value !== $('mdp2').value) { $('errInvit').textContent = 'Les deux mots de passe sont différents.'; return; }
+  const { error } = await sb.auth.updateUser({ password: $('mdp1').value });
+  if (error) { $('errInvit').textContent = error.message; return; }
+  history.replaceState(null, '', location.pathname);
+  await demarrer(true);
 };
 $('btnSortir').onclick = async () => { await sb.auth.signOut(); location.reload(); };
 
-async function demarrer(){
+async function demarrer(apresInvitation){
   const { data: { session } } = await sb.auth.getSession();
-  if (!session) { montrer('ecranConnexion'); return; }
+  if (!session) {
+    if (typeLien) $('errCnx').textContent = 'Ce lien a expiré ou a déjà servi. Demande un nouveau lien à Gabriel.';
+    montrer('ecranConnexion'); return;
+  }
+  if (!apresInvitation && (typeLien === 'invite' || typeLien === 'recovery')) {
+    $('txtInvit').textContent = `Compte : ${session.user.email}. Choisis ton mot de passe pour les prochaines connexions.`;
+    $('btnSortir').classList.remove('cache');
+    montrer('ecranInvitation'); return;
+  }
   moi = session.user;
   $('btnSortir').classList.remove('cache');
   const { data: m } = await sb.rpc('atelier_membre');
@@ -328,14 +363,17 @@ function dessinerDepots(){
       <span class="meta">${echap(d.auteur_nom)} · ${quand(d.cree_le)} · ${taille(d.taille)}</span>
       ${d.note?`<span class="note">${echap(d.note)}</span>`:''}
       ${choixStatut}
-      <div class="actions"><button class="btn petit" data-dl="${d.id}">Télécharger</button>${peutSuppr?`<button class="btn petit" data-del="${d.id}">Supprimer</button>`:''}</div>
+      <div class="actions">${d._url?`<button class="btn petit" data-ap="${d.id}">Aperçu iPhone</button>`:''}<button class="btn petit" data-dl="${d.id}">Télécharger</button>${peutSuppr?`<button class="btn petit" data-del="${d.id}">Supprimer</button>`:''}</div>
     </div></div>`;
   }).join('') || '<div class="vide">Aucun fichier pour l\'instant.</div>';
   document.querySelectorAll('[data-img]').forEach(v => v.onclick = () => { const w = $('visionneuse'); w.querySelector('img').src = v.dataset.img; w.classList.remove('cache'); });
+  document.querySelectorAll('[data-ap]').forEach(b => b.onclick = () => { const d = depots.find(x => x.id === b.dataset.ap); $('apercuEcran').style.backgroundImage = `url('${d._url}')`; $('apercu').classList.remove('cache'); });
   document.querySelectorAll('[data-dl]').forEach(b => b.onclick = () => telecharger(depots.find(d => d.id === b.dataset.dl)));
   document.querySelectorAll('[data-del]').forEach(b => b.onclick = () => supprimer(depots.find(d => d.id === b.dataset.del)));
   document.querySelectorAll('[data-statut]').forEach(s => s.onchange = () => changerStatut(s.dataset.statut, s.value));
 }
+$('apercuFermer').onclick = () => $('apercu').classList.add('cache');
+$('apercuUI').onchange = e => document.querySelector('#apercu .ui').style.display = e.target.checked ? '' : 'none';
 $('visionneuse').onclick = () => $('visionneuse').classList.add('cache');
 
 async function telecharger(d){
